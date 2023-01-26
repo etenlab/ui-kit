@@ -1,0 +1,43 @@
+{
+  "name": "@eten-lab/eil-ui-kit",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "lerna": "lerna",
+    "dev": "lerna run start --stream --parallel",
+    "test": "lerna run test --",
+    "build": "lerna run build",
+    "prepublish": "lerna run prepublish",
+    "start:example": "npm run build && yarn --cwd packages/discussion-box link && yarn --cwd node_modules/react link && yarn --cwd ./example link react @eten-lab/discussion-box && yarn --cwd ./example && yarn --cwd ./example run start",
+    "start:storybook": "npm run build && yarn --cwd packages/discussion-box link && yarn --cwd node_modules/react link && yarn --cwd ./example link react @eten-lab/discussion-box && yarn --cwd ./example && yarn --cwd ./example run storybook",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-interactions": "^6.5.15",
+    "@storybook/addon-links": "^6.5.15",
+    "@storybook/builder-webpack4": "^6.5.15",
+    "@storybook/manager-webpack4": "^6.5.15",
+    "@storybook/react": "^6.5.15",
+    "@storybook/testing-library": "^0.0.13",
+    "@types/jest": "^26.0.14",
+    "babel-loader": "^8.3.0",
+    "lerna": "^6.1.0",
+    "storybook-addon-package-json": "^2.0.0",
+    "tsdx": "^0.14.1",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "@foobar404/wave": "^2.0.4",
+    "@types/dom-mediacapture-record": "^1.0.14",
+    "@types/react-router": "^5.1.11",
+    "@types/react-router-dom": "^5.1.7",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0"
+  }
+}

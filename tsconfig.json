@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.base.json",
+  "include": ["packages", "types", "scripts"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["packages/ui-kit/src/*"]
+    },
+    "allowJs": false,
+    "typeRoots": ["./node_modules/@types", "./types", "./node_modules/@types/dom-mediacapture-record"]
+  }
+}
