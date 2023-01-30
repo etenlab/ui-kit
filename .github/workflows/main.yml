@@ -5,6 +5,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_GITHUB_S3_PUSHER_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_GITHUB_S3_PUSHER_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+      - uses: dkershner6/aws-ssm-getparameters-action@v1
+        with:
+          parameterPairs: "/dev/deploy/storybook/access-key = AWS_ACCESS_KEY,
+                          /dev/deploy/storybook/secret-access-key = AWS_SECRET_ACCESS_KEY,
+                          /dev/deploy/storybook/s3-bucket-name = AWS_S3_BUCKET,
+                          /dev/deploy/storybook/cloudfront-distribution-id = AWS_CLOUDFRONT_DISTRIBUTION_ID"
+          withDecryption: "true" # defaults to true
+
+      # - name: Deploy static site to S3 bucket
+        # run: aws s3 sync storybook-static/ s3://storybook-dev-lab-eten-bible
+      - run: echo $AWS_S3_BUCKET
+      - run: echo $AWS_ACCESS_KEY
+      - run: echo $AWS_CLOUDFRONT_DISTRIBUTION_ID
+
       - name: Checkout
         uses: actions/checkout@v1
 
@@ -17,24 +37,6 @@ jobs:
 
       - name: Build
         run: npm run build-storybook
-
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_GITHUB_S3_PUSHER_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_GITHUB_S3_PUSHER_SECRET_ACCESS_KEY }}
-          aws-region: us-east-2
-
-      - uses: dkershner6/aws-ssm-getparameters-action@v1
-        with:
-          parameterPairs: " /dev/deploy/storybook/access-key = AWS_ACCESS_KEY,
-                          /dev/deploy/storybook/secret-access-key = AWS_SECRET_ACCESS_KEY,
-                          /dev/deploy/storybook/s3-bucket-name = AWS_S3_BUCKET,
-                          /dev/deploy/storybook/cloudfront-distribution-id = AWS_CLOUDFRONT_DISTRIBUTION_ID"
-          withDecryption: "true" # defaults to true
-
-      # - name: Deploy static site to S3 bucket
-        # run: aws s3 sync storybook-static/ s3://storybook-dev-lab-eten-bible
 
       - uses: TimekillerTK/s3-sync-action@master
         with:
