@@ -5,6 +5,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Build
+        run: npm run build-storybook
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -19,26 +32,6 @@ jobs:
                           /dev/deploy/storybook/s3-bucket-name = AWS_S3_BUCKET,
                           /dev/deploy/storybook/cloudfront-distribution-id = DISTRIBUTION_ID"
           withDecryption: "true" # defaults to true
-
-      # - name: Deploy static site to S3 bucket
-      #   run: aws s3 sync storybook-static/ s3://storybook-dev-lab-eten-bible
-
-      - run: echo "$AWS_S3_BUCKET"
-      - run: echo "$AWS_ACCESS_KEY_ID"
-      - run: echo "$DISTRIBUTION_ID"
-
-      - name: Checkout
-        uses: actions/checkout@v1
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps
-
-      - name: Build
-        run: npm run build-storybook
 
       - uses: TimekillerTK/s3-sync-action@master
         with:
