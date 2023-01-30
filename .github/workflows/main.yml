@@ -11,31 +11,21 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_GITHUB_S3_PUSHER_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_GITHUB_S3_PUSHER_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
-      - name: aws-ssm-to-env
-        uses: avlima/aws-ssm-to-env@master
-        env:
-          AWS_REGION: us-east-2
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_GITHUB_S3_PUSHER_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_GITHUB_S3_PUSHER_SECRET_ACCESS_KEY }}
+
+      - uses: dkershner6/aws-ssm-getparameters-action@v1
         with:
-          ssm_parameter_list: |
-           AWS_ACCESS_KEY,
-           AWS_SECRET_ACCESS_KEY,
-           AWS_S3_BUCKET,
-           AWS_CLOUDFRONT_DISTRIBUTION_ID
-      # - uses: dkershner6/aws-ssm-getparameters-action@v1
-      #   with:
-      #     parameterPairs: "/dev/deploy/storybook/access-key = AWS_ACCESS_KEY,
-      #                     /dev/deploy/storybook/secret-access-key = AWS_SECRET_ACCESS_KEY,
-      #                     /dev/deploy/storybook/s3-bucket-name = AWS_S3_BUCKET,
-      #                     /dev/deploy/storybook/cloudfront-distribution-id = AWS_CLOUDFRONT_DISTRIBUTION_ID"
-      #     withDecryption: "true" # defaults to true
+          parameterPairs: "/dev/deploy/storybook/access-key = AWS_ACCESS_KEY_ID,
+                          /dev/deploy/storybook/secret-access-key = AWS_SECRET_ACCESS_KEY,
+                          /dev/deploy/storybook/s3-bucket-name = AWS_S3_BUCKET,
+                          /dev/deploy/storybook/cloudfront-distribution-id = DISTRIBUTION_ID"
+          withDecryption: "true" # defaults to true
 
       # - name: Deploy static site to S3 bucket
-        # run: aws s3 sync storybook-static/ s3://storybook-dev-lab-eten-bible
-      - run: echo $AWS_S3_BUCKET
-      - run: echo $AWS_ACCESS_KEY
-      - run: echo $AWS_CLOUDFRONT_DISTRIBUTION_ID
+      #   run: aws s3 sync storybook-static/ s3://storybook-dev-lab-eten-bible
+
+      - run: echo "$AWS_S3_BUCKET"
+      - run: echo "$AWS_ACCESS_KEY_ID"
+      - run: echo "$DISTRIBUTION_ID"
 
       - name: Checkout
         uses: actions/checkout@v1
@@ -54,9 +44,9 @@ jobs:
         with:
           args: --follow-symlinks --delete
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+          # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: us-east-2
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          DISTRIBUTION_ID: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}
+          # AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          # DISTRIBUTION_ID: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}
           SOURCE_DIR: 'storybook-static'
