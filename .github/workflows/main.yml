@@ -25,5 +25,24 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_GITHUB_S3_PUSHER_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
 
-      - name: Deploy static site to S3 bucket
-        run: aws s3 sync storybook-static/ s3://storybook-dev-lab-eten-bible
+      - uses: dkershner6/aws-ssm-getparameters-action@v1
+        with:
+        parameterPairs: " /dev/deploy/storybook/access-key = AWS_ACCESS_KEY,
+                          /dev/deploy/storybook/secret-access-key = AWS_SECRET_ACCESS_KEY,
+                          /dev/deploy/storybook/s3-bucket-name = AWS_S3_BUCKET,
+                          /dev/deploy/storybook/cloudfront-distribution-id = AWS_CLOUDFRONT_DISTRIBUTION_ID"
+        withDecryption: "true" # defaults to true
+
+      # - name: Deploy static site to S3 bucket
+        # run: aws s3 sync storybook-static/ s3://storybook-dev-lab-eten-bible
+
+      - uses: TimekillerTK/s3-sync-action@master
+        with:
+          args: --follow-symlinks --delete
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          DISTRIBUTION_ID: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}
+          SOURCE_DIR: 'storybook-static'
