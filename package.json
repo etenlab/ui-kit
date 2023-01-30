@@ -10,8 +10,6 @@
     "test": "lerna run test --",
     "build": "lerna run build",
     "prepublish": "lerna run prepublish",
-    "start:example": "npm run build && yarn --cwd packages/discussion-box link && yarn --cwd node_modules/react link && yarn --cwd ./example link react @eten-lab/discussion-box && yarn --cwd ./example && yarn --cwd ./example run start",
-    "start:storybook": "npm run build && yarn --cwd packages/discussion-box link && yarn --cwd node_modules/react link && yarn --cwd ./example link react @eten-lab/discussion-box && yarn --cwd ./example && yarn --cwd ./example run storybook",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -27,6 +25,15 @@
     "@storybook/testing-library": "^0.0.13",
     "@types/jest": "^26.0.14",
     "babel-loader": "^8.3.0",
+    "@testing-library/react": "13.3.0",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "@types/react-router": "^5.1.11",
+    "@types/react-router-dom": "^5.1.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "lerna": "^6.1.0",
     "storybook-addon-package-json": "^2.0.0",
     "tsdx": "^0.14.1",
@@ -38,6 +45,13 @@
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
     "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.3",
+    "@mui/material": "^5.10.5",
+    "emoji-picker-react": "^4.4.3",
+    "react-quill": "^2.0.0",
+    "tslib": "^2.4.1"
   }
 }
