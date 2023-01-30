@@ -27,11 +27,11 @@ jobs:
 
       - uses: dkershner6/aws-ssm-getparameters-action@v1
         with:
-        parameterPairs: " /dev/deploy/storybook/access-key = AWS_ACCESS_KEY,
+          parameterPairs: " /dev/deploy/storybook/access-key = AWS_ACCESS_KEY,
                           /dev/deploy/storybook/secret-access-key = AWS_SECRET_ACCESS_KEY,
                           /dev/deploy/storybook/s3-bucket-name = AWS_S3_BUCKET,
                           /dev/deploy/storybook/cloudfront-distribution-id = AWS_CLOUDFRONT_DISTRIBUTION_ID"
-        withDecryption: "true" # defaults to true
+          withDecryption: "true" # defaults to true
 
       # - name: Deploy static site to S3 bucket
         # run: aws s3 sync storybook-static/ s3://storybook-dev-lab-eten-bible
