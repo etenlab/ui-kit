@@ -2,7 +2,7 @@
   "extends": "./tsconfig.base.json",
   "include": ["packages", "types", "scripts"],
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       "@components/*": ["packages/ui-kit/src/*"]
     },
