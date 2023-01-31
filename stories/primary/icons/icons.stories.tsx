@@ -2,38 +2,40 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import {
-  VisibilityOffOutlinedIcon,
-  VisibilityOutlinedIcon,
-  ArrowForwardOutlinedIcon,
-  ArrowBackOutlinedIcon,
-  NotificationsNoneOutlinedIcon,
-  ExpandLessOutlinedIcon,
-  ExpandMoreOutlinedIcon,
-  SearchOutlinedIcon,
-  TitleIcon,
-  VideoCallOutlinedIcon,
-  CloseOutlinedIcon,
-  AddOutlinedIcon,
-  CheckOutlinedIcon,
-  AddCommentOutlinedIcon,
-  PlayArrowIcon,
-  AccessTimeIcon,
-  FlipCameraIosIcon,
-  SentimentSatisfiedAltIcon,
-  DeleteOutlineOutlinedIcon,
-  PersonIcon,
-  AttachFileIcon,
-  KeyboardReturnOutlinedIcon,
-  FilterAltOutlinedIcon,
-  PauseOutlinedIcon,
-  ScienceOutlinedIcon,
-  ViewStreamOutlinedIcon,
-  FeedOutlinedIcon,
-  KeyboardVoiceOutlinedIcon,
-  ModeCommentOutlinedIcon,
-  BorderColorOutlinedIcon,
-  ViewInArOutlinedIcon,
-  MenuIcon,
+  CiUnread,
+  CiRead,
+  CiSearch,
+  CiFaceSmile,
+  BiLeftArrowAlt,
+  BiRightArrowAlt,
+  BiMessageRounded,
+  BiChevronDown,
+  BiChevronUp,
+  BiTrashAlt,
+  BiFile,
+  BiDislike,
+  BiLike,
+  BiCommentAdd,
+  BiUser,
+  BiVideoPlus,
+  BsFillPlayFill,
+  BsClock,
+  FiBell,
+  FiCodesandbox,
+  FiCheck,
+  FiFilter,
+  FiMic,
+  FiPlus,
+  FiX,
+  FiPause,
+  FiMenu,
+  FiColumns,
+  FiCreditCard,
+  FiEdit,
+  FiPaperclip,
+  FiCornerDownLeft,
+  TbLetterT,
+  TbCameraRotate,
 } from '../../../packages/ui-kit/src/icons';
 
 function Div({ children }: { children: React.ReactNode }) {
@@ -111,126 +113,40 @@ export default {
 const Template: ComponentStory<typeof Div> = args => {
   return (
     <Div>
-      <TitleWithIcon
-        title="VisibilityOffOutlinedIcon"
-        icon={<VisibilityOffOutlinedIcon />}
-      />
-
-      <TitleWithIcon
-        title="VisibilityOutlinedIcon"
-        icon={<VisibilityOutlinedIcon />}
-      />
-
-      <TitleWithIcon
-        title="ArrowForwardOutlinedIcon"
-        icon={<ArrowForwardOutlinedIcon />}
-      />
-
-      <TitleWithIcon
-        title="ArrowBackOutlinedIcon"
-        icon={<ArrowBackOutlinedIcon />}
-      />
-
-      <TitleWithIcon
-        title="NotificationsNoneOutlinedIcon"
-        icon={<NotificationsNoneOutlinedIcon />}
-      />
-
-      <TitleWithIcon
-        title="ExpandLessOutlinedIcon"
-        icon={<ExpandLessOutlinedIcon />}
-      />
-
-      <TitleWithIcon
-        title="ExpandMoreOutlinedIcon"
-        icon={<ExpandMoreOutlinedIcon />}
-      />
-
-      <TitleWithIcon title="SearchOutlinedIcon" icon={<SearchOutlinedIcon />} />
-
-      <TitleWithIcon title="TitleIcon" icon={<TitleIcon />} />
-
-      <TitleWithIcon
-        title="VideoCallOutlinedIcon"
-        icon={<VideoCallOutlinedIcon />}
-      />
-
-      <TitleWithIcon title="CloseOutlinedIcon" icon={<CloseOutlinedIcon />} />
-
-      <TitleWithIcon title="AddOutlinedIcon" icon={<AddOutlinedIcon />} />
-
-      <TitleWithIcon title="CheckOutlinedIcon" icon={<CheckOutlinedIcon />} />
-
-      <TitleWithIcon
-        title="AddCommentOutlinedIcon"
-        icon={<AddCommentOutlinedIcon />}
-      />
-
-      <TitleWithIcon title="PlayArrowIcon" icon={<PlayArrowIcon />} />
-
-      <TitleWithIcon title="AccessTimeIcon" icon={<AccessTimeIcon />} />
-
-      <TitleWithIcon title="FlipCameraIosIcon" icon={<FlipCameraIosIcon />} />
-
-      <TitleWithIcon
-        title="SentimentSatisfiedAltIcon"
-        icon={<SentimentSatisfiedAltIcon />}
-      />
-
-      <TitleWithIcon
-        title="DeleteOutlineOutlinedIcon"
-        icon={<DeleteOutlineOutlinedIcon />}
-      />
-
-      <TitleWithIcon title="PersonIcon" icon={<PersonIcon />} />
-
-      <TitleWithIcon title="AttachFileIcon" icon={<AttachFileIcon />} />
-
-      <TitleWithIcon
-        title="KeyboardReturnOutlinedIcon"
-        icon={<KeyboardReturnOutlinedIcon />}
-      />
-
-      <TitleWithIcon
-        title="FilterAltOutlinedIcon"
-        icon={<FilterAltOutlinedIcon />}
-      />
-
-      <TitleWithIcon title="PauseOutlinedIcon" icon={<PauseOutlinedIcon />} />
-
-      <TitleWithIcon
-        title="ScienceOutlinedIcon"
-        icon={<ScienceOutlinedIcon />}
-      />
-
-      <TitleWithIcon
-        title="ViewStreamOutlinedIcon"
-        icon={<ViewStreamOutlinedIcon />}
-      />
-
-      <TitleWithIcon title="FeedOutlinedIcon" icon={<FeedOutlinedIcon />} />
-
-      <TitleWithIcon
-        title="KeyboardVoiceOutlinedIcon"
-        icon={<KeyboardVoiceOutlinedIcon />}
-      />
-
-      <TitleWithIcon
-        title="ModeCommentOutlinedIcon"
-        icon={<ModeCommentOutlinedIcon />}
-      />
-
-      <TitleWithIcon
-        title="BorderColorOutlinedIcon"
-        icon={<BorderColorOutlinedIcon />}
-      />
-
-      <TitleWithIcon
-        title="ViewInArOutlinedIcon"
-        icon={<ViewInArOutlinedIcon />}
-      />
-
-      <TitleWithIcon title="MenuIcon" icon={<MenuIcon />} />
+      <TitleWithIcon title="CiUnread" icon={<CiUnread />} />
+      <TitleWithIcon title="CiRead" icon={<CiRead />} />
+      <TitleWithIcon title="CiSearch" icon={<CiSearch />} />
+      <TitleWithIcon title="CiFaceSmile" icon={<CiFaceSmile />} />
+      <TitleWithIcon title="BiLeftArrowAlt" icon={<BiLeftArrowAlt />} />
+      <TitleWithIcon title="BiRightArrowAlt" icon={<BiRightArrowAlt />} />
+      <TitleWithIcon title="BiMessageRounded" icon={<BiMessageRounded />} />
+      <TitleWithIcon title="BiChevronDown" icon={<BiChevronDown />} />
+      <TitleWithIcon title="BiChevronUp" icon={<BiChevronUp />} />
+      <TitleWithIcon title="BiTrashAlt" icon={<BiTrashAlt />} />
+      <TitleWithIcon title="BiFile" icon={<BiFile />} />
+      <TitleWithIcon title="BiDislike" icon={<BiDislike />} />
+      <TitleWithIcon title="BiLike" icon={<BiLike />} />
+      <TitleWithIcon title="BiCommentAdd" icon={<BiCommentAdd />} />
+      <TitleWithIcon title="BiUser" icon={<BiUser />} />
+      <TitleWithIcon title="BiVideoPlus" icon={<BiVideoPlus />} />
+      <TitleWithIcon title="BsFillPlayFill" icon={<BsFillPlayFill />} />
+      <TitleWithIcon title="BsClock" icon={<BsClock />} />
+      <TitleWithIcon title="FiBell" icon={<FiBell />} />
+      <TitleWithIcon title="FiCodesandbox" icon={<FiCodesandbox />} />
+      <TitleWithIcon title="FiCheck" icon={<FiCheck />} />
+      <TitleWithIcon title="FiFilter" icon={<FiFilter />} />
+      <TitleWithIcon title="FiMic" icon={<FiMic />} />
+      <TitleWithIcon title="FiPlus" icon={<FiPlus />} />
+      <TitleWithIcon title="FiX" icon={<FiX />} />
+      <TitleWithIcon title="FiPause" icon={<FiPause />} />
+      <TitleWithIcon title="FiMenu" icon={<FiMenu />} />
+      <TitleWithIcon title="FiColumns" icon={<FiColumns />} />
+      <TitleWithIcon title="FiCreditCard" icon={<FiCreditCard />} />
+      <TitleWithIcon title="FiEdit" icon={<FiEdit />} />
+      <TitleWithIcon title="FiPaperclip" icon={<FiPaperclip />} />
+      <TitleWithIcon title="FiCornerDownLeft" icon={<FiCornerDownLeft />} />
+      <TitleWithIcon title="TbLetterT" icon={<TbLetterT />} />
+      <TitleWithIcon title="TbCameraRotate" icon={<TbCameraRotate />} />
     </Div>
   );
 };

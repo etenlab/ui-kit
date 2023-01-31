@@ -1,32 +1,33 @@
-export { default as VisibilityOffOutlinedIcon } from '@mui/icons-material/VisibilityOffOutlined';
-export { default as VisibilityOutlinedIcon } from '@mui/icons-material/VisibilityOutlined';
-export { default as ArrowForwardOutlinedIcon } from '@mui/icons-material/ArrowForwardOutlined';
-export { default as ArrowBackOutlinedIcon } from '@mui/icons-material/ArrowBackOutlined';
-export { default as NotificationsNoneOutlinedIcon } from '@mui/icons-material/NotificationsNoneOutlined';
-export { default as ExpandLessOutlinedIcon } from '@mui/icons-material/ExpandLessOutlined';
-export { default as ExpandMoreOutlinedIcon } from '@mui/icons-material/ExpandMoreOutlined';
-export { default as SearchOutlinedIcon } from '@mui/icons-material/SearchOutlined';
-export { default as TitleIcon } from '@mui/icons-material/Title';
-export { default as VideoCallOutlinedIcon } from '@mui/icons-material/VideoCallOutlined';
-export { default as CloseOutlinedIcon } from '@mui/icons-material/CloseOutlined';
-export { default as AddOutlinedIcon } from '@mui/icons-material/AddOutlined';
-export { default as CheckOutlinedIcon } from '@mui/icons-material/CheckOutlined';
-export { default as AddCommentOutlinedIcon } from '@mui/icons-material/AddCommentOutlined';
-export { default as PlayArrowIcon } from '@mui/icons-material/PlayArrow';
-export { default as AccessTimeIcon } from '@mui/icons-material/AccessTime';
-export { default as FlipCameraIosIcon } from '@mui/icons-material/FlipCameraIos';
-export { default as SentimentSatisfiedAltIcon } from '@mui/icons-material/SentimentSatisfiedAlt';
-export { default as DeleteOutlineOutlinedIcon } from '@mui/icons-material/DeleteOutlineOutlined';
-export { default as PersonIcon } from '@mui/icons-material/Person';
-export { default as AttachFileIcon } from '@mui/icons-material/AttachFile';
-export { default as KeyboardReturnOutlinedIcon } from '@mui/icons-material/KeyboardReturnOutlined';
-export { default as FilterAltOutlinedIcon } from '@mui/icons-material/FilterAltOutlined';
-export { default as PauseOutlinedIcon } from '@mui/icons-material/PauseOutlined';
-export { default as ScienceOutlinedIcon } from '@mui/icons-material/ScienceOutlined';
-export { default as ViewStreamOutlinedIcon } from '@mui/icons-material/ViewStreamOutlined';
-export { default as FeedOutlinedIcon } from '@mui/icons-material/FeedOutlined';
-export { default as KeyboardVoiceOutlinedIcon } from '@mui/icons-material/KeyboardVoiceOutlined';
-export { default as ModeCommentOutlinedIcon } from '@mui/icons-material/ModeCommentOutlined';
-export { default as BorderColorOutlinedIcon } from '@mui/icons-material/BorderColorOutlined';
-export { default as ViewInArOutlinedIcon } from '@mui/icons-material/ViewInArOutlined';
-export { default as MenuIcon } from '@mui/icons-material/Menu';
+export { CiUnread, CiRead, CiSearch, CiFaceSmile } from 'react-icons/ci';
+export {
+  BiLeftArrowAlt,
+  BiRightArrowAlt,
+  BiMessageRounded,
+  BiChevronDown,
+  BiChevronUp,
+  BiTrashAlt,
+  BiFile,
+  BiDislike,
+  BiLike,
+  BiCommentAdd,
+  BiUser,
+  BiVideoPlus,
+} from 'react-icons/bi';
+export { BsFillPlayFill, BsClock } from 'react-icons/bs';
+export {
+  FiBell,
+  FiCodesandbox,
+  FiCheck,
+  FiFilter,
+  FiMic,
+  FiPlus,
+  FiX,
+  FiPause,
+  FiMenu,
+  FiColumns,
+  FiCreditCard,
+  FiEdit,
+  FiPaperclip,
+  FiCornerDownLeft,
+} from 'react-icons/fi';
+export { TbLetterT, TbCameraRotate } from 'react-icons/tb';
