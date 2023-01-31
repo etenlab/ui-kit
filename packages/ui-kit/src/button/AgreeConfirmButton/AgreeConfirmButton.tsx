@@ -2,8 +2,7 @@ import React from 'react';
 
 import { Button, useTheme, PaletteColor } from '@mui/material';
 
-import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
-import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined';
+import { BiLike, BiDislike } from '../../icons';
 
 type AgreeConfirmButtonProps = {
   fullWidth?: boolean;
@@ -42,13 +41,13 @@ export function AgreeConfirmButton({
     label = 'Agree';
     color = 'green';
     console.log(withIcon);
-    startWith = withIcon === true ? <ThumbUpAltOutlinedIcon /> : undefined;
+    startWith = withIcon === true ? <BiLike /> : undefined;
   }
 
   if (kind === 'disagree') {
     label = 'Disagree';
     color = 'red';
-    startWith = withIcon ? <ThumbDownOutlinedIcon /> : undefined;
+    startWith = withIcon ? <BiDislike /> : undefined;
   }
 
   return (

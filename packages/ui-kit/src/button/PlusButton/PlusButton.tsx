@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button } from '@mui/material';
 
-import AddIcon from '@mui/icons-material/Add';
+import { FiPlus } from '../../icons';
 
 type ButtonProps = {
   variant: 'primary' | 'secondary';
@@ -20,7 +20,7 @@ export function PlusButton({ variant, onClick }: ButtonProps) {
       onClick={onClick}
       sx={{ padding: '6px', minWidth: 0 }}
     >
-      <AddIcon />
+      <FiPlus />
     </Button>
   );
 }

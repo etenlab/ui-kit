@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { ThemeProvider as MuiThemeProvider, GlobalStyles } from '@mui/material';
+import '@fontsource/inter';
 
 import { theme } from './theme';
 

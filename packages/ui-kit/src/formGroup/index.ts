@@ -1,0 +1,1 @@
+export { VerticalRadioGroup } from './VerticalRadioGroup';

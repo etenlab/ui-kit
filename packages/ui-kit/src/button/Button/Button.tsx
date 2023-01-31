@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { BiRightArrowAlt } from '../../icons';
 
 import { StyledButton } from './styled';
 
@@ -26,7 +26,7 @@ export function Button({
       onClick={onClick}
       variant={variantType}
       fullWidth={fullWidth}
-      endIcon={withIcon ? <ArrowForwardIcon /> : null}
+      endIcon={withIcon ? <BiRightArrowAlt /> : null}
     >
       {children}
     </StyledButton>

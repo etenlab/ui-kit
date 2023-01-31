@@ -5,9 +5,10 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
+  FormLabel,
 } from '@mui/material';
 
-import { StyledFormLabel, StyledDivider } from './styled';
+import { StyledDivider } from './styled';
 
 type Item = {
   value: unknown;
@@ -31,9 +32,20 @@ export function VerticalRadioGroup({
 }: VerticalRadioGroupProps) {
   return (
     <FormControl sx={{ width: '100%' }}>
-      <StyledFormLabel id="demo-controlled-radio-buttons-group">
+      <FormLabel
+        id="demo-controlled-radio-buttons-group"
+        sx={{
+          fontWeight: 600,
+          fontSize: 14,
+          lineHeight: '20px',
+          letterSpacing: '0.05em',
+          textTransform: 'uppercase',
+          color: '#5C6673',
+          opacity: 0.5,
+        }}
+      >
         {label}
-      </StyledFormLabel>
+      </FormLabel>
       <RadioGroup
         aria-labelledby="demo-controlled-radio-buttons-group"
         name="controlled-radio-buttons-group"

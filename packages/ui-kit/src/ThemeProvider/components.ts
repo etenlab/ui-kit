@@ -137,3 +137,9 @@ declare module '@mui/material/Checkbox' {
     'light-blue': true;
   }
 }
+
+declare module '@mui/material/Badge' {
+  interface BadgePropsColorOverrides {
+    red: true;
+  }
+}

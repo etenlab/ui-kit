@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeProvider } from '../../../packages/ui-kit/src/ThemeProvider';
-import { Button } from '../../../packages/ui-kit/src/button/Button';
+import { Button } from '../../../packages/ui-kit/src/button';
 
 export default {
   title: 'Primary/Button/Button',
