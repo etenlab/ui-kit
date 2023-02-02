@@ -12,6 +12,7 @@ export {
   BiCommentAdd,
   BiUser,
   BiVideoPlus,
+  BiCheckCircle,
 } from 'react-icons/bi';
 export { BsFillPlayFill, BsClock } from 'react-icons/bs';
 export {

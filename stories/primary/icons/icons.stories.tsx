@@ -18,6 +18,7 @@ import {
   BiCommentAdd,
   BiUser,
   BiVideoPlus,
+  BiCheckCircle,
   BsFillPlayFill,
   BsClock,
   FiBell,
@@ -96,7 +97,7 @@ export default {
   title: 'Primary/Icons',
   component: Div,
   decorators: [
-    Story => (
+    (Story) => (
       <div
         style={{
           margin: 'auto',
@@ -110,7 +111,7 @@ export default {
   ],
 } as ComponentMeta<typeof Div>;
 
-const Template: ComponentStory<typeof Div> = args => {
+const Template: ComponentStory<typeof Div> = (args) => {
   return (
     <Div>
       <TitleWithIcon title="CiUnread" icon={<CiUnread />} />
@@ -129,6 +130,7 @@ const Template: ComponentStory<typeof Div> = args => {
       <TitleWithIcon title="BiCommentAdd" icon={<BiCommentAdd />} />
       <TitleWithIcon title="BiUser" icon={<BiUser />} />
       <TitleWithIcon title="BiVideoPlus" icon={<BiVideoPlus />} />
+      <TitleWithIcon title="BiCheckCircle" icon={<BiCheckCircle />} />
       <TitleWithIcon title="BsFillPlayFill" icon={<BsFillPlayFill />} />
       <TitleWithIcon title="BsClock" icon={<BsClock />} />
       <TitleWithIcon title="FiBell" icon={<FiBell />} />

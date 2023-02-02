@@ -7,45 +7,50 @@ import { BiLike, BiDislike } from '../../icons';
 type AgreeConfirmButtonProps = {
   fullWidth?: boolean;
   withIcon?: boolean;
+  zeroBorderRadius?: boolean;
   kind: 'agree' | 'disagree';
   disabled?: boolean;
+  label?: string;
   onClick(): void;
 };
 
 export function AgreeConfirmButton({
   fullWidth,
   withIcon,
+  zeroBorderRadius = false,
   kind,
   disabled,
+  label,
   onClick,
 }: AgreeConfirmButtonProps) {
   const theme = useTheme();
 
-  let label;
+  let autoLabel;
   let startWith;
   let color: 'red' | 'green' = 'red';
 
-  const lightBlueColor = (theme.palette[
-    'light-blue' as keyof typeof theme.palette
-  ] as PaletteColor).main;
-  const darkColor = (theme.palette[
-    'dark' as keyof typeof theme.palette
-  ] as PaletteColor).main;
+  const lightBlueColor = (
+    theme.palette['light-blue' as keyof typeof theme.palette] as PaletteColor
+  ).main;
+  const darkColor = (
+    theme.palette['dark' as keyof typeof theme.palette] as PaletteColor
+  ).main;
   const sxObj = {
     width: fullWidth ? 'null' : 157,
     textAlign: 'center',
     textTransform: 'capitalize',
+    borderRadius: zeroBorderRadius ? 0 : '4px',
   };
 
   if (kind === 'agree') {
-    label = 'Agree';
+    autoLabel = 'Agree';
     color = 'green';
     console.log(withIcon);
     startWith = withIcon === true ? <BiLike /> : undefined;
   }
 
   if (kind === 'disagree') {
-    label = 'Disagree';
+    autoLabel = 'Disagree';
     color = 'red';
     startWith = withIcon ? <BiDislike /> : undefined;
   }
@@ -67,7 +72,7 @@ export function AgreeConfirmButton({
         },
       }}
     >
-      {label}
+      {label ? label : autoLabel}
     </Button>
   );
 }

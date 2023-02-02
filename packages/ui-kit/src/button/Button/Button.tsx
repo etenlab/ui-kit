@@ -9,6 +9,7 @@ type ButtonProps = {
   withIcon?: boolean;
   children?: React.ReactNode;
   variant: 'primary' | 'secondary';
+  color: 'blue-primary' | 'dark';
   onClick(): void;
 };
 
@@ -16,6 +17,7 @@ export function Button({
   variant,
   fullWidth = false,
   withIcon = false,
+  color = 'blue-primary',
   onClick,
   children,
 }: ButtonProps) {
@@ -27,6 +29,7 @@ export function Button({
       variant={variantType}
       fullWidth={fullWidth}
       endIcon={withIcon ? <BiRightArrowAlt /> : null}
+      color={color}
     >
       {children}
     </StyledButton>

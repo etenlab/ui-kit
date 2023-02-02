@@ -8,7 +8,7 @@ export default {
   title: 'Primary/Button/Button',
   component: Button,
   decorators: [
-    Story => (
+    (Story) => (
       <div style={{ margin: '3em', background: '#eee', width: '500px' }}>
         <ThemeProvider>
           <Story />
@@ -18,7 +18,7 @@ export default {
   ],
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = args => <Button {...args} />;
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
@@ -47,3 +47,10 @@ SecondaryWithIcon.args = {
   children: 'Get Started Now',
 };
 SecondaryWithIcon.storyName = 'Secondary with arrow icon';
+
+export const Dark = Template.bind({});
+Dark.args = {
+  variant: 'secondary',
+  children: 'Get Started Now',
+  color: 'dark',
+};

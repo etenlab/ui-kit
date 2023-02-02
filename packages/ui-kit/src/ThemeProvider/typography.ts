@@ -23,7 +23,7 @@ export const typography: ThemeOptions = {
     h3: {
       fontWeight: 600,
       fontSize: 18,
-      lineHeight: '26px',
+      lineHeight: '28px',
       letterSpacing: '-0.02em',
       textTransform: 'capitalize',
       color: '#404040',

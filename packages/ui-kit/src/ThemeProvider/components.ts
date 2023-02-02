@@ -85,6 +85,59 @@ export const components: ThemeOptions = {
         },
       },
     },
+    MuiFormLabel: {
+      styleOverrides: {
+        root: {
+          fontWeight: 600,
+          fontSize: 14,
+          lineHeight: '20px',
+          letterSpacing: '0.05em',
+          textTransform: 'uppercase',
+          opacity: 0.5,
+        },
+      },
+    },
+    MuiFormControlLabel: {
+      styleOverrides: {
+        root: {
+          fontWeight: 400,
+          fontSize: 16,
+          lineHeight: '26px',
+        },
+      },
+    },
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          padding: '12px 0',
+          fontWeight: 400,
+          fontSize: '16px',
+          lineHeight: '26px',
+        },
+      },
+    },
+    MuiDivider: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          borderColor: (theme.palette['middle-gray'] as PaletteColor).main,
+        }),
+      },
+    },
+    MuiAlert: {
+      styleOverrides: {
+        standardSuccess: ({ theme }) => ({
+          borderRadius: '5px',
+          backgroundColor: (theme.palette['light-green'] as PaletteColor).main,
+          color: (theme.palette.green as PaletteColor).main,
+          fontWeight: 600,
+          fontSize: '14px',
+          lineHeight: '20px',
+          '& .MuiAlert-icon': {
+            color: (theme.palette.green as PaletteColor).main,
+          },
+        }),
+      },
+    },
   },
 };
 
@@ -103,6 +156,7 @@ declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
     disable: true;
     gray: true;
+    dark: true;
     'middle-gray': true;
     red: true;
     'light-red': true;
@@ -141,5 +195,23 @@ declare module '@mui/material/Checkbox' {
 declare module '@mui/material/Badge' {
   interface BadgePropsColorOverrides {
     red: true;
+  }
+}
+
+declare module '@mui/material/FormLabel' {
+  interface FormLabelPropsColorOverrides {
+    gray: true;
+  }
+}
+
+declare module '@mui/material/FormControlLabel' {
+  interface FormControlLabelPropsColorOverrides {
+    dark: true;
+  }
+}
+
+declare module '@mui/material/ListItemText' {
+  interface ListItemTextPropsColorOverrides {
+    dark: true;
   }
 }
