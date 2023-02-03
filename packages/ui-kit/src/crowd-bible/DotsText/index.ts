@@ -1,0 +1,1 @@
+export { DotsText } from './DotsText';
