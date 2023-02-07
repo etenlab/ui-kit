@@ -8,7 +8,7 @@ export default {
   title: 'Primary/Input/TextArea',
   component: TextArea,
   decorators: [
-    Story => (
+    (Story) => (
       <div style={{ margin: '3em', background: '#eee', width: '500px' }}>
         <ThemeProvider>
           <Story />
@@ -18,7 +18,7 @@ export default {
   ],
 } as ComponentMeta<typeof TextArea>;
 
-const Template: ComponentStory<typeof TextArea> = args => (
+const Template: ComponentStory<typeof TextArea> = (args) => (
   <TextArea {...args} />
 );
 
@@ -41,6 +41,13 @@ Success.args = {
   label: 'Email or Username',
   valid: true,
   fullWidth: true,
+};
+
+export const WithoutLegend = Template.bind({});
+WithoutLegend.args = {
+  label: 'Email or Username',
+  fullWidth: true,
+  withLegend: false,
 };
 
 export const Disabled = Template.bind({});

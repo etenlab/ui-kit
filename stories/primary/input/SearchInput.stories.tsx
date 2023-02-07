@@ -8,7 +8,7 @@ export default {
   title: 'Primary/Input/SearchInput',
   component: SearchInput,
   decorators: [
-    Story => (
+    (Story) => (
       <div style={{ margin: '3em', background: '#eee', width: '500px' }}>
         <ThemeProvider>
           <Story />
@@ -18,7 +18,7 @@ export default {
   ],
 } as ComponentMeta<typeof SearchInput>;
 
-const Template: ComponentStory<typeof SearchInput> = args => (
+const Template: ComponentStory<typeof SearchInput> = (args) => (
   <SearchInput {...args} />
 );
 
@@ -39,6 +39,13 @@ Success.args = {
   label: 'Email or Username',
   valid: true,
 };
+
+export const WithoutLegend = Template.bind({});
+WithoutLegend.args = {
+  label: 'Email or Username',
+  withLegend: false,
+};
+Primary.storyName = 'Primary';
 
 export const Disabled = Template.bind({});
 Disabled.args = {

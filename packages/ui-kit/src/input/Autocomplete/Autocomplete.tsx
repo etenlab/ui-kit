@@ -16,10 +16,14 @@ export function Autocomplete<
   DisableClearable extends boolean | undefined = false,
   FreeSolo extends boolean | undefined = false
 >(
-  props: AutocompleteProps<T, Multiple, DisableClearable, FreeSolo> & {
-    valid?: boolean;
-    label?: string;
-  }
+  props: Omit<
+    AutocompleteProps<T, Multiple, DisableClearable, FreeSolo> & {
+      valid?: boolean;
+      label?: string;
+      withLegend?: boolean;
+    },
+    'renderInput'
+  >
 ) {
   const [open, setOpen] = useState<boolean>(false);
 
@@ -30,7 +34,7 @@ export function Autocomplete<
     setOpen(false);
   };
   const handleToggle = () => {
-    setOpen(open => !open);
+    setOpen((open) => !open);
   };
 
   const adornment = open ? (
@@ -46,9 +50,10 @@ export function Autocomplete<
       blurOnSelect="touch"
       onOpen={handleOpen}
       onClose={handleClose}
-      renderInput={params => (
+      renderInput={(params) => (
         <Input
           {...params}
+          withLegend={props.withLegend}
           label={props.label}
           valid={props.valid}
           InputProps={{

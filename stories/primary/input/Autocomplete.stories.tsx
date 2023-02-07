@@ -8,7 +8,7 @@ export default {
   title: 'Primary/Input/Autocomplete',
   component: Autocomplete,
   decorators: [
-    Story => (
+    (Story) => (
       <div style={{ margin: '3em', background: '#eee', width: '500px' }}>
         <ThemeProvider>
           <Story />
@@ -152,7 +152,7 @@ const top100Films = [
   { title: 'Monty Python and the Holy Grail', year: 1975 },
 ];
 
-const Template: ComponentStory<typeof Autocomplete> = args => (
+const Template: ComponentStory<typeof Autocomplete> = (args) => (
   <Autocomplete {...args} />
 );
 
@@ -178,6 +178,14 @@ Success.args = {
   options: top100Films,
   getOptionLabel: (option: FilmOptionType) => option.title,
   valid: true,
+};
+
+export const WithoutLegend = Template.bind({});
+WithoutLegend.args = {
+  label: 'Email or Username',
+  withLegend: false,
+  options: top100Films,
+  getOptionLabel: (option: FilmOptionType) => option.title,
 };
 
 export const Disabled = Template.bind({});

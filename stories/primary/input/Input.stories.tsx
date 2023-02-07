@@ -8,7 +8,7 @@ export default {
   title: 'Primary/Input/Input',
   component: Input,
   decorators: [
-    Story => (
+    (Story) => (
       <div style={{ margin: '3em', background: '#eee', width: '500px' }}>
         <ThemeProvider>
           <Story />
@@ -18,7 +18,7 @@ export default {
   ],
 } as ComponentMeta<typeof Input>;
 
-const Template: ComponentStory<typeof Input> = args => <Input {...args} />;
+const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
@@ -37,6 +37,13 @@ Success.args = {
   label: 'Email or Username',
   valid: true,
 };
+
+export const WithOutLegend = Template.bind({});
+WithOutLegend.args = {
+  label: 'Email or Username',
+  withLegend: false,
+};
+Primary.storyName = 'Primary';
 
 export const Disabled = Template.bind({});
 Disabled.args = {
