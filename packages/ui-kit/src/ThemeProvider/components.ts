@@ -138,6 +138,24 @@ export const components: ThemeOptions = {
         }),
       },
     },
+    MuiLink: {
+      styleOverrides: {
+        root: ({ ownerState, theme }) => ({
+          color: (
+            theme.palette[
+              ownerState.color as keyof typeof theme.palette
+            ] as PaletteColor
+          ).main,
+        }),
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          boxShadow: 'none',
+        },
+      },
+    },
   },
 };
 
@@ -166,8 +184,22 @@ declare module '@mui/material/Button' {
   }
 }
 
+declare module '@mui/material/IconButton' {
+  interface IconButtonPropsColorOverrides {
+    disable: true;
+    gray: true;
+    dark: true;
+    'middle-gray': true;
+    red: true;
+    'light-red': true;
+    green: true;
+    'blue-primary': true;
+    'light-blue': true;
+  }
+}
+
 declare module '@mui/material/Radio' {
-  interface ButtonPropsColorOverrides {
+  interface RadioPropsColorOverrides {
     disable: true;
     gray: true;
     'middle-gray': true;
@@ -180,7 +212,7 @@ declare module '@mui/material/Radio' {
 }
 
 declare module '@mui/material/Checkbox' {
-  interface ButtonPropsColorOverrides {
+  interface CheckboxPropsColorOverrides {
     disable: true;
     gray: true;
     'middle-gray': true;
@@ -213,5 +245,11 @@ declare module '@mui/material/FormControlLabel' {
 declare module '@mui/material/ListItemText' {
   interface ListItemTextPropsColorOverrides {
     dark: true;
+  }
+}
+
+declare module '@mui/material/Link' {
+  interface LinkPropsColorOverrides {
+    gray: true;
   }
 }

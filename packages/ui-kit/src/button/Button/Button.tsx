@@ -1,37 +1,19 @@
 import React from 'react';
 
+import { ButtonProps } from '@mui/material';
 import { BiRightArrowAlt } from '../../icons';
 
 import { StyledButton } from './styled';
 
-type ButtonProps = {
-  fullWidth?: boolean;
-  withIcon?: boolean;
-  children?: React.ReactNode;
-  variant: 'primary' | 'secondary';
-  color: 'blue-primary' | 'dark';
-  onClick(): void;
-};
+export function Button(
+  props: Omit<ButtonProps, 'endIcon'> & {
+    endIcon?: boolean | React.ReactNode;
+  }
+) {
+  const args = {
+    ...props,
+    endIcon: props.endIcon === true ? <BiRightArrowAlt /> : props.endIcon,
+  };
 
-export function Button({
-  variant,
-  fullWidth = false,
-  withIcon = false,
-  color = 'blue-primary',
-  onClick,
-  children,
-}: ButtonProps) {
-  const variantType = variant === 'primary' ? 'contained' : 'outlined';
-
-  return (
-    <StyledButton
-      onClick={onClick}
-      variant={variantType}
-      fullWidth={fullWidth}
-      endIcon={withIcon ? <BiRightArrowAlt /> : null}
-      color={color}
-    >
-      {children}
-    </StyledButton>
-  );
+  return <StyledButton {...args} />;
 }

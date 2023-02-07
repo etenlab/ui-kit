@@ -8,3 +8,4 @@ export * from './TitleWithIcon';
 export * from './RangeSelectableTextArea';
 export * from './DotsText';
 export * from './QuestionBox';
+export * from './QuestionCreatorBox';

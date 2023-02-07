@@ -4,6 +4,8 @@ import { TextFieldProps } from '@mui/material';
 
 import { Input } from '../Input';
 
-export function TextArea(props: TextFieldProps & { valid?: boolean }) {
+export function TextArea(
+  props: TextFieldProps & { valid?: boolean; withLegend?: boolean }
+) {
   return <Input multiline {...props} />;
 }

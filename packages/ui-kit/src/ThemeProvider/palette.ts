@@ -1,52 +1,69 @@
 import { ThemeOptions, PaletteColorOptions } from '@mui/material';
 
+export const colors = {
+  'blue-primary': '#1F77DF',
+  'light-blue': '#E3EAF3',
+  disable: '#F3F6F9',
+  dark: '#1B1B1B',
+  gray: '#5C6673',
+  'middle-gray': '#C2CBD7',
+  white: '#FFFFFF',
+  red: '#E04E4E',
+  'light-red': '#F3F6F9',
+  green: '#4ABE95',
+  'light-green': '#DAF2EA',
+  yellow: '#FCBB14',
+  'middle-yellow': '#FFF1CE',
+  'light-yellow': '#FFF9EA',
+};
+
 export const palette: ThemeOptions = {
   palette: {
     'blue-primary': {
-      main: '#1F77DF',
+      main: colors['blue-primary'],
       contrastText: '#FFFFFF',
     },
     'light-blue': {
-      main: '#E3EAF3',
-      contrastText: '#5C6673',
+      main: colors['light-blue'],
+      contrastText: colors['middle-gray'],
     },
     disable: {
-      main: '#F3F6F9',
+      main: colors['disable'],
     },
     dark: {
-      main: '#1B1B1B',
+      main: colors['dark'],
     },
     gray: {
-      main: '#5C6673',
+      main: colors['gray'],
     },
     'middle-gray': {
-      main: '#C2CBD7',
+      main: colors['middle-gray'],
     },
     white: {
-      main: '#FFFFFF',
+      main: colors['white'],
     },
     red: {
-      main: '#E04E4E',
-      contrastText: '#FFFFFF',
+      main: colors['red'],
+      contrastText: colors['white'],
     },
     'light-red': {
-      main: '#F3F6F9',
+      main: colors['light-red'],
     },
     green: {
-      main: '#4ABE95',
-      contrastText: '#FFFFFF',
+      main: colors['green'],
+      contrastText: colors['white'],
     },
     'light-green': {
-      main: '#DAF2EA',
+      main: colors['light-green'],
     },
     yellow: {
-      main: '#FCBB14',
+      main: colors['yellow'],
     },
     'middle-yellow': {
-      main: '#FFF1CE',
+      main: colors['middle-yellow'],
     },
     'light-yellow': {
-      main: '#FFF9EA',
+      main: colors['light-yellow'],
     },
   },
 };

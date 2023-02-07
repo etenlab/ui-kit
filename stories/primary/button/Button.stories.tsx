@@ -1,8 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ThemeProvider } from '../../../packages/ui-kit/src/ThemeProvider';
-import { Button } from '../../../packages/ui-kit/src/button';
+import { ThemeProvider, Button, BiLike } from '../../../packages/ui-kit/src';
 
 export default {
   title: 'Primary/Button/Button',
@@ -22,35 +21,35 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  variant: 'primary',
+  variant: 'contained',
   children: 'Get Started Now',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  variant: 'secondary',
+  variant: 'outlined',
   children: 'Get Started Now',
 };
 
 export const PrimaryWithIcon = Template.bind({});
 PrimaryWithIcon.args = {
-  withIcon: true,
-  variant: 'primary',
+  endIcon: true,
+  variant: 'contained',
   children: 'Get Started Now',
 };
 PrimaryWithIcon.storyName = 'Primary with arrow icon';
 
 export const SecondaryWithIcon = Template.bind({});
 SecondaryWithIcon.args = {
-  withIcon: true,
-  variant: 'secondary',
+  endIcon: true,
+  variant: 'outlined',
   children: 'Get Started Now',
 };
 SecondaryWithIcon.storyName = 'Secondary with arrow icon';
 
-export const Dark = Template.bind({});
-Dark.args = {
-  variant: 'secondary',
+export const CustomIcon = Template.bind({});
+CustomIcon.args = {
+  endIcon: <BiLike />,
+  variant: 'outlined',
   children: 'Get Started Now',
-  color: 'dark',
 };

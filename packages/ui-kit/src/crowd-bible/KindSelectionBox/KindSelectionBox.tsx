@@ -42,18 +42,18 @@ export function KindSelectionBox({
           {label}
         </Typography>
       </Stack>
-      <Button fullWidth color="dark" variant="secondary" onClick={onTextClick}>
+      <Button fullWidth color="dark" variant="outlined" onClick={onTextClick}>
         Part of the Text (word, phrase, paragraph)
       </Button>
       <Button
         fullWidth
         color="dark"
-        variant="secondary"
+        variant="outlined"
         onClick={onChapterClick}
       >
         Chapter
       </Button>
-      <Button fullWidth color="dark" variant="secondary" onClick={onVerseClick}>
+      <Button fullWidth color="dark" variant="outlined" onClick={onVerseClick}>
         Verse
       </Button>
     </Stack>
