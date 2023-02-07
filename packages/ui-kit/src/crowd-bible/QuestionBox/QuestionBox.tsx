@@ -51,10 +51,12 @@ export function QuestionBox({
   const [choosed, setChoosed] = useState<string | null>(null);
   const [checked, setChecked] = useState<CheckItemType[]>([]);
 
+  // initialize checked state
   useEffect(() => {
     if (questionKind !== 'check' || !questionData) {
       return;
     }
+
     setChecked(
       questionData.map(
         (data) => ({ item: data, checked: false } as CheckItemType)
