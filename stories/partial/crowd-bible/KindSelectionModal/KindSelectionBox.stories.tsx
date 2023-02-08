@@ -1,10 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import {
-  ThemeProvider,
-  KindSelectionBox,
-} from '../../../../packages/ui-kit/src';
+import { ThemeProvider } from '../../../../packages/ui-kit/src';
+import { KindSelectionBox } from '../../../../packages/ui-kit/src/crowd-bible';
 
 export default {
   title: 'Partial/Crowd Bible/KindSelectionBox',

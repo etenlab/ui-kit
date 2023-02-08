@@ -6,5 +6,6 @@ export * from './tab';
 export * from './ThemeProvider';
 export * from './toolbar';
 export * from './typography';
-export * from './crowd-bible';
 export * from './EmojiPicker';
+export * as CrowdBibleUI from './crowd-bible';
+export * as DiscussionBoxUI from './discussion-box';

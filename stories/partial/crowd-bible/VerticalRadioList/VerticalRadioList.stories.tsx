@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import {
-  VerticalRadioList,
-  ThemeProvider,
-} from '../../../../packages/ui-kit/src';
+import { ThemeProvider } from '../../../../packages/ui-kit/src';
+import { VerticalRadioList } from '../../../../packages/ui-kit/src/crowd-bible';
 
 export default {
   title: 'Partial/Crowd Bible/Vertical Radio List',

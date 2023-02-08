@@ -3,10 +3,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Box } from '@mui/material';
 
-import {
-  ThemeProvider,
-  QuestionCreatorBox,
-} from '../../../../packages/ui-kit/src';
+import { ThemeProvider } from '../../../../packages/ui-kit/src';
+import { QuestionCreatorBox } from '../../../../packages/ui-kit/src/crowd-bible';
 
 export default {
   title: 'Partial/Crowd Bible/QuestionCreatorBox',

@@ -1,7 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ThemeProvider, AgreeConfirm } from '../../../../packages/ui-kit/src';
+import { ThemeProvider } from '../../../../packages/ui-kit/src';
+import { AgreeConfirm } from '../../../../packages/ui-kit/src/crowd-bible';
 
 export default {
   title: 'Partial/Crowd Bible/AgreeConfirm',

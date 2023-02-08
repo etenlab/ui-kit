@@ -19,6 +19,7 @@ import {
   BiUser,
   BiVideoPlus,
   BiCheckCircle,
+  BiDotsHorizontalRounded,
   BsFillPlayFill,
   BsClock,
   FiBell,
@@ -131,6 +132,10 @@ const Template: ComponentStory<typeof Div> = (args) => {
       <TitleWithIcon title="BiUser" icon={<BiUser />} />
       <TitleWithIcon title="BiVideoPlus" icon={<BiVideoPlus />} />
       <TitleWithIcon title="BiCheckCircle" icon={<BiCheckCircle />} />
+      <TitleWithIcon
+        title="BiDotsHorizontalRounded"
+        icon={<BiDotsHorizontalRounded />}
+      />
       <TitleWithIcon title="BsFillPlayFill" icon={<BsFillPlayFill />} />
       <TitleWithIcon title="BsClock" icon={<BsClock />} />
       <TitleWithIcon title="FiBell" icon={<FiBell />} />

@@ -3,10 +3,10 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import {
   ThemeProvider,
-  LabelWithIcon,
   BiCommentAdd,
   FiX,
 } from '../../../../packages/ui-kit/src';
+import { LabelWithIcon } from '../../../../packages/ui-kit/src/crowd-bible';
 
 export default {
   title: 'Partial/Crowd Bible/LabelWithIcon',

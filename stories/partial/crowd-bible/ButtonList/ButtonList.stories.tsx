@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ButtonList, ThemeProvider } from '../../../../packages/ui-kit/src';
+import { ThemeProvider } from '../../../../packages/ui-kit/src';
+import { ButtonList } from '../../../../packages/ui-kit/src/crowd-bible';
 
 export default {
   title: 'Partial/Crowd Bible/Button List',

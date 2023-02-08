@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import { ThemeProvider } from '../../../../packages/ui-kit/src';
 import {
-  ThemeProvider,
   QuestionBox,
   CheckItemType,
-} from '../../../../packages/ui-kit/src';
+} from '../../../../packages/ui-kit/src/crowd-bible';
 
 export default {
   title: 'Partial/Crowd Bible/QuestionBox',
