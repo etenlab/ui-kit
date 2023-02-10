@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { Button, useTheme, PaletteColor } from '@mui/material';
+import { useTheme, PaletteColor } from '@mui/material';
 
+import { Button } from '../Button';
 import { BiLike, BiDislike } from '../../icons';
 
 type AgreeConfirmButtonProps = {
@@ -36,16 +37,12 @@ export function AgreeConfirmButton({
     theme.palette['dark' as keyof typeof theme.palette] as PaletteColor
   ).main;
   const sxObj = {
-    width: fullWidth ? 'null' : 157,
-    textAlign: 'center',
-    textTransform: 'capitalize',
-    borderRadius: zeroBorderRadius ? 0 : '4px',
+    borderRadius: zeroBorderRadius ? '0 !important' : '4px',
   };
 
   if (kind === 'agree') {
     autoLabel = 'Agree';
     color = 'green';
-    console.log(withIcon);
     startWith = withIcon === true ? <BiLike /> : undefined;
   }
 
@@ -71,6 +68,7 @@ export function AgreeConfirmButton({
           cursor: 'not-allowed',
         },
       }}
+      size="small"
     >
       {label ? label : autoLabel}
     </Button>

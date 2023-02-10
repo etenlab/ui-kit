@@ -5,4 +5,8 @@ export * from './DotsMoreButton';
 export * from './Avatar';
 export * from './DateViewer';
 export * from './Username';
+export * from './AudioPlayer';
+export * from './VideoPlayer';
+export * from './InputButtonGroup';
+export * from './ImageViewer';
 export * from './types';

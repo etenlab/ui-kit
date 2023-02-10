@@ -36,6 +36,7 @@ PrimaryWithIcon.args = {
   endIcon: true,
   variant: 'contained',
   children: 'Get Started Now',
+  color: 'blue-primary',
 };
 PrimaryWithIcon.storyName = 'Primary with arrow icon';
 
@@ -44,6 +45,7 @@ SecondaryWithIcon.args = {
   endIcon: true,
   variant: 'outlined',
   children: 'Get Started Now',
+  color: 'blue-primary',
 };
 SecondaryWithIcon.storyName = 'Secondary with arrow icon';
 
@@ -52,4 +54,24 @@ CustomIcon.args = {
   endIcon: <BiLike />,
   variant: 'outlined',
   children: 'Get Started Now',
+  color: 'blue-primary',
+};
+
+export const SmallButton = Template.bind({});
+SmallButton.args = {
+  startIcon: <BiLike />,
+  variant: 'contained',
+  color: 'green',
+  children: 'Agree',
+  size: 'small',
+};
+
+export const TextButton = Template.bind({});
+TextButton.args = {
+  variant: 'text',
+  color: 'blue-primary',
+  children: 'Reply',
+  sx: {
+    fontWeight: 400,
+  },
 };

@@ -1,4 +1,10 @@
-export { CiUnread, CiRead, CiSearch, CiFaceSmile } from 'react-icons/ci';
+export {
+  CiRead,
+  CiSearch,
+  CiPause1,
+  CiUnread,
+  CiFaceSmile,
+} from 'react-icons/ci';
 export {
   BiLike,
   BiFile,
@@ -6,7 +12,6 @@ export {
   BiDislike,
   BiTrashAlt,
   BiChevronUp,
-  BiVideoPlus,
   BiCommentAdd,
   BiChevronDown,
   BiCheckCircle,
@@ -32,4 +37,4 @@ export {
   FiCodesandbox,
   FiCornerDownLeft,
 } from 'react-icons/fi';
-export { TbLetterT, TbCameraRotate } from 'react-icons/tb';
+export { TbLetterT, TbCameraRotate, TbVideoPlus } from 'react-icons/tb';

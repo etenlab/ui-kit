@@ -2,8 +2,9 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import {
-  CiUnread,
   CiRead,
+  CiPause1,
+  CiUnread,
   CiSearch,
   CiFaceSmile,
   BiLeftArrowAlt,
@@ -17,7 +18,6 @@ import {
   BiLike,
   BiCommentAdd,
   BiUser,
-  BiVideoPlus,
   BiCheckCircle,
   BiDotsHorizontalRounded,
   BsFillPlayFill,
@@ -38,6 +38,7 @@ import {
   FiCornerDownLeft,
   TbLetterT,
   TbCameraRotate,
+  TbVideoPlus,
 } from '../../../packages/ui-kit/src/icons';
 
 function Div({ children }: { children: React.ReactNode }) {
@@ -117,6 +118,7 @@ const Template: ComponentStory<typeof Div> = (args) => {
     <Div>
       <TitleWithIcon title="CiUnread" icon={<CiUnread />} />
       <TitleWithIcon title="CiRead" icon={<CiRead />} />
+      <TitleWithIcon title="CiPause1" icon={<CiPause1 />} />
       <TitleWithIcon title="CiSearch" icon={<CiSearch />} />
       <TitleWithIcon title="CiFaceSmile" icon={<CiFaceSmile />} />
       <TitleWithIcon title="BiLeftArrowAlt" icon={<BiLeftArrowAlt />} />
@@ -130,7 +132,6 @@ const Template: ComponentStory<typeof Div> = (args) => {
       <TitleWithIcon title="BiLike" icon={<BiLike />} />
       <TitleWithIcon title="BiCommentAdd" icon={<BiCommentAdd />} />
       <TitleWithIcon title="BiUser" icon={<BiUser />} />
-      <TitleWithIcon title="BiVideoPlus" icon={<BiVideoPlus />} />
       <TitleWithIcon title="BiCheckCircle" icon={<BiCheckCircle />} />
       <TitleWithIcon
         title="BiDotsHorizontalRounded"
@@ -154,6 +155,7 @@ const Template: ComponentStory<typeof Div> = (args) => {
       <TitleWithIcon title="FiCornerDownLeft" icon={<FiCornerDownLeft />} />
       <TitleWithIcon title="TbLetterT" icon={<TbLetterT />} />
       <TitleWithIcon title="TbCameraRotate" icon={<TbCameraRotate />} />
+      <TitleWithIcon title="TbVideoPlus" icon={<TbVideoPlus />} />
     </Div>
   );
 };
