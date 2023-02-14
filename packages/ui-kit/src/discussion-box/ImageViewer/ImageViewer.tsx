@@ -45,13 +45,18 @@ export function ImageViewer({
 
   const attr =
     mode === 'quill'
-      ? { width: '50px', height: '50px', style: { borderRadius: '4px' } }
+      ? {
+          width: '50px',
+          height: '50px',
+          style: { borderRadius: '4px', border: `1px solid ${colors['dark']}` },
+        }
       : {
           width: '100px',
           height: '100px',
           style: {
             cursor: 'zoom-in',
             borderRadius: '10px',
+            border: `1px solid ${colors['dark']}`,
           },
         };
 

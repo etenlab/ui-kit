@@ -9,4 +9,6 @@ export * from './AudioPlayer';
 export * from './VideoPlayer';
 export * from './InputButtonGroup';
 export * from './ImageViewer';
+export * from './FileViewer';
+export * from './Attachment';
 export * from './types';

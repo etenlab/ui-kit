@@ -4,6 +4,7 @@ export {
   CiPause1,
   CiUnread,
   CiFaceSmile,
+  CiCircleRemove,
 } from 'react-icons/ci';
 export {
   BiLike,
@@ -11,6 +12,7 @@ export {
   BiUser,
   BiDislike,
   BiTrashAlt,
+  BiDownload,
   BiChevronUp,
   BiCommentAdd,
   BiChevronDown,

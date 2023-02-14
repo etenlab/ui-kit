@@ -9,9 +9,16 @@ import React, {
   Fragment,
 } from 'react';
 
-import { Box, TextField, Divider, IconButton, Popover } from '@mui/material';
+import {
+  Box,
+  Button,
+  Popover,
+  Divider,
+  TextField,
+  IconButton,
+} from '@mui/material';
 
-import { CiFaceSmile } from '../../icons';
+import { CiFaceSmile, BiRightArrowAlt } from '../../icons';
 import { EmojiPicker, EmojiClickData } from '../../EmojiPicker';
 
 type SimpleQuillProps = {
@@ -81,6 +88,16 @@ export function SimpleQuill({ value, setValue }: SimpleQuillProps) {
               <IconButton onClick={openEmoji}>
                 <CiFaceSmile />
               </IconButton>
+              <Button
+                variant="contained"
+                sx={{
+                  borderRadius: '0 10px 10px 0',
+                  padding: '5px',
+                  minWidth: '0',
+                }}
+              >
+                <BiRightArrowAlt style={{ fontSize: '24px' }} />
+              </Button>
             </Fragment>
           ),
         }}

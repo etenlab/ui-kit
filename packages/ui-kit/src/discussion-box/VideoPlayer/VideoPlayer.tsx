@@ -46,17 +46,19 @@ export function VideoPlayer({
         <source src={src} type={file_type} />
         Your browser does not support HTML video.
       </video>
-      <div style={{ position: 'absolute' }}>
-        <CircleButton
-          onClick={switchFullScreen}
-          color="gray"
-          icon={
-            <BsFillPlayFill
-              style={{ color: colors['white'], fontSize: 30, paddingLeft: 3 }}
-            />
-          }
-        />
-      </div>
+      {mode === 'view' ? (
+        <div style={{ position: 'absolute' }}>
+          <CircleButton
+            onClick={switchFullScreen}
+            color="gray"
+            icon={
+              <BsFillPlayFill
+                style={{ color: colors['white'], fontSize: 30, paddingLeft: 3 }}
+              />
+            }
+          />
+        </div>
+      ) : null}
     </div>
   );
 }

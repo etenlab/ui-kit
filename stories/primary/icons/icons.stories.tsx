@@ -7,11 +7,13 @@ import {
   CiUnread,
   CiSearch,
   CiFaceSmile,
+  CiCircleRemove,
   BiLeftArrowAlt,
   BiRightArrowAlt,
   BiMessageRounded,
   BiChevronDown,
   BiChevronUp,
+  BiDownload,
   BiTrashAlt,
   BiFile,
   BiDislike,
@@ -121,6 +123,7 @@ const Template: ComponentStory<typeof Div> = (args) => {
       <TitleWithIcon title="CiPause1" icon={<CiPause1 />} />
       <TitleWithIcon title="CiSearch" icon={<CiSearch />} />
       <TitleWithIcon title="CiFaceSmile" icon={<CiFaceSmile />} />
+      <TitleWithIcon title="CiCircleRemove" icon={<CiCircleRemove />} />
       <TitleWithIcon title="BiLeftArrowAlt" icon={<BiLeftArrowAlt />} />
       <TitleWithIcon title="BiRightArrowAlt" icon={<BiRightArrowAlt />} />
       <TitleWithIcon title="BiMessageRounded" icon={<BiMessageRounded />} />
@@ -133,6 +136,7 @@ const Template: ComponentStory<typeof Div> = (args) => {
       <TitleWithIcon title="BiCommentAdd" icon={<BiCommentAdd />} />
       <TitleWithIcon title="BiUser" icon={<BiUser />} />
       <TitleWithIcon title="BiCheckCircle" icon={<BiCheckCircle />} />
+      <TitleWithIcon title="BiDownload" icon={<BiDownload />} />
       <TitleWithIcon
         title="BiDotsHorizontalRounded"
         icon={<BiDotsHorizontalRounded />}

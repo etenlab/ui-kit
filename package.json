@@ -50,6 +50,7 @@
     "@types/react-router-dom": "^5.1.7",
     "emoji-picker-react": "^4.4.3",
     "react-icons": "^4.7.1",
+    "react-image-crop": "^10.0.9",
     "react-quill": "^2.0.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
