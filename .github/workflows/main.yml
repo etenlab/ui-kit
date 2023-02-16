@@ -25,7 +25,7 @@ jobs:
 
       - uses: dkershner6/aws-ssm-getparameters-action@v1
         with:
-          parameterPairs: '/dev/deploy/showcase/env = ENV'
+          parameterPairs: '/dev/deploy/storybook/env = ENV'
 
       - name: save env to .env
         run: |
