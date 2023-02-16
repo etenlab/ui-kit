@@ -24,11 +24,29 @@ Primary.args = {
   variant: 'contained',
   children: 'Get Started Now',
 };
+Primary.parameters = {
+  docs: {
+    source: {
+      code: `<Button variant='contained'>Get Started Now</Button>`,
+      language: 'html',
+      type: 'auto',
+    },
+  },
+};
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   variant: 'outlined',
   children: 'Get Started Now',
+};
+Secondary.parameters = {
+  docs: {
+    source: {
+      code: `<Button variant='outlined'>Get Started Now</Button>`,
+      language: 'html',
+      type: 'auto',
+    },
+  },
 };
 
 export const PrimaryWithIcon = Template.bind({});
@@ -39,6 +57,15 @@ PrimaryWithIcon.args = {
   color: 'blue-primary',
 };
 PrimaryWithIcon.storyName = 'Primary with arrow icon';
+PrimaryWithIcon.parameters = {
+  docs: {
+    source: {
+      code: `<Button variant='contained' endIcon>Get Started Now</Button>`,
+      language: 'html',
+      type: 'auto',
+    },
+  },
+};
 
 export const SecondaryWithIcon = Template.bind({});
 SecondaryWithIcon.args = {
@@ -48,6 +75,15 @@ SecondaryWithIcon.args = {
   color: 'blue-primary',
 };
 SecondaryWithIcon.storyName = 'Secondary with arrow icon';
+SecondaryWithIcon.parameters = {
+  docs: {
+    source: {
+      code: `<Button variant='outlined' endIcon>Get Started Now</Button>`,
+      language: 'html',
+      type: 'auto',
+    },
+  },
+};
 
 export const CustomIcon = Template.bind({});
 CustomIcon.args = {
@@ -55,6 +91,15 @@ CustomIcon.args = {
   variant: 'outlined',
   children: 'Get Started Now',
   color: 'blue-primary',
+};
+CustomIcon.parameters = {
+  docs: {
+    source: {
+      code: `<Button variant='outlined' endIcon={<BiLike />}>Get Started Now</Button>`,
+      language: 'html',
+      type: 'auto',
+    },
+  },
 };
 
 export const SmallButton = Template.bind({});
@@ -65,6 +110,15 @@ SmallButton.args = {
   children: 'Agree',
   size: 'small',
 };
+SmallButton.parameters = {
+  docs: {
+    source: {
+      code: `<Button variant='contained' endIcon={<BiLike />} color="green" size="small">Agree</Button>`,
+      language: 'html',
+      type: 'auto',
+    },
+  },
+};
 
 export const TextButton = Template.bind({});
 TextButton.args = {
@@ -73,5 +127,14 @@ TextButton.args = {
   children: 'Reply',
   sx: {
     fontWeight: 400,
+  },
+};
+TextButton.parameters = {
+  docs: {
+    source: {
+      code: `<Button variant='text' sx={{ fontWeight: 400 }}>Reply</Button>`,
+      language: 'html',
+      type: 'auto',
+    },
   },
 };

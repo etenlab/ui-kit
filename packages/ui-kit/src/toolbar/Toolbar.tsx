@@ -7,9 +7,10 @@ type ToolbarProps = {
   title: string;
   isNewDiscussion?: boolean;
   isNewNotification?: boolean;
-  buttons: {
+  buttons?: {
     discussion: boolean;
     notification: boolean;
+    menu: boolean;
   };
   onClickDiscussionBtn(): void;
   onClickNotificationBtn(): void;
@@ -23,6 +24,7 @@ export function Toolbar({
   buttons = {
     discussion: true,
     notification: true,
+    menu: true,
   },
   onClickDiscussionBtn,
   onClickNotificationBtn,
@@ -64,9 +66,11 @@ export function Toolbar({
             </Badge>
           </IconButton>
         ) : null}
-        <IconButton onClick={onClickMenuBtn}>
-          <FiMenu style={{ color: '#5C6673', fontSize: '40px' }} />
-        </IconButton>
+        {buttons.menu ? (
+          <IconButton onClick={onClickMenuBtn}>
+            <FiMenu style={{ color: '#5C6673', fontSize: '40px' }} />
+          </IconButton>
+        ) : null}
       </Stack>
     </Stack>
   );
