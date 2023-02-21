@@ -7,8 +7,12 @@ export const components: ThemeOptions = {
         root: ({ ownerState, theme }) => {
           const color = ownerState.color as keyof typeof theme.palette;
           const mainColor = (theme.palette[color] as PaletteColor).main;
+          const redColor = (theme.palette['red'] as PaletteColor).main;
 
           return {
+            '& .MuiFormHelperText-root': {
+              color: redColor,
+            },
             '& .MuiInputBase-root': {
               borderRadius: '10px !important',
             },
@@ -158,98 +162,3 @@ export const components: ThemeOptions = {
     },
   },
 };
-
-declare module '@mui/material/TextField' {
-  interface TextFieldPropsColorOverrides {
-    disable: true;
-    gray: true;
-    'middle-gray': true;
-    red: true;
-    'light-red': true;
-    green: true;
-  }
-}
-
-declare module '@mui/material/Button' {
-  interface ButtonPropsColorOverrides {
-    disable: true;
-    gray: true;
-    dark: true;
-    'middle-gray': true;
-    red: true;
-    'light-red': true;
-    green: true;
-    'blue-primary': true;
-    'light-blue': true;
-  }
-}
-
-declare module '@mui/material/IconButton' {
-  interface IconButtonPropsColorOverrides {
-    disable: true;
-    gray: true;
-    dark: true;
-    'middle-gray': true;
-    red: true;
-    'light-red': true;
-    green: true;
-    'blue-primary': true;
-    'light-blue': true;
-  }
-}
-
-declare module '@mui/material/Radio' {
-  interface RadioPropsColorOverrides {
-    disable: true;
-    gray: true;
-    'middle-gray': true;
-    red: true;
-    'light-red': true;
-    green: true;
-    'blue-primary': true;
-    'light-blue': true;
-  }
-}
-
-declare module '@mui/material/Checkbox' {
-  interface CheckboxPropsColorOverrides {
-    disable: true;
-    gray: true;
-    'middle-gray': true;
-    red: true;
-    'light-red': true;
-    green: true;
-    'blue-primary': true;
-    'light-blue': true;
-  }
-}
-
-declare module '@mui/material/Badge' {
-  interface BadgePropsColorOverrides {
-    red: true;
-  }
-}
-
-declare module '@mui/material/FormLabel' {
-  interface FormLabelPropsColorOverrides {
-    gray: true;
-  }
-}
-
-declare module '@mui/material/FormControlLabel' {
-  interface FormControlLabelPropsColorOverrides {
-    dark: true;
-  }
-}
-
-declare module '@mui/material/ListItemText' {
-  interface ListItemTextPropsColorOverrides {
-    dark: true;
-  }
-}
-
-declare module '@mui/material/Link' {
-  interface LinkPropsColorOverrides {
-    gray: true;
-  }
-}

@@ -1,4 +1,4 @@
-import { ThemeOptions, PaletteColorOptions } from '@mui/material';
+import { ThemeOptions } from '@mui/material';
 
 export const colors = {
   'blue-primary': '#1F77DF',
@@ -9,7 +9,7 @@ export const colors = {
   'middle-gray': '#C2CBD7',
   white: '#FFFFFF',
   red: '#E04E4E',
-  'light-red': '#F3F6F9',
+  'light-red': '#FFE4E4',
   green: '#4ABE95',
   'light-green': '#DAF2EA',
   yellow: '#FCBB14',
@@ -67,25 +67,3 @@ export const palette: ThemeOptions = {
     },
   },
 };
-
-declare module '@mui/material/styles' {
-  interface CustomPalette {
-    'blue-primary': PaletteColorOptions;
-    'light-blue': PaletteColorOptions;
-    disable: PaletteColorOptions;
-    dark: PaletteColorOptions;
-    gray: PaletteColorOptions;
-    'middle-gray': PaletteColorOptions;
-    white: PaletteColorOptions;
-    red: PaletteColorOptions;
-    'light-red': PaletteColorOptions;
-    green: PaletteColorOptions;
-    'light-green': PaletteColorOptions;
-    yellow: PaletteColorOptions;
-    'middle-yellow': PaletteColorOptions;
-    'light-yellow': PaletteColorOptions;
-  }
-
-  interface Palette extends CustomPalette {}
-  interface PaletteOptions extends CustomPalette {}
-}
