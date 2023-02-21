@@ -15,16 +15,19 @@ export function Autocomplete<
   Multiple extends boolean | undefined = false,
   DisableClearable extends boolean | undefined = false,
   FreeSolo extends boolean | undefined = false
->(
-  props: Omit<
-    AutocompleteProps<T, Multiple, DisableClearable, FreeSolo> & {
-      valid?: boolean;
-      label?: string;
-      withLegend?: boolean;
-    },
-    'renderInput'
-  >
-) {
+>({
+  valid,
+  label,
+  withLegend,
+  ...props
+}: Omit<
+  AutocompleteProps<T, Multiple, DisableClearable, FreeSolo> & {
+    valid?: boolean;
+    label?: string;
+    withLegend?: boolean;
+  },
+  'renderInput'
+>) {
   const [open, setOpen] = useState<boolean>(false);
 
   const handleOpen = () => {
@@ -53,9 +56,9 @@ export function Autocomplete<
       renderInput={(params) => (
         <Input
           {...params}
-          withLegend={props.withLegend}
-          label={props.label}
-          valid={props.valid}
+          withLegend={withLegend}
+          label={label}
+          valid={valid}
           InputProps={{
             ...params.InputProps,
             endAdornment: <IconButton>{adornment}</IconButton>,

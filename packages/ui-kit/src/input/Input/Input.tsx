@@ -2,15 +2,17 @@ import React from 'react';
 
 import { TextField, TextFieldProps } from '@mui/material';
 
-export function Input(
-  props: TextFieldProps & { valid?: boolean; withLegend?: boolean }
-) {
+export function Input({
+  valid,
+  withLegend,
+  ...props
+}: TextFieldProps & { valid?: boolean; withLegend?: boolean }) {
   let sxObj = props.sx ? props.sx : {};
   sxObj =
-    props.withLegend !== undefined && !props.withLegend
+    withLegend !== undefined && !withLegend
       ? {
           ...sxObj,
-          '& label.MuiFormLabel-filled': {
+          '& label.MuiInputLabel-shrink': {
             display: 'none',
           },
           '& legend': {
@@ -24,13 +26,15 @@ export function Input(
 
   let color: 'green' | 'red' | 'gray' = 'gray';
 
-  if (props.valid) {
+  if (valid) {
     color = 'green';
   }
 
-  if (props.valid === false) {
+  if (valid === false) {
     color = 'red';
   }
+
+  console.log('input', props);
 
   return (
     <TextField
@@ -38,7 +42,7 @@ export function Input(
       {...props}
       sx={sxObj}
       color={color}
-      focused={props.valid === undefined ? false : true}
+      focused={valid === undefined ? false : true}
     />
   );
 }

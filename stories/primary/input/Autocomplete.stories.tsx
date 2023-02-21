@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeProvider } from '../../../packages/ui-kit/src/ThemeProvider';
 import { Autocomplete } from '../../../packages/ui-kit/src/input';
+import jsxToString from 'jsx-to-string';
 
 export default {
   title: 'Primary/Input/Autocomplete',
@@ -158,15 +159,31 @@ const Template: ComponentStory<typeof Autocomplete> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-  label: 'Email or Username',
+  label: 'Choose File Name',
   options: top100Films,
   getOptionLabel: (option: FilmOptionType) => option.title,
 };
 Primary.storyName = 'Primary';
+Primary.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <Autocomplete
+          label="Choose File Name"
+          options={top100Films}
+          getOptionLabel={(option: FilmOptionType) => option.title}
+        />
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
 
 export const Error = Template.bind({});
 Error.args = {
-  label: 'Email or Username',
+  label: 'Choose File Name',
   options: top100Films,
   getOptionLabel: (option: FilmOptionType) => option.title,
   valid: false,
@@ -174,7 +191,7 @@ Error.args = {
 
 export const Success = Template.bind({});
 Success.args = {
-  label: 'Email or Username',
+  label: 'Choose File Name',
   options: top100Films,
   getOptionLabel: (option: FilmOptionType) => option.title,
   valid: true,
@@ -182,7 +199,7 @@ Success.args = {
 
 export const WithoutLegend = Template.bind({});
 WithoutLegend.args = {
-  label: 'Email or Username',
+  label: 'Choose File Name',
   withLegend: false,
   options: top100Films,
   getOptionLabel: (option: FilmOptionType) => option.title,
@@ -190,7 +207,7 @@ WithoutLegend.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  label: 'Email or Username',
+  label: 'Choose File Name',
   options: top100Films,
   getOptionLabel: (option: FilmOptionType) => option.title,
   disabled: true,
