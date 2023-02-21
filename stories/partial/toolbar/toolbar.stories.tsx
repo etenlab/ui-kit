@@ -109,6 +109,7 @@ WithoutDiscussion.args = {
   buttons: {
     discussion: false,
     notification: true,
+    menu: true,
   },
 };
 NotificationWithBadge.parameters = {
@@ -123,6 +124,7 @@ NotificationWithBadge.parameters = {
           buttons={{
             discussion: false,
             notification: true,
+            menu: true,
           }}
         />
       ),

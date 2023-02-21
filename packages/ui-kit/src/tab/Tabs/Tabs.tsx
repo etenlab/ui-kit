@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { StyledTab, StyledTabs } from './styled';
+import { Box } from '@mui/material';
+import { colors } from '../../ThemeProvider';
 
 type TabType = {
   value: unknown;
@@ -15,10 +17,12 @@ type TabsProps = {
 
 export function Tabs({ tabs, value, onChange }: TabsProps) {
   return (
-    <StyledTabs value={value} onChange={onChange}>
-      {tabs.map(({ value, label }) => (
-        <StyledTab key={label} value={value} label={label} />
-      ))}
-    </StyledTabs>
+    <Box sx={{ borderBottom: `1px solid ${colors['disable']}` }}>
+      <StyledTabs value={value} onChange={onChange}>
+        {tabs.map(({ value, label }) => (
+          <StyledTab key={label} value={value} label={label} />
+        ))}
+      </StyledTabs>
+    </Box>
   );
 }

@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeProvider } from '../../../../packages/ui-kit/src';
 import { DotsText } from '../../../../packages/ui-kit/src/crowd-bible';
+import jsxToString from 'jsx-to-string';
 
 export default {
   title: 'Partial/Crowd Bible/DotsText',
@@ -67,6 +68,24 @@ YellowDots.args = {
   dotColor: 'yellow',
   selectedColor: 'middle-yellow',
 };
+YellowDots.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <DotsText
+          text={text}
+          ranges={ranges}
+          onSelect={(id: number) => alert(`Clicked ${id} dots!`)}
+          dotColor="yellow"
+          selectedColor="middle-yellow"
+        />
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
 
 export const BlueDots = Template.bind({});
 BlueDots.args = {
@@ -75,4 +94,22 @@ BlueDots.args = {
   onSelect: (id: number) => alert(`Clicked ${id} dots!`),
   dotColor: 'blue-primary',
   selectedColor: 'light-blue',
+};
+BlueDots.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <DotsText
+          text={text}
+          ranges={ranges}
+          onSelect={(id: number) => alert(`Clicked ${id} dots!`)}
+          dotColor="blue-primary"
+          selectedColor="light-blue"
+        />
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
 };
