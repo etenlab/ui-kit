@@ -2,55 +2,55 @@ import React, {
   useCallback,
   useState,
   useRef,
-  Dispatch,
-  MouseEventHandler,
   FocusEventHandler,
   ChangeEvent,
   Fragment,
 } from 'react';
 
-import {
-  Box,
-  Button,
-  Popover,
-  Divider,
-  TextField,
-  IconButton,
-} from '@mui/material';
+import { Box, Popover, Divider, TextField, IconButton } from '@mui/material';
 
-import { CiFaceSmile, BiRightArrowAlt } from '../../icons';
+import { CiFaceSmile } from '../../icons';
 import { EmojiPicker, EmojiClickData } from '../../EmojiPicker';
 
 type SimpleQuillProps = {
   value: string;
-  setValue: Dispatch<React.SetStateAction<string>>;
+  onChange(newValue: string): void;
 };
 
-export function SimpleQuill({ value, setValue }: SimpleQuillProps) {
-  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+export function SimpleQuill({ value, onChange }: SimpleQuillProps) {
+  const anchorRef = useRef<HTMLButtonElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const changeRef = useRef<{ onChange(newValue: string): void }>({
+    onChange,
+  });
+
+  const [openedEmoji, setOpenedEmoji] = useState<boolean>(false);
   const lastCursorPosRef = useRef<number>(0);
 
-  const openEmoji: MouseEventHandler<HTMLButtonElement> = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleOpenEmoji = () => {
+    setOpenedEmoji(true);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleEmojiClick = useCallback((emojiData: EmojiClickData) => {
-    handleClose();
-    setValue((value) => {
-      return (
-        value.slice(0, lastCursorPosRef.current) +
-        emojiData.emoji +
-        value.slice(lastCursorPosRef.current)
-      );
-    });
+  const handleCloseEmoji = useCallback(() => {
+    setOpenedEmoji(false);
   }, []);
 
+  const handleEmojiClick = useCallback(
+    (emojiData: EmojiClickData) => {
+      handleCloseEmoji();
+      const value = inputRef.current!.value;
+      const newValue =
+        value.slice(0, lastCursorPosRef.current) +
+        emojiData.emoji +
+        value.slice(lastCursorPosRef.current);
+
+      changeRef.current.onChange(newValue);
+    },
+    [handleCloseEmoji]
+  );
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
+    onChange(event.target.value);
   };
 
   const handleBlur: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement> =
@@ -58,8 +58,6 @@ export function SimpleQuill({ value, setValue }: SimpleQuillProps) {
       const element = e.currentTarget;
       lastCursorPosRef.current = element.selectionStart || value.length;
     };
-
-  const open = Boolean(anchorEl);
 
   return (
     <Box
@@ -73,6 +71,7 @@ export function SimpleQuill({ value, setValue }: SimpleQuillProps) {
       <TextField
         placeholder="Leave Feedback (optional)..."
         value={value}
+        inputRef={inputRef}
         multiline
         fullWidth
         onChange={handleChange}
@@ -85,19 +84,9 @@ export function SimpleQuill({ value, setValue }: SimpleQuillProps) {
                 flexItem
                 sx={{ margin: '0 10px' }}
               />
-              <IconButton onClick={openEmoji}>
+              <IconButton ref={anchorRef} onClick={handleOpenEmoji}>
                 <CiFaceSmile />
               </IconButton>
-              <Button
-                variant="contained"
-                sx={{
-                  borderRadius: '0 10px 10px 0',
-                  padding: '5px',
-                  minWidth: '0',
-                }}
-              >
-                <BiRightArrowAlt style={{ fontSize: '24px' }} />
-              </Button>
             </Fragment>
           ),
         }}
@@ -117,22 +106,24 @@ export function SimpleQuill({ value, setValue }: SimpleQuillProps) {
         }}
       />
 
-      <Popover
-        open={true}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-        sx={{ display: open ? 'inherit' : 'none' }}
-      >
-        <EmojiPicker onEmojiClick={handleEmojiClick} />
-      </Popover>
+      {anchorRef.current ? (
+        <Popover
+          open={true}
+          anchorEl={anchorRef.current}
+          onClose={handleCloseEmoji}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          sx={{ display: openedEmoji ? 'inherit' : 'none' }}
+        >
+          <EmojiPicker onEmojiClick={handleEmojiClick} />
+        </Popover>
+      ) : null}
     </Box>
   );
 }
