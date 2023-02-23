@@ -86,13 +86,17 @@ export function QuestionBox({
     setChecked(updatedChecked);
   };
 
+  const handleQuillChange = (newValue: string) => {
+    setValue(newValue);
+  };
+
   let reply;
 
   switch (questionKind) {
     case 'text': {
       reply = (
         <Stack gap="20px" sx={{ borderTop: `1px solid ${middleGray}` }}>
-          <SimpleQuill value={value} setValue={setValue} />
+          <SimpleQuill value={value} onChange={handleQuillChange} />
           <Box sx={{ padding: '20px' }}>
             <AgreeConfirmButton
               kind="agree"
