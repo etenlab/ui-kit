@@ -7,6 +7,7 @@ import {
   FiX,
 } from '../../../../packages/ui-kit/src';
 import { LabelWithIcon } from '../../../../packages/ui-kit/src/crowd-bible';
+import jsxToString from 'jsx-to-string';
 
 export default {
   title: 'Partial/Crowd Bible/LabelWithIcon',
@@ -32,10 +33,44 @@ LabelWithCommentIcon.args = {
   icon: <BiCommentAdd />,
   color: 'blue-primary',
 };
+LabelWithCommentIcon.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <LabelWithIcon
+          label="translation"
+          icon={<BiCommentAdd />}
+          color="blue-primary"
+          onClick={() => {}}
+        />
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
 
 export const LabelWithCloseIcon = Template.bind({});
 LabelWithCloseIcon.args = {
   label: 'translation',
   icon: <FiX />,
   color: 'gray',
+};
+LabelWithCloseIcon.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <LabelWithIcon
+          label="translation"
+          icon={<FiX />}
+          color="gray"
+          onClick={() => {}}
+        />
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
 };

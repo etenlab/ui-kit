@@ -4,36 +4,38 @@ import {
   Box,
   List,
   Divider,
-  ListItem,
+  ListItemButton,
   FormLabel,
   ListItemText,
 } from '@mui/material';
 
 type Item = {
   label: string;
-  onClick(): void;
+  value: unknown;
 };
 
 type ButtonListProps = {
   withUnderline?: boolean;
   items: Item[];
   label: string;
+  onClick(selected: unknown): void;
 };
 
 export function ButtonList({
   withUnderline = false,
   items,
+  onClick,
   label,
 }: ButtonListProps) {
   return (
     <Box sx={{ width: '100%' }}>
       <List>
         <FormLabel color="gray">{label}</FormLabel>
-        {items.map(({ label, onClick }) => (
+        {items.map(({ label, value }) => (
           <Fragment key={label}>
-            <ListItem button onClick={onClick}>
+            <ListItemButton onClick={() => onClick(value)}>
               <ListItemText primary={label} color="dark" />
-            </ListItem>
+            </ListItemButton>
             {withUnderline ? <Divider /> : null}
           </Fragment>
         ))}

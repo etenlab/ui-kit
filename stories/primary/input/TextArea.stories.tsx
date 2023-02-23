@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeProvider } from '../../../packages/ui-kit/src/ThemeProvider';
 import { TextArea } from '../../../packages/ui-kit/src/input';
+import jsxToString from 'jsx-to-string';
 
 export default {
   title: 'Primary/Input/TextArea',
@@ -28,6 +29,16 @@ Primary.args = {
   fullWidth: true,
 };
 Primary.storyName = 'Primary';
+Primary.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(<TextArea label="Email or Username" valid={false} />),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
 
 export const Error = Template.bind({});
 Error.args = {

@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeProvider } from '../../../../packages/ui-kit/src';
 import { SimpleQuill } from '../../../../packages/ui-kit/src/crowd-bible';
+import jsxToString from 'jsx-to-string';
 
 export default {
   title: 'Partial/Crowd Bible/SimpleQuill',
@@ -27,8 +28,23 @@ export default {
 
 const Template: ComponentStory<typeof SimpleQuill> = (args) => {
   const [value, setValue] = useState<string>('');
-  return <SimpleQuill value={value} setValue={setValue} />;
+
+  const handleChange = (newValue) => setValue(newValue);
+
+  return <SimpleQuill value={value} onChange={handleChange} />;
 };
 
 export const Primary = Template.bind({});
 Primary.args = {};
+Primary.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <SimpleQuill value="Value" onChange={(newValue: string) => {}} />
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
