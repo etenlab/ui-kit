@@ -31,7 +31,13 @@ const Template: ComponentStory<typeof SimpleQuill> = (args) => {
 
   const handleChange = (newValue) => setValue(newValue);
 
-  return <SimpleQuill value={value} onChange={handleChange} />;
+  return (
+    <SimpleQuill
+      value={value}
+      onChange={handleChange}
+      placeholder="Leave Feedback (optional)..."
+    />
+  );
 };
 
 export const Primary = Template.bind({});
@@ -40,7 +46,11 @@ Primary.parameters = {
   docs: {
     source: {
       code: jsxToString(
-        <SimpleQuill value="Value" onChange={(newValue: string) => {}} />
+        <SimpleQuill
+          value="Value"
+          onChange={(newValue: string) => {}}
+          placeholder="Leave Feedback (optional)..."
+        />
       ),
       language: 'jsx',
       format: true,

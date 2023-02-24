@@ -37,7 +37,7 @@ export function Toolbar({
       alignItems="center"
       sx={{ padding: '3px 20px' }}
     >
-      <Typography variant="h3" sx={{ lineHeight: '22px', color: '#1B1B1B' }}>
+      <Typography variant="h3" sx={{ lineHeight: '56px', color: '#1B1B1B' }}>
         {title}
       </Typography>
       <Stack

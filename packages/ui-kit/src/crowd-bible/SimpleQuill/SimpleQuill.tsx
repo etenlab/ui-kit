@@ -13,11 +13,16 @@ import { CiFaceSmile } from '../../icons';
 import { EmojiPicker, EmojiClickData } from '../../EmojiPicker';
 
 type SimpleQuillProps = {
+  placeholder: string;
   value: string;
   onChange(newValue: string): void;
 };
 
-export function SimpleQuill({ value, onChange }: SimpleQuillProps) {
+export function SimpleQuill({
+  placeholder,
+  value,
+  onChange,
+}: SimpleQuillProps) {
   const anchorRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const changeRef = useRef<{ onChange(newValue: string): void }>({
@@ -69,7 +74,7 @@ export function SimpleQuill({ value, onChange }: SimpleQuillProps) {
       }}
     >
       <TextField
-        placeholder="Leave Feedback (optional)..."
+        placeholder={placeholder}
         value={value}
         inputRef={inputRef}
         multiline
