@@ -18,11 +18,22 @@ import { colors } from '../../ThemeProvider/';
 import { Button } from '../../button';
 import { BiTrashAlt } from '../../icons';
 
-type QuestionType = 'Agree/Disagree' | 'Multiselect' | 'Choose One';
+type QuestionType =
+  | 'Normal'
+  | 'Agree/Disagree'
+  | 'True/False'
+  | 'Multiselect'
+  | 'Choose One';
 
-const options = ['Agree/Disagree', 'Multiselect', 'Choose One'];
+const options = [
+  'Normal',
+  'Agree/Disagree',
+  'True/False',
+  'Multiselect',
+  'Choose One',
+];
 
-type Question = {
+export type Question = {
   type: QuestionType;
   question: string;
   answers?: string[];
@@ -82,7 +93,21 @@ export function QuestionCreatorBox({
 
   const handleClickSave = () => {
     switch (questionType) {
+      case 'Normal': {
+        onSave({
+          type: questionType,
+          question,
+        });
+        break;
+      }
       case 'Agree/Disagree': {
+        onSave({
+          type: questionType,
+          question,
+        });
+        break;
+      }
+      case 'True/False': {
         onSave({
           type: questionType,
           question,

@@ -32,10 +32,10 @@ export function VerticalRadioList({
   label,
   onChange,
 }: VerticalRadioListProps) {
-  console.log(underlineColor);
   const sxObj = underlineColor
     ? { borderColor: `${underlineColor} !important` }
     : {};
+
   return (
     <FormControl fullWidth>
       {label ? <FormLabel color="gray">{label}</FormLabel> : null}

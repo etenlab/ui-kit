@@ -22,21 +22,30 @@ export type CheckItemType = {
   checked: boolean;
 };
 
+type QuestionType =
+  | 'Normal'
+  | 'Agree/Disagree'
+  | 'True/False'
+  | 'Multiselect'
+  | 'Choose One';
+
 type QuestionBoxType = {
   onCancel(): void;
   onSave({
-    text,
-    agree,
-    choose,
-    check,
+    normal,
+    agreeOrDisagree,
+    trueOrFalse,
+    chooseOne,
+    multiselect,
   }: {
-    text?: string;
-    agree?: boolean;
-    choose?: string;
-    check?: CheckItemType[];
+    normal?: string;
+    agreeOrDisagree?: boolean;
+    trueOrFalse?: boolean;
+    chooseOne?: string;
+    multiselect?: CheckItemType[];
   }): void;
   question: string;
-  questionKind: 'text' | 'agree' | 'choose' | 'check';
+  questionKind: QuestionType;
   questionData?: string[];
 };
 
@@ -53,7 +62,7 @@ export function QuestionBox({
 
   // initialize checked state
   useEffect(() => {
-    if (questionKind !== 'check' || !questionData) {
+    if (questionKind !== 'Multiselect' || !questionData) {
       return;
     }
 
@@ -93,23 +102,27 @@ export function QuestionBox({
   let reply;
 
   switch (questionKind) {
-    case 'text': {
+    case 'Normal': {
       reply = (
         <Stack gap="20px" sx={{ borderTop: `1px solid ${middleGray}` }}>
-          <SimpleQuill value={value} onChange={handleQuillChange} />
+          <SimpleQuill
+            value={value}
+            onChange={handleQuillChange}
+            placeholder="Your Answer..."
+          />
           <Box sx={{ padding: '20px' }}>
             <AgreeConfirmButton
               kind="agree"
               fullWidth
               label="Send"
-              onClick={() => onSave({ text: value })}
+              onClick={() => onSave({ normal: value })}
             />
           </Box>
         </Stack>
       );
       break;
     }
-    case 'agree': {
+    case 'Agree/Disagree': {
       reply = (
         <Stack
           direction="row"
@@ -122,18 +135,44 @@ export function QuestionBox({
           <AgreeConfirmButton
             kind="agree"
             withIcon
-            onClick={() => onSave({ agree: true })}
+            onClick={() => onSave({ agreeOrDisagree: true })}
           />
           <AgreeConfirmButton
             kind="disagree"
             withIcon
-            onClick={() => onSave({ agree: false })}
+            onClick={() => onSave({ agreeOrDisagree: false })}
           />
         </Stack>
       );
       break;
     }
-    case 'choose': {
+    case 'True/False': {
+      reply = (
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          sx={{
+            padding: '20px 20px 40px',
+          }}
+        >
+          <AgreeConfirmButton
+            kind="agree"
+            withIcon={false}
+            label="True"
+            onClick={() => onSave({ trueOrFalse: true })}
+          />
+          <AgreeConfirmButton
+            kind="disagree"
+            withIcon={false}
+            label="False"
+            onClick={() => onSave({ trueOrFalse: false })}
+          />
+        </Stack>
+      );
+      break;
+    }
+    case 'Choose One': {
       reply = (
         <Stack gap="40px" sx={{ padding: '0px 20px 40px', marginTop: '-20px' }}>
           <VerticalRadioList
@@ -149,14 +188,14 @@ export function QuestionBox({
             label="Send"
             onClick={() => {
               if (!choosed) return;
-              onSave({ choose: choosed! });
+              onSave({ chooseOne: choosed! });
             }}
           />
         </Stack>
       );
       break;
     }
-    case 'check': {
+    case 'Multiselect': {
       reply = (
         <Stack gap="40px" sx={{ padding: '0px 20px 40px', marginTop: '-20px' }}>
           <FormGroup>
@@ -184,7 +223,7 @@ export function QuestionBox({
             label="Send"
             onClick={() => {
               if (!checked) return;
-              onSave({ check: checked });
+              onSave({ multiselect: checked });
             }}
           />
         </Stack>
