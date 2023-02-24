@@ -15,15 +15,23 @@ export function PasswordInput({
   show?: boolean;
   onClickShowIcon(): void;
 }) {
+  let color: string;
+
+  if (valid === undefined) {
+    color = colors['dark'];
+  } else if (valid === true) {
+    color = colors['green'];
+  } else {
+    color = colors['red'];
+  }
+
   const InputProps = {
     endAdornment: (
-      <IconButton onClick={onClickShowIcon} sx={{ color: colors['dark'] }}>
+      <IconButton onClick={onClickShowIcon} sx={{ color }}>
         {show ? <CiRead /> : <CiUnread />}
       </IconButton>
     ),
   };
-
-  console.log(props);
 
   return (
     <Input
@@ -31,6 +39,7 @@ export function PasswordInput({
       InputProps={InputProps}
       type={show ? 'text' : 'password'}
       label={props.label}
+      valid={valid}
       {...props}
     />
   );

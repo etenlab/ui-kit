@@ -133,3 +133,35 @@ NotificationWithBadge.parameters = {
     },
   },
 };
+
+export const WithoutIcons = Template.bind({});
+WithoutIcons.args = {
+  ...Primary.args,
+  title: 'Showcase',
+  buttons: {
+    discussion: false,
+    notification: false,
+    menu: false,
+  },
+};
+WithoutIcons.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <Toolbar
+          title="Showcase"
+          onClickDiscussionBtn={() => console.log()}
+          onClickNotificationBtn={() => console.log()}
+          onClickMenuBtn={() => console.log()}
+          buttons={{
+            discussion: false,
+            notification: false,
+            menu: false,
+          }}
+        />
+      ),
+      language: 'html',
+      type: 'auto',
+    },
+  },
+};
