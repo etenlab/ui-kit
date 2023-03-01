@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeProvider } from '../../../../packages/ui-kit/src';
 import { RangeSelectableTextArea } from '../../../../packages/ui-kit/src/crowd-bible';
+import jsxToString from 'jsx-to-string';
 
 export default {
   title: 'Partial/Crowd Bible/RangeSelectableTextArea',
@@ -50,7 +51,34 @@ const Template: ComponentStory<typeof RangeSelectableTextArea> = (args) => {
   );
 };
 
+const text =
+  '1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 2. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 3. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 4. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 5. From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage. 6. Ut enim ad minim veniam, quis nostrud exercitation.';
+
 export const SelectableText = Template.bind({});
 SelectableText.args = {
-  text: '1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 2. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 3. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 4. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 5. From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage. 6. Ut enim ad minim veniam, quis nostrud exercitation.',
+  text,
+};
+SelectableText.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <RangeSelectableTextArea
+          text={text}
+          range={{ start: 3, end: 10 }}
+          onChangeRange={({
+            start,
+            end,
+          }: {
+            start: number | null;
+            end: number | null;
+          }) => {
+            console.log('Change Range');
+          }}
+        />
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
 };

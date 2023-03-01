@@ -22,7 +22,11 @@ import {
   BiUser,
   BiCheckCircle,
   BiDotsHorizontalRounded,
+  BiShare,
+  BiPencil,
+  BiImages,
   BsFillPlayFill,
+  BsFillRecordFill,
   BsClock,
   FiBell,
   FiCodesandbox,
@@ -141,7 +145,11 @@ const Template: ComponentStory<typeof Div> = (args) => {
         title="BiDotsHorizontalRounded"
         icon={<BiDotsHorizontalRounded />}
       />
+      <TitleWithIcon title="BiShare" icon={<BiShare />} />
+      <TitleWithIcon title="BiPencil" icon={<BiPencil />} />
+      <TitleWithIcon title="BiImages" icon={<BiImages />} />
       <TitleWithIcon title="BsFillPlayFill" icon={<BsFillPlayFill />} />
+      <TitleWithIcon title="BsFillRecordFill" icon={<BsFillRecordFill />} />
       <TitleWithIcon title="BsClock" icon={<BsClock />} />
       <TitleWithIcon title="FiBell" icon={<FiBell />} />
       <TitleWithIcon title="FiCodesandbox" icon={<FiCodesandbox />} />

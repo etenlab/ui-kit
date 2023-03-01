@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeProvider } from '../../../../packages/ui-kit/src';
 import { Attachment } from '../../../../packages/ui-kit/src/discussion-box';
+import jsxToString from 'jsx-to-string';
 
 export default {
   title: 'Partial/Discussion Box/Attachment/AudioPlayer',
@@ -43,10 +44,42 @@ ViewMode.args = {
   mode: 'view',
   onRemove: () => alert('Click remove button!'),
 };
+ViewMode.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <Attachment
+          file={file}
+          mode="view"
+          onRemove={() => alert('Click remove button!')}
+        />
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
 
 export const QuillMode = Template.bind({});
 QuillMode.args = {
   file,
   mode: 'quill',
   onRemove: () => alert('Click remove button!'),
+};
+QuillMode.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <Attachment
+          file={file}
+          mode="quill"
+          onRemove={() => alert('Click remove button!')}
+        />
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
 };

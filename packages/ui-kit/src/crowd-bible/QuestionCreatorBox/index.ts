@@ -1,1 +1,1 @@
-export { QuestionCreatorBox } from './QuestionCreatorBox';
+export { QuestionCreatorBox, Question } from './QuestionCreatorBox';

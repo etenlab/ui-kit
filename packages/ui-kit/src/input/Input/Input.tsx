@@ -34,8 +34,6 @@ export function Input({
     color = 'red';
   }
 
-  console.log('input', props);
-
   return (
     <TextField
       variant="outlined"

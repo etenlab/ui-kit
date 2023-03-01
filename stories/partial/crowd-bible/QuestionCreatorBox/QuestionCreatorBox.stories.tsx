@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Box } from '@mui/material';
 
 import { ThemeProvider } from '../../../../packages/ui-kit/src';
-import { QuestionCreatorBox } from '../../../../packages/ui-kit/src/crowd-bible';
+import {
+  QuestionCreatorBox,
+  Question,
+} from '../../../../packages/ui-kit/src/crowd-bible';
+import jsxToString from 'jsx-to-string';
 
 export default {
   title: 'Partial/Crowd Bible/QuestionCreatorBox',
@@ -34,4 +38,22 @@ const Template: ComponentStory<typeof QuestionCreatorBox> = (args) => (
 );
 
 export const Primary = Template.bind({});
-Primary.args = {};
+Primary.args = {
+  onSave: (question: Question) => console.log(question),
+  onCancel: () => {},
+};
+Primary.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <QuestionCreatorBox
+          onSave={(question: Question) => console.log(question)}
+          onCancel={() => {}}
+        />
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};

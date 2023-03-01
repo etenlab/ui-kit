@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeProvider } from '../../../../packages/ui-kit/src';
 import { ButtonList } from '../../../../packages/ui-kit/src/crowd-bible';
+import jsxToString from 'jsx-to-string';
 
 export default {
   title: 'Partial/Crowd Bible/Button List',
@@ -29,41 +30,52 @@ const Template: ComponentStory<typeof ButtonList> = (args) => (
   <ButtonList {...args} />
 );
 
+const items = [
+  { value: 1, label: 'Chapter 1: Name of the Chapter' },
+  { value: 2, label: 'Chapter 2: Name of the Chapter' },
+  { value: 3, label: 'Chapter 3: Name of the Chapter' },
+];
+
 export const Primary = Template.bind({});
 Primary.args = {
   label: 'Select a Chapter',
-  items: [
-    {
-      onClick: () => alert('Click Chapter 1'),
-      label: 'Chapter 1: Name of the Chapter',
+  items,
+  onClick: (selected: unknown) => alert(`Clicked ${selected} Button`),
+};
+Primary.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <ButtonList label="Select a Chapter" items={items} onClick={() => {}} />
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
     },
-    {
-      onClick: () => alert('Click Chapter 2'),
-      label: 'Chapter 2: Name of the Chapter',
-    },
-    {
-      onClick: () => alert('Click Chapter 3'),
-      label: 'Chapter 3: Name of the Chapter',
-    },
-  ],
+  },
 };
 
 export const WithUnderline = Template.bind({});
 WithUnderline.args = {
   withUnderline: true,
   label: 'select a chapter',
-  items: [
-    {
-      onClick: () => alert('Click Chapter 1'),
-      label: 'Chapter 1: Name of the Chapter',
+  items,
+  onClick: (selected: unknown) => alert(`Clicked ${selected} Button`),
+};
+WithUnderline.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <ButtonList
+          withUnderline
+          label="Select a Chapter"
+          items={items}
+          onClick={() => {}}
+        />
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
     },
-    {
-      onClick: () => alert('Click Chapter 2'),
-      label: 'Chapter 2: Name of the Chapter',
-    },
-    {
-      onClick: () => alert('Click Chapter 3'),
-      label: 'Chapter 3: Name of the Chapter',
-    },
-  ],
+  },
 };

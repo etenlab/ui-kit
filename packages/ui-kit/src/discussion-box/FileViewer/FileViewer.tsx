@@ -61,6 +61,7 @@ export function FileViewer({ file, mode }: FileViewerProps) {
         border: `1px solid ${colors['dark']}`,
         borderRadius: '10px',
         gap: '10px',
+        width: '290px',
       }}
     >
       <BiFile style={{ fontSize: '70px', margin: '-10px' }} />

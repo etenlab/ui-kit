@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeProvider } from '../../../../packages/ui-kit/src';
 import { ImageViewer } from '../../../../packages/ui-kit/src/discussion-box';
+import jsxToString from 'jsx-to-string';
 
 export default {
   title: 'Partial/Discussion Box/ImageViewer',
@@ -31,14 +32,38 @@ const Template: ComponentStory<typeof ImageViewer> = (args) => (
 
 export const View = Template.bind({});
 View.args = {
-  src: 'https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/online-marketing-courses.jpg?width=595&height=400&name=online-marketing-courses.jpg',
-  file_name: 'photo',
+  src: '/images.jpg',
+  file_name: 'images',
   mode: 'view',
+};
+View.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <ImageViewer src="/images.jpg" file_name="images" mode="view" />
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
 };
 
 export const Quill = Template.bind({});
 Quill.args = {
-  src: 'https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/online-marketing-courses.jpg?width=595&height=400&name=online-marketing-courses.jpg',
-  file_name: 'photo',
+  src: '/images.jpg',
+  file_name: 'images',
   mode: 'quill',
+};
+Quill.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <ImageViewer src="/images.jpg" file_name="images" mode="quill" />
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
 };
