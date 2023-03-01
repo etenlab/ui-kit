@@ -91,7 +91,7 @@ export function AudioPlayer({ src, file_type }: AudioPlayerProps) {
         padding: '6px',
         borderRadius: '70px',
         backgroundColor: colors['disable'],
-        width: '336px',
+        width: '290px',
       }}
     >
       <CircleButton onClick={togglePlay} icon={playControlIcon} />
@@ -114,7 +114,7 @@ export function AudioPlayer({ src, file_type }: AudioPlayerProps) {
           value={value}
           onChange={handleChangeSlider}
           sx={{
-            padding: '0px',
+            padding: '0px !important',
             paddingTop: '5px',
             '& .MuiSlider-thumb': {
               display: 'none',
