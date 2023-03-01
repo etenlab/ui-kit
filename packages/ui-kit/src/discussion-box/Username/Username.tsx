@@ -17,6 +17,7 @@ export function Username({ username }: { username: string }) {
         fontSize: '14px',
         lineHeight: '20px',
         color: colors['dark'],
+        flexShrink: 0,
       }}
     >
       {transformUsername}

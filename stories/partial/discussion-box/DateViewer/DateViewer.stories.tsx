@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeProvider } from '../../../../packages/ui-kit/src';
 import { DateViewer } from '../../../../packages/ui-kit/src/discussion-box';
+import jsxToString from 'jsx-to-string';
 
 export default {
   title: 'Partial/Discussion Box/DateViewer',
@@ -33,8 +34,28 @@ export const Primary = Template.bind({});
 Primary.args = {
   date: new Date('2020-01-01'),
 };
+Primary.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(<DateViewer date={new Date('2020-01-01')} />),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
 
 export const Today = Template.bind({});
 Today.args = {
   date: new Date(),
+};
+Today.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(<DateViewer date={new Date()} />),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
 };

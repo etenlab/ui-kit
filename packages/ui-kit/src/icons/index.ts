@@ -10,6 +10,9 @@ export {
   BiLike,
   BiFile,
   BiUser,
+  BiShare,
+  BiImages,
+  BiPencil,
   BiDislike,
   BiTrashAlt,
   BiDownload,
@@ -22,7 +25,7 @@ export {
   BiMessageRounded,
   BiDotsHorizontalRounded,
 } from 'react-icons/bi';
-export { BsFillPlayFill, BsClock } from 'react-icons/bs';
+export { BsFillPlayFill, BsClock, BsFillRecordFill } from 'react-icons/bs';
 export {
   FiX,
   FiMic,
