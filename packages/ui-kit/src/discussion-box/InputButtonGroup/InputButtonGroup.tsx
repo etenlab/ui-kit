@@ -6,7 +6,7 @@ import { TbLetterT, FiMic, TbVideoPlus } from '../../icons';
 import { colors } from '../../ThemeProvider';
 
 interface InputButtonGroupProps {
-  onClick(inputType: 'text' | 'video' | 'audio'): void;
+  onClick(inputType: 'quill' | 'video' | 'audio'): void;
 }
 
 export function InputButtonGroup({ onClick }: InputButtonGroupProps) {
@@ -21,7 +21,7 @@ export function InputButtonGroup({ onClick }: InputButtonGroupProps) {
         background: colors['light-blue'],
       }}
     >
-      <IconButton onClick={() => onClick('text')}>
+      <IconButton onClick={() => onClick('quill')}>
         <TbLetterT style={{ fontSize: '24px' }} />
       </IconButton>
       <Divider orientation="vertical" flexItem />

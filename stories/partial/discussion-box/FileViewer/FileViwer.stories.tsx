@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeProvider } from '../../../../packages/ui-kit/src';
 import { FileViewer } from '../../../../packages/ui-kit/src/discussion-box';
+import jsxToString from 'jsx-to-string';
 
 export default {
   title: 'Partial/Discussion Box/FileViewer',
@@ -42,9 +43,29 @@ ViewMode.args = {
   file,
   mode: 'view',
 };
+ViewMode.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(<FileViewer file={file} mode="view" />),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
 
 export const QuillMode = Template.bind({});
 QuillMode.args = {
   file,
   mode: 'quill',
+};
+QuillMode.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(<FileViewer file={file} mode="quill" />),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
 };
