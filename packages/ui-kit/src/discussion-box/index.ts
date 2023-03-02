@@ -16,4 +16,5 @@ export * from './ReplyDecorator';
 export * from './PostHeader';
 export * from './RecorderTimer';
 export * from './AudioRecorder';
+export * from './VideoRecorder';
 export * from './types';

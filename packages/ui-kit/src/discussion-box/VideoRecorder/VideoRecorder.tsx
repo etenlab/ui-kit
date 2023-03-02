@@ -1,37 +1,72 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 
-import { Stack, IconButton } from '@mui/material';
+import { IconButton, Stack } from '@mui/material';
 
-import { FiMic, CiPause1, FiX, FiCheck } from '../../icons';
+import {
+  TbCameraRotate,
+  BsFillPlayFill,
+  BsClock,
+  CiPause1,
+  FiX,
+  FiCheck,
+} from '../../icons';
 import { colors } from '../../ThemeProvider';
 
-import { RecorderTimer } from '../RecorderTimer';
-
-import { AudioElement, Wave } from '@foobar404/wave';
 import { RecorderStatus } from '../types';
 
-type AudioRecorderProps = {
-  onCancel(): void;
+type VideoRecorderProps = {
   onSave(blobs: Blob[]): void;
+  onCancel(): void;
 };
 
-export function AudioRecorder({ onCancel, onSave }: AudioRecorderProps) {
+export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
   const [recorderStatus, setRecorderStatus] = useState<RecorderStatus>('new');
   const [savedLastChunk, setSavedLastChunk] = useState<boolean>(true);
+  const [facingMode, setFacingMode] =
+    useState<'user' | 'environment'>('environment');
 
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const audioElementRef = useRef<AudioElement | null>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const streamRef = useRef<MediaStream | null>(null);
   const recordedChunksRef = useRef<Blob[]>([]);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const getVideoStream = useCallback(async () => {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: {
+        facingMode,
+      },
+    });
+
+    if (videoRef.current !== null) {
+      videoRef.current.srcObject = stream;
+    }
+
+    streamRef.current = stream;
+  }, [facingMode]);
 
   const refreshRecorder = useCallback(() => {
-    if (mediaRecorderRef.current?.state !== 'inactive') {
-      mediaRecorderRef.current?.stop();
+    if (
+      mediaRecorderRef.current &&
+      mediaRecorderRef.current.state !== 'inactive'
+    ) {
+      mediaRecorderRef.current.stop();
     }
     mediaRecorderRef.current = null;
     recordedChunksRef.current = [];
     setRecorderStatus('new');
-  }, []);
+    getVideoStream();
+  }, [getVideoStream]);
+
+  useEffect(() => {
+    refreshRecorder();
+
+    return () => {
+      if (streamRef.current !== null) {
+        streamRef.current.getTracks().forEach((track) => track.stop());
+      }
+    };
+  }, [refreshRecorder]);
 
   useEffect(() => {
     if (recorderStatus !== 'ended') {
@@ -49,32 +84,14 @@ export function AudioRecorder({ onCancel, onSave }: AudioRecorderProps) {
     refreshRecorder();
   }, [recorderStatus, savedLastChunk, refreshRecorder]);
 
-  const initWave = () => {
-    const canvasElement = canvasRef.current;
-    const audioElement = audioElementRef.current;
-    if (canvasElement === null || audioElement === null) {
+  const handleClickStart = async () => {
+    if (streamRef.current === null) {
+      alert('Cannot found media stream!');
       return;
     }
 
-    const wave = new Wave(audioElement, canvasElement, true);
-    wave.addAnimation(
-      new wave.animations.Lines({
-        count: 50,
-        lineWidth: 3,
-        lineColor: colors['middle-gray'],
-        rounded: true,
-      })
-    );
-  };
-
-  const handleClickStart = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({
-      audio: true,
-      video: false,
-    });
-
-    const options = { mimeType: 'audio/webm' };
-    const mediaRecorder = new MediaRecorder(stream, options);
+    const options = { mimeType: 'video/webm' };
+    const mediaRecorder = new MediaRecorder(streamRef.current, options);
 
     mediaRecorder.addEventListener('dataavailable', function (e) {
       if (e.data.size > 0) recordedChunksRef.current.push(e.data);
@@ -82,20 +99,11 @@ export function AudioRecorder({ onCancel, onSave }: AudioRecorderProps) {
     });
 
     mediaRecorder.addEventListener('stop', function () {
-      stream.getTracks().forEach((track) => track.stop());
+      streamRef.current!.getTracks().forEach((track) => track.stop());
     });
 
-    const context = new AudioContext();
-    const source = context.createMediaStreamSource(stream);
-    audioElementRef.current = {
-      context,
-      source,
-    };
-
-    initWave();
-
-    mediaRecorder.start();
     mediaRecorderRef.current = mediaRecorder;
+    mediaRecorderRef.current.start(1000);
     setRecorderStatus('recording');
   };
 
@@ -149,11 +157,15 @@ export function AudioRecorder({ onCancel, onSave }: AudioRecorderProps) {
     setSavedLastChunk(false);
   };
 
+  const switchFacingMode = () => {
+    setFacingMode((mode) => (mode === 'user' ? 'environment' : 'user'));
+  };
+
   const controlButtonStyle = {
     fontSize: '80px',
     padding: '20px',
-    backgroundColor: colors['red'],
-    color: colors['white'],
+    backgroundColor: colors['white'],
+    color: colors['dark'],
     borderRadius: '50%',
   };
 
@@ -162,45 +174,77 @@ export function AudioRecorder({ onCancel, onSave }: AudioRecorderProps) {
   const disabledSave =
     recorderStatus === 'new' || recorderStatus === 'ended' ? true : false;
   const disabledControl = recorderStatus === 'ended' ? true : false;
-  const canvasDisplay = recorderStatus === 'paused' ? 'none' : 'inherit';
 
   const controlButton =
     recorderStatus === 'new' ? (
       <IconButton onClick={handleClickStart} disabled={disabledControl}>
-        <FiMic style={{ ...controlButtonStyle }} />
+        <BsFillPlayFill style={{ ...controlButtonStyle }} />
       </IconButton>
     ) : (
       <IconButton onClick={handleClickPause} disabled={disabledControl}>
         <CiPause1
           style={{
             ...controlButtonStyle,
-            backgroundColor: colors['blue-primary'],
           }}
         />
       </IconButton>
     );
 
   return (
-    <Stack justifyContent="space-between" alignItems="center" gap="20px">
-      <RecorderTimer recorderStatus={recorderStatus} />
-      <canvas
-        ref={canvasRef}
-        width={1200}
-        height={30}
-        style={{ width: '100%', height: '30px', display: canvasDisplay }}
+    <div
+      style={{
+        position: 'relative',
+        width: '100%',
+        height: '100%',
+        background: colors['dark'],
+        overflow: 'hidden',
+      }}
+    >
+      <video
+        height="100%"
+        ref={videoRef}
+        autoPlay
+        muted
+        style={{ transform: 'translateX(-50%)', margin: '0 50%' }}
       />
-
-      {recorderStatus === 'paused' ? <div style={{ height: '30px' }} /> : null}
-
       <Stack
         direction="row"
-        justifyContent="space-around"
+        justifyContent="center"
         alignItems="center"
-        sx={{ width: '100%' }}
+        gap="24px"
+        style={{
+          position: 'absolute',
+          top: 24,
+          right: 24,
+          padding: '10px',
+          borderRadius: '5px',
+          background: '#0000004f',
+        }}
+      >
+        <IconButton>
+          <BsClock style={{ color: colors['white'] }} />
+        </IconButton>
+        <IconButton onClick={switchFacingMode}>
+          <TbCameraRotate style={{ color: colors['white'] }} />
+        </IconButton>
+      </Stack>
+      <Stack
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        sx={{
+          position: 'absolute',
+          bottom: 50,
+          width: '100%',
+          padding: '10px',
+          borderRadius: '5px',
+          background: '#0000004f',
+        }}
+        gap="30px"
       >
         <IconButton
           onClick={handleClickCancel}
-          sx={{ fontSize: '36px', color: colors['gray'] }}
+          sx={{ fontSize: '36px', color: colors['white'] }}
           disabled={disabledCancel}
         >
           <FiX />
@@ -216,6 +260,6 @@ export function AudioRecorder({ onCancel, onSave }: AudioRecorderProps) {
           <FiCheck />
         </IconButton>
       </Stack>
-    </Stack>
+    </div>
   );
 }
