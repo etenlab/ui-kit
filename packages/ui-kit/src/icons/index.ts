@@ -21,6 +21,7 @@ export {
   BiChevronDown,
   BiCheckCircle,
   BiLeftArrowAlt,
+  BiChevronsDown,
   BiRightArrowAlt,
   BiMessageRounded,
   BiDotsHorizontalRounded,

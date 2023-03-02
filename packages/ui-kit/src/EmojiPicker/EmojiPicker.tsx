@@ -1,16 +1,16 @@
 import React, { memo } from 'react';
 
-import EmojiPicker, { Theme, EmojiClickData } from 'emoji-picker-react';
+import EmojiPickerPackage, { Theme, EmojiClickData } from 'emoji-picker-react';
 
 type EmojiPickerProps = {
   onEmojiClick(emojiData: EmojiClickData): void;
 };
 
-export const CustomEmojiPicker = memo(function CustomEmojiPicker({
+export const EmojiPicker = memo(function CustomEmojiPicker({
   onEmojiClick,
 }: EmojiPickerProps) {
   return (
-    <EmojiPicker
+    <EmojiPickerPackage
       onEmojiClick={onEmojiClick}
       autoFocusSearch={true}
       lazyLoadEmojis={true}
