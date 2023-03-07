@@ -17,4 +17,5 @@ export * from './PostHeader';
 export * from './RecorderTimer';
 export * from './AudioRecorder';
 export * from './VideoRecorder';
+export * from './Quill';
 export * from './types';
