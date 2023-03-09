@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { Box, Typography, IconButton } from '@mui/material';
 
@@ -7,9 +7,11 @@ import { BiLeftArrowAlt } from '../../icons';
 export function HeadingBox({
   onBack,
   breadcrumb,
+  children,
 }: {
   onBack?(): void;
   breadcrumb?: string;
+  children?: ReactNode;
 }) {
   return (
     <Box
@@ -19,8 +21,7 @@ export function HeadingBox({
         justifyContent: 'center',
         backgroundColor: '#e3eaf3',
         minHeight: 68,
-        py: 1,
-        px: 2.5,
+        p: 2.5,
         color: '#1b1b1b',
       }}
     >
@@ -34,12 +35,14 @@ export function HeadingBox({
               p: 0,
               mr: 1,
             }}
+            onClick={onBack}
           >
             <BiLeftArrowAlt />
           </IconButton>
         )}
         <span>Versification{breadcrumb ? ` / ${breadcrumb}` : ''}</span>
       </Typography>
+      {children}
     </Box>
   );
 }
