@@ -23,5 +23,11 @@ const Template: ComponentStory<typeof AppLogo> = args => (
 
 export const PrimaryAppLogo = Template.bind({});
 PrimaryAppLogo.args = {
+  varient: 'primary'
+};
+
+export const LightAppLogo = Template.bind({});
+LightAppLogo.args = {
+  varient: 'light'
 };
 

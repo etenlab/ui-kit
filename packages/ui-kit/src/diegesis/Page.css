@@ -1,3 +1,9 @@
+.full-width {
+  width: 100% !important;
+}
+.mt-2 {
+  margin-top: 20px;
+}
 .app-logo {
   margin-top: 5px;
 }
@@ -15,5 +21,14 @@
     padding-bottom: 10px;
 }
 .page-footer {
-
+  background: #31373a;
+  padding: 50px 0px;
+  height: 273px;
+}
+.page-footer .MuiTypography-body1 {
+  color: #FFFFFF;
+  font-family: 'noto sans myanmar';
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 400;
 }
