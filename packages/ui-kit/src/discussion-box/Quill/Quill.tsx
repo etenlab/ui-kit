@@ -243,7 +243,6 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
 
   const handleBlur = (_previousSelection: ReactQuill.Range) => {
     previousSelection.current = _previousSelection;
-    console.log('blur', _previousSelection);
   };
 
   const skeleton = uploading
@@ -252,7 +251,7 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
       }
     : null;
 
-  const disabled = uploading;
+  const disabled = uploading || mode === 'editing';
 
   const emojiPicker =
     emojiMode === 'in' ? (
