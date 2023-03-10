@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ThemeProvider } from '../../../packages/ui-kit/src';
-import { MenuIcon } from '../../../packages/ui-kit/src/diegesis/icons';
+import { CloseIcon, MenuIcon } from '../../../packages/ui-kit/src/diegesis/icons';
 
 export default {
     title: 'Partial/Diegesis/Icons',
@@ -21,8 +21,10 @@ const MenuIconTemplate: ComponentStory<typeof MenuIcon> = args => (
 );
 
 export const Menu = MenuIconTemplate.bind({});
-Menu.args = {
-    width: 49,
-    height: 40
-};
+Menu.args = {};
 
+const CloseIconTemplate: ComponentStory<typeof CloseIcon> = args => (
+    <CloseIcon {...args} />
+);
+export const Close = CloseIconTemplate.bind({});
+Close.args = {};
