@@ -209,7 +209,7 @@ export function QuestionBox({
                       name={data.item}
                     />
                   }
-                  label="Gilad Gray"
+                  label={data.item}
                   color="dark"
                   sx={{ padding: '12px 0' }}
                 />
