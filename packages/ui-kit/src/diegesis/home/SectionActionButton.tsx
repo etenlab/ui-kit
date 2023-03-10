@@ -16,7 +16,7 @@ const StyledButton = styled(Button)({
     textTransform: 'none',
     borderRadius: '40px'
 })
-export default function SectionActionButton(props: IProps) {
+export default function HomeSectionActionButton(props: IProps) {
     const { label, className, color = 'green' } = props;
     
     return (
