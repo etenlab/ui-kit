@@ -4,8 +4,14 @@
 .mt-2 {
   margin-top: 20px;
 }
+.mr-1 {
+  margin-right: 10px;
+}
 .app-logo {
   margin-top: 5px;
+}
+.MuiDivider-root {
+  border-color: #31373a !important;
 }
 .MuiTypography-body1.header-title {
     font-family: 'noto serif display';
@@ -31,4 +37,43 @@
   font-size: 20px;
   line-height: 26px;
   font-weight: 400;
+}
+.side-nav-container {
+  width: 536px;
+  background: #e3e3d9;
+  height: 100%;
+  position: absolute;
+  padding: 50px;
+  padding-right: 25px;
+}
+.side-nav-container .close-btn .MuiTypography-caption {
+  font-size: 20px;
+  line-height: 20px;
+  margin-right: 10px;
+  color: #31373A;
+}
+.side-nav-container .nav-items-container {
+  margin-top: 50px;
+  overflow-y: auto;
+  height: 100%;
+}
+.nav-items-container .big-nav-item {
+  text-transform: none;
+  font-size: 48px;
+  line-height: 70px;
+  font-weight: 400;
+  font-family: helvetica;
+  padding: 0px;
+  width: 100%;
+  display: block;
+}
+.nav-items-container .md-nav-item {
+  text-transform: none;
+  font-weight: 400;
+  font-family: helvetica;
+  padding: 20px 0px;
+  font-size: 20px;
+  line-height: 20px;
+  width: 100%;
+  display: block;
 }
