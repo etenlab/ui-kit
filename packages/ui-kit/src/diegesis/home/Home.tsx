@@ -1,17 +1,22 @@
-import { Container } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import PageFooter from "../PageFooter";
 import PageHeader from "../PageHeader";
+import SideNav from "../SideNav";
 
 interface IProps {
-    
+
 }
 export function HomePage(props: IProps) {
+    const [isSideNavOpen, setSideNavOpenStatus] = useState(false)
     return (
-        <Container>
-            <PageHeader></PageHeader>
+        <div id="home-page">
+            <PageHeader openSideNav={() => setSideNavOpenStatus(true)}></PageHeader>
+            <SideNav open={isSideNavOpen} close={() => { setSideNavOpenStatus(false) }} />
+            <div>
+
+            </div>
             <PageFooter></PageFooter>
-        </Container>
+        </div>
     )
 }
 export default HomePage;

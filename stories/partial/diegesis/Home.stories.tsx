@@ -10,7 +10,7 @@ export default {
     title: 'Partial/Diegesis/Home',
     decorators: [
         Story => (
-            <div style={{ margin: '3em', padding: '1em' }}>
+            <div>
                 <ThemeProvider>
                     <Story />
                 </ThemeProvider>

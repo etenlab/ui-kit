@@ -1,10 +1,10 @@
-.StatWithDescription {
+.stat-with-des {
   text-align: center;
   border-top: 1px solid #60d0b3;
   border-bottom: 1px solid #60d0b3;
   padding: 20px 10px !important;
 }
-.StatWithDescription .stat {
+.stat-with-des .stat {
   font-size: 84px;
   line-height: 84px;
   padding: 0px;
@@ -12,14 +12,14 @@
   color: #60d0b3;
 }
 
-.StatWithDescription .stat-category {
+.stat-with-des .stat-category {
   font-size: 28px;
   line-height: 28px;
   padding: 0px;
   margin: 12px 0px;
 }
 
-.StatWithDescription .stat-description {
+.stat-with-des .stat-description {
   padding: 0px;
   margin: 0px;
   color: #707070;

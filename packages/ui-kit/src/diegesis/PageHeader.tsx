@@ -6,9 +6,10 @@ import { MenuIcon } from "./icons"
 import './Page.css'
 
 interface IProps {
-
+    openSideNav: () => void
 }
 export function PageHeader(props: IProps) {
+    const { openSideNav } = props
     return (
         <Container className={'page-header'}>
             <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'}>
@@ -19,7 +20,7 @@ export function PageHeader(props: IProps) {
                     </Typography>
                 </Stack>
                 <Stack>
-                    <MenuIcon />
+                    <MenuIcon onClick={() => { openSideNav() }} />
                 </Stack>
             </Stack>
         </Container>

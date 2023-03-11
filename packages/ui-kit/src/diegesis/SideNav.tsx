@@ -1,15 +1,17 @@
-import { Button, Divider, Icon, Stack, Typography } from "@mui/material"
+import { Button, Divider, Stack, Typography } from "@mui/material"
 import React from "react"
 import { MdAccountCircle } from "react-icons/md";
 import { CloseIcon } from "./icons"
 
 interface IProps {
-
+    open: boolean,
+    close: () => void
 }
 export function SideNav(props: IProps) {
+    const { open, close } = props;
     return (
-        <Stack direction={'column'} alignItems={'start'} className={'side-nav-container'}>
-            <Stack direction={'row'} className='full-width close-btn' alignItems={'center'} justifyContent={'flex-end'}>
+        <Stack direction={'column'} alignItems={'start'} className={`side-nav-container ${open ? 'show-side-nav' : 'hide-side-nav'}`}>
+            <Stack direction={'row'} className='full-width close-btn' alignItems={'center'} justifyContent={'flex-end'} onClick={() => { close() }}>
                 <Typography variant={'caption'}>Close</Typography><CloseIcon />
             </Stack>
             <Stack direction={'column'} className='full-width nav-items-container' alignItems={'flex-start'} justifyContent={'flex-start'}>

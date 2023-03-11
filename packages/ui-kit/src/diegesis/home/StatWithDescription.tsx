@@ -7,13 +7,13 @@ interface IProps {
     category: string,
     description: string
 }
-export function StatWithDescription(props: IProps) {
+export function statWithDescription(props: IProps) {
     return (
-        <Stack direction={'column'} alignItems={'center'} justifyContent={'center'} className={'StatWithDescription'}>
+        <Stack direction={'column'} alignItems={'center'} justifyContent={'center'} className={'stat-with-des'}>
             <Typography variant={'h1'} className='stat'>{props.numbers}</Typography>
             <Typography variant={'h1'} className='stat-category'>{props.category}</Typography>
             <Typography variant={'body1'} className='stat-description'>{props.description}</Typography>
         </Stack>
     )
 }
-export default StatWithDescription
+export default statWithDescription

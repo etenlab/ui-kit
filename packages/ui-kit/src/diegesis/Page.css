@@ -1,3 +1,11 @@
+#home-page {
+  position: relative;
+  min-height: 100%;
+}
+.show-side-nav {
+}
+.hide-side-nav {
+}
 .full-width {
   width: 100% !important;
 }
@@ -14,17 +22,17 @@
   border-color: #31373a !important;
 }
 .MuiTypography-body1.header-title {
-    font-family: 'noto serif display';
-    font-size: 24px;
-    line-height: 24px;
-    font-style: italic;
-    color: #31373a;
-    font-weight: normal;
-    margin-left: 10px;
+  font-family: 'noto serif display';
+  font-size: 24px;
+  line-height: 24px;
+  font-style: italic;
+  color: #31373a;
+  font-weight: normal;
+  margin-left: 10px;
 }
 .page-header {
-    padding-top: 10px;
-    padding-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .page-footer {
   background: #31373a;
@@ -32,25 +40,37 @@
   height: 273px;
 }
 .page-footer .MuiTypography-body1 {
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: 'noto sans myanmar';
   font-size: 20px;
   line-height: 26px;
   font-weight: 400;
 }
 .side-nav-container {
-  width: 536px;
   background: #e3e3d9;
   height: 100%;
   position: absolute;
+  top: 0;
+  right: 0;
   padding: 50px;
   padding-right: 25px;
+  z-index: 10;
+}
+.side-nav-container.show-side-nav {
+  width: 536px !important; 
+  transition: 0.5s;
+}
+.side-nav-container.hide-side-nav {
+  width: 0px !important; 
+  transition: 0.5s;
+  padding: 0 !important;
+  overflow: hidden;
 }
 .side-nav-container .close-btn .MuiTypography-caption {
   font-size: 20px;
   line-height: 20px;
   margin-right: 10px;
-  color: #31373A;
+  color: #31373a;
 }
 .side-nav-container .nav-items-container {
   margin-top: 50px;
