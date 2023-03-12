@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PageFooter from "../PageFooter";
 import PageHeader from "../PageHeader";
 import SideNav from "../SideNav";
+import AboutDiegesisSection from "./AboutDiegesisSection";
 import LandingSection from "./LandingSection";
 import StatSection from "./StatSection";
 
@@ -14,10 +15,9 @@ export function HomePage(props: IProps) {
         <div id="home-page">
             <PageHeader openSideNav={() => setSideNavOpenStatus(true)}></PageHeader>
             <SideNav open={isSideNavOpen} close={() => { setSideNavOpenStatus(false) }} />
-            <div>
-                <LandingSection />
-                <StatSection />
-            </div>
+            <LandingSection />
+            <StatSection />
+            <AboutDiegesisSection />
             <PageFooter></PageFooter>
         </div>
     )

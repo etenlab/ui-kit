@@ -10,7 +10,7 @@ export function LandingSection(props: IProps) {
         <Container className="landing-section">
             <Stack direction={'column'} alignItems={'center'} justifyContent={'center'}>
                 <Typography variant="h1">
-                    Diegesis is a place to find Bibles and related resources, in a variety of formats, released under open licences*.
+                    Diegesis is a place to find Bibles and related resources, in a variety of formats,<br /> released under open licences*.
                 </Typography>
                 <SectionActionButton label="Browse content" />
                 <Typography variant="caption">

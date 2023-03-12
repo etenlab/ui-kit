@@ -2,7 +2,7 @@
   text-align: center;
   border-top: 1px solid #60d0b3;
   border-bottom: 1px solid #60d0b3;
-  padding: 20px 10px !important;
+  padding: 20px 40px !important;
 }
 .stat-with-des .stat {
   font-size: 84px;
@@ -35,16 +35,61 @@
   line-height: 60px;
   font-family: Helvetica;
   font-weight: 400;
-  padding: 50px 0px;
+  padding: 50px;
+  text-transform: unset;
 }
 .landing-section .MuiTypography-caption {
   padding: 50px 0px;
   font-weight: 400;
-  font-family: "noto serif";
+  font-family: 'noto serif';
   font-size: 20px;
   line-height: 20px;
   color: #707070;
 }
 .stat-section {
   padding: 50px 0px;
+}
+.about-diegesis-section {
+  padding: 50px 0px;
+  padding-bottom: 112px;
+}
+.about-diegesis-section .content-box {
+  display: block;
+  position: relative;
+  height: 498px;
+  margin: 20px 40px;
+}
+.about-diegesis-section .cover-img-container {
+  /* width: 714px; */
+  height: 498px;
+  width: 65%;
+  background-color: #a8a8a8;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.about-diegesis-section .about-diegesis-box {
+  padding: 50px;
+  margin: 50px 0px;
+  background: #f0f0e7;
+  z-index: 1;
+  display: inline-block;
+  height: 80%;
+  width: 50%;
+  position: absolute;
+}
+.about-diegesis-box .MuiTypography-h2 {
+  font-family: Helvetica;
+  font-size: 30px;
+  line-height: 34px;
+  font-weight: normal;
+  color: #31373a;
+}
+.about-diegesis-box .about-diegesis-btn {
+  border-bottom: 1px solid #79c7b2;
+  font-size: 20px;
+  line-height: 20px;
+  text-transform: none;
 }

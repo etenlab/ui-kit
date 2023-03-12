@@ -19,7 +19,7 @@ export function PageHeader(props: IProps) {
                         Open source Bibles resources
                     </Typography>
                 </Stack>
-                <Stack>
+                <Stack className="nav-btn">
                     <MenuIcon onClick={() => { openSideNav() }} />
                 </Stack>
             </Stack>
