@@ -156,9 +156,12 @@
     height: 498px;
     margin: 20px 10px;
   }
+  .content-box .about-diegesis-box {
+    margin: 0px;
+  }
   .about-diegesis-section .about-diegesis-box {
     padding: 20px;
-    padding-bottom: 50px;
+    padding-bottom: 25%;
     z-index: 1;
     display: inline-block;
     height: 60%;
@@ -170,13 +173,14 @@
     line-height: 26px;
   }
   .about-diegesis-section .cover-img-container {
-    /* width: 714px; */
     height: 176px;
-    width: 75%;
-    margin: auto;
+    width: 80%;
+    margin: 0px auto;
     display: inline-block;
     position: absolute;
     right: 0;
     left: 0;
+    top: 50%;
+    z-index: 2;
   }
 }
