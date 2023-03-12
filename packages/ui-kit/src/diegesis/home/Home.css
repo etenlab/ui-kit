@@ -3,6 +3,8 @@
   border-top: 1px solid #60d0b3;
   border-bottom: 1px solid #60d0b3;
   padding: 20px 40px !important;
+  align-self: stretch;
+  flex: 1;
 }
 .stat-with-des .stat {
   font-size: 84px;
@@ -92,4 +94,89 @@
   font-size: 20px;
   line-height: 20px;
   text-transform: none;
+}
+
+@media screen and (max-width: 414px) {
+  .landing-section {
+    padding-top: 30px;
+  }
+  .landing-section .MuiTypography-h1 {
+    font-size: 30px;
+    line-height: 34px;
+    padding: 30px 5px;
+  }
+  .landing-section .MuiTypography-caption {
+    padding: 30px 5px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .landing-section button {
+    /* margin: 10px; */
+    min-width: 275px;
+    min-height: 68px;
+  }
+  .stat-section {
+    padding: 30px 0px;
+  }
+  .stat-section .MuiStack-root {
+    flex-direction: column;
+    gap: 0;
+  }
+  .stat-section .stat-with-des:nth-of-type(2),
+  .stat-section .stat-with-des:nth-of-type(3) {
+    border-top: 0px;
+  }
+  .stat-with-des {
+    padding: 15px 25px !important;
+    align-self: stretch;
+    flex: 1;
+  }
+  .stat-with-des .stat {
+    font-size: 64px;
+    line-height: 64px;
+  }
+
+  .stat-with-des .stat-category {
+    font-size: 22px;
+    line-height: 36px;
+  }
+
+  .stat-with-des .stat-description {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .about-diegesis-section {
+    padding: 30px 0px;
+    padding-bottom: 30px;
+  }
+  .about-diegesis-section .content-box {
+    display: block;
+    position: relative;
+    height: 498px;
+    margin: 20px 10px;
+  }
+  .about-diegesis-section .about-diegesis-box {
+    padding: 20px;
+    padding-bottom: 50px;
+    z-index: 1;
+    display: inline-block;
+    height: 60%;
+    width: 100%;
+    position: absolute;
+  }
+  .about-diegesis-box .MuiTypography-h2 {
+    font-size: 22px;
+    line-height: 26px;
+  }
+  .about-diegesis-section .cover-img-container {
+    /* width: 714px; */
+    height: 176px;
+    width: 75%;
+    margin: auto;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    left: 0;
+  }
 }
