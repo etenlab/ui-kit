@@ -161,7 +161,7 @@
   }
   .about-diegesis-section .about-diegesis-box {
     padding: 20px;
-    padding-bottom: 25%;
+    padding-bottom: 30%;
     z-index: 1;
     display: inline-block;
     height: 60%;
@@ -169,8 +169,9 @@
     position: absolute;
   }
   .about-diegesis-box .MuiTypography-h2 {
-    font-size: 22px;
-    line-height: 26px;
+    font-size: 20px;
+    line-height: 24px;
+    padding-bottom: 25px;
   }
   .about-diegesis-section .cover-img-container {
     height: 176px;
@@ -180,7 +181,12 @@
     position: absolute;
     right: 0;
     left: 0;
-    top: 50%;
+    top: 52%;
     z-index: 2;
   }
+  .about-diegesis-box .about-diegesis-btn {
+    font-size: 18px;
+    line-height: 20px;
+  }
 }
+
