@@ -6,6 +6,7 @@ import PageHeader from "../PageHeader";
 import SideNav from "../SideNav";
 import AboutContentSection from "./AboutContentSection";
 import "./About.css";
+import AboutPictureSection from "./AboutPictureSection";
 
 interface IProps {
 
@@ -33,16 +34,24 @@ export const AboutPage: React.FC<IProps> = (props) => {
                     Open source Bibles resources
                 </Typography>
             </Container>
-            <AboutContentSection
-                title={dataAboutContentSection1.title}
-                description={dataAboutContentSection1.description}
-                points={dataAboutContentSection1.points}
-            />
-            <AboutContentSection
-                title={dataAboutContentSection1.title}
-                description={dataAboutContentSection1.description}
-                points={dataAboutContentSection1.points}
-            />
+            <Container className="inner-content">
+                <AboutContentSection
+                    className="no-padding"
+                    title={dataAboutContentSection1.title}
+                    description={dataAboutContentSection1.description}
+                    points={dataAboutContentSection1.points}
+                />
+                <AboutPictureSection caption="Image Caption" />
+                <Typography variant="h1" textTransform={'none'} className="diegesis-quote">
+                    “Diegesis is a place to find Bibles and related resources, in a variety of formats, released under open licences.”
+                </Typography>
+                <AboutContentSection
+                    className="no-padding"
+                    title={dataAboutContentSection1.title}
+                    description={dataAboutContentSection1.description}
+                    points={dataAboutContentSection1.points}
+                />
+            </Container>
             <PageFooter />
         </div>
     )

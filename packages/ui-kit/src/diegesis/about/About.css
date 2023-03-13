@@ -8,8 +8,10 @@
     line-height: 40px;
     font-weight: 300;
 }
+.inner-content {
+    margin-left: 13% !important;
+}
 .about-content-section {
-    margin-left: 15% !important;
     color: #31373A;
 }
 .about-content-section .MuiTypography-h2 {
@@ -36,4 +38,31 @@
 }
 .about-content-section .MuiList-root .MuiListItem-root {
     border-top: 1px solid #E3E3D9;
+}
+.diegesis-quote {
+    padding: 50px 0px;
+    font-size: 30px;
+    font-weight: 400;
+    font-family: "noto serif";
+}
+.about-picture-section {
+    margin-top: 60px;
+    margin-bottom: 120px;
+}
+.about-picture-section .inner-container {
+    background: #F0F0E7;
+    height: 409px;
+    width: 788px;
+    position: relative;
+    /* width: 80%; */
+    margin: auto;
+    padding: 25px;
+}
+.inner-container .img-box {
+    height: 409px;
+    width: 586px;
+    background: #31373A;
+    /* margin: 0px 7%; */
+    margin: auto;
+    margin-top: 5%;
 }

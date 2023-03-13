@@ -11,7 +11,7 @@ interface IProps {
 export const AboutContentSection: React.FC<IProps> = (props) => {
     const { title, description, points = [] } = props;
     return (
-        <Container fixed className={`about-content-section ${props.className}`}>
+        <Container className={`about-content-section ${props.className}`}>
             <Typography variant={'h2'}>
                 {title}
             </Typography>

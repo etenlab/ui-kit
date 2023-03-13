@@ -11,6 +11,9 @@
 }
 .hide-side-nav {
 }
+.no-padding {
+  padding: 0px !important;
+}
 .full-width {
   width: 100% !important;
 }
