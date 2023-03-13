@@ -73,11 +73,11 @@
   z-index: 10;
 }
 .side-nav-container.show-side-nav {
-  width: 536px !important; 
+  width: 536px; 
   transition: 0.5s;
 }
 .side-nav-container.hide-side-nav {
-  width: 0px !important; 
+  width: 0px; 
   transition: 0.5s;
   padding: 0 !important;
   overflow: hidden;
@@ -129,6 +129,13 @@
   }
   .page-header .header-title {
     display: none;
+  }
+  .side-nav-container.show-side-nav {
+    width: 100%; 
+    transition: 0.5s;
+  }
+  .side-nav-container {
+    padding: 20px;
   }
   .page-footer .footer-content {
     flex-direction: column;
