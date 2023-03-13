@@ -1,0 +1,39 @@
+.header-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+.MuiTypography-h2.page-title-sub {
+    margin-top: 10px;
+    font-size: 34px;
+    line-height: 40px;
+    font-weight: 300;
+}
+.about-content-section {
+    margin-left: 15% !important;
+    color: #31373A;
+}
+.about-content-section .MuiTypography-h2 {
+    line-height: 30px;
+    font-weight: 700;
+    font-family: "noto serif";
+}
+.about-content-section .MuiTypography-body1 {
+    margin-top: 10px;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: normal;
+}
+.about-content-section .MuiList-root {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+.about-content-section .MuiList-root .MuiListItemIcon-root {
+    min-width: auto;
+}
+.about-content-section .MuiList-root .MuiTypography-body1 {
+    margin-top: 0px;
+}
+.about-content-section .MuiList-root .MuiListItem-root {
+    border-top: 1px solid #E3E3D9;
+}

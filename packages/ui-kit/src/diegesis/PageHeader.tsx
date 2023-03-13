@@ -6,7 +6,7 @@ import { MenuIcon } from "./icons"
 import './Page.css'
 
 interface IProps {
-    openSideNav: () => void
+    openSideNav?: () => void
 }
 export function PageHeader(props: IProps) {
     const { openSideNav } = props
@@ -19,9 +19,13 @@ export function PageHeader(props: IProps) {
                         Open source Bibles resources
                     </Typography>
                 </Stack>
-                <Stack className="nav-btn">
-                    <MenuIcon onClick={() => { openSideNav() }} />
-                </Stack>
+                {
+                    openSideNav
+                        ?
+                        <Stack className="nav-btn">
+                            <MenuIcon onClick={() => { openSideNav() }} />
+                        </Stack> : <></>
+                }
             </Stack>
         </Container>
     )

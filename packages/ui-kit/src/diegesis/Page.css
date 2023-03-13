@@ -2,6 +2,11 @@
   position: relative;
   min-height: 100%;
 }
+.MuiTypography-h1.page-title {
+  font-size: 40px;
+  line-height: 45px;
+  font-weight: 400;
+}
 .show-side-nav {
 }
 .hide-side-nav {
