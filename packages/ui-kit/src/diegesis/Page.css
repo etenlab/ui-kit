@@ -1,0 +1,132 @@
+#home-page {
+  position: relative;
+  min-height: 100%;
+}
+.show-side-nav {
+}
+.hide-side-nav {
+}
+.full-width {
+  width: 100% !important;
+}
+.full-height {
+  height: 100% !important;
+}
+.mt-2 {
+  margin-top: 20px;
+}
+.mr-1 {
+  margin-right: 10px;
+}
+.app-logo {
+  margin-top: 5px;
+}
+.MuiDivider-root {
+  border-color: #31373a !important;
+}
+.MuiTypography-body1.header-title {
+  font-family: 'noto serif display';
+  font-size: 24px;
+  line-height: 24px;
+  font-style: italic;
+  color: #31373a;
+  font-weight: normal;
+  margin-left: 10px;
+}
+.page-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+}
+.page-header .nav-btn {
+  position: absolute;
+  right: -24px;
+}
+.page-footer {
+  background: #31373a;
+  padding: 50px 0px;
+  height: 273px;
+}
+.page-footer .MuiTypography-body1 {
+  color: #ffffff;
+  font-family: 'noto sans myanmar';
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 400;
+}
+.side-nav-container {
+  background: #e3e3d9;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 50px;
+  padding-right: 25px;
+  z-index: 10;
+}
+.side-nav-container.show-side-nav {
+  width: 536px !important; 
+  transition: 0.5s;
+}
+.side-nav-container.hide-side-nav {
+  width: 0px !important; 
+  transition: 0.5s;
+  padding: 0 !important;
+  overflow: hidden;
+}
+.side-nav-container .close-btn .MuiTypography-caption {
+  font-size: 20px;
+  line-height: 20px;
+  margin-right: 10px;
+  color: #31373a;
+}
+.side-nav-container .nav-items-container {
+  margin-top: 50px;
+  overflow-y: auto;
+  height: 100%;
+}
+.nav-items-container .big-nav-item {
+  text-transform: none;
+  font-size: 48px;
+  line-height: 70px;
+  font-weight: 400;
+  font-family: helvetica;
+  padding: 0px;
+  width: 100%;
+  display: block;
+}
+.nav-items-container .md-nav-item {
+  text-transform: none;
+  font-weight: 400;
+  font-family: helvetica;
+  padding: 20px 0px;
+  font-size: 20px;
+  line-height: 20px;
+  width: 100%;
+  display: block;
+}
+
+@media screen and (max-width: 414px) {
+  .app-logo {
+    width: 175px;
+    height: 34px;
+  }
+  .page-header .nav-btn svg {
+    width: 35px;
+    height: 35px;
+  }
+  .page-header .nav-btn {
+    position: absolute;
+    right: 0px;
+  }
+  .page-header .header-title {
+    display: none;
+  }
+  .page-footer .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-content p:nth-of-type(2){
+    margin-top: 25px;
+  }
+}
