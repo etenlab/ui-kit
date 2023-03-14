@@ -12,8 +12,7 @@
     "prepublish": "lerna run prepublish",
     "format": "prettier --write 'stories/**/*' 'packages/*/src/**/*' 'README.md'",
     "precommit": "lint-staged",
-    "changeset": "changeset",
-    "release": "changeset publish",
+    "release": "cd packages/ui-kit && npm publish --access public",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
