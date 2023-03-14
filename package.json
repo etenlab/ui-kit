@@ -13,7 +13,7 @@
     "format": "prettier --write 'stories/**/*' 'packages/*/src/**/*' 'README.md'",
     "precommit": "lint-staged",
     "changeset": "changeset",
-    "release": "changeset publish --access public",
+    "release": "changeset publish",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -69,8 +69,7 @@
   },
   "lint-staged": {
     "**/*.{ts,tsx,md,mdx,js,jsx}": [
-      "npm run format",
-      "git add"
+      "npm run format"
     ]
   }
 }
