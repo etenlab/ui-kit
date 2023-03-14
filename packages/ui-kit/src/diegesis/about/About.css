@@ -66,3 +66,34 @@
     margin: auto;
     margin-top: 5%;
 }
+@media screen and (max-width: 414px) { 
+    .page-title {
+        font-size: 30px;
+        line-height: 34px;
+        text-align: center;
+    }
+    .MuiTypography-h2.page-title-sub {
+        margin-top: 10px;
+        font-size: 30px;
+        line-height: 34px;
+        font-weight: 300;
+        text-align: center;
+    }
+    .inner-content {
+        margin-left: unset !important;
+    }
+    .about-picture-section {
+        margin-top: 40px;
+        margin-bottom: 80px;
+    }
+    .about-picture-section .inner-container {
+        height: 173px;
+        width: 100%;
+        padding: 10px;
+    }
+    .inner-container .img-box {
+        height: 176px;
+        width: 90%;
+        margin-top: 5%;
+    }
+}
