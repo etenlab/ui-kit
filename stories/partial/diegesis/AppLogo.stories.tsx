@@ -7,8 +7,15 @@ export default {
   title: 'Partial/Diegesis/AppLogo',
   component: AppLogo,
   decorators: [
-    Story => (
-      <div style={{ margin: '3em', padding: '1em', background: '#eee', width: '500px' }}>
+    (Story) => (
+      <div
+        style={{
+          margin: '3em',
+          padding: '1em',
+          background: '#eee',
+          width: '500px',
+        }}
+      >
         <ThemeProvider>
           <Story />
         </ThemeProvider>
@@ -17,17 +24,16 @@ export default {
   ],
 } as ComponentMeta<typeof AppLogo>;
 
-const Template: ComponentStory<typeof AppLogo> = args => (
+const Template: ComponentStory<typeof AppLogo> = (args) => (
   <AppLogo {...args} />
 );
 
 export const PrimaryAppLogo = Template.bind({});
 PrimaryAppLogo.args = {
-  varient: 'primary'
+  varient: 'primary',
 };
 
 export const LightAppLogo = Template.bind({});
 LightAppLogo.args = {
-  varient: 'light'
+  varient: 'light',
 };
-
