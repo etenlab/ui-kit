@@ -74,11 +74,11 @@ export function Toolbar({
         <IconButton onClick={onClickThemeModeBtn}>
           {themeMode === 'light' ? (
             <CiLight
-              style={{ color: '#5C6673', fontSize: 27, strokeWidth: '0.5px' }}
+              style={{ color: '#5C6673', fontSize: 27, strokeWidth: '0.6px' }}
             />
           ) : (
             <CiDark
-              style={{ color: '#5C6673', fontSize: 27, strokeWidth: '0.5px' }}
+              style={{ color: '#5C6673', fontSize: 27, strokeWidth: '0.6px' }}
             />
           )}
         </IconButton>
