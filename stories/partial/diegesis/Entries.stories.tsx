@@ -1,7 +1,8 @@
 import React from 'react';
 import { ComponentStory } from '@storybook/react';
-import EntriesPage from '../../../packages/ui-kit/src/diegesis/entries/Entries';
 import { ThemeProvider } from '../../../packages/ui-kit/src';
+import EntriesPage from '../../../packages/ui-kit/src/diegesis/entries/Entries';
+import SearchBox from '../../../packages/ui-kit/src/diegesis/SearchBox';
 
 
 export default {
@@ -22,5 +23,12 @@ const EntriesTemplate: ComponentStory<typeof EntriesPage> = args => (
 );
 export const entriesPage = EntriesTemplate.bind({});
 entriesPage.args = {
+};
+
+const SearchBoxTemplate: ComponentStory<typeof SearchBox> = args => (
+    <SearchBox {...args} />
+);
+export const searchBox = SearchBoxTemplate.bind({});
+searchBox.args = {
 };
 
