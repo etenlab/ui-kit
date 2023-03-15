@@ -6,7 +6,12 @@ import { ThemeProvider } from '../../../../packages/ui-kit/src';
 import { NodeData } from '../../../../packages/ui-kit/src/versification/NodeData';
 
 const args = {
-  label: '',
+  label: 'Ch. 5',
+  nodeType: 'chapter' as const,
+  originalValue: '5',
+  translationValues: ['7', '9'],
+  onNewIdentifierSave: (value) =>
+    alert(`Clicked Save New Identifier Button with value: ${value}`),
   col: false,
   inline: true,
   numUpVotes: 0,
@@ -52,33 +57,20 @@ Primary.parameters = {
   },
 };
 
-export const Labeled = Template.bind({});
-Labeled.args = {
-  ...args,
-  label: 'Ch. 1',
-};
-Labeled.parameters = {
-  docs: {
-    source: {
-      code: jsxToString(<NodeData {...Labeled.args} />),
-      language: 'jsx',
-      format: true,
-      type: 'auto',
-    },
-  },
-};
-
-export const LabeledWithValues = Template.bind({});
-LabeledWithValues.args = {
+export const WithValues = Template.bind({});
+WithValues.args = {
   ...args,
   label: 'v3',
+  nodeType: 'verse' as const,
+  originalValue: '3',
+  translationValues: ['4', '1'],
   numUpVotes: 42,
   numDownVotes: 15,
 };
-LabeledWithValues.parameters = {
+WithValues.parameters = {
   docs: {
     source: {
-      code: jsxToString(<NodeData {...LabeledWithValues.args} />),
+      code: jsxToString(<NodeData {...WithValues.args} />),
       language: 'jsx',
       format: true,
       type: 'auto',
@@ -86,17 +78,20 @@ LabeledWithValues.parameters = {
   },
 };
 
-export const LabeledColNotInline = Template.bind({});
-LabeledColNotInline.args = {
+export const ColNotInline = Template.bind({});
+ColNotInline.args = {
   ...args,
   label: 'v3-5',
+  nodeType: 'verse' as const,
+  originalValue: '3-5',
+  translationValues: ['2a', 'w7'],
   col: true,
   inline: false,
 };
-LabeledColNotInline.parameters = {
+ColNotInline.parameters = {
   docs: {
     source: {
-      code: jsxToString(<NodeData {...LabeledColNotInline.args} />),
+      code: jsxToString(<NodeData {...ColNotInline.args} />),
       language: 'jsx',
       format: true,
       type: 'auto',
