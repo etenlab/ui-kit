@@ -15,7 +15,7 @@ function fillZero(num: number): string {
 function TimeShower({ totalSeconds }: { totalSeconds: number }) {
   const hours = Math.floor(totalSeconds / HOUR_TO_SECONDS);
   const mins = Math.floor(
-    (totalSeconds - hours * HOUR_TO_SECONDS) / MIN_TO_SECONDS
+    (totalSeconds - hours * HOUR_TO_SECONDS) / MIN_TO_SECONDS,
   );
   const seconds =
     totalSeconds - hours * HOUR_TO_SECONDS - mins * MIN_TO_SECONDS;

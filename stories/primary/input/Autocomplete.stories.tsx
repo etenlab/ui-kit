@@ -172,7 +172,7 @@ Primary.parameters = {
           label="Choose File Name"
           options={top100Films}
           getOptionLabel={(option: FilmOptionType) => option.title}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

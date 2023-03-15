@@ -40,7 +40,7 @@ View.parameters = {
   docs: {
     source: {
       code: jsxToString(
-        <ImageViewer src="/images.jpg" file_name="images" mode="view" />
+        <ImageViewer src="/images.jpg" file_name="images" mode="view" />,
       ),
       language: 'jsx',
       format: true,
@@ -59,7 +59,7 @@ Quill.parameters = {
   docs: {
     source: {
       code: jsxToString(
-        <ImageViewer src="/images.jpg" file_name="images" mode="quill" />
+        <ImageViewer src="/images.jpg" file_name="images" mode="quill" />,
       ),
       language: 'jsx',
       format: true,

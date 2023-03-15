@@ -46,7 +46,11 @@ Primary.parameters = {
   docs: {
     source: {
       code: jsxToString(
-        <ButtonList label="Select a Chapter" items={items} onClick={() => {}} />
+        <ButtonList
+          label="Select a Chapter"
+          items={items}
+          onClick={() => {}}
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -71,7 +75,7 @@ WithUnderline.parameters = {
           label="Select a Chapter"
           items={items}
           onClick={() => {}}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

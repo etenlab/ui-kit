@@ -126,7 +126,7 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
     onSend,
     onClose,
   },
-  ref
+  ref,
 ) {
   const [quill, setQuill] = useState<string | undefined>(undefined);
   const [plain, setPlain] = useState<string>('');
@@ -175,7 +175,7 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
     value: string,
     _delta: any,
     _source: any,
-    editor: any
+    editor: any,
   ) => {
     setQuill(value);
     setPlain(editor.getText());
@@ -203,7 +203,7 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
   };
 
   const handleOpenEmojiPicker: MouseEventHandler<HTMLButtonElement> = (
-    event
+    event,
   ) => {
     const selection = quillRef.current?.editor?.getSelection();
 
@@ -238,7 +238,7 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
         addEmojiToQuill(emoji);
       },
     }),
-    []
+    [],
   );
 
   const handleBlur = (_previousSelection: ReactQuill.Range) => {

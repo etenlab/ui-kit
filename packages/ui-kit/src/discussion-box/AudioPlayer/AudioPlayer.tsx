@@ -42,7 +42,7 @@ export function AudioPlayer({ src, file_type }: AudioPlayerProps) {
         lineWidth: 3,
         lineColor: colors['middle-gray'],
         rounded: true,
-      })
+      }),
     );
   }, []);
 

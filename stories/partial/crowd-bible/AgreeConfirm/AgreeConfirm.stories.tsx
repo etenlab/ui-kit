@@ -31,7 +31,9 @@ Primary.parameters = {
   docs: {
     source: {
       code: jsxToString(
-        <AgreeConfirm onClick={(agree: 'agree' | 'disagree') => alert(agree)} />
+        <AgreeConfirm
+          onClick={(agree: 'agree' | 'disagree') => alert(agree)}
+        />,
       ),
       language: 'jsx',
       format: true,

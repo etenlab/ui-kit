@@ -37,7 +37,7 @@ Hide.parameters = {
           label="Password"
           show={false}
           onClickShowIcon={() => console.log('Clicked')}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -60,7 +60,7 @@ Show.parameters = {
           label="Password"
           show={true}
           onClickShowIcon={() => console.log('Clicked')}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

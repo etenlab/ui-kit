@@ -12,14 +12,12 @@
     "prepublish": "lerna run prepublish",
     "format": "prettier --write 'stories/**/*' 'packages/*/src/**/*' 'README.md'",
     "precommit": "lint-staged",
-    "release": "cd packages/ui-kit && npm publish --access public",
+    "release": "lerna publish --no-private --no-push",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
-    "@changesets/changelog-github": "^0.4.8",
-    "@changesets/cli": "^2.26.0",
     "@storybook/addon-actions": "^6.5.15",
     "@storybook/addon-essentials": "^6.5.15",
     "@storybook/addon-interactions": "^6.5.15",

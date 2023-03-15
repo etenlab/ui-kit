@@ -94,7 +94,7 @@ Primary.parameters = {
           reactions={reactions}
           emoji="1f609"
           onClick={(emoji: string) => console.log(emoji)}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

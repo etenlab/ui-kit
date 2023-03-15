@@ -51,7 +51,7 @@ export function SimpleQuill({
 
       changeRef.current.onChange(newValue);
     },
-    [handleCloseEmoji]
+    [handleCloseEmoji],
   );
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {

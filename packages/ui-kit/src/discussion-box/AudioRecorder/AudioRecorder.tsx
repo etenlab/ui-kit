@@ -63,7 +63,7 @@ export function AudioRecorder({ onCancel, onSave }: AudioRecorderProps) {
         lineWidth: 3,
         lineColor: colors['middle-gray'],
         rounded: true,
-      })
+      }),
     );
   };
 
