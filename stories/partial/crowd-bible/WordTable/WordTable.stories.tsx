@@ -68,21 +68,17 @@ const items = [
   },
 ];
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Word = Template.bind({});
+Word.args = {
   label_1: 'Word',
   label_2: 'Definition',
   items,
 };
-Primary.parameters = {
+Word.parameters = {
   docs: {
     source: {
       code: jsxToString(
-        <WordTable
-          label_1="Word"
-          label_2="Definition"
-          items={items}
-        />
+        <WordTable label_1="Word" label_2="Definition" items={items} />,
       ),
       language: 'jsx',
       format: true,
@@ -91,75 +87,21 @@ Primary.parameters = {
   },
 };
 
-// export const WithUnderline = Template.bind({});
-// WithUnderline.args = {
-//   withUnderline: true,
-//   label: 'select a chapter',
-//   items,
-// };
-// WithUnderline.parameters = {
-//   docs: {
-//     source: {
-//       code: jsxToString(
-//         <VerticalRadioList
-//           label="Select a Chapter"
-//           withUnderline
-//           items={items}
-//           value={1}
-//           onChange={() => {}}
-//         />
-//       ),
-//       language: 'jsx',
-//       format: true,
-//       type: 'auto',
-//     },
-//   },
-// };
-
-// export const WithoutLabel = Template.bind({});
-// WithoutLabel.args = {
-//   withUnderline: true,
-//   items,
-// };
-// WithUnderline.parameters = {
-//   docs: {
-//     source: {
-//       code: jsxToString(
-//         <VerticalRadioList
-//           withUnderline
-//           items={items}
-//           value={1}
-//           onChange={() => {}}
-//         />
-//       ),
-//       language: 'jsx',
-//       format: true,
-//       type: 'auto',
-//     },
-//   },
-// };
-
-// export const ColoredUnderline = Template.bind({});
-// ColoredUnderline.args = {
-//   withUnderline: true,
-//   underlineColor: 'red',
-//   items,
-// };
-// ColoredUnderline.parameters = {
-//   docs: {
-//     source: {
-//       code: jsxToString(
-//         <VerticalRadioList
-//           withUnderline
-//           underlineColor="red"
-//           items={items}
-//           value={1}
-//           onChange={() => {}}
-//         />
-//       ),
-//       language: 'jsx',
-//       format: true,
-//       type: 'auto',
-//     },
-//   },
-// };
+export const KeyTerm = Template.bind({});
+KeyTerm.args = {
+  label_1: 'Key Term ',
+  label_2: 'Definition',
+  items,
+};
+KeyTerm.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <WordTable label_1="Key Term" label_2="Definition" items={items} />,
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
