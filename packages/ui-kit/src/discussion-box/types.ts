@@ -54,7 +54,7 @@ export interface IPost {
     files: [
       {
         id: number;
-      },
+      }
     ];
   };
   created_at: Date;

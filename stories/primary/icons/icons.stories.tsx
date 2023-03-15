@@ -3,6 +3,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import {
   CiRead,
+  CiDark,
+  CiLight,
   CiPause1,
   CiUnread,
   CiSearch,
@@ -126,6 +128,8 @@ const Template: ComponentStory<typeof Div> = (args) => {
       <TitleWithIcon title="CiUnread" icon={<CiUnread />} />
       <TitleWithIcon title="CiRead" icon={<CiRead />} />
       <TitleWithIcon title="CiPause1" icon={<CiPause1 />} />
+      <TitleWithIcon title="CiDark" icon={<CiDark />} />
+      <TitleWithIcon title="CiLight" icon={<CiLight />} />
       <TitleWithIcon title="CiSearch" icon={<CiSearch />} />
       <TitleWithIcon title="CiFaceSmile" icon={<CiFaceSmile />} />
       <TitleWithIcon title="CiCircleRemove" icon={<CiCircleRemove />} />

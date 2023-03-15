@@ -1,9 +1,9 @@
-import { Stack, Typography } from "@mui/material"
-import { Container } from "@mui/system"
-import React from "react"
-import AppLogo from "./AppLogo"
-import { MenuIcon } from "./icons"
-import './Page.css'
+import { Stack, Typography } from '@mui/material';
+import { Container } from '@mui/system';
+import React from 'react';
+import AppLogo from './AppLogo';
+import { MenuIcon } from './icons';
+import './Page.css';
 
 interface IProps {
     openSideNav?: () => void
@@ -30,4 +30,4 @@ export function PageHeader(props: IProps) {
         </Container>
     )
 }
-export default PageHeader
+export default PageHeader;

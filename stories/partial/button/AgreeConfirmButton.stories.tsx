@@ -8,7 +8,7 @@ export default {
   title: 'Partial/AgreeConfirmButton',
   component: AgreeConfirmButton,
   decorators: [
-    Story => (
+    (Story) => (
       <div style={{ margin: '3em', background: '#eee', width: '500px' }}>
         <ThemeProvider>
           <Story />
@@ -18,7 +18,7 @@ export default {
   ],
 } as ComponentMeta<typeof AgreeConfirmButton>;
 
-const Template: ComponentStory<typeof AgreeConfirmButton> = args => (
+const Template: ComponentStory<typeof AgreeConfirmButton> = (args) => (
   <AgreeConfirmButton {...args} />
 );
 

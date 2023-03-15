@@ -1,5 +1,7 @@
 export {
   CiRead,
+  CiDark,
+  CiLight,
   CiSearch,
   CiPause1,
   CiUnread,

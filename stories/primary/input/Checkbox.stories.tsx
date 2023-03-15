@@ -8,7 +8,7 @@ export default {
   title: 'Primary/Input/Checkbox',
   component: Checkbox,
   decorators: [
-    Story => (
+    (Story) => (
       <div style={{ margin: '3em', background: '#eee', width: '500px' }}>
         <ThemeProvider>
           <Story />
@@ -18,7 +18,7 @@ export default {
   ],
 } as ComponentMeta<typeof Checkbox>;
 
-const Template: ComponentStory<typeof Checkbox> = args => (
+const Template: ComponentStory<typeof Checkbox> = (args) => (
   <Checkbox {...args} />
 );
 
