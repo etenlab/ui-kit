@@ -9,3 +9,5 @@ export * from './RangeSelectableTextArea';
 export * from './DotsText';
 export * from './QuestionBox';
 export * from './QuestionCreatorBox';
+export * from './WordTable';
+export * from './VoteButtonGroup';
