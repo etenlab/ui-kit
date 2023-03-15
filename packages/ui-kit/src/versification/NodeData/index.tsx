@@ -10,6 +10,7 @@ export function NodeData({
   col = false,
   inline = false,
   currentValue,
+  short,
   nodeType,
   originalValue,
   translationValues,
@@ -20,6 +21,7 @@ export function NodeData({
 }: Pick<
   IdentifierLabelProps,
   | 'currentValue'
+  | 'short'
   | 'nodeType'
   | 'originalValue'
   | 'translationValues'
@@ -50,6 +52,7 @@ export function NodeData({
         translationValues={translationValues}
         onNewIdentifierSave={onNewIdentifierSave}
         currentValue={currentValue}
+        short={short}
         sx={{ margin: !col ? '0 20px 0 0' : '0 0 8px' }}
       />
       <Box

@@ -7,6 +7,7 @@ import { NodeData } from '../../../../packages/ui-kit/src/versification/NodeData
 
 const args = {
   currentValue: '5',
+  short: false,
   nodeType: 'chapter' as const,
   originalValue: '5',
   translationValues: ['7', '9'],
@@ -57,6 +58,22 @@ Primary.parameters = {
   },
 };
 
+export const Short = Template.bind({});
+Short.args = {
+  ...args,
+  short: true,
+};
+Short.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(<NodeData {...Short.args} />),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
+
 export const WithValues = Template.bind({});
 WithValues.args = {
   ...args,
@@ -78,20 +95,35 @@ WithValues.parameters = {
   },
 };
 
-export const ColNotInline = Template.bind({});
-ColNotInline.args = {
+export const Column = Template.bind({});
+Column.args = {
   ...args,
   label: 'v3-5',
   nodeType: 'verse' as const,
   originalValue: '3-5',
   translationValues: ['2a', 'w7'],
   col: true,
-  inline: false,
 };
-ColNotInline.parameters = {
+Column.parameters = {
   docs: {
     source: {
-      code: jsxToString(<NodeData {...ColNotInline.args} />),
+      code: jsxToString(<NodeData {...Column.args} />),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
+
+export const NotInline = Template.bind({});
+NotInline.args = {
+  ...Column.args,
+  inline: false,
+};
+NotInline.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(<NodeData {...NotInline.args} />),
       language: 'jsx',
       format: true,
       type: 'auto',
