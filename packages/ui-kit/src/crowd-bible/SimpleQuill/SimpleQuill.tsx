@@ -58,11 +58,12 @@ export function SimpleQuill({
     onChange(event.target.value);
   };
 
-  const handleBlur: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement> =
-    (e) => {
-      const element = e.currentTarget;
-      lastCursorPosRef.current = element.selectionStart || value.length;
-    };
+  const handleBlur: FocusEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  > = (e) => {
+    const element = e.currentTarget;
+    lastCursorPosRef.current = element.selectionStart || value.length;
+  };
 
   return (
     <Box

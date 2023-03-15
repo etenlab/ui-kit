@@ -22,8 +22,9 @@ type VideoRecorderProps = {
 export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
   const [recorderStatus, setRecorderStatus] = useState<RecorderStatus>('new');
   const [savedLastChunk, setSavedLastChunk] = useState<boolean>(true);
-  const [facingMode, setFacingMode] =
-    useState<'user' | 'environment'>('environment');
+  const [facingMode, setFacingMode] = useState<'user' | 'environment'>(
+    'environment'
+  );
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const streamRef = useRef<MediaStream | null>(null);

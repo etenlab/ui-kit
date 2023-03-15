@@ -8,7 +8,7 @@ export default {
   title: 'Primary/Input/Radio',
   component: Radio,
   decorators: [
-    Story => (
+    (Story) => (
       <div style={{ margin: '3em', background: '#eee', width: '500px' }}>
         <ThemeProvider>
           <Story />
@@ -18,7 +18,7 @@ export default {
   ],
 } as ComponentMeta<typeof Radio>;
 
-const Template: ComponentStory<typeof Radio> = args => <Radio {...args} />;
+const Template: ComponentStory<typeof Radio> = (args) => <Radio {...args} />;
 
 export const Checked = Template.bind({});
 Checked.args = {

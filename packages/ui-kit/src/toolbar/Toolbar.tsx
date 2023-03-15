@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { IconButton, Stack, Typography, Badge } from '@mui/material';
-import { BiMessageRounded, FiBell, FiMenu } from '../icons';
+import { BiMessageRounded, FiBell, FiMenu, CiDark, CiLight } from '../icons';
 
 type ToolbarProps = {
   title: string;
@@ -12,8 +12,10 @@ type ToolbarProps = {
     notification: boolean;
     menu: boolean;
   };
+  themeMode: 'dark' | 'light';
   onClickDiscussionBtn(): void;
   onClickNotificationBtn(): void;
+  onClickThemeModeBtn(): void;
   onClickMenuBtn(): void;
 };
 
@@ -26,6 +28,8 @@ export function Toolbar({
     notification: true,
     menu: true,
   },
+  themeMode = 'light',
+  onClickThemeModeBtn,
   onClickDiscussionBtn,
   onClickNotificationBtn,
   onClickMenuBtn,
@@ -66,6 +70,19 @@ export function Toolbar({
             </Badge>
           </IconButton>
         ) : null}
+
+        <IconButton onClick={onClickThemeModeBtn}>
+          {themeMode === 'light' ? (
+            <CiLight
+              style={{ color: '#5C6673', fontSize: 27, strokeWidth: '0.5px' }}
+            />
+          ) : (
+            <CiDark
+              style={{ color: '#5C6673', fontSize: 27, strokeWidth: '0.5px' }}
+            />
+          )}
+        </IconButton>
+
         {buttons.menu ? (
           <IconButton onClick={onClickMenuBtn}>
             <FiMenu style={{ color: '#5C6673', fontSize: '40px' }} />

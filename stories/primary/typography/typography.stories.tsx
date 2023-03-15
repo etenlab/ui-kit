@@ -8,7 +8,7 @@ export default {
   title: 'Primary/Typography',
   component: Typography,
   decorators: [
-    Story => (
+    (Story) => (
       <div style={{ margin: '3em', background: '#eee', width: '500px' }}>
         <ThemeProvider>
           <Story />
@@ -21,7 +21,7 @@ export default {
 const text =
   'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.';
 
-const Template: ComponentStory<typeof Typography> = args => (
+const Template: ComponentStory<typeof Typography> = (args) => (
   <Typography {...args} />
 );
 
