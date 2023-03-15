@@ -7,7 +7,7 @@ import LandingSection from './LandingSection';
 import StatSection from './StatSection';
 
 interface IProps {}
-export function HomePage(props: IProps) {
+export function HomePage(_props: IProps) {
   const [isSideNavOpen, setSideNavOpenStatus] = useState(false);
   return (
     <div id="home-page">

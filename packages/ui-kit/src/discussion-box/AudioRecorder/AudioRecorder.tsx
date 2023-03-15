@@ -47,7 +47,7 @@ export function AudioRecorder({ onCancel, onSave }: AudioRecorderProps) {
       alert('There is no data to save');
     }
     refreshRecorder();
-  }, [recorderStatus, savedLastChunk, refreshRecorder]);
+  }, [recorderStatus, savedLastChunk, refreshRecorder, onSave]);
 
   const initWave = () => {
     const canvasElement = canvasRef.current;
@@ -133,6 +133,7 @@ export function AudioRecorder({ onCancel, onSave }: AudioRecorderProps) {
 
   const handleClickCancel = () => {
     if (recorderStatus === 'paused') {
+      // eslint-disable-next-line no-restricted-globals
       if (confirm('Recorded data will be lost!')) {
         refreshRecorder();
       }

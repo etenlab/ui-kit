@@ -5,6 +5,8 @@ import '@fontsource/inter';
 
 import { theme } from './theme';
 
+import { PaletteColorOptions } from '@mui/material';
+
 type ThemeProviderProps = {
   children?: React.ReactNode;
 };
@@ -26,8 +28,6 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     </MuiThemeProvider>
   );
 }
-
-import { PaletteColorOptions } from '@mui/material';
 
 declare module '@mui/material/TextField' {
   interface TextFieldPropsColorOverrides {

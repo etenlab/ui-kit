@@ -32,7 +32,7 @@ export const PlayButton = Template.bind({});
 PlayButton.args = {
   icon: (
     <BsFillPlayFill
-      style={{ color: colors['white'], fontSize: 40, paddingLeft: 3 }}
+      style={{ color: colors.white, fontSize: 40, paddingLeft: 3 }}
     />
   ),
   onClick: () => alert('Clicked Circle Button!'),
@@ -40,17 +40,14 @@ PlayButton.args = {
 
 export const PauseButton = Template.bind({});
 PauseButton.args = {
-  icon: <CiPause1 style={{ color: colors['white'], strokeWidth: '1.2px' }} />,
+  icon: <CiPause1 style={{ color: colors.white, strokeWidth: '1.2px' }} />,
   onClick: () => alert('Clicked Circle Button!'),
 };
 
 export const TextButton = Template.bind({});
 TextButton.args = {
   icon: (
-    <Typography
-      variant="body3"
-      sx={{ fontWeight: 800, color: colors['white'] }}
-    >
+    <Typography variant="body3" sx={{ fontWeight: 800, color: colors.white }}>
       Aa
     </Typography>
   ),
