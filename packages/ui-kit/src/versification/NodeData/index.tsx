@@ -3,14 +3,13 @@ import React from 'react';
 import { Box } from '@mui/material';
 
 import { BiLike, BiDislike, BiMessageRounded } from '../../icons';
-import { NewIdentifierBoxProps } from '../NewIdentifierBox';
-import { IdentifierLabel } from '../IdentifierLabel';
+import { IdentifierLabelProps, IdentifierLabel } from '../IdentifierLabel';
 import { IconBadge } from '../IconBadge';
 
 export function NodeData({
   col = false,
   inline = false,
-  label,
+  currentValue,
   nodeType,
   originalValue,
   translationValues,
@@ -19,16 +18,18 @@ export function NodeData({
   numPosts,
   onNewIdentifierSave,
 }: Pick<
-  NewIdentifierBoxProps,
-  'nodeType' | 'originalValue' | 'translationValues'
+  IdentifierLabelProps,
+  | 'currentValue'
+  | 'nodeType'
+  | 'originalValue'
+  | 'translationValues'
+  | 'onNewIdentifierSave'
 > & {
   col?: boolean;
   inline?: boolean;
-  label: string;
   numUpVotes: number;
   numDownVotes: number;
   numPosts: number;
-  onNewIdentifierSave(value: string): void;
 }) {
   return (
     <Box
@@ -48,7 +49,7 @@ export function NodeData({
         originalValue={originalValue}
         translationValues={translationValues}
         onNewIdentifierSave={onNewIdentifierSave}
-        value={label}
+        currentValue={currentValue}
         sx={{ margin: !col ? '0 20px 0 0' : '0 0 8px' }}
       />
       <Box

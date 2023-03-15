@@ -6,7 +6,7 @@ import { ThemeProvider } from '../../../../packages/ui-kit/src';
 import { NodeData } from '../../../../packages/ui-kit/src/versification/NodeData';
 
 const args = {
-  label: 'Ch. 5',
+  currentValue: '5',
   nodeType: 'chapter' as const,
   originalValue: '5',
   translationValues: ['7', '9'],

@@ -5,18 +5,22 @@ import { Box, Popover } from '@mui/material';
 
 import { NewIdentifierBoxProps, NewIdentifierBox } from '../NewIdentifierBox';
 
+export type IdentifierLabelProps = Parameters<typeof IdentifierLabel>[0];
+
 export function IdentifierLabel({
   nodeType,
   originalValue,
   translationValues,
-  value,
+  currentValue,
+  short = false,
   sx = [],
   onNewIdentifierSave,
 }: Pick<
   NewIdentifierBoxProps,
   'nodeType' | 'originalValue' | 'translationValues'
 > & {
-  value: string;
+  currentValue: string;
+  short?: boolean;
   sx?: SxProps<Theme>;
   onNewIdentifierSave(value: string): void;
 }) {
@@ -31,6 +35,12 @@ export function IdentifierLabel({
   };
 
   const open = Boolean(anchorEl);
+  const prefix = !short
+    ? `${nodeType.charAt(0).toUpperCase()}${nodeType.slice(1)} `
+    : nodeType === 'chapter'
+    ? 'Ch. '
+    : 'v';
+  const label = `${prefix}${currentValue}`;
 
   return (
     <Box
@@ -65,7 +75,7 @@ export function IdentifierLabel({
         sx={{ position: 'relative', userSelect: 'none' }}
         onClick={handleClick}
       >
-        {value}
+        {label}
       </Box>
       <Popover
         open={open}
