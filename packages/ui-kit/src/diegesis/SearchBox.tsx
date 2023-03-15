@@ -34,7 +34,7 @@ const CustomTextField = styled(TextField)({
 export const SearchBox: React.FC<IProps> = (props) => {
     const { placeholder, className } = props;
     return (
-        <Stack direction={'row'} className={className}>
+        <Stack direction={'row'} className={`search-box-container ${className}`}>
             <CustomTextField
                 fullWidth
                 placeholder={placeholder || 'Search...'}
