@@ -92,7 +92,7 @@ StandardAlter.parameters = {
               },
             ],
           }}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

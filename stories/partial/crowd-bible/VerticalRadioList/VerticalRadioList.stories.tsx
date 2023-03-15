@@ -56,7 +56,7 @@ Primary.parameters = {
           items={items}
           value={1}
           onChange={() => {}}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -81,7 +81,7 @@ WithUnderline.parameters = {
           items={items}
           value={1}
           onChange={() => {}}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -104,7 +104,7 @@ WithUnderline.parameters = {
           items={items}
           value={1}
           onChange={() => {}}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -129,7 +129,7 @@ ColoredUnderline.parameters = {
           items={items}
           value={1}
           onChange={() => {}}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

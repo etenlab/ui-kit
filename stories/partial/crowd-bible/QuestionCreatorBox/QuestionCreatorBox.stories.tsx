@@ -49,7 +49,7 @@ Primary.parameters = {
         <QuestionCreatorBox
           onSave={(question: Question) => console.log(question)}
           onCancel={() => {}}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

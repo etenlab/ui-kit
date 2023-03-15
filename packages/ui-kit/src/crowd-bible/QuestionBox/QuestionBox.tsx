@@ -68,8 +68,8 @@ export function QuestionBox({
 
     setChecked(
       questionData.map(
-        (data) => ({ item: data, checked: false } as CheckItemType)
-      )
+        (data) => ({ item: data, checked: false } as CheckItemType),
+      ),
     );
   }, [questionData, questionKind]);
 

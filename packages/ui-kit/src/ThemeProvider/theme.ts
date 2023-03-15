@@ -6,5 +6,5 @@ import { components } from './components';
 import { typography } from './typography';
 
 export const theme = createTheme(
-  deepmerge(deepmerge(palette, typography), components)
+  deepmerge(deepmerge(palette, typography), components),
 );

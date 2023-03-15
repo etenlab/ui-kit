@@ -39,7 +39,7 @@ TitleWithBackIcon.parameters = {
           withBackIcon
           onClose={() => alert('Clicked Close Button')}
           onBack={() => alert('Clicked Back Button')}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -64,7 +64,7 @@ TitleWithoutIcon.parameters = {
           withBackIcon={false}
           onClose={() => alert('Clicked Close Button')}
           onBack={() => alert('Clicked Back Button')}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

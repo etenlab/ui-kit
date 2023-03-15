@@ -8,7 +8,7 @@ import { StyledButton } from './styled';
 export function Button(
   props: Omit<ButtonProps, 'endIcon'> & {
     endIcon?: boolean | React.ReactNode;
-  }
+  },
 ) {
   const args = {
     ...props,

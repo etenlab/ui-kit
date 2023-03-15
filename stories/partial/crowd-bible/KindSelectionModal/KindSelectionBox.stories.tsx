@@ -59,7 +59,7 @@ LeaveFeedbackBox.parameters = {
           onCancel={() => {
             alert('Click Cancel Button');
           }}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -104,7 +104,7 @@ AskQuestion.parameters = {
           onCancel={() => {
             alert('Click Cancel Button');
           }}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

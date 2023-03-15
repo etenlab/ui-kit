@@ -104,7 +104,7 @@ Primary.parameters = {
           avatar="/images.jpg"
           date={new Date()}
           openActionList={() => alert('Clicked')}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

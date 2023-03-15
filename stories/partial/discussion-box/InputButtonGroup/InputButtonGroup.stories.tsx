@@ -38,7 +38,9 @@ Primary.parameters = {
   docs: {
     source: {
       code: jsxToString(
-        <InputButtonGroup onClick={(mode: unknown) => alert(`Click ${mode}`)} />
+        <InputButtonGroup
+          onClick={(mode: unknown) => alert(`Click ${mode}`)}
+        />,
       ),
       language: 'jsx',
       format: true,
