@@ -83,7 +83,7 @@ export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
       alert('There is no data to save');
     }
     refreshRecorder();
-  }, [recorderStatus, savedLastChunk, refreshRecorder]);
+  }, [recorderStatus, savedLastChunk, refreshRecorder, onSave]);
 
   const handleClickStart = async () => {
     if (streamRef.current === null) {
@@ -142,6 +142,7 @@ export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
 
   const handleClickCancel = () => {
     if (recorderStatus === 'paused') {
+      // eslint-disable-next-line no-restricted-globals
       if (confirm('Recorded data will be lost!')) {
         refreshRecorder();
       }

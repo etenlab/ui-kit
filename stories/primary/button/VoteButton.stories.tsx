@@ -39,14 +39,15 @@ Like.args = {
 Like.parameters = {
   docs: {
     source: {
-      code: jsxToString(<VoteButton count={42} onClick={() => alert('Like Clicked')} />),
+      code: jsxToString(
+        <VoteButton count={42} onClick={() => alert('Like Clicked')} />,
+      ),
       language: 'jsx',
       format: true,
       type: 'auto',
     },
   },
 };
-
 
 export const Dislike = Template.bind({});
 Dislike.args = {
@@ -57,7 +58,13 @@ Dislike.args = {
 Dislike.parameters = {
   docs: {
     source: {
-      code: jsxToString(<VoteButton isLike={false} count={15} onClick={() => alert('Dislike Clicked')} />),
+      code: jsxToString(
+        <VoteButton
+          isLike={false}
+          count={15}
+          onClick={() => alert('Dislike Clicked')}
+        />,
+      ),
       language: 'jsx',
       format: true,
       type: 'auto',

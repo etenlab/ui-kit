@@ -59,7 +59,7 @@ Primary.parameters = {
           dislike={false}
           setLike={() => {}}
           setDislike={() => {}}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
