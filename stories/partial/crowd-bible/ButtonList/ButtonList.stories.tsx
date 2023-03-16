@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeProvider } from '../../../../packages/ui-kit/src';
 import { ButtonList } from '../../../../packages/ui-kit/src/crowd-bible';
 import jsxToString from 'jsx-to-string';
+import {  BiRightArrowAlt } from 'react-icons/bi';
 
 export default {
   title: 'Partial/Crowd Bible/Button List',
@@ -75,6 +76,33 @@ WithUnderline.parameters = {
           label="Select a Chapter"
           items={items}
           onClick={() => {}}
+        />,
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
+
+
+
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+  label: 'Select a Chapter',
+  items,
+  icon: <BiRightArrowAlt/>,
+  onClick: (selected: unknown) => alert(`Clicked ${selected} Button`),
+};
+WithIcon.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <ButtonList
+          label="Select a Chapter"
+          items={items}
+          onClick={() => { }}
+          icon={<BiRightArrowAlt/>}
         />,
       ),
       language: 'jsx',
