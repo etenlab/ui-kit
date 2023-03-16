@@ -22,11 +22,20 @@ export function NewIdentifierBox({
 }) {
   const label = `# ${nodeType.charAt(0).toUpperCase()}${nodeType.slice(1)}`;
   const [value, setValue] = useState('');
+  const [errorText, setErrorText] = useState('');
 
   function handleSave() {
-    if (value && ![originalValue, ...translationValues].includes(value)) {
-      onSave(value);
+    if (!value) {
+      setErrorText('Required Field');
+      return;
     }
+
+    if ([originalValue, ...translationValues].includes(value)) {
+      setErrorText('Value is used already');
+      return;
+    }
+
+    onSave(value);
   }
 
   return (
@@ -66,7 +75,16 @@ export function NewIdentifierBox({
           fullWidth
           placeholder="Type an identifier"
           value={value}
+          error={!!errorText}
+          helperText={errorText}
+          onInput={() => setErrorText('')}
           onChange={(event) => setValue(event.target.value)}
+          sx={{
+            '& .MuiFormHelperText-root': {
+              m: 0,
+              fontSize: 12,
+            },
+          }}
           InputProps={{
             sx: {
               bgcolor: '#fff',
