@@ -1,0 +1,38 @@
+.controls-container {
+}
+.filter-btn-container {
+  font-size: 20px;
+}
+.mr-1 {
+    margin-right: 10px;
+}
+.mr-2 {
+  margin-right: 20px;
+}
+.mx-1 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.tab-content {
+  background-color: #F0F0E7;
+  padding: 20px 25px;
+  width: 100%;
+}
+.tab-content .MuiInputBase-root {
+    min-width: 250px;
+    margin-right: 20px;
+    flex: 1;
+}
+.tags-container {
+    margin-top: 10px;
+}
+.tags-container .MuiChip-filled {
+    background-color: white;
+    border-radius: 5px;
+    margin-right: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.search-box-container {
+    min-width: 240px;
+}

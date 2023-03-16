@@ -15,6 +15,7 @@ export const colors = {
   yellow: '#FCBB14',
   'middle-yellow': '#FFF1CE',
   'light-yellow': '#FFF9EA',
+  'light-gray': '#F0F0E7'
 };
 
 export const palette: ThemeOptions = {
