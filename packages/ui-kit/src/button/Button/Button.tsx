@@ -8,7 +8,7 @@ import { StyledButton } from './styled';
 export function Button(
   props: Omit<ButtonProps, 'endIcon'> & {
     endIcon?: boolean | React.ReactNode;
-    component?: string;   // to be passed to MUI button
+    component?: string;   // component to be passed to MUI button
   },
 ) {
   const args = {
