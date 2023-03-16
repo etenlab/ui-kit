@@ -4,6 +4,7 @@ import { ThemeProvider } from '../../../packages/ui-kit/src';
 import EntriesPage from '../../../packages/ui-kit/src/diegesis/entries/Entries';
 import SearchBox from '../../../packages/ui-kit/src/diegesis/SearchBox';
 import EntriesTopControls from '../../../packages/ui-kit/src/diegesis/entries/EntriesTopControls';
+import EntriesDataTable from '../../../packages/ui-kit/src/diegesis/entries/EntriesDataTable';
 
 
 export default {
@@ -39,5 +40,12 @@ const EntriesTopControlsTemplate: ComponentStory<typeof EntriesTopControls> = ar
 );
 export const entriesTopControls = EntriesTopControlsTemplate.bind({});
 entriesTopControls.args = {
+};
+
+const EntriesDataTableTemplate: ComponentStory<typeof EntriesDataTable> = args => (
+    <EntriesDataTable {...args} />
+);
+export const entriesDataTable = EntriesDataTableTemplate.bind({});
+entriesDataTable.args = {
 };
 

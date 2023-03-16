@@ -4,7 +4,7 @@
   font-size: 20px;
 }
 .mr-1 {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 .mr-2 {
   margin-right: 20px;
@@ -14,27 +14,27 @@
   margin-right: 10px;
 }
 .tab-content {
-  background-color: #F0F0E7;
+  background-color: #f0f0e7;
   padding: 20px 25px;
   width: 100%;
 }
 .tab-content .MuiInputBase-root {
-    min-width: 250px;
-    margin-right: 20px;
-    flex: 1;
+  min-width: 250px;
+  margin-right: 20px;
+  flex: 1;
 }
 .tags-container {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 .tags-container .MuiChip-filled {
-    background-color: white;
-    border-radius: 5px;
-    margin-right: 8px;
-    font-size: 14px;
-    font-weight: 600;
+  background-color: white;
+  border-radius: 5px;
+  margin-right: 8px;
+  font-size: 14px;
+  font-weight: 600;
 }
 .search-box-container {
-    min-width: 240px;
+  min-width: 240px;
 }
 .controls-section {
   padding-top: 60px;
@@ -44,23 +44,23 @@
   padding-bottom: 112px;
 }
 .diegesis-tbl-container {
-
 }
 .diegesis-tbl-container .MuiTableRow-head {
-    border-bottom: 3px solid #4ABE95;
+  border-bottom: 3px solid #4abe95;
 }
-.diegesis-tbl-container .MuiTableSortLabel-root, .diegesis-tbl-container .MuiTableSortLabel-root.Mui-active {
-    font-size: 0.9rem;
-    color: #cccdce;
-    font-weight: 400;
-    line-height: 0.9rem;
-    font-family: 'helvetica';
+.diegesis-tbl-container .MuiTableSortLabel-root,
+.diegesis-tbl-container .MuiTableSortLabel-root.Mui-active {
+  font-size: 0.9rem;
+  color: #cccdce;
+  font-weight: 400;
+  line-height: 0.9rem;
+  font-family: 'helvetica';
 }
 .diegesis-tbl-container .MuiTableRow-head .MuiTableSortLabel-icon {
-    color: #4ABE95 !important;
+  color: #4abe95 !important;
 }
 .diegesis-tbl-container .MuiTypography-h3.underline-text {
-  border-bottom: 1px solid #4ABE95;
+  border-bottom: 1px solid #4abe95;
   font-size: 1.2rem;
   display: inline-flex;
 }
@@ -69,18 +69,90 @@
   border: 1px solid;
 }
 .diegesis-tbl-container .MuiTablePagination-actions .MuiSvgIcon-root {
-    height: 30px;
-    width: 30px; 
+  height: 30px;
+  width: 30px;
 }
-.diegesis-tbl-container .MuiTablePagination-actions .MuiIconButton-root{
+.diegesis-tbl-container .MuiTablePagination-actions .MuiIconButton-root {
   padding: 0px;
 }
-.diegesis-tbl-container .MuiTablePagination-actions .MuiIconButton-root:not(.Mui-disabled) {
-  color: #4ABE95;
+.diegesis-tbl-container
+  .MuiTablePagination-actions
+  .MuiIconButton-root:not(.Mui-disabled) {
+  color: #4abe95;
 }
-.diegesis-tbl-container .MuiTablePagination-actions .MuiIconButton-root.Mui-disabled {
+.diegesis-tbl-container
+  .MuiTablePagination-actions
+  .MuiIconButton-root.Mui-disabled {
   color: rgba(0, 0, 0, 0.26);
 }
 .diegesis-tbl-container .MuiTablePagination-toolbar {
   margin-top: 10px;
+}
+.tab-content.show {
+  height: auto;
+  transition: all 0.2s ease-in;
+}
+.tab-content.hide {
+  height: 0px;
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+  transition: all 0.2s ease-out;
+}
+
+.hide-sm {
+  display: none !important;
+}
+
+.show-xs {
+  display: none !important;
+}
+
+@media screen and (max-width: 414px) {
+  .hide-xs {
+    display: none !important;
+  }
+  .show-xs {
+    display: inherit !important;
+  }
+  .controls-section {
+     padding-top: 30px;
+  }
+  .controls-section .page-title {
+    font-size: 1.8rem;
+    margin-right: 0px;
+  }
+  .controls-container > :first-child {
+    flex-direction: row;
+    width: 100%;
+  }
+  .search-box-container {
+    flex-direction: column !important;
+    margin: 0px;
+    width: 100%;
+  }
+  .MuiTab-root {
+    padding-bottom: 1.5rem;
+  }
+  .tab-content .MuiInputBase-root {
+    width: 100%;
+    margin-bottom: 5px;
+    margin-right: 0px;
+  }
+  .tab-content > :first-child {
+    flex-direction: column;
+    width: 100%;
+  }
+  .tab-content > :nth-child(2) {
+    flex-wrap: wrap;
+  }
+  .tab-content .MuiChip-root {
+    margin-bottom: 5px;
+  }
+  .diegesis-tbl-container .MuiTableBody-root .MuiTableRow-root .MuiTableCell-root {
+    border-bottom: 1px solid #4abe95;
+  }
+  .diegesis-tbl-container .MuiTypography-h3.underline-text {
+    border-bottom: 0px;
+  }
 }
