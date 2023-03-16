@@ -8,8 +8,8 @@ type VoteButtonGroupProps = {
   dislikeCount: number;
   like: boolean;
   dislike: boolean;
-  setLike(val: boolean): void;
-  setDislike(val: boolean): void;
+  setLike?(val: boolean): void;
+  setDislike?(val: boolean): void;
 };
 
 export function VoteButtonGroup({
@@ -22,20 +22,28 @@ export function VoteButtonGroup({
 }: VoteButtonGroupProps) {
   const handleLikeChange = () => {
     if (!like && dislike) {
-      setDislike(false);
+      if (setDislike) {
+        setDislike(false);
+      }
     }
-    setLike(!like);
+    if (setLike) {
+      setLike(!like);
+    }
   };
 
   const handleDislikeChange = () => {
     if (like && !dislike) {
-      setLike(false);
+      if (setLike) {
+        setLike(false);
+      }
     }
-    setDislike(!dislike);
+    if (setDislike) {
+      setDislike(!dislike);
+    }
   };
 
   return (
-    <Grid container columnGap={'14px'}>
+    <Grid container columnGap={'14px'} sx={{ py: '8px' }}>
       <Grid item>
         <VoteButton
           isLike={true}
