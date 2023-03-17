@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 
 import { Box, Typography, IconButton } from '@mui/material';
 
+import { colors } from '../../ThemeProvider/palette';
 import { BiLeftArrowAlt } from '../../icons';
 
 export function HeadingBox({
@@ -19,10 +20,10 @@ export function HeadingBox({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        backgroundColor: '#e3eaf3',
+        backgroundColor: colors['light-blue'],
         minHeight: 68,
         p: 2.5,
-        color: '#1b1b1b',
+        color: colors.dark,
       }}
     >
       <Typography variant="h3" sx={{ fontSize: 20, color: 'inherit' }}>

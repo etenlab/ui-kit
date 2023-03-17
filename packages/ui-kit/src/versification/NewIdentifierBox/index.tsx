@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { SxProps, Theme } from '@mui/material/styles';
 import { Box, Stack, TextField, InputAdornment, Button } from '@mui/material';
 
+import { colors } from '../../ThemeProvider/palette';
+
 export type NewIdentifierBoxProps = Parameters<typeof NewIdentifierBox>[0];
 
 export function NewIdentifierBox({
@@ -43,9 +45,9 @@ export function NewIdentifierBox({
       spacing={1.5}
       sx={[
         {
-          border: '1px solid #c2cbd7',
-          background: '#e3eaf3',
-          color: '#5c6673',
+          border: `1px solid ${colors['middle-gray']}`,
+          background: colors['light-blue'],
+          color: colors.gray,
           padding: '20px',
           fontSize: '12px',
           '& label': {
@@ -89,20 +91,20 @@ export function NewIdentifierBox({
             sx: {
               bgcolor: '#fff',
               '& .MuiInputAdornment-root': {
-                color: '#5c6673 !important',
+                color: `${colors.gray} !important`,
                 opacity: 1,
                 '& > p': {
                   fontSize: '14px',
-                  color: '#5c6673',
+                  color: colors.gray,
                 },
               },
               '& .MuiInputBase-input': {
                 paddingLeft: 0,
                 fontSize: '14px',
-                color: '#5c6673 !important',
+                color: `${colors.gray} !important`,
                 '&::placeholder': {
                   opacity: 1,
-                  color: '#c2cbd7',
+                  color: colors['middle-gray'],
                 },
               },
             },
@@ -147,7 +149,7 @@ export function NewIdentifierBox({
           fullWidth
           variant="contained"
           sx={{
-            bgcolor: '#4abe95',
+            bgcolor: colors.green,
             '&:hover, &:active': { bgcolor: '#6ecbaa' },
           }}
           onClick={() => handleSave()}
@@ -157,7 +159,7 @@ export function NewIdentifierBox({
         <Button
           fullWidth
           sx={{
-            color: '#5c6673',
+            color: colors.gray,
             bgcolor: 'transparent',
             '&:hover, &:active': { bgcolor: 'rgba(0,0,0,0.05)' },
           }}

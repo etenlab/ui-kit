@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Select, MenuItem } from '@mui/material';
 
+import { colors } from '../../ThemeProvider/palette';
 import { BiChevronDown } from '../../icons';
 
 export function NodeFilter({
@@ -29,15 +30,15 @@ export function NodeFilter({
       onChange={(event) => onChange?.(event.target.value)}
       sx={{
         width: '100%',
-        color: '#5c6673',
+        color: colors.gray,
         backgroundColor: '#fff',
         borderRadius: '10px',
-        border: '1px solid #c2cbd7',
+        border: `1px solid ${colors['middle-gray']}`,
         fontSize: 14,
         height: '48px',
         '&.Mui-disabled': {
           background: 'rgba(255, 255, 255, 0.5)',
-          color: '#5c6673',
+          color: colors.gray,
         },
         '& .MuiInputBase-input': {
           pl: 2,
@@ -73,7 +74,7 @@ export function NodeFilter({
           value={value}
           sx={{
             '&.Mui-selected': {
-              background: '#e3eaf3',
+              background: colors['light-blue'],
             },
           }}
         >

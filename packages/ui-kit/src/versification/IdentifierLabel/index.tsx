@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { SxProps, Theme } from '@mui/material/styles';
 import { Box, Popover } from '@mui/material';
 
+import { colors } from '../../ThemeProvider/palette';
 import { NewIdentifierBoxProps, NewIdentifierBox } from '../NewIdentifierBox';
 
 export type IdentifierLabelProps = Parameters<typeof IdentifierLabel>[0];
@@ -66,7 +67,7 @@ export function IdentifierLabel({
           right: '-4px',
           bottom: '-3px',
           left: '-4px',
-          background: '#fff1ce',
+          background: colors['middle-yellow'],
           borderRadius: '4px',
         }}
       />

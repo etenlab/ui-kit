@@ -1,8 +1,9 @@
 import React from 'react';
-
 import { IconType } from 'react-icons';
 
 import { Box } from '@mui/material';
+
+import { colors } from '../../ThemeProvider/palette';
 
 export function IconBadge({
   value = 0,
@@ -23,17 +24,17 @@ export function IconBadge({
         borderRadius: '4px',
         padding: '0px 9px',
         height: 24,
-        backgroundColor: '#e3eaf3',
-        color: '#5c6673',
+        backgroundColor: colors['light-blue'],
+        color: colors.gray,
         fontWeight: 700,
         fontSize: 12,
         ...(success && {
-          backgroundColor: '#daf2ea',
-          color: '#4abe95',
+          backgroundColor: colors['light-green'],
+          color: colors.green,
         }),
         ...(danger && {
-          backgroundColor: '#ffe4e4',
-          color: '#e04e4e',
+          backgroundColor: colors['light-red'],
+          color: colors.red,
         }),
         '& + *': {
           marginLeft: '10px',
