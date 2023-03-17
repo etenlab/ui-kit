@@ -4,11 +4,12 @@ import { BsChevronLeft } from "react-icons/bs"
 import { colors } from ".."
 
 interface IProps {
-
+    className?: string
 }
 export const BackButton: React.FC<IProps> = (props) => {
     return (
         <Button
+            className={props.className || ''}
             color={'dark'}
             startIcon={<BsChevronLeft color={colors.green} />}
             sx={{
@@ -17,7 +18,8 @@ export const BackButton: React.FC<IProps> = (props) => {
                 fontSize: '1.2rem',
                 textDecoration: 'underline',
                 textUnderlineOffset: '0.2rem',
-                textDecorationColor: colors.green
+                textDecorationColor: colors.green,
+                padding: 0
             }}>
             Back
         </Button>

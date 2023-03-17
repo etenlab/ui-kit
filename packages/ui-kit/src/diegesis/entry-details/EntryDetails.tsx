@@ -1,11 +1,14 @@
-import { Box, Container } from "@mui/material"
+import { Box, Container, Stack, Typography } from "@mui/material"
 import React, { useState } from "react"
 import PageFooter from "../PageFooter"
 import PageHeader from "../PageHeader"
 import SideNav from "../SideNav"
-import "./EntryDetails.css"
 import TopControls from "./TopControls"
 import DataTable, { HeadCell } from "../data-table/DataTable"
+import "./EntryDetails.css"
+import SelectOptions from "../SelectOptions"
+import ActionButtons from "./ActionButtons"
+import { BackButton } from "../BackButton"
 
 interface IProps {
 }
@@ -16,8 +19,10 @@ interface IData {
 const headCells: HeadCell[] = [
     { id: 'key', disablePadding: false, label: '', numeric: false },
     { id: 'value', disablePadding: false, label: '', numeric: false },
+    { id: 'emptyColumn1', disablePadding: false, label: '', numeric: false },
 ]
 const sampleData: IData[] = [
+    { key: 'Details', value: '' },
     { key: 'Abbreviation', value: 'engBBE' },
     { key: 'Copyright', value: 'engBBE' },
     { key: 'Language', value: 'engBBE' },
@@ -37,7 +42,19 @@ export const EntryDetailPage: React.FC<IProps> = (props) => {
                 <TopControls />
             </Container>
             <Container className="details-section">
+                <Stack direction={'row'} className="divider mt-2"></Stack>
                 <DataTable headCells={headCells} rows={sampleData} />
+                <Stack direction={'column'} alignItems={'flex-start'} justifyContent={'center'} className="book-resource-box">
+                    <Typography variant="h3">Book Resources</Typography>
+                    <SelectOptions label="Select a book" options={[]} onChange={() => { }} />
+                </Stack>
+                <Stack direction={'row'} className="divider mt-2 mb-2"></Stack>
+                <Stack direction={'column'} className="bottom-action-btn-container full-width">
+                    <ActionButtons />
+                </Stack>
+                <Stack direction={'row'} className="pb-2">
+                    <BackButton className="show-xs" />
+                </Stack>
             </Container>
             <PageFooter />
         </Box>

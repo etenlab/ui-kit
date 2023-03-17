@@ -100,21 +100,7 @@
   transition: all 0.2s ease-out;
 }
 
-.hide-sm {
-  display: none !important;
-}
-
-.show-xs {
-  display: none !important;
-}
-
 @media screen and (max-width: 414px) {
-  .hide-xs {
-    display: none !important;
-  }
-  .show-xs {
-    display: inherit !important;
-  }
   .controls-section {
      padding-top: 30px;
   }
