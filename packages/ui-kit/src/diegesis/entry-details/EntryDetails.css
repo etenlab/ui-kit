@@ -41,46 +41,55 @@
 }
 
 .bottom-action-btn-container {
-    margin-top: 50px;
-    margin-bottom: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .no-padding {
-    padding: 0px;
+  padding: 0px;
 }
 
 #entry-detail-page .MuiTableHead-root {
-    display: none;
+  display: none;
 }
 
-@media screen and (max-width: 414px) {  
-    .top-controls-section > div {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .top-controls-section .page-title {
-        text-align: left;
-        margin-top: 20px;
-    }
-    #entry-detail-page .MuiButton-containedGreen {
-        font-size: 1rem;
-        min-width: 50%;
-    }
-    #entry-detail-page .action-buttons {
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-    .controls-section {
-        padding-bottom: 0px;
-    }
-    #entry-detail-page .diegesis-tbl-container .MuiTableBody-root .MuiTableRow-root .MuiTableCell-root {
-        border-bottom: 1px solid #F0F0E7;
-    }
-    #entry-detail-page .bottom-action-btn-container {
-        margin-top: 25px;
-        margin-bottom: 25px;
-    }
-    #entry-detail-page .MuiTableContainer-root .MuiTable-root {
-        min-width: 100%;
-    }
+@media screen and (max-width: 414px) {
+  .top-controls-section > div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .top-controls-section .page-title {
+    text-align: left;
+    margin-top: 20px;
+  }
+  #entry-detail-page .MuiButton-containedGreen {
+    font-size: 1rem;
+    min-width: 47%;
+  }
+  #entry-detail-page .action-buttons {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+  }
+  .controls-section {
+    padding-bottom: 0px;
+  }
+  #entry-detail-page
+    .diegesis-tbl-container
+    .MuiTableBody-root
+    .MuiTableRow-root
+    .MuiTableCell-root {
+    border-bottom: 1px solid #f0f0e7;
+  }
+  #entry-detail-page .bottom-action-btn-container {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  #entry-detail-page .MuiTableContainer-root .MuiTable-root {
+    min-width: 100%;
+  }
+
+  #entry-detail-page .book-resource-box .MuiOutlinedInput-root {
+    min-width: 100%
+  }
 }

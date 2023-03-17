@@ -139,7 +139,7 @@
     display: inherit !important;
   }
   .app-logo {
-    width: 175px;
+    width: auto;
     height: 34px;
   }
   .page-header .nav-btn svg {
@@ -147,7 +147,8 @@
     height: 35px;
   }
   .page-header .nav-btn {
-    position: absolute;
+    /* position: absolute; */
+    position: unset;
     right: 0px;
   }
   .page-header .header-title {
