@@ -3,9 +3,10 @@ import React from 'react';
 import { Stack, Avatar, Typography } from '@mui/material';
 
 import { BiShare } from '../../icons';
-import { colors } from '../../ThemeProvider';
+import { useColorModeContext } from '../../ThemeProvider';
 
 export function DeletedDecorator() {
+  const { getColor } = useColorModeContext();
   return (
     <Stack
       direction="row"
@@ -20,8 +21,8 @@ export function DeletedDecorator() {
     >
       <Avatar
         sx={{
-          bgcolor: colors['dark'],
-          color: colors['white'],
+          bgcolor: getColor('dark'),
+          color: getColor('white'),
           height: 25,
           width: 25,
         }}
@@ -30,6 +31,7 @@ export function DeletedDecorator() {
       </Avatar>
       <Typography
         variant="body3"
+        color="text.gray"
         sx={{
           whiteSpace: 'nowrap',
           overflow: 'hidden',
@@ -45,19 +47,19 @@ export function DeletedDecorator() {
       >
         <path
           d="M 0 5 l 0 10"
-          stroke={colors['gray']}
+          stroke={getColor('gray')}
           strokeWidth="1"
           fill="none"
         />
         <path
           d="M 5 0 l 22 0"
-          stroke={colors['gray']}
+          stroke={getColor('gray')}
           strokeWidth="1"
           fill="none"
         />
         <path
           d="M 0 5 q 0 -5 5 -5"
-          stroke={colors['gray']}
+          stroke={getColor('gray')}
           strokeWidth="1"
           fill="none"
         />

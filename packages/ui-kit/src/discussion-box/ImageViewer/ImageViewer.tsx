@@ -1,27 +1,14 @@
 import React, { useState } from 'react';
 
 import { Modal, styled, Box } from '@mui/material';
-import { colors } from '../../ThemeProvider';
+import { useColorModeContext } from '../../ThemeProvider';
 
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 'auto',
-  height: '70%',
-  bgcolor: 'background.paper',
-  border: `2px solid ${colors['dark']}`,
-  boxShadow: 24,
-  p: 4,
-};
-
-const DownloadText = styled('span')({
+const DownloadText = styled('span')(({ theme }) => ({
   display: 'block',
-  color: colors['blue-primary'],
+  color: theme.palette.text['blue-primary'],
   textDecoration: 'underline',
   cursor: 'pointer',
-});
+}));
 
 const handleDownload = (file_name: string, file_url: string) => {
   let hiddenElement = document.createElement('a');
@@ -39,6 +26,7 @@ export function ImageViewer({
   file_name: string;
   mode: 'view' | 'quill';
 }) {
+  const { getColor } = useColorModeContext();
   const [open, setOpen] = useState<boolean>(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -48,7 +36,10 @@ export function ImageViewer({
       ? {
           width: '50px',
           height: '50px',
-          style: { borderRadius: '4px', border: `1px solid ${colors['dark']}` },
+          style: {
+            borderRadius: '4px',
+            border: `1px solid ${getColor('dark')}`,
+          },
         }
       : {
           width: '100px',
@@ -56,7 +47,7 @@ export function ImageViewer({
           style: {
             cursor: 'zoom-in',
             borderRadius: '10px',
-            border: `1px solid ${colors['dark']}`,
+            border: `1px solid ${getColor('dark')}`,
           },
         };
 
@@ -70,7 +61,20 @@ export function ImageViewer({
         onClick={handleOpen}
       />
       <Modal open={open} onClose={handleClose}>
-        <Box sx={style}>
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 'auto',
+            height: '70%',
+            bgcolor: 'background.paper',
+            border: `2px solid ${getColor('dark')}`,
+            boxShadow: 24,
+            p: 4,
+          }}
+        >
           <img src={src} height="100%" loading="lazy" alt="fee" />
           <DownloadText
             onClick={() => {

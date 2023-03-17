@@ -19,12 +19,7 @@ export function TitleWithIcon({
 }: TitleWithIconProps) {
   return (
     <Stack direction="row" justifyContent="space-between" alignItems="center">
-      <Typography
-        variant="h3"
-        sx={{
-          color: (theme) => (theme.palette.dark as PaletteColor).main,
-        }}
-      >
+      <Typography variant="h3" color="text.dark">
         {withBackIcon ? (
           <IconButton
             onClick={onBack}

@@ -7,11 +7,9 @@ import {
   tooltipClasses,
 } from '@mui/material';
 
-import { colors } from '../../ThemeProvider';
-
-export const EmojiWrapper = styled(IconButton)({
+export const EmojiWrapper = styled(IconButton)(({ theme }) => ({
   display: 'inline-flex',
-  border: `1px solid ${colors['gray']}`,
+  border: `1px solid ${theme.palette.text['gray']}`,
   borderRadius: '4px',
   height: '25px',
   lineHeight: '25px',
@@ -22,9 +20,9 @@ export const EmojiWrapper = styled(IconButton)({
   fontFamily: 'Inter',
   fontStyle: 'normal',
   fontWeight: '600',
-  color: colors['gray'],
+  color: theme.palette.text['gray'],
   cursor: 'pointer',
-});
+}));
 
 export const EmojiContainer = styled('span')({
   display: 'inline-flex',
@@ -42,8 +40,8 @@ export const Tooltip = styled(({ className, ...props }: TooltipProps) => (
 ))(({ theme }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
     display: 'flex',
-    backgroundColor: '#000',
-    color: '#f5f5f5',
+    backgroundColor: theme.palette.text.dark,
+    color: theme.palette.text.white,
     width: 200,
     fontSize: theme.typography.pxToRem(12),
     border: '1px solid #dadde9',

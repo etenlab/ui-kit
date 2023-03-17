@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 
 import { Box, PaletteColor, useTheme } from '@mui/material';
+import { useColorModeContext } from '../../ThemeProvider';
 
 type Range = {
   id: number;
@@ -23,6 +24,7 @@ export function DotsText({
   dotColor,
   selectedColor,
 }: DotsTextProps) {
+  const { getColor } = useColorModeContext();
   const [selected, setSelected] = useState<Range | null>(null);
   const theme = useTheme();
   const dotPaletteColor = (theme.palette[dotColor] as PaletteColor).main;
@@ -71,7 +73,7 @@ export function DotsText({
       sx={{
         fontWeight: 400,
         fontSize: '14px',
-        color: '#1B1B1B',
+        color: getColor('dark'),
         lineHeight: '30px',
         textAlign: 'justify',
         '& .selectedText .word:first-child': {

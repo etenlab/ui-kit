@@ -1,13 +1,12 @@
 import { styled, IconButton } from '@mui/material';
-import { colors } from '../../ThemeProvider';
 
-export const ReactionPlusButtonWrapper = styled(IconButton)({
-  border: `1px solid ${colors['gray']}`,
+export const ReactionPlusButtonWrapper = styled(IconButton)(({ theme }) => ({
+  border: `1px solid ${theme.palette.text['gray']}`,
   borderRadius: '4px',
   padding: '4px',
-  color: colors['gray'],
+  color: theme.palette.text['gray'],
   '& svg': {
     fontSize: '15px',
     strokeWidth: '0.5px',
   },
-});
+}));

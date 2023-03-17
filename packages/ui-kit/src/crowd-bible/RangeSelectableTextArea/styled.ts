@@ -1,9 +1,9 @@
 import { styled, Box } from '@mui/material';
 
-export const StyledBox = styled(Box)({
+export const StyledBox = styled(Box)(({ theme }) => ({
   fontWeight: 400,
   fontSize: '14px',
-  color: '#1B1B1B',
+  color: theme.palette.text['dark'],
   lineHeight: '30px',
   textAlign: 'justify',
   '& .selectedText .word:first-child, & .selectedText .word:last-child': {
@@ -17,4 +17,4 @@ export const StyledBox = styled(Box)({
     borderRadius: '4px',
     background: '#e3eaf3',
   },
-});
+}));

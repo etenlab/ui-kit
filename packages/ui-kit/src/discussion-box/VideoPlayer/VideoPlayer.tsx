@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 
 import { CircleButton } from '../../button';
 import { BsFillPlayFill } from '../../icons';
-import { colors } from '../../ThemeProvider';
+import { useColorModeContext } from '../../ThemeProvider';
 
 type VideoPlayerProps = {
   src: string;
@@ -16,7 +16,7 @@ export function VideoPlayer({
   mode = 'view',
 }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-
+  const { getColor } = useColorModeContext();
   const attr =
     mode === 'quill'
       ? { width: '50px', height: '50px', borderRadius: '4px' }
@@ -34,7 +34,7 @@ export function VideoPlayer({
         position: 'relative',
         justifyContent: 'center',
         alignItems: 'center',
-        background: colors['disable'],
+        background: getColor('disable'),
       }}
     >
       <video
@@ -53,7 +53,11 @@ export function VideoPlayer({
             color="gray"
             icon={
               <BsFillPlayFill
-                style={{ color: colors['white'], fontSize: 30, paddingLeft: 3 }}
+                style={{
+                  color: getColor('white'),
+                  fontSize: 30,
+                  paddingLeft: 3,
+                }}
               />
             }
           />
