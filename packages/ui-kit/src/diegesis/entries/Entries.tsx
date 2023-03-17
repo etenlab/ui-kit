@@ -5,6 +5,7 @@ import PageHeader from "../PageHeader"
 import SideNav from "../SideNav"
 import EntriesTopControls from "./EntriesTopControls"
 import EntriesDataTable from "./EntriesDataTable"
+import "./Entries.css"
 
 interface IProps {
 }

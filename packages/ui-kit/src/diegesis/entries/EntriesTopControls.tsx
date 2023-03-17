@@ -18,7 +18,7 @@ export const EntriesTopControls: React.FC<IProps> = (props) => {
                 <Typography variant={'h1'} className="page-title mr-2">
                     Entries
                 </Typography>
-                <SearchBox placeholder="Bible in Basic English" className={'mx-1 hide-sm'} />
+                <SearchBox placeholder="Bible in Basic English" className={'mx-1 hide-xs'} />
                 <CustomTabs className="" value={curTab} onClick={() => { setCurTab(curTab === 1 ? 0 : 1) }}>
                     <CustomTab value={1} label="Advanced search with filters" />
                 </CustomTabs>
