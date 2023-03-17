@@ -3,7 +3,7 @@ import React from 'react';
 import { Stack, IconButton, Box, Typography } from '@mui/material';
 
 import { BiDownload, BiFile } from '../../icons';
-import { colors } from '../../ThemeProvider';
+import { useColorModeContext } from '../../ThemeProvider';
 
 import { IFile } from '../types';
 
@@ -28,7 +28,7 @@ export function FileSize({ fileSize }: { fileSize: number }) {
   }
 
   return (
-    <Typography variant="body2" sx={{ color: colors['dark'] }}>
+    <Typography variant="body2" color="text.dark">
       {sizeWithUnit}
     </Typography>
   );
@@ -40,6 +40,7 @@ type FileViewerProps = {
 };
 
 export function FileViewer({ file, mode }: FileViewerProps) {
+  const { getColor } = useColorModeContext();
   const downloadButton =
     mode === 'view' ? (
       <IconButton
@@ -47,7 +48,7 @@ export function FileViewer({ file, mode }: FileViewerProps) {
           handleDownload(file.file_name, file.file_url);
         }}
       >
-        <BiDownload style={{ fontSize: '30px', color: colors['dark'] }} />
+        <BiDownload style={{ fontSize: '30px', color: getColor('dark') }} />
       </IconButton>
     ) : null;
 
@@ -56,9 +57,9 @@ export function FileViewer({ file, mode }: FileViewerProps) {
       sx={{
         display: 'inline-flex',
         flexDirection: 'row',
-        color: colors['dark'],
+        color: getColor('dark'),
         padding: '10px',
-        border: `1px solid ${colors['dark']}`,
+        border: `1px solid ${getColor('dark')}`,
         borderRadius: '10px',
         gap: '10px',
         width: '290px',
@@ -66,7 +67,7 @@ export function FileViewer({ file, mode }: FileViewerProps) {
     >
       <BiFile style={{ fontSize: '70px', margin: '-10px' }} />
       <Stack justifyContent="space-between">
-        <Typography variant="body1" sx={{ color: colors['dark'] }}>
+        <Typography variant="body1" color="text.dark">
           {file.file_name}
         </Typography>
         <FileSize fileSize={file.file_size} />

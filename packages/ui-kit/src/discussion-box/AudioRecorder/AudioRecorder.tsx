@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { Stack, IconButton } from '@mui/material';
 
 import { FiMic, CiPause1, FiX, FiCheck } from '../../icons';
-import { colors } from '../../ThemeProvider';
+import { useColorModeContext } from '../../ThemeProvider';
 
 import { RecorderTimer } from '../RecorderTimer';
 
@@ -16,6 +16,7 @@ type AudioRecorderProps = {
 };
 
 export function AudioRecorder({ onCancel, onSave }: AudioRecorderProps) {
+  const { getColor } = useColorModeContext();
   const [recorderStatus, setRecorderStatus] = useState<RecorderStatus>('new');
   const [savedLastChunk, setSavedLastChunk] = useState<boolean>(true);
 
@@ -61,7 +62,7 @@ export function AudioRecorder({ onCancel, onSave }: AudioRecorderProps) {
       new wave.animations.Lines({
         count: 50,
         lineWidth: 3,
-        lineColor: colors['middle-gray'],
+        lineColor: getColor('middle-gray'),
         rounded: true,
       }),
     );
@@ -153,8 +154,8 @@ export function AudioRecorder({ onCancel, onSave }: AudioRecorderProps) {
   const controlButtonStyle = {
     fontSize: '80px',
     padding: '20px',
-    backgroundColor: colors['red'],
-    color: colors['white'],
+    backgroundColor: getColor('red'),
+    color: getColor('white'),
     borderRadius: '50%',
   };
 
@@ -175,7 +176,7 @@ export function AudioRecorder({ onCancel, onSave }: AudioRecorderProps) {
         <CiPause1
           style={{
             ...controlButtonStyle,
-            backgroundColor: colors['blue-primary'],
+            backgroundColor: getColor('blue-primary'),
           }}
         />
       </IconButton>
@@ -201,7 +202,7 @@ export function AudioRecorder({ onCancel, onSave }: AudioRecorderProps) {
       >
         <IconButton
           onClick={handleClickCancel}
-          sx={{ fontSize: '36px', color: colors['gray'] }}
+          sx={{ fontSize: '36px', color: getColor('gray') }}
           disabled={disabledCancel}
         >
           <FiX />
@@ -211,7 +212,7 @@ export function AudioRecorder({ onCancel, onSave }: AudioRecorderProps) {
 
         <IconButton
           onClick={handleClickSave}
-          sx={{ fontSize: '36px', color: colors['green'] }}
+          sx={{ fontSize: '36px', color: getColor('green') }}
           disabled={disabledSave}
         >
           <FiCheck />

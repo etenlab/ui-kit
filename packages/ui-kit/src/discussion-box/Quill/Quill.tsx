@@ -31,7 +31,7 @@ import {
   FiX,
   CiCircleRemove,
 } from '../../icons';
-import { colors } from '../../ThemeProvider';
+import { useColorModeContext } from '../../ThemeProvider';
 
 import { AddAttachmentButton } from '../../button';
 import { Attachment } from '../Attachment';
@@ -44,7 +44,6 @@ import { IFile } from '../types';
 const iconStyle = {
   fontSize: '24px',
   padding: '3px',
-  color: colors['gray'],
 };
 
 function QuillAttachmentList({
@@ -56,6 +55,8 @@ function QuillAttachmentList({
   skeleton: SkeletonSize | null;
   onRemove(file: IFile): void;
 }) {
+  const { getColor } = useColorModeContext();
+
   return attachments.length > 0 ? (
     <Stack
       gap="10px"
@@ -63,7 +64,7 @@ function QuillAttachmentList({
       sx={{
         display: 'inline-flex',
         padding: '10px 20px 5px',
-        borderTop: `1px solid ${colors['middle-gray']}`,
+        borderTop: `1px solid ${getColor('middle-gray')}`,
       }}
     >
       {attachments.map((attachment) => (
@@ -128,6 +129,7 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
   },
   ref,
 ) {
+  const { getColor } = useColorModeContext();
   const [quill, setQuill] = useState<string | undefined>(undefined);
   const [plain, setPlain] = useState<string>('');
 
@@ -286,10 +288,10 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
           alignItems="center"
           sx={{
             padding: '2px 20px',
-            borderTop: `1px solid ${colors['middle-gray']}`,
+            borderTop: `1px solid ${getColor('middle-gray')}`,
           }}
         >
-          <Typography variant="body3" style={{ color: colors['red'] }}>
+          <Typography variant="body3" color="dark.red">
             {quillTitle}
           </Typography>
           <IconButton
@@ -318,7 +320,7 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
           size="small"
           sx={{ position: 'absolute', right: '12px', top: '1px' }}
         >
-          <FiX style={{ ...iconStyle, color: colors['red'] }} />
+          <FiX style={{ ...iconStyle, color: getColor('red') }} />
         </IconButton>
       </Box>
 
@@ -326,15 +328,21 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
         direction="row"
         justifyContent="space-between"
         sx={{
-          borderBottom: `1px solid ${colors['middle-gray']}`,
-          backgroundColor: colors['disable'],
+          borderBottom: `1px solid ${getColor('middle-gray')}`,
+          backgroundColor: getColor('disable'),
           paddingLeft: '12px',
           paddingRight: '12px',
         }}
       >
         <Stack direction="row" justifyContent="flex-start">
           <AddAttachmentButton onChange={handleFileChange} disabled={disabled}>
-            <FiPaperclip style={{ ...iconStyle, strokeWidth: '1.5px' }} />
+            <FiPaperclip
+              style={{
+                ...iconStyle,
+                strokeWidth: '1.5px',
+                color: getColor('gray'),
+              }}
+            />
           </AddAttachmentButton>
           <Divider orientation="vertical" variant="middle" flexItem />
           <IconButton
@@ -342,7 +350,13 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
             ref={anchorEl}
             onClick={handleOpenEmojiPicker}
           >
-            <CiFaceSmile style={{ ...iconStyle, strokeWidth: '0.4px' }} />
+            <CiFaceSmile
+              style={{
+                ...iconStyle,
+                strokeWidth: '0.4px',
+                color: getColor('gray'),
+              }}
+            />
           </IconButton>
         </Stack>
 
@@ -351,8 +365,8 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
             style={{
               ...iconStyle,
               borderRadius: '50%',
-              color: colors['white'],
-              backgroundColor: colors['blue-primary'],
+              color: getColor('white'),
+              backgroundColor: getColor('blue-primary'),
             }}
           />
         </IconButton>

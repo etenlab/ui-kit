@@ -10,7 +10,7 @@ import { AudioPlayer } from '../AudioPlayer';
 import { IFile } from '../types';
 import { getMimeType } from '../utils';
 import { BiTrashAlt } from '../../icons';
-import { colors } from '../../ThemeProvider';
+import { useColorModeContext } from '../../ThemeProvider';
 
 type WrapperProps = {
   onRemove(): void;
@@ -19,6 +19,7 @@ type WrapperProps = {
 };
 
 export function Wrapper({ onRemove, mode, children }: WrapperProps) {
+  const { getColor } = useColorModeContext();
   const sxObj =
     mode === 'view'
       ? {
@@ -45,7 +46,7 @@ export function Wrapper({ onRemove, mode, children }: WrapperProps) {
           padding: '3px',
           border: 'none',
           background: `rgba(0, 0, 0, 0.5)`,
-          color: colors['white'],
+          color: getColor('white'),
           ...sxObj,
         }}
       >

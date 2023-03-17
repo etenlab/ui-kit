@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TextFieldProps, IconButton } from '@mui/material';
 import { CiUnread, CiRead } from '../../icons';
-import { colors } from '../../ThemeProvider';
+import { useColorModeContext } from '../../ThemeProvider';
 import { Input } from '../Input';
 
 export function PasswordInput({
@@ -15,14 +15,15 @@ export function PasswordInput({
   show?: boolean;
   onClickShowIcon(): void;
 }) {
+  const { getColor } = useColorModeContext();
   let color: string;
 
   if (valid === undefined) {
-    color = colors['dark'];
+    color = getColor('dark');
   } else if (valid === true) {
-    color = colors['green'];
+    color = getColor('green');
   } else {
-    color = colors['red'];
+    color = getColor('red');
   }
 
   const InputProps = {

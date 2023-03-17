@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { RecorderStatus } from '../types';
 
 import { Typography } from '@mui/material';
-import { colors } from '../../ThemeProvider';
 
 const HOUR_TO_SECONDS = 60 * 60;
 const MIN_TO_SECONDS = 60;
@@ -21,7 +20,7 @@ function TimeShower({ totalSeconds }: { totalSeconds: number }) {
     totalSeconds - hours * HOUR_TO_SECONDS - mins * MIN_TO_SECONDS;
 
   return (
-    <Typography variant="h2" sx={{ fontSize: '24px', color: colors['dark'] }}>
+    <Typography variant="h2" color="text.dark" sx={{ fontSize: '24px' }}>
       {`${fillZero(hours)}:${fillZero(mins)}:${fillZero(seconds)}`}
     </Typography>
   );
