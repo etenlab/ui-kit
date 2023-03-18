@@ -30,15 +30,15 @@ export function NodeFilter({
       onChange={(event) => onChange?.(event.target.value)}
       sx={{
         width: '100%',
-        color: colors.gray,
+        color: colors.gray.light,
         backgroundColor: '#fff',
         borderRadius: '10px',
-        border: `1px solid ${colors['middle-gray']}`,
+        border: `1px solid ${colors['middle-gray'].light}`,
         fontSize: 14,
         height: '48px',
         '&.Mui-disabled': {
           background: 'rgba(255, 255, 255, 0.5)',
-          color: colors.gray,
+          color: colors.gray.light,
         },
         '& .MuiInputBase-input': {
           pl: 2,
@@ -54,6 +54,7 @@ export function NodeFilter({
           display: 'none',
         },
         '& .MuiSelect-icon': {
+          color: 'inherit',
           fontSize: 30,
           '&.Mui-disabled': {
             color: 'inherit',
@@ -74,7 +75,7 @@ export function NodeFilter({
           value={value}
           sx={{
             '&.Mui-selected': {
-              background: colors['light-blue'],
+              background: colors['light-blue'].light,
             },
           }}
         >

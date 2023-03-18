@@ -45,9 +45,9 @@ export function NewIdentifierBox({
       spacing={1.5}
       sx={[
         {
-          border: `1px solid ${colors['middle-gray']}`,
-          background: colors['light-blue'],
-          color: colors.gray,
+          border: `1px solid ${colors['middle-gray'].light}`,
+          background: colors['light-blue'].light,
+          color: colors.gray.light,
           padding: '20px',
           fontSize: '12px',
           '& label': {
@@ -91,20 +91,20 @@ export function NewIdentifierBox({
             sx: {
               bgcolor: '#fff',
               '& .MuiInputAdornment-root': {
-                color: `${colors.gray} !important`,
+                color: `${colors.gray.light} !important`,
                 opacity: 1,
                 '& > p': {
                   fontSize: '14px',
-                  color: colors.gray,
+                  color: colors.gray.light,
                 },
               },
               '& .MuiInputBase-input': {
                 paddingLeft: 0,
                 fontSize: '14px',
-                color: `${colors.gray} !important`,
+                color: `${colors.gray.light} !important`,
                 '&::placeholder': {
                   opacity: 1,
-                  color: colors['middle-gray'],
+                  color: colors['middle-gray'].light,
                 },
               },
             },
@@ -149,7 +149,8 @@ export function NewIdentifierBox({
           fullWidth
           variant="contained"
           sx={{
-            bgcolor: colors.green,
+            color: '#fff',
+            bgcolor: colors.green.light,
             '&:hover, &:active': { bgcolor: '#6ecbaa' },
           }}
           onClick={() => handleSave()}
@@ -159,7 +160,7 @@ export function NewIdentifierBox({
         <Button
           fullWidth
           sx={{
-            color: colors.gray,
+            color: colors.gray.light,
             bgcolor: 'transparent',
             '&:hover, &:active': { bgcolor: 'rgba(0,0,0,0.05)' },
           }}

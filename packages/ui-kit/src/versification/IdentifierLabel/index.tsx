@@ -67,7 +67,7 @@ export function IdentifierLabel({
           right: '-4px',
           bottom: '-3px',
           left: '-4px',
-          background: colors['middle-yellow'],
+          background: colors['middle-yellow'].light,
           borderRadius: '4px',
         }}
       />

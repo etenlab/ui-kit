@@ -24,17 +24,17 @@ export function IconBadge({
         borderRadius: '4px',
         padding: '0px 9px',
         height: 24,
-        backgroundColor: colors['light-blue'],
-        color: colors.gray,
+        backgroundColor: colors['light-blue'].light,
+        color: colors.gray.light,
         fontWeight: 700,
         fontSize: 12,
         ...(success && {
-          backgroundColor: colors['light-green'],
-          color: colors.green,
+          backgroundColor: colors['light-green'].light,
+          color: colors.green.light,
         }),
         ...(danger && {
-          backgroundColor: colors['light-red'],
-          color: colors.red,
+          backgroundColor: colors['light-red'].light,
+          color: colors.red.light,
         }),
         '& + *': {
           marginLeft: '10px',

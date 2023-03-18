@@ -20,10 +20,10 @@ export function HeadingBox({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        backgroundColor: colors['light-blue'],
+        backgroundColor: colors['light-blue'].light,
         minHeight: 68,
         p: 2.5,
-        color: colors.dark,
+        color: colors.dark.light,
       }}
     >
       <Typography variant="h3" sx={{ fontSize: 20, color: 'inherit' }}>
