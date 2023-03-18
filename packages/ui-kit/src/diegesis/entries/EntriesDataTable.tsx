@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import DataTable, { HeadCell } from "../data-table/DataTable"
-import { Button,  Typography } from "@mui/material"
+import { Button, Typography } from "@mui/material"
 import { BsChevronRight } from "react-icons/bs"
 
 interface IProps {
@@ -64,7 +64,7 @@ const headCells: HeadCell[] = [
     disablePadding: true,
     label: '',
     render(value) {
-      return <Button endIcon={<BsChevronRight />} sx={{ textTransform: 'none', fontWeight: 700, fontSize: '0.9rem' }} color={'green'}>
+      return <Button className="no-padding" endIcon={<BsChevronRight />} sx={{ textTransform: 'none', fontWeight: 700, fontSize: '0.9rem' }} color={'green'}>
         {value}
       </Button>
     },
@@ -83,7 +83,7 @@ const sampleDataList: Data[] = [
 export const EntriesDataTable: React.FC<IProps> = (props) => {
   const [dataList, setDataList] = useState<Data[]>([...sampleDataList])
   return (
-    <DataTable headCells={headCells} rows={dataList} />
+    <DataTable expandableRowOnMobile={true} className="entries-tbl-container" headCells={headCells} rows={dataList} />
   )
 }
 export default EntriesDataTable

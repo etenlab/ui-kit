@@ -43,45 +43,45 @@
 .table-section {
   padding-bottom: 112px;
 }
-.diegesis-tbl-container {
+.entries-tbl-container {
 }
-.diegesis-tbl-container .MuiTableRow-head {
+.entries-tbl-container .MuiTableRow-head {
   border-bottom: 3px solid #4abe95;
 }
-.diegesis-tbl-container .MuiTableSortLabel-root,
-.diegesis-tbl-container .MuiTableSortLabel-root.Mui-active {
+.entries-tbl-container .MuiTableSortLabel-root,
+.entries-tbl-container .MuiTableSortLabel-root.Mui-active {
   font-size: 0.9rem;
   color: #cccdce;
   font-weight: 400;
   line-height: 0.9rem;
   font-family: 'helvetica';
 }
-.diegesis-tbl-container .MuiTableRow-head .MuiTableSortLabel-icon {
+.entries-tbl-container .MuiTableRow-head .MuiTableSortLabel-icon {
   color: #4abe95 !important;
 }
-.diegesis-tbl-container .MuiTypography-h3.underline-text {
+.entries-tbl-container .MuiTypography-h3.underline-text {
   border-bottom: 1px solid #4abe95;
   font-size: 1.2rem;
   display: inline-flex;
 }
-.diegesis-tbl-container .MuiInputBase-root {
+.entries-tbl-container .MuiInputBase-root {
   padding: 3px;
   border: 1px solid;
 }
-.diegesis-tbl-container .MuiTablePagination-actions .MuiIconButton-root {
+.entries-tbl-container .MuiTablePagination-actions .MuiIconButton-root {
   padding: 0px;
 }
-.diegesis-tbl-container
+.entries-tbl-container
   .MuiTablePagination-actions
   .MuiIconButton-root:not(.Mui-disabled) {
   color: #4abe95;
 }
-.diegesis-tbl-container
+.entries-tbl-container
   .MuiTablePagination-actions
   .MuiIconButton-root.Mui-disabled {
   color: rgba(0, 0, 0, 0.26);
 }
-.diegesis-tbl-container .MuiTablePagination-toolbar {
+.entries-tbl-container .MuiTablePagination-toolbar {
   margin-top: 10px;
 }
 .tab-content.show {
@@ -95,7 +95,6 @@
   overflow: hidden;
   transition: all 0.2s ease-out;
 }
-
 @media screen and (max-width: 414px) {
   .controls-section {
     padding-top: 30px;
@@ -135,46 +134,92 @@
   .tab-content .MuiChip-root {
     margin-bottom: 5px;
   }
-  .diegesis-tbl-container
+  .entries-tbl-container
     .MuiTableBody-root
     .MuiTableRow-root
     .MuiTableCell-root {
     border-bottom: 1px solid #4abe95;
   }
-  .diegesis-tbl-container .MuiTypography-h3.underline-text {
+  .entries-tbl-container .MuiTypography-h3.underline-text {
     border-bottom: 0px;
   }
-  .diegesis-tbl-container .MuiToolbar-root {
+  .entries-tbl-container .MuiToolbar-root {
     margin-top: 30px;
     padding-left: 0px;
     width: 100%;
     justify-content: center;
   }
-  .diegesis-tbl-container .MuiToolbar-root .MuiTablePagination-spacer {
+  .entries-tbl-container .MuiToolbar-root .MuiTablePagination-spacer {
     display: none;
   }
-  .diegesis-tbl-container .MuiTablePagination-toolbar {
+  .entries-tbl-container .MuiTablePagination-toolbar {
     min-height: 100px;
     position: relative;
   }
-  .diegesis-tbl-container .MuiTablePagination-selectLabel {
+  .entries-tbl-container .MuiTablePagination-selectLabel {
     align-self: end;
     margin-left: 20%;
     padding-top: 7%;
   }
-  .diegesis-tbl-container .MuiTablePagination-toolbar .MuiInputBase-root {
+  .entries-tbl-container .MuiTablePagination-toolbar .MuiInputBase-root {
     align-self: end;
     margin-bottom: 2%;
     margin-right: 20%;
   }
-  .diegesis-tbl-container .MuiTablePagination-displayedRows {
+  .entries-tbl-container .MuiTablePagination-displayedRows {
     position: absolute;
     top: 0;
     left: 0;
   }
-  .diegesis-tbl-container .MuiTablePagination-actions {
+  .entries-tbl-container .MuiTablePagination-actions {
     position: absolute;
     right: 0;
     top: 0;
   }
+  .entries-tbl-container .MuiTable-root {
+    margin-top: 2.5rem;
+    width: 100%;
+    min-width: 100%;
+  }
+  .entries-tbl-container .MuiTableCell-head {
+    display: none;
+  }
+  .entries-tbl-container
+    .MuiTableBody-root
+    .MuiTableRow-root
+    .MuiTableCell-root {
+    display: none;
+  }
+  .entries-tbl-container
+    .MuiTableBody-root
+    .MuiTableRow-root
+    .MuiTableCell-root:nth-of-type(1),
+  .entries-tbl-container
+    .MuiTableBody-root
+    .MuiTableRow-root
+    .MuiTableCell-root:nth-of-type(2) {
+    display: table-cell;
+    padding-right: 0px;
+  }
+  .entries-tbl-container .MuiTableRow-head {
+    border-bottom: 0px;
+  }
+  .entries-tbl-container .MuiTableRow-root.row-detail .MuiTableCell-root {
+    border-bottom: none;
+  }
+  .entries-tbl-container .MuiTableRow-root.table-row.active .MuiTableCell-root {
+    border-top: 4px solid #4ABE95;
+    border-bottom: 1px solid #cecfd0;
+  }
+  .entries-tbl-container .MuiTableRow-root.row-detail.active .MuiTableCell-root {
+    border-bottom: 4px solid #4abe95;
+  }
+  .entries-tbl-container .MuiTableRow-root.row-detail.active .MuiTypography-caption {
+    color: #cecfd0;
+  }
+  .entries-tbl-container .MuiTableRow-root.row-detail.active ~ .MuiTableRow-root.table-row {
+    border-bottom: 1px solid #cccdce;
+    font-size: 45px;
+  }
+
 }

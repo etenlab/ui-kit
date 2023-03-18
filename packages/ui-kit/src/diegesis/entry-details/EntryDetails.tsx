@@ -17,7 +17,7 @@ interface IData {
     value: string
 }
 const headCells: HeadCell[] = [
-    { id: 'key', disablePadding: false, label: '', numeric: false },
+    { id: 'key', disablePadding: true, label: '', numeric: false },
     { id: 'value', disablePadding: false, label: '', numeric: false },
     { id: 'emptyColumn1', disablePadding: false, label: '', numeric: false },
 ]
@@ -43,7 +43,7 @@ export const EntryDetailPage: React.FC<IProps> = (props) => {
             </Container>
             <Container className="details-section">
                 <Stack direction={'row'} className="divider mt-2"></Stack>
-                <DataTable headCells={headCells} rows={sampleData} />
+                <DataTable expandableRowOnMobile={false} headCells={headCells} rows={sampleData} />
                 <Stack direction={'column'} alignItems={'flex-start'} justifyContent={'center'} className="book-resource-box">
                     <Typography variant="h3">Book Resources</Typography>
                     <SelectOptions label="Select a book" options={[]} onChange={() => { }} />

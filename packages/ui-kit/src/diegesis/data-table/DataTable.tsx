@@ -12,6 +12,7 @@ import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
 import { FiChevronDown } from 'react-icons/fi';
 import './DataTable.css'
+import { Collapse, Stack, Typography } from '@mui/material';
 
 type Order = 'asc' | 'desc';
 
@@ -65,7 +66,7 @@ interface TableHeaderProps {
   orderBy: string;
   headCells: HeadCell[]
 }
-function TableHeader(props: TableHeaderProps) {
+function TableHeaderWrapper(props: TableHeaderProps) {
   const { order, orderBy, onRequestSort, headCells } = props;
   const createSortHandler =
     (property: string) => (event: React.MouseEvent<unknown>) => {
@@ -102,14 +103,105 @@ function TableHeader(props: TableHeaderProps) {
   );
 }
 
+interface TableRowProps {
+  key?: string | number
+  headCells: HeadCell[]
+  row: Record<string, any>
+  expandableRowOnMobile?: boolean
+}
+function TableRowWrapper({ key, headCells, row, expandableRowOnMobile }: TableRowProps) {
+  const [showDetails, setShowDetails] = React.useState(false);
+  return (
+    <React.Fragment key={key}>
+      <TableRow
+        className={`table-row ${showDetails ? 'active' : ''}`}
+        key={key}
+        onClick={() => {
+          if (expandableRowOnMobile && window.innerWidth <= 414) {
+            setShowDetails(!showDetails)
+          }
+        }}
+      >
+        {
+          headCells.map((headCell, cellIdx) => {
+            return (
+              <TableCell
+                key={cellIdx}
+                component={'td'}
+                scope={'row'}
+                padding={headCell.disablePadding ? 'none' : 'normal'}
+                // padding={[0, lastColumnIdx].includes(cellIdx) ? 'none' : 'normal'}
+                align={headCell.numeric ? 'right' : 'left'}
+              >
+                {
+                  headCell.render
+                    ?
+                    headCell.render(row[headCell.id])
+                    :
+                    row[headCell.id]
+                }
+
+              </TableCell>
+            )
+          })
+        }
+      </TableRow>
+      {
+        expandableRowOnMobile
+          ?
+          <TableRow key={`record-detail-${key}`} className={`row-detail ${showDetails ? 'active' : ''}`}>
+            <TableCell colSpan={headCells.length} padding='none'>
+              <Collapse className='show-xs' in={showDetails} timeout="auto" unmountOnExit>
+                <Box sx={{ padding: '1rem 0rem' }}>
+                  <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'} flexWrap={'wrap'} className='full-width'>
+                    {
+                      headCells.slice(1).map((headCell, cellIdx) => {
+                        return (
+                          <Stack key={cellIdx} flexWrap={'nowrap'} alignItems={'center'} direction={'row'} className='mr-1'>
+                            {
+                              headCell.label
+                                ?
+                                <Typography variant='caption' className=''>
+                                  {headCell.label}:&nbsp;&nbsp;
+                                </Typography>
+                                : <></>
+                            }
+                            <Typography variant='body1'>
+                              {
+                                headCell.render
+                                  ?
+                                  headCell.render(row[headCell.id])
+                                  :
+                                  row[headCell.id]
+                              }
+                            </Typography>
+                          </Stack>
+                        )
+                      })
+                    }
+                  </Stack>
+                </Box>
+              </Collapse>
+            </TableCell>
+          </TableRow>
+          :
+          <></>
+      }
+    </React.Fragment>
+  )
+}
+
 interface IDataTableProps {
   headCells: HeadCell[]
   rows: Record<string, any>[]
+  className?: string
+  defaultSortCellId?: string
+  expandableRowOnMobile?: boolean
 }
 export default function DataTable(props: IDataTableProps) {
-  const { headCells, rows = [] } = props;
+  const { headCells, rows = [], className, defaultSortCellId, expandableRowOnMobile } = props;
   const [order, setOrder] = React.useState<Order>('asc');
-  const [orderBy, setOrderBy] = React.useState<string>(headCells[0].id);
+  const [orderBy, setOrderBy] = React.useState<string>(defaultSortCellId || '');
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -131,16 +223,15 @@ export default function DataTable(props: IDataTableProps) {
     setPage(0);
   };
 
-  const lastColumnIdx = (headCells.length - 1)
   return (
-    <Box sx={{ width: '100%' }} className='diegesis-tbl-container'>
+    <Box sx={{ width: '100%' }} className={`diegesis-tbl-container ${className}`}>
       <Paper elevation={0} sx={{ width: '100%', mb: 2 }}>
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}
             aria-labelledby="tableTitle"
           >
-            <TableHeader
+            <TableHeaderWrapper
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
@@ -148,33 +239,7 @@ export default function DataTable(props: IDataTableProps) {
             />
             <TableBody>
               {
-                stableSort(rows, getComparator(order, orderBy)).map((row, rowIdx) => {
-                  return <TableRow
-                    key={rowIdx}
-                  >
-                    {
-                      headCells.map((headCell, cellIdx) => {
-                        return (
-                          <TableCell
-                            key={cellIdx}
-                            component={'td'}
-                            scope={'row'}
-                            padding={[0, lastColumnIdx].includes(cellIdx) ? 'none' : 'normal'}
-                            align={headCell.numeric ? 'right' : 'left'}
-                          >
-                            {
-                              headCell.render
-                                ?
-                                headCell.render(row[headCell.id])
-                                :
-                                row[headCell.id]
-                            }
-                          </TableCell>
-                        )
-                      })
-                    }
-                  </TableRow>
-                })
+                stableSort(rows, getComparator(order, orderBy)).map((row, rowIdx) => <TableRowWrapper expandableRowOnMobile={expandableRowOnMobile} key={rowIdx} headCells={headCells} row={row} />)
               }
             </TableBody>
           </Table>

@@ -1,4 +1,4 @@
-.details-section
+#entry-detail-page
   .MuiTableBody-root
   .MuiTableRow-root:first-child
   > .MuiTableCell-root {
@@ -90,6 +90,6 @@
   }
 
   #entry-detail-page .book-resource-box .MuiOutlinedInput-root {
-    min-width: 100%
+    min-width: 100%;
   }
 }
