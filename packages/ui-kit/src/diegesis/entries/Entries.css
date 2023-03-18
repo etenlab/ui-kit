@@ -145,11 +145,36 @@
     border-bottom: 0px;
   }
   .diegesis-tbl-container .MuiToolbar-root {
+    margin-top: 30px;
     padding-left: 0px;
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
   }
   .diegesis-tbl-container .MuiToolbar-root .MuiTablePagination-spacer {
     display: none;
+  }
+  .diegesis-tbl-container .MuiTablePagination-toolbar {
+    min-height: 100px;
+    position: relative;
+  }
+  .diegesis-tbl-container .MuiTablePagination-selectLabel {
+    align-self: end;
+    margin-left: 20%;
+    padding-top: 7%;
+  }
+  .diegesis-tbl-container .MuiTablePagination-toolbar .MuiInputBase-root {
+    align-self: end;
+    margin-bottom: 2%;
+    margin-right: 20%;
+  }
+  .diegesis-tbl-container .MuiTablePagination-displayedRows {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .diegesis-tbl-container .MuiTablePagination-actions {
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }
