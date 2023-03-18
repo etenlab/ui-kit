@@ -14,3 +14,7 @@
 .diegesis-tbl-container .MuiTableRow-head .MuiTableSortLabel-icon {
     color: #4ABE95 !important;
 }
+.diegesis-tbl-container .MuiTablePagination-actions .MuiSvgIcon-root {
+    height: 35px;
+    width: 35px;
+}

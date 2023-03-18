@@ -73,11 +73,11 @@ const headCells: HeadCell[] = [
 
 const sampleDataList: Data[] = [
   { sort: 'Bible in Basic English', language: 'ENG', type: 'Bible', source: 'eBible', license: 'CC-BY-SA', revision: '2020-04-17', action: 'Details' },
-  { sort: 'Bible in Basic English', language: 'ENG', type: 'Bible', source: 'eBible', license: 'CC-BY-SA', revision: '2020-04-17', action: 'Details' },
-  { sort: 'Bible in Basic English', language: 'ENG', type: 'Bible', source: 'eBible', license: 'CC-BY-SA', revision: '2020-04-17', action: 'Details' },
-  { sort: 'Bible in Basic English', language: 'ENG', type: 'Bible', source: 'eBible', license: 'CC-BY-SA', revision: '2020-04-17', action: 'Details' },
-  { sort: 'Bible in Basic English', language: 'ENG', type: 'Bible', source: 'eBible', license: 'CC-BY-SA', revision: '2020-04-17', action: 'Details' },
-  { sort: 'Bible in Basic English', language: 'ENG', type: 'Bible', source: 'eBible', license: 'CC-BY-SA', revision: '2020-04-17', action: 'Details' },
+  { sort: 'Cible in Basic English', language: 'ENG', type: 'Bible', source: 'eBible', license: 'CC-BY-SA', revision: '2020-04-20', action: 'Details' },
+  { sort: 'Dible in Basic English', language: 'ENG', type: 'Bible', source: 'eBible', license: 'CC-BY-SA', revision: '2020-04-17', action: 'Details' },
+  { sort: 'Eible in Basic English', language: 'ENG', type: 'Bible', source: 'eBible', license: 'CC-BY-SA', revision: '2020-04-17', action: 'Details' },
+  { sort: 'Fible in Basic English', language: 'ENG', type: 'Bible', source: 'eBible', license: 'CC-BY-SA', revision: '2022-04-17', action: 'Details' },
+  { sort: 'Gible in Basic English', language: 'ENG', type: 'Bible', source: 'eBible', license: 'CC-BY-SA', revision: '2020-04-23', action: 'Details' },
 ]
 
 export const EntriesDataTable: React.FC<IProps> = (props) => {

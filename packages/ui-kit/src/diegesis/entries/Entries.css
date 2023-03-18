@@ -68,10 +68,6 @@
   padding: 3px;
   border: 1px solid;
 }
-.diegesis-tbl-container .MuiTablePagination-actions .MuiSvgIcon-root {
-  height: 30px;
-  width: 30px;
-}
 .diegesis-tbl-container .MuiTablePagination-actions .MuiIconButton-root {
   padding: 0px;
 }
@@ -102,7 +98,7 @@
 
 @media screen and (max-width: 414px) {
   .controls-section {
-     padding-top: 30px;
+    padding-top: 30px;
   }
   .controls-section .page-title {
     font-size: 1.8rem;
@@ -119,7 +115,11 @@
   }
   .MuiTab-root {
     padding-bottom: 1.5rem;
+    /* padding-right: 0px; */
   }
+  /* .MuiTabs-flexContainer {
+    padding-right: 0px;
+  } */
   .tab-content .MuiInputBase-root {
     width: 100%;
     margin-bottom: 5px;
@@ -135,10 +135,21 @@
   .tab-content .MuiChip-root {
     margin-bottom: 5px;
   }
-  .diegesis-tbl-container .MuiTableBody-root .MuiTableRow-root .MuiTableCell-root {
+  .diegesis-tbl-container
+    .MuiTableBody-root
+    .MuiTableRow-root
+    .MuiTableCell-root {
     border-bottom: 1px solid #4abe95;
   }
   .diegesis-tbl-container .MuiTypography-h3.underline-text {
     border-bottom: 0px;
+  }
+  .diegesis-tbl-container .MuiToolbar-root {
+    padding-left: 0px;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .diegesis-tbl-container .MuiToolbar-root .MuiTablePagination-spacer {
+    display: none;
   }
 }
