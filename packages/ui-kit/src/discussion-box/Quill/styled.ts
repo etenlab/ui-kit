@@ -1,26 +1,25 @@
 import { styled, Stack } from '@mui/material';
-import { colors } from '../../ThemeProvider';
 
-export const QuillContainer = styled(Stack)({
+export const QuillContainer = styled(Stack)(({ theme }) => ({
   '& .quill': {
-    color: colors['gray'],
+    color: theme.palette.text['gray'],
   },
   '& .ql-toolbar.ql-snow': {
-    borderTop: `1px solid ${colors['middle-gray']}`,
+    borderTop: `1px solid ${theme.palette.text['middle-gray']}`,
     borderRight: 'none',
     borderLeft: 'none',
     padding: '6px 12px',
     '& span.ql-formats': {
       paddingRight: '10px',
-      borderRight: `1px solid ${colors['middle-gray']}`,
+      borderRight: `1px solid ${theme.palette.text['middle-gray']}`,
       '&:last-child': {
         border: 'none',
       },
       '& .ql-stroke': {
-        stroke: colors['gray'],
+        stroke: theme.palette.text['gray'],
       },
       '& .ql-fill': {
-        fill: colors['gray'],
+        fill: theme.palette.text['gray'],
       },
     },
   },
@@ -32,4 +31,4 @@ export const QuillContainer = styled(Stack)({
       padding: '10px 20px',
     },
   },
-});
+}));

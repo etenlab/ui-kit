@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
@@ -20,9 +20,21 @@ export default {
   ],
 } as ComponentMeta<typeof Toolbar>;
 
-const Template: ComponentStory<typeof Toolbar> = (args) => (
-  <Toolbar {...args} />
-);
+const Template: ComponentStory<typeof Toolbar> = (args) => {
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  const handleClickThemeBtn = () => {
+    setTheme((_theme) => (_theme === 'light' ? 'dark' : 'light'));
+  };
+
+  return (
+    <Toolbar
+      {...args}
+      themeMode={theme}
+      onClickThemeModeBtn={handleClickThemeBtn}
+    />
+  );
+};
 
 export const Primary = Template.bind({});
 Primary.args = {
@@ -43,10 +55,12 @@ Primary.parameters = {
       code: jsxToString(
         <Toolbar
           title="crowd.Bible"
+          themeMode="light"
           onClickDiscussionBtn={() => console.log()}
+          onClickThemeModeBtn={() => console.log()}
           onClickNotificationBtn={() => console.log()}
           onClickMenuBtn={() => console.log()}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -67,10 +81,12 @@ DiscussionWithBadge.parameters = {
         <Toolbar
           title="crowd.Bible"
           isNewDiscussion
+          themeMode="light"
           onClickDiscussionBtn={() => console.log()}
+          onClickThemeModeBtn={() => console.log()}
           onClickNotificationBtn={() => console.log()}
           onClickMenuBtn={() => console.log()}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -91,10 +107,12 @@ NotificationWithBadge.parameters = {
         <Toolbar
           title="crowd.Bible"
           isNewNotification
+          themeMode="light"
           onClickDiscussionBtn={() => console.log()}
+          onClickThemeModeBtn={() => console.log()}
           onClickNotificationBtn={() => console.log()}
           onClickMenuBtn={() => console.log()}
-        />
+        />,
       ),
       language: 'html',
       type: 'auto',
@@ -118,7 +136,9 @@ NotificationWithBadge.parameters = {
       code: jsxToString(
         <Toolbar
           title="Showcase"
+          themeMode="light"
           onClickDiscussionBtn={() => console.log()}
+          onClickThemeModeBtn={() => console.log()}
           onClickNotificationBtn={() => console.log()}
           onClickMenuBtn={() => console.log()}
           buttons={{
@@ -126,7 +146,7 @@ NotificationWithBadge.parameters = {
             notification: true,
             menu: true,
           }}
-        />
+        />,
       ),
       language: 'html',
       type: 'auto',
@@ -150,7 +170,9 @@ WithoutIcons.parameters = {
       code: jsxToString(
         <Toolbar
           title="Showcase"
+          themeMode="light"
           onClickDiscussionBtn={() => console.log()}
+          onClickThemeModeBtn={() => console.log()}
           onClickNotificationBtn={() => console.log()}
           onClickMenuBtn={() => console.log()}
           buttons={{
@@ -158,7 +180,7 @@ WithoutIcons.parameters = {
             notification: false,
             menu: false,
           }}
-        />
+        />,
       ),
       language: 'html',
       type: 'auto',

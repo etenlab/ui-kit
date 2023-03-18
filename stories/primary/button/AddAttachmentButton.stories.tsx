@@ -46,7 +46,7 @@ Primary.parameters = {
       code: jsxToString(
         <AddAttachmentButton onChange={() => alert('Changed')}>
           <FiPaperclip />
-        </AddAttachmentButton>
+        </AddAttachmentButton>,
       ),
       language: 'jsx',
       format: true,
@@ -69,7 +69,7 @@ Disabled.parameters = {
       code: jsxToString(
         <AddAttachmentButton onChange={() => alert('Changed')} disabled>
           <FiPaperclip />
-        </AddAttachmentButton>
+        </AddAttachmentButton>,
       ),
       language: 'jsx',
       format: true,

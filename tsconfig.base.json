@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "module": "esnext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "importHelpers": true,
     "noImplicitAny": true,
     "alwaysStrict": true,

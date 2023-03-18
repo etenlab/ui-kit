@@ -86,7 +86,7 @@ Primary.parameters = {
           onCancelAttachment={() => alert('Clicked cancel')}
           onSend={({ quill, plain }) => alert(`${quill} ${plain}`)}
           onClose={() => alert('Clicked Close')}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

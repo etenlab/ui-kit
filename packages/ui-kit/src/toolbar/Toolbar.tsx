@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { IconButton, Stack, Typography, Badge } from '@mui/material';
-import { BiMessageRounded, FiBell, FiMenu } from '../icons';
+import { BiMessageRounded, FiBell, FiMenu, CiDark, CiLight } from '../icons';
+import { useColorModeContext } from '../ThemeProvider';
 
 type ToolbarProps = {
   title: string;
@@ -12,8 +13,10 @@ type ToolbarProps = {
     notification: boolean;
     menu: boolean;
   };
+  themeMode: 'dark' | 'light';
   onClickDiscussionBtn(): void;
   onClickNotificationBtn(): void;
+  onClickThemeModeBtn(): void;
   onClickMenuBtn(): void;
 };
 
@@ -26,10 +29,13 @@ export function Toolbar({
     notification: true,
     menu: true,
   },
+  themeMode = 'light',
+  onClickThemeModeBtn,
   onClickDiscussionBtn,
   onClickNotificationBtn,
   onClickMenuBtn,
 }: ToolbarProps) {
+  const { getColor } = useColorModeContext();
   return (
     <Stack
       direction="row"
@@ -37,7 +43,7 @@ export function Toolbar({
       alignItems="center"
       sx={{ padding: '3px 20px' }}
     >
-      <Typography variant="h3" sx={{ lineHeight: '56px', color: '#1B1B1B' }}>
+      <Typography variant="h3" color="text.dark" sx={{ lineHeight: '56px' }}>
         {title}
       </Typography>
       <Stack
@@ -51,7 +57,7 @@ export function Toolbar({
             <Badge color="red" variant="dot" invisible={!isNewDiscussion}>
               <BiMessageRounded
                 style={{
-                  color: '#5C6673',
+                  color: getColor('gray'),
                   fontSize: 24,
                   transform: 'rotateY(180deg)',
                 }}
@@ -62,13 +68,34 @@ export function Toolbar({
         {buttons.notification ? (
           <IconButton onClick={onClickNotificationBtn}>
             <Badge color="red" variant="dot" invisible={!isNewNotification}>
-              <FiBell style={{ color: '#5C6673', fontSize: 24 }} />
+              <FiBell style={{ color: getColor('gray'), fontSize: 24 }} />
             </Badge>
           </IconButton>
         ) : null}
+
+        <IconButton onClick={onClickThemeModeBtn}>
+          {themeMode === 'light' ? (
+            <CiLight
+              style={{
+                color: getColor('gray'),
+                fontSize: 27,
+                strokeWidth: '0.6px',
+              }}
+            />
+          ) : (
+            <CiDark
+              style={{
+                color: getColor('gray'),
+                fontSize: 27,
+                strokeWidth: '0.6px',
+              }}
+            />
+          )}
+        </IconButton>
+
         {buttons.menu ? (
           <IconButton onClick={onClickMenuBtn}>
-            <FiMenu style={{ color: '#5C6673', fontSize: '40px' }} />
+            <FiMenu style={{ color: getColor('gray'), fontSize: '40px' }} />
           </IconButton>
         ) : null}
       </Stack>

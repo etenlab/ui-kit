@@ -6,7 +6,8 @@ import { FiX, BiLeftArrowAlt } from '../../icons';
 
 type TitleWithIconProps = {
   label: string;
-  withBackIcon?: React.ReactNode;
+  withBackIcon?: boolean;
+  withCloseIcon?: boolean;
   onClose(): void;
   onBack(): void;
 };
@@ -14,17 +15,13 @@ type TitleWithIconProps = {
 export function TitleWithIcon({
   label,
   withBackIcon = false,
+  withCloseIcon = true,
   onClose,
   onBack,
 }: TitleWithIconProps) {
   return (
     <Stack direction="row" justifyContent="space-between" alignItems="center">
-      <Typography
-        variant="h3"
-        sx={{
-          color: (theme) => (theme.palette.dark as PaletteColor).main,
-        }}
-      >
+      <Typography variant="h3" color="text.dark">
         {withBackIcon ? (
           <IconButton
             onClick={onBack}
@@ -39,12 +36,12 @@ export function TitleWithIcon({
         {label}
       </Typography>
 
-      <IconButton
+      {withCloseIcon ? (<IconButton
         onClick={onClose}
         sx={{ color: (theme) => (theme.palette.gray as PaletteColor).main }}
       >
         <FiX />
-      </IconButton>
+      </IconButton>) : null}
     </Stack>
   );
 }

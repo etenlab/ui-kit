@@ -11,6 +11,7 @@ import { Box, Popover, Divider, TextField, IconButton } from '@mui/material';
 
 import { CiFaceSmile } from '../../icons';
 import { EmojiPicker, EmojiClickData } from '../../EmojiPicker';
+import { useColorModeContext } from '../../ThemeProvider';
 
 type SimpleQuillProps = {
   placeholder: string;
@@ -23,6 +24,7 @@ export function SimpleQuill({
   value,
   onChange,
 }: SimpleQuillProps) {
+  const { getColor } = useColorModeContext();
   const anchorRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const changeRef = useRef<{ onChange(newValue: string): void }>({
@@ -51,18 +53,19 @@ export function SimpleQuill({
 
       changeRef.current.onChange(newValue);
     },
-    [handleCloseEmoji]
+    [handleCloseEmoji],
   );
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value);
   };
 
-  const handleBlur: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement> =
-    (e) => {
-      const element = e.currentTarget;
-      lastCursorPosRef.current = element.selectionStart || value.length;
-    };
+  const handleBlur: FocusEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  > = (e) => {
+    const element = e.currentTarget;
+    lastCursorPosRef.current = element.selectionStart || value.length;
+  };
 
   return (
     <Box
@@ -70,7 +73,7 @@ export function SimpleQuill({
         padding: '7px 18px',
         gap: '10px',
         width: '100%',
-        background: '#fff',
+        background: getColor('white'),
       }}
     >
       <TextField

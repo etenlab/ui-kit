@@ -14,7 +14,7 @@ export function Autocomplete<
   T,
   Multiple extends boolean | undefined = false,
   DisableClearable extends boolean | undefined = false,
-  FreeSolo extends boolean | undefined = false
+  FreeSolo extends boolean | undefined = false,
 >({
   valid,
   label,

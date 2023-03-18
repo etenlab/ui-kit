@@ -5,7 +5,7 @@ import { Stack, Typography } from '@mui/material';
 import { Avatar } from '../Avatar';
 import { Username } from '../Username';
 import { BiImages } from '../../icons';
-import { colors } from '../../ThemeProvider';
+import { useColorModeContext } from '../../ThemeProvider';
 
 type IFile = {
   id: number;
@@ -26,8 +26,9 @@ export function StandardDecorator({
   files,
   edited,
 }: StandardDecoratorProps) {
+  const { getColor } = useColorModeContext();
   const attachmentIcon =
-    files.length > 0 ? <BiImages style={{ color: colors['gray'] }} /> : null;
+    files.length > 0 ? <BiImages style={{ color: getColor('gray') }} /> : null;
 
   return (
     <Stack
@@ -64,19 +65,19 @@ export function StandardDecorator({
       >
         <path
           d="M 0 5 l 0 10"
-          stroke={colors['gray']}
+          stroke={getColor('gray')}
           strokeWidth="1"
           fill="none"
         />
         <path
           d="M 5 0 l 22 0"
-          stroke={colors['gray']}
+          stroke={getColor('gray')}
           strokeWidth="1"
           fill="none"
         />
         <path
           d="M 0 5 q 0 -5 5 -5"
-          stroke={colors['gray']}
+          stroke={getColor('gray')}
           strokeWidth="1"
           fill="none"
         />

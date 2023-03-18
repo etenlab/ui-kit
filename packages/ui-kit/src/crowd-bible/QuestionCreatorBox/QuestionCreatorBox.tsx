@@ -14,7 +14,7 @@ import {
   ListItemText,
 } from '@mui/material';
 import { Autocomplete, TextArea, Input, Checkbox, Radio } from '../../input';
-import { colors } from '../../ThemeProvider/';
+import { useColorModeContext } from '../../ThemeProvider/';
 import { Button } from '../../button';
 import { BiTrashAlt } from '../../icons';
 
@@ -48,6 +48,7 @@ export function QuestionCreatorBox({
   onSave,
   onCancel,
 }: QuestionCreatorBoxProps) {
+  const { getColor } = useColorModeContext();
   const [questionType, setQuestionType] = useState<QuestionType | null>(null);
   const [question, setQuestion] = useState<string>('');
   const [answers, setAnswers] = useState<string[]>([]);
@@ -216,7 +217,7 @@ export function QuestionCreatorBox({
           underline="hover"
           sx={{
             fontWeight: 600,
-            borderBottom: `1px solid ${colors['dark']}`,
+            borderBottom: `1px solid ${getColor('dark')}`,
             padding: '9px 0',
           }}
           onClick={handleClickAddAnswer}
@@ -230,7 +231,7 @@ export function QuestionCreatorBox({
     <Box
       sx={{
         padding: '20px',
-        borderTop: `3px solid ${colors['blue-primary']}`,
+        borderTop: `3px solid ${getColor('blue-primary')}`,
       }}
     >
       <FormControl sx={{ width: '100%', gap: '12px' }}>

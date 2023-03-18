@@ -44,7 +44,7 @@ TwoTabs.parameters = {
           ]}
           value={1}
           onChange={(event: React.SyntheticEvent, newValue: number) => {}}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -73,7 +73,7 @@ ThreeTabs.parameters = {
           ]}
           value={1}
           onChange={(event: React.SyntheticEvent, newValue: number) => {}}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -104,7 +104,7 @@ FourTabs.parameters = {
           ]}
           value={1}
           onChange={(event: React.SyntheticEvent, newValue: number) => {}}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

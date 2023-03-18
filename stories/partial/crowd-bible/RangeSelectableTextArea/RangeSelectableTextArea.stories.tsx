@@ -74,7 +74,7 @@ SelectableText.parameters = {
           }) => {
             console.log('Change Range');
           }}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

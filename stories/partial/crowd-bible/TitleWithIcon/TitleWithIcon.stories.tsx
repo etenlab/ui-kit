@@ -23,14 +23,14 @@ const Template: ComponentStory<typeof TitleWithIcon> = (args) => (
   <TitleWithIcon {...args} />
 );
 
-export const TitleWithBackIcon = Template.bind({});
-TitleWithBackIcon.args = {
+export const TitleWithIcons = Template.bind({});
+TitleWithIcons.args = {
   label: 'Verses',
   withBackIcon: true,
   onClose: () => alert('Clicked Close Button'),
   onBack: () => alert('Clicked Back Button'),
 };
-TitleWithBackIcon.parameters = {
+TitleWithIcons.parameters = {
   docs: {
     source: {
       code: jsxToString(
@@ -39,7 +39,7 @@ TitleWithBackIcon.parameters = {
           withBackIcon
           onClose={() => alert('Clicked Close Button')}
           onBack={() => alert('Clicked Back Button')}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -48,14 +48,15 @@ TitleWithBackIcon.parameters = {
   },
 };
 
-export const TitleWithoutIcon = Template.bind({});
-TitleWithoutIcon.args = {
+export const TitleWithoutBackIcon = Template.bind({});
+TitleWithoutBackIcon.args = {
   label: 'Chapters',
   withBackIcon: false,
+  withCloseIcon: true,
   onClose: () => alert('Clicked Close Button'),
   onBack: () => alert('Clicked Back Button'),
 };
-TitleWithoutIcon.parameters = {
+TitleWithoutBackIcon.parameters = {
   docs: {
     source: {
       code: jsxToString(
@@ -64,7 +65,33 @@ TitleWithoutIcon.parameters = {
           withBackIcon={false}
           onClose={() => alert('Clicked Close Button')}
           onBack={() => alert('Clicked Back Button')}
-        />
+        />,
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
+
+export const TitleWithoutCloseIcon = Template.bind({});
+TitleWithoutCloseIcon.args = {
+  label: 'Chapters',
+  withBackIcon: true,
+  withCloseIcon: false,
+  onClose: () => alert('Clicked Close Button'),
+  onBack: () => alert('Clicked Back Button'),
+};
+TitleWithoutCloseIcon.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <TitleWithIcon
+          label="Chapters"
+          withCloseIcon={false}
+          onClose={() => alert('Clicked Close Button')}
+          onBack={() => alert('Clicked Back Button')}
+        />,
       ),
       language: 'jsx',
       format: true,

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IconButton, PaletteColor, Stack, Typography } from '@mui/material';
+import { IconButton, Stack, Typography } from '@mui/material';
 
 import { Button } from '../../button';
 import { FiX } from '../../icons';
@@ -30,15 +30,14 @@ export function KindSelectionBox({
           justifyContent="space-between"
           alignItems="center"
         >
-          <Typography variant="h2">{title}</Typography>
+          <Typography variant="h2" color="text.dark">
+            {title}
+          </Typography>
           <IconButton onClick={onCancel}>
             <FiX />
           </IconButton>
         </Stack>
-        <Typography
-          variant="body3"
-          sx={{ color: (theme) => (theme.palette.gray as PaletteColor).main }}
-        >
+        <Typography variant="body3" color="text.gray">
           {label}
         </Typography>
       </Stack>

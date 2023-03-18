@@ -138,3 +138,19 @@ TextButton.parameters = {
     },
   },
 };
+
+export const ButtonOtherComponent = Template.bind({});
+ButtonOtherComponent.args = {
+  variant: 'contained',
+  component: 'label',
+  children: 'Get Started Now',
+};
+ButtonOtherComponent.parameters = {
+  docs: {
+    source: {
+      code: `<Button variant='contained' component='label'>Get Started Now</Button>`,
+      language: 'html',
+      type: 'auto',
+    },
+  },
+};

@@ -8,7 +8,7 @@ export default {
   title: 'Primary/Button/PlusButton',
   component: PlusButton,
   decorators: [
-    Story => (
+    (Story) => (
       <div style={{ margin: '3em', background: '#eee', width: '500px' }}>
         <ThemeProvider>
           <Story />
@@ -18,7 +18,7 @@ export default {
   ],
 } as ComponentMeta<typeof PlusButton>;
 
-const Template: ComponentStory<typeof PlusButton> = args => (
+const Template: ComponentStory<typeof PlusButton> = (args) => (
   <PlusButton {...args} />
 );
 
