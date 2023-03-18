@@ -9,4 +9,5 @@ export * from './typography';
 export * from './EmojiPicker';
 export * as CrowdBibleUI from './crowd-bible';
 export * as DiscussionBoxUI from './discussion-box';
+export * as VersificationUI from './versification';
 export * as MuiMaterial from '@mui/material';
