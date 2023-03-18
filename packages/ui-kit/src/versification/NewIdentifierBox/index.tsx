@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { SxProps, Theme } from '@mui/material/styles';
 import { Box, Stack, TextField, InputAdornment, Button } from '@mui/material';
 
-import { colors } from '../../ThemeProvider/palette';
+import { useColorModeContext } from '../../ThemeProvider';
 
 export type NewIdentifierBoxProps = Parameters<typeof NewIdentifierBox>[0];
 
@@ -22,6 +22,7 @@ export function NewIdentifierBox({
   onCancel(): void;
   sx?: SxProps<Theme>;
 }) {
+  const { getColor } = useColorModeContext();
   const label = `# ${nodeType.charAt(0).toUpperCase()}${nodeType.slice(1)}`;
   const [value, setValue] = useState('');
   const [errorText, setErrorText] = useState('');
@@ -45,9 +46,9 @@ export function NewIdentifierBox({
       spacing={1.5}
       sx={[
         {
-          border: `1px solid ${colors['middle-gray'].light}`,
-          background: colors['light-blue'].light,
-          color: colors.gray.light,
+          border: `1px solid ${getColor('middle-gray')}`,
+          background: getColor('light-blue'),
+          color: getColor('gray'),
           padding: '20px',
           fontSize: '12px',
           '& label': {
@@ -89,22 +90,22 @@ export function NewIdentifierBox({
           }}
           InputProps={{
             sx: {
-              bgcolor: '#fff',
+              bgcolor: getColor('white'),
               '& .MuiInputAdornment-root': {
-                color: `${colors.gray.light} !important`,
+                color: `${getColor('gray')} !important`,
                 opacity: 1,
                 '& > p': {
                   fontSize: '14px',
-                  color: colors.gray.light,
+                  color: getColor('gray'),
                 },
               },
               '& .MuiInputBase-input': {
                 paddingLeft: 0,
                 fontSize: '14px',
-                color: `${colors.gray.light} !important`,
+                color: `${getColor('gray')} !important`,
                 '&::placeholder': {
                   opacity: 1,
-                  color: colors['middle-gray'].light,
+                  color: getColor('middle-gray'),
                 },
               },
             },
@@ -150,7 +151,7 @@ export function NewIdentifierBox({
           variant="contained"
           sx={{
             color: '#fff',
-            bgcolor: colors.green.light,
+            bgcolor: getColor('green'),
             '&:hover, &:active': { bgcolor: '#6ecbaa' },
           }}
           onClick={() => handleSave()}
@@ -160,7 +161,7 @@ export function NewIdentifierBox({
         <Button
           fullWidth
           sx={{
-            color: colors.gray.light,
+            color: getColor('gray'),
             bgcolor: 'transparent',
             '&:hover, &:active': { bgcolor: 'rgba(0,0,0,0.05)' },
           }}

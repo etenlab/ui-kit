@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { SxProps, Theme } from '@mui/material/styles';
 import { Box, Popover } from '@mui/material';
 
-import { colors } from '../../ThemeProvider/palette';
+import { useColorModeContext } from '../../ThemeProvider';
 import { NewIdentifierBoxProps, NewIdentifierBox } from '../NewIdentifierBox';
 
 export type IdentifierLabelProps = Parameters<typeof IdentifierLabel>[0];
@@ -25,6 +25,7 @@ export function IdentifierLabel({
   sx?: SxProps<Theme>;
   onNewIdentifierSave(value: string): void;
 }) {
+  const { getColor } = useColorModeContext();
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -67,7 +68,7 @@ export function IdentifierLabel({
           right: '-4px',
           bottom: '-3px',
           left: '-4px',
-          background: colors['middle-yellow'].light,
+          background: getColor('middle-yellow'),
           borderRadius: '4px',
         }}
       />

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Select, MenuItem } from '@mui/material';
 
-import { colors } from '../../ThemeProvider/palette';
+import { useColorModeContext } from '../../ThemeProvider';
 import { BiChevronDown } from '../../icons';
 
 export function NodeFilter({
@@ -18,6 +18,7 @@ export function NodeFilter({
   value?: string;
   onChange?(value: undefined | string): void;
 }) {
+  const { getColor } = useColorModeContext();
   const option = value
     ? options.find((option) => option.value === value)
     : null;
@@ -30,15 +31,15 @@ export function NodeFilter({
       onChange={(event) => onChange?.(event.target.value)}
       sx={{
         width: '100%',
-        color: colors.gray.light,
-        backgroundColor: '#fff',
+        color: getColor('gray'),
+        backgroundColor: getColor('white'),
         borderRadius: '10px',
-        border: `1px solid ${colors['middle-gray'].light}`,
+        border: `1px solid ${getColor('middle-gray')}`,
         fontSize: 14,
         height: '48px',
         '&.Mui-disabled': {
-          background: 'rgba(255, 255, 255, 0.5)',
-          color: colors.gray.light,
+          background: getColor('disable'),
+          color: getColor('gray'),
         },
         '& .MuiInputBase-input': {
           pl: 2,
@@ -75,7 +76,7 @@ export function NodeFilter({
           value={value}
           sx={{
             '&.Mui-selected': {
-              background: colors['light-blue'].light,
+              background: getColor('light-blue'),
             },
           }}
         >

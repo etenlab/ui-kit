@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 
 import { Box, Typography, IconButton } from '@mui/material';
 
-import { colors } from '../../ThemeProvider/palette';
+import { useColorModeContext } from '../../ThemeProvider';
 import { BiLeftArrowAlt } from '../../icons';
 
 export function HeadingBox({
@@ -14,16 +14,18 @@ export function HeadingBox({
   breadcrumb?: string;
   children?: ReactNode;
 }) {
+  const { getColor } = useColorModeContext();
+
   return (
     <Box
       sx={{
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        backgroundColor: colors['light-blue'].light,
+        backgroundColor: getColor('light-blue'),
         minHeight: 68,
         p: 2.5,
-        color: colors.dark.light,
+        color: getColor('dark'),
       }}
     >
       <Typography variant="h3" sx={{ fontSize: 20, color: 'inherit' }}>

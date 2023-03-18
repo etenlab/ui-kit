@@ -2,7 +2,11 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import jsxToString from 'jsx-to-string';
 
-import { ThemeProvider } from '../../../../packages/ui-kit/src';
+import {
+  mode,
+  ThemeProvider,
+} from '../../../../packages/ui-kit/src/ThemeProvider/ThemeProvider';
+import { colors } from '../../../../packages/ui-kit/src/ThemeProvider/palette';
 import { IconBadge } from '../../../../packages/ui-kit/src/versification/IconBadge';
 import {
   BiLike,
@@ -28,7 +32,7 @@ export default {
           display: 'flex',
           margin: '3em',
           width: '500px',
-          border: '1px solid #e3eaf3',
+          border: `1px solid ${colors['light-blue'][mode]}`,
           padding: '3em',
         }}
       >
@@ -67,7 +71,7 @@ Success.args = {
 Success.parameters = {
   docs: {
     source: {
-      code: jsxToString(<IconBadge {...Success.args} />),
+      code: jsxToString(<IconBadge {...args} {...Success.args} />),
       language: 'jsx',
       format: true,
       type: 'auto',
@@ -86,7 +90,7 @@ Danger.args = {
 Danger.parameters = {
   docs: {
     source: {
-      code: jsxToString(<IconBadge {...Danger.args} />),
+      code: jsxToString(<IconBadge {...args} {...Danger.args} />),
       language: 'jsx',
       format: true,
       type: 'auto',
