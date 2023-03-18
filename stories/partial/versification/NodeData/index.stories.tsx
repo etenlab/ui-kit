@@ -2,7 +2,11 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import jsxToString from 'jsx-to-string';
 
-import { ThemeProvider } from '../../../../packages/ui-kit/src';
+import {
+  mode,
+  ThemeProvider,
+} from '../../../../packages/ui-kit/src/ThemeProvider/ThemeProvider';
+import { colors } from '../../../../packages/ui-kit/src/ThemeProvider/palette';
 import { NodeData } from '../../../../packages/ui-kit/src/versification/NodeData';
 
 const args = {
@@ -11,7 +15,7 @@ const args = {
   nodeType: 'chapter' as const,
   originalValue: '5',
   translationValues: ['7', '9'],
-  onNewIdentifierSave: (value) =>
+  onNewIdentifierSave: (value: string) =>
     alert(`Clicked Save New Identifier Button with value: ${value}`),
   col: false,
   inline: true,
@@ -30,7 +34,7 @@ export default {
         style={{
           margin: '3em',
           width: '500px',
-          border: '1px solid #e3eaf3',
+          border: `1px solid ${colors['light-blue'][mode]}`,
           padding: '3em',
         }}
       >
@@ -66,7 +70,7 @@ Short.args = {
 Short.parameters = {
   docs: {
     source: {
-      code: jsxToString(<NodeData {...Short.args} />),
+      code: jsxToString(<NodeData {...args} {...Short.args} />),
       language: 'jsx',
       format: true,
       type: 'auto',
@@ -77,7 +81,7 @@ Short.parameters = {
 export const WithValues = Template.bind({});
 WithValues.args = {
   ...args,
-  label: 'v3',
+  currentValue: '3',
   nodeType: 'verse' as const,
   originalValue: '3',
   translationValues: ['4', '1'],
@@ -87,7 +91,7 @@ WithValues.args = {
 WithValues.parameters = {
   docs: {
     source: {
-      code: jsxToString(<NodeData {...WithValues.args} />),
+      code: jsxToString(<NodeData {...args} {...WithValues.args} />),
       language: 'jsx',
       format: true,
       type: 'auto',
@@ -98,7 +102,7 @@ WithValues.parameters = {
 export const Column = Template.bind({});
 Column.args = {
   ...args,
-  label: 'v3-5',
+  currentValue: '3-5',
   nodeType: 'verse' as const,
   originalValue: '3-5',
   translationValues: ['2a', 'w7'],
@@ -107,7 +111,7 @@ Column.args = {
 Column.parameters = {
   docs: {
     source: {
-      code: jsxToString(<NodeData {...Column.args} />),
+      code: jsxToString(<NodeData {...args} {...Column.args} />),
       language: 'jsx',
       format: true,
       type: 'auto',
@@ -123,7 +127,7 @@ NotInline.args = {
 NotInline.parameters = {
   docs: {
     source: {
-      code: jsxToString(<NodeData {...NotInline.args} />),
+      code: jsxToString(<NodeData {...args} {...NotInline.args} />),
       language: 'jsx',
       format: true,
       type: 'auto',

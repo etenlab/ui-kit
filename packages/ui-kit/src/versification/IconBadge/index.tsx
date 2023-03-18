@@ -3,7 +3,7 @@ import { IconType } from 'react-icons';
 
 import { Box } from '@mui/material';
 
-import { colors } from '../../ThemeProvider/palette';
+import { useColorModeContext } from '../../ThemeProvider';
 
 export function IconBadge({
   value = 0,
@@ -16,6 +16,8 @@ export function IconBadge({
   success?: boolean;
   danger?: boolean;
 }) {
+  const { getColor } = useColorModeContext();
+
   return (
     <Box
       sx={{
@@ -24,17 +26,17 @@ export function IconBadge({
         borderRadius: '4px',
         padding: '0px 9px',
         height: 24,
-        backgroundColor: colors['light-blue'],
-        color: colors.gray,
+        backgroundColor: getColor('light-blue'),
+        color: getColor('gray'),
         fontWeight: 700,
         fontSize: 12,
         ...(success && {
-          backgroundColor: colors['light-green'],
-          color: colors.green,
+          backgroundColor: getColor('light-green'),
+          color: getColor('green'),
         }),
         ...(danger && {
-          backgroundColor: colors['light-red'],
-          color: colors.red,
+          backgroundColor: getColor('light-red'),
+          color: getColor('red'),
         }),
         '& + *': {
           marginLeft: '10px',

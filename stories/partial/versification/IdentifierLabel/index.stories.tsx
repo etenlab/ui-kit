@@ -2,7 +2,11 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import jsxToString from 'jsx-to-string';
 
-import { ThemeProvider } from '../../../../packages/ui-kit/src';
+import {
+  mode,
+  ThemeProvider,
+} from '../../../../packages/ui-kit/src/ThemeProvider/ThemeProvider';
+import { colors } from '../../../../packages/ui-kit/src/ThemeProvider/palette';
 import { IdentifierLabel } from '../../../../packages/ui-kit/src/versification/IdentifierLabel';
 
 const args = {
@@ -11,7 +15,7 @@ const args = {
   translationValues: ['1', '5', '9'],
   currentValue: '1',
   short: false,
-  onNewIdentifierSave: (value) =>
+  onNewIdentifierSave: (value: string) =>
     alert(`Clicked Save New Identifier Button with value: ${value}`),
 };
 
@@ -25,7 +29,7 @@ export default {
         style={{
           margin: '3em',
           width: '500px',
-          border: '1px solid #e3eaf3',
+          border: `1px solid ${colors['light-blue'][mode]}`,
           padding: '3em',
         }}
       >
@@ -60,7 +64,7 @@ Short.args = {
 Short.parameters = {
   docs: {
     source: {
-      code: jsxToString(<IdentifierLabel {...Short.args} />),
+      code: jsxToString(<IdentifierLabel {...args} {...Short.args} />),
       language: 'jsx',
       format: true,
       type: 'auto',

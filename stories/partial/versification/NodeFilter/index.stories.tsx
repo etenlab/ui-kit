@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import jsxToString from 'jsx-to-string';
 
-import { ThemeProvider } from '../../../../packages/ui-kit/src';
+import {
+  mode,
+  ThemeProvider,
+} from '../../../../packages/ui-kit/src/ThemeProvider/ThemeProvider';
+import { colors } from '../../../../packages/ui-kit/src/ThemeProvider/palette';
 import { NodeFilter } from '../../../../packages/ui-kit/src/versification/NodeFilter';
 
 export default {
@@ -23,7 +27,7 @@ export default {
         style={{
           margin: '3em',
           width: '500px',
-          backgroundColor: '#e3eaf3',
+          backgroundColor: colors['light-blue'][mode],
           padding: '3em',
         }}
       >
