@@ -1,25 +1,46 @@
 #view-page {
-
 }
 #view-page .inner-section {
-    padding: 0px 8%;
+  padding: 0px 8%;
 }
 
 #view-page .controls-section {
-    padding: 20px;
-    background-color: #F0F0E7;
+  padding: 20px;
+  background-color: #f0f0e7;
 }
 #view-page .controls-section .MuiOutlinedInput-root {
-    min-width: 272px;
+  min-width: 272px;
 }
 #view-page .controls-section .MuiOutlinedInput-root .MuiSelect-select {
-    padding-top: 10px;
-    padding-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 #view-page .hide-ul ul.MuiList-root {
-    margin: 0px;
+  margin: 0px;
 }
 #view-page .diegesis-quote {
-    padding-top: 25px;
-    padding-bottom: 35px;
+  padding-top: 25px;
+  padding-bottom: 35px;
+}
+@media screen and (max-width: 414px) {
+  #view-page .inner-section {
+    padding: 0px;
+  }
+  #view-page .controls-section .MuiOutlinedInput-root {
+    min-width: 100%;
+  }
+  #view-page .MuiTypography-h1.page-title {
+    text-align: left;
+    font-size: 2rem;
+  }
+  #view-page .header-section {
+    padding-top: 20px;
+  }
+  #view-page .back-btn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+  }
 }

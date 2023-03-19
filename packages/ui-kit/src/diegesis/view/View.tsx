@@ -6,6 +6,7 @@ import SideNav from "../SideNav"
 import AboutContentSection from "../about/AboutContentSection"
 import "./View.css"
 import SelectOptions from "../SelectOptions"
+import { BackButton } from "../BackButton"
 
 
 interface IProps {
@@ -26,6 +27,9 @@ export const ViewPage: React.FC<IProps> = (props) => {
             <PageHeader openSideNav={() => setSideNavOpenStatus(true)} />
             <SideNav open={isSideNavOpen} close={() => { setSideNavOpenStatus(false) }} />
             <Container className="header-section">
+                <Stack justifyContent={'flex-start'}>
+                    <BackButton className="back-btn show-xs" />
+                </Stack>
                 <Typography variant={'h1'} className="page-title">
                     Bible in Basic English
                 </Typography>
@@ -41,44 +45,46 @@ export const ViewPage: React.FC<IProps> = (props) => {
                     <Typography variant="h1" fontStyle={'italic'}>Genesis</Typography>
                 </Stack>
             </Container>
-            <Container className="inner-section">
-                <AboutContentSection
-                    className="no-padding hide-ul"
-                    title={dataAboutContentSection1.title}
-                    description={dataAboutContentSection1.description}
-                    points={dataAboutContentSection1.points}
-                />
-                <Typography variant="h1" textTransform={'none'} className="diegesis-quote">
-                    “Diegesis is a place to find Bibles and related resources, in a variety of formats, released under open licences.”
-                </Typography>
-                <AboutContentSection
-                    className="no-padding hide-ul"
-                    title={dataAboutContentSection1.title}
-                    description={dataAboutContentSection1.description}
-                    points={dataAboutContentSection1.points}
-                />
-                <br />
-                <AboutContentSection
-                    className="no-padding hide-ul"
-                    title={dataAboutContentSection1.title}
-                    description={dataAboutContentSection1.description}
-                    points={dataAboutContentSection1.points}
-                />
-                <br />
-                <AboutContentSection
-                    className="no-padding hide-ul"
-                    title={dataAboutContentSection1.title}
-                    description={dataAboutContentSection1.description}
-                    points={dataAboutContentSection1.points}
-                />
-                <br />
-                <AboutContentSection
-                    className="no-padding hide-ul"
-                    title={dataAboutContentSection1.title}
-                    description={dataAboutContentSection1.description}
-                    points={dataAboutContentSection1.points}
-                />
-                <br /><br />
+            <Container>
+                <Container className="inner-section">
+                    <AboutContentSection
+                        className="no-padding hide-ul"
+                        title={dataAboutContentSection1.title}
+                        description={dataAboutContentSection1.description}
+                        points={dataAboutContentSection1.points}
+                    />
+                    <Typography variant="h1" textTransform={'none'} className="diegesis-quote">
+                        “Diegesis is a place to find Bibles and related resources, in a variety of formats, released under open licences.”
+                    </Typography>
+                    <AboutContentSection
+                        className="no-padding hide-ul"
+                        title={dataAboutContentSection1.title}
+                        description={dataAboutContentSection1.description}
+                        points={dataAboutContentSection1.points}
+                    />
+                    <br />
+                    <AboutContentSection
+                        className="no-padding hide-ul"
+                        title={dataAboutContentSection1.title}
+                        description={dataAboutContentSection1.description}
+                        points={dataAboutContentSection1.points}
+                    />
+                    <br />
+                    <AboutContentSection
+                        className="no-padding hide-ul"
+                        title={dataAboutContentSection1.title}
+                        description={dataAboutContentSection1.description}
+                        points={dataAboutContentSection1.points}
+                    />
+                    <br />
+                    <AboutContentSection
+                        className="no-padding hide-ul"
+                        title={dataAboutContentSection1.title}
+                        description={dataAboutContentSection1.description}
+                        points={dataAboutContentSection1.points}
+                    />
+                    <br /><br />
+                </Container>
             </Container>
             <PageFooter />
         </Box>
