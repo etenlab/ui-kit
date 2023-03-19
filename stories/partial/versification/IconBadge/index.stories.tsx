@@ -1,6 +1,5 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import jsxToString from 'jsx-to-string';
 
 import {
   mode,
@@ -13,6 +12,7 @@ import {
   BiDislike,
   BiMessageRounded,
 } from '../../../../packages/ui-kit/src/icons';
+import { buildDocs } from '../common';
 
 const args = {
   value: 0,
@@ -49,16 +49,7 @@ const Template: ComponentStory<typeof IconBadge> = (args) => (
 );
 
 export const Primary = Template.bind({});
-Primary.parameters = {
-  docs: {
-    source: {
-      code: jsxToString(<IconBadge {...args} />),
-      language: 'jsx',
-      format: true,
-      type: 'auto',
-    },
-  },
-};
+Primary.parameters = buildDocs(<IconBadge {...args} />);
 
 export const Success = Template.bind({});
 Success.args = {
@@ -68,16 +59,7 @@ Success.args = {
   danger: false,
   Icon: BiLike,
 };
-Success.parameters = {
-  docs: {
-    source: {
-      code: jsxToString(<IconBadge {...args} {...Success.args} />),
-      language: 'jsx',
-      format: true,
-      type: 'auto',
-    },
-  },
-};
+Success.parameters = buildDocs(<IconBadge {...args} {...Success.args} />);
 
 export const Danger = Template.bind({});
 Danger.args = {
@@ -87,13 +69,4 @@ Danger.args = {
   danger: true,
   Icon: BiDislike,
 };
-Danger.parameters = {
-  docs: {
-    source: {
-      code: jsxToString(<IconBadge {...args} {...Danger.args} />),
-      language: 'jsx',
-      format: true,
-      type: 'auto',
-    },
-  },
-};
+Danger.parameters = buildDocs(<IconBadge {...args} {...Danger.args} />);

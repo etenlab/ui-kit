@@ -1,6 +1,5 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import jsxToString from 'jsx-to-string';
 
 import {
   mode,
@@ -8,6 +7,7 @@ import {
 } from '../../../../packages/ui-kit/src/ThemeProvider/ThemeProvider';
 import { colors } from '../../../../packages/ui-kit/src/ThemeProvider/palette';
 import { IdentifierLabel } from '../../../../packages/ui-kit/src/versification/IdentifierLabel';
+import { buildDocs } from '../common';
 
 const args = {
   nodeType: 'chapter' as const,
@@ -46,28 +46,10 @@ const Template: ComponentStory<typeof IdentifierLabel> = (args) => (
 );
 
 export const Primary = Template.bind({});
-Primary.parameters = {
-  docs: {
-    source: {
-      code: jsxToString(<IdentifierLabel {...args} />),
-      language: 'jsx',
-      format: true,
-      type: 'auto',
-    },
-  },
-};
+Primary.parameters = buildDocs(<IdentifierLabel {...args} />);
 
 export const Short = Template.bind({});
 Short.args = {
   short: true,
 };
-Short.parameters = {
-  docs: {
-    source: {
-      code: jsxToString(<IdentifierLabel {...args} {...Short.args} />),
-      language: 'jsx',
-      format: true,
-      type: 'auto',
-    },
-  },
-};
+Short.parameters = buildDocs(<IdentifierLabel {...args} {...Short.args} />);

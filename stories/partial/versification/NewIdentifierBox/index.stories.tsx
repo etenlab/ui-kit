@@ -1,6 +1,5 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import jsxToString from 'jsx-to-string';
 
 import {
   mode,
@@ -8,6 +7,7 @@ import {
 } from '../../../../packages/ui-kit/src/ThemeProvider/ThemeProvider';
 import { colors } from '../../../../packages/ui-kit/src/ThemeProvider/palette';
 import { NewIdentifierBox } from '../../../../packages/ui-kit/src/versification/NewIdentifierBox';
+import { buildDocs } from '../common';
 
 const args = {
   nodeType: 'verse' as const,
@@ -44,13 +44,4 @@ const Template: ComponentStory<typeof NewIdentifierBox> = (args) => (
 );
 
 export const Primary = Template.bind({});
-Primary.parameters = {
-  docs: {
-    source: {
-      code: jsxToString(<NewIdentifierBox {...args} />),
-      language: 'jsx',
-      format: true,
-      type: 'auto',
-    },
-  },
-};
+Primary.parameters = buildDocs(<NewIdentifierBox {...args} />);

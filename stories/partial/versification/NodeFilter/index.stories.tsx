@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import jsxToString from 'jsx-to-string';
 
 import {
   mode,
@@ -8,6 +7,7 @@ import {
 } from '../../../../packages/ui-kit/src/ThemeProvider/ThemeProvider';
 import { colors } from '../../../../packages/ui-kit/src/ThemeProvider/palette';
 import { NodeFilter } from '../../../../packages/ui-kit/src/versification/NodeFilter';
+import { buildDocs } from '../common';
 
 export default {
   title: 'Partial/Versification/NodeFilter',
@@ -46,28 +46,10 @@ const Template: ComponentStory<typeof NodeFilter> = (args) => {
 };
 
 export const Primary = Template.bind({});
-Primary.parameters = {
-  docs: {
-    source: {
-      code: jsxToString(<NodeFilter nodeType="chapter" />),
-      language: 'jsx',
-      format: true,
-      type: 'auto',
-    },
-  },
-};
+Primary.parameters = buildDocs(<NodeFilter nodeType="chapter" />);
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   disabled: true,
 };
-Disabled.parameters = {
-  docs: {
-    source: {
-      code: jsxToString(<NodeFilter nodeType="chapter" disabled />),
-      language: 'jsx',
-      format: true,
-      type: 'auto',
-    },
-  },
-};
+Disabled.parameters = buildDocs(<NodeFilter nodeType="chapter" disabled />);
