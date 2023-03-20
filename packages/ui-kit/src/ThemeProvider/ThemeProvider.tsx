@@ -1,33 +1,116 @@
-import React from 'react';
+import React, {
+  useState,
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+} from 'react';
 
-import { ThemeProvider as MuiThemeProvider, GlobalStyles } from '@mui/material';
+import {
+  ThemeProvider as MuiThemeProvider,
+  GlobalStyles,
+  createTheme,
+  useMediaQuery,
+  PaletteColorOptions,
+} from '@mui/material';
 import '@fontsource/inter';
 
-import { theme } from './theme';
+import { deepmerge } from '@mui/utils';
+import { getThemeOptions } from './themeOptions';
+import { colors } from './palette';
+
+export const mode =
+  window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
+
+const ColorModeContext = createContext({
+  setColorMode: (colorMode: 'light' | 'dark') => {
+    console.log(colorMode);
+  },
+  getColor: (color: string) => {
+    return color;
+  },
+});
+
+export function useColorModeContext() {
+  const context = useContext(ColorModeContext);
+
+  if (context === undefined) {
+    throw new Error(
+      'useColorModeContext must be within ThemeProvider which provided by @eten-lab/ui-kit package!',
+    );
+  }
+
+  return context;
+}
 
 type ThemeProviderProps = {
+  autoDetectPrefersDarkMode?: boolean;
   children?: React.ReactNode;
 };
 
-export function ThemeProvider({ children }: ThemeProviderProps) {
+export function ThemeProvider({
+  children,
+  autoDetectPrefersDarkMode = true,
+}: ThemeProviderProps) {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const [mode, setMode] = useState<'light' | 'dark'>('light');
+
+  useEffect(() => {
+    if (!autoDetectPrefersDarkMode) {
+      return;
+    }
+
+    if (prefersDarkMode) {
+      setMode('dark');
+    } else {
+      setMode('light');
+    }
+  }, [prefersDarkMode, autoDetectPrefersDarkMode]);
+
+  const colorMode = useMemo(
+    () => ({
+      setColorMode: (colorMode: 'light' | 'dark') => {
+        setMode(colorMode);
+      },
+      getColor: (colorName: string) => {
+        return colors[colorName as keyof typeof colors][mode];
+      },
+    }),
+    [mode],
+  );
+
+  const theme = useMemo(
+    () =>
+      createTheme(
+        deepmerge(getThemeOptions(mode), {
+          palette: {
+            mode,
+          },
+        }),
+      ),
+    [mode],
+  );
+
   return (
-    <MuiThemeProvider theme={theme}>
-      <GlobalStyles
-        styles={() => ({
-          '*, *::before, *::after, html': {
-            boxSizing: 'border-box',
-          },
-          body: {
-            fontFamily: 'Inter',
-          },
-        })}
-      />
-      {children}
-    </MuiThemeProvider>
+    <ColorModeContext.Provider value={colorMode}>
+      <MuiThemeProvider theme={theme}>
+        <GlobalStyles
+          styles={() => ({
+            '*, *::before, *::after, html': {
+              boxSizing: 'border-box',
+            },
+            body: {
+              fontFamily: 'Inter',
+            },
+          })}
+        />
+        {children}
+      </MuiThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
-
-import { PaletteColorOptions } from '@mui/material';
 
 declare module '@mui/material/TextField' {
   interface TextFieldPropsColorOverrides {
@@ -142,8 +225,26 @@ declare module '@mui/material/styles' {
     'light-yellow': PaletteColorOptions;
   }
 
+  interface CustomTypeText {
+    'blue-primary': string;
+    'light-blue': string;
+    disable: string;
+    dark: string;
+    gray: string;
+    'middle-gray': string;
+    white: string;
+    red: string;
+    'light-red': string;
+    green: string;
+    'light-green': string;
+    yellow: string;
+    'middle-yellow': string;
+    'light-yellow': string;
+  }
+
   interface Palette extends CustomPalette {}
   interface PaletteOptions extends CustomPalette {}
+  interface TypeText extends CustomTypeText {}
 
   interface TypographyVariants {
     body3: React.CSSProperties;

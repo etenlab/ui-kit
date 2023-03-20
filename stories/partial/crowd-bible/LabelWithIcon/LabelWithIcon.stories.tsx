@@ -42,7 +42,7 @@ LabelWithCommentIcon.parameters = {
           icon={<BiCommentAdd />}
           color="blue-primary"
           onClick={() => {}}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -66,7 +66,7 @@ LabelWithCloseIcon.parameters = {
           icon={<FiX />}
           color="gray"
           onClick={() => {}}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

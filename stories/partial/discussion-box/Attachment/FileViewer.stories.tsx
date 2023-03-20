@@ -52,7 +52,7 @@ ViewMode.parameters = {
           file={file}
           mode="view"
           onRemove={() => alert('Click remove button!')}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -75,7 +75,7 @@ QuillMode.parameters = {
           file={file}
           mode="quill"
           onRemove={() => alert('Click remove button!')}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

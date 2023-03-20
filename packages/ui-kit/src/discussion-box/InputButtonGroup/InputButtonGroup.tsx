@@ -3,13 +3,15 @@ import React from 'react';
 import { IconButton, Stack, Divider } from '@mui/material';
 
 import { TbLetterT, FiMic, TbVideoPlus } from '../../icons';
-import { colors } from '../../ThemeProvider';
+import { useColorModeContext } from '../../ThemeProvider';
 
 interface InputButtonGroupProps {
   onClick(inputType: 'quill' | 'video' | 'audio'): void;
 }
 
 export function InputButtonGroup({ onClick }: InputButtonGroupProps) {
+  const { getColor } = useColorModeContext();
+
   return (
     <Stack
       direction="row"
@@ -18,7 +20,7 @@ export function InputButtonGroup({ onClick }: InputButtonGroupProps) {
       sx={{
         padding: '10px',
         borderRadius: '36px',
-        background: colors['light-blue'],
+        background: getColor('light-blue'),
       }}
     >
       <IconButton onClick={() => onClick('quill')}>

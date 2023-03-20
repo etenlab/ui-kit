@@ -60,7 +60,7 @@ Primary.parameters = {
           onClickThemeModeBtn={() => console.log()}
           onClickNotificationBtn={() => console.log()}
           onClickMenuBtn={() => console.log()}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -86,7 +86,7 @@ DiscussionWithBadge.parameters = {
           onClickThemeModeBtn={() => console.log()}
           onClickNotificationBtn={() => console.log()}
           onClickMenuBtn={() => console.log()}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -112,7 +112,7 @@ NotificationWithBadge.parameters = {
           onClickThemeModeBtn={() => console.log()}
           onClickNotificationBtn={() => console.log()}
           onClickMenuBtn={() => console.log()}
-        />
+        />,
       ),
       language: 'html',
       type: 'auto',
@@ -146,7 +146,7 @@ NotificationWithBadge.parameters = {
             notification: true,
             menu: true,
           }}
-        />
+        />,
       ),
       language: 'html',
       type: 'auto',
@@ -180,7 +180,7 @@ WithoutIcons.parameters = {
             notification: false,
             menu: false,
           }}
-        />
+        />,
       ),
       language: 'html',
       type: 'auto',

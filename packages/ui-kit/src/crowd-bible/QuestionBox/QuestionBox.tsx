@@ -4,10 +4,8 @@ import {
   Box,
   Stack,
   Divider,
-  useTheme,
   FormGroup,
   Typography,
-  PaletteColor,
   FormControlLabel,
 } from '@mui/material';
 import { FiX } from '../../icons';
@@ -16,6 +14,7 @@ import { Checkbox } from '../../input';
 import { LabelWithIcon } from '../LabelWithIcon';
 import { SimpleQuill } from '../SimpleQuill';
 import { VerticalRadioList } from '../VerticalRadioList';
+import { useColorModeContext } from '../../ThemeProvider';
 
 export type CheckItemType = {
   item: string;
@@ -68,16 +67,12 @@ export function QuestionBox({
 
     setChecked(
       questionData.map(
-        (data) => ({ item: data, checked: false } as CheckItemType)
-      )
+        (data) => ({ item: data, checked: false } as CheckItemType),
+      ),
     );
   }, [questionData, questionKind]);
 
-  const theme = useTheme();
-  const darkColor = (theme.palette.dark as PaletteColor).main;
-  const lightYellowColor = (theme.palette['light-yellow'] as PaletteColor).main;
-  const yellowColor = (theme.palette.yellow as PaletteColor).main;
-  const middleGray = (theme.palette['middle-gray'] as PaletteColor).main;
+  const { getColor } = useColorModeContext();
 
   const handleChange = (_event: React.SyntheticEvent, newValue: string) => {
     setChoosed(newValue);
@@ -104,7 +99,10 @@ export function QuestionBox({
   switch (questionKind) {
     case 'Normal': {
       reply = (
-        <Stack gap="20px" sx={{ borderTop: `1px solid ${middleGray}` }}>
+        <Stack
+          gap="20px"
+          sx={{ borderTop: `1px solid ${getColor('middle-gray')}` }}
+        >
           <SimpleQuill
             value={value}
             onChange={handleQuillChange}
@@ -238,8 +236,8 @@ export function QuestionBox({
   return (
     <Box
       sx={{
-        backgroundColor: lightYellowColor,
-        borderTop: `3px solid ${yellowColor}`,
+        backgroundColor: getColor('light-yellow'),
+        borderTop: `3px solid ${getColor('yellow')}`,
       }}
     >
       <Box sx={{ padding: '20px' }}>
@@ -248,7 +246,7 @@ export function QuestionBox({
           icon={<FiX />}
           onClick={onCancel}
         />
-        <Typography variant="subtitle2" sx={{ color: darkColor }}>
+        <Typography variant="subtitle2" color="text.dark">
           {question}
         </Typography>
       </Box>

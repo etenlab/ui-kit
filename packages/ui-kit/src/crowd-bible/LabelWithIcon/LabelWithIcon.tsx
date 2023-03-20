@@ -19,11 +19,11 @@ export function LabelWithIcon({
     <Stack direction="row" justifyContent="space-between" alignItems="center">
       <Typography
         variant="overline"
-        sx={(theme) => ({
-          color: (theme.palette.gray as PaletteColor).main,
+        color="text.gray"
+        sx={{
           opacity: 0.5,
           letterSpacing: '0.05em',
-        })}
+        }}
       >
         {label}
       </Typography>

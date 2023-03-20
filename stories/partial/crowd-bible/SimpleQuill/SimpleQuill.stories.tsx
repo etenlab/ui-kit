@@ -50,7 +50,7 @@ Primary.parameters = {
           value="Value"
           onChange={(newValue: string) => {}}
           placeholder="Leave Feedback (optional)..."
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

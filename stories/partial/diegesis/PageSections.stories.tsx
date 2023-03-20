@@ -16,7 +16,7 @@ export default {
       </div>
     ),
   ],
-};
+} as ComponentMeta<typeof PageHeader>;
 
 const PageHeaderTemplate: ComponentStory<typeof PageHeader> = (args) => (
   <PageHeader {...args} />

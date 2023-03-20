@@ -52,7 +52,7 @@ NormalQuestionBox.parameters = {
           onSave={({ normal }: { normal?: string }) =>
             alert('Click save button')
           }
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -81,7 +81,7 @@ AgreeQuestionBox.parameters = {
           onSave={({ agreeOrDisagree }: { agreeOrDisagree?: boolean }) =>
             alert('Click save button')
           }
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -110,7 +110,7 @@ TrueOrFalseQuestionBox.parameters = {
           onSave={({ trueOrFalse }: { trueOrFalse?: boolean }) =>
             alert('Click save button')
           }
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -140,7 +140,7 @@ ChooseOneQuestionBox.parameters = {
           onSave={({ chooseOne }: { chooseOne?: string }) =>
             alert('Click save button')
           }
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -171,7 +171,7 @@ MultiselectQuestionBox.parameters = {
           onSave={({ multiselect }: { multiselect: CheckItemType[] }) =>
             alert('Click save button')
           }
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

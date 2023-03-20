@@ -78,7 +78,7 @@ YellowDots.parameters = {
           onSelect={(id: number) => alert(`Clicked ${id} dots!`)}
           dotColor="yellow"
           selectedColor="middle-yellow"
-        />
+        />,
       ),
       language: 'jsx',
       format: true,
@@ -105,7 +105,7 @@ BlueDots.parameters = {
           onSelect={(id: number) => alert(`Clicked ${id} dots!`)}
           dotColor="blue-primary"
           selectedColor="light-blue"
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

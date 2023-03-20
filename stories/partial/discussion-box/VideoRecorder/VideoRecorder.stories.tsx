@@ -42,7 +42,7 @@ Primary.parameters = {
         <VideoRecorder
           onSave={() => alert('Clicked Save')}
           onCancel={() => alert('Clicked Cancel')}
-        />
+        />,
       ),
       language: 'jsx',
       format: true,

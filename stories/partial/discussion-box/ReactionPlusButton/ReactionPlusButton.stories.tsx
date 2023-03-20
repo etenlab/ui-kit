@@ -38,7 +38,7 @@ Primary.parameters = {
   docs: {
     source: {
       code: jsxToString(
-        <ReactionPlusButton onClick={() => console.log('Clicked')} />
+        <ReactionPlusButton onClick={() => console.log('Clicked')} />,
       ),
       language: 'jsx',
       format: true,

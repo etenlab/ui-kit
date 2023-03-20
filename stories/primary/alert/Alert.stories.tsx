@@ -32,7 +32,7 @@ Success.parameters = {
       code: jsxToString(
         <Alert variant="standard" severity="success">
           Your feedback has been sent!
-        </Alert>
+        </Alert>,
       ),
       language: 'jsx',
       format: true,

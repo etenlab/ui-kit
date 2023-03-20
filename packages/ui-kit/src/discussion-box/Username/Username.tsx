@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Typography } from '@mui/material';
-import { colors } from '../../ThemeProvider';
 
 /**
  * Primary UI for username ex: '@username'
@@ -13,10 +12,10 @@ export function Username({ username }: { username: string }) {
     <Typography
       variant="h3"
       component="h3"
+      color="text.dark"
       sx={{
         fontSize: '14px',
         lineHeight: '20px',
-        color: colors['dark'],
         flexShrink: 0,
       }}
     >

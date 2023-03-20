@@ -5,7 +5,7 @@ import { Wave } from '@foobar404/wave';
 
 import { CircleButton } from '../../button';
 import { BsFillPlayFill, CiPause1 } from '../../icons';
-import { colors } from '../../ThemeProvider';
+import { useColorModeContext } from '../../ThemeProvider';
 
 type AudioPlayerProps = {
   src: string;
@@ -20,6 +20,7 @@ const formatTime = (time: number) => {
 };
 
 export function AudioPlayer({ src, file_type }: AudioPlayerProps) {
+  const { getColor } = useColorModeContext();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -40,11 +41,11 @@ export function AudioPlayer({ src, file_type }: AudioPlayerProps) {
       new wave.animations.Lines({
         count: 30,
         lineWidth: 3,
-        lineColor: colors['middle-gray'],
+        lineColor: getColor('middle-gray'),
         rounded: true,
-      })
+      }),
     );
-  }, []);
+  }, [getColor]);
 
   const handleEnded = () => {
     setIsPlaying(false);
@@ -72,11 +73,11 @@ export function AudioPlayer({ src, file_type }: AudioPlayerProps) {
 
   const playControlIcon = !isPlaying ? (
     <BsFillPlayFill
-      style={{ color: colors['white'], fontSize: 30, paddingLeft: 3 }}
+      style={{ color: getColor('white'), fontSize: 30, paddingLeft: 3 }}
     />
   ) : (
     <CiPause1
-      style={{ color: colors['white'], fontSize: 17, strokeWidth: '1.2px' }}
+      style={{ color: getColor('white'), fontSize: 17, strokeWidth: '1.2px' }}
     />
   );
 
@@ -90,7 +91,7 @@ export function AudioPlayer({ src, file_type }: AudioPlayerProps) {
       sx={{
         padding: '6px',
         borderRadius: '70px',
-        backgroundColor: colors['disable'],
+        backgroundColor: getColor('disable'),
         width: '290px',
       }}
     >
@@ -123,7 +124,8 @@ export function AudioPlayer({ src, file_type }: AudioPlayerProps) {
         />
         <Typography
           variant="body3"
-          sx={{ fontWeight: 600, color: colors['middle-gray'] }}
+          color="text.middle-gray"
+          sx={{ fontWeight: 600 }}
         >
           {formatTime(currentTime)} / {formatTime(duration)}
         </Typography>
@@ -133,7 +135,8 @@ export function AudioPlayer({ src, file_type }: AudioPlayerProps) {
         icon={
           <Typography
             variant="body3"
-            sx={{ fontWeight: 800, color: colors['white'] }}
+            color="text.white"
+            sx={{ fontWeight: 800 }}
           >
             Aa
           </Typography>

@@ -10,7 +10,7 @@ import {
   FiX,
   FiCheck,
 } from '../../icons';
-import { colors } from '../../ThemeProvider';
+import { useColorModeContext } from '../../ThemeProvider';
 
 import { RecorderStatus } from '../types';
 
@@ -20,10 +20,11 @@ type VideoRecorderProps = {
 };
 
 export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
+  const { getColor } = useColorModeContext();
   const [recorderStatus, setRecorderStatus] = useState<RecorderStatus>('new');
   const [savedLastChunk, setSavedLastChunk] = useState<boolean>(true);
   const [facingMode, setFacingMode] = useState<'user' | 'environment'>(
-    'environment'
+    'environment',
   );
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
@@ -83,7 +84,7 @@ export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
       alert('There is no data to save');
     }
     refreshRecorder();
-  }, [recorderStatus, savedLastChunk, refreshRecorder]);
+  }, [recorderStatus, savedLastChunk, refreshRecorder, onSave]);
 
   const handleClickStart = async () => {
     if (streamRef.current === null) {
@@ -142,6 +143,7 @@ export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
 
   const handleClickCancel = () => {
     if (recorderStatus === 'paused') {
+      // eslint-disable-next-line no-restricted-globals
       if (confirm('Recorded data will be lost!')) {
         refreshRecorder();
       }
@@ -165,8 +167,8 @@ export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
   const controlButtonStyle = {
     fontSize: '80px',
     padding: '20px',
-    backgroundColor: colors['white'],
-    color: colors['dark'],
+    backgroundColor: getColor('white'),
+    color: getColor('dark'),
     borderRadius: '50%',
   };
 
@@ -197,7 +199,7 @@ export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
         position: 'relative',
         width: '100%',
         height: '100%',
-        background: colors['dark'],
+        background: getColor('dark'),
         overflow: 'hidden',
       }}
     >
@@ -223,10 +225,10 @@ export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
         }}
       >
         <IconButton>
-          <BsClock style={{ color: colors['white'] }} />
+          <BsClock style={{ color: getColor('white') }} />
         </IconButton>
         <IconButton onClick={switchFacingMode}>
-          <TbCameraRotate style={{ color: colors['white'] }} />
+          <TbCameraRotate style={{ color: getColor('white') }} />
         </IconButton>
       </Stack>
       <Stack
@@ -245,7 +247,7 @@ export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
       >
         <IconButton
           onClick={handleClickCancel}
-          sx={{ fontSize: '36px', color: colors['white'] }}
+          sx={{ fontSize: '36px', color: getColor('white') }}
           disabled={disabledCancel}
         >
           <FiX />
@@ -255,7 +257,7 @@ export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
 
         <IconButton
           onClick={handleClickSave}
-          sx={{ fontSize: '36px', color: colors['green'] }}
+          sx={{ fontSize: '36px', color: getColor('green') }}
           disabled={disabledSave}
         >
           <FiCheck />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentStory } from '@storybook/react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import SectionActionButton from '../../../packages/ui-kit/src/diegesis/home/SectionActionButton';
 import StatWithDescription from '../../../packages/ui-kit/src/diegesis/home/StatWithDescription';
 import HomePage from '../../../packages/ui-kit/src/diegesis/home/Home';
@@ -16,7 +16,7 @@ export default {
       </div>
     ),
   ],
-};
+} as ComponentMeta<typeof HomePage>;
 
 const SectionActionButtonTemplate: ComponentStory<
   typeof SectionActionButton
@@ -31,7 +31,7 @@ const StatWithDescriptionTemplate: ComponentStory<
 > = (args) => <StatWithDescription {...args} />;
 export const statWithDescription = StatWithDescriptionTemplate.bind({});
 statWithDescription.args = {
-  numbers: '2304',
+  numbers: +'2304',
   category: 'entries',
   description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
 };

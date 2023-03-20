@@ -2,7 +2,7 @@ import React from 'react';
 
 import { StyledTab, StyledTabs } from './styled';
 import { Box } from '@mui/material';
-import { colors } from '../../ThemeProvider';
+import { useColorModeContext } from '../../ThemeProvider';
 
 type TabType = {
   value: unknown;
@@ -16,8 +16,9 @@ type TabsProps = {
 };
 
 export function Tabs({ tabs, value, onChange }: TabsProps) {
+  const { getColor } = useColorModeContext();
   return (
-    <Box sx={{ borderBottom: `1px solid ${colors['disable']}` }}>
+    <Box sx={{ borderBottom: `1px solid ${getColor('disable')}` }}>
       <StyledTabs value={value} onChange={onChange}>
         {tabs.map(({ value, label }) => (
           <StyledTab key={label} value={value} label={label} />
