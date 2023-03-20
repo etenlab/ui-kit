@@ -76,7 +76,7 @@ export function DotsText({
         color: getColor('dark'),
         lineHeight: '30px',
         textAlign: 'justify',
-        '& .selectedText .word:first-child': {
+        '& .selectedText .word:first-of-type': {
           fontWeight: 'bold',
         },
         '& .word': {
