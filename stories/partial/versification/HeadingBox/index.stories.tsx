@@ -65,7 +65,7 @@ WithBreadcrumb.parameters = {
   docs: {
     source: {
       code: jsxToString(
-        <HeadingBox breadcrumb={WithBreadcrumb.args.breadcrumb} />
+        <HeadingBox breadcrumb={WithBreadcrumb.args.breadcrumb} />,
       ),
       language: 'jsx',
       format: true,

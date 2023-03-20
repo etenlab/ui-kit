@@ -107,8 +107,7 @@ KeyTerm.parameters = {
   },
 };
 
-
-const element = <Button variant='contained'>some React Element</Button>
+const element = <Button variant="contained">some React Element</Button>;
 
 export const KeyTermWithButton = Template.bind({});
 KeyTermWithButton.args = {
