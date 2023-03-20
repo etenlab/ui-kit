@@ -1,13 +1,8 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import {
-  mode,
-  ThemeProvider,
-} from '../../../../packages/ui-kit/src/ThemeProvider/ThemeProvider';
-import { colors } from '../../../../packages/ui-kit/src/ThemeProvider/palette';
 import { IdentifierLabel } from '../../../../packages/ui-kit/src/versification/IdentifierLabel';
-import { buildDocs } from '../common';
+import { buildDecorator, buildDocs } from '../common';
 
 const args = {
   nodeType: 'chapter' as const,
@@ -23,22 +18,7 @@ export default {
   title: 'Partial/Versification/IdentifierLabel',
   component: IdentifierLabel,
   args,
-  decorators: [
-    (Story) => (
-      <div
-        style={{
-          margin: '3em',
-          width: '500px',
-          border: `1px solid ${colors['light-blue'][mode]}`,
-          padding: '3em',
-        }}
-      >
-        <ThemeProvider>
-          <Story />
-        </ThemeProvider>
-      </div>
-    ),
-  ],
+  decorators: [buildDecorator()],
 } as ComponentMeta<typeof IdentifierLabel>;
 
 const Template: ComponentStory<typeof IdentifierLabel> = (args) => (

@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import {
-  mode,
-  ThemeProvider,
-} from '../../../../packages/ui-kit/src/ThemeProvider/ThemeProvider';
-import { colors } from '../../../../packages/ui-kit/src/ThemeProvider/palette';
 import { NodeFilter } from '../../../../packages/ui-kit/src/versification/NodeFilter';
-import { buildDocs } from '../common';
+import { buildDecorator, buildDocs } from '../common';
 
 export default {
   title: 'Partial/Versification/NodeFilter',
@@ -21,22 +16,7 @@ export default {
       { value: '2', text: '2' },
     ],
   },
-  decorators: [
-    (Story) => (
-      <div
-        style={{
-          margin: '3em',
-          width: '500px',
-          backgroundColor: colors['light-blue'][mode],
-          padding: '3em',
-        }}
-      >
-        <ThemeProvider>
-          <Story />
-        </ThemeProvider>
-      </div>
-    ),
-  ],
+  decorators: [buildDecorator()],
 } as ComponentMeta<typeof NodeFilter>;
 
 const Template: ComponentStory<typeof NodeFilter> = (args) => {

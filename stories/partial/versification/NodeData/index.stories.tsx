@@ -1,13 +1,8 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import {
-  mode,
-  ThemeProvider,
-} from '../../../../packages/ui-kit/src/ThemeProvider/ThemeProvider';
-import { colors } from '../../../../packages/ui-kit/src/ThemeProvider/palette';
 import { NodeData } from '../../../../packages/ui-kit/src/versification/NodeData';
-import { buildDocs } from '../common';
+import { buildDecorator, buildDocs } from '../common';
 
 const args = {
   currentValue: '5',
@@ -28,22 +23,7 @@ export default {
   title: 'Partial/Versification/NodeData',
   component: NodeData,
   args,
-  decorators: [
-    (Story) => (
-      <div
-        style={{
-          margin: '3em',
-          width: '500px',
-          border: `1px solid ${colors['light-blue'][mode]}`,
-          padding: '3em',
-        }}
-      >
-        <ThemeProvider>
-          <Story />
-        </ThemeProvider>
-      </div>
-    ),
-  ],
+  decorators: [buildDecorator()],
 } as ComponentMeta<typeof NodeData>;
 
 const Template: ComponentStory<typeof NodeData> = (args) => (

@@ -3,10 +3,9 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Box } from '@mui/material';
 
-import { ThemeProvider } from '../../../../packages/ui-kit/src';
 import { HeadingBox } from '../../../../packages/ui-kit/src/versification/HeadingBox';
 import { NodeFilter } from '../../../../packages/ui-kit/src/versification/NodeFilter';
-import { buildDocs } from '../common';
+import { buildDecorator, buildDocs } from '../common';
 
 export default {
   title: 'Partial/Versification/HeadingBox',
@@ -15,15 +14,7 @@ export default {
     onBack: undefined,
     breadcrumb: undefined,
   },
-  decorators: [
-    (Story) => (
-      <div style={{ margin: '3em', width: '500px' }}>
-        <ThemeProvider>
-          <Story />
-        </ThemeProvider>
-      </div>
-    ),
-  ],
+  decorators: [buildDecorator()],
 } as ComponentMeta<typeof HeadingBox>;
 
 const Template: ComponentStory<typeof HeadingBox> = (args) => (

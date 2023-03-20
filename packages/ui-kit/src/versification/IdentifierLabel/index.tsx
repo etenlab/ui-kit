@@ -74,7 +74,11 @@ export function IdentifierLabel({
       />
       <Box
         component="span"
-        sx={{ position: 'relative', userSelect: 'none' }}
+        sx={{
+          position: 'relative',
+          color: getColor('dark'),
+          userSelect: 'none',
+        }}
         onClick={handleClick}
       >
         {label}
