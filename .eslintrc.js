@@ -4,7 +4,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  ignorePatterns: ['.eslintrc.js'],
+  ignorePatterns: ['.eslintrc.js', 'README.md'],
   extends: [
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
@@ -19,6 +19,7 @@ module.exports = {
     sourceType: 'module',
     project: 'tsconfig.json',
     tsconfigRootDir: __dirname,
+    extraFileExtensions: ['.md'],
   },
   plugins: ['react', '@typescript-eslint'],
   settings: {

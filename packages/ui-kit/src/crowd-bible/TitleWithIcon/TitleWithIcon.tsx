@@ -36,12 +36,14 @@ export function TitleWithIcon({
         {label}
       </Typography>
 
-      {withCloseIcon ? (<IconButton
-        onClick={onClose}
-        sx={{ color: (theme) => (theme.palette.gray as PaletteColor).main }}
-      >
-        <FiX />
-      </IconButton>) : null}
+      {withCloseIcon ? (
+        <IconButton
+          onClick={onClose}
+          sx={{ color: (theme) => (theme.palette.gray as PaletteColor).main }}
+        >
+          <FiX />
+        </IconButton>
+      ) : null}
     </Stack>
   );
 }
