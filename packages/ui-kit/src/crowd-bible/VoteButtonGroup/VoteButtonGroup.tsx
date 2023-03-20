@@ -1,6 +1,6 @@
-import { VoteButton } from '@eten-lab/ui-kit';
 import { Grid, GridDirection } from '@mui/material';
 import React from 'react';
+import { VoteButton } from '../../button';
 
 type VoteButtonGroupProps = {
   likeCount: number;

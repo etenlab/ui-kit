@@ -28,6 +28,7 @@ import {
   BiPencil,
   BiImages,
   BiChevronsDown,
+  BiVolumeFull,
   BsFillPlayFill,
   BsFillRecordFill,
   BsClock,
@@ -154,6 +155,7 @@ const Template: ComponentStory<typeof Div> = (args) => {
       <TitleWithIcon title="BiShare" icon={<BiShare />} />
       <TitleWithIcon title="BiPencil" icon={<BiPencil />} />
       <TitleWithIcon title="BiImages" icon={<BiImages />} />
+      <TitleWithIcon title="BiVolumeFull" icon={<BiVolumeFull />} />
       <TitleWithIcon title="BsFillPlayFill" icon={<BsFillPlayFill />} />
       <TitleWithIcon title="BsFillRecordFill" icon={<BsFillRecordFill />} />
       <TitleWithIcon title="BsClock" icon={<BsClock />} />

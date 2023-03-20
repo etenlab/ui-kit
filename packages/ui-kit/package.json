@@ -46,5 +46,6 @@
       "react-app",
       "react-app/jest"
     ]
-  }
+  },
+  "gitHead": "f5ec9cdaf6ec3dd304f52e3f0df71d5a26e1bc8a"
 }
