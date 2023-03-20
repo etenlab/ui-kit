@@ -1,7 +1,6 @@
-import { Grid } from '@mui/material';
+import { VoteButton } from '@eten-lab/ui-kit';
+import { Grid, GridDirection } from '@mui/material';
 import React from 'react';
-
-import { VoteButton } from '../../button';
 
 type VoteButtonGroupProps = {
   likeCount: number;
@@ -10,6 +9,13 @@ type VoteButtonGroupProps = {
   dislike: boolean;
   setLike?(val: boolean): void;
   setDislike?(val: boolean): void;
+  displayButtons?: string;
+  alignButtons?: string;
+  item?: boolean;
+  container?: boolean;
+  direction?: GridDirection;
+  alignItems?: string;
+  justifyContent?: string;
 };
 
 export function VoteButtonGroup({
@@ -19,6 +25,7 @@ export function VoteButtonGroup({
   dislike,
   setLike,
   setDislike,
+  ...others
 }: VoteButtonGroupProps) {
   const handleLikeChange = () => {
     if (!like && dislike) {
@@ -43,7 +50,7 @@ export function VoteButtonGroup({
   };
 
   return (
-    <Grid container columnGap={'14px'} sx={{ py: '8px' }}>
+    <Grid {...others} container columnGap={'14px'} sx={{ py: '8px' }}>
       <Grid item>
         <VoteButton
           isLike={true}
