@@ -56,6 +56,7 @@ Primary.parameters = {
         <Toolbar
           title="crowd.Bible"
           themeMode="light"
+          onClickTitleBtn={() => console.log()}
           onClickDiscussionBtn={() => console.log()}
           onClickThemeModeBtn={() => console.log()}
           onClickNotificationBtn={() => console.log()}
@@ -82,6 +83,7 @@ DiscussionWithBadge.parameters = {
           title="crowd.Bible"
           isNewDiscussion
           themeMode="light"
+          onClickTitleBtn={() => console.log()}
           onClickDiscussionBtn={() => console.log()}
           onClickThemeModeBtn={() => console.log()}
           onClickNotificationBtn={() => console.log()}
@@ -108,6 +110,7 @@ NotificationWithBadge.parameters = {
           title="crowd.Bible"
           isNewNotification
           themeMode="light"
+          onClickTitleBtn={() => console.log()}
           onClickDiscussionBtn={() => console.log()}
           onClickThemeModeBtn={() => console.log()}
           onClickNotificationBtn={() => console.log()}
@@ -137,6 +140,7 @@ NotificationWithBadge.parameters = {
         <Toolbar
           title="Showcase"
           themeMode="light"
+          onClickTitleBtn={() => console.log()}
           onClickDiscussionBtn={() => console.log()}
           onClickThemeModeBtn={() => console.log()}
           onClickNotificationBtn={() => console.log()}
@@ -171,6 +175,7 @@ WithoutIcons.parameters = {
         <Toolbar
           title="Showcase"
           themeMode="light"
+          onClickTitleBtn={() => console.log()}
           onClickDiscussionBtn={() => console.log()}
           onClickThemeModeBtn={() => console.log()}
           onClickNotificationBtn={() => console.log()}
