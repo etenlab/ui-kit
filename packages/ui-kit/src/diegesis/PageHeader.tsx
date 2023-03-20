@@ -7,16 +7,17 @@ import './Page.css';
 
 interface IProps {
     openSideNav?: () => void
+    title?: string
 }
 export function PageHeader(props: IProps) {
-    const { openSideNav } = props
+    const { openSideNav, title = 'Open source Bibles resources' } = props
     return (
         <Container className={'page-header'}>
             <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'}>
                 <Stack direction={'row'} alignItems={'center'}>
                     <AppLogo className={'app-logo'} />
                     <Typography variant="body1" className="header-title">
-                        Open source Bibles resources
+                        {title}
                     </Typography>
                 </Stack>
                 {

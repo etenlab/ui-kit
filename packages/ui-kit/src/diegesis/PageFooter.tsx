@@ -4,8 +4,19 @@ import React from 'react';
 import AppLogo from './AppLogo';
 import './Page.css';
 
-interface IProps {}
+
+interface IProps {
+  footerText?: string
+  brandName?: string
+  year?: number
+}
+const defaultValues: IProps = {
+  footerText: `Diegesis.Bible is a project by MVH Solutions that uses the
+  Proskomma Scripture Runtime Engine.`,
+  brandName: `MVH Solutions`
+}
 export function PageFooter(props: IProps) {
+  const { footerText = defaultValues.footerText, brandName = defaultValues.brandName, year = (new Date().getFullYear()) } = props;
   return (
     <div className={'page-footer'}>
       <Container>
@@ -20,11 +31,10 @@ export function PageFooter(props: IProps) {
             justifyContent={'space-between'}
           >
             <Typography variant="body1" className="">
-              Diegesis.Bible is a project by MVH Solutions that uses the
-              Proskomma Scripture Runtime Engine.
+              {footerText}
             </Typography>
             <Typography variant="body1" className="">
-              © MVH Solutions {new Date().getFullYear()}
+              © {brandName} {year}
             </Typography>
           </Stack>
         </Stack>
