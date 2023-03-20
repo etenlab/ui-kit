@@ -27,6 +27,7 @@ export {
   BiRightArrowAlt,
   BiMessageRounded,
   BiDotsHorizontalRounded,
+  BiVolumeFull,
 } from 'react-icons/bi';
 export { BsFillPlayFill, BsClock, BsFillRecordFill } from 'react-icons/bs';
 export {

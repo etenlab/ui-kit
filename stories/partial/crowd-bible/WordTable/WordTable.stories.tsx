@@ -4,6 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ThemeProvider } from '../../../../packages/ui-kit/src';
 import { WordTable } from '../../../../packages/ui-kit/src/crowd-bible';
 import jsxToString from 'jsx-to-string';
+import { Button } from '@mui/material';
 
 export default {
   title: 'Partial/Crowd Bible/WordTable',
@@ -98,6 +99,28 @@ KeyTerm.parameters = {
     source: {
       code: jsxToString(
         <WordTable label_1="Key Term" label_2="Definition" items={items} />,
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
+
+
+const element = <Button variant='contained'>some React Element</Button>
+
+export const KeyTermWithButton = Template.bind({});
+KeyTermWithButton.args = {
+  label_1: 'Key Term ',
+  label_2: element,
+  items,
+};
+KeyTermWithButton.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <WordTable label_1="Key Term" label_2={element} items={items} />,
       ),
       language: 'jsx',
       format: true,

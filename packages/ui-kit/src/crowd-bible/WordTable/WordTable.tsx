@@ -8,6 +8,7 @@ import {
   ListItem,
   Typography,
   Button,
+  Box,
 } from '@mui/material';
 import { VoteButtonGroup } from '../VoteButtonGroup';
 
@@ -25,10 +26,18 @@ type Item = {
 type WordTableProps = {
   items: Item[];
   label_1: string;
-  label_2: string;
+  label_2: string | React.ReactNode;
+  
 };
 
 export function WordTable({ items, label_1, label_2 }: WordTableProps) {
+  const isLabel2String = typeof label_2 === 'string'
+  if (!isLabel2String && !(React.isValidElement(label_2))) {
+    throw new Error(
+      'label_2 must be either string or valid React element',
+    );
+  }
+  
   return (
     <div>
       <Grid container sx={{ py: '14px' }}>
@@ -38,9 +47,13 @@ export function WordTable({ items, label_1, label_2 }: WordTableProps) {
           </Typography>
         </Grid>
         <Grid item xs={7}>
-          <Typography variant="subtitle1" sx={{ color: '#8F8F8F' }}>
-            {label_2}
-          </Typography>
+          {
+            isLabel2String
+            ? <Typography variant="subtitle1" sx={{ color: '#8F8F8F' }}>
+                  {label_2}
+              </Typography>
+              : <Box display={'flex'} width={1} justifyContent='flex-end'>{label_2}</Box>
+          }
         </Grid>
       </Grid>
       <Divider />
@@ -51,7 +64,7 @@ export function WordTable({ items, label_1, label_2 }: WordTableProps) {
       >
         {items.map(({ title, contents }) => (
           <Grid container key={title.content} sx={{ py: '14px' }}>
-            <Grid xs={5}>
+            <Grid item xs={5}>
               <Typography
                 variant="caption"
                 sx={{ lineHeight: '17px', color: '#1E1E1E' }}
@@ -77,7 +90,7 @@ export function WordTable({ items, label_1, label_2 }: WordTableProps) {
                 + New Definition
               </Button>
             </Grid>
-            <Grid xs={7}>
+            <Grid item xs={7}>
               <List
                 sx={{
                   listStyleType: 'disc',
@@ -93,6 +106,7 @@ export function WordTable({ items, label_1, label_2 }: WordTableProps) {
                       fontSize: '12px',
                       lineHeight: '17px',
                     }}
+                    key={content}
                   >
                     <div>{content}</div>
                     <div>

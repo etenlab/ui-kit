@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, ReactNode } from 'react';
 
 import {
   Box,
@@ -19,6 +19,7 @@ type ButtonListProps = {
   items: Item[];
   label: string;
   onClick(selected: unknown): void;
+  Icon?: ReactNode | null;
 };
 
 export function ButtonList({
@@ -26,6 +27,7 @@ export function ButtonList({
   items,
   onClick,
   label,
+  Icon,
 }: ButtonListProps) {
   return (
     <Box sx={{ width: '100%' }}>
@@ -35,6 +37,7 @@ export function ButtonList({
           <Fragment key={label}>
             <ListItemButton onClick={() => onClick(value)}>
               <ListItemText primary={label} color="dark" />
+              {Icon ? Icon : null}
             </ListItemButton>
             {withUnderline ? <Divider /> : null}
           </Fragment>

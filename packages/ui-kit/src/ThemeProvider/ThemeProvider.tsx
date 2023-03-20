@@ -19,6 +19,11 @@ import { deepmerge } from '@mui/utils';
 import { getThemeOptions } from './themeOptions';
 import { colors } from './palette';
 
+export const mode =
+  window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
+
 const ColorModeContext = createContext({
   setColorMode: (colorMode: 'light' | 'dark') => {
     console.log(colorMode);
