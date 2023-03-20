@@ -2,9 +2,17 @@
   position: relative;
   min-height: 100%;
 }
+.MuiTypography-h1.page-title {
+  font-size: 40px;
+  line-height: 45px;
+  font-weight: 400;
+}
 .show-side-nav {
 }
 .hide-side-nav {
+}
+.no-padding {
+  padding: 0px !important;
 }
 .full-width {
   width: 100% !important;
@@ -13,10 +21,19 @@
   height: 100% !important;
 }
 .mt-2 {
-  margin-top: 20px;
+  margin-top: 1.2rem;
+}
+.mb-2 {
+  margin-bottom: 1.2rem;
+}
+.pt-2 {
+  padding-top: 1.2rem;
+}
+.pb-2 {
+  padding-bottom: 1.2rem;
 }
 .mr-1 {
-  margin-right: 10px;
+  margin-right: 0.6rem;
 }
 .app-logo {
   margin-top: 5px;
@@ -65,11 +82,11 @@
   z-index: 10;
 }
 .side-nav-container.show-side-nav {
-  width: 536px !important;
+  width: 536px; 
   transition: 0.5s;
 }
 .side-nav-container.hide-side-nav {
-  width: 0px !important;
+  width: 0px; 
   transition: 0.5s;
   padding: 0 !important;
   overflow: hidden;
@@ -106,9 +123,23 @@
   display: block;
 }
 
+.hide-sm {
+  display: none !important;
+}
+
+.show-xs {
+  display: none !important;
+}
+
 @media screen and (max-width: 414px) {
+  .hide-xs {
+    display: none !important;
+  }
+  .show-xs {
+    display: inherit !important;
+  }
   .app-logo {
-    width: 175px;
+    width: auto;
     height: 34px;
   }
   .page-header .nav-btn svg {
@@ -116,11 +147,19 @@
     height: 35px;
   }
   .page-header .nav-btn {
-    position: absolute;
+    /* position: absolute; */
+    position: unset;
     right: 0px;
   }
   .page-header .header-title {
     display: none;
+  }
+  .side-nav-container.show-side-nav {
+    width: 100%; 
+    transition: 0.5s;
+  }
+  .side-nav-container {
+    padding: 20px;
   }
   .page-footer .footer-content {
     flex-direction: column;
