@@ -104,18 +104,18 @@ function TableHeaderWrapper(props: TableHeaderProps) {
 }
 
 interface TableRowProps {
-  key?: string | number
+  rowKey?: string | number
   headCells: HeadCell[]
   row: Record<string, any>
   expandableRowOnMobile?: boolean
 }
-function TableRowWrapper({ key, headCells, row, expandableRowOnMobile }: TableRowProps) {
+function TableRowWrapper({ rowKey, headCells, row, expandableRowOnMobile }: TableRowProps) {
   const [showDetails, setShowDetails] = React.useState(false);
   return (
-    <React.Fragment key={key}>
+    <React.Fragment key={rowKey}>
       <TableRow
         className={`table-row ${showDetails ? 'active' : ''}`}
-        key={key}
+        key={`row-${rowKey}`}
         onClick={() => {
           if (expandableRowOnMobile && window.innerWidth <= 414) {
             setShowDetails(!showDetails)
@@ -126,7 +126,7 @@ function TableRowWrapper({ key, headCells, row, expandableRowOnMobile }: TableRo
           headCells.map((headCell, cellIdx) => {
             return (
               <TableCell
-                key={cellIdx}
+                key={`row-${rowKey}-cell-${cellIdx}`}
                 component={'td'}
                 scope={'row'}
                 padding={headCell.disablePadding ? 'none' : 'normal'}
@@ -149,7 +149,7 @@ function TableRowWrapper({ key, headCells, row, expandableRowOnMobile }: TableRo
       {
         expandableRowOnMobile
           ?
-          <TableRow key={`record-detail-${key}`} className={`row-detail ${showDetails ? 'active' : ''}`}>
+          <TableRow key={`record-detail-${rowKey}`} className={`row-detail ${showDetails ? 'active' : ''}`}>
             <TableCell colSpan={headCells.length} padding='none'>
               <Collapse className='show-xs' in={showDetails} timeout="auto" unmountOnExit>
                 <Box sx={{ padding: '1rem 0rem' }}>
@@ -239,7 +239,7 @@ export default function DataTable(props: IDataTableProps) {
             />
             <TableBody>
               {
-                stableSort(rows, getComparator(order, orderBy)).map((row, rowIdx) => <TableRowWrapper expandableRowOnMobile={expandableRowOnMobile} key={rowIdx} headCells={headCells} row={row} />)
+                stableSort(rows, getComparator(order, orderBy)).map((row, rowIdx) => <TableRowWrapper expandableRowOnMobile={expandableRowOnMobile} rowKey={rowIdx} headCells={headCells} row={row} />)
               }
             </TableBody>
           </Table>

@@ -1,15 +1,32 @@
-import { Box, Container, Stack, Typography } from "@mui/material"
-import React, { useState } from "react"
-import PageFooter from "../PageFooter"
-import PageHeader from "../PageHeader"
-import SideNav from "../SideNav"
-import TopControls from "./TopControls"
-import DataTable, { HeadCell } from "../data-table/DataTable"
-import "./EntryDetails.css"
-import SelectOptions from "../SelectOptions"
-import ActionButtons from "./ActionButtons"
-import { BackButton } from "../BackButton"
+import React from 'react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ThemeProvider } from '../../../packages/ui-kit/src';
+import EntryDetailPage from '../../../packages/ui-kit/src/diegesis/entry-details/EntryDetails';
+import { buildDocs } from '../../common';
 
+
+export default {
+    title: 'Partial/Diegesis/Entries/Entry Detail',
+    component: EntryDetailPage,
+    decorators: [
+        Story => (
+            <div>
+                <ThemeProvider>
+                    <Story />
+                </ThemeProvider>
+            </div>
+        ),
+    ],
+} as ComponentMeta<typeof EntryDetailPage>;
+
+const EntryDetailTemplate: ComponentStory<typeof EntryDetailPage> = args => (
+    <EntryDetailPage {...args} />
+);
+
+export const entryDetailPageCode = EntryDetailTemplate.bind({});
+entryDetailPageCode.args = {
+};
+entryDetailPageCode.parameters = buildDocs(`
 interface IProps {
 }
 interface IData {
@@ -61,3 +78,10 @@ export function EntryDetailPage(props: IProps) {
     )
 }
 export default EntryDetailPage
+`)
+
+export const entryDetailPageUsage = EntryDetailTemplate.bind({});
+entryDetailPageUsage.args = {
+};
+entryDetailPageUsage.parameters = buildDocs(<EntryDetailPage />)
+

@@ -8,7 +8,7 @@ interface IProps {
     description?: string
     points?: string[]
 }
-export const AboutContentSection: React.FC<IProps> = (props) => {
+export function AboutContentSection(props: IProps){
     const { title, description, points = [] } = props;
     return (
         <Container className={`about-content-section ${props.className}`}>

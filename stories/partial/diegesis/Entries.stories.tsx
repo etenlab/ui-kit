@@ -1,16 +1,15 @@
 import React from 'react';
-import { ComponentStory } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeProvider } from '../../../packages/ui-kit/src';
 import EntriesPage from '../../../packages/ui-kit/src/diegesis/entries/Entries';
-import SearchBox from '../../../packages/ui-kit/src/diegesis/SearchBox';
-import EntriesTopControls from '../../../packages/ui-kit/src/diegesis/entries/EntriesTopControls';
-import EntriesDataTable from '../../../packages/ui-kit/src/diegesis/entries/EntriesDataTable';
+import { buildDocs } from '../../common';
 
 
 export default {
     title: 'Partial/Diegesis/Entries',
+    component: EntriesPage,
     decorators: [
-        Story => (
+        (Story) => (
             <div>
                 <ThemeProvider>
                     <Story />
@@ -18,34 +17,41 @@ export default {
             </div>
         ),
     ],
-};
+}  as ComponentMeta<typeof EntriesPage>;
 
 const EntriesTemplate: ComponentStory<typeof EntriesPage> = args => (
     <EntriesPage {...args} />
 );
-export const entriesPage = EntriesTemplate.bind({});
-entriesPage.args = {
-};
 
-const SearchBoxTemplate: ComponentStory<typeof SearchBox> = args => (
-    <SearchBox {...args} />
-);
-export const searchBox = SearchBoxTemplate.bind({});
-searchBox.args = {
+export const entriesPageCode = EntriesTemplate.bind({});
+entriesPageCode.args = {
 };
+entriesPageCode.parameters = buildDocs(`
+interface IProps {
+}
+export function EntriesPage(props: IProps) {
+    const [isSideNavOpen, setSideNavOpenStatus] = useState(false)
+    return (
+        <Box component={'div'} id="entries-page">
+            <PageHeader openSideNav={() => setSideNavOpenStatus(true)} />
+            <SideNav open={isSideNavOpen} close={() => { setSideNavOpenStatus(false) }} />
+            <Container className="controls-section">
+                <EntriesTopControls />
+            </Container>
+            <Container className="table-section">
+                <EntriesDataTable />
+            </Container>
+            <PageFooter />
+        </Box>
+    )
+}
+export default EntriesPage
+`)
 
 
-const EntriesTopControlsTemplate: ComponentStory<typeof EntriesTopControls> = args => (
-    <EntriesTopControls {...args} />
-);
-export const entriesTopControls = EntriesTopControlsTemplate.bind({});
-entriesTopControls.args = {
+export const entriesPageUsage = EntriesTemplate.bind({});
+entriesPageUsage.args = {
 };
+entriesPageUsage.parameters = buildDocs(<EntriesPage />)
 
-const EntriesDataTableTemplate: ComponentStory<typeof EntriesDataTable> = args => (
-    <EntriesDataTable {...args} />
-);
-export const entriesDataTable = EntriesDataTableTemplate.bind({});
-entriesDataTable.args = {
-};
 
