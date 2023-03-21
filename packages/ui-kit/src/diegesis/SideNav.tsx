@@ -1,6 +1,7 @@
 import { Button, Divider, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { CloseIcon } from './icons';
+import { MdAccountCircle } from 'react-icons/md';
 
 
 interface INavOption {
@@ -15,8 +16,21 @@ interface IProps {
   close: () => void;
   options: INavOption[]
 }
+
+//#region data
+const defaultOptions: INavOption[] = [
+  { title: 'Home', variant: 'big', href: '/' },
+  { title: 'Entries', variant: 'big', href: '/' },
+  { title: 'Technology', variant: 'big', href: '/' },
+  { title: 'About', variant: 'big', href: '/' },
+  { title: 'Account Settings', variant: 'bordered', href: '/', icon: <MdAccountCircle size={24} className='mr-2' /> },
+  { title: 'Terms & conditions', variant: 'small', href: '/' },
+  { title: 'Privacy policy', variant: 'small', href: '/' },
+]
+//#endregion
+
 export function SideNav(props: IProps) {
-  const { open, close, options } = props;
+  const { open, close, options = defaultOptions } = props;
   return (
     <Stack
       direction={'column'}
