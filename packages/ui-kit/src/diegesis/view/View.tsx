@@ -20,7 +20,7 @@ const dataAboutContentSection1 = {
 }
 //#endregion
 
-export const ViewPage: React.FC<IProps> = (props) => {
+function ViewPage(props: IProps) {
     const [isSideNavOpen, setSideNavOpenStatus] = useState(false)
     return (
         <Box component={'div'} id="view-page">
