@@ -8,9 +8,7 @@ import AboutContentSection from "./AboutContentSection";
 import "./About.css";
 import AboutPictureSection from "./AboutPictureSection";
 
-interface IProps {
-
-}
+interface IProps {}
 
 //#region data
 const dataAboutContentSection1 = {
@@ -20,7 +18,7 @@ const dataAboutContentSection1 = {
 }
 //#endregion
 
-export const AboutPage: React.FC<IProps> = (props) => {
+export function AboutPage(props: IProps) {
     const [isSideNavOpen, setSideNavOpenStatus] = useState(false)
     return (
         <div id="about-page">

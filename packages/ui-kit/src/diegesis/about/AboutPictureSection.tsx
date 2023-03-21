@@ -6,7 +6,7 @@ interface IProps {
     caption?: string
     imageUrl?: string
 }
-export const AboutPictureSection: React.FC<IProps> = (props) => {
+export function AboutPictureSection(props: IProps) {
     const { caption, imageUrl } = props;
     return (
         <Container className={`about-picture-section ${props.className}`}>
@@ -14,7 +14,7 @@ export const AboutPictureSection: React.FC<IProps> = (props) => {
                 <Typography variant={'h2'}>
                     {caption}
                 </Typography>
-                <div className="img-box" style={{backgroundImage: `url(${imageUrl})`}}>
+                <div className="img-box" style={{ backgroundImage: `url(${imageUrl})` }}>
                 </div>
             </div>
         </Container>
