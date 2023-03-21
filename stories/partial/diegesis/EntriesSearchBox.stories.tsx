@@ -1,8 +1,32 @@
-import { Button, InputAdornment, Stack, TextField, styled } from "@mui/material";
-import React from "react";
-import { BiSearch } from "react-icons/bi";
-import { colors } from "..";
+import React from 'react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ThemeProvider } from '../../../packages/ui-kit/src';
+import SearchBox from '../../../packages/ui-kit/src/diegesis/SearchBox';
+import { buildDocs } from '../../common';
 
+
+export default {
+    title: 'Partial/Diegesis/Entries',
+    component: SearchBox,
+    decorators: [
+        (Story) => (
+            <div>
+                <ThemeProvider>
+                    <Story />
+                </ThemeProvider>
+            </div>
+        ),
+    ],
+} as ComponentMeta<typeof SearchBox>;
+
+const EntriesSearchBoxTemplate: ComponentStory<typeof SearchBox> = args => (
+    <SearchBox {...args} />
+);
+
+export const searchBoxCode = EntriesSearchBoxTemplate.bind({});
+searchBoxCode.args = {
+};
+searchBoxCode.parameters = buildDocs(`
 interface IProps {
     className?: string
     placeholder?: string
@@ -34,7 +58,7 @@ const CustomTextField = styled(TextField)({
 export function SearchBox(props: IProps){
     const { placeholder, className } = props;
     return (
-        <Stack direction={'row'} className={`search-box-container ${className}`}>
+        <Stack direction={'row'} className={\`search-box-container \${className}\`}>
             <CustomTextField
                 fullWidth
                 placeholder={placeholder || 'Search...'}
@@ -55,3 +79,12 @@ export function SearchBox(props: IProps){
     )
 }
 export default SearchBox;
+`)
+
+
+export const searchBoxUsage = EntriesSearchBoxTemplate.bind({});
+searchBoxUsage.args = {
+};
+searchBoxUsage.parameters = buildDocs(<SearchBox placeholder='Search anything...' />)
+
+

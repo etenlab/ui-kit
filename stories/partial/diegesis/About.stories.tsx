@@ -2,8 +2,6 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import AboutPage from '../../../packages/ui-kit/src/diegesis/about/About';
 import { ThemeProvider } from '../../../packages/ui-kit/src';
-import AboutContentSection from '../../../packages/ui-kit/src/diegesis/about/AboutContentSection';
-import AboutPictureSection from '../../../packages/ui-kit/src/diegesis/about/AboutPictureSection';
 import { buildDocs } from '../../common';
 
 
@@ -83,20 +81,3 @@ aboutPageUsage.args = {
 };
 aboutPageUsage.parameters = buildDocs(<AboutPage />)
 
-const AboutContentSectionTemplate: ComponentStory<typeof AboutContentSection> = args => (
-    <AboutContentSection {...args} />
-);
-export const contentSection = AboutContentSectionTemplate.bind({});
-contentSection.args = {
-    title: "Aliquam aliquet mollis",
-    description: "Metus vitae feugiat. Vestibulum sit amet ligula sit amet odio scelerisque interdum. Phasellus nisi metus, viverra nec faucibus id, ultrices non mauris. Donec maximus consectetur congue. Vestibulum scelerisque cursus sem at commodo. Donec nunc odio, molestie a erat ac, dapibus imperdiet urna.",
-    points: ["Metus vitae feugiat. Vestibulum sit amet ligula sit amet odio scelerisque interdum.", "Metus vitae feugiat. Vestibulum sit amet ligula sit amet odio scelerisque interdum.", "Metus vitae feugiat. Vestibulum sit amet ligula sit amet odio scelerisque interdum."]
-};
-
-
-const AboutPictureSectionTemplate: ComponentStory<typeof AboutPictureSection> = args => (
-    <AboutPictureSection {...args} />
-);
-export const pictureSection = AboutPictureSectionTemplate.bind({});
-pictureSection.args = {
-};
