@@ -14,7 +14,7 @@ interface INavOption {
 interface IProps {
   open: boolean;
   close: () => void;
-  options: INavOption[]
+  options?: INavOption[]
 }
 
 //#region data
@@ -35,8 +35,7 @@ export function SideNav(props: IProps) {
     <Stack
       direction={'column'}
       alignItems={'start'}
-      className={`side-nav-container ${open ? 'show-side-nav' : 'hide-side-nav'
-        }`}
+      className={`side-nav-container ${open ? 'show-side-nav' : 'hide-side-nav'}`}
     >
       <Stack
         direction={'row'}
