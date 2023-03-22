@@ -1,4 +1,3 @@
-import { Button } from '@eten-lab/ui-kit';
 import {
   Dialog,
   DialogTitle,
@@ -7,6 +6,7 @@ import {
   TextField,
 } from '@mui/material';
 import React, { useState } from 'react';
+import { Button } from '../../button';
 
 type SimpleFormDialogProps = {
   title: string;

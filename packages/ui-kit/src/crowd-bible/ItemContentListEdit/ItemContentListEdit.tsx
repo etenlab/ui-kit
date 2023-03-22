@@ -1,11 +1,4 @@
 import React from 'react';
-import {
-  CrowdBibleUI,
-  Button,
-  FiPlus,
-  BiVolumeFull,
-  Input,
-} from '@eten-lab/ui-kit';
 import { useState } from 'react';
 import {
   IconButton,
@@ -16,6 +9,8 @@ import {
 } from '@mui/material';
 import { DebounceInput } from 'react-debounce-input';
 import { SimpleFormDialog } from '../SimpleFormDialog';
+import { BiVolumeFull } from 'react-icons/bi';
+import { Button, CrowdBibleUI, FiPlus, Input } from '../..';
 
 const { TitleWithIcon, VoteButtonGroup } = CrowdBibleUI;
 

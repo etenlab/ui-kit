@@ -32,7 +32,7 @@ export function FiltersAndSearch({
             fullWidth
             options={ethnologueOptions}
             label="Ethnologue"
-            onChange={(e,v) => v && setEthnologue(v)}
+            onChange={(_,v) => v && setEthnologue(v)}
           ></Autocomplete>
         </Box>
         <Box flex={1}>

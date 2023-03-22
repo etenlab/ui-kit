@@ -1,6 +1,6 @@
 import React from 'react';
-import { CrowdBibleUI } from '@eten-lab/ui-kit';
 import { Box, ListItemButton, ListItemText } from '@mui/material';
+import { CrowdBibleUI } from '../..';
 const { VoteButtonGroup } = CrowdBibleUI;
 
 type Content = {
