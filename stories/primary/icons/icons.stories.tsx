@@ -49,6 +49,9 @@ import {
   TbLetterT,
   TbCameraRotate,
   TbVideoPlus,
+  TbLayoutColumns,
+  TbLayoutRows,
+  TbArrowBack,
 } from '../../../packages/ui-kit/src/icons';
 
 function Div({ children }: { children: React.ReactNode }) {
@@ -176,6 +179,9 @@ const Template: ComponentStory<typeof Div> = (args) => {
       <TitleWithIcon title="TbLetterT" icon={<TbLetterT />} />
       <TitleWithIcon title="TbCameraRotate" icon={<TbCameraRotate />} />
       <TitleWithIcon title="TbVideoPlus" icon={<TbVideoPlus />} />
+      <TitleWithIcon title="TbLayoutColumns" icon={<TbLayoutColumns />} />
+      <TitleWithIcon title="TbLayoutRows" icon={<TbLayoutRows />} />
+      <TitleWithIcon title="TbArrowBack" icon={<TbArrowBack />} />
     </Div>
   );
 };

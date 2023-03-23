@@ -30,6 +30,7 @@ export function IconBadge({
         color: getColor('gray'),
         fontWeight: 700,
         fontSize: 12,
+        userSelect: 'none',
         ...(success && {
           backgroundColor: getColor('light-green'),
           color: getColor('green'),
