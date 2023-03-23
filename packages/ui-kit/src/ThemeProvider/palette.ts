@@ -57,6 +57,10 @@ export const colors = {
     light: '#FFF9EA',
     dark: '#ffa000',
   },
+  'light-gray': {
+    light: '#F0F0E7',
+    dark: '#F0F0E7'
+  }
 };
 
 export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {

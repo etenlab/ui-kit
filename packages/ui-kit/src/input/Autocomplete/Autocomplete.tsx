@@ -40,11 +40,7 @@ export function Autocomplete<
     setOpen((open) => !open);
   };
 
-  const adornment = open ? (
-    <BiChevronUp onClick={handleToggle} />
-  ) : (
-    <BiChevronDown onClick={handleToggle} />
-  );
+  const adornment = open ? <BiChevronUp /> : <BiChevronDown />;
 
   return (
     <MuiAutocomplete
@@ -61,7 +57,9 @@ export function Autocomplete<
           valid={valid}
           InputProps={{
             ...params.InputProps,
-            endAdornment: <IconButton>{adornment}</IconButton>,
+            endAdornment: (
+              <IconButton onClick={handleToggle}>{adornment}</IconButton>
+            ),
           }}
         />
       )}

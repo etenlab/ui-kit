@@ -41,20 +41,28 @@ export function useColorModeContext() {
 }
 
 type ThemeProviderProps = {
+  autoDetectPrefersDarkMode?: boolean;
   children?: React.ReactNode;
 };
 
-export function ThemeProvider({ children }: ThemeProviderProps) {
+export function ThemeProvider({
+  children,
+  autoDetectPrefersDarkMode = true,
+}: ThemeProviderProps) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const [mode, setMode] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
+    if (!autoDetectPrefersDarkMode) {
+      return;
+    }
+
     if (prefersDarkMode) {
       setMode('dark');
     } else {
       setMode('light');
     }
-  }, [prefersDarkMode]);
+  }, [prefersDarkMode, autoDetectPrefersDarkMode]);
 
   const colorMode = useMemo(
     () => ({

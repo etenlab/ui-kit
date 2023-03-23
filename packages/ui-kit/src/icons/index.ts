@@ -27,6 +27,7 @@ export {
   BiRightArrowAlt,
   BiMessageRounded,
   BiDotsHorizontalRounded,
+  BiVolumeFull,
 } from 'react-icons/bi';
 export { BsFillPlayFill, BsClock, BsFillRecordFill } from 'react-icons/bs';
 export {
@@ -53,3 +54,4 @@ export {
   TbLayoutRows,
   TbArrowBack,
 } from 'react-icons/tb';
+export { IoChatboxOutline } from 'react-icons/io5';

@@ -6,7 +6,7 @@ export const StyledBox = styled(Box)(({ theme }) => ({
   color: theme.palette.text['dark'],
   lineHeight: '30px',
   textAlign: 'justify',
-  '& .selectedText .word:first-child, & .selectedText .word:last-child': {
+  '& .selectedText .word:first-of-type, & .selectedText .word:last-of-type': {
     fontWeight: 'bold',
   },
   '& .word': {

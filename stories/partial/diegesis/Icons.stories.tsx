@@ -5,6 +5,7 @@ import {
   CloseIcon,
   MenuIcon,
 } from '../../../packages/ui-kit/src/diegesis/icons';
+import { buildDocs } from '../../common';
 
 export default {
   title: 'Partial/Diegesis/Icons',
@@ -31,10 +32,29 @@ const MenuIconTemplate: ComponentStory<typeof MenuIcon> = (args) => (
 );
 
 export const Menu = MenuIconTemplate.bind({});
-Menu.args = {};
+Menu.args = {
+  width: 49,
+  height: 40,
+  onClick: () => { },
+  className: 'custom-css-class'
+};
+Menu.parameters = buildDocs(
+  <MenuIcon
+    width={49}
+    height={40}
+    onClick={() => { }}
+    className='custom-css-class'
+  />
+)
 
 const CloseIconTemplate: ComponentStory<typeof CloseIcon> = (args) => (
   <CloseIcon {...args} />
 );
 export const Close = CloseIconTemplate.bind({});
 Close.args = {};
+Close.parameters = buildDocs(
+  <CloseIcon
+    width={49}
+    height={40}
+  />
+)
