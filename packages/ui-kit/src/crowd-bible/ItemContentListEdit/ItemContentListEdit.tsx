@@ -10,9 +10,9 @@ import {
 import { DebounceInput } from 'react-debounce-input';
 import { SimpleFormDialog } from '../SimpleFormDialog';
 import { BiVolumeFull } from 'react-icons/bi';
-import { Button, CrowdBibleUI, FiPlus, Input } from '../..';
-
-const { TitleWithIcon, VoteButtonGroup } = CrowdBibleUI;
+import { Button, FiPlus, Input } from '../..';
+import { TitleWithIcon } from '../TitleWithIcon';
+import { VoteButtonGroup } from '../VoteButtonGroup';
 
 type Content = {
   content: string;

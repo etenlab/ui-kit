@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, ListItemButton, ListItemText } from '@mui/material';
-import { CrowdBibleUI } from '../..';
-const { VoteButtonGroup } = CrowdBibleUI;
+import { VoteButtonGroup } from '../VoteButtonGroup';
+
 
 type Content = {
   content: string;
