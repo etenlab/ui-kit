@@ -51,7 +51,7 @@ const selectedPhrase: Item = {
       downVote: 11,
     },
     {
-      content: 'some content11',
+      content: 'some content11 long long long long long long long long',
       upVote: 10,
       downVote: 11,
     },
