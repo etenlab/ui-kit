@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { SxProps, Theme } from '@mui/material/styles';
 import { Box } from '@mui/material';
 
 import { BiLike, BiDislike, BiMessageRounded } from '../../icons';
@@ -18,6 +19,7 @@ export function NodeData({
   numDownVotes,
   numPosts,
   onNewIdentifierSave,
+  sx = [],
 }: Pick<
   IdentifierLabelProps,
   | 'currentValue'
@@ -32,19 +34,23 @@ export function NodeData({
   numUpVotes: number;
   numDownVotes: number;
   numPosts: number;
+  sx?: SxProps<Theme>;
 }) {
   return (
     <Box
-      sx={{
-        display: `${inline ? 'inline-' : ''}flex`,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        lineHeight: 'initial',
-        ...(col && {
-          flexDirection: 'column',
-          alignItems: 'start',
-        }),
-      }}
+      sx={[
+        {
+          display: `${inline ? 'inline-' : ''}flex`,
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          lineHeight: 'initial',
+          ...(col && {
+            flexDirection: 'column',
+            alignItems: 'start',
+          }),
+        },
+        ...(Array.isArray(sx) ? sx : [sx]),
+      ]}
     >
       <IdentifierLabel
         nodeType={nodeType}
