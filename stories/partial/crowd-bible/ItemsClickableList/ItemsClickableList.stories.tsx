@@ -89,15 +89,15 @@ const items: Array<Item> = [
   },
 ];
 
-export const NormalFiltersAndSearch = Template.bind({});
-NormalFiltersAndSearch.args = {
+export const Primary = Template.bind({});
+Primary.args = {
   items,
   setSelectedItem: (i) => alert('setSelectedItem: ' + JSON.stringify(i)),
   setLikeItem: (i) => alert('setLikeItem: ' + i),
   setDislikeItem: (i) => alert('setDislikeItem: ' + i),
 };
 
-NormalFiltersAndSearch.parameters = {
+Primary.parameters = {
   docs: {
     source: {
       code: jsxToString(

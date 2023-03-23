@@ -101,7 +101,7 @@ export function ItemContentListEdit({
           onClick={() => alert('sound!')}
           sx={{
             color: (theme) => (theme.palette.dark as PaletteColor).main,
-            margitLeft: '20px',
+            marginLeft: '20px',
           }}
         >
           <BiVolumeFull />
@@ -127,7 +127,7 @@ export function ItemContentListEdit({
               onBlur={() => setItemIdxEditting(null as unknown as number)}
             />
           ) : (
-            <Typography variant="body1" onClick={() => setItemIdxEditting(idx)}>
+            <Typography variant="body1" onClick={() => setItemIdxEditting(idx)} display={'inline-flex'}>
               {content}
             </Typography>
           )}

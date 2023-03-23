@@ -40,7 +40,7 @@ type Item = {
 };
 const selectedPhrase: Item = {
   title: {
-    content: 'title content title content title content',
+    content: 'title content',
     downVote: 1,
     upVote: 2,
   },
@@ -58,8 +58,8 @@ const selectedPhrase: Item = {
   ],
 };
 
-export const NormalFiltersAndSearch = Template.bind({});
-NormalFiltersAndSearch.args = {
+export const Primary = Template.bind({});
+Primary.args = {
   item: selectedPhrase,
   onBack: () => alert('onBack run'),
   buttonText: 'New Definition',
@@ -67,7 +67,7 @@ NormalFiltersAndSearch.args = {
   addContent: () => alert('addContent run'),
 };
 
-NormalFiltersAndSearch.parameters = {
+Primary.parameters = {
   docs: {
     source: {
       code: jsxToString(

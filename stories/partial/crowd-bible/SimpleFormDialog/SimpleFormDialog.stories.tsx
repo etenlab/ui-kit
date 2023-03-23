@@ -31,15 +31,15 @@ const Template: ComponentStory<typeof SimpleFormDialog> = (args) => {
   return <SimpleFormDialog {...args} />;
 };
 
-export const NormalFiltersAndSearch = Template.bind({});
-NormalFiltersAndSearch.args = {
+export const Primary = Template.bind({});
+Primary.args = {
   title: 'Some Title',
   isOpened: isDialogOpened,
   handleCancel: () => alert('handleCancel run'),
   handleOk: (value: string) => alert('handleOk run: ' + value),
 };
 
-NormalFiltersAndSearch.parameters = {
+Primary.parameters = {
   docs: {
     source: {
       code: jsxToString(
