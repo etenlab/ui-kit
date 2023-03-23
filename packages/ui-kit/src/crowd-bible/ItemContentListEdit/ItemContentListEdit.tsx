@@ -118,7 +118,6 @@ export function ItemContentListEdit({
           key={content}
         >
           {itemIdxEditting === idx ? (
-            // <Input value={content} onBlur={(v) => changeContentValue(idx, v.target.value)} />
             <DebounceInput
               element={Input}
               debounceTimeout={500}
