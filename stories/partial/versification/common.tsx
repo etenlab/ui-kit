@@ -15,6 +15,7 @@ export function buildDecorator({ sx = [] }: { sx?: SxProps<Theme> } = {}) {
       <Box
         sx={[
           {
+            colorScheme: ({ palette: { mode } }) => mode,
             margin: '3em',
             width: '500px',
             backgroundColor: ({ palette: { mode } }) => colors['white'][mode],
