@@ -47,3 +47,4 @@ export {
   FiCornerDownLeft,
 } from 'react-icons/fi';
 export { TbLetterT, TbCameraRotate, TbVideoPlus } from 'react-icons/tb';
+export { IoChatboxOutline } from 'react-icons/io5';
