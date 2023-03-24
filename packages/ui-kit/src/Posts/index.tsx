@@ -16,7 +16,7 @@ export function Posts({ posts }: { posts: Post[] }) {
       }}
     >
       <IoChatboxOutline />
-      {posts.length}
+      <Box sx={{ ml: '5px' }}>{posts.length}</Box>
     </Box>
   );
 }

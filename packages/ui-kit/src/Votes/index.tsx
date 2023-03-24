@@ -21,11 +21,11 @@ export function Votes({
     >
       <VoteBox>
         <BiLike />
-        {upVotes}
+        <Box sx={{ ml: '5px' }}>{upVotes}</Box>
       </VoteBox>
       <VoteBox>
         <BiDislike />
-        {downVotes}
+        <Box sx={{ ml: '5px' }}>{downVotes}</Box>
       </VoteBox>
     </Box>
   );
