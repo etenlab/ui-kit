@@ -1,14 +1,22 @@
 import React from 'react';
 
-import { IoChatboxOutline } from '../icons';
-import './Posts.css';
 import { Post } from 'node-type';
+import { Box } from '@mui/material';
+import { IoChatboxOutline } from '../icons';
 
 export function Posts({ posts }: { posts: Post[] }) {
   return (
-    <div className="posts">
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        opacity: '0.5',
+        marginRight: '10px',
+        minWidth: '32px',
+      }}
+    >
       <IoChatboxOutline />
       {posts.length}
-    </div>
+    </Box>
   );
 }

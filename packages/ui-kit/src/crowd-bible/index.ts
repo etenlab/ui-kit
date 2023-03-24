@@ -15,3 +15,4 @@ export * from './FiltersAndSearch';
 export * from './ItemContentListEdit';
 export * from './ItemsClickableList';
 export * from './SimpleFormDialog';
+export * from './GraphViewer';

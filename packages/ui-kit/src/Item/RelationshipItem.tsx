@@ -1,5 +1,7 @@
-import { Relationship } from '../../types';
+import React from 'react';
+
 import { Item } from '.';
+import { Relationship } from 'node-type';
 
 export function RelationshipItem({
   relationship: { relationship_type, propertyKeys },

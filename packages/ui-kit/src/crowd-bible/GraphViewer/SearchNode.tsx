@@ -1,12 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import { CircularProgress } from '@mui/material';
-
+import { InnerBox, ItemsBox } from './styled';
 import { SearchInput } from '../../input';
 
 import { NodeItem } from '../../Item/NodeItem';
 import { Node } from 'node-type';
-import './Pages.css';
 
 export function SearchNode({
   nodes,
@@ -37,13 +36,13 @@ export function SearchNode({
         // onClear={() => setSearch('')}
         fullWidth
       />
-      <div className="inner">
-        <div className="items">
+      <InnerBox>
+        <ItemsBox>
           {nodes.map((node, index) => (
             <NodeItem key={index} node={node} onClick={onClick} />
           ))}
-        </div>
-      </div>
+        </ItemsBox>
+      </InnerBox>
     </div>
   );
 }

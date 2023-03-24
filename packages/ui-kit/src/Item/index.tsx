@@ -1,10 +1,10 @@
-import classnames from 'classnames';
+import { Box } from '@mui/material';
 
 import { Votes } from '../Votes';
 import { Posts } from '../Posts';
-import './Item.css';
 import React from 'react';
 import { Node, Relationship } from 'node-type';
+import { ItemBox, ArrowSvg, PropertyKeyBlockBox } from './styled';
 
 export const Item = ({
   type,
@@ -22,50 +22,63 @@ export const Item = ({
   showRelation?: boolean;
 }) => {
   return (
-    <div
-      className={classnames('item', {
-        'item--success': success,
-        'item--warning': warning,
-        'item--selectable': onClick,
-        'item--relation': showRelation,
-      })}
+    <ItemBox
+      success={success}
+      warning={warning}
       onClick={onClick}
+      showRelation={showRelation}
     >
       {showRelation && (
-        <svg viewBox="0 0 50 50" className="item_arrow">
+        <ArrowSvg viewBox="0 0 50 50">
           <path d="M14 0 L14 36 L42 36 L42 39 L48 35 L42 31 L42 34 L16 34 L16 0 Z" />
-        </svg>
+        </ArrowSvg>
       )}
-      <div>{type}</div>
+      <Box>{type}</Box>
       {propertyKeys.length > 0 && (
-        <div className="property-keys">
+        <Box sx={{ mt: '8px' }}>
           {propertyKeys.map(
             ({ property_key, upVotes, downVotes, posts, values }, index) => (
-              <div key={index} className="property-key-block">
-                <div className="property-key-header">
+              <PropertyKeyBlockBox key={index}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    mb: '3px',
+                  }}
+                >
                   <Votes upVotes={upVotes} downVotes={downVotes} />
                   <Posts posts={posts} />
-                  <div className="property-key">{property_key}</div>
-                </div>
-                <div className="property-values">
+                  <Box>{property_key}</Box>
+                </Box>
+                <Box
+                  sx={{
+                    marginLeft: '20px',
+                  }}
+                >
                   {values.map(
                     (
                       { property_value: { value }, upVotes, downVotes, posts },
                       index,
                     ) => (
-                      <div key={index} className="property-value-block">
+                      <Box
+                        key={index}
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                        }}
+                      >
                         <Votes upVotes={upVotes} downVotes={downVotes} />
                         <Posts posts={posts} />
-                        <div className="property-value">{value}</div>
-                      </div>
+                        <Box sx={{ p: '3px' }}>{value}</Box>
+                      </Box>
                     ),
                   )}
-                </div>
-              </div>
+                </Box>
+              </PropertyKeyBlockBox>
             ),
           )}
-        </div>
+        </Box>
       )}
-    </div>
+    </ItemBox>
   );
 };

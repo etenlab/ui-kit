@@ -1,7 +1,7 @@
 import React from 'react';
+import { Box } from '@mui/material';
 import { BiLike, BiDislike } from '../icons';
-
-import './Votes.css';
+import { VoteBox } from './styled';
 
 export function Votes({
   upVotes,
@@ -11,15 +11,22 @@ export function Votes({
   downVotes: number;
 }) {
   return (
-    <div className="votes">
-      <div className="vote">
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        opacity: 0.5,
+        marginRight: '10px',
+      }}
+    >
+      <VoteBox>
         <BiLike />
         {upVotes}
-      </div>
-      <div className="vote">
+      </VoteBox>
+      <VoteBox>
         <BiDislike />
         {downVotes}
-      </div>
-    </div>
+      </VoteBox>
+    </Box>
   );
 }
