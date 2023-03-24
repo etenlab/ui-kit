@@ -6,6 +6,7 @@ import { NodeItem } from '../../Item/NodeItem';
 import { RelationshipItem } from '../../Item/RelationshipItem';
 
 import { Node } from 'node-type';
+import { InnerBox, ItemsBox } from './styled';
 
 export function NodeDetails({
   node,
@@ -19,10 +20,10 @@ export function NodeDetails({
   return (
     <>
       {isLoading && <CircularProgress />}
-      <div className="inner">
+      <InnerBox>
         {node && (
           <>
-            <div className="label">selected node</div>
+            <ItemsBox className="label">selected node</ItemsBox>
             <NodeItem node={node} warning />
             {node.relationships && node.relationships.length > 0 && (
               <div style={{ marginTop: 15 }}>
@@ -51,7 +52,7 @@ export function NodeDetails({
             )}
           </>
         )}
-      </div>
+      </InnerBox>
     </>
   );
 }
