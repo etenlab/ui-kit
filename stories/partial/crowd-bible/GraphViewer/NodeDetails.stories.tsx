@@ -182,18 +182,11 @@ export const Primary = Template.bind({});
 Primary.args = {
   node: node,
   isLoading: false,
-  onClick: () => alert('Node Item Clicked.'),
 };
 Primary.parameters = {
   docs: {
     source: {
-      code: jsxToString(
-        <NodeDetails
-          node={node}
-          isLoading={false}
-          onClick={() => alert('Node Item Clicked.')}
-        />,
-      ),
+      code: jsxToString(<NodeDetails node={node} isLoading={false} />),
       language: 'jsx',
       format: true,
       type: 'auto',

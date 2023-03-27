@@ -1,5 +1,6 @@
 import React from 'react';
 import { Fragment } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 
 import { CircularProgress } from '@mui/material';
 import { NodeItem } from '../../Item/NodeItem';
@@ -11,11 +12,11 @@ import { InnerBox, ItemsBox } from './styled';
 export function NodeDetails({
   node,
   isLoading,
-  onClick,
+  history,
 }: {
   node: Node;
   isLoading: boolean;
-  onClick: () => void;
+  history?: RouteComponentProps['history'];
 }) {
   return (
     <>
@@ -42,7 +43,10 @@ export function NodeDetails({
                           node={relationshipNode}
                           warning
                           showRelation
-                          onClick={onClick}
+                          onClick={() =>
+                            history &&
+                            history.push(`/node/${relationshipNode.node_id}`)
+                          }
                         />
                       </Fragment>
                     );
