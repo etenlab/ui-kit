@@ -53,10 +53,10 @@ export function AppLogo(props: IProps) {
             id="Diegesis"
             transform="translate(143 49.932)"
             fill="#31373a"
-            font-size="40"
-            font-family="Helvetica-Bold, Helvetica"
-            font-weight="700"
-            letter-spacing="-0.04em"
+            fontSize="40"
+            fontFamily="Helvetica-Bold, Helvetica"
+            fontWeight="700"
+            letterSpacing="-0.04em"
           >
             <tspan x="15.334" y="31">
               Diegesis

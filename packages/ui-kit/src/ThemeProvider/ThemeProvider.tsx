@@ -63,7 +63,7 @@ export function ThemeProvider({
     }
 
     if (prefersDarkMode) {
-      setMode('dark');
+      setMode('light');
     } else {
       setMode('light');
     }

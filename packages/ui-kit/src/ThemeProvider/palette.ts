@@ -60,6 +60,14 @@ export const colors = {
   'light-gray': {
     light: '#F0F0E7',
     dark: '#F0F0E7'
+  },
+  'turquoise-light': {
+    light: '#60D0B2',
+    dark: '#60D0B2'
+  },
+  'turquoise-dark': {
+    light: '#4EAA91',
+    dark: '#4EAA91'
   }
 };
 
