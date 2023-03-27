@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
+
 #home-page {
   position: relative;
   min-height: 100%;
@@ -42,7 +44,7 @@
   border-color: #31373a !important;
 }
 .MuiTypography-body1.header-title {
-  font-family: 'noto serif display';
+  font-family: 'Noto Serif Display';
   font-size: 24px;
   line-height: 24px;
   font-style: italic;
@@ -66,7 +68,7 @@
 }
 .page-footer .MuiTypography-body1 {
   color: #ffffff;
-  font-family: 'noto sans myanmar';
+  font-family: 'Noto Serif Display';
   font-size: 20px;
   line-height: 26px;
   font-weight: 400;
