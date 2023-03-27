@@ -40,9 +40,9 @@ function ViewPage(props: IProps) {
                 <Stack direction={'row'} className="divider mb-2"></Stack>
                 <br />
                 <Stack alignSelf={'center'} alignItems={'center'} sx={{ paddingBottom: '1.5rem', borderBottom: '1px solid #E3E3D9' }}>
-                    <Typography variant="h2" fontStyle={'italic'} textAlign={'center'}>The First Book of Moses,<br /> Commonly Called</Typography>
+                    <Typography variant="h2" fontStyle={'italic'} textAlign={'center'} fontFamily={'Noto Serif Display'}>The First Book of Moses,<br /> Commonly Called</Typography>
                     <br />
-                    <Typography variant="h1" fontStyle={'italic'}>Genesis</Typography>
+                    <Typography variant="h1" fontStyle={'italic'} fontFamily={'Noto Serif Display'}>Genesis</Typography>
                 </Stack>
             </Container>
             <Container>

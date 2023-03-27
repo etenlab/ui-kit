@@ -12,10 +12,10 @@ export function AboutContentSection(props: IProps){
     const { title, description, points = [] } = props;
     return (
         <Container className={`about-content-section ${props.className}`}>
-            <Typography variant={'h2'}>
+            <Typography variant={'h2'} fontFamily={'Noto Serif Display'}>
                 {title}
             </Typography>
-            <Typography variant={'body1'}>
+            <Typography variant={'body1'} fontFamily={'Noto Serif Display'}>
                 {description}
             </Typography>
             <List>
