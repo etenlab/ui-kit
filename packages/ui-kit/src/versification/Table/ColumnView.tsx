@@ -137,7 +137,7 @@ export function ColumnView({ bibleBook, onNewIdentifierSave }: TableProps) {
         <Column Component={Header}>Original</Column>
         <Column Component={Header}>Translation</Column>
       </Row>
-      {[...Array(numRows)].map((__, index) => {
+      {Array.from(Array(numRows).keys()).map((index) => {
         const originalItem = original[index] ? original[index] : null;
         const translationItem = translation[index] ? translation[index] : null;
 
