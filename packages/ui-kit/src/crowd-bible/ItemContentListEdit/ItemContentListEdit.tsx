@@ -10,7 +10,9 @@ import {
 import { DebounceInput } from 'react-debounce-input';
 import { SimpleFormDialog } from '../SimpleFormDialog';
 import { BiVolumeFull } from 'react-icons/bi';
-import { Button, FiPlus, Input } from '../..';
+import { Input } from '../../input';
+import { Button } from '../../button';
+import { FiPlus } from 'react-icons/fi';
 import { TitleWithIcon } from '../TitleWithIcon';
 import { VoteButtonGroup } from '../VoteButtonGroup';
 
@@ -126,7 +128,11 @@ export function ItemContentListEdit({
               onBlur={() => setItemIdxEditting(null as unknown as number)}
             />
           ) : (
-            <Typography variant="body1" onClick={() => setItemIdxEditting(idx)} display={'inline-flex'}>
+            <Typography
+              variant="body1"
+              onClick={() => setItemIdxEditting(idx)}
+              display={'inline-flex'}
+            >
               {content}
             </Typography>
           )}
