@@ -248,18 +248,13 @@ Primary.args = {
   nodes: nodes,
   isLoading: false,
   setSearch: () => {},
-  onClick: () => alert('Node Item Clicked.'),
 };
+
 Primary.parameters = {
   docs: {
     source: {
       code: jsxToString(
-        <SearchNode
-          nodes={nodes}
-          isLoading={false}
-          setSearch={() => {}}
-          onClick={() => alert('Node Item Clicked.')}
-        />,
+        <SearchNode nodes={nodes} isLoading={false} setSearch={() => {}} />,
       ),
       language: 'jsx',
       format: true,
