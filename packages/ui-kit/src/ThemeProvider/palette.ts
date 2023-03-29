@@ -68,6 +68,10 @@ export const colors = {
   'turquoise-dark': {
     light: '#4EAA91',
     dark: '#4EAA91'
+  },
+  'darker-gray': {
+    light: '#31373A',
+    dark: '#31373A'
   }
 };
 

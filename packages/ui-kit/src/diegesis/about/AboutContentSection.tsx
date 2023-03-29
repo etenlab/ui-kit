@@ -1,3 +1,4 @@
+import { useColorModeContext } from "@components/ThemeProvider"
 import { Container, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material"
 import React from "react"
 import { BsDot } from "react-icons/bs"
@@ -10,12 +11,13 @@ interface IProps {
 }
 export function AboutContentSection(props: IProps){
     const { title, description, points = [] } = props;
+    const colorMode = useColorModeContext()
     return (
         <Container className={`about-content-section ${props.className}`}>
-            <Typography variant={'h2'} fontFamily={'Noto Serif Display'}>
+            <Typography variant={'h2'} fontFamily={'Noto Serif Display'} sx={{color: colorMode.getColor('darker-gray')}}>
                 {title}
             </Typography>
-            <Typography variant={'body1'} fontFamily={'Noto Serif Display'}>
+            <Typography variant={'body1'} fontFamily={'Noto Serif Display'} sx={{color: colorMode.getColor('darker-gray')}}>
                 {description}
             </Typography>
             <List>

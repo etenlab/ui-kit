@@ -7,6 +7,7 @@ import SideNav from "../SideNav";
 import AboutContentSection from "./AboutContentSection";
 import "./About.css";
 import AboutPictureSection from "./AboutPictureSection";
+import { useColorModeContext } from "@components/ThemeProvider";
 
 interface IProps {}
 
@@ -20,15 +21,16 @@ const dataAboutContentSection1 = {
 
 export function AboutPage(props: IProps) {
     const [isSideNavOpen, setSideNavOpenStatus] = useState(false)
+    const colorMode = useColorModeContext()
     return (
         <div id="about-page">
             <PageHeader openSideNav={() => setSideNavOpenStatus(true)} />
             <SideNav open={isSideNavOpen} close={() => { setSideNavOpenStatus(false) }} />
             <Container className="header-section">
-                <Typography variant={'h1'} className="page-title">
+                <Typography variant={'h1'} className="page-title" sx={{color: colorMode.getColor('darker-gray')}}>
                     About Diegesis
                 </Typography>
-                <Typography variant={'h2'} fontStyle={'italic'} className="page-title-sub">
+                <Typography variant={'h2'} fontStyle={'italic'} sx={{color: colorMode.getColor('darker-gray')}} className="page-title-sub">
                     Open source Bibles resources
                 </Typography>
             </Container>
@@ -40,7 +42,7 @@ export function AboutPage(props: IProps) {
                     points={dataAboutContentSection1.points}
                 />
                 <AboutPictureSection caption="Image Caption" />
-                <Typography variant="h1" textTransform={'none'} className="diegesis-quote">
+                <Typography variant="h1" textTransform={'none'} sx={{color: colorMode.getColor('darker-gray')}} className="diegesis-quote">
                     “Diegesis is a place to find Bibles and related resources, in a variety of formats, released under open licences.”
                 </Typography>
                 <AboutContentSection
