@@ -8,6 +8,7 @@
     line-height: 40px;
     font-weight: 300;
     font-family: 'Noto Serif Display';
+    color: #31373A;
 }
 .inner-content {
     margin-left: 13% !important;
@@ -19,12 +20,14 @@
     line-height: 30px;
     font-weight: 700;
     font-family: 'Noto Serif Display';
+    color: #31373A;
 }
 .about-content-section .MuiTypography-body1 {
     margin-top: 10px;
     font-size: 20px;
     line-height: 30px;
     font-weight: normal;
+    color: #31373A;
 }
 .about-content-section .MuiList-root {
     margin-top: 25px;
@@ -40,11 +43,12 @@
 .about-content-section .MuiList-root .MuiListItem-root {
     border-top: 1px solid #E3E3D9;
 }
-.diegesis-quote {
+.MuiTypography-h1.diegesis-quote {
     padding: 50px 0px;
     font-size: 30px;
     font-weight: 400;
     font-family: 'Noto Serif Display';
+    color: #31373A;
 }
 .about-picture-section {
     margin-top: 60px;
