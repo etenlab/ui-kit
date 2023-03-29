@@ -1,6 +1,6 @@
-import { MenuItem, Select } from "@mui/material";
+import { MenuItem, Select, useTheme } from "@mui/material";
 import React from "react";
-import { colors } from "..";
+import { colors, useColorModeContext } from "..";
 
 interface IProps {
     label?: string
@@ -22,7 +22,8 @@ const MenuProps = {
 
 export const SelectOptions: React.FC<IProps> = (props) => {
     const { options = [], label = '', value, onChange } = props;
-
+    const colorMode = useColorModeContext()
+    
     return (
         <Select
             value={value || label}
@@ -32,10 +33,10 @@ export const SelectOptions: React.FC<IProps> = (props) => {
             MenuProps={MenuProps}
             sx={{
                 '& .MuiOutlinedInput-input': {
-                    backgroundColor: colors.white
+                    backgroundColor: colorMode.getColor('white')
                 },
                 '& .MuiSelect-select.Mui-focusVisible': {
-                    borderColor: colors.green
+                    borderColor: colorMode.getColor('turquoise-light')
                 },
                 '& .MuiOutlinedInput-notchedOutline': {
                     borderRadius: '0px'
@@ -46,10 +47,10 @@ export const SelectOptions: React.FC<IProps> = (props) => {
                     fontFamily: 'helvetica'
                 },
                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                    borderColor: colors.green,
+                    borderColor: colorMode.getColor('turquoise-light')
                 },
                 '&.Mui-focusVisible .MuiOutlinedInput-notchedOutline': {
-                    borderColor: colors.green,
+                    borderColor: colorMode.getColor('turquoise-light')
                 },
             }}
         >

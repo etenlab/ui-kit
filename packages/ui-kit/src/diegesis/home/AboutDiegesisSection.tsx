@@ -1,6 +1,7 @@
 import { Button, Container, Stack, Typography } from '@mui/material';
 import React from 'react';
 import './Home.css';
+import { useColorModeContext } from '../../ThemeProvider';
 
 interface IProps {
   coverUrl?: string;
@@ -8,7 +9,7 @@ interface IProps {
 }
 export function AboutDiegesisSection(props: IProps) {
   const { coverUrl, aboutDiegesisHref } = props;
-
+  const colorMode = useColorModeContext()
   return (
     <Container className="about-diegesis-section">
       <div className="content-box">
@@ -19,7 +20,7 @@ export function AboutDiegesisSection(props: IProps) {
             justifyContent={'space-between'}
             className="full-height"
           >
-            <Typography variant="h2">
+            <Typography variant="h2" textTransform={'none'} sx={{color: colorMode.getColor('darker-gray')}}>
               Diegesis is a place to find Bibles and related resources, in a
               variety of formats, released under open licences.
             </Typography>

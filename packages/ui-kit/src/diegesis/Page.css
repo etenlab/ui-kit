@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
+
 #home-page {
   position: relative;
   min-height: 100%;
@@ -6,6 +8,8 @@
   font-size: 40px;
   line-height: 45px;
   font-weight: 400;
+  font-family: 'Noto Serif Display';
+  color: #31373A;
 }
 .show-side-nav {
 }
@@ -42,7 +46,7 @@
   border-color: #31373a !important;
 }
 .MuiTypography-body1.header-title {
-  font-family: 'noto serif display';
+  font-family: 'Noto Serif Display';
   font-size: 24px;
   line-height: 24px;
   font-style: italic;
@@ -57,7 +61,7 @@
 }
 .page-header .nav-btn {
   position: absolute;
-  right: -24px;
+  right: 25px;
 }
 .page-footer {
   background: #31373a;
@@ -66,9 +70,9 @@
 }
 .page-footer .MuiTypography-body1 {
   color: #ffffff;
-  font-family: 'noto sans myanmar';
-  font-size: 20px;
-  line-height: 26px;
+  font-family: 'Noto Serif Display';
+  font-size: 18px;
+  line-height: 24px;
   font-weight: 400;
 }
 .side-nav-container {
@@ -77,12 +81,13 @@
   position: absolute;
   top: 0;
   right: 0;
-  padding: 50px;
-  padding-right: 25px;
+  padding: 3rem;
+  padding-top: 1.7rem;
+  padding-right: 1.7rem;
   z-index: 10;
 }
 .side-nav-container.show-side-nav {
-  width: 536px; 
+  width: 320px;
   transition: 0.5s;
 }
 .side-nav-container.hide-side-nav {
@@ -116,7 +121,7 @@
   text-transform: none;
   font-weight: 400;
   font-family: helvetica;
-  padding: 20px 0px;
+  padding: 1rem 0px;
   font-size: 20px;
   line-height: 20px;
   width: 100%;
@@ -130,7 +135,9 @@
 .show-xs {
   display: none !important;
 }
-
+.MuiTableRow-root.table-row .MuiTableCell-body{
+  color: #31373A;
+}
 @media screen and (max-width: 414px) {
   .hide-xs {
     display: none !important;
@@ -143,12 +150,10 @@
     height: 34px;
   }
   .page-header .nav-btn svg {
-    width: 35px;
-    height: 35px;
+    width: 24px;
+    height: 24px;
   }
   .page-header .nav-btn {
-    /* position: absolute; */
-    position: unset;
     right: 0px;
   }
   .page-header .header-title {
@@ -159,7 +164,7 @@
     transition: 0.5s;
   }
   .side-nav-container {
-    padding: 20px;
+    padding: 1.2rem;
   }
   .page-footer .footer-content {
     flex-direction: column;
