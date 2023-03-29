@@ -76,9 +76,9 @@ function TableHeaderWrapper(props: TableHeaderProps) {
   return (
     <TableHead>
       <TableRow>
-        {headCells.map((headCell) => (
+        {headCells.map((headCell, idx) => (
           <TableCell
-            key={headCell.id}
+            key={idx}
             align={headCell.numeric ? 'right' : 'left'}
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
@@ -239,7 +239,7 @@ export default function DataTable(props: IDataTableProps) {
             />
             <TableBody>
               {
-                stableSort(rows, getComparator(order, orderBy)).map((row, rowIdx) => <TableRowWrapper expandableRowOnMobile={expandableRowOnMobile} rowKey={rowIdx} headCells={headCells} row={row} />)
+                stableSort(rows, getComparator(order, orderBy)).map((row, rowIdx) => <TableRowWrapper key={rowIdx} expandableRowOnMobile={expandableRowOnMobile} rowKey={rowIdx} headCells={headCells} row={row} />)
               }
             </TableBody>
           </Table>

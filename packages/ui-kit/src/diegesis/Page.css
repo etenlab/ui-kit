@@ -135,7 +135,9 @@
 .show-xs {
   display: none !important;
 }
-
+.MuiTableRow-root.table-row .MuiTableCell-body{
+  color: #31373A;
+}
 @media screen and (max-width: 414px) {
   .hide-xs {
     display: none !important;
