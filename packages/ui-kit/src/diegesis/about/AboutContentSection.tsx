@@ -1,7 +1,7 @@
-import { useColorModeContext } from "@components/ThemeProvider"
 import { Container, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material"
 import React from "react"
 import { BsDot } from "react-icons/bs"
+import { useColorModeContext } from "../../ThemeProvider";
 
 interface IProps {
     className?: string

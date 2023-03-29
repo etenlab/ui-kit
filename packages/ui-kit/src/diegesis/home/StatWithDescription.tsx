@@ -1,5 +1,6 @@
 import { Stack, Typography } from '@mui/material';
 import React from 'react';
+import { useColorModeContext } from '../../ThemeProvider';
 import './Home.css';
 
 interface IProps {
@@ -8,6 +9,7 @@ interface IProps {
   description: string;
 }
 export function statWithDescription(props: IProps) {
+  const colorMode = useColorModeContext()
   return (
     <Stack
       direction={'column'}
@@ -18,10 +20,10 @@ export function statWithDescription(props: IProps) {
       <Typography variant={'h1'} className="stat">
         {props.numbers}
       </Typography>
-      <Typography variant={'h1'} className="stat-category">
+      <Typography variant={'h1'} className="stat-category" sx={{color: colorMode.getColor('darker-gray')}}>
         {props.category}
       </Typography>
-      <Typography variant={'body1'} className="stat-description">
+      <Typography variant={'body1'} className="stat-description" sx={{color: colorMode.getColor('lighter-gray')}}>
         {props.description}
       </Typography>
     </Stack>

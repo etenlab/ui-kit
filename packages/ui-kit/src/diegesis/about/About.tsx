@@ -7,7 +7,7 @@ import SideNav from "../SideNav";
 import AboutContentSection from "./AboutContentSection";
 import "./About.css";
 import AboutPictureSection from "./AboutPictureSection";
-import { useColorModeContext } from "@components/ThemeProvider";
+import { useColorModeContext } from "../../ThemeProvider";
 
 interface IProps {}
 

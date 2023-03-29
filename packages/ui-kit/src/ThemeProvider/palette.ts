@@ -72,6 +72,10 @@ export const colors = {
   'darker-gray': {
     light: '#31373A',
     dark: '#31373A'
+  },
+  'lighter-gray': {
+    light: '#707070',
+    dark: '#707070'
   }
 };
 

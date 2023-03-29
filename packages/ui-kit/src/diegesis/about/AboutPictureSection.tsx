@@ -1,6 +1,6 @@
-import { useColorModeContext } from "@components/ThemeProvider"
 import { Container, Typography } from "@mui/material"
 import React from "react"
+import { useColorModeContext } from "../../ThemeProvider";
 
 interface IProps {
     className?: string
