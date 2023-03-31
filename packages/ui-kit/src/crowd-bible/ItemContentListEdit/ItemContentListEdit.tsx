@@ -114,7 +114,7 @@ export function ItemContentListEdit({
             fontSize: '12px',
             lineHeight: '17px',
           }}
-          key={content}
+          key={idx}
         >
           {itemIdxEditting === idx ? (
             <DebounceInput
