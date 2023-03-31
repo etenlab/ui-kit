@@ -40,9 +40,7 @@ const node = {
       downVotes: 4,
       posts: [],
       propertyValue: {
-        property_value: {
-          value: 'ln',
-        },
+        property_value: '{"value":"ln"}',
         upVotes: 2,
         downVotes: 3,
         posts: [
@@ -58,9 +56,7 @@ const node = {
       downVotes: 9,
       posts: [],
       propertyValue: {
-        property_value: {
-          value: 'ln',
-        },
+        property_value: '{"value":"nl"}',
         upVotes: 3,
         downVotes: 1,
         posts: [],
@@ -80,9 +76,7 @@ const node = {
           downVotes: 1,
           posts: [],
           propertyValue: {
-            property_value: {
-              value: '1',
-            },
+            property_value: '{"value":"1"}',
             upVotes: 7,
             downVotes: 13,
             posts: [],
@@ -94,9 +88,7 @@ const node = {
           downVotes: 2,
           posts: [],
           propertyValue: {
-            property_value: {
-              value: '2',
-            },
+            property_value: '{"value":"2"}',
             upVotes: 13,
             downVotes: 8,
             posts: [
