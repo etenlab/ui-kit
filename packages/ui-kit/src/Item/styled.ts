@@ -1,14 +1,16 @@
 import { styled, Box, SvgIcon } from '@mui/material';
+import { ReactNode } from 'react';
 
 interface ItemBoxProps {
   success?: boolean;
   warning?: boolean;
   onClick?: () => void;
   showRelation?: boolean;
+  children?: ReactNode;
 }
 
 export const ItemBox = styled(Box)<ItemBoxProps>(
-  ({ success, warning, onClick, showRelation }) => ({
+  ({ success, warning, showRelation }) => ({
     border: success
       ? '2px solid rgba(45, 211, 111, 0.5)'
       : warning
@@ -18,6 +20,8 @@ export const ItemBox = styled(Box)<ItemBoxProps>(
     marginLeft: showRelation ? '50px' : '0',
     position: 'relative',
     padding: '15px',
+  }),
+  ({ onClick }) => ({
     '&:hover, &:active': onClick
       ? {
           cursor: 'pointer',
@@ -25,7 +29,9 @@ export const ItemBox = styled(Box)<ItemBoxProps>(
         }
       : {},
   }),
-);
+) as React.ComponentType<ItemBoxProps>;
+
+ItemBox.displayName = 'ItemBox';
 
 export const ArrowSvg = styled(SvgIcon)({
   position: 'absolute',
