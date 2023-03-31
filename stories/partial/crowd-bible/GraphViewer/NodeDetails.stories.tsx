@@ -39,63 +39,32 @@ const node = {
       upVotes: 10,
       downVotes: 4,
       posts: [],
-      values: [
-        {
-          property_value: {
-            value: 'ln',
-          },
-          upVotes: 2,
-          downVotes: 3,
-          posts: [
-            {
-              id: 111,
-            },
-          ],
+      propertyValue: {
+        property_value: {
+          value: 'ln',
         },
-        {
-          property_value: {
-            value: 'nl',
+        upVotes: 2,
+        downVotes: 3,
+        posts: [
+          {
+            id: 111,
           },
-          upVotes: 6,
-          downVotes: 4,
-          posts: [
-            {
-              id: 222,
-            },
-            {
-              id: 333,
-            },
-          ],
-        },
-      ],
+        ],
+      },
     },
     {
       property_key: 'eman_drow',
       upVotes: 11,
       downVotes: 9,
       posts: [],
-      values: [
-        {
-          property_value: {
-            value: 'ln',
-          },
-          upVotes: 3,
-          downVotes: 1,
-          posts: [],
+      propertyValue: {
+        property_value: {
+          value: 'ln',
         },
-        {
-          property_value: {
-            value: 'nl',
-          },
-          upVotes: 4,
-          downVotes: 4,
-          posts: [
-            {
-              id: 123,
-            },
-          ],
-        },
-      ],
+        upVotes: 3,
+        downVotes: 1,
+        posts: [],
+      },
     },
   ],
   relationships: [
@@ -110,56 +79,32 @@ const node = {
           upVotes: 2,
           downVotes: 1,
           posts: [],
-          values: [
-            {
-              property_value: {
-                value: '1',
-              },
-              upVotes: 7,
-              downVotes: 13,
-              posts: [],
+          propertyValue: {
+            property_value: {
+              value: '1',
             },
-            {
-              property_value: {
-                value: '2',
-              },
-              upVotes: 9,
-              downVotes: 8,
-              posts: [
-                {
-                  id: 123,
-                },
-              ],
-            },
-          ],
+            upVotes: 7,
+            downVotes: 13,
+            posts: [],
+          },
         },
         {
           property_key: 'noitisop',
           upVotes: 5,
           downVotes: 2,
           posts: [],
-          values: [
-            {
-              property_value: {
-                value: '3',
-              },
-              upVotes: 2,
-              downVotes: 3,
-              posts: [],
+          propertyValue: {
+            property_value: {
+              value: '2',
             },
-            {
-              property_value: {
-                value: '2',
+            upVotes: 13,
+            downVotes: 8,
+            posts: [
+              {
+                id: 123,
               },
-              upVotes: 13,
-              downVotes: 8,
-              posts: [
-                {
-                  id: 123,
-                },
-              ],
-            },
-          ],
+            ],
+          },
         },
       ],
       fromNode: {

@@ -37,7 +37,10 @@ export const Item = ({
       {propertyKeys.length > 0 && (
         <Box sx={{ mt: '8px' }}>
           {propertyKeys.map(
-            ({ property_key, upVotes, downVotes, posts, values }, index) => (
+            (
+              { property_key, upVotes, downVotes, posts, propertyValue },
+              index,
+            ) => (
               <PropertyKeyBlockBox key={index}>
                 <Box
                   sx={{
@@ -55,24 +58,21 @@ export const Item = ({
                     marginLeft: '20px',
                   }}
                 >
-                  {values.map(
-                    (
-                      { property_value: { value }, upVotes, downVotes, posts },
-                      index,
-                    ) => (
-                      <Box
-                        key={index}
-                        sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                        }}
-                      >
-                        <Votes upVotes={upVotes} downVotes={downVotes} />
-                        <Posts posts={posts} />
-                        <Box sx={{ p: '3px' }}>{value}</Box>
-                      </Box>
-                    ),
-                  )}
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <Votes
+                      upVotes={propertyValue.upVotes}
+                      downVotes={propertyValue.downVotes}
+                    />
+                    <Posts posts={propertyValue.posts} />
+                    <Box sx={{ p: '3px' }}>
+                      {propertyValue.property_value.value}
+                    </Box>
+                  </Box>
                 </Box>
               </PropertyKeyBlockBox>
             ),
