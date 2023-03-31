@@ -6,6 +6,7 @@ const PADDING = 20;
 
 type FiltersAndSearchProps = {
   ethnologueOptions: Array<string>;
+  languageOptions: Array<string>;
   setEthnologue: (e: string) => void;
   setLanguage: (l: string) => void;
   setSearch: (s: string) => void;
@@ -13,6 +14,7 @@ type FiltersAndSearchProps = {
 
 export function FiltersAndSearch({
   ethnologueOptions,
+  languageOptions,
   setEthnologue,
   setLanguage,
   setSearch,
@@ -32,20 +34,16 @@ export function FiltersAndSearch({
             fullWidth
             options={ethnologueOptions}
             label="Ethnologue"
-            onChange={(_,v) => v && setEthnologue(v)}
+            onChange={(_, v) => v && setEthnologue(v)}
           ></Autocomplete>
         </Box>
         <Box flex={1}>
-          <DebounceInput
-            sx={{ width: '100%' }}
-            width={1}
-            element={Input}
-            label="Language ID"
-            debounceTimeout={500}
-            onChange={(e) => {
-              setLanguage(e.target.value);
-            }}
-          />
+          <Autocomplete
+            fullWidth
+            options={languageOptions}
+            label="Language"
+            onChange={(_, v) => v && setLanguage(v)}
+          ></Autocomplete>
         </Box>
       </Box>
       <Box width={1} paddingBottom={`${PADDING}px`}>

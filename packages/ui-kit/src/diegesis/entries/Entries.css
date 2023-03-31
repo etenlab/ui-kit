@@ -95,6 +95,10 @@
   overflow: hidden;
   transition: all 0.2s ease-out;
 }
+.entries-tbl-container .MuiTablePagination-selectLabel, .entries-tbl-container .MuiTablePagination-displayedRows {
+  color: #31373A;
+}
+
 @media screen and (max-width: 414px) {
   .controls-section {
     padding-top: 30px;

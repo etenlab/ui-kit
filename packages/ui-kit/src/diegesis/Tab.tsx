@@ -1,6 +1,5 @@
 import { Tab, Tabs, styled } from "@mui/material";
 import React from "react";
-import { colors } from "..";
 
 interface StyledTabsProps {
     children?: React.ReactNode;
@@ -8,14 +7,14 @@ interface StyledTabsProps {
     onClick: (event: React.SyntheticEvent) => void;
     onChange?: (event: React.SyntheticEvent, newValue: number) => void;
     className?: string;
+    getColor: (color: string) => string
 }
 
 export const CustomTabs = styled((props: StyledTabsProps) => (
     <Tabs
         {...props}
-        // TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
     />
-))({
+))(({theme, getColor}) => ({
     '& .MuiTabs-flexContainer': {
         padding: '0px 1rem',
     },
@@ -27,31 +26,32 @@ export const CustomTabs = styled((props: StyledTabsProps) => (
     },
     '& .MuiTabs-indicatorSpan': {
         width: '100%',
-        backgroundColor: colors.green,
+        backgroundColor: getColor('turquoise-light'),
         margin: '0px 1rem',
         height: '1px'
     },
-});
+}));
 
 interface StyledTabProps {
     label: string;
     value: number;
+    getColor: (color: string) => string
 }
 
 export const CustomTab = styled((props: StyledTabProps) => (
     <Tab {...props} wrapped={true} />
-))(({ theme }) => ({
+))(({ theme, getColor }) => ({
     textTransform: 'none',
     fontWeight: theme.typography.fontWeightRegular,
     fontSize: theme.typography.pxToRem(20),
     textDecoration: 'underline',
     textUnderlineOffset: '0.5rem',
-    textDecorationColor: colors.green,
+    textDecorationColor: getColor('turquoise-light'),
     padding: '1rem',
     paddingBottom: '2rem',
-    color: colors.dark,
+    color: getColor('dark'),
     '&.Mui-selected': {
-        backgroundColor: colors["light-gray"],
-        color: colors.dark,
+        backgroundColor: getColor('light-gray'),
+        color: getColor('dark')
     },
 }));
