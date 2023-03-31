@@ -70,7 +70,7 @@ export const Item = ({
                     />
                     <Posts posts={propertyValue.posts} />
                     <Box sx={{ p: '3px' }}>
-                      {propertyValue.property_value.value}
+                      {JSON.parse(propertyValue.property_value).value}
                     </Box>
                   </Box>
                 </Box>
