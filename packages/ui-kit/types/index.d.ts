@@ -80,14 +80,10 @@ declare module 'node-type' {
   }
 
   export interface NodePropertyValue {
-    property_value: PropertyValue;
+    property_value: string;
     upVotes: number;
     downVotes: number;
     posts: Post[];
-  }
-
-  export interface PropertyValue {
-    value: string;
   }
 
   export interface Relationship {
@@ -109,7 +105,7 @@ declare module 'node-type' {
   }
 
   export interface RelationshipPropertyValue {
-    property_value: PropertyValue;
+    property_value: string;
     upVotes: number;
     downVotes: number;
     posts: Post[];

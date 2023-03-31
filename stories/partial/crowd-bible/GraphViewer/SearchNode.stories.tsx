@@ -41,9 +41,7 @@ const nodes = [
         downVotes: 6,
         posts: [],
         propertyValue: {
-          property_value: {
-            value: 'NIV',
-          },
+          property_value: '{"value":"NIV"}',
           upVotes: 10,
           downVotes: 11,
           posts: [
@@ -59,9 +57,7 @@ const nodes = [
         downVotes: 7,
         posts: [],
         propertyValue: {
-          property_value: {
-            value: 'NIV',
-          },
+          property_value: '{"value":"NIV"}',
           upVotes: 10,
           downVotes: 7,
           posts: [],
@@ -80,9 +76,7 @@ const nodes = [
         downVotes: 4,
         posts: [],
         propertyValue: {
-          property_value: {
-            value: 'ln',
-          },
+          property_value: '{"value":"nl"}',
           upVotes: 2,
           downVotes: 3,
           posts: [
@@ -98,9 +92,7 @@ const nodes = [
         downVotes: 9,
         posts: [],
         propertyValue: {
-          property_value: {
-            value: 'ln',
-          },
+          property_value: '{"value":"ln"}',
           upVotes: 3,
           downVotes: 1,
           posts: [
@@ -123,9 +115,7 @@ const nodes = [
         downVotes: 4,
         posts: [],
         propertyValue: {
-          property_value: {
-            value: 'beginning',
-          },
+          property_value: '{"value":"beginning"}',
           upVotes: 2,
           downVotes: 3,
           posts: [
@@ -141,9 +131,7 @@ const nodes = [
         downVotes: 9,
         posts: [],
         propertyValue: {
-          property_value: {
-            value: 'ln',
-          },
+          property_value: '{"value":"ln"}',
           upVotes: 3,
           downVotes: 1,
           posts: [
