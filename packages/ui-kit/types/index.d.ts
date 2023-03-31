@@ -76,7 +76,7 @@ declare module 'node-type' {
     upVotes: number;
     downVotes: number;
     posts: Post[];
-    values: NodePropertyValue[];
+    propertyValue: NodePropertyValue;
   }
 
   export interface NodePropertyValue {
@@ -105,7 +105,7 @@ declare module 'node-type' {
     upVotes: number;
     downVotes: number;
     posts: Post[];
-    values: RelationshipPropertyValue[];
+    propertyValue: RelationshipPropertyValue;
   }
 
   export interface RelationshipPropertyValue {
