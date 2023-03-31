@@ -99,11 +99,12 @@ export function AppLogo(props: IProps) {
   }
 }
 export default AppLogo;
-`)
+`);
 
 export const LightAppLogo = Template.bind({});
 LightAppLogo.args = {
   varient: 'light',
 };
-LightAppLogo.parameters = buildDocs(<AppLogo varient='light' height={46} width={175} />)
-
+LightAppLogo.parameters = buildDocs(
+  <AppLogo varient="light" height={46} width={175} />,
+);

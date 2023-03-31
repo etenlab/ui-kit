@@ -4,28 +4,25 @@ import { ThemeProvider } from '../../../packages/ui-kit/src';
 import ActionButtons from '../../../packages/ui-kit/src/diegesis/entry-details/ActionButtons';
 import { buildDocs } from '../../common';
 
-
 export default {
-    title: 'Partial/Diegesis/Entries/Entry Detail',
-    component: ActionButtons,
-    decorators: [
-        (Story) => (
-            <div>
-                <ThemeProvider>
-                    <Story />
-                </ThemeProvider>
-            </div>
-        ),
-    ],
+  title: 'Partial/Diegesis/Entries/Entry Detail',
+  component: ActionButtons,
+  decorators: [
+    (Story) => (
+      <div>
+        <ThemeProvider>
+          <Story />
+        </ThemeProvider>
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof ActionButtons>;
 
-
-const ActionButtonsTemplate: ComponentStory<typeof ActionButtons> = args => (
-    <ActionButtons {...args} />
+const ActionButtonsTemplate: ComponentStory<typeof ActionButtons> = (args) => (
+  <ActionButtons {...args} />
 );
 export const actionButtonsCode = ActionButtonsTemplate.bind({});
-actionButtonsCode.args = {
-};
+actionButtonsCode.args = {};
 actionButtonsCode.parameters = buildDocs(`
 type Props = {}
 export default function ActionButtons(props: Props) {
@@ -52,12 +49,8 @@ export default function ActionButtons(props: Props) {
         </Stack>
     )
 }
-`)
+`);
 
 export const actionButtonsUsage = ActionButtonsTemplate.bind({});
-actionButtonsUsage.args = {
-};
-actionButtonsUsage.parameters = buildDocs(<ActionButtons />)
-
-
-
+actionButtonsUsage.args = {};
+actionButtonsUsage.parameters = buildDocs(<ActionButtons />);

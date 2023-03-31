@@ -2,11 +2,11 @@ import React from 'react';
 import { Box, ListItemButton, ListItemText } from '@mui/material';
 import { VoteButtonGroup } from '../VoteButtonGroup';
 
-
 type Content = {
   content: string;
   upVote: number;
   downVote: number;
+  id: string | null;
 };
 
 type Item = {
@@ -30,7 +30,7 @@ export function ItemsClickableList({
   return (
     <>
       {items.map((it) => (
-        <Box display={'flex'} key={it.title.content}>
+        <Box display={'flex'} key={it.title.id}>
           <Box flex={4}>
             <ListItemButton onClick={() => setSelectedItem(it)}>
               <ListItemText primary={it.title.content} color="dark" />

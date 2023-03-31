@@ -4,30 +4,29 @@ import { ThemeProvider } from '../../../packages/ui-kit/src';
 import AboutContentSection from '../../../packages/ui-kit/src/diegesis/about/AboutContentSection';
 import { buildDocs } from '../../common';
 
-
 export default {
-    title: 'Partial/Diegesis/AboutPage',
-    component: AboutContentSection,
-    decorators: [
-        (Story) => (
-            <div>
-                <ThemeProvider>
-                    <Story />
-                </ThemeProvider>
-            </div>
-        ),
-    ],
+  title: 'Partial/Diegesis/AboutPage',
+  component: AboutContentSection,
+  decorators: [
+    (Story) => (
+      <div>
+        <ThemeProvider>
+          <Story />
+        </ThemeProvider>
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof AboutContentSection>;
 
-const AboutContentSectionTemplate: ComponentStory<typeof AboutContentSection> = args => (
-    <AboutContentSection {...args} />
-);
+const AboutContentSectionTemplate: ComponentStory<
+  typeof AboutContentSection
+> = (args) => <AboutContentSection {...args} />;
 export const aboutContentSectionCode = AboutContentSectionTemplate.bind({});
 aboutContentSectionCode.args = {
-    className: 'box-wrapper',
-    title: 'Title of the content',
-    description: 'Description of the content',
-    points: ['Point 1', 'Point 2', 'Point 3']
+  className: 'box-wrapper',
+  title: 'Title of the content',
+  description: 'Description of the content',
+  points: ['Point 1', 'Point 2', 'Point 3'],
 };
 aboutContentSectionCode.parameters = buildDocs(`
 interface IProps {
@@ -62,18 +61,20 @@ export function AboutContentSection(props: IProps){
     )
 }
 export default AboutContentSection
-`)
+`);
 
 export const aboutContentSectionUsage = AboutContentSectionTemplate.bind({});
 aboutContentSectionUsage.args = {
-    className: 'box-wrapper',
-    title: 'Title of the content',
-    description: 'Description of the content',
-    points: ['Point 1', 'Point 2', 'Point 3', 'Point 4']
+  className: 'box-wrapper',
+  title: 'Title of the content',
+  description: 'Description of the content',
+  points: ['Point 1', 'Point 2', 'Point 3', 'Point 4'],
 };
-aboutContentSectionUsage.parameters = buildDocs(<AboutContentSection
-    className='string'
-    title='string'
-    description='string'
+aboutContentSectionUsage.parameters = buildDocs(
+  <AboutContentSection
+    className="string"
+    title="string"
+    description="string"
     points={[]}
-/>)
+  />,
+);

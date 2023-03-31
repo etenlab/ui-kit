@@ -5,25 +5,24 @@ import ViewPage from '../../../packages/ui-kit/src/diegesis/view/View';
 import { buildDocs } from '../../common';
 
 export default {
-    title: 'Partial/Diegesis/View',
-    component: ViewPage,
-    decorators: [
-        (Story) => (
-            <div>
-                <ThemeProvider>
-                    <Story />
-                </ThemeProvider>
-            </div>
-        )
-    ],
+  title: 'Partial/Diegesis/View',
+  component: ViewPage,
+  decorators: [
+    (Story) => (
+      <div>
+        <ThemeProvider>
+          <Story />
+        </ThemeProvider>
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof ViewPage>;
 
-const ViewPageTemplate: ComponentStory<typeof ViewPage> = args => (
-    <ViewPage {...args} />
+const ViewPageTemplate: ComponentStory<typeof ViewPage> = (args) => (
+  <ViewPage {...args} />
 );
 export const viewPageCode = ViewPageTemplate.bind({});
-viewPageCode.args = {
-};
+viewPageCode.args = {};
 viewPageCode.parameters = buildDocs(`
 interface IProps {
 }
@@ -107,12 +106,8 @@ function ViewPage(props: IProps) {
     )
 }
 export default ViewPage
-`)
+`);
 
 export const viewPageUsage = ViewPageTemplate.bind({});
-viewPageCode.args = {
-};
-viewPageUsage.parameters = buildDocs(<ViewPage />)
-
-
-
+viewPageCode.args = {};
+viewPageUsage.parameters = buildDocs(<ViewPage />);

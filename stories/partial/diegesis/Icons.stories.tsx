@@ -35,26 +35,21 @@ export const Menu = MenuIconTemplate.bind({});
 Menu.args = {
   width: 49,
   height: 40,
-  onClick: () => { },
-  className: 'custom-css-class'
+  onClick: () => {},
+  className: 'custom-css-class',
 };
 Menu.parameters = buildDocs(
   <MenuIcon
     width={49}
     height={40}
-    onClick={() => { }}
-    className='custom-css-class'
-  />
-)
+    onClick={() => {}}
+    className="custom-css-class"
+  />,
+);
 
 const CloseIconTemplate: ComponentStory<typeof CloseIcon> = (args) => (
   <CloseIcon {...args} />
 );
 export const Close = CloseIconTemplate.bind({});
 Close.args = {};
-Close.parameters = buildDocs(
-  <CloseIcon
-    width={49}
-    height={40}
-  />
-)
+Close.parameters = buildDocs(<CloseIcon width={49} height={40} />);

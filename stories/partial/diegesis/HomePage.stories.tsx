@@ -18,7 +18,6 @@ export default {
   ],
 } as ComponentMeta<typeof HomePage>;
 
-
 const HomeTemplate: ComponentStory<typeof HomePage> = (args) => (
   <HomePage {...args} />
 );
@@ -45,8 +44,8 @@ export function HomePage(_props: IProps) {
   );
 }
 export default HomePage;
-`)
+`);
 
 export const homePageUsage = HomeTemplate.bind({});
 homePageUsage.args = {};
-homePageUsage.parameters = buildDocs(<HomePage />)
+homePageUsage.parameters = buildDocs(<HomePage />);

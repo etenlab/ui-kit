@@ -11,13 +11,18 @@ const StyledButton = styled(Button)({
   minHeight: '70px',
   paddingLeft: '30px',
   paddingRight: '30px',
-  backgroundColor: 'success',
+  backgroundColor: '#60D0B2',
   fontSize: '21px',
   textTransform: 'none',
   borderRadius: '40px',
+  boxShadow: 'none',
+  ':hover': {
+    backgroundColor: '#4EAA91',
+    boxShadow: 'none',
+  },
 });
 export default function HomeSectionActionButton(props: IProps) {
-  const { label, className, color = 'green' } = props;
+  const { label, className, color } = props;
 
   return (
     <StyledButton

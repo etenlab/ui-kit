@@ -4,19 +4,22 @@ import React from 'react';
 import AppLogo from './AppLogo';
 import './Page.css';
 
-
 interface IProps {
-  footerText?: string
-  brandName?: string
-  year?: number
+  footerText?: string;
+  brandName?: string;
+  year?: number;
 }
 const defaultValues: IProps = {
   footerText: `Diegesis.Bible is a project by MVH Solutions that uses the
   Proskomma Scripture Runtime Engine.`,
-  brandName: `MVH Solutions`
-}
+  brandName: `MVH Solutions`,
+};
 export function PageFooter(props: IProps) {
-  const { footerText = defaultValues.footerText, brandName = defaultValues.brandName, year = (new Date().getFullYear()) } = props;
+  const {
+    footerText = defaultValues.footerText,
+    brandName = defaultValues.brandName,
+    year = new Date().getFullYear(),
+  } = props;
   return (
     <div className={'page-footer'}>
       <Container>

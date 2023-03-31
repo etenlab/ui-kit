@@ -4,27 +4,25 @@ import { ThemeProvider } from '../../../packages/ui-kit/src';
 import AboutPictureSection from '../../../packages/ui-kit/src/diegesis/about/AboutPictureSection';
 import { buildDocs } from '../../common';
 
-
 export default {
-    title: 'Partial/Diegesis/AboutPage',
-    component: AboutPictureSection,
-    decorators: [
-        (Story) => (
-            <div>
-                <ThemeProvider>
-                    <Story />
-                </ThemeProvider>
-            </div>
-        ),
-    ],
+  title: 'Partial/Diegesis/AboutPage',
+  component: AboutPictureSection,
+  decorators: [
+    (Story) => (
+      <div>
+        <ThemeProvider>
+          <Story />
+        </ThemeProvider>
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof AboutPictureSection>;
 
-const AboutPictureSectionTemplate: ComponentStory<typeof AboutPictureSection> = args => (
-    <AboutPictureSection {...args} />
-);
+const AboutPictureSectionTemplate: ComponentStory<
+  typeof AboutPictureSection
+> = (args) => <AboutPictureSection {...args} />;
 export const aboutPictureSectionCode = AboutPictureSectionTemplate.bind({});
-aboutPictureSectionCode.args = {
-};
+aboutPictureSectionCode.args = {};
 aboutPictureSectionCode.parameters = buildDocs(`
 interface IProps {
     className?: string
@@ -46,16 +44,10 @@ export function AboutPictureSection(props: IProps) {
     )
 }
 export default AboutPictureSection
-`)
+`);
 
 export const aboutPictureSectionUsage = AboutPictureSectionTemplate.bind({});
-aboutPictureSectionUsage.args = {
-
-};
+aboutPictureSectionUsage.args = {};
 aboutPictureSectionUsage.parameters = buildDocs(
-    <AboutPictureSection
-        caption='Image Caption'
-        imageUrl=''
-        className=''
-    />
-)
+  <AboutPictureSection caption="Image Caption" imageUrl="" className="" />,
+);

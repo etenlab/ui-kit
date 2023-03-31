@@ -20,7 +20,7 @@ export default {
 
 const SectionActionButtonTemplate: ComponentStory<
   typeof SectionActionButton
-  > = (args) => <SectionActionButton {...args} />;
+> = (args) => <SectionActionButton {...args} />;
 
 export const sectionActionButton = SectionActionButtonTemplate.bind({});
 sectionActionButton.args = {
@@ -60,10 +60,12 @@ export default function HomeSectionActionButton(props: IProps) {
     </StyledButton>
   );
 }
-`)
+`);
 
 export const sectionActionButtonUsage = SectionActionButtonTemplate.bind({});
 sectionActionButtonUsage.args = {
   label: 'Browse content',
 };
-sectionActionButtonUsage.parameters = buildDocs(<SectionActionButton label='Browse content' />)
+sectionActionButtonUsage.parameters = buildDocs(
+  <SectionActionButton label="Browse content" />,
+);

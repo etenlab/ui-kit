@@ -4,43 +4,44 @@ import { ThemeProvider } from '../../../packages/ui-kit/src';
 import DataTable from '../../../packages/ui-kit/src/diegesis/data-table/DataTable';
 import { buildDocs } from '../../common';
 
-
 export default {
-    title: 'Partial/Diegesis/Data Table',
-    component: DataTable,
-    decorators: [
-        (Story) => (
-            <div>
-                <ThemeProvider>
-                    <Story />
-                </ThemeProvider>
-            </div>
-        ),
-    ],
+  title: 'Partial/Diegesis/Data Table',
+  component: DataTable,
+  decorators: [
+    (Story) => (
+      <div>
+        <ThemeProvider>
+          <Story />
+        </ThemeProvider>
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof DataTable>;
 
-const EntriesDataTableTemplate: ComponentStory<typeof DataTable> = args => (
-    <DataTable {...args} />
+const EntriesDataTableTemplate: ComponentStory<typeof DataTable> = (args) => (
+  <DataTable {...args} />
 );
 
 export const dataTableCode = EntriesDataTableTemplate.bind({});
 dataTableCode.args = {
-    headCells: [{
-        id: 'sort',
-        numeric: false,
-        disablePadding: true,
-        label: 'Sort'
+  headCells: [
+    {
+      id: 'sort',
+      numeric: false,
+      disablePadding: true,
+      label: 'Sort',
     },
     {
-        id: 'language',
-        numeric: false,
-        disablePadding: false,
-        label: 'Language',
-    }],
-    rows: [
-        { sort: 'Bible in Basic English', language: 'ENG'},
-        { sort: 'Bible in Basic English', language: 'ENG'},
-    ]
+      id: 'language',
+      numeric: false,
+      disablePadding: false,
+      label: 'Language',
+    },
+  ],
+  rows: [
+    { sort: 'Bible in Basic English', language: 'ENG' },
+    { sort: 'Bible in Basic English', language: 'ENG' },
+  ],
 };
 dataTableCode.parameters = buildDocs(`
 export interface HeadCell {
@@ -284,28 +285,29 @@ export interface HeadCell {
       </Box>
     );
   }
-`)
-
+`);
 
 export const dataTableUsage = EntriesDataTableTemplate.bind({});
 dataTableUsage.args = {
-    headCells: [{
-        id: 'sort',
-        numeric: false,
-        disablePadding: true,
-        label: 'Sort'
+  headCells: [
+    {
+      id: 'sort',
+      numeric: false,
+      disablePadding: true,
+      label: 'Sort',
     },
     {
-        id: 'language',
-        numeric: false,
-        disablePadding: false,
-        label: 'Language',
-    }],
-    rows: [
-        { sort: 'Bible in Basic English', language: 'ENG'},
-        { sort: 'Bible in Basic English', language: 'ENG'},
-    ]
+      id: 'language',
+      numeric: false,
+      disablePadding: false,
+      label: 'Language',
+    },
+  ],
+  rows: [
+    { sort: 'Bible in Basic English', language: 'ENG' },
+    { sort: 'Bible in Basic English', language: 'ENG' },
+  ],
 };
-dataTableUsage.parameters = buildDocs(<DataTable headCells={[]} rows={[]} expandableRowOnMobile={true} />)
-
-
+dataTableUsage.parameters = buildDocs(
+  <DataTable headCells={[]} rows={[]} expandableRowOnMobile={true} />,
+);

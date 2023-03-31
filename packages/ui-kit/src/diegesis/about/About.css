@@ -1,99 +1,105 @@
 .header-section {
-    padding-top: 60px;
-    padding-bottom: 60px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 .MuiTypography-h2.page-title-sub {
-    margin-top: 10px;
-    font-size: 34px;
-    line-height: 40px;
-    font-weight: 300;
+  margin-top: 10px;
+  font-size: 34px;
+  line-height: 40px;
+  font-weight: 300;
+  font-family: 'Noto Serif Display';
+  color: #31373a;
 }
 .inner-content {
-    margin-left: 13% !important;
+  padding-left: 8vw !important;
 }
 .about-content-section {
-    color: #31373A;
+  color: #31373a;
 }
 .about-content-section .MuiTypography-h2 {
-    line-height: 30px;
-    font-weight: 700;
-    font-family: "noto serif";
+  line-height: 30px;
+  font-weight: 700;
+  font-family: 'Noto Serif Display';
+  color: #31373a;
 }
 .about-content-section .MuiTypography-body1 {
-    margin-top: 10px;
-    font-size: 20px;
-    line-height: 30px;
-    font-weight: normal;
+  margin-top: 10px;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: normal;
+  color: #31373a;
 }
 .about-content-section .MuiList-root {
-    margin-top: 25px;
-    margin-bottom: 25px;
-    font-size: 20px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-size: 20px;
 }
 .about-content-section .MuiList-root .MuiListItemIcon-root {
-    min-width: auto;
+  min-width: auto;
 }
 .about-content-section .MuiList-root .MuiTypography-body1 {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 .about-content-section .MuiList-root .MuiListItem-root {
-    border-top: 1px solid #E3E3D9;
+  border-top: 1px solid #e3e3d9;
 }
-.diegesis-quote {
-    padding: 50px 0px;
-    font-size: 30px;
-    font-weight: 400;
-    font-family: "noto serif";
+.MuiTypography-h1.diegesis-quote {
+  padding: 50px 0px;
+  font-size: 30px;
+  font-weight: 400;
+  font-family: 'Noto Serif Display';
+  color: #31373a;
 }
 .about-picture-section {
-    margin-top: 60px;
-    margin-bottom: 120px;
+  margin-top: 60px;
+  margin-bottom: 120px;
 }
 .about-picture-section .inner-container {
-    background: #F0F0E7;
-    height: 409px;
-    width: 788px;
-    position: relative;
-    /* width: 80%; */
-    margin: auto;
-    padding: 25px;
+  background: #f0f0e7;
+  height: 409px;
+  width: 788px;
+  position: relative;
+  /* width: 80%; */
+  margin: auto;
+  padding: 25px;
+  color: #31373a;
 }
 .inner-container .img-box {
-    height: 409px;
-    width: 586px;
-    background: #31373A;
-    /* margin: 0px 7%; */
-    margin: auto;
-    margin-top: 5%;
+  height: 409px;
+  width: 586px;
+  background: #31373a;
+  /* margin: 0px 7%; */
+  margin: auto;
+  margin-top: 5%;
 }
-@media screen and (max-width: 414px) { 
-    .page-title {
-        font-size: 30px;
-        line-height: 34px;
-        text-align: center;
-    }
-    .MuiTypography-h2.page-title-sub {
-        margin-top: 10px;
-        font-size: 30px;
-        line-height: 34px;
-        font-weight: 300;
-        text-align: center;
-    }
-    .inner-content {
-        margin-left: unset !important;
-    }
-    .about-picture-section {
-        margin-top: 40px;
-        margin-bottom: 80px;
-    }
-    .about-picture-section .inner-container {
-        height: 173px;
-        width: 100%;
-        padding: 10px;
-    }
-    .inner-container .img-box {
-        height: 176px;
-        width: 90%;
-        margin-top: 5%;
-    }
+@media screen and (max-width: 414px) {
+  .page-title {
+    font-size: 30px;
+    line-height: 34px;
+    text-align: center;
+  }
+  .MuiTypography-h2.page-title-sub {
+    margin-top: 10px;
+    font-size: 30px;
+    line-height: 34px;
+    font-weight: 300;
+    text-align: center;
+  }
+  .inner-content {
+    margin-left: unset !important;
+  }
+  .about-picture-section {
+    margin-top: 40px;
+    margin-bottom: 80px;
+  }
+  .about-picture-section .inner-container {
+    height: 173px;
+    width: 100%;
+    padding: 10px;
+  }
+  .inner-container .img-box {
+    height: 176px;
+    width: 90%;
+    margin-top: 5%;
+  }
 }

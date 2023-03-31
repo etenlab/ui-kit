@@ -8,9 +8,12 @@ import {
   ListItem,
 } from '@mui/material';
 import { DebounceInput } from 'react-debounce-input';
-import { SimpleFormDialog } from '../SimpleFormDialog';
 import { BiVolumeFull } from 'react-icons/bi';
-import { Button, FiPlus, Input } from '../..';
+import { FiPlus } from 'react-icons/fi';
+
+import { SimpleFormDialog } from '../SimpleFormDialog';
+import { Input } from '../../input';
+import { Button } from '../../button';
 import { TitleWithIcon } from '../TitleWithIcon';
 import { VoteButtonGroup } from '../VoteButtonGroup';
 
@@ -18,6 +21,7 @@ type Content = {
   content: string;
   upVote: number;
   downVote: number;
+  id: string | null;
 };
 
 type Item = {
@@ -32,14 +36,10 @@ type ItemContentListEditProps = {
   onBack: () => void;
   buttonText: string;
   changeContent: (params: {
-    itemTitleContent: string;
     contentIndex: number;
     newContent: Content;
   }) => void;
-  addContent: (params: {
-    itemTitleContent: string;
-    newContent: Content;
-  }) => void;
+  addContent: (params: { newContent: Content }) => void;
 };
 
 export function ItemContentListEdit({
@@ -60,7 +60,6 @@ export function ItemContentListEdit({
       [upOrDown]: item.contents[idx][upOrDown] + 1,
     };
     changeContent({
-      itemTitleContent: item.title.content,
       contentIndex: idx,
       newContent,
     });
@@ -71,8 +70,9 @@ export function ItemContentListEdit({
       content: value,
       upVote: 0,
       downVote: 0,
+      id: null,
     };
-    addContent({ itemTitleContent: item.title.content, newContent });
+    addContent({ newContent });
   };
 
   const changeContentValue = (idx: number, newContentValue: string) => {
@@ -81,7 +81,6 @@ export function ItemContentListEdit({
       content: newContentValue,
     };
     changeContent({
-      itemTitleContent: item.title.content,
       contentIndex: idx,
       newContent,
     });
@@ -115,7 +114,7 @@ export function ItemContentListEdit({
             fontSize: '12px',
             lineHeight: '17px',
           }}
-          key={content}
+          key={idx}
         >
           {itemIdxEditting === idx ? (
             <DebounceInput
@@ -126,7 +125,11 @@ export function ItemContentListEdit({
               onBlur={() => setItemIdxEditting(null as unknown as number)}
             />
           ) : (
-            <Typography variant="body1" onClick={() => setItemIdxEditting(idx)} display={'inline-flex'}>
+            <Typography
+              variant="body1"
+              onClick={() => setItemIdxEditting(idx)}
+              display={'inline-flex'}
+            >
               {content}
             </Typography>
           )}

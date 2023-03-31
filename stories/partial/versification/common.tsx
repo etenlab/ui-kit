@@ -10,6 +10,7 @@ import { ThemeProvider } from '../../../packages/ui-kit/src/ThemeProvider/ThemeP
 import { colors } from '../../../packages/ui-kit/src/ThemeProvider/palette';
 
 export function buildDecorator({ sx = [] }: { sx?: SxProps<Theme> } = {}) {
+  // eslint-disable-next-line react/display-name
   return (Story: PartialStoryFn<ReactFramework, Args>) => (
     <ThemeProvider>
       <Box
@@ -18,7 +19,7 @@ export function buildDecorator({ sx = [] }: { sx?: SxProps<Theme> } = {}) {
             colorScheme: ({ palette: { mode } }) => mode,
             margin: '3em',
             width: '500px',
-            backgroundColor: ({ palette: { mode } }) => colors['white'][mode],
+            backgroundColor: ({ palette: { mode } }) => colors.white[mode],
             border: ({ palette: { mode } }) =>
               `1px solid ${colors['light-blue'][mode]}`,
             padding: '3em',

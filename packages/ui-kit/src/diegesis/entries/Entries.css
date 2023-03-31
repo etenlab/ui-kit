@@ -95,6 +95,11 @@
   overflow: hidden;
   transition: all 0.2s ease-out;
 }
+.entries-tbl-container .MuiTablePagination-selectLabel,
+.entries-tbl-container .MuiTablePagination-displayedRows {
+  color: #31373a;
+}
+
 @media screen and (max-width: 414px) {
   .controls-section {
     padding-top: 30px;
@@ -208,18 +213,23 @@
     border-bottom: none;
   }
   .entries-tbl-container .MuiTableRow-root.table-row.active .MuiTableCell-root {
-    border-top: 4px solid #4ABE95;
+    border-top: 4px solid #4abe95;
     border-bottom: 1px solid #cecfd0;
   }
-  .entries-tbl-container .MuiTableRow-root.row-detail.active .MuiTableCell-root {
+  .entries-tbl-container
+    .MuiTableRow-root.row-detail.active
+    .MuiTableCell-root {
     border-bottom: 4px solid #4abe95;
   }
-  .entries-tbl-container .MuiTableRow-root.row-detail.active .MuiTypography-caption {
+  .entries-tbl-container
+    .MuiTableRow-root.row-detail.active
+    .MuiTypography-caption {
     color: #cecfd0;
   }
-  .entries-tbl-container .MuiTableRow-root.row-detail.active ~ .MuiTableRow-root.table-row {
+  .entries-tbl-container
+    .MuiTableRow-root.row-detail.active
+    ~ .MuiTableRow-root.table-row {
     border-bottom: 1px solid #cccdce;
     font-size: 45px;
   }
-
 }

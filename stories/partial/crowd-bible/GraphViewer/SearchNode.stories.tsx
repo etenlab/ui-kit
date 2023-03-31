@@ -40,63 +40,32 @@ const nodes = [
         upVotes: 5,
         downVotes: 6,
         posts: [],
-        values: [
-          {
-            property_value: {
-              value: 'NIV',
-            },
-            upVotes: 10,
-            downVotes: 11,
-            posts: [
-              {
-                id: 111,
-              },
-            ],
+        propertyValue: {
+          property_value: {
+            value: 'NIV',
           },
-          {
-            property_value: {
-              value: 'VIN',
+          upVotes: 10,
+          downVotes: 11,
+          posts: [
+            {
+              id: 111,
             },
-            upVotes: 7,
-            downVotes: 3,
-            posts: [
-              {
-                id: 222,
-              },
-              {
-                id: 333,
-              },
-            ],
-          },
-        ],
+          ],
+        },
       },
       {
         property_key: 'name',
         upVotes: 12,
         downVotes: 7,
         posts: [],
-        values: [
-          {
-            property_value: {
-              value: 'NIV',
-            },
-            upVotes: 10,
-            downVotes: 7,
-            posts: [],
+        propertyValue: {
+          property_value: {
+            value: 'NIV',
           },
-          {
-            property_value: {
-              value: 'VIN',
-            },
-            upVotes: 2,
-            downVotes: 3,
-            posts: [
-              {
-                id: 123,
-              },
-            ],
-          },
-        ],
+          upVotes: 10,
+          downVotes: 7,
+          posts: [],
+        },
       },
     ],
     relationships: [],
@@ -110,63 +79,36 @@ const nodes = [
         upVotes: 10,
         downVotes: 4,
         posts: [],
-        values: [
-          {
-            property_value: {
-              value: 'ln',
-            },
-            upVotes: 2,
-            downVotes: 3,
-            posts: [
-              {
-                id: 111,
-              },
-            ],
+        propertyValue: {
+          property_value: {
+            value: 'ln',
           },
-          {
-            property_value: {
-              value: 'nl',
+          upVotes: 2,
+          downVotes: 3,
+          posts: [
+            {
+              id: 111,
             },
-            upVotes: 6,
-            downVotes: 4,
-            posts: [
-              {
-                id: 222,
-              },
-              {
-                id: 333,
-              },
-            ],
-          },
-        ],
+          ],
+        },
       },
       {
         property_key: 'eman_drow',
         upVotes: 11,
         downVotes: 9,
         posts: [],
-        values: [
-          {
-            property_value: {
-              value: 'ln',
-            },
-            upVotes: 3,
-            downVotes: 1,
-            posts: [
-              {
-                id: 111,
-              },
-            ],
+        propertyValue: {
+          property_value: {
+            value: 'ln',
           },
-          {
-            property_value: {
-              value: 'nl',
+          upVotes: 3,
+          downVotes: 1,
+          posts: [
+            {
+              id: 111,
             },
-            upVotes: 4,
-            downVotes: 4,
-            posts: [],
-          },
-        ],
+          ],
+        },
       },
     ],
     relationships: [],
@@ -180,63 +122,36 @@ const nodes = [
         upVotes: 10,
         downVotes: 4,
         posts: [],
-        values: [
-          {
-            property_value: {
-              value: 'beginning',
-            },
-            upVotes: 2,
-            downVotes: 3,
-            posts: [
-              {
-                id: 111,
-              },
-            ],
+        propertyValue: {
+          property_value: {
+            value: 'beginning',
           },
-          {
-            property_value: {
-              value: 'gninnigeb',
+          upVotes: 2,
+          downVotes: 3,
+          posts: [
+            {
+              id: 111,
             },
-            upVotes: 6,
-            downVotes: 4,
-            posts: [
-              {
-                id: 222,
-              },
-              {
-                id: 333,
-              },
-            ],
-          },
-        ],
+          ],
+        },
       },
       {
         property_key: 'eman_drow',
         upVotes: 11,
         downVotes: 9,
         posts: [],
-        values: [
-          {
-            property_value: {
-              value: 'ln',
-            },
-            upVotes: 3,
-            downVotes: 1,
-            posts: [
-              {
-                id: 111,
-              },
-            ],
+        propertyValue: {
+          property_value: {
+            value: 'ln',
           },
-          {
-            property_value: {
-              value: 'nl',
+          upVotes: 3,
+          downVotes: 1,
+          posts: [
+            {
+              id: 111,
             },
-            upVotes: 4,
-            downVotes: 4,
-            posts: [],
-          },
-        ],
+          ],
+        },
       },
     ],
     relationships: [],
@@ -248,18 +163,13 @@ Primary.args = {
   nodes: nodes,
   isLoading: false,
   setSearch: () => {},
-  onClick: () => alert('Node Item Clicked.'),
 };
+
 Primary.parameters = {
   docs: {
     source: {
       code: jsxToString(
-        <SearchNode
-          nodes={nodes}
-          isLoading={false}
-          setSearch={() => {}}
-          onClick={() => alert('Node Item Clicked.')}
-        />,
+        <SearchNode nodes={nodes} isLoading={false} setSearch={() => {}} />,
       ),
       language: 'jsx',
       format: true,

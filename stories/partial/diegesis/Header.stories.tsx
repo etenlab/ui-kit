@@ -9,12 +9,11 @@ export default {
   component: PageHeader,
   decorators: [
     (Story) => (
-      <ThemeProvider >
-        <Story>
-        </Story>
+      <ThemeProvider>
+        <Story></Story>
       </ThemeProvider>
     ),
-  ]
+  ],
 } as ComponentMeta<typeof PageHeader>;
 
 const PageHeaderTemplate: ComponentStory<typeof PageHeader> = (args) => (
@@ -22,8 +21,7 @@ const PageHeaderTemplate: ComponentStory<typeof PageHeader> = (args) => (
 );
 
 export const SimpleHeader = PageHeaderTemplate.bind({});
-SimpleHeader.args = {
-};
+SimpleHeader.args = {};
 SimpleHeader.parameters = buildDocs(`
 interface IProps {
   openSideNav?: () => void
@@ -52,19 +50,19 @@ export function PageHeader(props: IProps) {
   )
 }
 export default PageHeader;
-`)
+`);
 
 export const HeaderWithMenu = PageHeaderTemplate.bind({});
 HeaderWithMenu.args = {
-  openSideNav() {
-  },
+  openSideNav() {},
 };
-HeaderWithMenu.parameters = buildDocs(<PageHeader openSideNav={() => { }} />)
+HeaderWithMenu.parameters = buildDocs(<PageHeader openSideNav={() => {}} />);
 
 export const HeaderWithCustomTitle = PageHeaderTemplate.bind({});
 HeaderWithCustomTitle.args = {
-  openSideNav() {
-  },
-  title: 'Header with custom title'
+  openSideNav() {},
+  title: 'Header with custom title',
 };
-HeaderWithCustomTitle.parameters = buildDocs(<PageHeader openSideNav={() => { }} title={'Header with custom title'} />)
+HeaderWithCustomTitle.parameters = buildDocs(
+  <PageHeader openSideNav={() => {}} title={'Header with custom title'} />,
+);

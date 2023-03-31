@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
+
 import { CircularProgress } from '@mui/material';
 import { InnerBox, ItemsBox } from './styled';
 import { SearchInput } from '../../input';
@@ -11,12 +13,12 @@ export function SearchNode({
   nodes,
   setSearch,
   isLoading,
-  onClick,
+  history,
 }: {
   nodes: Node[];
   setSearch: (input: string) => void;
   isLoading: boolean;
-  onClick: () => void;
+  history?: RouteComponentProps['history'];
 }) {
   const [input, setInput] = useState('');
 
@@ -39,7 +41,11 @@ export function SearchNode({
       <InnerBox>
         <ItemsBox>
           {nodes.map((node, index) => (
-            <NodeItem key={index} node={node} onClick={onClick} />
+            <NodeItem
+              key={index}
+              node={node}
+              onClick={() => history && history.push(`/node/${node.node_id}`)}
+            />
           ))}
         </ItemsBox>
       </InnerBox>

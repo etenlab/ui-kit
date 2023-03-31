@@ -5,25 +5,23 @@ import { buildDocs } from '../../common';
 import PageFooter from '../../../packages/ui-kit/src/diegesis/PageFooter';
 
 export default {
-    title: 'Partial/Diegesis/PageSections/Footer',
-    component: PageFooter,
-    decorators: [
-        (Story) => (
-            <ThemeProvider >
-                <Story>
-                </Story>
-            </ThemeProvider>
-        ),
-    ]
+  title: 'Partial/Diegesis/PageSections/Footer',
+  component: PageFooter,
+  decorators: [
+    (Story) => (
+      <ThemeProvider>
+        <Story></Story>
+      </ThemeProvider>
+    ),
+  ],
 } as ComponentMeta<typeof PageFooter>;
 
 const FooterTemplate: ComponentStory<typeof PageFooter> = (args) => (
-    <PageFooter {...args} />
+  <PageFooter {...args} />
 );
 
 export const SimpleFooter = FooterTemplate.bind({});
-SimpleFooter.args = {
-};
+SimpleFooter.args = {};
 SimpleFooter.parameters = buildDocs(`
 interface IProps {}
 export function PageFooter(props: IProps) {
@@ -54,13 +52,18 @@ export function PageFooter(props: IProps) {
   );
 }
 export default PageFooter;
-`)
+`);
 
 export const FooterWithProps = FooterTemplate.bind({});
 FooterWithProps.args = {
-    brandName: 'Tech Solution',
-    year: 2025,
-    footerText: 'Footer description'
-}
-FooterWithProps.parameters = buildDocs(<PageFooter brandName='Tech Solution' year={2025} footerText='Footer description' />)
-
+  brandName: 'Tech Solution',
+  year: 2025,
+  footerText: 'Footer description',
+};
+FooterWithProps.parameters = buildDocs(
+  <PageFooter
+    brandName="Tech Solution"
+    year={2025}
+    footerText="Footer description"
+  />,
+);

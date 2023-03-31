@@ -1,6 +1,6 @@
 {
   "name": "@eten-lab/ui-kit",
-  "version": "0.3.51",
+  "version": "0.3.56",
   "license": "UNLICENSED",
   "private": false,
   "main": "dist/index.js",
@@ -47,5 +47,5 @@
       "react-app/jest"
     ]
   },
-  "gitHead": "f1bd82ed78e5116d40d9ec3121cc470f22a72b0e"
+  "gitHead": "769370fe3f6aebe696568270a1b503f673182afb"
 }
