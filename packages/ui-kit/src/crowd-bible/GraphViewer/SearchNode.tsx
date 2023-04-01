@@ -44,6 +44,8 @@ export function SearchNode({
             <NodeItem
               key={index}
               node={node}
+              warning={false}
+              showRelation={false}
               onClick={() => history && history.push(`/node/${node.node_id}`)}
             />
           ))}

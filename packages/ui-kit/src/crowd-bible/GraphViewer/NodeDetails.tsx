@@ -25,7 +25,7 @@ export function NodeDetails({
         {node && (
           <>
             <ItemsBox className="label">selected node</ItemsBox>
-            <NodeItem node={node} warning />
+            <NodeItem node={node} warning={true} showRelation={false} />
             {node.relationships && node.relationships.length > 0 && (
               <div style={{ marginTop: 15 }}>
                 <div className="label">relationships</div>
@@ -41,7 +41,7 @@ export function NodeDetails({
                         <RelationshipItem relationship={relationship} />
                         <NodeItem
                           node={relationshipNode}
-                          warning
+                          warning={true}
                           showRelation
                           onClick={() =>
                             history &&
