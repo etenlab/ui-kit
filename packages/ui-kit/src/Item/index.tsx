@@ -16,17 +16,17 @@ export const Item = ({
 }: {
   type: string;
   propertyKeys: Node['propertyKeys'] | Relationship['propertyKeys'];
-  success?: boolean;
-  warning?: boolean;
+  success: boolean;
+  warning: boolean;
   onClick?: () => void;
-  showRelation?: boolean;
+  showRelation: boolean;
 }) => {
   return (
     <ItemBox
-      success={success}
-      warning={warning}
+      success={+success}
+      warning={+warning}
       onClick={onClick}
-      showRelation={showRelation}
+      relation={+showRelation}
     >
       {showRelation && (
         <ArrowSvg viewBox="0 0 50 50">

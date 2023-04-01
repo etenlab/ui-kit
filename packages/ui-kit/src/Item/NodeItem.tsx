@@ -9,12 +9,13 @@ export function NodeItem({
   onClick,
 }: {
   node: Node;
-  warning?: boolean;
-  showRelation?: boolean;
+  warning: boolean;
+  showRelation: boolean;
   onClick?: () => void;
 }) {
   return (
     <Item
+      success={false}
       warning={warning}
       type={node_type}
       showRelation={showRelation}

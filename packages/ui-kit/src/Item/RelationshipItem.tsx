@@ -8,5 +8,13 @@ export function RelationshipItem({
 }: {
   relationship: Relationship;
 }) {
-  return <Item success type={relationship_type} propertyKeys={propertyKeys} />;
+  return (
+    <Item
+      success={true}
+      warning={false}
+      showRelation={false}
+      type={relationship_type}
+      propertyKeys={propertyKeys}
+    />
+  );
 }
