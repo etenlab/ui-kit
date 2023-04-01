@@ -32,7 +32,7 @@ const Template: ComponentStory<typeof SearchNode> = (args) => {
 
 const nodes = [
   {
-    node_id: 1,
+    id: 1,
     node_type: 'bible',
     propertyKeys: [
       {
@@ -67,7 +67,7 @@ const nodes = [
     relationships: [],
   },
   {
-    node_id: 1,
+    id: 1,
     node_type: 'word',
     propertyKeys: [
       {
@@ -106,7 +106,7 @@ const nodes = [
     relationships: [],
   },
   {
-    node_id: 1,
+    id: 1,
     node_type: 'word',
     propertyKeys: [
       {

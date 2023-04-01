@@ -32,7 +32,7 @@ export function NodeDetails({
                 <div>
                   {node.relationships.map((relationship, index) => {
                     const relationshipNode =
-                      relationship.fromNode.node_id !== node.node_id
+                      relationship.fromNode.id !== node.id
                         ? relationship.fromNode
                         : relationship.toNode;
 
@@ -45,7 +45,7 @@ export function NodeDetails({
                           showRelation
                           onClick={() =>
                             history &&
-                            history.push(`/node/${relationshipNode.node_id}`)
+                            history.push(`/node/${relationshipNode.id}`)
                           }
                         />
                       </Fragment>

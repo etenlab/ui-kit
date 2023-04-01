@@ -46,7 +46,7 @@ export function SearchNode({
               node={node}
               warning={false}
               showRelation={false}
-              onClick={() => history && history.push(`/node/${node.node_id}`)}
+              onClick={() => history && history.push(`/node/${node.id}`)}
             />
           ))}
         </ItemsBox>
