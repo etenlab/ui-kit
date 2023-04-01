@@ -31,7 +31,7 @@ const Template: ComponentStory<typeof NodeDetails> = (args) => {
 };
 
 const node = {
-  node_id: 1,
+  id: 1,
   node_type: 'word',
   propertyKeys: [
     {
@@ -65,10 +65,10 @@ const node = {
   ],
   relationships: [
     {
-      relationship_id: 2,
+      id: 2,
       relationship_type: 'word-sequence-to-word',
-      from_node_id: 1,
-      to_node_id: 2,
+      from_id: 1,
+      to_id: 2,
       propertyKeys: [
         {
           property_key: 'position',
@@ -100,13 +100,13 @@ const node = {
         },
       ],
       fromNode: {
-        node_id: 1,
+        id: 1,
         node_type: 'word-sequence',
         propertyKeys: [],
         relationships: [],
       },
       toNode: {
-        node_id: 1,
+        id: 1,
         node_type: 'word-sequence',
         propertyKeys: [],
         relationships: [],
