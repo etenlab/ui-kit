@@ -65,7 +65,7 @@ declare module 'scheduler' {
 
 declare module 'node-type' {
   export interface Node {
-    id: number;
+    id: string;
     node_type: string;
     propertyKeys: NodePropertyKey[];
     nodeRelationships?: Relationship[];
@@ -87,7 +87,7 @@ declare module 'node-type' {
   }
 
   export interface Relationship {
-    id: number;
+    id: string;
     relationship_type: string;
     from_node_id: number;
     to_node_id: number;
@@ -112,6 +112,6 @@ declare module 'node-type' {
   }
 
   export interface Post {
-    id: number;
+    id: string;
   }
 }
