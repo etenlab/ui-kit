@@ -148,7 +148,8 @@ const nodes = [
 
 export const Primary = Template.bind({});
 Primary.args = {
-  nodes: nodes,
+  nodes: [],
+  search: '',
   isLoading: false,
   setNodeId: () => {},
   setSearch: () => {},
@@ -159,7 +160,8 @@ Primary.parameters = {
     source: {
       code: jsxToString(
         <SearchNode
-          nodes={nodes}
+          nodes={[]}
+          search={''}
           isLoading={false}
           setNodeId={() => {}}
           setSearch={() => {}}
