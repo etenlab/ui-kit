@@ -4,7 +4,7 @@ import { Box, PaletteColor, useTheme } from '@mui/material';
 import { useColorModeContext } from '../../ThemeProvider';
 
 type Range = {
-  id: number;
+  id: unknown;
   start: number;
   end: number;
 };
@@ -12,7 +12,7 @@ type Range = {
 type DotsTextProps = {
   text: string;
   ranges: Range[];
-  onSelect(id: number): void;
+  onSelect(id: unknown): void;
   dotColor: 'yellow' | 'blue-primary';
   selectedColor: 'light-blue' | 'middle-yellow';
 };
