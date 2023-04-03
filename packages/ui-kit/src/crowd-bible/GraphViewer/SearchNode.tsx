@@ -10,11 +10,13 @@ import { Node } from 'node-type';
 
 export function SearchNode({
   nodes,
+  search,
   setSearch,
   isLoading,
   setNodeId,
 }: {
   nodes: Node[];
+  search: string;
   setSearch: (input: string) => void;
   isLoading: boolean;
   setNodeId: (id: string) => void;
@@ -37,7 +39,7 @@ export function SearchNode({
         fullWidth
       />
       <InnerBox>
-        {!nodes.length && (
+        {!search && !nodes.length && (
           <Typography variant="h3" sx={{ textAlign: 'center' }}>
             No Result
           </Typography>
