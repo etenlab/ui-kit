@@ -39,7 +39,7 @@ export function SearchNode({
         fullWidth
       />
       <InnerBox>
-        {!search && !nodes.length && (
+        {!!search && !nodes.length && (
           <Typography variant="h3" sx={{ textAlign: 'center' }}>
             No Result
           </Typography>
