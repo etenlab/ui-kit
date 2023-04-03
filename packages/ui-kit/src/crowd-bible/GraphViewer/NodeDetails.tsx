@@ -43,10 +43,14 @@ export function NodeDetails({
                           node={relationshipNode}
                           warning={true}
                           showRelation
-                          onClick={() =>
-                            history &&
-                            history.push(`/node/${relationshipNode.id}`)
-                          }
+                          onClick={() => {
+                            if (history) {
+                              history.replace(
+                                `/graph-viewer/node/${relationshipNode.id}`,
+                              );
+                              window.location.reload();
+                            }
+                          }}
                         />
                       </Fragment>
                     );
