@@ -68,7 +68,7 @@ declare module 'node-type' {
     id: number;
     node_type: string;
     propertyKeys: NodePropertyKey[];
-    relationships?: Relationship[];
+    nodeRelationships?: Relationship[];
   }
 
   export interface NodePropertyKey {

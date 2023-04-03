@@ -64,7 +64,7 @@ const nodes = [
         },
       },
     ],
-    relationships: [],
+    nodeRelationships: [],
   },
   {
     id: 1,
@@ -103,7 +103,7 @@ const nodes = [
         },
       },
     ],
-    relationships: [],
+    nodeRelationships: [],
   },
   {
     id: 1,
@@ -142,7 +142,7 @@ const nodes = [
         },
       },
     ],
-    relationships: [],
+    nodeRelationships: [],
   },
 ];
 

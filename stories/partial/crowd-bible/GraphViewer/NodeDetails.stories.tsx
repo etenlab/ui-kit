@@ -63,7 +63,7 @@ const node = {
       },
     },
   ],
-  relationships: [
+  nodeRelationships: [
     {
       id: 2,
       relationship_type: 'word-sequence-to-word',
@@ -103,13 +103,13 @@ const node = {
         id: 1,
         node_type: 'word-sequence',
         propertyKeys: [],
-        relationships: [],
+        nodeRelationships: [],
       },
       toNode: {
         id: 1,
         node_type: 'word-sequence',
         propertyKeys: [],
-        relationships: [],
+        nodeRelationships: [],
       },
     },
   ],
