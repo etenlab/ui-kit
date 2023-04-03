@@ -150,7 +150,6 @@ export const Primary = Template.bind({});
 Primary.args = {
   nodes: [],
   search: '',
-  isLoading: false,
   setNodeId: () => {},
   setSearch: () => {},
 };
@@ -162,7 +161,6 @@ Primary.parameters = {
         <SearchNode
           nodes={[]}
           search={''}
-          isLoading={false}
           setNodeId={() => {}}
           setSearch={() => {}}
         />,

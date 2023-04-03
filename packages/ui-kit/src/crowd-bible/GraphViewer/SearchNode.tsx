@@ -12,20 +12,17 @@ export function SearchNode({
   nodes,
   search,
   setSearch,
-  isLoading,
   setNodeId,
 }: {
   nodes: Node[];
   search: string;
   setSearch: (input: string) => void;
-  isLoading: boolean;
   setNodeId: (id: string) => void;
 }) {
   const [input, setInput] = useState('');
 
   return (
-    <div>
-      {isLoading && <CircularProgress />}
+    <>
       <SearchInput
         placeholder="Search a node"
         value={input}
@@ -56,6 +53,6 @@ export function SearchNode({
           ))}
         </ItemsBox>
       </InnerBox>
-    </div>
+    </>
   );
 }
