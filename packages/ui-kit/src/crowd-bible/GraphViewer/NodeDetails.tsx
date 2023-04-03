@@ -1,7 +1,6 @@
 import React from 'react';
 import { Fragment } from 'react';
 
-import { CircularProgress } from '@mui/material';
 import { NodeItem } from '../../Item/NodeItem';
 import { RelationshipItem } from '../../Item/RelationshipItem';
 
