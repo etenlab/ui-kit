@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Typography } from '@mui/material';
 import { InnerBox, ItemsBox } from './styled';
 import { SearchInput } from '../../input';
 
@@ -37,6 +37,11 @@ export function SearchNode({
         fullWidth
       />
       <InnerBox>
+        {!nodes.length && (
+          <Typography variant="h3" sx={{ textAlign: 'center' }}>
+            No Result
+          </Typography>
+        )}
         <ItemsBox>
           {nodes.map((node, index) => (
             <NodeItem
