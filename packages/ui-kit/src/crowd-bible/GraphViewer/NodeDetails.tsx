@@ -26,11 +26,11 @@ export function NodeDetails({
           <>
             <ItemsBox className="label">selected node</ItemsBox>
             <NodeItem node={node} warning={true} showRelation={false} />
-            {node.relationships && node.relationships.length > 0 && (
+            {node.nodeRelationships && node.nodeRelationships.length > 0 && (
               <div style={{ marginTop: 15 }}>
                 <div className="label">relationships</div>
                 <div>
-                  {node.relationships.map((relationship, index) => {
+                  {node.nodeRelationships.map((relationship, index) => {
                     const relationshipNode =
                       relationship.fromNode.id !== node.id
                         ? relationship.fromNode
