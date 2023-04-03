@@ -32,7 +32,7 @@ const Template: ComponentStory<typeof SearchNode> = (args) => {
 
 const nodes = [
   {
-    id: 1,
+    id: '1',
     node_type: 'bible',
     propertyKeys: [
       {
@@ -46,7 +46,7 @@ const nodes = [
           downVotes: 11,
           posts: [
             {
-              id: 111,
+              id: '111',
             },
           ],
         },
@@ -67,7 +67,7 @@ const nodes = [
     nodeRelationships: [],
   },
   {
-    id: 1,
+    id: '1',
     node_type: 'word',
     propertyKeys: [
       {
@@ -81,7 +81,7 @@ const nodes = [
           downVotes: 3,
           posts: [
             {
-              id: 111,
+              id: '111',
             },
           ],
         },
@@ -97,7 +97,7 @@ const nodes = [
           downVotes: 1,
           posts: [
             {
-              id: 111,
+              id: '111',
             },
           ],
         },
@@ -106,7 +106,7 @@ const nodes = [
     nodeRelationships: [],
   },
   {
-    id: 1,
+    id: '1',
     node_type: 'word',
     propertyKeys: [
       {
@@ -120,7 +120,7 @@ const nodes = [
           downVotes: 3,
           posts: [
             {
-              id: 111,
+              id: '111',
             },
           ],
         },
@@ -136,7 +136,7 @@ const nodes = [
           downVotes: 1,
           posts: [
             {
-              id: 111,
+              id: '111',
             },
           ],
         },
@@ -150,6 +150,7 @@ export const Primary = Template.bind({});
 Primary.args = {
   nodes: nodes,
   isLoading: false,
+  setNodeId: () => {},
   setSearch: () => {},
 };
 
@@ -157,7 +158,12 @@ Primary.parameters = {
   docs: {
     source: {
       code: jsxToString(
-        <SearchNode nodes={nodes} isLoading={false} setSearch={() => {}} />,
+        <SearchNode
+          nodes={nodes}
+          isLoading={false}
+          setNodeId={() => {}}
+          setSearch={() => {}}
+        />,
       ),
       language: 'jsx',
       format: true,

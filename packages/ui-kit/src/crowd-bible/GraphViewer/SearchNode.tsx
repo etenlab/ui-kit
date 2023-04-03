@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
 
 import { CircularProgress } from '@mui/material';
 import { InnerBox, ItemsBox } from './styled';
@@ -13,12 +12,12 @@ export function SearchNode({
   nodes,
   setSearch,
   isLoading,
-  history,
+  setNodeId,
 }: {
   nodes: Node[];
   setSearch: (input: string) => void;
   isLoading: boolean;
-  history?: RouteComponentProps['history'];
+  setNodeId: (id: string) => void;
 }) {
   const [input, setInput] = useState('');
 
@@ -45,12 +44,7 @@ export function SearchNode({
               node={node}
               warning={false}
               showRelation={false}
-              onClick={() => {
-                if (history) {
-                  history.push(`/graph-viewer/node/${node.id}`);
-                  window.location.reload();
-                }
-              }}
+              onClick={() => setNodeId(node.id)}
             />
           ))}
         </ItemsBox>

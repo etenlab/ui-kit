@@ -31,7 +31,7 @@ const Template: ComponentStory<typeof NodeDetails> = (args) => {
 };
 
 const node = {
-  id: 1,
+  id: '1',
   node_type: 'word',
   propertyKeys: [
     {
@@ -45,7 +45,7 @@ const node = {
         downVotes: 3,
         posts: [
           {
-            id: 111,
+            id: '111',
           },
         ],
       },
@@ -65,7 +65,7 @@ const node = {
   ],
   nodeRelationships: [
     {
-      id: 2,
+      id: '2',
       relationship_type: 'word-sequence-to-word',
       from_id: 1,
       to_id: 2,
@@ -100,13 +100,13 @@ const node = {
         },
       ],
       fromNode: {
-        id: 1,
+        id: '1',
         node_type: 'word-sequence',
         propertyKeys: [],
         nodeRelationships: [],
       },
       toNode: {
-        id: 1,
+        id: '1',
         node_type: 'word-sequence',
         propertyKeys: [],
         nodeRelationships: [],
@@ -123,7 +123,9 @@ Primary.args = {
 Primary.parameters = {
   docs: {
     source: {
-      code: jsxToString(<NodeDetails node={node} isLoading={false} />),
+      code: jsxToString(
+        <NodeDetails node={node} setNodeId={() => {}} isLoading={false} />,
+      ),
       language: 'jsx',
       format: true,
       type: 'auto',
