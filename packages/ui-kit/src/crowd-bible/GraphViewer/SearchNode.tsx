@@ -35,7 +35,6 @@ export function SearchNode({
           }
         }}
         onBlur={() => setSearch(input)}
-        // onClear={() => setSearch('')}
         fullWidth
       />
       <InnerBox>
@@ -46,7 +45,12 @@ export function SearchNode({
               node={node}
               warning={false}
               showRelation={false}
-              onClick={() => history && history.push(`/node/${node.id}`)}
+              onClick={() => {
+                if (history) {
+                  history.push(`/graph-viewer/node/${node.id}`);
+                  window.location.reload();
+                }
+              }}
             />
           ))}
         </ItemsBox>
