@@ -150,7 +150,7 @@ export const Primary = Template.bind({});
 Primary.args = {
   nodes: [],
   search: '',
-  setNodeId: () => {},
+  nodeClickHandler: () => {},
   setSearch: () => {},
 };
 
@@ -161,7 +161,7 @@ Primary.parameters = {
         <SearchNode
           nodes={[]}
           search={''}
-          setNodeId={() => {}}
+          nodeClickHandler={() => {}}
           setSearch={() => {}}
         />,
       ),
