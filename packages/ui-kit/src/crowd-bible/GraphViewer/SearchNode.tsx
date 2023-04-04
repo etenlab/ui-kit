@@ -12,12 +12,12 @@ export function SearchNode({
   nodes,
   search,
   setSearch,
-  setNodeId,
+  nodeClickHandler,
 }: {
   nodes: Node[];
   search: string;
   setSearch: (input: string) => void;
-  setNodeId: (id: string) => void;
+  nodeClickHandler: (id: string) => void;
 }) {
   const [input, setInput] = useState('');
 
@@ -48,7 +48,7 @@ export function SearchNode({
               node={node}
               warning={false}
               showRelation={false}
-              onClick={() => setNodeId(node.id)}
+              onClick={() => nodeClickHandler(node.id)}
             />
           ))}
         </ItemsBox>

@@ -9,10 +9,10 @@ import { InnerBox, ItemsBox } from './styled';
 
 export function NodeDetails({
   node,
-  setNodeId,
+  nodeClickHandler,
 }: {
   node: Node;
-  setNodeId: (id: string) => void;
+  nodeClickHandler: (id: string) => void;
 }) {
   return (
     <InnerBox>
@@ -37,7 +37,7 @@ export function NodeDetails({
                         node={relationshipNode}
                         warning={true}
                         showRelation
-                        onClick={() => setNodeId(relationshipNode.id)}
+                        onClick={() => nodeClickHandler(relationshipNode.id)}
                       />
                     </Fragment>
                   );
