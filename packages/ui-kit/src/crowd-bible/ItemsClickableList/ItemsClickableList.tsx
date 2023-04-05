@@ -7,7 +7,7 @@ type VotableContent = {
   upVotes: number;
   downVotes: number;
   id: string | null;
-  ballotId: string | null;
+  ballotId: string | null; //for voting
 };
 
 type VotableItem = {
