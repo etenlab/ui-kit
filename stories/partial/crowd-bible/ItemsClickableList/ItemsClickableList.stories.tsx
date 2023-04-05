@@ -47,7 +47,7 @@ type VotableItem = {
 const items: Array<VotableItem> = [
   {
     title: {
-      id: '1234a',
+      id: '1234abcd',
       ballotId: '2345a',
       content: 'title content title content title content',
       downVotes: 1,
