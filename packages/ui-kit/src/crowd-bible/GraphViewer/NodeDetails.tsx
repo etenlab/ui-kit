@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 
 import { NodeItem } from '../../Item/NodeItem';
 import { RelationshipItem } from '../../Item/RelationshipItem';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { InnerBox, ItemsBox } from './styled';
 import { Chips } from '../../chips';
 
@@ -51,6 +51,14 @@ export function NodeDetails({
     <InnerBox>
       {node && (
         <>
+          <Box display={'flex'} flexDirection={'row'} gap={'20px'}>
+            <Typography variant="body2">
+              Total Relationships: {node.nodeRelationships?.length}
+            </Typography>
+            <Typography variant="body2">
+              Showing: {filteredRelationships?.length}
+            </Typography>
+          </Box>
           <Box paddingY={'15px'}>
             <Chips
               items={groupedByType()}

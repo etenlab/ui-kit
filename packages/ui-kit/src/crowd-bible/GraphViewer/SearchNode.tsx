@@ -62,6 +62,10 @@ export function SearchNode({
         onBlur={() => setSearch(input)}
         fullWidth
       />
+      <Box display={'flex'} flexDirection={'row'} gap={'20px'}>
+        <Typography variant="body2">Total Nodes: {nodes.length}</Typography>
+        <Typography variant="body2">Showing: {filteredNodes.length}</Typography>
+      </Box>
       <Box paddingY={'15px'}>
         <Chips
           items={groupedByType()}
