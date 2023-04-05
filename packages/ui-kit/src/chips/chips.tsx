@@ -22,7 +22,7 @@ export const Chips = ({
   clickHandler,
 }: IChip) => {
   return (
-    <Stack display={'flex'} flexDirection={'row'} gap={'6px'}>
+    <Stack display={'flex'} flexDirection={'row'} flexWrap={'wrap'} gap={'6px'}>
       {Object.entries(items).map((key) => {
         return (
           <Chip
