@@ -42,6 +42,9 @@ jobs:
       - name: Build
         run: npm run build-storybook
 
+      - name: Deploy static site to S3 bucket
+        run: aws s3 sync build/ s3://devstorybookstack-cbdevwebsitebucketc58c9965-1jfk0b98fa099
+
       - uses: TimekillerTK/s3-sync-action@master
         with:
           args: --follow-symlinks --delete
@@ -50,5 +53,4 @@ jobs:
 
       
 
-      - name: Deploy static site to S3 bucket
-        run: aws s3 sync build/ s3://devstorybookstack-cbdevwebsitebucketc58c9965-1jfk0b98fa099
+      
