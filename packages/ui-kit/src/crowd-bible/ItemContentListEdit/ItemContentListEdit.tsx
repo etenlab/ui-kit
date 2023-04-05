@@ -17,74 +17,43 @@ import { Button } from '../../button';
 import { TitleWithIcon } from '../TitleWithIcon';
 import { VoteButtonGroup } from '../VoteButtonGroup';
 
-type Content = {
+type VotableContent = {
   content: string;
-  upVote: number;
-  downVote: number;
+  upVotes: number;
+  downVotes: number;
   id: string | null;
+  ballotId: string | null;
 };
 
-type Item = {
-  title: Content;
-  contents: Content[];
+type VotableItem = {
+  title: VotableContent;
+  contents: VotableContent[];
+  contentElectionId: string | null;
 };
 
 type TUpOrDownVote = 'upVote' | 'downVote';
 
 type ItemContentListEditProps = {
-  item: Item;
+  item: VotableItem;
   onBack: () => void;
   buttonText: string;
-  changeContent: (params: {
-    contentIndex: number;
-    newContent: Content;
-  }) => void;
-  addContent: (params: { newContent: Content }) => void;
+  changeContentValue: (id: string | null, newContentValue: string) => void;
+  changeContentVotes: (id: string | null, UpOrDown: TUpOrDownVote) => void;
+  addContent: (newContentValue: string) => void;
 };
 
 export function ItemContentListEdit({
   item,
   onBack,
   buttonText,
-  changeContent,
+  changeContentValue,
+  changeContentVotes,
   addContent,
 }: ItemContentListEditProps) {
   const [isDialogOpened, setIsDialogOpened] = useState(false);
   const [itemIdxEditting, setItemIdxEditting] = useState(
     null as unknown as number,
   );
-
-  const changeContentVotes = (idx: number, upOrDown: TUpOrDownVote) => {
-    const newContent: Content = {
-      ...item.contents[idx],
-      [upOrDown]: item.contents[idx][upOrDown] + 1,
-    };
-    changeContent({
-      contentIndex: idx,
-      newContent,
-    });
-  };
-
-  const addNewContent = (value: string) => {
-    const newContent: Content = {
-      content: value,
-      upVote: 0,
-      downVote: 0,
-      id: null,
-    };
-    addContent({ newContent });
-  };
-
-  const changeContentValue = (idx: number, newContentValue: string) => {
-    const newContent: Content = {
-      ...item.contents[idx],
-      content: newContentValue,
-    };
-    changeContent({
-      contentIndex: idx,
-      newContent,
-    });
-  };
 
   return (
     <>
@@ -106,7 +75,7 @@ export function ItemContentListEdit({
           <BiVolumeFull />
         </IconButton>
       </Box>
-      {item.contents.map(({ content, upVote, downVote }, idx) => (
+      {item.contents.map(({ content, upVotes, downVotes }, idx) => (
         <ListItem
           sx={{
             display: 'list-item',
@@ -121,7 +90,9 @@ export function ItemContentListEdit({
               element={Input}
               debounceTimeout={500}
               value={content}
-              onChange={(v) => changeContentValue(idx, v.target.value)}
+              onChange={(v) =>
+                changeContentValue(item.contents[idx].id, v.target.value)
+              }
               onBlur={() => setItemIdxEditting(null as unknown as number)}
             />
           ) : (
@@ -135,12 +106,16 @@ export function ItemContentListEdit({
           )}
           <div>
             <VoteButtonGroup
-              likeCount={upVote}
-              dislikeCount={downVote}
+              likeCount={upVotes}
+              dislikeCount={downVotes}
               like={false}
               dislike={false}
-              setDislike={() => changeContentVotes(idx, 'downVote')}
-              setLike={() => changeContentVotes(idx, 'upVote')}
+              setDislike={() =>
+                changeContentVotes(item.contents[idx].ballotId, 'downVote')
+              }
+              setLike={() =>
+                changeContentVotes(item.contents[idx].ballotId, 'upVote')
+              }
             />
           </div>
         </ListItem>
@@ -158,7 +133,7 @@ export function ItemContentListEdit({
         isOpened={isDialogOpened}
         handleCancel={() => setIsDialogOpened(false)}
         handleOk={(value) => {
-          addNewContent(value);
+          addContent(value);
           setIsDialogOpened(false);
         }}
       />
