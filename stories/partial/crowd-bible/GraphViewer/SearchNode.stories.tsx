@@ -148,7 +148,7 @@ const nodes = [
 
 export const Primary = Template.bind({});
 Primary.args = {
-  nodes: [],
+  nodes: nodes,
   search: '',
   nodeClickHandler: () => {},
   setSearch: () => {},
@@ -159,7 +159,7 @@ Primary.parameters = {
     source: {
       code: jsxToString(
         <SearchNode
-          nodes={[]}
+          nodes={nodes}
           search={''}
           nodeClickHandler={() => {}}
           setSearch={() => {}}
