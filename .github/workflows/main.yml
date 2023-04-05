@@ -23,6 +23,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_GITHUB_S3_PUSHER_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
 
+      - name: Deploy static site to S3 bucket
+        run: aws s3 sync build/ s3://devstorybookstack-cbdevwebsitebucketc58c9965-1jfk0b98fa099
+
       - uses: dkershner6/aws-ssm-getparameters-action@v1
         with:
           parameterPairs: '/dev/deploy/storybook/env = ENV'
