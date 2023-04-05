@@ -43,6 +43,7 @@ type VotableItem = {
   contentElectionId: string | null;
 };
 
+// mock data
 const items: Array<VotableItem> = [
   {
     title: {
