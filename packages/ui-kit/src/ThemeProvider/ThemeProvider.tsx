@@ -14,6 +14,7 @@ import {
   PaletteColorOptions,
 } from '@mui/material';
 import '@fontsource/inter';
+import '@fontsource/noto-serif-display'
 
 import { deepmerge } from '@mui/utils';
 import { getThemeOptions } from './themeOptions';
@@ -223,6 +224,10 @@ declare module '@mui/material/styles' {
     yellow: PaletteColorOptions;
     'middle-yellow': PaletteColorOptions;
     'light-yellow': PaletteColorOptions;
+    'turquoise-light': PaletteColorOptions;
+    'turquoise-dark': PaletteColorOptions;
+    'darker-gray': PaletteColorOptions;
+    'lighter-gray': PaletteColorOptions;
   }
 
   interface CustomTypeText {
@@ -240,6 +245,10 @@ declare module '@mui/material/styles' {
     yellow: string;
     'middle-yellow': string;
     'light-yellow': string;
+    'turquoise-light': string;
+    'turquoise-dark': string;
+    'darker-gray': string;
+    'lighter-gray': string;
   }
 
   interface Palette extends CustomPalette {}
@@ -253,6 +262,10 @@ declare module '@mui/material/styles' {
   // allow configuration using `createTheme`
   interface TypographyVariantsOptions {
     body3?: React.CSSProperties;
+  }
+
+  interface TypeBackground {
+    'darker-gray': string;
   }
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ThemeProvider } from '../../../packages/ui-kit/src';
-import AppLogo from '../../../packages/ui-kit/src/diegesis/AppLogo';
+import AppLogo from '../../../packages/ui-kit/src/diegesis/app-logo/AppLogo';
 import { buildDocs } from '../../common';
 
 export default {
