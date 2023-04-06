@@ -1,7 +1,7 @@
 import { Button } from "@mui/material"
 import React from "react"
 import { BsChevronLeft } from "react-icons/bs"
-import { colors, useColorModeContext } from ".."
+import { useColorModeContext } from ".."
 
 interface IProps {
     className?: string

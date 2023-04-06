@@ -6,7 +6,7 @@ import './Home.css';
 import { useColorModeContext } from '../../ThemeProvider';
 
 interface IProps {}
-export function LandingSection(props: IProps) {
+export function LandingSection(_props: IProps) {
   const colorMode = useColorModeContext();
   return (
     <Container className="landing-section">

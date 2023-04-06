@@ -19,7 +19,7 @@ const dataAboutContentSection1 = {
 }
 //#endregion
 
-export function AboutPage(props: IProps) {
+export function AboutPage(_props: IProps) {
     const [isSideNavOpen, setSideNavOpenStatus] = useState(false)
     const colorMode = useColorModeContext()
     return (

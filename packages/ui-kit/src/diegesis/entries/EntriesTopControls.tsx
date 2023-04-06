@@ -10,7 +10,7 @@ interface IProps {
 }
 
 
-export function EntriesTopControls(props: IProps){
+export function EntriesTopControls(_props: IProps){
     const [curTab, setCurTab] = useState(0)
     const colorMode = useColorModeContext()
     return (

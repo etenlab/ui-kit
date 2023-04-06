@@ -4,7 +4,7 @@ import { BackButton } from "../BackButton";
 import ActionButtons from "./ActionButtons";
 
 type Props = {}
-export default function TopControls(props: Props) {
+export default function TopControls(_props: Props) {
     return (
         <Stack direction={'column'} alignItems={'flex-start'} justifyContent={'center'} className="top-controls-section">
             <BackButton />

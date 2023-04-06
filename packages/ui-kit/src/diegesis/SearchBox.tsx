@@ -3,11 +3,10 @@ import {
   InputAdornment,
   Stack,
   TextField,
-  styled,
 } from '@mui/material';
 import React from 'react';
 import { BiSearch } from 'react-icons/bi';
-import { colors, useColorModeContext } from '..';
+import { useColorModeContext } from '..';
 
 interface IProps {
   className?: string;

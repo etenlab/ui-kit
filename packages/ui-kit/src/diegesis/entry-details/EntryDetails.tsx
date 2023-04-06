@@ -32,7 +32,7 @@ const sampleData: IData[] = [
     { key: 'Revision', value: 'engBBE' },
     { key: 'Content', value: '39 OT, 27 NT' },
 ]
-export function EntryDetailPage(props: IProps) {
+export function EntryDetailPage(_props: IProps) {
     const [isSideNavOpen, setSideNavOpenStatus] = useState(false)
     return (
         <Box component={'div'} id="entry-detail-page">

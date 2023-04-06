@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, ButtonProps, styled } from '@mui/material';
-import { colors } from '@components/ThemeProvider';
 
 interface IProps extends ButtonProps {
   label: string;

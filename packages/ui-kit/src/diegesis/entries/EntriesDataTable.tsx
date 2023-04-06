@@ -86,9 +86,9 @@ const sampleDataList: Data[] = [
   { sort: 'Gible in Basic English', language: 'ENG', type: 'Bible', source: 'eBible', license: 'CC-BY-SA', revision: '2020-04-23', action: 'Details' },
 ]
 
-export function EntriesDataTable(props: IProps) {
+export function EntriesDataTable(_props: IProps) {
   const colorMode = useColorModeContext()
-  const [dataList, setDataList] = useState<Data[]>([...sampleDataList])
+  const [dataList] = useState<Data[]>([...sampleDataList])
   const cellsConfig = getTblCellConfig(colorMode.getColor)
   return (
     <DataTable expandableRowOnMobile={true} className="entries-tbl-container" headCells={cellsConfig} rows={dataList} />

@@ -9,7 +9,7 @@ import "./Entries.css"
 
 interface IProps {
 }
-export function EntriesPage(props: IProps) {
+export function EntriesPage(_props: IProps) {
     const [isSideNavOpen, setSideNavOpenStatus] = useState(false)
     return (
         <Box component={'div'} id="entries-page">

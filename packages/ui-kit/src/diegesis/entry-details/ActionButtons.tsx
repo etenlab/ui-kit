@@ -3,7 +3,7 @@ import React from "react";
 import { AiOutlineDownload, AiOutlineFileText } from "react-icons/ai";
 
 type Props = {}
-export default function ActionButtons(props: Props) {
+export default function ActionButtons(_props: Props) {
     return (
         <Stack direction={'row'} alignItems={'center'} justifyContent={'flex-end'} className="full-width action-buttons">
             <Button

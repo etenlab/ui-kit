@@ -1,6 +1,6 @@
-import { MenuItem, Select, useTheme } from "@mui/material";
+import { MenuItem, Select } from "@mui/material";
 import React from "react";
-import { colors, useColorModeContext } from "..";
+import { useColorModeContext } from "..";
 
 interface IProps {
     label?: string

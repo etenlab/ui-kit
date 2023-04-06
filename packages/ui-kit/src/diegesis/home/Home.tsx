@@ -10,7 +10,7 @@ interface IProps {}
 export function HomePage(_props: IProps) {
   const [isSideNavOpen, setSideNavOpenStatus] = useState(false);
   return (
-    <div id="home-page">
+    <div className="home-page">
       <PageHeader openSideNav={() => setSideNavOpenStatus(true)}></PageHeader>
       <SideNav
         open={isSideNavOpen}

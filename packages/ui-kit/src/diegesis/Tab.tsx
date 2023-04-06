@@ -14,7 +14,7 @@ export const CustomTabs = styled((props: StyledTabsProps) => (
     <Tabs
         {...props}
     />
-))(({theme, getColor}) => ({
+))(({ getColor}) => ({
     '& .MuiTabs-flexContainer': {
         padding: '0px 1rem',
     },

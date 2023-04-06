@@ -5,7 +5,7 @@ import StatWithDescription from './StatWithDescription';
 import './Home.css';
 
 interface IProps {}
-export function StatSection(props: IProps) {
+export function StatSection(_props: IProps) {
   return (
     <Container className="stat-section">
       <Stack
