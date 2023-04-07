@@ -76,6 +76,10 @@ export const colors = {
   'lighter-gray': {
     light: '#707070',
     dark: '#707070'
+  },
+  'light-gray2': {
+    light: '#e3e3d9',
+    dark: '#e3e3d9'
   }
 };
 
@@ -162,7 +166,10 @@ export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
         'darker-gray': colors['darker-gray'][mode]
       },
       background: {
-        'darker-gray': colors['darker-gray'][mode]
+        'darker-gray': colors['darker-gray'][mode],
+        'light-gray2': colors['light-gray2'][mode],
+        'turquoise-light': colors['turquoise-light'][mode],
+        'turquoise-dark': colors['turquoise-dark'][mode]
       }
     },
   };
