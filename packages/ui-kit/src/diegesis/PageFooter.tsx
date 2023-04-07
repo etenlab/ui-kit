@@ -61,6 +61,7 @@ const StyledContentWrapper = styled(Stack)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
     alignItems: 'flex-start',
+    marginTop: '0rem'
   },
 }));
 const StyledTypoBody1 = styled(Typography)(({ theme }) => ({
@@ -69,6 +70,9 @@ const StyledTypoBody1 = styled(Typography)(({ theme }) => ({
   fontSize: '1.1rem',
   lineHeight: '1.5rem',
   fontWeight: 400,
+  [theme.breakpoints.down('sm')]: {
+    marginTop: '25px',
+  },
 }));
 //#endregion
 

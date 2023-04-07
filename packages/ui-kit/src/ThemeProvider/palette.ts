@@ -163,13 +163,17 @@ export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
         yellow: colors['yellow'][mode],
         'middle-yellow': colors['middle-yellow'][mode],
         'light-yellow': colors['light-yellow'][mode],
-        'darker-gray': colors['darker-gray'][mode]
+        'darker-gray': colors['darker-gray'][mode],
+        'turquoise-light': colors['turquoise-light'][mode],
+        'turquoise-dark': colors['turquoise-dark'][mode],
       },
       background: {
         'darker-gray': colors['darker-gray'][mode],
         'light-gray2': colors['light-gray2'][mode],
+        'light-gray': colors['light-gray'][mode],
         'turquoise-light': colors['turquoise-light'][mode],
-        'turquoise-dark': colors['turquoise-dark'][mode]
+        'turquoise-dark': colors['turquoise-dark'][mode],
+        'white': colors['white'][mode],
       }
     },
   };

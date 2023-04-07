@@ -12,7 +12,6 @@ interface IProps {
 
 export function EntriesTopControls(_props: IProps){
     const [curTab, setCurTab] = useState(0)
-    const colorMode = useColorModeContext()
     return (
         <Stack direction={'column'} alignItems={'flex-start'} className="controls-container">
             <Stack direction={'row'} alignItems={'center'} className="">
@@ -20,8 +19,8 @@ export function EntriesTopControls(_props: IProps){
                     Entries
                 </Typography>
                 <SearchBox placeholder="Bible in Basic English" className={'mx-1 hide-xs'} />
-                <CustomTabs getColor={colorMode.getColor} className="" value={curTab} onClick={() => { setCurTab(curTab === 1 ? 0 : 1) }}>
-                    <CustomTab getColor={colorMode.getColor} value={1} label="Advanced search with filters" />
+                <CustomTabs className="" value={curTab} onClick={() => { setCurTab(curTab === 1 ? 0 : 1) }}>
+                    <CustomTab value={1} label="Advanced search with filters" />
                 </CustomTabs>
             </Stack>
             <Stack className={`tab-content ${curTab === 1 ? 'show' : 'hide'}`} direction={'column'} alignItems={'flex-start'} justifyContent={'center'}>

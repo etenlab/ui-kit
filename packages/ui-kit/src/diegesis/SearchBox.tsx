@@ -14,7 +14,7 @@ interface IProps {
 }
 
 export function SearchBox(props: IProps) {
-  const { placeholder, className } = props;
+  const { placeholder } = props;
   return (
     <SearchBoxWrapper>
       <StyledTextField
