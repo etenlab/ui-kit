@@ -137,7 +137,7 @@ const SideNavWrapper = styled<
   flexDirection: 'column',
   alignItems: 'start',
   background: theme.palette.background['light-gray2'],
-  height: '100%',
+  height: '100vh',
   position: 'absolute',
   top: 0,
   right: 0,
@@ -146,11 +146,12 @@ const SideNavWrapper = styled<
   paddingTop: open ? '1.7rem' : '0rem',
   paddingRight: open ? '1.7rem' : '0rem',
   zIndex: 10,
-  width: open ? '320px' : '0px',
+  width: open ? '348px' : '0px',
   transition: '0.5s',
   overflow: 'hidden',
   [theme.breakpoints.down('sm')]: {
     padding: open ? '1.2rem' : '0rem',
+    width: open ? '100%' : '0rem',
   },
 }));
 const BigNavButton = styled(Button)(({}) => ({
