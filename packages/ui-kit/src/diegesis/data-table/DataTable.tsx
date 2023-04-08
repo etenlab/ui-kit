@@ -11,8 +11,7 @@ import TableSortLabel from '@mui/material/TableSortLabel';
 import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
 import { FiChevronDown } from 'react-icons/fi';
-import './DataTable.css'
-import { Collapse, Stack, Typography } from '@mui/material';
+import { Collapse, Stack, Typography, styled } from '@mui/material';
 
 type Order = 'asc' | 'desc';
 
@@ -21,9 +20,8 @@ export interface HeadCell {
   disablePadding: boolean;
   label: string;
   numeric: boolean;
-  render?: (value: string | number | boolean) => React.ReactNode
+  render?: (value: string | number | boolean) => React.ReactNode;
 }
-
 
 //#region sorting
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
@@ -46,7 +44,10 @@ function getComparator<Key extends keyof any>(
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
-function stableSort<T>(array: readonly T[], comparator: (a: T, b: T) => number) {
+function stableSort<T>(
+  array: readonly T[],
+  comparator: (a: T, b: T) => number,
+) {
   const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0]);
@@ -59,12 +60,11 @@ function stableSort<T>(array: readonly T[], comparator: (a: T, b: T) => number) 
 }
 //#endregion
 
-
 interface TableHeaderProps {
   onRequestSort: (event: React.MouseEvent<unknown>, property: string) => void;
   order: Order;
   orderBy: string;
-  headCells: HeadCell[]
+  headCells: HeadCell[];
 }
 function TableHeaderWrapper(props: TableHeaderProps) {
   const { order, orderBy, onRequestSort, headCells } = props;
@@ -74,7 +74,11 @@ function TableHeaderWrapper(props: TableHeaderProps) {
     };
 
   return (
-    <TableHead>
+    <TableHead
+      sx={(theme) => ({
+        borderBottom: `3px solid ${theme.palette.background['turquoise-light']}`,
+      })}
+    >
       <TableRow>
         {headCells.map((headCell, idx) => (
           <TableCell
@@ -83,7 +87,7 @@ function TableHeaderWrapper(props: TableHeaderProps) {
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
-            <TableSortLabel
+            <StyledTableSortLabel
               IconComponent={FiChevronDown}
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
@@ -95,7 +99,7 @@ function TableHeaderWrapper(props: TableHeaderProps) {
                   {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
                 </Box>
               ) : null}
-            </TableSortLabel>
+            </StyledTableSortLabel>
           </TableCell>
         ))}
       </TableRow>
@@ -104,12 +108,17 @@ function TableHeaderWrapper(props: TableHeaderProps) {
 }
 
 interface TableRowProps {
-  rowKey?: string | number
-  headCells: HeadCell[]
-  row: Record<string, any>
-  expandableRowOnMobile?: boolean
+  rowKey?: string | number;
+  headCells: HeadCell[];
+  row: Record<string, any>;
+  expandableRowOnMobile?: boolean;
 }
-function TableRowWrapper({ rowKey, headCells, row, expandableRowOnMobile }: TableRowProps) {
+function TableRowWrapper({
+  rowKey,
+  headCells,
+  row,
+  expandableRowOnMobile,
+}: TableRowProps) {
   const [showDetails, setShowDetails] = React.useState(false);
   return (
     <React.Fragment key={rowKey}>
@@ -118,88 +127,98 @@ function TableRowWrapper({ rowKey, headCells, row, expandableRowOnMobile }: Tabl
         key={`row-${rowKey}`}
         onClick={() => {
           if (expandableRowOnMobile && window.innerWidth <= 414) {
-            setShowDetails(!showDetails)
+            setShowDetails(!showDetails);
           }
         }}
       >
-        {
-          headCells.map((headCell, cellIdx) => {
-            return (
-              <TableCell
-                key={`row-${rowKey}-cell-${cellIdx}`}
-                component={'td'}
-                scope={'row'}
-                padding={headCell.disablePadding ? 'none' : 'normal'}
-                // padding={[0, lastColumnIdx].includes(cellIdx) ? 'none' : 'normal'}
-                align={headCell.numeric ? 'right' : 'left'}
-              >
-                {
-                  headCell.render
-                    ?
-                    headCell.render(row[headCell.id])
-                    :
-                    row[headCell.id]
-                }
-
-              </TableCell>
-            )
-          })
-        }
-      </TableRow>
-      {
-        expandableRowOnMobile
-          ?
-          <TableRow key={`record-detail-${rowKey}`} className={`row-detail ${showDetails ? 'active' : ''}`}>
-            <TableCell colSpan={headCells.length} padding='none'>
-              <Collapse className='show-xs' in={showDetails} timeout="auto" unmountOnExit>
-                <Box sx={{ padding: '1rem 0rem' }}>
-                  <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'} flexWrap={'wrap'} className='full-width'>
-                    {
-                      headCells.slice(1).map((headCell, cellIdx) => {
-                        return (
-                          <Stack key={cellIdx} flexWrap={'nowrap'} alignItems={'center'} direction={'row'} className='mr-1'>
-                            {
-                              headCell.label
-                                ?
-                                <Typography variant='caption' className=''>
-                                  {headCell.label}:&nbsp;&nbsp;
-                                </Typography>
-                                : <></>
-                            }
-                            <Typography variant='body1'>
-                              {
-                                headCell.render
-                                  ?
-                                  headCell.render(row[headCell.id])
-                                  :
-                                  row[headCell.id]
-                              }
-                            </Typography>
-                          </Stack>
-                        )
-                      })
-                    }
-                  </Stack>
-                </Box>
-              </Collapse>
+        {headCells.map((headCell, cellIdx) => {
+          return (
+            <TableCell
+              key={`row-${rowKey}-cell-${cellIdx}`}
+              component={'td'}
+              scope={'row'}
+              padding={headCell.disablePadding ? 'none' : 'normal'}
+              // padding={[0, lastColumnIdx].includes(cellIdx) ? 'none' : 'normal'}
+              align={headCell.numeric ? 'right' : 'left'}
+            >
+              {headCell.render
+                ? headCell.render(row[headCell.id])
+                : row[headCell.id]}
             </TableCell>
-          </TableRow>
-          :
-          <></>
-      }
+          );
+        })}
+      </TableRow>
+      {expandableRowOnMobile ? (
+        <TableRow
+          key={`record-detail-${rowKey}`}
+          className={`row-detail ${showDetails ? 'active' : ''}`}
+        >
+          <TableCell colSpan={headCells.length} padding="none">
+            <Collapse
+              className="show-xs"
+              in={showDetails}
+              timeout="auto"
+              unmountOnExit
+            >
+              <Box sx={{ padding: '1rem 0rem' }}>
+                <Stack
+                  direction={'row'}
+                  alignItems={'center'}
+                  justifyContent={'space-between'}
+                  flexWrap={'wrap'}
+                  className="full-width"
+                >
+                  {headCells.slice(1).map((headCell, cellIdx) => {
+                    return (
+                      <Stack
+                        key={cellIdx}
+                        flexWrap={'nowrap'}
+                        alignItems={'center'}
+                        direction={'row'}
+                        className="mr-1"
+                      >
+                        {headCell.label ? (
+                          <Typography variant="caption" className="">
+                            {headCell.label}:&nbsp;&nbsp;
+                          </Typography>
+                        ) : (
+                          <></>
+                        )}
+                        <Typography variant="body1">
+                          {headCell.render
+                            ? headCell.render(row[headCell.id])
+                            : row[headCell.id]}
+                        </Typography>
+                      </Stack>
+                    );
+                  })}
+                </Stack>
+              </Box>
+            </Collapse>
+          </TableCell>
+        </TableRow>
+      ) : (
+        <></>
+      )}
     </React.Fragment>
-  )
+  );
 }
 
 interface IDataTableProps {
-  headCells: HeadCell[]
-  rows: Record<string, any>[]
-  className?: string
-  defaultSortCellId?: string
-  expandableRowOnMobile?: boolean
+  headCells: HeadCell[];
+  rows: Record<string, any>[];
+  className?: string;
+  defaultSortCellId?: string;
+  expandableRowOnMobile?: boolean;
 }
 export default function DataTable(props: IDataTableProps) {
-  const { headCells, rows = [], className, defaultSortCellId, expandableRowOnMobile } = props;
+  const {
+    headCells,
+    rows = [],
+    className,
+    defaultSortCellId,
+    expandableRowOnMobile,
+  } = props;
   const [order, setOrder] = React.useState<Order>('asc');
   const [orderBy, setOrderBy] = React.useState<string>(defaultSortCellId || '');
   const [page, setPage] = React.useState(0);
@@ -218,19 +237,18 @@ export default function DataTable(props: IDataTableProps) {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
   return (
-    <Box sx={{ width: '100%' }} className={`diegesis-tbl-container ${className}`}>
+    <Box sx={{ width: '100%' }}>
       <Paper elevation={0} sx={{ width: '100%', mb: 2 }}>
         <TableContainer>
-          <Table
-            sx={{ minWidth: 750 }}
-            aria-labelledby="tableTitle"
-          >
+          <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
             <TableHeaderWrapper
               order={order}
               orderBy={orderBy}
@@ -238,13 +256,21 @@ export default function DataTable(props: IDataTableProps) {
               headCells={headCells}
             />
             <TableBody>
-              {
-                stableSort(rows, getComparator(order, orderBy)).map((row, rowIdx) => <TableRowWrapper key={rowIdx} expandableRowOnMobile={expandableRowOnMobile} rowKey={rowIdx} headCells={headCells} row={row} />)
-              }
+              {stableSort(rows, getComparator(order, orderBy)).map(
+                (row, rowIdx) => (
+                  <TableRowWrapper
+                    key={rowIdx}
+                    expandableRowOnMobile={expandableRowOnMobile}
+                    rowKey={rowIdx}
+                    headCells={headCells}
+                    row={row}
+                  />
+                ),
+              )}
             </TableBody>
           </Table>
         </TableContainer>
-        <TablePagination
+        <StyledTablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
           count={rows.length}
@@ -257,3 +283,79 @@ export default function DataTable(props: IDataTableProps) {
     </Box>
   );
 }
+
+//#region styled components
+const StyledTableSortLabel = styled(TableSortLabel)(({ theme }) => ({
+  fontSize: '0.9rem',
+  color: theme.palette.text['middle-gray'],
+  fontWeight: 400,
+  lineHeight: '0.9rem',
+  fontFamily: 'helvetica',
+  '&.Mui-active': {
+    color: theme.palette.text['middle-gray'],
+    '.MuiTableSortLabel-icon': {
+      color: theme.palette.text['turquoise-light'],
+    },
+  },
+  ':focus': {
+    color: theme.palette.text['middle-gray'],
+  },
+  '.MuiTableSortLabel-icon': {
+    color: theme.palette.text['turquoise-light'],
+  },
+}));
+const StyledTablePagination = styled(TablePagination)(({ theme }) => ({
+  marginTop: '0.5rem',
+  '.MuiTablePagination-actions': {
+    '.MuiIconButton-root': {
+      padding: '0px',
+      color: theme.palette.text['turquoise-light'],
+    },
+    '.MuiIconButton-root.Mui-disabled': {
+      color: theme.palette.text['light-gray2'],
+    },
+    '.MuiSvgIcon-root': {
+      height: '2.1rem',
+      width: '2.1rem',
+    },
+  },
+  '.MuiInputBase-root': {
+    padding: '3px',
+    border: '1px solid',
+  },
+  [theme.breakpoints.down('sm')]: {
+    marginTop: '0.8rem',
+    '.MuiToolbar-root': {
+      '.MuiTablePagination-spacer': {
+        display: 'none',
+      },
+    },
+    '.MuiTablePagination-toolbar': {
+      minHeight: '100px',
+      position: 'relative',
+      '.MuiInputBase-root': {
+        alignSelf: 'end',
+        marginBottom: '2%',
+        marginRight: '20%',
+      },
+    },
+    '.MuiTablePagination-selectLabel': {
+      alignSelf: 'end',
+      marginLeft: '20%',
+      paddingTop: '7%',
+    },
+    '.MuiTablePagination-displayedRows': {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      margin: 0,
+      marginTop: '0.3rem'
+    },
+    '.MuiTablePagination-actions': {
+      position: 'absolute',
+      right: 0,
+      top: 0,
+    },
+  },
+}));
+//#endregion

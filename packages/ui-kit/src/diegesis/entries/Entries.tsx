@@ -5,7 +5,6 @@ import PageHeader from '../PageHeader';
 import SideNav from '../SideNav';
 import EntriesTopControls from './EntriesTopControls';
 import EntriesDataTable from './EntriesDataTable';
-import './Entries.css';
 
 interface IProps {}
 export function EntriesPage(_props: IProps) {
@@ -22,9 +21,9 @@ export function EntriesPage(_props: IProps) {
       <StyledControlsContainer>
         <EntriesTopControls />
       </StyledControlsContainer>
-      <Container className="table-section">
+      <StyledTableContainer>
         <EntriesDataTable />
-      </Container>
+      </StyledTableContainer>
       <PageFooter />
     </Box>
   );
@@ -37,6 +36,9 @@ const StyledControlsContainer = styled(Container)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     paddingTop: '30px',
   },
+}));
+const StyledTableContainer = styled(Container)(({}) => ({
+  paddingBottom: '112px',
 }));
 //#endregion
 

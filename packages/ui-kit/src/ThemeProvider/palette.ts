@@ -166,6 +166,8 @@ export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
         'darker-gray': colors['darker-gray'][mode],
         'turquoise-light': colors['turquoise-light'][mode],
         'turquoise-dark': colors['turquoise-dark'][mode],
+        'light-gray2': colors['light-gray2'][mode],
+        'light-gray': colors['light-gray'][mode],
       },
       background: {
         'darker-gray': colors['darker-gray'][mode],
