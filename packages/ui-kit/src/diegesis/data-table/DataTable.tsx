@@ -123,7 +123,20 @@ function TableRowWrapper({
   return (
     <React.Fragment key={rowKey}>
       <TableRow
-        className={`table-row ${showDetails ? 'active' : ''}`}
+        sx={(theme) => ({
+          '.MuiTableCell-root': showDetails
+            ? {
+                borderTop: `4px solid ${theme.palette.background['turquoise-light']}`,
+                borderBottom: `1px solid ${theme.palette.background['light-gray2']}`,
+              }
+            : {},
+          ...(showDetails
+            ? {
+                borderBottom: `1px solid ${theme.palette.background['light-gray2']}`,
+                fontSize: '2.8rem',
+              }
+            : {}),
+        })}
         key={`row-${rowKey}`}
         onClick={() => {
           if (expandableRowOnMobile && window.innerWidth <= 414) {
@@ -138,7 +151,6 @@ function TableRowWrapper({
               component={'td'}
               scope={'row'}
               padding={headCell.disablePadding ? 'none' : 'normal'}
-              // padding={[0, lastColumnIdx].includes(cellIdx) ? 'none' : 'normal'}
               align={headCell.numeric ? 'right' : 'left'}
             >
               {headCell.render
@@ -151,22 +163,26 @@ function TableRowWrapper({
       {expandableRowOnMobile ? (
         <TableRow
           key={`record-detail-${rowKey}`}
-          className={`row-detail ${showDetails ? 'active' : ''}`}
+          sx={(theme) => ({
+            '.MuiTableCell-root': showDetails
+              ? {
+                  borderBottom: `4px solid ${theme.palette.background['turquoise-light']}`,
+                }
+              : { borderBottom: 'none' },
+            '.MuiTypography-caption': showDetails
+              ? { color: theme.palette.text['middle-gray'] }
+              : {},
+          })}
         >
           <TableCell colSpan={headCells.length} padding="none">
-            <Collapse
-              className="show-xs"
-              in={showDetails}
-              timeout="auto"
-              unmountOnExit
-            >
+            <Collapse in={showDetails} timeout="auto" unmountOnExit>
               <Box sx={{ padding: '1rem 0rem' }}>
                 <Stack
                   direction={'row'}
                   alignItems={'center'}
                   justifyContent={'space-between'}
                   flexWrap={'wrap'}
-                  className="full-width"
+                  width={'100%'}
                 >
                   {headCells.slice(1).map((headCell, cellIdx) => {
                     return (
@@ -175,7 +191,7 @@ function TableRowWrapper({
                         flexWrap={'nowrap'}
                         alignItems={'center'}
                         direction={'row'}
-                        className="mr-1"
+                        marginRight={'0.8rem'}
                       >
                         {headCell.label ? (
                           <Typography variant="caption" className="">
@@ -215,7 +231,6 @@ export default function DataTable(props: IDataTableProps) {
   const {
     headCells,
     rows = [],
-    className,
     defaultSortCellId,
     expandableRowOnMobile,
   } = props;
@@ -349,7 +364,7 @@ const StyledTablePagination = styled(TablePagination)(({ theme }) => ({
       top: 0,
       left: 0,
       margin: 0,
-      marginTop: '0.3rem'
+      marginTop: '0.3rem',
     },
     '.MuiTablePagination-actions': {
       position: 'absolute',

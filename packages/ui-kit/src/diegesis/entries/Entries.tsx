@@ -37,8 +37,28 @@ const StyledControlsContainer = styled(Container)(({ theme }) => ({
     paddingTop: '30px',
   },
 }));
-const StyledTableContainer = styled(Container)(({}) => ({
+const StyledTableContainer = styled(Container)(({ theme }) => ({
   paddingBottom: '112px',
+  [theme.breakpoints.down('sm')]: {
+    '.MuiTable-root': {
+      marginTop: '2rem',
+      width: '100%',
+      minWidth: '100%',
+    },
+    '.MuiTableCell-head': {
+      display: 'none',
+      borderBottom: '0px'
+    },
+    '.MuiTableBody-root .MuiTableRow-root': {
+      '.MuiTableCell-root': {
+        display: 'none',
+      },
+      '.MuiTableCell-root:nth-of-type(1) , .MuiTableCell-root:nth-of-type(2)': {
+        display: 'table-cell',
+        paddingRight: '0px',
+      },
+    },
+  },
 }));
 //#endregion
 
