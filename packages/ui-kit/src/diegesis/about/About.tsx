@@ -5,9 +5,7 @@ import PageFooter from '../PageFooter';
 import PageHeader from '../PageHeader';
 import SideNav from '../SideNav';
 import AboutContentSection from './AboutContentSection';
-import './About.css';
 import AboutPictureSection from './AboutPictureSection';
-import { useColorModeContext } from '../../ThemeProvider';
 import PageTitleTypo from '../styleds/PageTitleTypo';
 
 interface IProps {}
@@ -27,7 +25,6 @@ const dataAboutContentSection1 = {
 
 export function AboutPage(_props: IProps) {
   const [isSideNavOpen, setSideNavOpenStatus] = useState(false);
-  const colorMode = useColorModeContext();
   return (
     <div id="about-page">
       <PageHeader openSideNav={() => setSideNavOpenStatus(true)} />

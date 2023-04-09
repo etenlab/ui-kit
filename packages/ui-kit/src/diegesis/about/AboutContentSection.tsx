@@ -5,10 +5,10 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
+  styled,
 } from '@mui/material';
 import React from 'react';
 import { BsDot } from 'react-icons/bs';
-import { useColorModeContext } from '../../ThemeProvider';
 
 interface IProps {
   className?: string;
@@ -18,25 +18,30 @@ interface IProps {
 }
 export function AboutContentSection(props: IProps) {
   const { title, description, points = [] } = props;
-  const colorMode = useColorModeContext();
   return (
-    <Container className={`about-content-section ${props.className}`}>
+    <Container>
       <Typography
         variant={'h2'}
         fontFamily={'Noto Serif Display'}
-        sx={{ color: colorMode.getColor('darker-gray') }}
+        color={'text.darker-gray'}
+        lineHeight={'30px'}
+        fontWeight={700}
       >
         {title}
       </Typography>
       <Typography
         variant={'body1'}
         fontFamily={'Noto Serif Display'}
-        sx={{ color: colorMode.getColor('darker-gray') }}
+        color={'text.darker-gray'}
+        marginTop="10px"
+        fontSize="20px"
+        lineHeight="30px"
+        fontWeight="normal"
       >
         {description}
       </Typography>
       {points.length > 0 ? (
-        <List>
+        <StyledList>
           {points.map((point, idx) => (
             <ListItem key={idx} disablePadding={true} dense={false}>
               <ListItemIcon>
@@ -45,11 +50,26 @@ export function AboutContentSection(props: IProps) {
               <ListItemText primary={point} />
             </ListItem>
           ))}
-        </List>
+        </StyledList>
       ) : (
         <></>
       )}
     </Container>
   );
 }
+
+const StyledList = styled(List)(({ theme }) => ({
+  marginTop: '25px',
+  marginBottom: '25px',
+  fontSize: '20px',
+  '.MuiList-root .MuiListItemIcon-root': {
+    minWidth: 'auto',
+  },
+  '.MuiList-root .MuiTypography-body1': {
+    marginTop: '0px',
+  },
+  '.MuiList-root .MuiListItem-root': {
+    borderTop: `1px solid ${theme.palette.background['light-gray2']}`,
+  },
+}));
 export default AboutContentSection;

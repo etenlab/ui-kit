@@ -319,7 +319,7 @@ const StyledTableSortLabel = styled(TableSortLabel)(({ theme }) => ({
     color: theme.palette.text['turquoise-light'],
   },
 }));
-const StyledTablePagination = styled(TablePagination)(({ theme }) => ({
+const StyledTablePagination = styled<any>(TablePagination)(({ theme }) => ({
   marginTop: '0.5rem',
   '.MuiTablePagination-actions': {
     '.MuiIconButton-root': {
