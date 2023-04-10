@@ -12,7 +12,7 @@ export const QuillContainer = styled(Stack)(({ theme }) => ({
     '& span.ql-formats': {
       paddingRight: '10px',
       borderRight: `1px solid ${theme.palette.text['middle-gray']}`,
-      '&:last-child': {
+      '&:last-of-type': {
         border: 'none',
       },
       '& .ql-stroke': {

@@ -4,28 +4,26 @@ import { ThemeProvider } from '../../../packages/ui-kit/src';
 import EntryDetailPage from '../../../packages/ui-kit/src/diegesis/entry-details/EntryDetails';
 import { buildDocs } from '../../common';
 
-
 export default {
-    title: 'Partial/Diegesis/Entries/Entry Detail',
-    component: EntryDetailPage,
-    decorators: [
-        Story => (
-            <div>
-                <ThemeProvider>
-                    <Story />
-                </ThemeProvider>
-            </div>
-        ),
-    ],
+  title: 'Partial/Diegesis/Entries/Entry Detail',
+  component: EntryDetailPage,
+  decorators: [
+    (Story) => (
+      <div>
+        <ThemeProvider>
+          <Story />
+        </ThemeProvider>
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof EntryDetailPage>;
 
-const EntryDetailTemplate: ComponentStory<typeof EntryDetailPage> = args => (
-    <EntryDetailPage {...args} />
+const EntryDetailTemplate: ComponentStory<typeof EntryDetailPage> = (args) => (
+  <EntryDetailPage {...args} />
 );
 
 export const entryDetailPageCode = EntryDetailTemplate.bind({});
-entryDetailPageCode.args = {
-};
+entryDetailPageCode.args = {};
 entryDetailPageCode.parameters = buildDocs(`
 interface IProps {
 }
@@ -78,10 +76,8 @@ export function EntryDetailPage(props: IProps) {
     )
 }
 export default EntryDetailPage
-`)
+`);
 
 export const entryDetailPageUsage = EntryDetailTemplate.bind({});
-entryDetailPageUsage.args = {
-};
-entryDetailPageUsage.parameters = buildDocs(<EntryDetailPage />)
-
+entryDetailPageUsage.args = {};
+entryDetailPageUsage.parameters = buildDocs(<EntryDetailPage />);

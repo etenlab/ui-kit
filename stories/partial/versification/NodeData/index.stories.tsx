@@ -1,13 +1,8 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import jsxToString from 'jsx-to-string';
 
-import {
-  mode,
-  ThemeProvider,
-} from '../../../../packages/ui-kit/src/ThemeProvider/ThemeProvider';
-import { colors } from '../../../../packages/ui-kit/src/ThemeProvider/palette';
 import { NodeData } from '../../../../packages/ui-kit/src/versification/NodeData';
+import { buildDecorator, buildDocs } from '../common';
 
 const args = {
   currentValue: '5',
@@ -28,22 +23,7 @@ export default {
   title: 'Partial/Versification/NodeData',
   component: NodeData,
   args,
-  decorators: [
-    (Story) => (
-      <div
-        style={{
-          margin: '3em',
-          width: '500px',
-          border: `1px solid ${colors['light-blue'][mode]}`,
-          padding: '3em',
-        }}
-      >
-        <ThemeProvider>
-          <Story />
-        </ThemeProvider>
-      </div>
-    ),
-  ],
+  decorators: [buildDecorator()],
 } as ComponentMeta<typeof NodeData>;
 
 const Template: ComponentStory<typeof NodeData> = (args) => (
@@ -51,32 +31,14 @@ const Template: ComponentStory<typeof NodeData> = (args) => (
 );
 
 export const Primary = Template.bind({});
-Primary.parameters = {
-  docs: {
-    source: {
-      code: jsxToString(<NodeData {...args} />),
-      language: 'jsx',
-      format: true,
-      type: 'auto',
-    },
-  },
-};
+Primary.parameters = buildDocs(<NodeData {...args} />);
 
 export const Short = Template.bind({});
 Short.args = {
   ...args,
   short: true,
 };
-Short.parameters = {
-  docs: {
-    source: {
-      code: jsxToString(<NodeData {...args} {...Short.args} />),
-      language: 'jsx',
-      format: true,
-      type: 'auto',
-    },
-  },
-};
+Short.parameters = buildDocs(<NodeData {...args} {...Short.args} />);
 
 export const WithValues = Template.bind({});
 WithValues.args = {
@@ -88,16 +50,7 @@ WithValues.args = {
   numUpVotes: 42,
   numDownVotes: 15,
 };
-WithValues.parameters = {
-  docs: {
-    source: {
-      code: jsxToString(<NodeData {...args} {...WithValues.args} />),
-      language: 'jsx',
-      format: true,
-      type: 'auto',
-    },
-  },
-};
+WithValues.parameters = buildDocs(<NodeData {...args} {...WithValues.args} />);
 
 export const Column = Template.bind({});
 Column.args = {
@@ -108,29 +61,11 @@ Column.args = {
   translationValues: ['2a', 'w7'],
   col: true,
 };
-Column.parameters = {
-  docs: {
-    source: {
-      code: jsxToString(<NodeData {...args} {...Column.args} />),
-      language: 'jsx',
-      format: true,
-      type: 'auto',
-    },
-  },
-};
+Column.parameters = buildDocs(<NodeData {...args} {...Column.args} />);
 
 export const NotInline = Template.bind({});
 NotInline.args = {
   ...Column.args,
   inline: false,
 };
-NotInline.parameters = {
-  docs: {
-    source: {
-      code: jsxToString(<NodeData {...args} {...NotInline.args} />),
-      language: 'jsx',
-      format: true,
-      type: 'auto',
-    },
-  },
-};
+NotInline.parameters = buildDocs(<NodeData {...args} {...NotInline.args} />);

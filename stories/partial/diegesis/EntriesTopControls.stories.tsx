@@ -4,28 +4,26 @@ import { ThemeProvider } from '../../../packages/ui-kit/src';
 import EntriesTopControls from '../../../packages/ui-kit/src/diegesis/entries/EntriesTopControls';
 import { buildDocs } from '../../common';
 
-
 export default {
-    title: 'Partial/Diegesis/Entries',
-    component: EntriesTopControls,
-    decorators: [
-        (Story) => (
-            <div>
-                <ThemeProvider>
-                    <Story />
-                </ThemeProvider>
-            </div>
-        ),
-    ],
+  title: 'Partial/Diegesis/Entries',
+  component: EntriesTopControls,
+  decorators: [
+    (Story) => (
+      <div>
+        <ThemeProvider>
+          <Story />
+        </ThemeProvider>
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof EntriesTopControls>;
 
-const EntriesTopControlTemplate: ComponentStory<typeof EntriesTopControls> = args => (
-    <EntriesTopControls {...args} />
-);
+const EntriesTopControlTemplate: ComponentStory<typeof EntriesTopControls> = (
+  args,
+) => <EntriesTopControls {...args} />;
 
 export const topControlCode = EntriesTopControlTemplate.bind({});
-topControlCode.args = {
-};
+topControlCode.args = {};
 topControlCode.parameters = buildDocs(`
 interface IProps {
 }
@@ -66,12 +64,8 @@ export function EntriesTopControls(props: IProps){
     )
 }
 export default EntriesTopControls
-`)
-
+`);
 
 export const topControlUsage = EntriesTopControlTemplate.bind({});
-topControlUsage.args = {
-};
-topControlUsage.parameters = buildDocs(<EntriesTopControls />)
-
-
+topControlUsage.args = {};
+topControlUsage.parameters = buildDocs(<EntriesTopControls />);

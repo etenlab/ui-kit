@@ -4,28 +4,26 @@ import { ThemeProvider } from '../../../packages/ui-kit/src';
 import TopControls from '../../../packages/ui-kit/src/diegesis/entry-details/TopControls';
 import { buildDocs } from '../../common';
 
-
 export default {
-    title: 'Partial/Diegesis/Entries/Entry Detail',
-    component: TopControls,
-    decorators: [
-        (Story) => (
-            <div>
-                <ThemeProvider>
-                    <Story />
-                </ThemeProvider>
-            </div>
-        ),
-    ],
-} as ComponentMeta<typeof TopControls>;;
+  title: 'Partial/Diegesis/Entries/Entry Detail',
+  component: TopControls,
+  decorators: [
+    (Story) => (
+      <div>
+        <ThemeProvider>
+          <Story />
+        </ThemeProvider>
+      </div>
+    ),
+  ],
+} as ComponentMeta<typeof TopControls>;
 
-const TopControlsTemplate: ComponentStory<typeof TopControls> = args => (
-    <TopControls {...args} />
+const TopControlsTemplate: ComponentStory<typeof TopControls> = (args) => (
+  <TopControls {...args} />
 );
 
 export const topControlsCode = TopControlsTemplate.bind({});
-topControlsCode.args = {
-};
+topControlsCode.args = {};
 topControlsCode.parameters = buildDocs(`
 type Props = {}
 export default function TopControls(props: Props) {
@@ -41,10 +39,8 @@ export default function TopControls(props: Props) {
         </Stack>
     )
 }
-`)
+`);
 
 export const topControlsUsage = TopControlsTemplate.bind({});
-topControlsUsage.args = {
-};
-topControlsUsage.parameters = buildDocs(<TopControls />)
-
+topControlsUsage.args = {};
+topControlsUsage.parameters = buildDocs(<TopControls />);

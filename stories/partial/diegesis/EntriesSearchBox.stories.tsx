@@ -4,28 +4,26 @@ import { ThemeProvider } from '../../../packages/ui-kit/src';
 import SearchBox from '../../../packages/ui-kit/src/diegesis/SearchBox';
 import { buildDocs } from '../../common';
 
-
 export default {
-    title: 'Partial/Diegesis/Entries',
-    component: SearchBox,
-    decorators: [
-        (Story) => (
-            <div>
-                <ThemeProvider>
-                    <Story />
-                </ThemeProvider>
-            </div>
-        ),
-    ],
+  title: 'Partial/Diegesis/Entries',
+  component: SearchBox,
+  decorators: [
+    (Story) => (
+      <div>
+        <ThemeProvider>
+          <Story />
+        </ThemeProvider>
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof SearchBox>;
 
-const EntriesSearchBoxTemplate: ComponentStory<typeof SearchBox> = args => (
-    <SearchBox {...args} />
+const EntriesSearchBoxTemplate: ComponentStory<typeof SearchBox> = (args) => (
+  <SearchBox {...args} />
 );
 
 export const searchBoxCode = EntriesSearchBoxTemplate.bind({});
-searchBoxCode.args = {
-};
+searchBoxCode.args = {};
 searchBoxCode.parameters = buildDocs(`
 interface IProps {
     className?: string
@@ -79,12 +77,10 @@ export function SearchBox(props: IProps){
     )
 }
 export default SearchBox;
-`)
-
+`);
 
 export const searchBoxUsage = EntriesSearchBoxTemplate.bind({});
-searchBoxUsage.args = {
-};
-searchBoxUsage.parameters = buildDocs(<SearchBox placeholder='Search anything...' />)
-
-
+searchBoxUsage.args = {};
+searchBoxUsage.parameters = buildDocs(
+  <SearchBox placeholder="Search anything..." />,
+);

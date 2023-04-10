@@ -33,7 +33,6 @@ declare module 'deepmerge' {
     function all<T>(objects: Array<Partial<T>>, options?: Options): T;
   }
 }
-
 declare module 'scheduler' {
   export const unstable_NoPriority = 0;
   export const unstable_ImmediatePriority = 1;
@@ -62,4 +61,57 @@ declare module 'scheduler' {
   ): Task;
 
   export function unstable_cancelCallback(task: Task): void;
+}
+
+declare module 'node-type' {
+  export interface Node {
+    id: string;
+    node_type: string;
+    propertyKeys: NodePropertyKey[];
+    toNodeRelationships?: Relationship[];
+  }
+
+  export interface NodePropertyKey {
+    property_key: string;
+    upVotes: number;
+    downVotes: number;
+    posts: Post[];
+    propertyValue: NodePropertyValue;
+  }
+
+  export interface NodePropertyValue {
+    property_value: string;
+    upVotes: number;
+    downVotes: number;
+    posts: Post[];
+  }
+
+  export interface Relationship {
+    id: string;
+    relationship_type: string;
+    from_node_id: number;
+    to_node_id: number;
+    propertyKeys: RelationshipPropertyKey[];
+    fromNode: Node;
+    toNode: Node;
+  }
+
+  export interface RelationshipPropertyKey {
+    property_key: string;
+    upVotes: number;
+    downVotes: number;
+    posts: Post[];
+    propertyValue: RelationshipPropertyValue;
+  }
+
+  export interface RelationshipPropertyValue {
+    property_value: string;
+    upVotes: number;
+    downVotes: number;
+    posts: Post[];
+  }
+
+  export interface Post {
+    id: string;
+  }
 }

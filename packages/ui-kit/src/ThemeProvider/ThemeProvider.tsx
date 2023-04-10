@@ -14,7 +14,7 @@ import {
   PaletteColorOptions,
 } from '@mui/material';
 import '@fontsource/inter';
-import '@fontsource/noto-serif-display'
+import '@fontsource/noto-serif-display';
 
 import { deepmerge } from '@mui/utils';
 import { getThemeOptions } from './themeOptions';
@@ -249,6 +249,8 @@ declare module '@mui/material/styles' {
     'turquoise-dark': string;
     'darker-gray': string;
     'lighter-gray': string;
+    'light-gray2': string;
+    'light-gray': string;
   }
 
   interface Palette extends CustomPalette {}
@@ -266,6 +268,11 @@ declare module '@mui/material/styles' {
 
   interface TypeBackground {
     'darker-gray': string;
+    'light-gray': string;
+    'light-gray2': string;
+    'turquoise-dark': string;
+    'turquoise-light': string;
+    white: string;
   }
 }
 

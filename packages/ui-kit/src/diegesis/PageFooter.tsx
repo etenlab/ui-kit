@@ -13,7 +13,6 @@ const defaultValues: IProps = {
   Proskomma Scripture Runtime Engine.`,
   brandName: `MVH Solutions`,
 };
-
 export function PageFooter(props: IProps) {
   const {
     footerText = defaultValues.footerText,

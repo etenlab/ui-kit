@@ -4,27 +4,25 @@ import AboutPage from '../../../packages/ui-kit/src/diegesis/about/About';
 import { ThemeProvider } from '../../../packages/ui-kit/src';
 import { buildDocs } from '../../common';
 
-
 export default {
-    title: 'Partial/Diegesis/AboutPage',
-    component: AboutPage,
-    decorators: [
-        (Story) => (
-            <div>
-                <ThemeProvider>
-                    <Story />
-                </ThemeProvider>
-            </div>
-        ),
-    ],
+  title: 'Partial/Diegesis/AboutPage',
+  component: AboutPage,
+  decorators: [
+    (Story) => (
+      <div>
+        <ThemeProvider>
+          <Story />
+        </ThemeProvider>
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof AboutPage>;
 
-const AboutTemplate: ComponentStory<typeof AboutPage> = args => (
-    <AboutPage {...args} />
+const AboutTemplate: ComponentStory<typeof AboutPage> = (args) => (
+  <AboutPage {...args} />
 );
 export const aboutPageCode = AboutTemplate.bind({});
-aboutPageCode.args = {
-};
+aboutPageCode.args = {};
 aboutPageCode.parameters = buildDocs(`
 interface IProps {
 
@@ -74,10 +72,8 @@ export default function AboutPage(props: IProps) {
         </div>
     )
 }
-`)
+`);
 
 export const aboutPageUsage = AboutTemplate.bind({});
-aboutPageUsage.args = {
-};
-aboutPageUsage.parameters = buildDocs(<AboutPage />)
-
+aboutPageUsage.args = {};
+aboutPageUsage.parameters = buildDocs(<AboutPage />);

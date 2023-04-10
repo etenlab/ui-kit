@@ -6,38 +6,41 @@ import SideNav from '../../../packages/ui-kit/src/diegesis/SideNav';
 import { MdAccountCircle } from 'react-icons/md';
 
 export default {
-    title: 'Partial/Diegesis/PageSections/SideMenu',
-    component: SideNav,
-    decorators: [
-        (Story) => (
-            <div style={{ minHeight: '60vh' }}>
-                <ThemeProvider >
-                    <Story>
-                    </Story>
-                </ThemeProvider>
-            </div>
-        ),
-    ]
+  title: 'Partial/Diegesis/PageSections/SideMenu',
+  component: SideNav,
+  decorators: [
+    (Story) => (
+      <div style={{ minHeight: '60vh' }}>
+        <ThemeProvider>
+          <Story></Story>
+        </ThemeProvider>
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof SideNav>;
 
 const SideNavTemplate: ComponentStory<typeof SideNav> = (args) => (
-    <SideNav {...args} />
+  <SideNav {...args} />
 );
 
 export const HeaderSideNav = SideNavTemplate.bind({});
 HeaderSideNav.args = {
-    open: true,
-    close() {
+  open: true,
+  close() {},
+  options: [
+    { title: 'Home', variant: 'big', href: '/' },
+    { title: 'Entries', variant: 'big', href: '/' },
+    { title: 'Technology', variant: 'big', href: '/' },
+    { title: 'About', variant: 'big', href: '/' },
+    {
+      title: 'Account Settings',
+      variant: 'bordered',
+      href: '/',
+      icon: <MdAccountCircle size={24} className="mr-2" />,
     },
-    options: [
-        { title: 'Home', variant: 'big', href: '/' },
-        { title: 'Entries', variant: 'big', href: '/' },
-        { title: 'Technology', variant: 'big', href: '/' },
-        { title: 'About', variant: 'big', href: '/' },
-        { title: 'Account Settings', variant: 'bordered', href: '/', icon: <MdAccountCircle size={24} className='mr-2' /> },
-        { title: 'Terms & conditions', variant: 'small', href: '/' },
-        { title: 'Privacy policy', variant: 'small', href: '/' },
-    ]
+    { title: 'Terms & conditions', variant: 'small', href: '/' },
+    { title: 'Privacy policy', variant: 'small', href: '/' },
+  ],
 };
 HeaderSideNav.parameters = buildDocs(`
 interface INavOption {
@@ -142,5 +145,4 @@ interface INavOption {
     );
   }
   export default SideNav;
-`)
-
+`);

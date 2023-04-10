@@ -5,7 +5,6 @@ interface IProps extends ButtonProps {
   label: string;
   className?: string;
 }
-
 export default function HomeSectionActionButton(props: IProps) {
   const { label, color } = props;
 

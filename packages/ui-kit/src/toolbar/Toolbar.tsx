@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IconButton, Stack, Typography, Badge } from '@mui/material';
+import { IconButton, Button, Stack, Typography, Badge } from '@mui/material';
 import { BiMessageRounded, FiBell, FiMenu, CiDark, CiLight } from '../icons';
 import { useColorModeContext } from '../ThemeProvider';
 
@@ -14,6 +14,7 @@ type ToolbarProps = {
     menu: boolean;
   };
   themeMode: 'dark' | 'light';
+  onClickTitleBtn?: () => void;
   onClickDiscussionBtn(): void;
   onClickNotificationBtn(): void;
   onClickThemeModeBtn(): void;
@@ -30,6 +31,7 @@ export function Toolbar({
     menu: true,
   },
   themeMode = 'light',
+  onClickTitleBtn,
   onClickThemeModeBtn,
   onClickDiscussionBtn,
   onClickNotificationBtn,
@@ -43,9 +45,15 @@ export function Toolbar({
       alignItems="center"
       sx={{ padding: '3px 20px' }}
     >
-      <Typography variant="h3" color="text.dark" sx={{ lineHeight: '56px' }}>
-        {title}
-      </Typography>
+      <Button variant="text" onClick={onClickTitleBtn}>
+        <Typography
+          variant="h3"
+          color="text.dark"
+          sx={{ textTransform: 'none' }}
+        >
+          {title}
+        </Typography>
+      </Button>
       <Stack
         direction="row"
         justifyContent="space-between"

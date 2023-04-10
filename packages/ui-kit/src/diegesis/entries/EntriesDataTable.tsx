@@ -1,20 +1,19 @@
-import React, { useState } from "react"
-import DataTable, { HeadCell } from "../data-table/DataTable"
-import { Button, Typography } from "@mui/material"
-import { BsChevronRight } from "react-icons/bs"
-import { useColorModeContext } from "../../ThemeProvider"
+import React, { useState } from 'react';
+import DataTable, { HeadCell } from '../data-table/DataTable';
+import { Button, Typography } from '@mui/material';
+import { BsChevronRight } from 'react-icons/bs';
+import { useColorModeContext } from '../../ThemeProvider';
 
-interface IProps {
-}
+interface IProps {}
 
 interface Data {
-  sort: string
-  language: string
-  type: string
-  source: string
-  license: string
-  revision: string
-  [id: string]: string
+  sort: string;
+  language: string;
+  type: string;
+  source: string;
+  license: string;
+  revision: string;
+  [id: string]: string;
 }
 
 const getTblCellConfig = (getColorHex: (name: string) => string) => {
@@ -27,9 +26,15 @@ const getTblCellConfig = (getColorHex: (name: string) => string) => {
       disablePadding: true,
       label: 'Sort',
       render(value) {
-        return <Typography variant={'h3'} className="underline-text" sx={{color: darkerGray}}>
-          {value}
-        </Typography>
+        return (
+          <Typography
+            variant={'h3'}
+            className="underline-text"
+            sx={{ color: darkerGray }}
+          >
+            {value}
+          </Typography>
+        );
       },
     },
     {
@@ -68,30 +73,94 @@ const getTblCellConfig = (getColorHex: (name: string) => string) => {
       disablePadding: true,
       label: '',
       render(value) {
-        return <Button className="no-padding" endIcon={<BsChevronRight />} sx={{ textTransform: 'none', fontWeight: 700, fontSize: '0.9rem', color: turquoiseLight }}>
-          {value}
-        </Button>
+        return (
+          <Button
+            className="no-padding"
+            endIcon={<BsChevronRight />}
+            sx={{
+              textTransform: 'none',
+              fontWeight: 700,
+              fontSize: '0.9rem',
+              color: turquoiseLight,
+            }}
+          >
+            {value}
+          </Button>
+        );
       },
     },
   ];
-  return headCells
-}
+  return headCells;
+};
 
 const sampleDataList: Data[] = [
-  { sort: 'Bible in Basic English', language: 'ENG', type: 'Bible', source: 'eBible', license: 'CC-BY-SA', revision: '2020-04-17', action: 'Details' },
-  { sort: 'Cible in Basic English', language: 'ENG', type: 'Bible', source: 'eBible', license: 'CC-BY-SA', revision: '2020-04-20', action: 'Details' },
-  { sort: 'Dible in Basic English', language: 'ENG', type: 'Bible', source: 'eBible', license: 'CC-BY-SA', revision: '2020-04-17', action: 'Details' },
-  { sort: 'Eible in Basic English', language: 'ENG', type: 'Bible', source: 'eBible', license: 'CC-BY-SA', revision: '2020-04-17', action: 'Details' },
-  { sort: 'Fible in Basic English', language: 'ENG', type: 'Bible', source: 'eBible', license: 'CC-BY-SA', revision: '2022-04-17', action: 'Details' },
-  { sort: 'Gible in Basic English', language: 'ENG', type: 'Bible', source: 'eBible', license: 'CC-BY-SA', revision: '2020-04-23', action: 'Details' },
-]
+  {
+    sort: 'Bible in Basic English',
+    language: 'ENG',
+    type: 'Bible',
+    source: 'eBible',
+    license: 'CC-BY-SA',
+    revision: '2020-04-17',
+    action: 'Details',
+  },
+  {
+    sort: 'Cible in Basic English',
+    language: 'ENG',
+    type: 'Bible',
+    source: 'eBible',
+    license: 'CC-BY-SA',
+    revision: '2020-04-20',
+    action: 'Details',
+  },
+  {
+    sort: 'Dible in Basic English',
+    language: 'ENG',
+    type: 'Bible',
+    source: 'eBible',
+    license: 'CC-BY-SA',
+    revision: '2020-04-17',
+    action: 'Details',
+  },
+  {
+    sort: 'Eible in Basic English',
+    language: 'ENG',
+    type: 'Bible',
+    source: 'eBible',
+    license: 'CC-BY-SA',
+    revision: '2020-04-17',
+    action: 'Details',
+  },
+  {
+    sort: 'Fible in Basic English',
+    language: 'ENG',
+    type: 'Bible',
+    source: 'eBible',
+    license: 'CC-BY-SA',
+    revision: '2022-04-17',
+    action: 'Details',
+  },
+  {
+    sort: 'Gible in Basic English',
+    language: 'ENG',
+    type: 'Bible',
+    source: 'eBible',
+    license: 'CC-BY-SA',
+    revision: '2020-04-23',
+    action: 'Details',
+  },
+];
 
 export function EntriesDataTable(_props: IProps) {
   const colorMode = useColorModeContext()
   const [dataList] = useState<Data[]>([...sampleDataList])
   const cellsConfig = getTblCellConfig(colorMode.getColor)
   return (
-    <DataTable expandableRowOnMobile={true} className="entries-tbl-container" headCells={cellsConfig} rows={dataList} />
-  )
+    <DataTable
+      expandableRowOnMobile={true}
+      className="entries-tbl-container"
+      headCells={cellsConfig}
+      rows={dataList}
+    />
+  );
 }
-export default EntriesDataTable
+export default EntriesDataTable;

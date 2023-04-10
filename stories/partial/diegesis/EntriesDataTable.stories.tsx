@@ -4,28 +4,26 @@ import { ThemeProvider } from '../../../packages/ui-kit/src';
 import EntriesDataTable from '../../../packages/ui-kit/src/diegesis/entries/EntriesDataTable';
 import { buildDocs } from '../../common';
 
-
 export default {
-    title: 'Partial/Diegesis/Entries',
-    component: EntriesDataTable,
-    decorators: [
-        (Story) => (
-            <div>
-                <ThemeProvider>
-                    <Story />
-                </ThemeProvider>
-            </div>
-        ),
-    ],
+  title: 'Partial/Diegesis/Entries',
+  component: EntriesDataTable,
+  decorators: [
+    (Story) => (
+      <div>
+        <ThemeProvider>
+          <Story />
+        </ThemeProvider>
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof EntriesDataTable>;
 
-const EntriesDataTableTemplate: ComponentStory<typeof EntriesDataTable> = args => (
-    <EntriesDataTable {...args} />
-);
+const EntriesDataTableTemplate: ComponentStory<typeof EntriesDataTable> = (
+  args,
+) => <EntriesDataTable {...args} />;
 
 export const entriesDataTableCode = EntriesDataTableTemplate.bind({});
-entriesDataTableCode.args = {
-};
+entriesDataTableCode.args = {};
 entriesDataTableCode.parameters = buildDocs(`
 interface IProps {
 }
@@ -111,12 +109,8 @@ export function EntriesDataTable(props: IProps){
   )
 }
 export default EntriesDataTable
-`)
-
+`);
 
 export const entriesDataTableUsage = EntriesDataTableTemplate.bind({});
-entriesDataTableUsage.args = {
-};
-entriesDataTableUsage.parameters = buildDocs(<EntriesDataTable />)
-
-
+entriesDataTableUsage.args = {};
+entriesDataTableUsage.parameters = buildDocs(<EntriesDataTable />);

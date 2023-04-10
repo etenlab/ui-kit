@@ -27,17 +27,14 @@ type WordTableProps = {
   items: Item[];
   label_1: string;
   label_2: string | React.ReactNode;
-  
 };
 
 export function WordTable({ items, label_1, label_2 }: WordTableProps) {
-  const isLabel2String = typeof label_2 === 'string'
-  if (!isLabel2String && !(React.isValidElement(label_2))) {
-    throw new Error(
-      'label_2 must be either string or valid React element',
-    );
+  const isLabel2String = typeof label_2 === 'string';
+  if (!isLabel2String && !React.isValidElement(label_2)) {
+    throw new Error('label_2 must be either string or valid React element');
   }
-  
+
   return (
     <div>
       <Grid container sx={{ py: '14px' }}>
@@ -47,13 +44,15 @@ export function WordTable({ items, label_1, label_2 }: WordTableProps) {
           </Typography>
         </Grid>
         <Grid item xs={7}>
-          {
-            isLabel2String
-            ? <Typography variant="subtitle1" sx={{ color: '#8F8F8F' }}>
-                  {label_2}
-              </Typography>
-              : <Box display={'flex'} width={1} justifyContent='flex-end'>{label_2}</Box>
-          }
+          {isLabel2String ? (
+            <Typography variant="subtitle1" sx={{ color: '#8F8F8F' }}>
+              {label_2}
+            </Typography>
+          ) : (
+            <Box display={'flex'} width={1} justifyContent="flex-end">
+              {label_2}
+            </Box>
+          )}
         </Grid>
       </Grid>
       <Divider />
