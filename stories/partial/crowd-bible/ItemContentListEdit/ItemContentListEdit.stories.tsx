@@ -34,7 +34,7 @@ type VotableContent = {
   upVotes: number;
   downVotes: number;
   id: string | null;
-  ballotId: string | null;
+  candidateId: string | null;
 };
 
 type VotableItem = {
@@ -49,7 +49,7 @@ const selectedPhrase: VotableItem = {
     downVotes: 1,
     upVotes: 2,
     id: '1234',
-    ballotId: '2345',
+    candidateId: '2345',
   },
   contents: [
     {
@@ -57,14 +57,14 @@ const selectedPhrase: VotableItem = {
       upVotes: 10,
       downVotes: 11,
       id: '1234a',
-      ballotId: '2345a',
+      candidateId: '2345a',
     },
     {
       content: 'some content11 long long long long long long long long',
       upVotes: 10,
       downVotes: 11,
       id: '1234b',
-      ballotId: '2345b',
+      candidateId: '2345b',
     },
   ],
   contentElectionId: '3456e',
@@ -77,8 +77,8 @@ Primary.args = {
   buttonText: 'New Definition',
   changeContentValue: (definitionId, newContentValue) =>
     alert(`changeContentValue: ${definitionId} ${newContentValue}`),
-  changeContentVotes: (ballotId, upOrDown) =>
-    alert(`changeContentVotes: ${ballotId} ${upOrDown}`),
+  changeContentVotes: (candidateId, upOrDown) =>
+    alert(`changeContentVotes: ${candidateId} ${upOrDown}`),
   addContent: (newContentValue) => alert(`addContent ${newContentValue}`),
 };
 
@@ -93,8 +93,8 @@ Primary.parameters = {
           changeContentValue={(definitionId, newContentValue) =>
             alert(`changeContentValue: ${definitionId} ${newContentValue}`)
           }
-          changeContentVotes={(ballotId, upOrDown) =>
-            alert(`changeContentVotes: ${ballotId} ${upOrDown}`)
+          changeContentVotes={(candidateId, upOrDown) =>
+            alert(`changeContentVotes: ${candidateId} ${upOrDown}`)
           }
           addContent={(newContentValue) =>
             alert(`addContent ${newContentValue}`)

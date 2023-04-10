@@ -34,7 +34,7 @@ type VotableContent = {
   upVotes: number;
   downVotes: number;
   id: string | null;
-  ballotId: string | null;
+  candidateId: string | null;
 };
 
 type VotableItem = {
@@ -48,7 +48,7 @@ const items: Array<VotableItem> = [
   {
     title: {
       id: '1234abcd',
-      ballotId: '2345a',
+      candidateId: '2345a',
       content: 'title content title content title content',
       downVotes: 1,
       upVotes: 2,
@@ -56,14 +56,14 @@ const items: Array<VotableItem> = [
     contents: [
       {
         id: '3456b',
-        ballotId: '4567b',
+        candidateId: '4567b',
         content: 'some content1',
         upVotes: 10,
         downVotes: 11,
       },
       {
         id: '3456c',
-        ballotId: '4567c',
+        candidateId: '4567c',
         content: 'some content11',
         upVotes: 10,
         downVotes: 11,
@@ -74,7 +74,7 @@ const items: Array<VotableItem> = [
   {
     title: {
       id: '1234d',
-      ballotId: '2345d',
+      candidateId: '2345d',
       content: 'title content2 title content2 title content2',
       downVotes: 21,
       upVotes: 22,
@@ -82,7 +82,7 @@ const items: Array<VotableItem> = [
     contents: [
       {
         id: '3456e',
-        ballotId: '4567e',
+        candidateId: '4567e',
         content: 'some content4',
         upVotes: 30,
         downVotes: 31,
@@ -93,7 +93,7 @@ const items: Array<VotableItem> = [
   {
     title: {
       id: '1234f',
-      ballotId: '2345f',
+      candidateId: '2345f',
       content:
         'title content3 title content3 title content3 title content 3title content3',
       downVotes: 31,
@@ -102,7 +102,7 @@ const items: Array<VotableItem> = [
     contents: [
       {
         id: '3456f',
-        ballotId: '4567f',
+        candidateId: '4567f',
         content: 'some content4',
         upVotes: 30,
         downVotes: 31,

@@ -7,7 +7,7 @@ type VotableContent = {
   upVotes: number;
   downVotes: number;
   id: string | null;
-  ballotId: string | null; //for voting
+  candidateId: string | null;
 };
 
 type VotableItem = {
@@ -19,8 +19,8 @@ type VotableItem = {
 type ItemsClickableListProps = {
   items: Array<VotableItem>;
   setSelectedItem: (item: VotableItem) => void;
-  setDislikeItem: (ballotId: string | null) => void;
-  setLikeItem: (ballotId: string | null) => void;
+  setDislikeItem: (candidateId: string | null) => void;
+  setLikeItem: (candidateId: string | null) => void;
 };
 
 export function ItemsClickableList({
@@ -49,8 +49,8 @@ export function ItemsClickableList({
               dislike={false}
               likeCount={it.title.upVotes}
               dislikeCount={it.title.downVotes}
-              setDislike={() => setDislikeItem(it.title.ballotId)}
-              setLike={() => setLikeItem(it.title.ballotId)}
+              setDislike={() => setDislikeItem(it.title.candidateId)}
+              setLike={() => setLikeItem(it.title.candidateId)}
             ></VoteButtonGroup>
           </Box>
         </Box>

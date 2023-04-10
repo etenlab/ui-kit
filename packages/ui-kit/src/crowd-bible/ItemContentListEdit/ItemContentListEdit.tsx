@@ -22,7 +22,7 @@ type VotableContent = {
   upVotes: number;
   downVotes: number;
   id: string | null;
-  ballotId: string | null;
+  candidateId: string | null;
 };
 
 type VotableItem = {
@@ -111,10 +111,10 @@ export function ItemContentListEdit({
               like={false}
               dislike={false}
               setDislike={() =>
-                changeContentVotes(item.contents[idx].ballotId, 'downVote')
+                changeContentVotes(item.contents[idx].candidateId, 'downVote')
               }
               setLike={() =>
-                changeContentVotes(item.contents[idx].ballotId, 'upVote')
+                changeContentVotes(item.contents[idx].candidateId, 'upVote')
               }
             />
           </div>
