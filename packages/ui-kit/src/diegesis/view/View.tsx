@@ -1,12 +1,12 @@
-import { Box, Container, Stack, Typography } from '@mui/material';
+import { Box, Container, Stack, Typography, styled } from '@mui/material';
 import React, { useState } from 'react';
 import PageFooter from '../PageFooter';
 import PageHeader from '../PageHeader';
 import SideNav from '../SideNav';
 import AboutContentSection from '../about/AboutContentSection';
-import './View.css';
 import SelectOptions from '../SelectOptions';
 import { BackButton } from '../BackButton';
+import PageTitleTypo from '../styleds/PageTitleTypo';
 
 interface IProps {}
 
@@ -19,7 +19,7 @@ const dataAboutContentSection1 = {
 };
 //#endregion
 
-function ViewPage(props: IProps) {
+function ViewPage(_props: IProps) {
   const [isSideNavOpen, setSideNavOpenStatus] = useState(false);
   return (
     <Box component={'div'} id="view-page">
@@ -30,29 +30,24 @@ function ViewPage(props: IProps) {
           setSideNavOpenStatus(false);
         }}
       />
-      <Container className="header-section">
-        <Stack justifyContent={'flex-start'}>
-          <BackButton className="back-btn show-xs" />
-        </Stack>
-        <Typography variant={'h1'} className="page-title">
-          Bible in Basic English
-        </Typography>
-        <Stack
-          className="mt-2 mb-2 controls-section"
+      <StyledHeaderContainer className="header-section">
+        <StyledBackBtnContainer>
+          <BackButton />
+        </StyledBackBtnContainer>
+        <PageTitleTypo variant={'h1'}>Bible in Basic English</PageTitleTypo>
+        <StyledActionControlContainer
           direction={'row'}
           alignItems={'center'}
           justifyContent={'flex-start'}
         >
-          <SelectOptions label="Gen" options={[]} onChange={() => {}} />
-        </Stack>
+          <StyledSelectOptions>
+            <SelectOptions label="Gen" options={[]} onChange={() => {}} />
+          </StyledSelectOptions>
+        </StyledActionControlContainer>
         <br />
-        <Stack direction={'row'} className="divider mb-2"></Stack>
+        <StyledDivider direction={'row'}></StyledDivider>
         <br />
-        <Stack
-          alignSelf={'center'}
-          alignItems={'center'}
-          sx={{ paddingBottom: '1.5rem', borderBottom: '1px solid #E3E3D9' }}
-        >
+        <StyledTitleContainer>
           <Typography
             variant="h2"
             fontStyle={'italic'}
@@ -70,57 +65,106 @@ function ViewPage(props: IProps) {
           >
             Genesis
           </Typography>
-        </Stack>
-      </Container>
+        </StyledTitleContainer>
+      </StyledHeaderContainer>
       <Container>
-        <Container className="inner-section">
+        <StyledContentContainer>
           <AboutContentSection
-            className="no-padding hide-ul"
             title={dataAboutContentSection1.title}
             description={dataAboutContentSection1.description}
             points={dataAboutContentSection1.points}
           />
-          <Typography
-            variant="h1"
-            textTransform={'none'}
-            className="diegesis-quote"
-          >
-            “Diegesis is a place to find Bibles and related resources, in a
-            variety of formats, released under open licences.”
-          </Typography>
+          <Container>
+            <Typography
+              variant="h1"
+              textTransform={'none'}
+              paddingTop={'25px'}
+              paddingBottom={'35px'}
+              fontFamily={'Noto Serif Display'}
+              color={'text.darker-gray'}
+            >
+              “Diegesis is a place to find Bibles and related resources, in a
+              variety of formats, released under open licences.”
+            </Typography>
+          </Container>
           <AboutContentSection
-            className="no-padding hide-ul"
-            title={dataAboutContentSection1.title}
-            description={dataAboutContentSection1.description}
-            points={dataAboutContentSection1.points}
-          />
-          <br />
-          <AboutContentSection
-            className="no-padding hide-ul"
-            title={dataAboutContentSection1.title}
-            description={dataAboutContentSection1.description}
-            points={dataAboutContentSection1.points}
-          />
-          <br />
-          <AboutContentSection
-            className="no-padding hide-ul"
             title={dataAboutContentSection1.title}
             description={dataAboutContentSection1.description}
             points={dataAboutContentSection1.points}
           />
           <br />
           <AboutContentSection
-            className="no-padding hide-ul"
+            title={dataAboutContentSection1.title}
+            description={dataAboutContentSection1.description}
+            points={dataAboutContentSection1.points}
+          />
+          <br />
+          <AboutContentSection
+            title={dataAboutContentSection1.title}
+            description={dataAboutContentSection1.description}
+            points={dataAboutContentSection1.points}
+          />
+          <br />
+          <AboutContentSection
             title={dataAboutContentSection1.title}
             description={dataAboutContentSection1.description}
             points={dataAboutContentSection1.points}
           />
           <br />
           <br />
-        </Container>
+        </StyledContentContainer>
       </Container>
       <PageFooter />
     </Box>
   );
 }
+
+//#region styled components
+const StyledHeaderContainer = styled(Container)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    paddingTop: '20px',
+  },
+}));
+const StyledBackBtnContainer = styled(Stack)(({ theme }) => ({
+  display: 'none',
+  flexDirection: 'row',
+  justifySelf: 'flex-start',
+  [theme.breakpoints.down('sm')]: {
+    display: 'flex',
+    marginTop: '20px',
+    marginBottom: '20px',
+  },
+}));
+const StyledActionControlContainer = styled(Stack)(({ theme }) => ({
+  marginTop: '1.2rem',
+  marginBottom: '1.2rem',
+  padding: '20px',
+  backgroundColor: theme.palette.background['light-gray'],
+  width: '100%',
+}));
+const StyledSelectOptions = styled('div')(({ theme }) => ({
+  minWidth: '272px',
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+  },
+}));
+const StyledDivider = styled(Stack)(({ theme }) => ({
+  height: '3px',
+  backgroundColor: theme.palette.background['turquoise-light'],
+  marginBottom: '1.2rem',
+}));
+const StyledTitleContainer = styled(Stack)(({ theme }) => ({
+  alignSelf: 'center',
+  alignItems: 'center',
+  paddingBottom: '1.5rem',
+  borderBottom: `1px solid ${theme.palette.background['light-gray2']}`,
+}));
+const StyledContentContainer = styled(Container)(({ theme }) => ({
+  padding: '0px 10%',
+  [theme.breakpoints.down('sm')]: {
+    padding: 0,
+  },
+}));
+//#endregion
+
 export default ViewPage;

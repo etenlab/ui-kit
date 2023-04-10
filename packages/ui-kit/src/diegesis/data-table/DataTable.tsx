@@ -11,8 +11,7 @@ import TableSortLabel from '@mui/material/TableSortLabel';
 import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
 import { FiChevronDown } from 'react-icons/fi';
-import './DataTable.css';
-import { Collapse, Stack, Typography } from '@mui/material';
+import { Collapse, Stack, Typography, styled } from '@mui/material';
 
 type Order = 'asc' | 'desc';
 
@@ -75,7 +74,11 @@ function TableHeaderWrapper(props: TableHeaderProps) {
     };
 
   return (
-    <TableHead>
+    <TableHead
+      sx={(theme) => ({
+        borderBottom: `3px solid ${theme.palette.background['turquoise-light']}`,
+      })}
+    >
       <TableRow>
         {headCells.map((headCell, idx) => (
           <TableCell
@@ -84,7 +87,7 @@ function TableHeaderWrapper(props: TableHeaderProps) {
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
-            <TableSortLabel
+            <StyledTableSortLabel
               IconComponent={FiChevronDown}
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
@@ -96,7 +99,7 @@ function TableHeaderWrapper(props: TableHeaderProps) {
                   {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
                 </Box>
               ) : null}
-            </TableSortLabel>
+            </StyledTableSortLabel>
           </TableCell>
         ))}
       </TableRow>
@@ -120,7 +123,20 @@ function TableRowWrapper({
   return (
     <React.Fragment key={rowKey}>
       <TableRow
-        className={`table-row ${showDetails ? 'active' : ''}`}
+        sx={(theme) => ({
+          '.MuiTableCell-root': showDetails
+            ? {
+                borderTop: `4px solid ${theme.palette.background['turquoise-light']}`,
+                borderBottom: `1px solid ${theme.palette.background['light-gray2']}`,
+              }
+            : {},
+          ...(showDetails
+            ? {
+                borderBottom: `1px solid ${theme.palette.background['light-gray2']}`,
+                fontSize: '2.8rem',
+              }
+            : {}),
+        })}
         key={`row-${rowKey}`}
         onClick={() => {
           if (expandableRowOnMobile && window.innerWidth <= 414) {
@@ -135,7 +151,6 @@ function TableRowWrapper({
               component={'td'}
               scope={'row'}
               padding={headCell.disablePadding ? 'none' : 'normal'}
-              // padding={[0, lastColumnIdx].includes(cellIdx) ? 'none' : 'normal'}
               align={headCell.numeric ? 'right' : 'left'}
             >
               {headCell.render
@@ -148,22 +163,26 @@ function TableRowWrapper({
       {expandableRowOnMobile ? (
         <TableRow
           key={`record-detail-${rowKey}`}
-          className={`row-detail ${showDetails ? 'active' : ''}`}
+          sx={(theme) => ({
+            '.MuiTableCell-root': showDetails
+              ? {
+                  borderBottom: `4px solid ${theme.palette.background['turquoise-light']}`,
+                }
+              : { borderBottom: 'none' },
+            '.MuiTypography-caption': showDetails
+              ? { color: theme.palette.text['middle-gray'] }
+              : {},
+          })}
         >
           <TableCell colSpan={headCells.length} padding="none">
-            <Collapse
-              className="show-xs"
-              in={showDetails}
-              timeout="auto"
-              unmountOnExit
-            >
+            <Collapse in={showDetails} timeout="auto" unmountOnExit>
               <Box sx={{ padding: '1rem 0rem' }}>
                 <Stack
                   direction={'row'}
                   alignItems={'center'}
                   justifyContent={'space-between'}
                   flexWrap={'wrap'}
-                  className="full-width"
+                  width={'100%'}
                 >
                   {headCells.slice(1).map((headCell, cellIdx) => {
                     return (
@@ -172,7 +191,7 @@ function TableRowWrapper({
                         flexWrap={'nowrap'}
                         alignItems={'center'}
                         direction={'row'}
-                        className="mr-1"
+                        marginRight={'0.8rem'}
                       >
                         {headCell.label ? (
                           <Typography variant="caption" className="">
@@ -212,7 +231,6 @@ export default function DataTable(props: IDataTableProps) {
   const {
     headCells,
     rows = [],
-    className,
     defaultSortCellId,
     expandableRowOnMobile,
   } = props;
@@ -222,7 +240,7 @@ export default function DataTable(props: IDataTableProps) {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleRequestSort = (
-    event: React.MouseEvent<unknown>,
+    _event: React.MouseEvent<unknown>,
     property: string,
   ) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -242,10 +260,7 @@ export default function DataTable(props: IDataTableProps) {
   };
 
   return (
-    <Box
-      sx={{ width: '100%' }}
-      className={`diegesis-tbl-container ${className}`}
-    >
+    <Box sx={{ width: '100%' }}>
       <Paper elevation={0} sx={{ width: '100%', mb: 2 }}>
         <TableContainer>
           <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
@@ -270,7 +285,7 @@ export default function DataTable(props: IDataTableProps) {
             </TableBody>
           </Table>
         </TableContainer>
-        <TablePagination
+        <StyledTablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
           count={rows.length}
@@ -283,3 +298,79 @@ export default function DataTable(props: IDataTableProps) {
     </Box>
   );
 }
+
+//#region styled components
+const StyledTableSortLabel = styled(TableSortLabel)(({ theme }) => ({
+  fontSize: '0.9rem',
+  color: theme.palette.text['middle-gray'],
+  fontWeight: 400,
+  lineHeight: '0.9rem',
+  fontFamily: 'helvetica',
+  '&.Mui-active': {
+    color: theme.palette.text['middle-gray'],
+    '.MuiTableSortLabel-icon': {
+      color: theme.palette.text['turquoise-light'],
+    },
+  },
+  ':focus': {
+    color: theme.palette.text['middle-gray'],
+  },
+  '.MuiTableSortLabel-icon': {
+    color: theme.palette.text['turquoise-light'],
+  },
+}));
+const StyledTablePagination = styled<any>(TablePagination)(({ theme }) => ({
+  marginTop: '0.5rem',
+  '.MuiTablePagination-actions': {
+    '.MuiIconButton-root': {
+      padding: '0px',
+      color: theme.palette.text['turquoise-light'],
+    },
+    '.MuiIconButton-root.Mui-disabled': {
+      color: theme.palette.text['light-gray2'],
+    },
+    '.MuiSvgIcon-root': {
+      height: '2.1rem',
+      width: '2.1rem',
+    },
+  },
+  '.MuiInputBase-root': {
+    padding: '3px',
+    border: '1px solid',
+  },
+  [theme.breakpoints.down('sm')]: {
+    marginTop: '0.8rem',
+    '.MuiToolbar-root': {
+      '.MuiTablePagination-spacer': {
+        display: 'none',
+      },
+    },
+    '.MuiTablePagination-toolbar': {
+      minHeight: '100px',
+      position: 'relative',
+      '.MuiInputBase-root': {
+        alignSelf: 'end',
+        marginBottom: '2%',
+        marginRight: '20%',
+      },
+    },
+    '.MuiTablePagination-selectLabel': {
+      alignSelf: 'end',
+      marginLeft: '20%',
+      paddingTop: '7%',
+    },
+    '.MuiTablePagination-displayedRows': {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      margin: 0,
+      marginTop: '0.3rem',
+    },
+    '.MuiTablePagination-actions': {
+      position: 'absolute',
+      right: 0,
+      top: 0,
+    },
+  },
+}));
+//#endregion

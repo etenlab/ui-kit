@@ -1,6 +1,5 @@
-import { MenuItem, Select } from '@mui/material';
+import { MenuItem, Select, styled } from '@mui/material';
 import React from 'react';
-import { useColorModeContext } from '..';
 
 interface IProps {
   label?: string;
@@ -22,37 +21,14 @@ const MenuProps = {
 
 export const SelectOptions: React.FC<IProps> = (props) => {
   const { options = [], label = '', value, onChange } = props;
-  const colorMode = useColorModeContext();
 
   return (
-    <Select
+    <StyledSelect
       value={value || label}
       onChange={(e) => {
-        if (onChange) onChange(e.target.value);
+        if (onChange) onChange(e.target.value as string);
       }}
       MenuProps={MenuProps}
-      sx={{
-        '& .MuiOutlinedInput-input': {
-          backgroundColor: colorMode.getColor('white'),
-        },
-        '& .MuiSelect-select.Mui-focusVisible': {
-          borderColor: colorMode.getColor('turquoise-light'),
-        },
-        '& .MuiOutlinedInput-notchedOutline': {
-          borderRadius: '0px',
-        },
-        '& .MuiSelect-select': {
-          fontWeight: 500,
-          // fontSize: '20px',
-          fontFamily: 'helvetica',
-        },
-        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-          borderColor: colorMode.getColor('turquoise-light'),
-        },
-        '&.Mui-focusVisible .MuiOutlinedInput-notchedOutline': {
-          borderColor: colorMode.getColor('turquoise-light'),
-        },
-      }}
     >
       <MenuItem value={label} disabled>
         {label}
@@ -62,8 +38,33 @@ export const SelectOptions: React.FC<IProps> = (props) => {
           {option.title}
         </MenuItem>
       ))}
-    </Select>
+    </StyledSelect>
   );
 };
+
+const StyledSelect = styled(Select)(({ theme }) => ({
+  width: '100%',
+  height: '100%',
+  '& .MuiOutlinedInput-input': {
+    backgroundColor: theme.palette.text.white,
+  },
+  '& .MuiSelect-select.Mui-focusVisible': {
+    borderColor: theme.palette.background['turquoise-light'],
+  },
+  '& .MuiOutlinedInput-notchedOutline': {
+    borderRadius: '0px',
+  },
+  '& .MuiSelect-select': {
+    fontWeight: 500,
+    // fontSize: '20px',
+    fontFamily: 'helvetica',
+  },
+  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+    borderColor: theme.palette.background['turquoise-light'],
+  },
+  '&.Mui-focusVisible .MuiOutlinedInput-notchedOutline': {
+    borderColor: theme.palette.background['turquoise-light'],
+  },
+}));
 
 export default SelectOptions;

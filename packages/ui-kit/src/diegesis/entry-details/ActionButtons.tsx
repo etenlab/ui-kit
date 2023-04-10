@@ -3,13 +3,19 @@ import React from 'react';
 import { AiOutlineDownload, AiOutlineFileText } from 'react-icons/ai';
 
 type Props = {};
-export default function ActionButtons(props: Props) {
+export default function ActionButtons(_props: Props) {
   return (
     <Stack
-      direction={'row'}
+      flexDirection={'row'}
       alignItems={'center'}
       justifyContent={'flex-end'}
-      className="full-width action-buttons"
+      sx={(theme) => ({
+        [theme.breakpoints.down('sm')]: {
+          marginTop: '1rem',
+          marginBottom: '1rem',
+          justifyContent: 'space-between',
+        },
+      })}
     >
       <Button
         sx={{
@@ -18,7 +24,7 @@ export default function ActionButtons(props: Props) {
           textTransform: 'none',
           borderRadius: '2rem',
           padding: '0.8rem',
-          minWidth: '12rem',
+          width: '47%',
           marginRight: '1rem',
         }}
         startIcon={<AiOutlineFileText />}
@@ -35,7 +41,7 @@ export default function ActionButtons(props: Props) {
           textTransform: 'none',
           borderRadius: '2rem',
           padding: '0.8rem',
-          minWidth: '12rem',
+          width: '47%',
         }}
         startIcon={<AiOutlineDownload />}
         variant={'contained'}
