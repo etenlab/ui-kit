@@ -25,7 +25,7 @@ export function NodeDetails({
   const { typesToExclude, filterHandler } = useFilter();
 
   const groupedByType = () => {
-    return (node?.nodeRelationships ?? []).reduce(
+    return (node?.toNodeRelationships ?? []).reduce(
       (prev: Record<string, GroupedItem>, rel) => {
         if (!prev[rel.relationship_type]) {
           prev[rel.relationship_type] = {
@@ -42,7 +42,7 @@ export function NodeDetails({
   };
 
   const filteredRelationships = useMemo(() => {
-    return node?.nodeRelationships?.filter(
+    return node?.toNodeRelationships?.filter(
       (rel) => !typesToExclude.includes(rel.relationship_type),
     );
   }, [node, typesToExclude]);
@@ -53,7 +53,7 @@ export function NodeDetails({
         <>
           <Box display={'flex'} flexDirection={'row'} gap={'20px'}>
             <Typography variant="body2">
-              Total Relationships: {node?.nodeRelationships?.length}
+              Total Relationships: {node?.toNodeRelationships?.length}
             </Typography>
             <Typography variant="body2">
               Showing: {filteredRelationships?.length}
