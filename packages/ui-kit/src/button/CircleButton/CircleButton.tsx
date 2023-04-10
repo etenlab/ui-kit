@@ -22,7 +22,7 @@ export function CircleButton({
           borderRadius: '50%',
           width: circleSize,
           height: circleSize,
-          backgroundColor: (theme) =>
+          backgroundColor: (theme: unknown | any) =>
             (theme.palette[color as keyof typeof theme.palette] as PaletteColor)
               .main,
         }}

@@ -1,14 +1,13 @@
-import { Container } from '@mui/material';
+import { Container, styled } from '@mui/material';
 import { Stack } from '@mui/system';
 import React from 'react';
 import StatWithDescription from './StatWithDescription';
-import './Home.css';
 
 interface IProps {}
-export function StatSection(props: IProps) {
+export function StatSection(_props: IProps) {
   return (
-    <Container className="stat-section">
-      <Stack
+    <StyledContainer>
+      <StyledInnerContainer
         direction={'row'}
         alignItems={'center'}
         justifyContent={'center'}
@@ -29,8 +28,21 @@ export function StatSection(props: IProps) {
           category={'contributors'}
           description={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lectus sem, dapibus a sapien condimentum.`}
         />
-      </Stack>
-    </Container>
+      </StyledInnerContainer>
+    </StyledContainer>
   );
 }
+
+const StyledContainer = styled(Container)(({ theme }) => ({
+  padding: '50px 0px',
+  [theme.breakpoints.down('sm')]: {
+    padding: '30px 0px',
+  },
+}));
+const StyledInnerContainer = styled(Stack)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    flexDirection: 'column',
+    gap: 0,
+  },
+}));
 export default StatSection;

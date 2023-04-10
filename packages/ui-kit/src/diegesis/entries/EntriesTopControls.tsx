@@ -1,56 +1,44 @@
-import { Chip, Stack, Typography } from '@mui/material';
+import { Box, Chip, Stack, Typography, styled } from '@mui/material';
 import React, { useState } from 'react';
 import SearchBox from '../SearchBox';
-import './Entries.css';
 import { CustomTab, CustomTabs } from '../Tab';
 import SelectOptions from '../SelectOptions';
-import { useColorModeContext } from '../../ThemeProvider';
+import PageTitleTypo from '../styleds/PageTitleTypo';
 
 interface IProps {}
 
-export function EntriesTopControls(props: IProps) {
+export function EntriesTopControls(_props: IProps) {
   const [curTab, setCurTab] = useState(0);
-  const colorMode = useColorModeContext();
   return (
-    <Stack
-      direction={'column'}
-      alignItems={'flex-start'}
-      className="controls-container"
-    >
-      <Stack direction={'row'} alignItems={'center'} className="">
-        <Typography variant={'h1'} className="page-title mr-2">
+    <Stack direction={'column'} alignItems={'flex-start'}>
+      <Stack direction={'row'} alignItems={'center'} width={'100%'}>
+        <PageTitleTypo variant={'h1'} marginRight={'0.5rem'}>
           Entries
-        </Typography>
-        <SearchBox
-          placeholder="Bible in Basic English"
-          className={'mx-1 hide-xs'}
-        />
+        </PageTitleTypo>
+        <StyledDeviceSpecific showOnSmallDevice={false}>
+          <SearchBox placeholder="Bible in Basic English" />
+        </StyledDeviceSpecific>
         <CustomTabs
-          getColor={colorMode.getColor}
-          className=""
           value={curTab}
           onClick={() => {
             setCurTab(curTab === 1 ? 0 : 1);
           }}
         >
-          <CustomTab
-            getColor={colorMode.getColor}
-            value={1}
-            label="Advanced search with filters"
-          />
+          <CustomTab value={1} label="Advanced search with filters" />
         </CustomTabs>
       </Stack>
-      <Stack
-        className={`tab-content ${curTab === 1 ? 'show' : 'hide'}`}
-        direction={'column'}
-        alignItems={'flex-start'}
-        justifyContent={'center'}
-      >
+      <StyledTabContent show={curTab === 1 ? true : false}>
         <Stack
-          direction={'row'}
+          flexDirection="row"
           alignItems={'center'}
           alignSelf={'stretch'}
           justifyContent={'space-between'}
+          gap={2}
+          sx={(theme) => ({
+            [theme.breakpoints.down('sm')]: {
+              flexDirection: 'column',
+            },
+          })}
         >
           <SelectOptions
             label="Organisations"
@@ -61,22 +49,58 @@ export function EntriesTopControls(props: IProps) {
           <SelectOptions label="Type" options={[]} onChange={() => {}} />
           <SelectOptions label="Language" options={[]} onChange={() => {}} />
         </Stack>
-        <Stack direction={'row'} className="tags-container">
-          <Typography variant={'caption'} className="mr-1" color={'GrayText'}>
-            Tags:{' '}
+        <Stack direction={'row'} marginTop={'0.2rem'} flexWrap={'wrap'}>
+          <Typography
+            variant={'caption'}
+            color={'text.light-gray'}
+            marginRight={'0.8rem'}
+          >
+            Tags:
           </Typography>
-          <Chip label="Heading" />
-          <Chip label="Footnotes" />
-          <Chip label="Intro" />
-          <Chip label="Heading" />
-          <Chip label="Strong" />
+          <StyledChip label="Heading" />
+          <StyledChip label="Footnotes" />
+          <StyledChip label="Intro" />
+          <StyledChip label="Heading" />
+          <StyledChip label="Strong" />
         </Stack>
-      </Stack>
-      <SearchBox
-        placeholder="Bible in Basic English"
-        className={'mx-1 show-xs'}
-      />
+      </StyledTabContent>
+      <StyledDeviceSpecific showOnSmallDevice={true}>
+        <SearchBox placeholder="Bible in Basic English" />
+      </StyledDeviceSpecific>
     </Stack>
   );
 }
+
+//#region styled components
+const StyledDeviceSpecific = styled<any>(Box)(
+  ({ theme, showOnSmallDevice }) => ({
+    display: showOnSmallDevice ? 'none' : 'inherit',
+    [theme.breakpoints.down('sm')]: {
+      display: showOnSmallDevice ? 'inherit' : 'none',
+      width: '100%',
+    },
+  }),
+);
+
+const StyledTabContent = styled<any>(Stack)(({ theme, show }) => ({
+  display: show ? 'flex' : 'none',
+  transition: 'all 0.2s ease-in',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  justifyContent: 'center',
+  backgroundColor: theme.palette.background['light-gray'],
+  padding: '20px 25px',
+  width: '100%',
+}));
+
+const StyledChip = styled(Chip)(({ theme }) => ({
+  backgroundColor: theme.palette.background['white'],
+  borderRadius: '5px',
+  marginRight: '8px',
+  marginTop: '8px',
+  fontSize: '14px',
+  fontWeight: 600,
+}));
+//#endregion
+
 export default EntriesTopControls;

@@ -5,28 +5,11 @@ interface IProps extends ButtonProps {
   label: string;
   className?: string;
 }
-const StyledButton = styled(Button)({
-  color: '#fff',
-  minWidth: '312px',
-  minHeight: '70px',
-  paddingLeft: '30px',
-  paddingRight: '30px',
-  backgroundColor: '#60D0B2',
-  fontSize: '21px',
-  textTransform: 'none',
-  borderRadius: '40px',
-  boxShadow: 'none',
-  ':hover': {
-    backgroundColor: '#4EAA91',
-    boxShadow: 'none',
-  },
-});
 export default function HomeSectionActionButton(props: IProps) {
-  const { label, className, color } = props;
+  const { label, color } = props;
 
   return (
     <StyledButton
-      className={className}
       size={'large'}
       variant={'contained'}
       color={color}
@@ -36,3 +19,20 @@ export default function HomeSectionActionButton(props: IProps) {
     </StyledButton>
   );
 }
+
+const StyledButton = styled(Button)(({theme}) => ({
+  color: theme.palette.text.white,
+  minWidth: theme.typography.pxToRem(312),
+  minHeight: theme.typography.pxToRem(70),
+  paddingLeft: theme.typography.pxToRem(30),
+  paddingRight: theme.typography.pxToRem(30),
+  backgroundColor:  theme.palette.background['turquoise-light'],
+  fontSize: theme.typography.pxToRem(21),
+  textTransform: 'none',
+  borderRadius: theme.typography.pxToRem(40),
+  boxShadow: 'none',
+  ":hover": {
+    backgroundColor: theme.palette.background['turquoise-dark'],
+    boxShadow: 'none'
+  }
+}));

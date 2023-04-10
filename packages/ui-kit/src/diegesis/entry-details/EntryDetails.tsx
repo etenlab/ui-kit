@@ -1,11 +1,10 @@
-import { Box, Container, Stack, Typography } from '@mui/material';
+import { Box, Container, Stack, Typography, styled } from '@mui/material';
 import React, { useState } from 'react';
 import PageFooter from '../PageFooter';
 import PageHeader from '../PageHeader';
 import SideNav from '../SideNav';
 import TopControls from './TopControls';
 import DataTable, { HeadCell } from '../data-table/DataTable';
-import './EntryDetails.css';
 import SelectOptions from '../SelectOptions';
 import ActionButtons from './ActionButtons';
 import { BackButton } from '../BackButton';
@@ -31,10 +30,10 @@ const sampleData: IData[] = [
   { key: 'Revision', value: 'engBBE' },
   { key: 'Content', value: '39 OT, 27 NT' },
 ];
-export function EntryDetailPage(props: IProps) {
+export function EntryDetailPage(_props: IProps) {
   const [isSideNavOpen, setSideNavOpenStatus] = useState(false);
   return (
-    <Box component={'div'} id="entry-detail-page">
+    <Box component={'div'}>
       <PageHeader openSideNav={() => setSideNavOpenStatus(true)} />
       <SideNav
         open={isSideNavOpen}
@@ -42,21 +41,21 @@ export function EntryDetailPage(props: IProps) {
           setSideNavOpenStatus(false);
         }}
       />
-      <Container className="controls-section">
+      <br />
+      <Container component={'div'}>
         <TopControls />
       </Container>
-      <Container className="details-section">
-        <Stack direction={'row'} className="divider mt-2"></Stack>
+      <StyledDetailSection>
+        <StyledDivider />
         <DataTable
           expandableRowOnMobile={false}
           headCells={headCells}
           rows={sampleData}
         />
-        <Stack
+        <StyledBookResourceBox
           direction={'column'}
           alignItems={'flex-start'}
           justifyContent={'center'}
-          className="book-resource-box"
         >
           <Typography variant="h3">Book Resources</Typography>
           <SelectOptions
@@ -64,20 +63,92 @@ export function EntryDetailPage(props: IProps) {
             options={[]}
             onChange={() => {}}
           />
-        </Stack>
-        <Stack direction={'row'} className="divider mt-2 mb-2"></Stack>
+        </StyledBookResourceBox>
+        <StyledDivider marginTop={3} marginBottom={3} />
         <Stack
           direction={'column'}
-          className="bottom-action-btn-container full-width"
+          width={'50%'}
+          alignItems={'flex-end'}
+          sx={(theme) => ({
+            marginTop: '50px',
+            marginBottom: '50px',
+            [theme.breakpoints.down('sm')]: {
+              width: '100%',
+              marginTop: '25px',
+              marginBottom: '25px',
+            },
+          })}
         >
           <ActionButtons />
         </Stack>
-        <Stack direction={'row'} className="pb-2">
-          <BackButton className="show-xs" />
-        </Stack>
-      </Container>
+        <StyledBackButtonContainer flexDirection={'row'} className="pb-2">
+          <BackButton />
+        </StyledBackButtonContainer>
+      </StyledDetailSection>
       <PageFooter />
     </Box>
   );
 }
+
+const StyledDetailSection = styled(Container)(({ theme }) => ({
+  marginTop: '3rem',
+  '.MuiTableBody-root .MuiTableRow-root:first-child > .MuiTableCell-root': {
+    padding: '16px',
+    paddingLeft: '0px',
+    color: theme.palette.text['darker-gray'],
+    fontWeight: 700,
+    fontFamily: 'Helvetica',
+    fontSize: '1.1rem',
+  },
+  '.MuiTableHead-root': {
+    display: 'none',
+  },
+  '.MuiTablePagination-root': {
+    display: 'none',
+  },
+  [theme.breakpoints.down('sm')]: {
+    '.MuiTableContainer-root .MuiTable-root': {
+      width: '100%',
+    },
+  },
+}));
+const StyledDivider = styled(Stack)(({ theme }) => ({
+  flexDirection: 'row',
+  height: 3,
+  backgroundColor: theme.palette.background['turquoise-light'],
+}));
+const StyledBookResourceBox = styled(Stack)(({ theme }) => ({
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  justifyContent: 'center',
+  backgroundColor: theme.palette.background['light-gray'],
+  padding: '20px',
+  paddingTop: '25px',
+  '.MuiTypography-h3': {
+    fontWeight: 700,
+    fontFamily: 'Helvetica',
+    marginBottom: '5px',
+  },
+  '.MuiOutlinedInput-root': {
+    width: '272px',
+    '.MuiSelect-outlined': {
+      paddingTop: '10px',
+      paddingBottom: '10px',
+    },
+  },
+  [theme.breakpoints.down('sm')]: {
+    '.MuiOutlinedInput-root': {
+      width: '100%',
+    },
+  },
+}));
+const StyledBackButtonContainer = styled(Stack)(({ theme }) => ({
+  flexDirection: 'row',
+  paddingBottom: '1.5rem',
+  display: 'none',
+  [theme.breakpoints.down('sm')]: {
+    display: 'flex',
+  },
+}));
+
 export default EntryDetailPage;

@@ -1,6 +1,6 @@
 {
   "name": "@eten-lab/ui-kit",
-  "version": "0.3.76",
+  "version": "0.3.78",
   "license": "UNLICENSED",
   "private": false,
   "main": "dist/index.js",
@@ -23,6 +23,7 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@fontsource/inter": "^4.5.15",
+    "@fontsource/noto-serif-display": "^4.5.15",
     "@foobar404/wave": "^2.0.4",
     "@mui/material": "^5.10.5",
     "emoji-picker-react": "^4.4.3",

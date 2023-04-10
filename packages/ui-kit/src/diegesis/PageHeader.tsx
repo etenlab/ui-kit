@@ -1,25 +1,20 @@
 import { Box, Stack, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import React from 'react';
-import AppLogo from './AppLogo';
 import { MenuIcon } from './icons';
-import './Page.css';
-import { useColorModeContext } from '..';
+import { MuiMaterial } from '..';
+import { AppLogo } from './app-logo';
+const { styled } = MuiMaterial;
 
 interface IProps {
   openSideNav?: () => void;
   title?: string;
 }
+
 export function PageHeader(props: IProps) {
   const { openSideNav, title = 'Open source Bibles resources' } = props;
-  const colorMode = useColorModeContext();
   return (
-    <Box
-      display={'flex'}
-      sx={{ position: 'relative', width: '100%' }}
-      alignItems={'center'}
-      className="page-header"
-    >
+    <HeaderWrapper>
       <Container>
         <Stack
           direction={'row'}
@@ -27,29 +22,69 @@ export function PageHeader(props: IProps) {
           justifyContent={'space-between'}
         >
           <Stack direction={'row'} alignItems={'center'}>
-            <AppLogo className={'app-logo'} />
-            <Typography
-              variant="body1"
-              className="header-title"
-              sx={{ color: colorMode.getColor('darker-gray') }}
-            >
+            <StyledAppLogo />
+            <HeaderTitle variant="body1" color={'text.darker-gray'}>
               {title}
-            </Typography>
+            </HeaderTitle>
           </Stack>
         </Stack>
       </Container>
       {openSideNav ? (
-        <Box sx={{ display: 'inline-flex' }} className="nav-btn">
-          <MenuIcon
+        <NavBox>
+          <StyledMenuIcon
             onClick={() => {
               openSideNav();
             }}
           />
-        </Box>
+        </NavBox>
       ) : (
         <></>
       )}
-    </Box>
+    </HeaderWrapper>
   );
 }
+
+//#region styled components
+const HeaderWrapper = styled(Box)(() => ({
+  display: 'flex',
+  position: 'relative',
+  width: '100%',
+  alignItems: 'center',
+  paddingTop: '10px',
+  paddingBottom: '10px',
+}));
+const StyledAppLogo = styled(AppLogo)(({ theme }) => ({
+  marginTop: '5px',
+  [theme.breakpoints.down('sm')]: {
+    width: 'auto',
+    height: '2.1rem',
+  },
+}));
+const HeaderTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: 'Noto Serif Display',
+  marginLeft: '10px',
+  lineHeight: '1.5rem',
+  fontSize: '1.5rem',
+  fontWeight: 'normal',
+  fontStyle: 'italic',
+  [theme.breakpoints.down('sm')]: {
+    display: 'none',
+  },
+}));
+const NavBox = styled(Box)(({ theme }) => ({
+  display: 'inline-flex',
+  position: 'absolute',
+  right: '1.5rem',
+  [theme.breakpoints.down('sm')]: {
+    right: '0px',
+  },
+}));
+const StyledMenuIcon = styled(MenuIcon)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    width: '1.5rem',
+    height: '1.5rem',
+  },
+}));
+//#endregion
+
 export default PageHeader;
