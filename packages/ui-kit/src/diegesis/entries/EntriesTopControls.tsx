@@ -1,12 +1,4 @@
-import {
-  Box,
-  Chip,
-  Stack,
-  StackTypeMap,
-  Typography,
-  styled,
-} from '@mui/material';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { Box, Chip, Stack, Typography, styled } from '@mui/material';
 import React, { useState } from 'react';
 import SearchBox from '../SearchBox';
 import { CustomTab, CustomTabs } from '../Tab';
@@ -80,19 +72,17 @@ export function EntriesTopControls(_props: IProps) {
 }
 
 //#region styled components
-const StyledDeviceSpecific = styled<
-  OverridableComponent<Box<{ showOnSmallDevice: boolean }, 'div'>>
->(Box)(({ theme, showOnSmallDevice }) => ({
-  display: showOnSmallDevice ? 'none' : 'inherit',
-  [theme.breakpoints.down('sm')]: {
-    display: showOnSmallDevice ? 'inherit' : 'none',
-    width: '100%',
-  },
-}));
+const StyledDeviceSpecific = styled<any>(Box)(
+  ({ theme, showOnSmallDevice }) => ({
+    display: showOnSmallDevice ? 'none' : 'inherit',
+    [theme.breakpoints.down('sm')]: {
+      display: showOnSmallDevice ? 'inherit' : 'none',
+      width: '100%',
+    },
+  }),
+);
 
-const StyledTabContent = styled<
-  OverridableComponent<StackTypeMap<{ show: boolean }, 'div'>>
->(Stack)(({ theme, show }) => ({
+const StyledTabContent = styled<any>(Stack)(({ theme, show }) => ({
   display: show ? 'flex' : 'none',
   transition: 'all 0.2s ease-in',
   flexDirection: 'column',

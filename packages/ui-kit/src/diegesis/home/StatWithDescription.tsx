@@ -47,7 +47,7 @@ const StatTypo = styled(Typography)(({ theme }) => ({
   color: theme.palette.text['turquoise-light'],
   fontFamily: 'helvetica',
 }));
-const StatCategoryTypo = styled(Typography)(({  }) => ({
+const StatCategoryTypo = styled(Typography)(() => ({
   fontSize: '28px',
   lineHeight: '28px',
   padding: 0,
