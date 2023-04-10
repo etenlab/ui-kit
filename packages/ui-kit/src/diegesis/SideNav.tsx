@@ -1,15 +1,7 @@
-import {
-  Button,
-  Divider,
-  Stack,
-  StackTypeMap,
-  Typography,
-  styled,
-} from '@mui/material';
+import { Button, Divider, Stack, Typography, styled } from '@mui/material';
 import React from 'react';
 import { CloseIcon } from './icons';
 import { MdAccountCircle } from 'react-icons/md';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
 
 interface INavOption {
   title: string;
@@ -131,9 +123,7 @@ export function SideNav(props: IProps) {
 }
 
 //#region styled components
-const SideNavWrapper = styled<
-  OverridableComponent<StackTypeMap<{ open: boolean }, 'div'>>
->(Stack)(({ theme, open }) => ({
+const SideNavWrapper = styled<any>(Stack)(({ theme, open }) => ({
   flexDirection: 'column',
   alignItems: 'start',
   background: theme.palette.background['light-gray2'],
@@ -154,7 +144,7 @@ const SideNavWrapper = styled<
     width: open ? '100%' : '0rem',
   },
 }));
-const BigNavButton = styled(Button)(({}) => ({
+const BigNavButton = styled(Button)(() => ({
   textTransform: 'none',
   fontSize: '3rem',
   lineHeight: '4.4rem',
@@ -164,7 +154,7 @@ const BigNavButton = styled(Button)(({}) => ({
   display: 'block',
   size: 'large',
 }));
-const MdNavButton = styled(Button)(({}) => ({
+const MdNavButton = styled(Button)(() => ({
   textTransform: 'none',
   fontSize: '1.25rem',
   lineHeight: '1.25rem',

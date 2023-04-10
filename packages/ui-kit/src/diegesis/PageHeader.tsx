@@ -45,7 +45,7 @@ export function PageHeader(props: IProps) {
 }
 
 //#region styled components
-const HeaderWrapper = styled(Box)(({}) => ({
+const HeaderWrapper = styled(Box)(() => ({
   display: 'flex',
   position: 'relative',
   width: '100%',

@@ -27,8 +27,8 @@ export function HomePage(_props: IProps) {
   );
 }
 
-const StyledWrapper = styled('div')(({}) => ({
+const StyledWrapper = styled('div')(() => ({
   position: 'relative',
-  minHeight: '100%'
-}))
+  minHeight: '100%',
+}));
 export default HomePage;
