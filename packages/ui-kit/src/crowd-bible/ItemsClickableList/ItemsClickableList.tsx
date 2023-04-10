@@ -2,23 +2,25 @@ import React from 'react';
 import { Box, ListItemButton, ListItemText } from '@mui/material';
 import { VoteButtonGroup } from '../VoteButtonGroup';
 
-type Content = {
+type VotableContent = {
   content: string;
-  upVote: number;
-  downVote: number;
+  upVotes: number;
+  downVotes: number;
   id: string | null;
+  ballotId: string | null; //for voting
 };
 
-type Item = {
-  title: Content;
-  contents: Content[];
+type VotableItem = {
+  title: VotableContent;
+  contents: VotableContent[];
+  contentElectionId: string | null;
 };
 
 type ItemsClickableListProps = {
-  items: Array<Item>;
-  setSelectedItem: (item: Item) => void;
-  setDislikeItem: (itemid: string) => void;
-  setLikeItem: (itemid: string) => void;
+  items: Array<VotableItem>;
+  setSelectedItem: (item: VotableItem) => void;
+  setDislikeItem: (ballotId: string | null) => void;
+  setLikeItem: (ballotId: string | null) => void;
 };
 
 export function ItemsClickableList({
@@ -45,10 +47,10 @@ export function ItemsClickableList({
               justifyContent="flex-end"
               like={false}
               dislike={false}
-              likeCount={it.title.upVote}
-              dislikeCount={it.title.downVote}
-              setDislike={() => setDislikeItem(it.title.content)}
-              setLike={() => setLikeItem(it.title.content)}
+              likeCount={it.title.upVotes}
+              dislikeCount={it.title.downVotes}
+              setDislike={() => setDislikeItem(it.title.ballotId)}
+              setLike={() => setLikeItem(it.title.ballotId)}
             ></VoteButtonGroup>
           </Box>
         </Box>

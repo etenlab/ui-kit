@@ -29,33 +29,45 @@ const Template: ComponentStory<typeof ItemContentListEdit> = (args) => {
   return <ItemContentListEdit {...args} />;
 };
 
-type Content = {
+type VotableContent = {
   content: string;
-  upVote: number;
-  downVote: number;
+  upVotes: number;
+  downVotes: number;
+  id: string | null;
+  ballotId: string | null;
 };
-type Item = {
-  title: Content;
-  contents: Content[];
+
+type VotableItem = {
+  title: VotableContent;
+  contents: VotableContent[];
+  contentElectionId: string | null;
 };
-const selectedPhrase: Item = {
+
+const selectedPhrase: VotableItem = {
   title: {
     content: 'title content',
-    downVote: 1,
-    upVote: 2,
+    downVotes: 1,
+    upVotes: 2,
+    id: '1234',
+    ballotId: '2345',
   },
   contents: [
     {
       content: 'some content1',
-      upVote: 10,
-      downVote: 11,
+      upVotes: 10,
+      downVotes: 11,
+      id: '1234a',
+      ballotId: '2345a',
     },
     {
       content: 'some content11 long long long long long long long long',
-      upVote: 10,
-      downVote: 11,
+      upVotes: 10,
+      downVotes: 11,
+      id: '1234b',
+      ballotId: '2345b',
     },
   ],
+  contentElectionId: '3456e',
 };
 
 export const Primary = Template.bind({});
@@ -63,8 +75,11 @@ Primary.args = {
   item: selectedPhrase,
   onBack: () => alert('onBack run'),
   buttonText: 'New Definition',
-  changeContent: () => alert('changeContent run'),
-  addContent: () => alert('addContent run'),
+  changeContentValue: (definitionId, newContentValue) =>
+    alert(`changeContentValue: ${definitionId} ${newContentValue}`),
+  changeContentVotes: (ballotId, upOrDown) =>
+    alert(`changeContentVotes: ${ballotId} ${upOrDown}`),
+  addContent: (newContentValue) => alert(`addContent ${newContentValue}`),
 };
 
 Primary.parameters = {
@@ -75,8 +90,15 @@ Primary.parameters = {
           item={selectedPhrase}
           onBack={() => alert('onBack run')}
           buttonText="New Definition"
-          changeContent={() => alert('changeContent run')}
-          addContent={() => alert('addContent run')}
+          changeContentValue={(definitionId, newContentValue) =>
+            alert(`changeContentValue: ${definitionId} ${newContentValue}`)
+          }
+          changeContentVotes={(ballotId, upOrDown) =>
+            alert(`changeContentVotes: ${ballotId} ${upOrDown}`)
+          }
+          addContent={(newContentValue) =>
+            alert(`addContent ${newContentValue}`)
+          }
         />,
       ),
       language: 'jsx',

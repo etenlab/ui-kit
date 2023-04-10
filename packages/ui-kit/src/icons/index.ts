@@ -54,4 +54,4 @@ export {
   TbLayoutRows,
   TbArrowBack,
 } from 'react-icons/tb';
-export { IoChatboxOutline } from 'react-icons/io5';
+export { IoChatboxOutline, IoCloseCircle } from 'react-icons/io5';

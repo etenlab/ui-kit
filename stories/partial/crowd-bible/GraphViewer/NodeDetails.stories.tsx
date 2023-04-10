@@ -118,13 +118,13 @@ const node = {
 export const Primary = Template.bind({});
 Primary.args = {
   node: node,
-  isLoading: false,
+  nodeClickHandler: () => {},
 };
 Primary.parameters = {
   docs: {
     source: {
       code: jsxToString(
-        <NodeDetails node={node} setNodeId={() => {}} isLoading={false} />,
+        <NodeDetails node={node} nodeClickHandler={() => {}} />,
       ),
       language: 'jsx',
       format: true,

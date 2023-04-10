@@ -149,8 +149,8 @@ const nodes = [
 export const Primary = Template.bind({});
 Primary.args = {
   nodes: nodes,
-  isLoading: false,
-  setNodeId: () => {},
+  search: '',
+  nodeClickHandler: () => {},
   setSearch: () => {},
 };
 
@@ -160,8 +160,8 @@ Primary.parameters = {
       code: jsxToString(
         <SearchNode
           nodes={nodes}
-          isLoading={false}
-          setNodeId={() => {}}
+          search={''}
+          nodeClickHandler={() => {}}
           setSearch={() => {}}
         />,
       ),

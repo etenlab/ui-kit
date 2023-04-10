@@ -29,63 +29,86 @@ const Template: ComponentStory<typeof ItemsClickableList> = (args) => {
   return <ItemsClickableList {...args} />;
 };
 
-type Content = {
+type VotableContent = {
   content: string;
-  upVote: number;
-  downVote: number;
+  upVotes: number;
+  downVotes: number;
+  id: string | null;
+  ballotId: string | null;
 };
-type Item = {
-  title: Content;
-  contents: Content[];
+
+type VotableItem = {
+  title: VotableContent;
+  contents: VotableContent[];
+  contentElectionId: string | null;
 };
-const items: Array<Item> = [
+
+// mock data
+const items: Array<VotableItem> = [
   {
     title: {
+      id: '1234abcd',
+      ballotId: '2345a',
       content: 'title content title content title content',
-      downVote: 1,
-      upVote: 2,
+      downVotes: 1,
+      upVotes: 2,
     },
     contents: [
       {
+        id: '3456b',
+        ballotId: '4567b',
         content: 'some content1',
-        upVote: 10,
-        downVote: 11,
+        upVotes: 10,
+        downVotes: 11,
       },
       {
+        id: '3456c',
+        ballotId: '4567c',
         content: 'some content11',
-        upVote: 10,
-        downVote: 11,
+        upVotes: 10,
+        downVotes: 11,
       },
     ],
+    contentElectionId: '987987c',
   },
   {
     title: {
+      id: '1234d',
+      ballotId: '2345d',
       content: 'title content2 title content2 title content2',
-      downVote: 21,
-      upVote: 22,
+      downVotes: 21,
+      upVotes: 22,
     },
     contents: [
       {
+        id: '3456e',
+        ballotId: '4567e',
         content: 'some content4',
-        upVote: 30,
-        downVote: 31,
+        upVotes: 30,
+        downVotes: 31,
       },
     ],
+    contentElectionId: '987987e',
   },
   {
     title: {
+      id: '1234f',
+      ballotId: '2345f',
       content:
         'title content3 title content3 title content3 title content 3title content3',
-      downVote: 31,
-      upVote: 32,
+      downVotes: 31,
+      upVotes: 32,
     },
     contents: [
       {
+        id: '3456f',
+        ballotId: '4567f',
         content: 'some content4',
-        upVote: 30,
-        downVote: 31,
+        upVotes: 30,
+        downVotes: 31,
       },
     ],
+    contentElectionId: '987987f',
   },
 ];
 
