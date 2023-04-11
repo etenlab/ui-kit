@@ -6,14 +6,23 @@ import { Input } from '../Input';
 
 export function SearchInput({
   valid,
+  label,
   ...props
-}: TextFieldProps & { valid?: boolean }) {
+}: TextFieldProps & { valid?: boolean; label?: string }) {
   const InputProps = {
     startAdornment: (
-      <InputAdornment position="start">
-        <CiSearch />
+      <InputAdornment position="start" sx={{ marginRight: '-4px' }}>
+        <CiSearch style={{ fontSize: '24px', strokeWidth: '0.5' }} />
       </InputAdornment>
     ),
   };
-  return <Input withLegend={true} InputProps={InputProps} {...props} />;
+
+  return (
+    <Input
+      withLegend={false}
+      InputProps={InputProps}
+      placeholder={label}
+      {...props}
+    />
+  );
 }

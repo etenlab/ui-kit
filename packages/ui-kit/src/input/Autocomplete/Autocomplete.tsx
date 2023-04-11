@@ -4,11 +4,26 @@ import {
   Autocomplete as MuiAutocomplete,
   AutocompleteProps,
   IconButton,
+  Popper,
+  styled,
 } from '@mui/material';
+
+import { autocompleteClasses } from '@mui/material/Autocomplete';
 
 import { BiChevronDown, BiChevronUp } from '../../icons';
 
 import { Input } from '../Input';
+
+const StyledPopper = styled(Popper)({
+  [`& .${autocompleteClasses.listbox}`]: {
+    boxSizing: 'border-box',
+    width: '100%',
+    '& ul': {
+      padding: 0,
+      margin: 0,
+    },
+  },
+});
 
 export function Autocomplete<
   T,
@@ -49,6 +64,7 @@ export function Autocomplete<
       blurOnSelect="touch"
       onOpen={handleOpen}
       onClose={handleClose}
+      PopperComponent={StyledPopper}
       renderInput={(params) => (
         <Input
           {...params}
