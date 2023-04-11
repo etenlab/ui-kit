@@ -3,21 +3,22 @@ import React from 'react';
 import { CloseIcon } from './icons';
 import { MdAccountCircle } from 'react-icons/md';
 
-interface INavOption {
+export type NavOption = {
   title: string;
   href?: string;
   variant: 'big' | 'bordered' | 'small';
   icon?: JSX.Element;
   onClick?: () => void;
-}
-interface IProps {
+};
+export type SideNavProps = {
   open: boolean;
+  closeBtnText?: string;
   close: () => void;
-  options?: INavOption[];
-}
+  options?: NavOption[];
+};
 
 //#region data
-const defaultOptions: INavOption[] = [
+const defaultOptions: NavOption[] = [
   { title: 'Home', variant: 'big', href: '/' },
   { title: 'Entries', variant: 'big', href: '/' },
   { title: 'Technology', variant: 'big', href: '/' },
@@ -31,10 +32,14 @@ const defaultOptions: INavOption[] = [
   { title: 'Terms & conditions', variant: 'small', href: '/' },
   { title: 'Privacy policy', variant: 'small', href: '/' },
 ];
+export const MOCK_SIDE_NAV_PROPS: Partial<SideNavProps> = {
+  options: defaultOptions,
+  closeBtnText: 'Close',
+};
 //#endregion
 
-export function SideNav(props: IProps) {
-  const { open, close, options = defaultOptions } = props;
+export function SideNav(props: SideNavProps) {
+  const { open, close } = props;
   return (
     <SideNavWrapper open={open}>
       <Stack
@@ -52,7 +57,7 @@ export function SideNav(props: IProps) {
           fontSize={'1.25rem'}
           lineHeight={'1.25rem'}
         >
-          Close
+          {props.closeBtnText}
         </Typography>
         <CloseIcon />
       </Stack>
@@ -65,7 +70,7 @@ export function SideNav(props: IProps) {
         alignItems={'flex-start'}
         justifyContent={'flex-start'}
       >
-        {options.map((option, oIdx) => {
+        {props.options?.map((option, oIdx) => {
           switch (option.variant) {
             case 'big':
               return (

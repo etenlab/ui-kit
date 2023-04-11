@@ -1,12 +1,12 @@
 import { Stack, Typography, styled } from '@mui/material';
 import React from 'react';
 
-interface IProps {
+export type StatWithDescProps = {
   numbers: number;
   category: string;
   description: string;
-}
-export function StatWithDescription(props: IProps) {
+};
+export function StatWithDescription(props: StatWithDescProps) {
   return (
     <StyledWrapper
       direction={'column'}

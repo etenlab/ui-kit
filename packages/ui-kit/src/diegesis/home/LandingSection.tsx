@@ -3,8 +3,22 @@ import { Stack } from '@mui/system';
 import React from 'react';
 import SectionActionButton from './SectionActionButton';
 
-interface IProps {}
-export function LandingSection(_props: IProps) {
+export type LandingSectionProps = {
+  headingText?: string;
+  actionBtnText?: string;
+  captionText?: string;
+};
+
+//#region sample data
+export const MOCK_LANDING_PROPS: Partial<LandingSectionProps> = {
+  headingText: `Diegesis is a place to find Bibles and related resources, in a variety
+  of formats, released under open licences*.`,
+  captionText: `* In other words, you can use, share, improve and translate them.`,
+  actionBtnText: 'Browse content',
+};
+//#endregion
+
+export function LandingSection(props: LandingSectionProps) {
   return (
     <StyledContainer className="landing-section">
       <Stack
@@ -13,12 +27,11 @@ export function LandingSection(_props: IProps) {
         justifyContent={'center'}
       >
         <StyledTypographyH1 variant="h1">
-          Diegesis is a place to find Bibles and related resources, in a variety
-          of formats, released under open licences*.
+          {props.headingText}
         </StyledTypographyH1>
-        <StyledSectionActionButton label="Browse content" />
+        <StyledSectionActionButton label={props.actionBtnText || ''} />
         <StyledTypographyCaption variant="caption">
-          * In other words, you can use, share, improve and translate them.
+          {props.captionText}
         </StyledTypographyCaption>
       </Stack>
     </StyledContainer>

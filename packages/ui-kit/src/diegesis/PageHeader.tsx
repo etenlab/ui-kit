@@ -6,13 +6,15 @@ import { MuiMaterial } from '..';
 import { AppLogo } from './app-logo';
 const { styled } = MuiMaterial;
 
-interface IProps {
+export type PageHeaderProps = {
   openSideNav?: () => void;
   title?: string;
-}
-
-export function PageHeader(props: IProps) {
-  const { openSideNav, title = 'Open source Bibles resources' } = props;
+};
+export const MOCK_PAGE_HEADER_PROPS: Partial<PageHeaderProps> = {
+  title: 'Open source Bibles resources',
+};
+export function PageHeader(props: PageHeaderProps) {
+  const { openSideNav, title } = props;
   return (
     <HeaderWrapper>
       <Container>
