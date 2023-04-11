@@ -75,12 +75,12 @@ export const colors = {
   },
   'lighter-gray': {
     light: '#707070',
-    dark: '#707070'
+    dark: '#707070',
   },
   'light-gray2': {
     light: '#e3e3d9',
-    dark: '#e3e3d9'
-  }
+    dark: '#e3e3d9',
+  },
 };
 
 export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
@@ -137,16 +137,16 @@ export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
         main: colors['light-yellow'][mode],
       },
       'turquoise-dark': {
-        main: colors['turquoise-dark'][mode]
+        main: colors['turquoise-dark'][mode],
       },
       'turquoise-light': {
-        main: colors['turquoise-light'][mode]
+        main: colors['turquoise-light'][mode],
       },
       'darker-gray': {
-        main: colors['darker-gray'][mode]
+        main: colors['darker-gray'][mode],
       },
       'lighter-gray': {
-        main: colors['lighter-gray'][mode]
+        main: colors['lighter-gray'][mode],
       },
       text: {
         'blue-primary': colors['blue-primary'][mode],
@@ -175,8 +175,8 @@ export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
         'light-gray': colors['light-gray'][mode],
         'turquoise-light': colors['turquoise-light'][mode],
         'turquoise-dark': colors['turquoise-dark'][mode],
-        'white': colors['white'][mode],
-      }
+        white: colors['white'][mode],
+      },
     },
   };
 }

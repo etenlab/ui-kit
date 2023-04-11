@@ -60,7 +60,7 @@ const StyledContentWrapper = styled(Stack)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
     alignItems: 'flex-start',
-    marginTop: '0rem'
+    marginTop: '0rem',
   },
 }));
 const StyledTypoBody1 = styled(Typography)(({ theme }) => ({

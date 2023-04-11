@@ -74,7 +74,7 @@ const AboutDiegesisBox = styled('div')(({ theme }) => ({
     zIndex: 1,
     display: 'inline-block',
     height: '60%',
-    width: '100%'
+    width: '100%',
   },
 }));
 const CoverImgContainer = styled('div')(({ theme }) => ({

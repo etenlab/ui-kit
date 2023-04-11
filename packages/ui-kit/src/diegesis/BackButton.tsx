@@ -7,10 +7,7 @@ interface IProps {
 }
 export const BackButton: React.FC<IProps> = () => {
   return (
-    <StyledButton
-      color={'dark'}
-      startIcon={<StyledBackIcon />}
-    >
+    <StyledButton color={'dark'} startIcon={<StyledBackIcon />}>
       Back
     </StyledButton>
   );
@@ -31,7 +28,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
 }));
 
 const StyledBackIcon = styled(BsChevronLeft)(({ theme }) => ({
-  color: theme.palette.text['turquoise-light']
-}))
+  color: theme.palette.text['turquoise-light'],
+}));
 
 export default BackButton;
