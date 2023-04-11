@@ -1,28 +1,23 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ThemeProvider } from '../../../../packages/ui-kit/src';
+import { buildDocs } from '../../../common';
+import { StoryPaper } from '../../../StoryPaper';
+
 import { ButtonList } from '../../../../packages/ui-kit/src/crowd-bible';
-import jsxToString from 'jsx-to-string';
-import { BiRightArrowAlt } from 'react-icons/bi';
+import { PlusButton, BiFile } from '../../../../packages/ui-kit/src';
 
 export default {
   title: 'Partial/Crowd Bible/Button List',
   component: ButtonList,
   decorators: [
     (Story) => (
-      <div
-        style={{
-          margin: '3em',
-          border: '1px solid #000',
-          width: '500px',
-          padding: '3em',
-        }}
-      >
-        <ThemeProvider>
+      <ThemeProvider>
+        <StoryPaper>
           <Story />
-        </ThemeProvider>
-      </div>
+        </StoryPaper>
+      </ThemeProvider>
     ),
   ],
 } as ComponentMeta<typeof ButtonList>;
@@ -37,75 +32,89 @@ const items = [
   { value: 3, label: 'Chapter 3: Name of the Chapter' },
 ];
 
-export const Primary = Template.bind({});
-Primary.args = {
-  label: 'Select a Chapter',
-  items,
-  onClick: (selected: unknown) => alert(`Clicked ${selected} Button`),
-};
-Primary.parameters = {
-  docs: {
-    source: {
-      code: jsxToString(
-        <ButtonList
-          label="Select a Chapter"
-          items={items}
-          onClick={() => {}}
-        />,
-      ),
-      language: 'jsx',
-      format: true,
-      type: 'auto',
+export const ButtonList1 = Template.bind({});
+ButtonList1.storyName = 'Document List';
+ButtonList1.args = {
+  label: 'List of Docs',
+  search: {
+    value: '',
+    onChange: (str: string) => {
+      console.log(str);
     },
+    placeHolder: 'Search documents by name',
   },
-};
-
-export const WithUnderline = Template.bind({});
-WithUnderline.args = {
   withUnderline: true,
-  label: 'select a chapter',
   items,
+  itemIcon: (
+    <BiFile
+      style={{
+        borderRadius: '7px',
+        padding: '7px',
+        fontSize: '32px',
+        background: '#E3EAF3',
+      }}
+    />
+  ),
   onClick: (selected: unknown) => alert(`Clicked ${selected} Button`),
 };
-WithUnderline.parameters = {
-  docs: {
-    source: {
-      code: jsxToString(
-        <ButtonList
-          withUnderline
-          label="Select a Chapter"
-          items={items}
-          onClick={() => {}}
-        />,
-      ),
-      language: 'jsx',
-      format: true,
-      type: 'auto',
-    },
-  },
-};
+ButtonList1.parameters = buildDocs(
+  <ButtonList
+    label="List of Docs"
+    search={{
+      value: 'Random String',
+      onChange: (str: string) => {
+        console.log(str);
+      },
+      placeHolder: 'Search documents by name',
+    }}
+    withUnderline={true}
+    items={items}
+    itemIcon={
+      <BiFile
+        style={{
+          borderRadius: '7px',
+          padding: '7px',
+          fontSize: '32px',
+          background: '#E3EAF3',
+        }}
+      />
+    }
+    onClick={() => {}}
+  />,
+);
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  label: 'Select a Chapter',
+export const ButtonList2 = Template.bind({});
+ButtonList2.storyName = 'Feedback Chapter List';
+ButtonList2.args = {
+  label: 'Select a chapter',
+  withUnderline: true,
   items,
-  icon: <BiRightArrowAlt />,
   onClick: (selected: unknown) => alert(`Clicked ${selected} Button`),
 };
-WithIcon.parameters = {
-  docs: {
-    source: {
-      code: jsxToString(
-        <ButtonList
-          label="Select a Chapter"
-          items={items}
-          onClick={() => {}}
-          icon={<BiRightArrowAlt />}
-        />,
-      ),
-      language: 'jsx',
-      format: true,
-      type: 'auto',
-    },
-  },
+ButtonList2.parameters = buildDocs(
+  <ButtonList
+    label="Select a chapter"
+    withUnderline={true}
+    items={items}
+    onClick={() => {}}
+  />,
+);
+
+export const ButtonList3 = Template.bind({});
+ButtonList3.storyName = 'Site Text Application List';
+ButtonList3.args = {
+  label: 'List of Applications',
+  withUnderline: true,
+  items,
+  toolBtnGroup: <PlusButton variant="primary" onClick={() => {}} />,
+  onClick: (selected: unknown) => alert(`Clicked ${selected} Button`),
 };
+ButtonList3.parameters = buildDocs(
+  <ButtonList
+    label="Select a chapter"
+    withUnderline={true}
+    items={items}
+    toolBtnGroup={<PlusButton variant="primary" onClick={() => {}} />}
+    onClick={() => {}}
+  />,
+);
