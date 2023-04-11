@@ -3,22 +3,19 @@ import { Container } from '@mui/system';
 import React from 'react';
 import AppLogo from './app-logo/AppLogo';
 
-interface IProps {
+export type PageFooterProps = {
   footerText?: string;
   brandName?: string;
   year?: number;
-}
-const defaultValues: IProps = {
+};
+export const MOCK_PAGE_FOOTER_PROPS: PageFooterProps = {
   footerText: `Diegesis.Bible is a project by MVH Solutions that uses the
   Proskomma Scripture Runtime Engine.`,
   brandName: `MVH Solutions`,
+  year: new Date().getFullYear(),
 };
-export function PageFooter(props: IProps) {
-  const {
-    footerText = defaultValues.footerText,
-    brandName = defaultValues.brandName,
-    year = new Date().getFullYear(),
-  } = props;
+
+export function PageFooter(props: PageFooterProps) {
   return (
     <FooterWrapper>
       <Container>
@@ -27,9 +24,11 @@ export function PageFooter(props: IProps) {
             <StyledAppLogo varient={'light'} />
           </Stack>
           <StyledContentWrapper>
-            <StyledTypoBody1 variant="body1">{footerText}</StyledTypoBody1>
             <StyledTypoBody1 variant="body1">
-              © {brandName} {year}
+              {props.footerText}
+            </StyledTypoBody1>
+            <StyledTypoBody1 variant="body1">
+              © {props.brandName} {props.year}
             </StyledTypoBody1>
           </StyledContentWrapper>
         </Stack>
@@ -60,7 +59,7 @@ const StyledContentWrapper = styled(Stack)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
     alignItems: 'flex-start',
-    marginTop: '0rem'
+    marginTop: '0rem',
   },
 }));
 const StyledTypoBody1 = styled(Typography)(({ theme }) => ({
