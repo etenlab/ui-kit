@@ -116,7 +116,7 @@ export function ButtonList({
   return (
     <List
       component="nav"
-      sx={{ padding: '20px' }}
+      sx={{ padding: '20px 0' }}
       subheader={
         <ListSubheader
           component="div"
