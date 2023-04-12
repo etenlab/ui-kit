@@ -124,6 +124,7 @@ export const components: ThemeOptions = {
       styleOverrides: {
         root: ({ theme }) => ({
           borderColor: (theme.palette['divider-color'] as PaletteColor).main,
+          marginTop: '-1px !important',
         }),
       },
     },

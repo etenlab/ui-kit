@@ -46,6 +46,7 @@ export function Toolbar({
       sx={{
         padding: '3px 20px',
         borderBottom: `1px solid ${getColor('divider-color')}`,
+        height: '61px',
       }}
     >
       <Button variant="text" onClick={onClickTitleBtn}>
@@ -61,10 +62,10 @@ export function Toolbar({
         direction="row"
         justifyContent="space-between"
         alignItems="center"
-        gap="4px"
+        gap="6px"
       >
         {buttons.discussion ? (
-          <IconButton onClick={onClickDiscussionBtn}>
+          <IconButton onClick={onClickDiscussionBtn} sx={{ padding: '5px' }}>
             <Badge color="red" variant="dot" invisible={!isNewDiscussion}>
               <BiMessageRounded
                 style={{
@@ -77,14 +78,14 @@ export function Toolbar({
           </IconButton>
         ) : null}
         {buttons.notification ? (
-          <IconButton onClick={onClickNotificationBtn}>
+          <IconButton onClick={onClickNotificationBtn} sx={{ padding: '5px' }}>
             <Badge color="red" variant="dot" invisible={!isNewNotification}>
               <FiBell style={{ color: getColor('gray'), fontSize: 24 }} />
             </Badge>
           </IconButton>
         ) : null}
 
-        <IconButton onClick={onClickThemeModeBtn}>
+        <IconButton onClick={onClickThemeModeBtn} sx={{ padding: '3px' }}>
           {themeMode === 'light' ? (
             <CiLight
               style={{
@@ -105,8 +106,8 @@ export function Toolbar({
         </IconButton>
 
         {buttons.menu ? (
-          <IconButton onClick={onClickMenuBtn}>
-            <FiMenu style={{ color: getColor('gray'), fontSize: '40px' }} />
+          <IconButton onClick={onClickMenuBtn} sx={{ padding: '2px' }}>
+            <FiMenu style={{ color: getColor('gray'), fontSize: '30px' }} />
           </IconButton>
         ) : null}
       </Stack>

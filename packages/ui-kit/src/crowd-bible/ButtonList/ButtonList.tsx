@@ -2,6 +2,7 @@ import React, { useState, ChangeEventHandler, ReactNode } from 'react';
 
 import { CiSearch } from '../../icons';
 import { SearchInput } from '../../input';
+import { useColorModeContext } from '../../ThemeProvider';
 
 import {
   Stack,
@@ -16,37 +17,70 @@ import {
 } from '@mui/material';
 
 type Item = {
-  value: unknown;
+  value: string;
   label: string;
+  color?: string;
+  isStartIcon?: boolean;
+  isEndIcon?: boolean;
+  disabled?: boolean;
 };
 
 type ListItemComProps = {
   onClick(): void;
   label: string;
-  itemIcon?: ReactNode;
+  itemColor?: string;
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
   withUnderline?: boolean;
+  disabled?: boolean;
 };
 
 function ListItemCom({
   onClick,
   label,
-  itemIcon,
+  startIcon,
+  endIcon,
+  itemColor,
   withUnderline,
+  disabled,
 }: ListItemComProps) {
-  const iconCom = itemIcon ? <ListItemIcon>{itemIcon}</ListItemIcon> : null;
+  const { getColor } = useColorModeContext();
+
+  console.log(startIcon);
+  const startIconCom = startIcon ? (
+    <ListItemIcon sx={{ minWdith: '45px' }}>{startIcon}</ListItemIcon>
+  ) : null;
+
+  const endIconCom = endIcon ? endIcon : null;
 
   const underlineCom = withUnderline ? (
     <Divider sx={{ margin: '0 20px' }} />
   ) : null;
+
+  const color = itemColor ? itemColor : getColor('dark');
 
   return (
     <>
       <ListItemButton
         sx={{ paddingLeft: '20px', paddingRight: '20px' }}
         onClick={onClick}
+        disabled={disabled}
       >
-        {iconCom}
-        <ListItemText primary={label} />
+        {startIconCom}
+        <ListItemText
+          primary={
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              alignItems="center"
+            >
+              <Typography variant="body1" sx={{ color: `${color} !important` }}>
+                {label}
+              </Typography>
+              {endIconCom}
+            </Stack>
+          }
+        />
       </ListItemButton>
       {underlineCom}
     </>
@@ -63,8 +97,9 @@ type ButtonListProps = {
   toolBtnGroup?: ReactNode;
   withUnderline?: boolean;
   items: Item[];
-  onClick(value: unknown): void;
-  itemIcon?: ReactNode;
+  onClick(value: string): void;
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
 };
 
 export function ButtonList({
@@ -74,8 +109,11 @@ export function ButtonList({
   withUnderline = false,
   items,
   onClick,
-  itemIcon,
+  startIcon,
+  endIcon,
 }: ButtonListProps) {
+  const { getColor } = useColorModeContext();
+
   const [isShownSearchInput, setIsShownSearchInput] = useState<boolean>(false);
 
   const handleToggleSearchInput = () => {
@@ -116,11 +154,11 @@ export function ButtonList({
   return (
     <List
       component="nav"
-      sx={{ padding: '20px 0' }}
+      sx={{ padding: '0' }}
       subheader={
         <ListSubheader
           component="div"
-          sx={{ padding: '6px 20px', backgroundColor: 'transparent' }}
+          sx={{ padding: '6px 20px', backgroundColor: getColor('white') }}
         >
           <Stack
             direction="row"
@@ -136,15 +174,25 @@ export function ButtonList({
         </ListSubheader>
       }
     >
-      {items.map(({ value, label }) => (
-        <ListItemCom
-          key={label}
-          label={label}
-          onClick={() => onClick(value)}
-          itemIcon={itemIcon}
-          withUnderline={withUnderline}
-        />
-      ))}
+      {items.map(
+        ({ value, label, color, isStartIcon, isEndIcon, disabled }) => {
+          const startIconCom = isStartIcon !== false ? startIcon : null;
+          const endIconCom = isEndIcon !== false ? endIcon : null;
+
+          return (
+            <ListItemCom
+              key={value}
+              label={label}
+              onClick={() => onClick(value)}
+              startIcon={startIconCom}
+              endIcon={endIconCom}
+              withUnderline={withUnderline}
+              itemColor={color}
+              disabled={disabled}
+            />
+          );
+        },
+      )}
     </List>
   );
 }

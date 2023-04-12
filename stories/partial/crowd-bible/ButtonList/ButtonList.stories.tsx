@@ -8,6 +8,8 @@ import { StoryPaper } from '../../../StoryPaper';
 import { ButtonList } from '../../../../packages/ui-kit/src/crowd-bible';
 import { PlusButton, BiFile } from '../../../../packages/ui-kit/src';
 
+import { Chip } from '@mui/material';
+
 export default {
   title: 'Partial/Crowd Bible/Button List',
   component: ButtonList,
@@ -27,9 +29,9 @@ const Template: ComponentStory<typeof ButtonList> = (args) => (
 );
 
 const items = [
-  { value: 1, label: 'Chapter 1: Name of the Chapter' },
-  { value: 2, label: 'Chapter 2: Name of the Chapter' },
-  { value: 3, label: 'Chapter 3: Name of the Chapter' },
+  { value: '1', label: 'Chapter 1: Name of the Chapter' },
+  { value: '2', label: 'Chapter 2: Name of the Chapter' },
+  { value: '3', label: 'Chapter 3: Name of the Chapter' },
 ];
 
 export const ButtonList1 = Template.bind({});
@@ -45,7 +47,7 @@ ButtonList1.args = {
   },
   withUnderline: true,
   items,
-  itemIcon: (
+  startIcon: (
     <BiFile
       style={{
         borderRadius: '7px',
@@ -69,7 +71,7 @@ ButtonList1.parameters = buildDocs(
     }}
     withUnderline={true}
     items={items}
-    itemIcon={
+    startIcon={
       <BiFile
         style={{
           borderRadius: '7px',
@@ -115,6 +117,53 @@ ButtonList3.parameters = buildDocs(
     withUnderline={true}
     items={items}
     toolBtnGroup={<PlusButton variant="primary" onClick={() => {}} />}
+    onClick={() => {}}
+  />,
+);
+
+const HomeItems = [
+  { value: '1', label: 'Documents viewer', color: 'green', isEndIcon: false },
+  { value: '2', label: 'Feedback', isEndIcon: false },
+  {
+    value: '3',
+    label: 'Versification editor',
+    isEndIcon: true,
+    disabled: true,
+    color: 'red',
+  },
+];
+
+export const ButtonList4 = Template.bind({});
+ButtonList4.storyName = 'Home Route List';
+ButtonList4.args = {
+  label: 'Document tools',
+  withUnderline: true,
+  items: HomeItems,
+  endIcon: (
+    <Chip
+      label="Online only"
+      variant="outlined"
+      color="error"
+      size="small"
+      sx={{ marginLeft: 2 }}
+    />
+  ),
+  onClick: (selected: unknown) => alert(`Clicked ${selected} Button`),
+};
+ButtonList4.parameters = buildDocs(
+  <ButtonList
+    label="Select a chapter"
+    withUnderline={true}
+    items={HomeItems}
+    endIcon={
+      <Chip
+        label="Online only"
+        variant="outlined"
+        color="error"
+        size="small"
+        sx={{ marginLeft: 2 }}
+      />
+    }
     onClick={() => {}}
   />,
 );
