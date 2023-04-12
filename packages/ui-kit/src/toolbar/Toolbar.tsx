@@ -43,7 +43,10 @@ export function Toolbar({
       direction="row"
       justifyContent="space-between"
       alignItems="center"
-      sx={{ padding: '3px 20px' }}
+      sx={{
+        padding: '3px 20px',
+        borderBottom: `1px solid ${getColor('light-blue')}`,
+      }}
     >
       <Button variant="text" onClick={onClickTitleBtn}>
         <Typography

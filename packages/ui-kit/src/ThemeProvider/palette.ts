@@ -7,7 +7,7 @@ export const colors = {
   },
   'light-blue': {
     light: '#E3EAF3',
-    dark: '#006064',
+    dark: '#616F82',
   },
   disable: {
     light: '#F3F6F9',
