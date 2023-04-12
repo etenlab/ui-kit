@@ -1,3 +1,3 @@
-export * from './ActionButtons'
-export * from './EntryDetails'
-export * from './TopControls'
+export * from './ActionButtons';
+export * from './EntryDetails';
+export * from './TopControls';

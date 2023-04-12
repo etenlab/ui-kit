@@ -16,3 +16,4 @@ export * from './ItemContentListEdit';
 export * from './ItemsClickableList';
 export * from './SimpleFormDialog';
 export * from './GraphViewer';
+export * from './HeadBox';

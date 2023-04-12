@@ -62,6 +62,7 @@ export function getTypographyPalette(mode: 'light' | 'dark'): ThemeOptions {
         alignItems: 'center',
         textTransform: 'uppercase',
         color: colors['gray'][mode],
+        letterSpacing: '0.05em',
       },
       caption: {
         fontWeight: 400,

@@ -1,3 +1,3 @@
-export * from './About'
-export * from './AboutContentSection'
-export * from './AboutPictureSection'
+export * from './About';
+export * from './AboutContentSection';
+export * from './AboutPictureSection';

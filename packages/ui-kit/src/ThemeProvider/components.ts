@@ -123,7 +123,8 @@ export const components: ThemeOptions = {
     MuiDivider: {
       styleOverrides: {
         root: ({ theme }) => ({
-          borderColor: (theme.palette['middle-gray'] as PaletteColor).main,
+          borderColor: (theme.palette['divider-color'] as PaletteColor).main,
+          marginTop: '-1px !important',
         }),
       },
     },

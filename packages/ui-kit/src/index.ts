@@ -11,4 +11,4 @@ export * as CrowdBibleUI from './crowd-bible';
 export * as DiscussionBoxUI from './discussion-box';
 export * as VersificationUI from './versification';
 export * as MuiMaterial from '@mui/material';
-export * as DiegesisUI from './diegesis'
+export * as DiegesisUI from './diegesis';

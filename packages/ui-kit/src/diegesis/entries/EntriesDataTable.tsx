@@ -151,9 +151,9 @@ const sampleDataList: Data[] = [
 ];
 
 export function EntriesDataTable(_props: IProps) {
-  const colorMode = useColorModeContext()
-  const [dataList] = useState<Data[]>([...sampleDataList])
-  const cellsConfig = getTblCellConfig(colorMode.getColor)
+  const colorMode = useColorModeContext();
+  const [dataList] = useState<Data[]>([...sampleDataList]);
+  const cellsConfig = getTblCellConfig(colorMode.getColor);
   return (
     <DataTable
       expandableRowOnMobile={true}

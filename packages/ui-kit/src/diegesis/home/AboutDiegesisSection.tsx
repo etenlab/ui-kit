@@ -1,12 +1,22 @@
 import { Button, Container, Stack, Typography, styled } from '@mui/material';
 import React from 'react';
 
-interface IProps {
+export type AboutDiegesisSectionProps = {
+  aboutText?: string;
   coverUrl?: string;
-  aboutDiegesisHref?: string;
-}
-export function AboutDiegesisSection(props: IProps) {
-  const { coverUrl, aboutDiegesisHref } = props;
+  aboutHref?: string;
+  aboutHrefText?: string;
+};
+
+export const MOCK_ABOUT_DIEGESIS_PROPS: Partial<AboutDiegesisSectionProps> = {
+  aboutText: `Diegesis is a place to find Bibles and related resources, in a
+  variety of formats, released under open licences.`,
+  aboutHref: '/',
+  aboutHrefText: 'About Diegesis',
+  coverUrl: '',
+};
+
+export function AboutDiegesisSection(props: AboutDiegesisSectionProps) {
   return (
     <StyledContainer>
       <ContentBox>
@@ -18,23 +28,20 @@ export function AboutDiegesisSection(props: IProps) {
             height={'100%'}
             width={'100%'}
           >
-            <StyledH2Typo variant="h2">
-              Diegesis is a place to find Bibles and related resources, in a
-              variety of formats, released under open licences.
-            </StyledH2Typo>
+            <StyledH2Typo variant="h2">{props.aboutText}</StyledH2Typo>
             <StyledAboutButton
-              href={aboutDiegesisHref}
+              href={props.aboutHref}
               variant={'text'}
               size={'large'}
               color={'dark'}
             >
-              About Diegesis
+              {props.aboutHrefText}
             </StyledAboutButton>
           </Stack>
         </AboutDiegesisBox>
         <CoverImgContainer
           className="cover-img-container"
-          style={{ backgroundImage: `url(${coverUrl})` }}
+          style={{ backgroundImage: `url(${props.coverUrl || ''})` }}
         ></CoverImgContainer>
       </ContentBox>
     </StyledContainer>
@@ -74,7 +81,7 @@ const AboutDiegesisBox = styled('div')(({ theme }) => ({
     zIndex: 1,
     display: 'inline-block',
     height: '60%',
-    width: '100%'
+    width: '100%',
   },
 }));
 const CoverImgContainer = styled('div')(({ theme }) => ({

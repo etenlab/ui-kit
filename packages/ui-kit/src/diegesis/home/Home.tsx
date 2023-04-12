@@ -1,28 +1,42 @@
 import React, { useState } from 'react';
-import PageFooter from '../PageFooter';
-import PageHeader from '../PageHeader';
-import SideNav from '../SideNav';
-import AboutDiegesisSection from './AboutDiegesisSection';
-import LandingSection from './LandingSection';
-import StatSection from './StatSection';
+import PageFooter, { PageFooterProps } from '../PageFooter';
+import PageHeader, { PageHeaderProps } from '../PageHeader';
+import SideNav, { SideNavProps } from '../SideNav';
+import AboutDiegesisSection, {
+  AboutDiegesisSectionProps,
+} from './AboutDiegesisSection';
+import LandingSection, { LandingSectionProps } from './LandingSection';
+import StatSection, { StatSectionProps } from './StatSection';
 import { styled } from '@mui/material';
 
-interface IProps {}
-export function HomePage(_props: IProps) {
+export type HomePageProps = {
+  headerProps?: PageHeaderProps;
+  sideNavProps?: SideNavProps;
+  landingSectionProps?: LandingSectionProps;
+  statSectionProps?: StatSectionProps;
+  aboutDiegesisProps?: AboutDiegesisSectionProps;
+  footerProps?: PageFooterProps;
+};
+
+export function HomePage(props: HomePageProps) {
   const [isSideNavOpen, setSideNavOpenStatus] = useState(false);
   return (
     <StyledWrapper>
-      <PageHeader openSideNav={() => setSideNavOpenStatus(true)}></PageHeader>
+      <PageHeader
+        openSideNav={() => setSideNavOpenStatus(true)}
+        {...props.headerProps}
+      />
       <SideNav
         open={isSideNavOpen}
         close={() => {
           setSideNavOpenStatus(false);
         }}
+        {...props.sideNavProps}
       />
-      <LandingSection />
-      <StatSection />
-      <AboutDiegesisSection />
-      <PageFooter></PageFooter>
+      <LandingSection {...props.landingSectionProps} />
+      <StatSection {...(props.statSectionProps || { stats: [] })} />
+      <AboutDiegesisSection {...props.aboutDiegesisProps} />
+      <PageFooter {...props.footerProps} />
     </StyledWrapper>
   );
 }

@@ -47,7 +47,7 @@ const StyledTableContainer = styled(Container)(({ theme }) => ({
     },
     '.MuiTableCell-head': {
       display: 'none',
-      borderBottom: '0px'
+      borderBottom: '0px',
     },
     '.MuiTableBody-root .MuiTableRow-root': {
       '.MuiTableCell-root': {
