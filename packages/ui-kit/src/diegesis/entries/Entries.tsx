@@ -36,7 +36,7 @@ export function EntriesPage(props: EntriesPageProps) {
       <StyledTableContainer>
         <EntriesDataTable {...props.entriesDataTable} />
       </StyledTableContainer>
-      <PageFooter />
+      <PageFooter {...props.footerProps} />
     </Box>
   );
 }

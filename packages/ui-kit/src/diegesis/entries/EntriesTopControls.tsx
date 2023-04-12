@@ -27,13 +27,13 @@ export const MOCK_ENTRIES_TOP_CONTROLS_PROPS: Partial<EntriesTopControlsProps> =
       label: 'Tags',
       tags: ['Heading', 'Footnotes', 'Intro', 'Heading', 'Strong'],
       selectedTags: ['Intro'],
-      onTagSelect(idx) {},
+      onTagSelect(_idx: number) {},
     },
     selectControls: [
-      { label: 'Organisations', onChange(value) {}, options: [], value: '' },
-      { label: 'Owner', onChange(value) {}, options: [], value: '' },
-      { label: 'Type', onChange(value) {}, options: [], value: '' },
-      { label: 'Language', onChange(value) {}, options: [], value: '' },
+      { label: 'Organisations', onChange(_value) {}, options: [], value: '' },
+      { label: 'Owner', onChange(_value) {}, options: [], value: '' },
+      { label: 'Type', onChange(_value) {}, options: [], value: '' },
+      { label: 'Language', onChange(_value) {}, options: [], value: '' },
     ],
   };
 
@@ -74,16 +74,23 @@ export function EntriesTopControls(props: EntriesTopControlsProps) {
             <SelectControl
               key={idx}
               label={control.label}
+              value={control.value}
               options={control.options}
               onChange={control.onChange}
             />
           ))}
         </Stack>
-        <Stack direction={'row'} marginTop={'0.2rem'} flexWrap={'wrap'}>
+        <Stack
+          flexDirection={'row'}
+          alignItems={'center'}
+          marginTop={'0.2rem'}
+          flexWrap={'wrap'}
+        >
           <Typography
             variant={'caption'}
-            color={'text.light-gray'}
+            color={'text.gray'}
             marginRight={'0.8rem'}
+            marginTop={'0.5rem'}
           >
             {props.tagConfig?.label}:
           </Typography>
