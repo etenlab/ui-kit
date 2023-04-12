@@ -69,7 +69,7 @@ export function HeadBox({
   };
 
   const backCom = back ? (
-    <IconButton onClick={back.action}>
+    <IconButton onClick={back.action} sx={{ padding: '2px' }}>
       <BiLeftArrowAlt style={{ fontSize: '24px', color: getColor('dark') }} />
     </IconButton>
   ) : null;
@@ -90,7 +90,7 @@ export function HeadBox({
   );
 
   const searchCom = search ? (
-    <IconButton onClick={handleClickSearchButton}>
+    <IconButton onClick={handleClickSearchButton} sx={{ padding: '2px' }}>
       <CiSearch
         style={{ fontSize: '24px', strokeWidth: 1, color: getColor('gray') }}
       />

@@ -42,7 +42,7 @@ function ListItemCom({
   return (
     <>
       <ListItemButton
-        // sx={{ paddingLeft: 0, paddingRight: 0 }}
+        sx={{ paddingLeft: '20px', paddingRight: '20px' }}
         onClick={onClick}
       >
         {iconCom}
