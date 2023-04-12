@@ -81,6 +81,10 @@ export const colors = {
     light: '#e3e3d9',
     dark: '#e3e3d9',
   },
+  'divider-color': {
+    light: '#D9E1EA',
+    dark: '#616F82',
+  },
 };
 
 export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
@@ -145,6 +149,9 @@ export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
       'darker-gray': {
         main: colors['darker-gray'][mode],
       },
+      'divider-color': {
+        main: colors['divider-color'][mode],
+      },
       'lighter-gray': {
         main: colors['lighter-gray'][mode],
       },
@@ -168,6 +175,7 @@ export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
         'turquoise-dark': colors['turquoise-dark'][mode],
         'light-gray2': colors['light-gray2'][mode],
         'light-gray': colors['light-gray'][mode],
+        'divider-color': colors['divider-color'][mode],
       },
       background: {
         'darker-gray': colors['darker-gray'][mode],

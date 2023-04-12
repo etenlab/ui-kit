@@ -45,7 +45,7 @@ export function Toolbar({
       alignItems="center"
       sx={{
         padding: '3px 20px',
-        borderBottom: `1px solid ${getColor('light-blue')}`,
+        borderBottom: `1px solid ${getColor('divider-color')}`,
       }}
     >
       <Button variant="text" onClick={onClickTitleBtn}>

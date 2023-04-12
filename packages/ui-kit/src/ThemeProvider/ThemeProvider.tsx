@@ -228,6 +228,7 @@ declare module '@mui/material/styles' {
     'turquoise-dark': PaletteColorOptions;
     'darker-gray': PaletteColorOptions;
     'lighter-gray': PaletteColorOptions;
+    'divider-color': PaletteColorOptions;
   }
 
   interface CustomTypeText {
@@ -251,6 +252,7 @@ declare module '@mui/material/styles' {
     'lighter-gray': string;
     'light-gray2': string;
     'light-gray': string;
+    'divider-color': string;
   }
 
   interface Palette extends CustomPalette {}
