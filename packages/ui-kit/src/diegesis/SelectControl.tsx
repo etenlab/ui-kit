@@ -1,12 +1,12 @@
 import { MenuItem, Select, styled } from '@mui/material';
 import React from 'react';
 
-interface IProps {
+export type SelectControlProps = {
   label?: string;
   value?: string;
   options: { id: string; title: string }[];
   onChange: (value: string) => void;
-}
+};
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -19,7 +19,7 @@ const MenuProps = {
   },
 };
 
-export const SelectOptions: React.FC<IProps> = (props) => {
+export const SelectControl: React.FC<SelectControlProps> = (props) => {
   const { options = [], label = '', value, onChange } = props;
 
   return (
@@ -67,4 +67,4 @@ const StyledSelect = styled(Select)(({ theme }) => ({
   },
 }));
 
-export default SelectOptions;
+export default SelectControl;

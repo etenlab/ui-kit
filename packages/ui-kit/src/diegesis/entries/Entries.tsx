@@ -1,28 +1,40 @@
 import { Box, Container, styled } from '@mui/material';
 import React, { useState } from 'react';
-import PageFooter from '../PageFooter';
-import PageHeader from '../PageHeader';
-import SideNav from '../SideNav';
-import EntriesTopControls from './EntriesTopControls';
-import EntriesDataTable from './EntriesDataTable';
+import PageFooter, { PageFooterProps } from '../PageFooter';
+import PageHeader, { PageHeaderProps } from '../PageHeader';
+import SideNav, { SideNavProps } from '../SideNav';
+import EntriesTopControls, {
+  EntriesTopControlsProps,
+} from './EntriesTopControls';
+import EntriesDataTable, { EntriesDataTableProps } from './EntriesDataTable';
 
-interface IProps {}
-export function EntriesPage(_props: IProps) {
+export type EntriesPageProps = {
+  headerProps?: PageHeaderProps;
+  sideNavProps?: SideNavProps;
+  topControlProps?: EntriesTopControlsProps;
+  entriesDataTable?: EntriesDataTableProps;
+  footerProps?: PageFooterProps;
+};
+export function EntriesPage(props: EntriesPageProps) {
   const [isSideNavOpen, setSideNavOpenStatus] = useState(false);
   return (
     <Box component={'div'}>
-      <PageHeader openSideNav={() => setSideNavOpenStatus(true)} />
+      <PageHeader
+        openSideNav={() => setSideNavOpenStatus(true)}
+        {...props.headerProps}
+      />
       <SideNav
         open={isSideNavOpen}
         close={() => {
           setSideNavOpenStatus(false);
         }}
+        {...props.sideNavProps}
       />
       <StyledControlsContainer>
-        <EntriesTopControls />
+        <EntriesTopControls {...props.topControlProps} />
       </StyledControlsContainer>
       <StyledTableContainer>
-        <EntriesDataTable />
+        <EntriesDataTable {...props.entriesDataTable} />
       </StyledTableContainer>
       <PageFooter />
     </Box>
@@ -47,7 +59,7 @@ const StyledTableContainer = styled(Container)(({ theme }) => ({
     },
     '.MuiTableCell-head': {
       display: 'none',
-      borderBottom: '0px'
+      borderBottom: '0px',
     },
     '.MuiTableBody-root .MuiTableRow-root': {
       '.MuiTableCell-root': {

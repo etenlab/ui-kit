@@ -5,7 +5,7 @@ import PageHeader from '../PageHeader';
 import SideNav from '../SideNav';
 import TopControls from './TopControls';
 import DataTable, { HeadCell } from '../data-table/DataTable';
-import SelectOptions from '../SelectOptions';
+import SelectControl from '../SelectControl';
 import ActionButtons from './ActionButtons';
 import { BackButton } from '../BackButton';
 
@@ -58,7 +58,7 @@ export function EntryDetailPage(_props: IProps) {
           justifyContent={'center'}
         >
           <Typography variant="h3">Book Resources</Typography>
-          <SelectOptions
+          <SelectControl
             label="Select a book"
             options={[]}
             onChange={() => {}}

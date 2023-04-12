@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DataTable, { HeadCell } from '../data-table/DataTable';
 import { Button, Typography } from '@mui/material';
 import { BsChevronRight } from 'react-icons/bs';
-import { useColorModeContext } from '../../ThemeProvider';
 
-interface IProps {}
+export type EntriesDataTableProps = {
+  cellsConfig?: HeadCell[];
+  entries?: EntriesData[];
+};
 
-interface Data {
+export type EntriesData = {
   sort: string;
   language: string;
   type: string;
@@ -14,86 +16,81 @@ interface Data {
   license: string;
   revision: string;
   [id: string]: string;
-}
-
-const getTblCellConfig = (getColorHex: (name: string) => string) => {
-  const darkerGray = getColorHex('darker-gray');
-  const turquoiseLight = getColorHex('turquoise-light');
-  const headCells: HeadCell[] = [
-    {
-      id: 'sort',
-      numeric: false,
-      disablePadding: true,
-      label: 'Sort',
-      render(value) {
-        return (
-          <Typography
-            variant={'h3'}
-            className="underline-text"
-            sx={{ color: darkerGray }}
-          >
-            {value}
-          </Typography>
-        );
-      },
-    },
-    {
-      id: 'language',
-      numeric: false,
-      disablePadding: false,
-      label: 'Language',
-    },
-    {
-      id: 'type',
-      numeric: false,
-      disablePadding: false,
-      label: 'Type',
-    },
-    {
-      id: 'source',
-      numeric: false,
-      disablePadding: false,
-      label: 'Source',
-    },
-    {
-      id: 'license',
-      numeric: false,
-      disablePadding: false,
-      label: 'License',
-    },
-    {
-      id: 'revision',
-      numeric: true,
-      disablePadding: false,
-      label: 'Revision',
-    },
-    {
-      id: 'action',
-      numeric: true,
-      disablePadding: true,
-      label: '',
-      render(value) {
-        return (
-          <Button
-            className="no-padding"
-            endIcon={<BsChevronRight />}
-            sx={{
-              textTransform: 'none',
-              fontWeight: 700,
-              fontSize: '0.9rem',
-              color: turquoiseLight,
-            }}
-          >
-            {value}
-          </Button>
-        );
-      },
-    },
-  ];
-  return headCells;
 };
 
-const sampleDataList: Data[] = [
+const MOCK_CELLS_CONFIG: HeadCell[] = [
+  {
+    id: 'sort',
+    numeric: false,
+    disablePadding: true,
+    label: 'Sort',
+    render(value) {
+      return (
+        <Typography
+          variant={'h3'}
+          className="underline-text"
+          sx={{ color: 'text.darker-gray' }}
+        >
+          {value}
+        </Typography>
+      );
+    },
+  },
+  {
+    id: 'language',
+    numeric: false,
+    disablePadding: false,
+    label: 'Language',
+  },
+  {
+    id: 'type',
+    numeric: false,
+    disablePadding: false,
+    label: 'Type',
+  },
+  {
+    id: 'source',
+    numeric: false,
+    disablePadding: false,
+    label: 'Source',
+  },
+  {
+    id: 'license',
+    numeric: false,
+    disablePadding: false,
+    label: 'License',
+  },
+  {
+    id: 'revision',
+    numeric: true,
+    disablePadding: false,
+    label: 'Revision',
+  },
+  {
+    id: 'action',
+    numeric: true,
+    disablePadding: true,
+    label: '',
+    render(value) {
+      return (
+        <Button
+          className="no-padding"
+          endIcon={<BsChevronRight />}
+          sx={{
+            textTransform: 'none',
+            fontWeight: 700,
+            fontSize: '0.9rem',
+            color: 'text.turquoise-light',
+          }}
+        >
+          {value}
+        </Button>
+      );
+    },
+  },
+];
+
+const MOCK_ENTRIES_TBL_DATA: EntriesData[] = [
   {
     sort: 'Bible in Basic English',
     language: 'ENG',
@@ -150,16 +147,19 @@ const sampleDataList: Data[] = [
   },
 ];
 
-export function EntriesDataTable(_props: IProps) {
-  const colorMode = useColorModeContext()
-  const [dataList] = useState<Data[]>([...sampleDataList])
-  const cellsConfig = getTblCellConfig(colorMode.getColor)
+export const MOCK_ENTRIES_DATA_TABLE_PROPS: Partial<EntriesDataTableProps> = {
+  cellsConfig: MOCK_CELLS_CONFIG,
+  entries: MOCK_ENTRIES_TBL_DATA,
+};
+
+export function EntriesDataTable(props: EntriesDataTableProps) {
+  // const [dataList] = useState<EntriesData[]>([...MOCK_ENTRIES_TBL_DATA]);
+  // const cellsConfig = getTblCellConfig();
   return (
     <DataTable
       expandableRowOnMobile={true}
-      className="entries-tbl-container"
-      headCells={cellsConfig}
-      rows={dataList}
+      headCells={props.cellsConfig || []}
+      rows={props.entries || []}
     />
   );
 }

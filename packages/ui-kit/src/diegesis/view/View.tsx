@@ -4,7 +4,7 @@ import PageFooter from '../PageFooter';
 import PageHeader from '../PageHeader';
 import SideNav from '../SideNav';
 import AboutContentSection from '../about/AboutContentSection';
-import SelectOptions from '../SelectOptions';
+import SelectControl from '../SelectControl';
 import { BackButton } from '../BackButton';
 import PageTitleTypo from '../styleds/PageTitleTypo';
 
@@ -41,7 +41,7 @@ function ViewPage(_props: IProps) {
           justifyContent={'flex-start'}
         >
           <StyledSelectOptions>
-            <SelectOptions label="Gen" options={[]} onChange={() => {}} />
+            <SelectControl label="Gen" options={[]} onChange={() => {}} />
           </StyledSelectOptions>
         </StyledActionControlContainer>
         <br />
