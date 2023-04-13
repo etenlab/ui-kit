@@ -2,8 +2,17 @@ import { Button, Stack } from '@mui/material';
 import React from 'react';
 import { AiOutlineDownload, AiOutlineFileText } from 'react-icons/ai';
 
-type Props = {};
-export default function ActionButtons(_props: Props) {
+export type ActionButtonProps = {
+  viewBtnText?: string;
+  onViewBtnClick?: (e: any) => void;
+  downloadBtnText?: string;
+  onDownloadBtnClick?: (e: any) => void;
+};
+export const MOCK_ACTION_BTNS_PROPS: ActionButtonProps = {
+  viewBtnText: 'View',
+  downloadBtnText: 'Download',
+};
+export default function ActionButtons(props: ActionButtonProps) {
   return (
     <Stack
       flexDirection={'row'}
@@ -31,8 +40,9 @@ export default function ActionButtons(_props: Props) {
         variant={'contained'}
         color={'green'}
         size={'large'}
+        onClick={props.onViewBtnClick}
       >
-        View
+        {props.viewBtnText}
       </Button>
       <Button
         sx={{
@@ -47,8 +57,9 @@ export default function ActionButtons(_props: Props) {
         variant={'contained'}
         color={'green'}
         size={'large'}
+        onClick={props.onDownloadBtnClick}
       >
-        Download
+        {props.downloadBtnText}
       </Button>
     </Stack>
   );

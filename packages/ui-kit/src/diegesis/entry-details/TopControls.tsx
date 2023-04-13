@@ -1,18 +1,25 @@
 import { Stack } from '@mui/material';
 import React from 'react';
-import { BackButton } from '../BackButton';
-import ActionButtons from './ActionButtons';
+import { BackButton, BackBtnProps } from '../BackButton';
+import ActionButtons, { ActionButtonProps } from './ActionButtons';
 import PageTitleTypo from '../styleds/PageTitleTypo';
 
-type Props = {};
-export default function TopControls(_props: Props) {
+export type EntryDetailTopControlProps = {
+  title?: string;
+  actionBtnsProps?: ActionButtonProps;
+  backBtnProps?: BackBtnProps;
+};
+export const MOCK_ENTRY_DETAIL_TOP_CONTROL_PROPS = {
+  title: 'Bible in Basic English',
+};
+export default function TopControls(props: EntryDetailTopControlProps) {
   return (
     <Stack
       flexDirection={'column'}
       alignItems={'flex-start'}
       justifyContent={'center'}
     >
-      <BackButton />
+      <BackButton {...props.backBtnProps} />
       <Stack
         flexDirection={'row'}
         marginTop={'0.8rem'}
@@ -31,10 +38,10 @@ export default function TopControls(_props: Props) {
         })}
       >
         <PageTitleTypo variant="h1" marginRight={'0.5rem'} flex={2}>
-          Bible in Basic English
+          {props.title}
         </PageTitleTypo>
         <Stack flex={1}>
-          <ActionButtons />
+          <ActionButtons {...props.actionBtnsProps} />
         </Stack>
       </Stack>
     </Stack>
