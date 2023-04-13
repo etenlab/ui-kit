@@ -20,7 +20,7 @@ export function PlusButton({ variant, onClick }: ButtonProps) {
       onClick={onClick}
       sx={{ padding: '6px', minWidth: 0 }}
     >
-      <FiPlus />
+      <FiPlus style={{ fontSize: '24px' }} />
     </Button>
   );
 }

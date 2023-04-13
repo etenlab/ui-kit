@@ -30,10 +30,12 @@ const Template: ComponentStory<typeof FiltersAndSearch> = (args) => {
 };
 
 const ethnologueOptions = ['ethnologueOption1', 'ethnologueOption2'];
+const languageOptions = ['languageOption1', 'languageOption2'];
 
 export const NormalFiltersAndSearch = Template.bind({});
 NormalFiltersAndSearch.args = {
   ethnologueOptions,
+  languageOptions,
   setEthnologue: (e) => alert('run setEthnologue: ' + e),
   setLanguage: (l) => alert('run setLanguage: ' + l),
   setSearch: (s) => alert('run setSearch: ' + s),
@@ -48,6 +50,7 @@ NormalFiltersAndSearch.parameters = {
           setEthnologue={() => alert('run setEthnologue')}
           setLanguage={() => alert('run setLanguage')}
           setSearch={() => alert('run setSearch')}
+          languageOptions={languageOptions}
         />,
       ),
       language: 'jsx',
