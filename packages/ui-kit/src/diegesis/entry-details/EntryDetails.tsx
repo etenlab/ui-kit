@@ -1,9 +1,18 @@
 import { Box, Container, Stack, Typography, styled } from '@mui/material';
 import React, { useState } from 'react';
-import PageFooter, { PageFooterProps } from '../PageFooter';
-import PageHeader, { PageHeaderProps } from '../PageHeader';
-import SideNav, { SideNavProps } from '../SideNav';
-import TopControls, { EntryDetailTopControlProps } from './TopControls';
+import PageFooter, {
+  MOCK_PAGE_FOOTER_PROPS,
+  PageFooterProps,
+} from '../PageFooter';
+import PageHeader, {
+  MOCK_PAGE_HEADER_PROPS,
+  PageHeaderProps,
+} from '../PageHeader';
+import SideNav, { MOCK_SIDE_NAV_PROPS, SideNavProps } from '../SideNav';
+import TopControls, {
+  EntryDetailTopControlProps,
+  MOCK_ENTRY_DETAIL_TOP_CONTROL_PROPS,
+} from './TopControls';
 import DataTable, { HeadCell } from '../data-table/DataTable';
 import SelectControl, { SelectControlProps } from '../SelectControl';
 import ActionButtons from './ActionButtons';
@@ -20,7 +29,8 @@ export type EntryDetailPageProps = {
   topControlProps?: EntryDetailTopControlProps;
   footerProps?: PageFooterProps;
   tblCells?: HeadCell[];
-  bookResource?: { lable: string; selectControl: SelectControlProps };
+  tblData?: EntryDetailKeyValue[];
+  bookResource?: { label: string; selectControl: SelectControlProps };
   backBtnProps?: BackBtnProps;
 };
 //#endregion
@@ -42,9 +52,15 @@ const sampleData: EntryDetailKeyValue[] = [
   { key: 'Revision', value: 'engBBE' },
   { key: 'Content', value: '39 OT, 27 NT' },
 ];
-export const MOCK_ENTRY_DETAIL_PAGE: EntryDetailPageProps = {
+export const MOCK_ENTRY_DETAIL_PAGE_PROPS: EntryDetailPageProps = {
+  headerProps: MOCK_PAGE_HEADER_PROPS,
+  footerProps: MOCK_PAGE_FOOTER_PROPS,
+  sideNavProps: MOCK_SIDE_NAV_PROPS as any,
+  topControlProps: MOCK_ENTRY_DETAIL_TOP_CONTROL_PROPS,
+  tblCells: headCells,
+  tblData: sampleData,
   bookResource: {
-    lable: 'Book Resources',
+    label: 'Book Resources',
     selectControl: { label: 'Select a book', options: [], onChange(_value) {} },
   },
 };
@@ -73,27 +89,32 @@ export function EntryDetailPage(props: EntryDetailPageProps) {
         <StyledDivider />
         <DataTable
           expandableRowOnMobile={false}
-          headCells={headCells}
-          rows={sampleData}
+          headCells={props.tblCells || []}
+          rows={props.tblData || []}
         />
-        <StyledBookResourceBox
-          direction={'column'}
-          alignItems={'flex-start'}
-          justifyContent={'center'}
-        >
-          <Typography variant="h3">{props.bookResource?.lable}</Typography>
-          <SelectControl
-            label={props.bookResource?.selectControl?.label}
-            options={props.bookResource?.selectControl?.options || []}
-            onChange={props.bookResource?.selectControl?.onChange!}
-            value={props.bookResource?.selectControl?.value}
-          />
-        </StyledBookResourceBox>
+        {props.bookResource?.selectControl ? (
+          <StyledBookResourceBox
+            direction={'column'}
+            alignItems={'flex-start'}
+            justifyContent={'center'}
+          >
+            <Typography variant="h3">{props.bookResource?.label}</Typography>
+            <SelectControl
+              label={props.bookResource?.selectControl?.label}
+              value={props.bookResource?.selectControl?.value}
+              options={props.bookResource?.selectControl?.options || []}
+              onChange={props.bookResource?.selectControl?.onChange!}
+            />
+          </StyledBookResourceBox>
+        ) : (
+          <></>
+        )}
         <StyledDivider marginTop={3} marginBottom={3} />
         <Stack
-          direction={'column'}
-          width={'50%'}
-          alignItems={'flex-end'}
+          flexDirection={'row'}
+          width={'100%'}
+          alignItems={'center'}
+          justifyContent={'flex-end'}
           sx={(theme) => ({
             marginTop: '50px',
             marginBottom: '50px',
@@ -104,7 +125,10 @@ export function EntryDetailPage(props: EntryDetailPageProps) {
             },
           })}
         >
-          <ActionButtons />
+          <Stack flex={2}></Stack>
+          <Stack flex={1}>
+            <ActionButtons {...props.topControlProps?.actionBtnsProps} />
+          </Stack>
         </Stack>
         <StyledBackButtonContainer flexDirection={'row'} className="pb-2">
           <BackButton {...props.backBtnProps} />

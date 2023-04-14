@@ -17,7 +17,7 @@ export default function ActionButtons(props: ActionButtonProps) {
     <Stack
       flexDirection={'row'}
       alignItems={'center'}
-      justifyContent={'flex-end'}
+      width={'100%'}
       sx={(theme) => ({
         [theme.breakpoints.down('sm')]: {
           marginTop: '1rem',
