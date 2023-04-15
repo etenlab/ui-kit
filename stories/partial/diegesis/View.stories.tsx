@@ -1,9 +1,12 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeProvider } from '../../../packages/ui-kit/src';
-import ViewPage from '../../../packages/ui-kit/src/diegesis/view/View';
+import ViewPage, {
+  MOCK_VIEW_PAGE_PROPS,
+} from '../../../packages/ui-kit/src/diegesis/view/View';
 import { buildDocs } from '../../common';
 
+const pageProps = MOCK_VIEW_PAGE_PROPS;
 export default {
   title: 'Partial/Diegesis/View',
   component: ViewPage,
@@ -22,7 +25,7 @@ const ViewPageTemplate: ComponentStory<typeof ViewPage> = (args) => (
   <ViewPage {...args} />
 );
 export const viewPageCode = ViewPageTemplate.bind({});
-viewPageCode.args = {};
+viewPageCode.args = pageProps;
 viewPageCode.parameters = buildDocs(`
 interface IProps {
 }
@@ -109,5 +112,5 @@ export default ViewPage
 `);
 
 export const viewPageUsage = ViewPageTemplate.bind({});
-viewPageCode.args = {};
+viewPageCode.args = pageProps;
 viewPageUsage.parameters = buildDocs(<ViewPage />);
