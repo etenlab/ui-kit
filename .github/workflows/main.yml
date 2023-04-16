@@ -49,7 +49,7 @@ jobs:
         run: aws s3 sync storybook-static/ s3://devstorybookstack-cbdevwebsitebucketc58c9965-1jfk0b98fa099
 
       - name: Create Release Pull Request or Publish to npm
-        uses: changesets/action@master
+        uses: changesets/action@v1
         with:
           publish: npm run release
         env:
