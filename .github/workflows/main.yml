@@ -14,10 +14,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
-          registry-url: 'https://npm.pkg.github.com'
-          # Defaults to the user or organization that owns the workflow file
-          scope: '@octocat'
+          node-version: 16
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -51,12 +48,21 @@ jobs:
       - name: Deploy static site to S3 bucket
         run: aws s3 sync storybook-static/ s3://devstorybookstack-cbdevwebsitebucketc58c9965-1jfk0b98fa099
 
-      - name: Publish
-        uses: actions/checkout@v3
-        run: |
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://npm.pkg.github.com'
+          # Defaults to the user or organization that owns the workflow file
+          scope: '@octocat'
+      - run: |
           echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
           cat .npmrc
-        run: npm publish
+      - run: npm ci
+      - run: npm publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
