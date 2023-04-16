@@ -1,6 +1,6 @@
 {
   "name": "@eten-lab/ui-kit",
-  "private": true,
+  "private": false,
   "workspaces": [
     "packages/*"
   ],
