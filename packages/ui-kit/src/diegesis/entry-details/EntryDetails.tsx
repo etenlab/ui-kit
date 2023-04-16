@@ -1,25 +1,37 @@
 import { Box, Container, Stack, Typography, styled } from '@mui/material';
 import React, { useState } from 'react';
-import PageFooter from '../PageFooter';
-import PageHeader from '../PageHeader';
-import SideNav from '../SideNav';
-import TopControls from './TopControls';
+import PageFooter, { PageFooterProps } from '../PageFooter';
+import PageHeader, { PageHeaderProps } from '../PageHeader';
+import SideNav, { SideNavProps } from '../SideNav';
+import TopControls, { EntryDetailTopControlProps } from './TopControls';
 import DataTable, { HeadCell } from '../data-table/DataTable';
-import SelectOptions from '../SelectOptions';
+import SelectControl, { SelectControlProps } from '../SelectControl';
 import ActionButtons from './ActionButtons';
-import { BackButton } from '../BackButton';
+import { BackButton, BackBtnProps } from '../BackButton';
 
-interface IProps {}
-interface IData {
+//#region types
+export type EntryDetailKeyValue = {
   key: string;
   value: string;
-}
+};
+export type EntryDetailPageProps = {
+  headerProps?: PageHeaderProps;
+  sideNavProps?: SideNavProps;
+  topControlProps?: EntryDetailTopControlProps;
+  footerProps?: PageFooterProps;
+  tblCells?: HeadCell[];
+  bookResource?: { lable: string; selectControl: SelectControlProps };
+  backBtnProps?: BackBtnProps;
+};
+//#endregion
+
+//#region mock data
 const headCells: HeadCell[] = [
   { id: 'key', disablePadding: true, label: '', numeric: false },
   { id: 'value', disablePadding: false, label: '', numeric: false },
   { id: 'emptyColumn1', disablePadding: false, label: '', numeric: false },
 ];
-const sampleData: IData[] = [
+const sampleData: EntryDetailKeyValue[] = [
   { key: 'Details', value: '' },
   { key: 'Abbreviation', value: 'engBBE' },
   { key: 'Copyright', value: 'engBBE' },
@@ -30,20 +42,32 @@ const sampleData: IData[] = [
   { key: 'Revision', value: 'engBBE' },
   { key: 'Content', value: '39 OT, 27 NT' },
 ];
-export function EntryDetailPage(_props: IProps) {
+export const MOCK_ENTRY_DETAIL_PAGE: EntryDetailPageProps = {
+  bookResource: {
+    lable: 'Book Resources',
+    selectControl: { label: 'Select a book', options: [], onChange(_value) {} },
+  },
+};
+//#endregion
+
+export function EntryDetailPage(props: EntryDetailPageProps) {
   const [isSideNavOpen, setSideNavOpenStatus] = useState(false);
   return (
     <Box component={'div'}>
-      <PageHeader openSideNav={() => setSideNavOpenStatus(true)} />
+      <PageHeader
+        openSideNav={() => setSideNavOpenStatus(true)}
+        {...props.sideNavProps}
+      />
       <SideNav
         open={isSideNavOpen}
         close={() => {
           setSideNavOpenStatus(false);
         }}
+        {...props.sideNavProps}
       />
       <br />
       <Container component={'div'}>
-        <TopControls />
+        <TopControls {...props.topControlProps} />
       </Container>
       <StyledDetailSection>
         <StyledDivider />
@@ -57,11 +81,12 @@ export function EntryDetailPage(_props: IProps) {
           alignItems={'flex-start'}
           justifyContent={'center'}
         >
-          <Typography variant="h3">Book Resources</Typography>
-          <SelectOptions
-            label="Select a book"
-            options={[]}
-            onChange={() => {}}
+          <Typography variant="h3">{props.bookResource?.lable}</Typography>
+          <SelectControl
+            label={props.bookResource?.selectControl?.label}
+            options={props.bookResource?.selectControl?.options || []}
+            onChange={props.bookResource?.selectControl?.onChange!}
+            value={props.bookResource?.selectControl?.value}
           />
         </StyledBookResourceBox>
         <StyledDivider marginTop={3} marginBottom={3} />
@@ -82,10 +107,10 @@ export function EntryDetailPage(_props: IProps) {
           <ActionButtons />
         </Stack>
         <StyledBackButtonContainer flexDirection={'row'} className="pb-2">
-          <BackButton />
+          <BackButton {...props.backBtnProps} />
         </StyledBackButtonContainer>
       </StyledDetailSection>
-      <PageFooter />
+      <PageFooter {...props.footerProps} />
     </Box>
   );
 }

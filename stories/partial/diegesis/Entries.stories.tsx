@@ -1,8 +1,25 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeProvider } from '../../../packages/ui-kit/src';
-import EntriesPage from '../../../packages/ui-kit/src/diegesis/entries/Entries';
+import EntriesPage, {
+  EntriesPageProps,
+} from '../../../packages/ui-kit/src/diegesis/entries/Entries';
 import { buildDocs } from '../../common';
+import {
+  MOCK_ENTRIES_DATA_TABLE_PROPS,
+  MOCK_ENTRIES_TOP_CONTROLS_PROPS,
+  MOCK_PAGE_FOOTER_PROPS,
+  MOCK_PAGE_HEADER_PROPS,
+  MOCK_SIDE_NAV_PROPS,
+} from '../../../packages/ui-kit/src/diegesis';
+
+const entriesPageProps: EntriesPageProps = {
+  headerProps: MOCK_PAGE_HEADER_PROPS,
+  footerProps: MOCK_PAGE_FOOTER_PROPS,
+  sideNavProps: MOCK_SIDE_NAV_PROPS as any,
+  entriesDataTable: MOCK_ENTRIES_DATA_TABLE_PROPS,
+  topControlProps: MOCK_ENTRIES_TOP_CONTROLS_PROPS,
+};
 
 export default {
   title: 'Partial/Diegesis/Entries',
@@ -23,7 +40,7 @@ const EntriesTemplate: ComponentStory<typeof EntriesPage> = (args) => (
 );
 
 export const entriesPageCode = EntriesTemplate.bind({});
-entriesPageCode.args = {};
+entriesPageCode.args = entriesPageProps;
 entriesPageCode.parameters = buildDocs(`
 interface IProps {
 }
@@ -47,5 +64,5 @@ export default EntriesPage
 `);
 
 export const entriesPageUsage = EntriesTemplate.bind({});
-entriesPageUsage.args = {};
+entriesPageUsage.args = entriesPageProps;
 entriesPageUsage.parameters = buildDocs(<EntriesPage />);

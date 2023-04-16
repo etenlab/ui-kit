@@ -4,7 +4,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  ignorePatterns: ['.eslintrc.js', 'README.md'],
+  ignorePatterns: ['.eslintrc.js', 'README.md', 'webpack.config.js'],
   extends: [
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',

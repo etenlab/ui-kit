@@ -16,7 +16,7 @@ import {
   Divider,
 } from '@mui/material';
 
-type Item = {
+export type ButtonListItemType = {
   value: string;
   label: string;
   color?: string;
@@ -25,7 +25,7 @@ type Item = {
   disabled?: boolean;
 };
 
-type ListItemComProps = {
+type ButtonListItemComProps = {
   onClick(): void;
   label: string;
   itemColor?: string;
@@ -43,7 +43,7 @@ function ListItemCom({
   itemColor,
   withUnderline,
   disabled,
-}: ListItemComProps) {
+}: ButtonListItemComProps) {
   const { getColor } = useColorModeContext();
 
   console.log(startIcon);
@@ -96,7 +96,7 @@ type ButtonListProps = {
   };
   toolBtnGroup?: ReactNode;
   withUnderline?: boolean;
-  items: Item[];
+  items: ButtonListItemType[];
   onClick(value: string): void;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
@@ -145,10 +145,15 @@ export function ButtonList({
 
   const toolBtnComs =
     search || toolBtnGroup ? (
-      <>
+      <Stack
+        direction="row"
+        gap="16px"
+        justifyContent="flex-start"
+        alignItems="center"
+      >
         {searchBtnCom}
         {toolBtnGroup ? toolBtnGroup : null}
-      </>
+      </Stack>
     ) : null;
 
   return (

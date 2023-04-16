@@ -92,11 +92,11 @@ export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
     palette: {
       'blue-primary': {
         main: colors['blue-primary'][mode],
-        contrastText: '#FFFFFF',
+        contrastText: colors['white'][mode],
       },
       'light-blue': {
         main: colors['light-blue'][mode],
-        contrastText: colors['middle-gray'][mode],
+        contrastText: colors['gray'][mode],
       },
       disable: {
         main: colors['disable'][mode],

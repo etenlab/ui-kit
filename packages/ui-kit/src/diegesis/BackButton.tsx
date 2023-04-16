@@ -2,13 +2,14 @@ import { Button, styled } from '@mui/material';
 import React from 'react';
 import { BsChevronLeft } from 'react-icons/bs';
 
-interface IProps {
+export type BackBtnProps = {
   className?: string;
-}
-export const BackButton: React.FC<IProps> = () => {
+  btnText?: string;
+};
+export const BackButton: React.FC<BackBtnProps> = (props) => {
   return (
     <StyledButton color={'dark'} startIcon={<StyledBackIcon />}>
-      Back
+      {props.btnText || 'Back'}
     </StyledButton>
   );
 };

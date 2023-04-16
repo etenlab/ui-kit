@@ -2,7 +2,7 @@ import { ThemeProvider } from '../../../../packages/ui-kit/src';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import jsxToString from 'jsx-to-string';
-import { ItemsClickableList } from '@eten-lab/ui-kit/src/crowd-bible';
+import { ItemsClickableList } from '../../../../packages/ui-kit/src/crowd-bible';
 
 export default {
   title: 'Partial/Crowd Bible/ItemsClickableList',

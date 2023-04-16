@@ -6,7 +6,11 @@ import { buildDocs } from '../../../common';
 import { StoryPaper } from '../../../StoryPaper';
 
 import { ButtonList } from '../../../../packages/ui-kit/src/crowd-bible';
-import { PlusButton, BiFile } from '../../../../packages/ui-kit/src';
+import {
+  PlusButton,
+  BiFile,
+  FilterButton,
+} from '../../../../packages/ui-kit/src';
 
 import { Chip } from '@mui/material';
 
@@ -57,6 +61,12 @@ ButtonList1.args = {
       }}
     />
   ),
+  toolBtnGroup: (
+    <>
+      <FilterButton variant="secondary" onClick={() => {}} />
+      <PlusButton variant="primary" onClick={() => {}} />
+    </>
+  ),
   onClick: (selected: unknown) => alert(`Clicked ${selected} Button`),
 };
 ButtonList1.parameters = buildDocs(
@@ -82,6 +92,12 @@ ButtonList1.parameters = buildDocs(
       />
     }
     onClick={() => {}}
+    toolBtnGroup={
+      <>
+        <FilterButton variant="secondary" onClick={() => {}} />
+        <PlusButton variant="primary" onClick={() => {}} />
+      </>
+    }
   />,
 );
 
