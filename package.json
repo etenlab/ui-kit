@@ -1,5 +1,5 @@
 {
-  "name": "@eten-lab/eil-ui-kit",
+  "name": "@eten-lab/ui-kit",
   "private": true,
   "workspaces": [
     "packages/*"
