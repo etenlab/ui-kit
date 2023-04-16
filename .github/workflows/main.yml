@@ -58,9 +58,9 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
           scope: '@octocat'
-      - run: git config --global user.name ${{github.event.pusher.name}}
-      - run: git config --global user.email ${{github.event.pusher.email}}
-      - run: npm version patch -m "[RELEASE] %s"
+      # - run: git config --global user.name ${{github.event.pusher.name}}
+      # - run: git config --global user.email ${{github.event.pusher.email}}
+      # - run: npm version patch -m "[RELEASE] %s"
       - run: |
           echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
           cat .npmrc
