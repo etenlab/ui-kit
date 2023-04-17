@@ -22,6 +22,8 @@ export type ButtonListItemType = {
   color?: string;
   isStartIcon?: boolean;
   isEndIcon?: boolean;
+  listStartIcon?: ReactNode;
+  listEndIcon?: ReactNode;
   disabled?: boolean;
 };
 
@@ -180,9 +182,26 @@ export function ButtonList({
       }
     >
       {items.map(
-        ({ value, label, color, isStartIcon, isEndIcon, disabled }) => {
-          const startIconCom = isStartIcon !== false ? startIcon : null;
-          const endIconCom = isEndIcon !== false ? endIcon : null;
+        ({
+          value,
+          label,
+          color,
+          isStartIcon,
+          isEndIcon,
+          listStartIcon,
+          listEndIcon,
+          disabled,
+        }) => {
+          const startIconCom = listStartIcon
+            ? listStartIcon
+            : isStartIcon !== false
+            ? startIcon
+            : null;
+          const endIconCom = listEndIcon
+            ? listEndIcon
+            : isEndIcon !== false
+            ? endIcon
+            : null;
 
           return (
             <ListItemCom
