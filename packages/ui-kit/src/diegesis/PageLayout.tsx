@@ -1,16 +1,16 @@
 import { Box } from '@mui/material';
 import PageHeader, { PageHeaderProps } from './PageHeader';
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 import SideNav, { SideNavProps } from './SideNav';
 import PageFooter, { PageFooterProps } from './PageFooter';
 
 export type PageLayoutProps = {
   headerProps?: PageHeaderProps;
   sideNavProps?: SideNavProps;
-  children: ReactNode;
+  children?: JSX.Element;
   footerProps?: PageFooterProps;
 };
-export default function PageLayout(props: PageLayoutProps) {
+export function PageLayout(props: PageLayoutProps) {
   const [isSideNavOpen, setSideNavOpenStatus] = useState(false);
   return (
     <Box component={'div'}>
@@ -30,3 +30,5 @@ export default function PageLayout(props: PageLayoutProps) {
     </Box>
   );
 }
+
+export default PageLayout;

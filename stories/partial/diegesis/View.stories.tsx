@@ -1,8 +1,9 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeProvider } from '../../../packages/ui-kit/src';
-import ViewPage, {
+import {
   MOCK_VIEW_PAGE_PROPS,
+  ViewPage,
 } from '../../../packages/ui-kit/src/diegesis/view/View';
 import { buildDocs } from '../../common';
 
