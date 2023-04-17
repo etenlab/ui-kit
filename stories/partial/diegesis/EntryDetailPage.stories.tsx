@@ -1,8 +1,13 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeProvider } from '../../../packages/ui-kit/src';
-import EntryDetailPage from '../../../packages/ui-kit/src/diegesis/entry-details/EntryDetails';
+import EntryDetailPage, {
+  EntryDetailPageProps,
+  MOCK_ENTRY_DETAIL_PAGE_PROPS,
+} from '../../../packages/ui-kit/src/diegesis/entry-details/EntryDetails';
 import { buildDocs } from '../../common';
+
+const pageProps: EntryDetailPageProps = MOCK_ENTRY_DETAIL_PAGE_PROPS;
 
 export default {
   title: 'Partial/Diegesis/Entries/Entry Detail',
@@ -23,7 +28,7 @@ const EntryDetailTemplate: ComponentStory<typeof EntryDetailPage> = (args) => (
 );
 
 export const entryDetailPageCode = EntryDetailTemplate.bind({});
-entryDetailPageCode.args = {};
+entryDetailPageCode.args = pageProps;
 entryDetailPageCode.parameters = buildDocs(`
 interface IProps {
 }
@@ -79,5 +84,5 @@ export default EntryDetailPage
 `);
 
 export const entryDetailPageUsage = EntryDetailTemplate.bind({});
-entryDetailPageUsage.args = {};
+entryDetailPageUsage.args = pageProps;
 entryDetailPageUsage.parameters = buildDocs(<EntryDetailPage />);

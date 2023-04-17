@@ -1,14 +1,24 @@
-import { Box, Container, Stack, Typography, styled } from '@mui/material';
-import React, { useState } from 'react';
-import PageFooter from '../PageFooter';
-import PageHeader from '../PageHeader';
-import SideNav from '../SideNav';
+import { Container, Stack, Typography, styled } from '@mui/material';
+import React from 'react';
+import { MOCK_PAGE_FOOTER_PROPS, PageFooterProps } from '../PageFooter';
+import { MOCK_PAGE_HEADER_PROPS, PageHeaderProps } from '../PageHeader';
+import { MOCK_SIDE_NAV_PROPS, SideNavProps } from '../SideNav';
 import AboutContentSection from '../about/AboutContentSection';
-import SelectControl from '../SelectControl';
-import { BackButton } from '../BackButton';
+import SelectControl, { SelectControlProps } from '../SelectControl';
+import { BackBtnProps, BackButton } from '../BackButton';
 import PageTitleTypo from '../styleds/PageTitleTypo';
+import PageLayout from '../PageLayout';
 
-interface IProps {}
+export type ViewPageProps = {
+  entryTitle?: string;
+  headerProps?: PageHeaderProps;
+  sideNavProps?: SideNavProps;
+  backBtnProps?: BackBtnProps;
+  docSelectControlProps?: SelectControlProps;
+  heading?: string;
+  intro?: string;
+  footerProps?: PageFooterProps;
+};
 
 //#region data
 const dataAboutContentSection1 = {
@@ -17,32 +27,59 @@ const dataAboutContentSection1 = {
     'Metus vitae feugiat. Vestibulum sit amet ligula sit amet odio scelerisque interdum. Phasellus nisi metus, viverra nec faucibus id, ultrices non mauris. Donec maximus consectetur congue. Vestibulum scelerisque cursus sem at commodo. Donec nunc odio, molestie a erat ac, dapibus imperdiet urna.',
   points: [],
 };
+export const MOCK_VIEW_PAGE_PROPS: ViewPageProps = {
+  entryTitle: 'Bible in Basic English',
+  headerProps: MOCK_PAGE_HEADER_PROPS,
+  footerProps: MOCK_PAGE_FOOTER_PROPS,
+  sideNavProps: MOCK_SIDE_NAV_PROPS as any,
+  backBtnProps: { btnText: 'Back' },
+  heading: `The First Book of Moses, \n Commonly Called`,
+  intro: 'Genesis',
+  docSelectControlProps: {
+    label: 'Gen',
+    options: [],
+    onChange(_value) {},
+  },
+};
 //#endregion
 
-function ViewPage(_props: IProps) {
-  const [isSideNavOpen, setSideNavOpenStatus] = useState(false);
+function ViewPage(props: ViewPageProps) {
+  const {
+    headerProps,
+    footerProps,
+    sideNavProps,
+    docSelectControlProps,
+    backBtnProps,
+  } = props;
   return (
-    <Box component={'div'} id="view-page">
-      <PageHeader openSideNav={() => setSideNavOpenStatus(true)} />
-      <SideNav
-        open={isSideNavOpen}
-        close={() => {
-          setSideNavOpenStatus(false);
-        }}
-      />
+    <PageLayout
+      key={'view-page'}
+      headerProps={headerProps}
+      footerProps={footerProps}
+      sideNavProps={sideNavProps}
+    >
       <StyledHeaderContainer className="header-section">
         <StyledBackBtnContainer>
-          <BackButton />
+          <BackButton {...backBtnProps} />
         </StyledBackBtnContainer>
-        <PageTitleTypo variant={'h1'}>Bible in Basic English</PageTitleTypo>
+        <PageTitleTypo variant={'h1'}>{props.entryTitle}</PageTitleTypo>
         <StyledActionControlContainer
           direction={'row'}
           alignItems={'center'}
           justifyContent={'flex-start'}
         >
-          <StyledSelectOptions>
-            <SelectControl label="Gen" options={[]} onChange={() => {}} />
-          </StyledSelectOptions>
+          {docSelectControlProps ? (
+            <StyledSelectOptions>
+              <SelectControl
+                label={docSelectControlProps.label}
+                value={docSelectControlProps.value}
+                options={docSelectControlProps.options || []}
+                onChange={docSelectControlProps.onChange}
+              />
+            </StyledSelectOptions>
+          ) : (
+            <></>
+          )}
         </StyledActionControlContainer>
         <br />
         <StyledDivider direction={'row'}></StyledDivider>
@@ -54,8 +91,7 @@ function ViewPage(_props: IProps) {
             textAlign={'center'}
             fontFamily={'Noto Serif Display'}
           >
-            The First Book of Moses,
-            <br /> Commonly Called
+            {props.heading}
           </Typography>
           <br />
           <Typography
@@ -63,7 +99,7 @@ function ViewPage(_props: IProps) {
             fontStyle={'italic'}
             fontFamily={'Noto Serif Display'}
           >
-            Genesis
+            {props.intro}
           </Typography>
         </StyledTitleContainer>
       </StyledHeaderContainer>
@@ -114,8 +150,7 @@ function ViewPage(_props: IProps) {
           <br />
         </StyledContentContainer>
       </Container>
-      <PageFooter />
-    </Box>
+    </PageLayout>
   );
 }
 
