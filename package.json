@@ -10,6 +10,7 @@
     "dev": "lerna run start --stream --parallel",
     "test": "lerna run test --",
     "build": "lerna run build",
+    "version": "lerna version --no-private",
     "prepublish": "lerna run prepublish",
     "format": "prettier --write 'stories/**/*' 'packages/*/src/**/*' 'README.md'",
     "lint": "eslint \"{stories,packages}/**/*.{ts,tsx,md,mdx,js,jsx}\" --fix",
