@@ -12,13 +12,13 @@ export type LanguageDto = {
 };
 
 type HeadBoxProps = {
-  title: string;
-  appTitle?: string;
   search?: {
     value: string;
     onChange: (str: string) => void;
     placeHolder: string;
   };
+  title: string;
+  appTitle?: string;
   back?: {
     action: () => void;
   };
