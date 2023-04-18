@@ -91,17 +91,17 @@ function ListItemCom({
 
 type ButtonListProps = {
   label: string;
-  search?: {
-    value: string;
-    onChange(str: string): void;
-    placeHolder: string;
-  };
   toolBtnGroup?: ReactNode;
   withUnderline?: boolean;
   items: ButtonListItemType[];
   onClick(value: string): void;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
+  search?: {
+    value: string;
+    onChange(str: string): void;
+    placeHolder: string;
+  };
 };
 
 export function ButtonList({
