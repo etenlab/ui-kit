@@ -1,14 +1,8 @@
-import { Box, Container, Stack, Typography, styled } from '@mui/material';
-import React, { useState } from 'react';
-import PageFooter, {
-  MOCK_PAGE_FOOTER_PROPS,
-  PageFooterProps,
-} from '../PageFooter';
-import PageHeader, {
-  MOCK_PAGE_HEADER_PROPS,
-  PageHeaderProps,
-} from '../PageHeader';
-import SideNav, { MOCK_SIDE_NAV_PROPS, SideNavProps } from '../SideNav';
+import { Container, Stack, Typography, styled } from '@mui/material';
+import React from 'react';
+import { MOCK_PAGE_FOOTER_PROPS, PageFooterProps } from '../PageFooter';
+import { MOCK_PAGE_HEADER_PROPS, PageHeaderProps } from '../PageHeader';
+import { MOCK_SIDE_NAV_PROPS, SideNavProps } from '../SideNav';
 import TopControls, {
   EntryDetailTopControlProps,
   MOCK_ENTRY_DETAIL_TOP_CONTROL_PROPS,
@@ -17,6 +11,7 @@ import DataTable, { HeadCell } from '../data-table/DataTable';
 import SelectControl, { SelectControlProps } from '../SelectControl';
 import ActionButtons from './ActionButtons';
 import { BackButton, BackBtnProps } from '../BackButton';
+import PageLayout from '../PageLayout';
 
 //#region types
 export type EntryDetailKeyValue = {
@@ -35,7 +30,7 @@ export type EntryDetailPageProps = {
 };
 //#endregion
 
-//#region mock data
+//#region mockup data
 const headCells: HeadCell[] = [
   { id: 'key', disablePadding: true, label: '', numeric: false },
   { id: 'value', disablePadding: false, label: '', numeric: false },
@@ -67,75 +62,69 @@ export const MOCK_ENTRY_DETAIL_PAGE_PROPS: EntryDetailPageProps = {
 //#endregion
 
 export function EntryDetailPage(props: EntryDetailPageProps) {
-  const [isSideNavOpen, setSideNavOpenStatus] = useState(false);
   return (
-    <Box component={'div'}>
-      <PageHeader
-        openSideNav={() => setSideNavOpenStatus(true)}
-        {...props.sideNavProps}
-      />
-      <SideNav
-        open={isSideNavOpen}
-        close={() => {
-          setSideNavOpenStatus(false);
-        }}
-        {...props.sideNavProps}
-      />
-      <br />
-      <Container component={'div'}>
-        <TopControls {...props.topControlProps} />
-      </Container>
-      <StyledDetailSection>
-        <StyledDivider />
-        <DataTable
-          expandableRowOnMobile={false}
-          headCells={props.tblCells || []}
-          rows={props.tblData || []}
-        />
-        {props.bookResource?.selectControl ? (
-          <StyledBookResourceBox
-            direction={'column'}
-            alignItems={'flex-start'}
-            justifyContent={'center'}
+    <PageLayout
+      key={'entry-detail-page'}
+      headerProps={props.headerProps}
+      sideNavProps={props.sideNavProps}
+      footerProps={props.footerProps}
+    >
+      <>
+        <br />
+        <Container component={'div'}>
+          <TopControls {...props.topControlProps} />
+        </Container>
+        <StyledDetailSection>
+          <StyledDivider />
+          <DataTable
+            expandableRowOnMobile={false}
+            headCells={props.tblCells || []}
+            rows={props.tblData || []}
+          />
+          {props.bookResource?.selectControl ? (
+            <StyledBookResourceBox
+              direction={'column'}
+              alignItems={'flex-start'}
+              justifyContent={'center'}
+            >
+              <Typography variant="h3">{props.bookResource?.label}</Typography>
+              <SelectControl
+                label={props.bookResource?.selectControl?.label}
+                value={props.bookResource?.selectControl?.value}
+                options={props.bookResource?.selectControl?.options || []}
+                onChange={props.bookResource?.selectControl?.onChange!}
+              />
+            </StyledBookResourceBox>
+          ) : (
+            <></>
+          )}
+          <StyledDivider marginTop={3} marginBottom={3} />
+          <Stack
+            flexDirection={'row'}
+            width={'100%'}
+            alignItems={'center'}
+            justifyContent={'flex-end'}
+            sx={(theme) => ({
+              marginTop: '50px',
+              marginBottom: '50px',
+              [theme.breakpoints.down('sm')]: {
+                width: '100%',
+                marginTop: '25px',
+                marginBottom: '25px',
+              },
+            })}
           >
-            <Typography variant="h3">{props.bookResource?.label}</Typography>
-            <SelectControl
-              label={props.bookResource?.selectControl?.label}
-              value={props.bookResource?.selectControl?.value}
-              options={props.bookResource?.selectControl?.options || []}
-              onChange={props.bookResource?.selectControl?.onChange!}
-            />
-          </StyledBookResourceBox>
-        ) : (
-          <></>
-        )}
-        <StyledDivider marginTop={3} marginBottom={3} />
-        <Stack
-          flexDirection={'row'}
-          width={'100%'}
-          alignItems={'center'}
-          justifyContent={'flex-end'}
-          sx={(theme) => ({
-            marginTop: '50px',
-            marginBottom: '50px',
-            [theme.breakpoints.down('sm')]: {
-              width: '100%',
-              marginTop: '25px',
-              marginBottom: '25px',
-            },
-          })}
-        >
-          <Stack flex={2}></Stack>
-          <Stack flex={1}>
-            <ActionButtons {...props.topControlProps?.actionBtnsProps} />
+            <Stack flex={2}></Stack>
+            <Stack flex={1}>
+              <ActionButtons {...props.topControlProps?.actionBtnsProps} />
+            </Stack>
           </Stack>
-        </Stack>
-        <StyledBackButtonContainer flexDirection={'row'} className="pb-2">
-          <BackButton {...props.backBtnProps} />
-        </StyledBackButtonContainer>
-      </StyledDetailSection>
-      <PageFooter {...props.footerProps} />
-    </Box>
+          <StyledBackButtonContainer flexDirection={'row'} className="pb-2">
+            <BackButton {...props.backBtnProps} />
+          </StyledBackButtonContainer>
+        </StyledDetailSection>
+      </>
+    </PageLayout>
   );
 }
 

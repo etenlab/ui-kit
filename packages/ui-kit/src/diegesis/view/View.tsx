@@ -20,7 +20,7 @@ export type ViewPageProps = {
   footerProps?: PageFooterProps;
 };
 
-//#region data
+//#region mockup data
 const dataAboutContentSection1 = {
   title: 'Aliquam aliquet mollis',
   description:

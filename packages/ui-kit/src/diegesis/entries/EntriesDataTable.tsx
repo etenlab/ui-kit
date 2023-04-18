@@ -153,8 +153,6 @@ export const MOCK_ENTRIES_DATA_TABLE_PROPS: Partial<EntriesDataTableProps> = {
 };
 
 export function EntriesDataTable(props: EntriesDataTableProps) {
-  // const [dataList] = useState<EntriesData[]>([...MOCK_ENTRIES_TBL_DATA]);
-  // const cellsConfig = getTblCellConfig();
   return (
     <DataTable
       expandableRowOnMobile={true}

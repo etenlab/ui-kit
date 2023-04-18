@@ -5,21 +5,9 @@ import EntriesPage, {
   EntriesPageProps,
 } from '../../../packages/ui-kit/src/diegesis/entries/Entries';
 import { buildDocs } from '../../common';
-import {
-  MOCK_ENTRIES_DATA_TABLE_PROPS,
-  MOCK_ENTRIES_TOP_CONTROLS_PROPS,
-  MOCK_PAGE_FOOTER_PROPS,
-  MOCK_PAGE_HEADER_PROPS,
-  MOCK_SIDE_NAV_PROPS,
-} from '../../../packages/ui-kit/src/diegesis';
+import { MOCK_ENTRIES_PAGE_PROPS } from '../../../packages/ui-kit/src/diegesis';
 
-const entriesPageProps: EntriesPageProps = {
-  headerProps: MOCK_PAGE_HEADER_PROPS,
-  footerProps: MOCK_PAGE_FOOTER_PROPS,
-  sideNavProps: MOCK_SIDE_NAV_PROPS as any,
-  entriesDataTable: MOCK_ENTRIES_DATA_TABLE_PROPS,
-  topControlProps: MOCK_ENTRIES_TOP_CONTROLS_PROPS,
-};
+const entriesPageProps: EntriesPageProps = MOCK_ENTRIES_PAGE_PROPS;
 
 export default {
   title: 'Partial/Diegesis/Entries',
