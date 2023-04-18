@@ -15,8 +15,8 @@ import { useColorModeContext } from '../../ThemeProvider';
 
 type SimpleQuillProps = {
   onChange(newValue: string): void;
-  placeholder: string;
   value: string;
+  placeholder: string;
 };
 
 export function SimpleQuill({
