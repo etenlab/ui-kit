@@ -9,6 +9,7 @@ export * from './app-logo/AppLogo';
 export * from './BackButton';
 export * from './PageHeader';
 export * from './PageFooter';
+export * from './PageLayout';
 export * from './SearchBox';
 export * from './SelectControl';
 export * from './SideNav';

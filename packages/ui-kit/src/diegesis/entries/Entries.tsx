@@ -1,13 +1,19 @@
-import { Box, Container, styled } from '@mui/material';
-import React, { useState } from 'react';
-import PageFooter, { PageFooterProps } from '../PageFooter';
-import PageHeader, { PageHeaderProps } from '../PageHeader';
-import SideNav, { SideNavProps } from '../SideNav';
+import { Container, styled } from '@mui/material';
+import React from 'react';
+import { MOCK_PAGE_FOOTER_PROPS, PageFooterProps } from '../PageFooter';
+import { MOCK_PAGE_HEADER_PROPS, PageHeaderProps } from '../PageHeader';
+import { MOCK_SIDE_NAV_PROPS, SideNavProps } from '../SideNav';
 import EntriesTopControls, {
   EntriesTopControlsProps,
+  MOCK_ENTRIES_TOP_CONTROLS_PROPS,
 } from './EntriesTopControls';
-import EntriesDataTable, { EntriesDataTableProps } from './EntriesDataTable';
+import EntriesDataTable, {
+  EntriesDataTableProps,
+  MOCK_ENTRIES_DATA_TABLE_PROPS,
+} from './EntriesDataTable';
+import PageLayout from '../PageLayout';
 
+//#region types
 export type EntriesPageProps = {
   headerProps?: PageHeaderProps;
   sideNavProps?: SideNavProps;
@@ -15,29 +21,35 @@ export type EntriesPageProps = {
   entriesDataTable?: EntriesDataTableProps;
   footerProps?: PageFooterProps;
 };
+//#endregion
+
+//#region mockup data
+export const MOCK_ENTRIES_PAGE_PROPS: EntriesPageProps = {
+  headerProps: MOCK_PAGE_HEADER_PROPS,
+  footerProps: MOCK_PAGE_FOOTER_PROPS,
+  sideNavProps: MOCK_SIDE_NAV_PROPS as any,
+  topControlProps: MOCK_ENTRIES_TOP_CONTROLS_PROPS,
+  entriesDataTable: MOCK_ENTRIES_DATA_TABLE_PROPS,
+};
+//#endregion
+
 export function EntriesPage(props: EntriesPageProps) {
-  const [isSideNavOpen, setSideNavOpenStatus] = useState(false);
   return (
-    <Box component={'div'}>
-      <PageHeader
-        openSideNav={() => setSideNavOpenStatus(true)}
-        {...props.headerProps}
-      />
-      <SideNav
-        open={isSideNavOpen}
-        close={() => {
-          setSideNavOpenStatus(false);
-        }}
-        {...props.sideNavProps}
-      />
-      <StyledControlsContainer>
-        <EntriesTopControls {...props.topControlProps} />
-      </StyledControlsContainer>
-      <StyledTableContainer>
-        <EntriesDataTable {...props.entriesDataTable} />
-      </StyledTableContainer>
-      <PageFooter {...props.footerProps} />
-    </Box>
+    <PageLayout
+      key={'entries-list-page'}
+      headerProps={props.headerProps}
+      sideNavProps={props.sideNavProps}
+      footerProps={props.footerProps}
+    >
+      <>
+        <StyledControlsContainer>
+          <EntriesTopControls {...props.topControlProps} />
+        </StyledControlsContainer>
+        <StyledTableContainer>
+          <EntriesDataTable {...props.entriesDataTable} />
+        </StyledTableContainer>
+      </>
+    </PageLayout>
   );
 }
 

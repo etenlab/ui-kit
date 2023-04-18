@@ -5,10 +5,12 @@ import { BsChevronLeft } from 'react-icons/bs';
 export type BackBtnProps = {
   className?: string;
   btnText?: string;
+  href?: string;
+  onClick?: (e: any) => void;
 };
 export const BackButton: React.FC<BackBtnProps> = (props) => {
   return (
-    <StyledButton color={'dark'} startIcon={<StyledBackIcon />}>
+    <StyledButton {...props} color={'dark'} startIcon={<StyledBackIcon />}>
       {props.btnText || 'Back'}
     </StyledButton>
   );

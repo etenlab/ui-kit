@@ -20,7 +20,7 @@ export type ViewPageProps = {
   footerProps?: PageFooterProps;
 };
 
-//#region data
+//#region mockup data
 const dataAboutContentSection1 = {
   title: 'Aliquam aliquet mollis',
   description:
@@ -43,7 +43,7 @@ export const MOCK_VIEW_PAGE_PROPS: ViewPageProps = {
 };
 //#endregion
 
-function ViewPage(props: ViewPageProps) {
+export function ViewPage(props: ViewPageProps) {
   const {
     headerProps,
     footerProps,
@@ -58,101 +58,104 @@ function ViewPage(props: ViewPageProps) {
       footerProps={footerProps}
       sideNavProps={sideNavProps}
     >
-      <StyledHeaderContainer className="header-section">
-        <StyledBackBtnContainer>
-          <BackButton {...backBtnProps} />
-        </StyledBackBtnContainer>
-        <PageTitleTypo variant={'h1'}>{props.entryTitle}</PageTitleTypo>
-        <StyledActionControlContainer
-          direction={'row'}
-          alignItems={'center'}
-          justifyContent={'flex-start'}
-        >
-          {docSelectControlProps ? (
-            <StyledSelectOptions>
-              <SelectControl
-                label={docSelectControlProps.label}
-                value={docSelectControlProps.value}
-                options={docSelectControlProps.options || []}
-                onChange={docSelectControlProps.onChange}
-              />
-            </StyledSelectOptions>
-          ) : (
-            <></>
-          )}
-        </StyledActionControlContainer>
-        <br />
-        <StyledDivider direction={'row'}></StyledDivider>
-        <br />
-        <StyledTitleContainer>
-          <Typography
-            variant="h2"
-            fontStyle={'italic'}
-            textAlign={'center'}
-            fontFamily={'Noto Serif Display'}
+      <>
+        <StyledHeaderContainer className="header-section">
+          <StyledBackBtnContainer>
+            <BackButton {...backBtnProps} />
+          </StyledBackBtnContainer>
+          <PageTitleTypo variant={'h1'}>{props.entryTitle}</PageTitleTypo>
+          <StyledActionControlContainer
+            direction={'row'}
+            alignItems={'center'}
+            justifyContent={'flex-start'}
           >
-            {props.heading}
-          </Typography>
+            {docSelectControlProps ? (
+              <StyledSelectOptions>
+                <SelectControl
+                  label={docSelectControlProps.label}
+                  value={docSelectControlProps.value}
+                  options={docSelectControlProps.options || []}
+                  onChange={docSelectControlProps.onChange}
+                />
+              </StyledSelectOptions>
+            ) : (
+              <></>
+            )}
+          </StyledActionControlContainer>
           <br />
-          <Typography
-            variant="h1"
-            fontStyle={'italic'}
-            fontFamily={'Noto Serif Display'}
-          >
-            {props.intro}
-          </Typography>
-        </StyledTitleContainer>
-      </StyledHeaderContainer>
-      <Container>
-        <StyledContentContainer>
-          <AboutContentSection
-            title={dataAboutContentSection1.title}
-            description={dataAboutContentSection1.description}
-            points={dataAboutContentSection1.points}
-          />
-          <Container>
+          <StyledDivider direction={'row'}></StyledDivider>
+          <br />
+          <StyledTitleContainer>
+            <Typography
+              variant="h2"
+              fontStyle={'italic'}
+              textAlign={'center'}
+              fontFamily={'Noto Serif Display'}
+            >
+              {props.heading}
+            </Typography>
+            <br />
             <Typography
               variant="h1"
-              textTransform={'none'}
-              paddingTop={'25px'}
-              paddingBottom={'35px'}
+              fontStyle={'italic'}
               fontFamily={'Noto Serif Display'}
-              color={'text.darker-gray'}
             >
-              “Diegesis is a place to find Bibles and related resources, in a
-              variety of formats, released under open licences.”
+              {props.intro}
             </Typography>
-          </Container>
-          <AboutContentSection
-            title={dataAboutContentSection1.title}
-            description={dataAboutContentSection1.description}
-            points={dataAboutContentSection1.points}
-          />
-          <br />
-          <AboutContentSection
-            title={dataAboutContentSection1.title}
-            description={dataAboutContentSection1.description}
-            points={dataAboutContentSection1.points}
-          />
-          <br />
-          <AboutContentSection
-            title={dataAboutContentSection1.title}
-            description={dataAboutContentSection1.description}
-            points={dataAboutContentSection1.points}
-          />
-          <br />
-          <AboutContentSection
-            title={dataAboutContentSection1.title}
-            description={dataAboutContentSection1.description}
-            points={dataAboutContentSection1.points}
-          />
-          <br />
-          <br />
-        </StyledContentContainer>
-      </Container>
+          </StyledTitleContainer>
+        </StyledHeaderContainer>
+        <Container>
+          <StyledContentContainer>
+            <AboutContentSection
+              title={dataAboutContentSection1.title}
+              description={dataAboutContentSection1.description}
+              points={dataAboutContentSection1.points}
+            />
+            <Container>
+              <Typography
+                variant="h1"
+                textTransform={'none'}
+                paddingTop={'25px'}
+                paddingBottom={'35px'}
+                fontFamily={'Noto Serif Display'}
+                color={'text.darker-gray'}
+              >
+                “Diegesis is a place to find Bibles and related resources, in a
+                variety of formats, released under open licences.”
+              </Typography>
+            </Container>
+            <AboutContentSection
+              title={dataAboutContentSection1.title}
+              description={dataAboutContentSection1.description}
+              points={dataAboutContentSection1.points}
+            />
+            <br />
+            <AboutContentSection
+              title={dataAboutContentSection1.title}
+              description={dataAboutContentSection1.description}
+              points={dataAboutContentSection1.points}
+            />
+            <br />
+            <AboutContentSection
+              title={dataAboutContentSection1.title}
+              description={dataAboutContentSection1.description}
+              points={dataAboutContentSection1.points}
+            />
+            <br />
+            <AboutContentSection
+              title={dataAboutContentSection1.title}
+              description={dataAboutContentSection1.description}
+              points={dataAboutContentSection1.points}
+            />
+            <br />
+            <br />
+          </StyledContentContainer>
+        </Container>
+      </>
     </PageLayout>
   );
 }
+export default ViewPage;
 
 //#region styled components
 const StyledHeaderContainer = styled(Container)(({ theme }) => ({
@@ -201,5 +204,3 @@ const StyledContentContainer = styled(Container)(({ theme }) => ({
   },
 }));
 //#endregion
-
-export default ViewPage;
