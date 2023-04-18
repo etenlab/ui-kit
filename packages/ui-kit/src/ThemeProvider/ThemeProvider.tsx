@@ -13,8 +13,8 @@ import {
   useMediaQuery,
   PaletteColorOptions,
 } from '@mui/material';
-import '@fontsource/inter';
 import '@fontsource/noto-serif-display';
+import '@fontsource/inter';
 
 import { deepmerge } from '@mui/utils';
 import { getThemeOptions } from './themeOptions';
