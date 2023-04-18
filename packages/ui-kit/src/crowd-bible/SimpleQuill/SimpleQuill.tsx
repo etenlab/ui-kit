@@ -14,9 +14,9 @@ import { EmojiPicker, EmojiClickData } from '../../EmojiPicker';
 import { useColorModeContext } from '../../ThemeProvider';
 
 type SimpleQuillProps = {
+  onChange(newValue: string): void;
   placeholder: string;
   value: string;
-  onChange(newValue: string): void;
 };
 
 export function SimpleQuill({
