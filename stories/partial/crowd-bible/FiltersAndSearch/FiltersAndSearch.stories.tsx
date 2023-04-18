@@ -1,4 +1,4 @@
-import { FiltersAndSearch } from '@eten-lab/ui-kit/src/crowd-bible/FiltersAndSearch';
+import { FiltersAndSearch } from '../../../../packages/ui-kit/src/crowd-bible/FiltersAndSearch';
 import { ThemeProvider } from '../../../../packages/ui-kit/src';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
