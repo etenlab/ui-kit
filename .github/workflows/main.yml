@@ -46,7 +46,7 @@ jobs:
         run: aws s3 sync storybook-static/ s3://devstorybookstack-cbdevwebsitebucketc58c9965-1jfk0b98fa099
 
       - name: Publish packages
-        run: npx lerna publish from-git --yes
+        run: npx lerna publish from-git --yes --no-private
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
