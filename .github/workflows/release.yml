@@ -2,32 +2,28 @@ name: Release
 on:
   push:
     branches:
-      - dev
+      - master
+      - next
 jobs:
-  deploy:
+  release:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
-      - run: echo ${{github.event.pusher.name}}
-      - run: echo ${{github.event.pusher.name}}
-      - run: echo ${{secrets.TOKEN_GITHUB}}
-      - run: echo ${{secrets.NPM_TOKEN}}
-      - run: echo ${{secrets.GITHUB_TOKEN}}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
 
-      # - uses: actions/setup-node@v3
-      #   with:
-      #     node-version: 16
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
 
-      # - name: Install deps and build (with cache)
-      #   uses: bahmutov/npm-install@v1
-
-      # - name: Create Release Pull Request or Publish to npm
-      #   uses: changesets/action@master
-      #   with:
-      #     publish: yarn release
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Create Release Pull Request or Publish to npm
+        uses: changesets/action@master
+        with:
+          publish: npm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
