@@ -48,7 +48,7 @@ export function NodeFilter({
           display: 'flex',
           alignItems: 'center',
           '&.Mui-disabled': {
-            '-webkit-text-fill-color': 'unset',
+            WebkitTextFillColor: 'unset',
           },
         },
         '& fieldset': {
