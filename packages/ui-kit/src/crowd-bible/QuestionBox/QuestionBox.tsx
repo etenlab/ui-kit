@@ -38,10 +38,10 @@ type QuestionBoxType = {
     multiselect,
   }: {
     normal?: string;
+    multiselect?: CheckItemType[];
     agreeOrDisagree?: boolean;
     trueOrFalse?: boolean;
     chooseOne?: string;
-    multiselect?: CheckItemType[];
   }): void;
   question: string;
   questionKind: QuestionType;
@@ -72,11 +72,10 @@ export function QuestionBox({
     );
   }, [questionData, questionKind]);
 
-  const { getColor } = useColorModeContext();
-
   const handleChange = (_event: React.SyntheticEvent, newValue: string) => {
     setChoosed(newValue);
   };
+  const { getColor } = useColorModeContext();
 
   const handleChangeCheck = (item: string) => {
     let updatedChecked = [...checked];
