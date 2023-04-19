@@ -27,7 +27,7 @@ export function NodeFilter({
     <Select
       displayEmpty
       disabled={disabled}
-      value={value}
+      value={value !== undefined ? value : ''}
       onChange={(event) => onChange?.(event.target.value)}
       sx={{
         width: '100%',
