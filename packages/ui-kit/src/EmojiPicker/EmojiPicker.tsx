@@ -11,10 +11,10 @@ export const EmojiPicker = memo(function CustomEmojiPicker({
 }: EmojiPickerProps) {
   return (
     <EmojiPickerPackage
-      onEmojiClick={onEmojiClick}
+      theme={Theme.AUTO}
       autoFocusSearch={true}
       lazyLoadEmojis={true}
-      theme={Theme.AUTO}
+      onEmojiClick={onEmojiClick}
     />
   );
 });
