@@ -68,7 +68,7 @@ export function ColumnView({ bibleBook, onNewIdentifierSave }: TableProps) {
           originalValue: string;
           currentValue: string;
           translationValues: string[];
-          identifierId: number;
+          identifierId: string;
           numUpVotes: number;
           numDownVotes: number;
           numPosts: number;

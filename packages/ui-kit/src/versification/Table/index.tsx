@@ -22,7 +22,7 @@ export function Table({
   onNewIdentifierSave,
 }: {
   bibleBook: BibleBook;
-  onNewIdentifierSave(id: number, value: string): void;
+  onNewIdentifierSave(id: string, value: string): void;
 }) {
   const { getColor } = useColorModeContext();
   const [activeViewName, setActiveViewName] = useState(views[0].name);
