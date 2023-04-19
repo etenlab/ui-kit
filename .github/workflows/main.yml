@@ -1,4 +1,4 @@
-name: Upload Website to S3
+name: Upload Website to S3 and Release to the npm
 on:
   push:
     branches:
@@ -45,32 +45,25 @@ jobs:
       - name: Deploy static site to S3 bucket
         run: aws s3 sync storybook-static/ s3://devstorybookstack-cbdevwebsitebucketc58c9965-1jfk0b98fa099
 
-      - name: Publish packages
-        run: npx lerna publish from-git --yes --no-private
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+
+      - name: Create Release Pull Request or Publish to npm
+        uses: changesets/action@v1
+        with:
+          publish: npm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-  # publish:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '16.x'
-  #         registry-url: 'https://npm.pkg.github.com'
-  #         # Defaults to the user or organization that owns the workflow file
-  #         scope: '@octocat'
-  #     # - run: git config --global user.name ${{github.event.pusher.name}}
-  #     # - run: git config --global user.email ${{github.event.pusher.email}}
-  #     # - run: npm version patch -m "[RELEASE] %s"
-  #     - run: |
-  #         echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
-  #         cat .npmrc
-  #     - run: npm ci
-  #     - run: npm run release
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-  #         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
