@@ -59,7 +59,7 @@ export function LineBreakView({ bibleBook, onNewIdentifierSave }: TableProps) {
       </Box>
       <Box pt="20px" sx={{ borderTop: `1px solid ${getColor('middle-gray')}` }}>
         <Header>Translation</Header>
-        <Content>
+        <Content display="flex" flexDirection="column" alignItems="flex-start">
           {bibleBook.chapters.map(
             ({ id, identifier, verses }, chapterIndex) => (
               <Fragment key={id}>
