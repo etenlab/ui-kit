@@ -16,6 +16,7 @@
     "precommit": "lint-staged",
     "changeset": "changeset",
     "release": "changeset publish",
+    "version": "lerna version --no-private",
     "git-reset": "git reset --hard HEAD",
     "git-clean": "git clean -d -x -e node_modules -e packages -f",
     "storybook": "start-storybook -p 6006",
