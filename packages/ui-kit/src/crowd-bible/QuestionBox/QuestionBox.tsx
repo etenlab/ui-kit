@@ -9,12 +9,12 @@ import {
   FormControlLabel,
 } from '@mui/material';
 import { FiX } from '../../icons';
-import { AgreeConfirmButton } from '../../button';
 import { Checkbox } from '../../input';
-import { LabelWithIcon } from '../LabelWithIcon';
+import { AgreeConfirmButton } from '../../button';
 import { SimpleQuill } from '../SimpleQuill';
-import { VerticalRadioList } from '../VerticalRadioList';
+import { LabelWithIcon } from '../LabelWithIcon';
 import { useColorModeContext } from '../../ThemeProvider';
+import { VerticalRadioList } from '../VerticalRadioList';
 
 export type CheckItemType = {
   item: string;
