@@ -4,13 +4,12 @@ on:
     branches:
       - dev
 jobs:
-  release:
+  deploy:
     runs-on: ubuntu-latest
-    if: github.repository == 'formium/formik'
+
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+      - name: Checkout
+        uses: actions/checkout@v1
 
       - run: echo ${{github.event.pusher.name}}
       - run: echo ${{github.event.pusher.name}}
