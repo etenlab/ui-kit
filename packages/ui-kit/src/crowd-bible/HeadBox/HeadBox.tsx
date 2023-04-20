@@ -17,8 +17,8 @@ type HeadBoxProps = {
     onChange: (str: string) => void;
     placeHolder: string;
   };
-  title: string;
-  appTitle?: string;
+  title: ReactNode;
+  appTitle?: ReactNode;
   back?: {
     action: () => void;
   };

@@ -10,7 +10,7 @@ type PlusButtonProps = Omit<ButtonProps, 'variant' | 'onClick'> & {
   onClick(): void;
 };
 
-export function PlusButton({ variant, onClick }: PlusButtonProps) {
+export function PlusButton({ variant, onClick, ...props }: PlusButtonProps) {
   const color: 'blue-primary' | 'light-blue' =
     variant === 'primary' ? 'blue-primary' : 'light-blue';
 
@@ -20,6 +20,7 @@ export function PlusButton({ variant, onClick }: PlusButtonProps) {
       color={color}
       onClick={onClick}
       sx={{ padding: '6px', minWidth: 0 }}
+      {...props}
     >
       <FiPlus style={{ fontSize: '24px' }} />
     </Button>

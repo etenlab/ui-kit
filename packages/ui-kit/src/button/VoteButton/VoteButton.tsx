@@ -17,6 +17,7 @@ export function VoteButton({
   isLike = true,
   count = 0,
   onClick,
+  ...props
 }: VoteButtonProps) {
   const { getColor } = useColorModeContext();
 
@@ -39,6 +40,7 @@ export function VoteButton({
           backgroundColor: bgColor,
         },
       }}
+      {...props}
     >
       <span>{count}</span>
     </StyledButton>
