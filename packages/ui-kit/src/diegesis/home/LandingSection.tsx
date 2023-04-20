@@ -6,6 +6,7 @@ import SectionActionButton from './SectionActionButton';
 export type LandingSectionProps = {
   headingText?: string;
   actionBtnText?: string;
+  actionBtnHref?: string;
   captionText?: string;
 };
 
@@ -15,6 +16,7 @@ export const MOCK_LANDING_PROPS: Partial<LandingSectionProps> = {
   of formats, released under open licences*.`,
   captionText: `* In other words, you can use, share, improve and translate them.`,
   actionBtnText: 'Browse content',
+  actionBtnHref: '/',
 };
 //#endregion
 
@@ -29,7 +31,10 @@ export function LandingSection(props: LandingSectionProps) {
         <StyledTypographyH1 variant="h1">
           {props.headingText}
         </StyledTypographyH1>
-        <StyledSectionActionButton label={props.actionBtnText || ''} />
+        <StyledSectionActionButton
+          label={props.actionBtnText || ''}
+          href={props.actionBtnHref}
+        />
         <StyledTypographyCaption variant="caption">
           {props.captionText}
         </StyledTypographyCaption>
