@@ -1,14 +1,19 @@
 import { Typography, styled } from '@mui/material';
 import { Container } from '@mui/system';
-import React, { useState } from 'react';
-import PageFooter from '../PageFooter';
-import PageHeader from '../PageHeader';
-import SideNav from '../SideNav';
+import React from 'react';
+import { MOCK_PAGE_FOOTER_PROPS, PageFooterProps } from '../PageFooter';
+import { MOCK_PAGE_HEADER_PROPS, PageHeaderProps } from '../PageHeader';
+import { MOCK_SIDE_NAV_PROPS, SideNavProps } from '../SideNav';
 import AboutContentSection from './AboutContentSection';
 import AboutPictureSection from './AboutPictureSection';
 import PageTitleTypo from '../styleds/PageTitleTypo';
+import PageLayout from '../PageLayout';
 
-interface IProps {}
+export type AboutPageProps = {
+  headerProps?: PageHeaderProps;
+  sideNavProps?: SideNavProps;
+  footerProps?: PageFooterProps;
+};
 
 //#region data
 const dataAboutContentSection1 = {
@@ -21,53 +26,56 @@ const dataAboutContentSection1 = {
     'Metus vitae feugiat. Vestibulum sit amet ligula sit amet odio scelerisque interdum.',
   ],
 };
+export const MOCK_ABOUT_PAGE_PROPS: AboutPageProps = {
+  headerProps: MOCK_PAGE_HEADER_PROPS,
+  footerProps: MOCK_PAGE_FOOTER_PROPS,
+  sideNavProps: MOCK_SIDE_NAV_PROPS as any,
+};
 //#endregion
 
-export function AboutPage(_props: IProps) {
-  const [isSideNavOpen, setSideNavOpenStatus] = useState(false);
+export function AboutPage(props: AboutPageProps) {
   return (
-    <div id="about-page">
-      <PageHeader openSideNav={() => setSideNavOpenStatus(true)} />
-      <SideNav
-        open={isSideNavOpen}
-        close={() => {
-          setSideNavOpenStatus(false);
-        }}
-      />
-      <StyledHeaderSection>
-        <PageTitleTypo variant={'h1'}>About Diegesis</PageTitleTypo>
-        <StyledPageSubTitle variant={'h2'}>
-          Open source Bibles resources
-        </StyledPageSubTitle>
-      </StyledHeaderSection>
-      <StyledContentSection>
-        <AboutContentSection
-          title={dataAboutContentSection1.title}
-          description={dataAboutContentSection1.description}
-          points={dataAboutContentSection1.points}
-        />
-        <AboutPictureSection caption="Image Caption" />
-        <Container>
-          <Typography
-            variant="h1"
-            textTransform={'none'}
-            color={'text.darker-gray'}
-            fontFamily={'Noto Serif Display'}
-            fontSize={'30px'}
-            padding={'50px 0px'}
-          >
-            “Diegesis is a place to find Bibles and related resources, in a
-            variety of formats, released under open licences.”
-          </Typography>
-        </Container>
-        <AboutContentSection
-          title={dataAboutContentSection1.title}
-          description={dataAboutContentSection1.description}
-          points={dataAboutContentSection1.points}
-        />
-      </StyledContentSection>
-      <PageFooter />
-    </div>
+    <PageLayout
+      key={'about-page'}
+      headerProps={props.headerProps}
+      sideNavProps={props.sideNavProps}
+      footerProps={props.footerProps}
+    >
+      <>
+        <StyledHeaderSection>
+          <PageTitleTypo variant={'h1'}>About Diegesis</PageTitleTypo>
+          <StyledPageSubTitle variant={'h2'}>
+            Open source Bibles resources
+          </StyledPageSubTitle>
+        </StyledHeaderSection>
+        <StyledContentSection>
+          <AboutContentSection
+            title={dataAboutContentSection1.title}
+            description={dataAboutContentSection1.description}
+            points={dataAboutContentSection1.points}
+          />
+          <AboutPictureSection caption="Image Caption" />
+          <Container>
+            <Typography
+              variant="h1"
+              textTransform={'none'}
+              color={'text.darker-gray'}
+              fontFamily={'Noto Serif Display'}
+              fontSize={'30px'}
+              padding={'50px 0px'}
+            >
+              “Diegesis is a place to find Bibles and related resources, in a
+              variety of formats, released under open licences.”
+            </Typography>
+          </Container>
+          <AboutContentSection
+            title={dataAboutContentSection1.title}
+            description={dataAboutContentSection1.description}
+            points={dataAboutContentSection1.points}
+          />
+        </StyledContentSection>
+      </>
+    </PageLayout>
   );
 }
 
