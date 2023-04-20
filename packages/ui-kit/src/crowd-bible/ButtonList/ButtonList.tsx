@@ -18,35 +18,24 @@ import {
 
 export type ButtonListItemType = {
   value: string;
-  label: string;
+  label: ReactNode;
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
   color?: string;
-  isStartIcon?: boolean;
-  isEndIcon?: boolean;
   disabled?: boolean;
 };
 
 type ButtonListItemComProps = {
-  onClick(): void;
-  label: string;
-  itemColor?: string;
-  startIcon?: ReactNode;
-  endIcon?: ReactNode;
+  item: ButtonListItemType;
   withUnderline?: boolean;
-  disabled?: boolean;
+  onClick(): void;
 };
 
-function ListItemCom({
-  onClick,
-  label,
-  startIcon,
-  endIcon,
-  itemColor,
-  withUnderline,
-  disabled,
-}: ButtonListItemComProps) {
+function ListItemCom({ item, withUnderline, onClick }: ButtonListItemComProps) {
   const { getColor } = useColorModeContext();
 
-  console.log(startIcon);
+  const { label, startIcon, endIcon, color, disabled } = item;
+
   const startIconCom = startIcon ? (
     <ListItemIcon sx={{ minWdith: '45px' }}>{startIcon}</ListItemIcon>
   ) : null;
@@ -57,7 +46,7 @@ function ListItemCom({
     <Divider sx={{ margin: '0 20px' }} />
   ) : null;
 
-  const color = itemColor ? itemColor : getColor('dark');
+  const itemColor = color ? color : getColor('dark');
 
   return (
     <>
@@ -74,7 +63,10 @@ function ListItemCom({
               justifyContent="space-between"
               alignItems="center"
             >
-              <Typography variant="body1" sx={{ color: `${color} !important` }}>
+              <Typography
+                variant="body1"
+                sx={{ color: `${itemColor} !important` }}
+              >
                 {label}
               </Typography>
               {endIconCom}
@@ -91,15 +83,13 @@ type ButtonListProps = {
   label: string;
   toolBtnGroup?: ReactNode;
   withUnderline?: boolean;
-  items: ButtonListItemType[];
   onClick(value: string): void;
-  startIcon?: ReactNode;
-  endIcon?: ReactNode;
   search?: {
     value: string;
     onChange(str: string): void;
     placeHolder: string;
   };
+  items: ButtonListItemType[];
 };
 
 export function ButtonList({
@@ -109,8 +99,6 @@ export function ButtonList({
   withUnderline = false,
   items,
   onClick,
-  startIcon,
-  endIcon,
 }: ButtonListProps) {
   const { getColor } = useColorModeContext();
 
@@ -179,25 +167,16 @@ export function ButtonList({
         </ListSubheader>
       }
     >
-      {items.map(
-        ({ value, label, color, isStartIcon, isEndIcon, disabled }) => {
-          const startIconCom = isStartIcon !== false ? startIcon : null;
-          const endIconCom = isEndIcon !== false ? endIcon : null;
-
-          return (
-            <ListItemCom
-              key={value}
-              label={label}
-              onClick={() => onClick(value)}
-              startIcon={startIconCom}
-              endIcon={endIconCom}
-              withUnderline={withUnderline}
-              itemColor={color}
-              disabled={disabled}
-            />
-          );
-        },
-      )}
+      {items.map((item) => {
+        return (
+          <ListItemCom
+            item={item}
+            key={item.value}
+            onClick={() => onClick(item.value)}
+            withUnderline={withUnderline}
+          />
+        );
+      })}
     </List>
   );
 }

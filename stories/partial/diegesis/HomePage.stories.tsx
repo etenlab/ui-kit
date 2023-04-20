@@ -19,7 +19,9 @@ const homePageProps: HomePageProps = {
   landingSectionProps: MOCK_LANDING_PROPS,
   footerProps: MOCK_PAGE_FOOTER_PROPS,
   aboutDiegesisProps: MOCK_ABOUT_DIEGESIS_PROPS,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   sideNavProps: MOCK_SIDE_NAV_PROPS as any,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   statSectionProps: MOCK_STAT_SECTION_PROPS as any,
 };
 
