@@ -1,11 +1,13 @@
 import React from 'react';
 
-import { useTheme, PaletteColor } from '@mui/material';
 import { BiLike, BiDislike } from '../../icons';
 
 import { StyledButton } from './styled';
+import { ButtonProps } from '@mui/material';
 
-type VoteButtonProps = {
+import { useColorModeContext } from '../../ThemeProvider';
+
+type VoteButtonProps = Omit<ButtonProps, 'variant' | 'onClick'> & {
   isLike?: boolean;
   count?: number;
   onClick(): void;
@@ -16,22 +18,14 @@ export function VoteButton({
   count = 0,
   onClick,
 }: VoteButtonProps) {
-  const theme = useTheme();
+  const { getColor } = useColorModeContext();
 
   let color: 'red' | 'green' = isLike ? 'green' : 'red';
   let startIcon = isLike ? <BiLike /> : <BiDislike />;
 
-  const bgColor = (
-    theme.palette[
-      isLike ? 'light-green' : ('light-red' as keyof typeof theme.palette)
-    ] as PaletteColor
-  ).main;
-  const textColor = (
-    theme.palette[
-      isLike ? 'green' : ('red' as keyof typeof theme.palette)
-    ] as PaletteColor
-  ).main;
+  const bgColor = isLike ? getColor('light-green') : getColor('light-red');
 
+  const textColor = isLike ? getColor('green') : getColor('red');
   return (
     <StyledButton
       variant="contained"

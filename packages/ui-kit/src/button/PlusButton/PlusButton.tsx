@@ -1,15 +1,16 @@
 import React from 'react';
 
 import { Button } from '@mui/material';
+import { ButtonProps } from '@mui/material';
 
 import { FiPlus } from '../../icons';
 
-type ButtonProps = {
+type PlusButtonProps = Omit<ButtonProps, 'variant' | 'onClick'> & {
   variant: 'primary' | 'secondary';
   onClick(): void;
 };
 
-export function PlusButton({ variant, onClick }: ButtonProps) {
+export function PlusButton({ variant, onClick }: PlusButtonProps) {
   const color: 'blue-primary' | 'light-blue' =
     variant === 'primary' ? 'blue-primary' : 'light-blue';
 
