@@ -1,88 +1,118 @@
 import { ThemeOptions } from '@mui/material';
 
+export const designColors = {
+  'blue-primary': '#1F77DF',
+  'light-blue': '#E3EAF3',
+  disable: '#F3F6F9',
+  dark: '#1B1B1B',
+  gray: '#5C6673',
+  'middle-gray': '#C2CBD7',
+  white: '#FFFFFF',
+  red: '#E04E4E',
+  'light-red': '#FFE4E4',
+  green: '#4ABE95',
+  'light-green': '#DAF2EA',
+  yellow: '#FCBB14',
+  'middle-yellow': '#FFF1CE',
+  'light-yellow': '#FFF9EA',
+  'light-gray': '#F0F0E7',
+  'turquoise-light': '#60D0B2',
+  'turquoise-dark': '#4EAA91',
+  'darker-gray': '#31373A',
+  'lighter-gray': '#707070',
+  'light-gray2': '#e3e3d9',
+  'divider-color': '#D9E1EA',
+  'dark/bg': '#071322',
+  'dark/bg2': '#11233A',
+  'dark/stroke': '#616F82',
+  'dark/red-bg': '#3F1919',
+  'dark/red': '#E86161',
+  'dark/green': '#0D2F29',
+};
+
 export const colors = {
   'blue-primary': {
-    light: '#1F77DF',
-    dark: '#42a5f5',
+    light: designColors['blue-primary'],
+    dark: designColors['blue-primary'],
   },
   'light-blue': {
-    light: '#E3EAF3',
-    dark: '#616F82',
+    light: designColors['light-blue'],
+    dark: '#616F82', // not defined
   },
   disable: {
-    light: '#F3F6F9',
+    light: designColors['disable'],
     dark: '#424242',
   },
   dark: {
     light: '#1B1B1B',
-    dark: '#fafafa',
+    dark: designColors['dark'],
   },
   gray: {
-    light: '#5C6673',
+    light: designColors['gray'],
     dark: '#eee',
   },
   'middle-gray': {
-    light: '#C2CBD7',
+    light: designColors['middle-gray'],
     dark: '#bdbdbd',
   },
   white: {
-    light: '#FFFFFF',
+    light: designColors['white'],
     dark: '#212121',
   },
   red: {
-    light: '#E04E4E',
+    light: designColors['red'],
     dark: '#d32f2f',
   },
   'light-red': {
-    light: '#FFE4E4',
+    light: designColors['light-red'],
     dark: '#880e4f',
   },
   green: {
-    light: '#4ABE95',
+    light: designColors['green'],
     dark: '#a5d6a7',
   },
   'light-green': {
-    light: '#DAF2EA',
+    light: designColors['light-green'],
     dark: '#558b2f',
   },
   yellow: {
-    light: '#FCBB14',
+    light: designColors['yellow'],
     dark: '#e65100',
   },
   'middle-yellow': {
-    light: '#FFF1CE',
+    light: designColors['middle-yellow'],
     dark: '#ff8f00',
   },
   'light-yellow': {
-    light: '#FFF9EA',
+    light: designColors['light-yellow'],
     dark: '#ffa000',
   },
   'light-gray': {
-    light: '#F0F0E7',
+    light: designColors['light-gray'],
     dark: '#F0F0E7',
   },
   'turquoise-light': {
-    light: '#60D0B2',
+    light: designColors['turquoise-light'],
     dark: '#60D0B2',
   },
   'turquoise-dark': {
-    light: '#4EAA91',
+    light: designColors['turquoise-dark'],
     dark: '#4EAA91',
   },
   'darker-gray': {
-    light: '#31373A',
+    light: designColors['darker-gray'],
     dark: '#31373A',
   },
   'lighter-gray': {
-    light: '#707070',
+    light: designColors['lighter-gray'],
     dark: '#707070',
   },
   'light-gray2': {
-    light: '#e3e3d9',
+    light: designColors['light-gray2'],
     dark: '#e3e3d9',
   },
   'divider-color': {
-    light: '#D9E1EA',
+    light: designColors['divider-color'],
     dark: '#616F82',
   },
 };
