@@ -1,6 +1,7 @@
 export * from './LabelWithIcon';
 export * from './KindSelectionBox';
 export * from './AgreeConfirm';
+export * from './ToggleButtons';
 export * from './SimpleQuill';
 export * from './VerticalRadioList';
 export * from './ButtonList';
