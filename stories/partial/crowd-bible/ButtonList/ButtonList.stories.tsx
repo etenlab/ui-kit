@@ -15,7 +15,7 @@ import {
 import { Chip } from '@mui/material';
 
 export default {
-  title: 'Partial/Crowd Bible/Button List',
+  title: 'Partial/Crowd Bible/ButtonList',
   component: ButtonList,
   decorators: [
     (Story) => (
@@ -86,21 +86,21 @@ ButtonList1.parameters = buildDocs(
   <ButtonList
     label="List of Docs"
     search={{
-      value: 'Random String',
+      value: '',
       onChange: (str: string) => {
         console.log(str);
       },
       placeHolder: 'Search documents by name',
     }}
     withUnderline={true}
-    items={docItems}
-    onClick={() => {}}
-    toolBtnGroup={
-      <>
-        <FilterButton variant="secondary" onClick={() => {}} />
-        <PlusButton variant="primary" onClick={() => {}} />
-      </>
-    }
+    items={items}
+    // toolBtnGroup={
+    //   <Fragment>
+    //     <FilterButton variant="secondary" onClick={() => {}} />
+    //     <PlusButton variant="primary" onClick={() => {}} />
+    //   </Fragment>
+    // }
+    onClick={(selected: unknown) => alert(`Clicked ${selected} Button`)}
   />,
 );
 

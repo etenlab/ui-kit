@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import {
-  colors,
+  // colors,
   designColors,
   ThemeProvider,
 } from '../../../packages/ui-kit/src/ThemeProvider';
@@ -59,64 +59,64 @@ function DesignColorItem({ color, title }: { color: string; title: string }) {
   );
 }
 
-function PairColorBox({
-  dark,
-  light,
-  title,
-}: {
-  dark: string;
-  light: string;
-  title: string;
-}) {
-  return (
-    <Paper variant="outlined" sx={{ background: designColors.disable }}>
-      <Typography
-        variant="subtitle1"
-        color="text.dark"
-        sx={{ padding: '5px', textAlign: 'center' }}
-      >
-        {title}
-      </Typography>
-      <Paper
-        elevation={0}
-        sx={{
-          background: designColors.white,
-          padding: '20px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexDirection: 'column',
-        }}
-      >
-        <Typography variant="body2" color="text.dark">
-          {light}
-        </Typography>
-        <ColorBox color={light} />
-      </Paper>
-      <Paper
-        elevation={0}
-        sx={{
-          background: designColors['dark/bg'],
-          padding: '20px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexDirection: 'column',
-        }}
-      >
-        <Typography variant="body2" color="text.white">
-          {dark}
-        </Typography>
-        <ColorBox color={dark} />
-      </Paper>
-    </Paper>
-  );
-}
+// function PairColorBox({
+//   dark,
+//   light,
+//   title,
+// }: {
+//   dark: string;
+//   light: string;
+//   title: string;
+// }) {
+//   return (
+//     <Paper variant="outlined" sx={{ background: designColors.disable }}>
+//       <Typography
+//         variant="subtitle1"
+//         color="text.dark"
+//         sx={{ padding: '5px', textAlign: 'center' }}
+//       >
+//         {title}
+//       </Typography>
+//       <Paper
+//         elevation={0}
+//         sx={{
+//           background: designColors.white,
+//           padding: '20px',
+//           display: 'flex',
+//           alignItems: 'center',
+//           justifyContent: 'center',
+//           flexDirection: 'column',
+//         }}
+//       >
+//         <Typography variant="body2" color="text.dark">
+//           {light}
+//         </Typography>
+//         <ColorBox color={light} />
+//       </Paper>
+//       <Paper
+//         elevation={0}
+//         sx={{
+//           background: designColors['dark/bg'],
+//           padding: '20px',
+//           display: 'flex',
+//           alignItems: 'center',
+//           justifyContent: 'center',
+//           flexDirection: 'column',
+//         }}
+//       >
+//         <Typography variant="body2" color="text.white">
+//           {dark}
+//         </Typography>
+//         <ColorBox color={dark} />
+//       </Paper>
+//     </Paper>
+//   );
+// }
 
 const Template: ComponentStory<typeof Paper> = () => {
   const designColorNames = Object.keys(designColors);
 
-  const colorNames = Object.keys(colors);
+  // const colorNames = Object.keys(colors);
 
   return (
     <Stack
@@ -142,7 +142,7 @@ const Template: ComponentStory<typeof Paper> = () => {
           </Grid>
         ))}
       </Grid>
-
+      {/* 
       <Typography variant="h2">Light vs Dark Mode</Typography>
       <Grid container spacing={2}>
         {colorNames.map((key) => (
@@ -160,7 +160,7 @@ const Template: ComponentStory<typeof Paper> = () => {
             />
           </Grid>
         ))}
-      </Grid>
+      </Grid> */}
     </Stack>
   );
 };
