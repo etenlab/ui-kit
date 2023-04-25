@@ -38,6 +38,9 @@ const buttonsParams = [
 export const Primary = Template.bind({});
 Primary.args = {
   buttonsParams,
+  colorSelected: 'red',
+  buttonSxProps: {},
+  groupSxProps: {},
   onChange: (selectedValue: string | null) => alert(selectedValue),
 };
 Primary.parameters = {
@@ -47,6 +50,9 @@ Primary.parameters = {
         <ToggleButtons
           buttonsParams={buttonsParams}
           onChange={(selectedValue: string | null) => alert(selectedValue)}
+          colorSelected={'red'}
+          buttonSxProps={{}}
+          groupSxProps={{}}
         />,
       ),
       language: 'jsx',
