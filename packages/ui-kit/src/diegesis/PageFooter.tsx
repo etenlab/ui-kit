@@ -7,40 +7,53 @@ export type PageFooterProps = {
   footerText?: string;
   brandName?: string;
   year?: number;
+  markdownContent?: string;
 };
 export const MOCK_PAGE_FOOTER_PROPS: PageFooterProps = {
   footerText: `Diegesis.Bible is a project by MVH Solutions that uses the
   Proskomma Scripture Runtime Engine.`,
   brandName: `MVH Solutions`,
   year: new Date().getFullYear(),
+  markdownContent: '',
 };
 
 export function PageFooter(props: PageFooterProps) {
-  return (
-    <FooterWrapper>
-      <Container>
-        <Stack direction={'column'} alignItems={'start'}>
-          <Stack direction={'row'} className="full-width" alignItems={'center'}>
-            <StyledAppLogo varient={'light'} />
+  if (props.markdownContent) {
+    return (
+      <FooterWrapper>
+        <Container>{props.markdownContent}</Container>
+      </FooterWrapper>
+    );
+  } else
+    return (
+      <FooterWrapper>
+        <Container>
+          <Stack direction={'column'} alignItems={'start'}>
+            <Stack
+              direction={'row'}
+              className="full-width"
+              alignItems={'center'}
+            >
+              <StyledAppLogo varient={'light'} />
+            </Stack>
+            <StyledContentWrapper>
+              <StyledTypoBody1 variant="body1">
+                {props.footerText}
+              </StyledTypoBody1>
+              <StyledTypoBody1 variant="body1">
+                © {props.brandName} {props.year}
+              </StyledTypoBody1>
+            </StyledContentWrapper>
           </Stack>
-          <StyledContentWrapper>
-            <StyledTypoBody1 variant="body1">
-              {props.footerText}
-            </StyledTypoBody1>
-            <StyledTypoBody1 variant="body1">
-              © {props.brandName} {props.year}
-            </StyledTypoBody1>
-          </StyledContentWrapper>
-        </Stack>
-      </Container>
-    </FooterWrapper>
-  );
+        </Container>
+      </FooterWrapper>
+    );
 }
 
 //#region styled components
 const FooterWrapper = styled('div')(({ theme }) => ({
   padding: '3rem 0px',
-  height: '17rem',
+  minHeight: '17rem',
   backgroundColor: theme.palette.background['darker-gray'],
 }));
 const StyledAppLogo = styled(AppLogo)(({ theme }) => ({
