@@ -9,6 +9,7 @@ const { styled } = MuiMaterial;
 export type PageHeaderProps = {
   openSideNav?: () => void;
   title?: string;
+  markdownContent?: string;
 };
 export const MOCK_PAGE_HEADER_PROPS: Partial<PageHeaderProps> = {
   title: 'Open source Bibles resources',
@@ -18,18 +19,22 @@ export function PageHeader(props: PageHeaderProps) {
   return (
     <HeaderWrapper>
       <Container>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          justifyContent={'space-between'}
-        >
-          <Stack direction={'row'} alignItems={'center'}>
-            <StyledAppLogo />
-            <HeaderTitle variant="body1" color={'text.darker-gray'}>
-              {title}
-            </HeaderTitle>
+        {props.markdownContent ? (
+          props.markdownContent
+        ) : (
+          <Stack
+            direction={'row'}
+            alignItems={'center'}
+            justifyContent={'space-between'}
+          >
+            <Stack direction={'row'} alignItems={'center'}>
+              <StyledAppLogo />
+              <HeaderTitle variant="body1" color={'text.darker-gray'}>
+                {title}
+              </HeaderTitle>
+            </Stack>
           </Stack>
-        </Stack>
+        )}
       </Container>
       {openSideNav ? (
         <NavBox>
