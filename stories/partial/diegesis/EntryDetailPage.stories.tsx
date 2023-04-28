@@ -4,7 +4,7 @@ import { ThemeProvider } from '../../../packages/ui-kit/src';
 import EntryDetailPage, {
   EntryDetailPageProps,
   MOCK_ENTRY_DETAIL_PAGE_PROPS,
-} from '../../../packages/ui-kit/src/diegesis/entry-details/EntryDetails';
+} from '../../../packages/ui-kit/src/diegesis/entry-details/EntryDetailPage';
 import { buildDocs } from '../../common';
 
 const pageProps: EntryDetailPageProps = MOCK_ENTRY_DETAIL_PAGE_PROPS;
