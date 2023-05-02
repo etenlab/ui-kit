@@ -27,6 +27,7 @@
     "@foobar404/wave": "^2.0.4",
     "@mui/material": "^5.10.5",
     "emoji-picker-react": "^4.4.3",
+    "nanoid": "^4.0.2",
     "react-debounce-input": "^3.3.0",
     "react-icons": "^4.7.1",
     "react-quill": "^2.0.0",
