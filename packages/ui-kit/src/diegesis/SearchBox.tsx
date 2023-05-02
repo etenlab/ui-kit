@@ -5,16 +5,19 @@ import {
   TextField,
   styled,
 } from '@mui/material';
-import React from 'react';
+import React, { useRef } from 'react';
 import { BiSearch } from 'react-icons/bi';
 
-interface IProps {
+export type SearchBoxProps = {
   className?: string;
   placeholder?: string;
-}
+  onSearchTextChange?: (value: string) => void;
+  onSearchBtnClick?: (value: string) => void;
+};
 
-export function SearchBox(props: IProps) {
-  const { placeholder } = props;
+export function SearchBox(props: SearchBoxProps) {
+  const { placeholder, onSearchBtnClick, onSearchTextChange } = props;
+  const refInputValue = useRef('');
   return (
     <SearchBoxWrapper>
       <StyledTextField
@@ -24,6 +27,12 @@ export function SearchBox(props: IProps) {
         color={'gray'}
         InputProps={{
           'aria-label': 'weight',
+          onChange: (e) => {
+            refInputValue.current = e.target.value.trim();
+            if (onSearchTextChange) {
+              onSearchTextChange(refInputValue.current);
+            }
+          },
           startAdornment: (
             <InputAdornment position="start">
               <BiSearch color={'black'} size={24} />
@@ -31,7 +40,13 @@ export function SearchBox(props: IProps) {
           ),
         }}
       />
-      <StyledSearchButton size={'medium'} variant={'contained'}>
+      <StyledSearchButton
+        size={'medium'}
+        variant={'contained'}
+        onClick={() => {
+          if (onSearchBtnClick) onSearchBtnClick(refInputValue.current);
+        }}
+      >
         Search
       </StyledSearchButton>
     </SearchBoxWrapper>
