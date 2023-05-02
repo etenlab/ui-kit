@@ -29,7 +29,8 @@
     "emoji-picker-react": "^4.4.3",
     "react-icons": "^4.7.1",
     "react-quill": "^2.0.0",
-    "tslib": "^2.4.1"
+    "tslib": "^2.4.1",
+    "react-debounce-input": "^3.3.0"
   },
   "devDependencies": {
     "@testing-library/react": "13.3.0",
