@@ -102,7 +102,10 @@ export function IdentifierLabel({
           nodeType={nodeType}
           originalValue={originalValue}
           translationValues={translationValues}
-          onSave={onNewIdentifierSave}
+          onSave={(value) => {
+            handleClose();
+            onNewIdentifierSave(value);
+          }}
           onCancel={handleClose}
           sx={{ borderRadius: '4px' }}
         />

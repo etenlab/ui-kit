@@ -7,7 +7,7 @@ import { bibleBook } from './data';
 
 const args = {
   bibleBook,
-  onNewIdentifierSave: (id: number, value: string) =>
+  onNewIdentifierSave: (id: string, value: string) =>
     alert(`Clicked Save Button with id: ${id} and value: ${value}`),
 };
 

@@ -9,9 +9,9 @@ export function NodeItem({
   onClick,
 }: {
   node: Node;
+  onClick?: () => void;
   warning: boolean;
   showRelation: boolean;
-  onClick?: () => void;
 }) {
   return (
     <Item

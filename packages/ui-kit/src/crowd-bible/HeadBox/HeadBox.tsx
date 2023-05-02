@@ -7,20 +7,20 @@ import { useColorModeContext } from '../../ThemeProvider';
 import { Stack, IconButton, Typography } from '@mui/material';
 
 export type LanguageDto = {
-  id: string;
   name: string;
+  id: string;
 };
 
 type HeadBoxProps = {
-  back?: {
-    action: () => void;
-  };
-  title: string;
-  appTitle?: string;
   search?: {
     value: string;
     onChange: (str: string) => void;
     placeHolder: string;
+  };
+  title: ReactNode;
+  appTitle?: ReactNode;
+  back?: {
+    action: () => void;
   };
   languageSelector?: {
     languageList: LanguageDto[];

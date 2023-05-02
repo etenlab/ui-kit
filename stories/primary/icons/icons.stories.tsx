@@ -126,7 +126,7 @@ export default {
   ],
 } as ComponentMeta<typeof Div>;
 
-const Template: ComponentStory<typeof Div> = (args) => {
+const Template: ComponentStory<typeof Div> = () => {
   return (
     <Div>
       <TitleWithIcon title="CiUnread" icon={<CiUnread />} />

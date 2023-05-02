@@ -15,7 +15,7 @@ import {
 import { Chip } from '@mui/material';
 
 export default {
-  title: 'Partial/Crowd Bible/Button List',
+  title: 'Partial/Crowd Bible/ButtonList',
   component: ButtonList,
   decorators: [
     (Story) => (
@@ -33,10 +33,33 @@ const Template: ComponentStory<typeof ButtonList> = (args) => (
 );
 
 const items = [
-  { value: '1', label: 'Chapter 1: Name of the Chapter' },
-  { value: '2', label: 'Chapter 2: Name of the Chapter' },
-  { value: '3', label: 'Chapter 3: Name of the Chapter' },
+  {
+    value: '1',
+    label: 'Document #1',
+  },
+  {
+    value: '2',
+    label: 'Document #2',
+  },
+  {
+    value: '3',
+    label: 'Document #2',
+  },
 ];
+
+const docItems = items.map((item) => ({
+  ...item,
+  startIcon: (
+    <BiFile
+      style={{
+        borderRadius: '7px',
+        padding: '7px',
+        fontSize: '32px',
+        background: '#E3EAF3',
+      }}
+    />
+  ),
+}));
 
 export const ButtonList1 = Template.bind({});
 ButtonList1.storyName = 'Document List';
@@ -50,17 +73,7 @@ ButtonList1.args = {
     placeHolder: 'Search documents by name',
   },
   withUnderline: true,
-  items,
-  startIcon: (
-    <BiFile
-      style={{
-        borderRadius: '7px',
-        padding: '7px',
-        fontSize: '32px',
-        background: '#E3EAF3',
-      }}
-    />
-  ),
+  items: docItems,
   toolBtnGroup: (
     <>
       <FilterButton variant="secondary" onClick={() => {}} />
@@ -73,7 +86,7 @@ ButtonList1.parameters = buildDocs(
   <ButtonList
     label="List of Docs"
     search={{
-      value: 'Random String',
+      value: '',
       onChange: (str: string) => {
         console.log(str);
       },
@@ -81,23 +94,13 @@ ButtonList1.parameters = buildDocs(
     }}
     withUnderline={true}
     items={items}
-    startIcon={
-      <BiFile
-        style={{
-          borderRadius: '7px',
-          padding: '7px',
-          fontSize: '32px',
-          background: '#E3EAF3',
-        }}
-      />
-    }
-    onClick={() => {}}
-    toolBtnGroup={
-      <>
-        <FilterButton variant="secondary" onClick={() => {}} />
-        <PlusButton variant="primary" onClick={() => {}} />
-      </>
-    }
+    // toolBtnGroup={
+    //   <Fragment>
+    //     <FilterButton variant="secondary" onClick={() => {}} />
+    //     <PlusButton variant="primary" onClick={() => {}} />
+    //   </Fragment>
+    // }
+    onClick={(selected: unknown) => alert(`Clicked ${selected} Button`)}
   />,
 );
 
@@ -138,12 +141,20 @@ ButtonList3.parameters = buildDocs(
 );
 
 const HomeItems = [
-  { value: '1', label: 'Documents viewer', color: 'green', isEndIcon: false },
-  { value: '2', label: 'Feedback', isEndIcon: false },
+  { value: '1', label: 'Documents viewer', color: 'green', endIcon: '1' },
+  { value: '2', label: 'Feedback', startIcon: 'selected' },
   {
     value: '3',
     label: 'Versification editor',
-    isEndIcon: true,
+    endIcon: (
+      <Chip
+        label="Online only"
+        variant="outlined"
+        color="error"
+        size="small"
+        sx={{ marginLeft: 2 }}
+      />
+    ),
     disabled: true,
     color: 'red',
   },
@@ -155,15 +166,6 @@ ButtonList4.args = {
   label: 'Document tools',
   withUnderline: true,
   items: HomeItems,
-  endIcon: (
-    <Chip
-      label="Online only"
-      variant="outlined"
-      color="error"
-      size="small"
-      sx={{ marginLeft: 2 }}
-    />
-  ),
   onClick: (selected: unknown) => alert(`Clicked ${selected} Button`),
 };
 ButtonList4.parameters = buildDocs(
@@ -171,15 +173,6 @@ ButtonList4.parameters = buildDocs(
     label="Select a chapter"
     withUnderline={true}
     items={HomeItems}
-    endIcon={
-      <Chip
-        label="Online only"
-        variant="outlined"
-        color="error"
-        size="small"
-        sx={{ marginLeft: 2 }}
-      />
-    }
     onClick={() => {}}
   />,
 );

@@ -1,25 +1,25 @@
 export type BibleBook = {
-  bibleId: number;
+  bibleId: string;
   bibleName: string;
-  bookId: number;
+  bookId: string;
   bookName: string;
   chapters: Chapter[];
 };
 
 export type Chapter = {
-  id: number;
+  id: string;
   identifier: Identifier;
   verses: Verse[];
 };
 
 export type Verse = {
-  id: number;
+  id: string;
   identifier: Identifier;
   text: string;
 };
 
 export type Identifier = {
-  id: number;
+  id: string;
   values: {
     value: string;
     numUpVotes: number;

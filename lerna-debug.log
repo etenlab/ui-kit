@@ -1,4 +1,0 @@
-39 error Error: Command failed with exit code 128: git tag v0.3.87 -m v0.3.87
-39 error fatal: tag 'v0.3.87' already exists
-39 error     at makeError (/home/work/Documents/etenlab/ui-kit/node_modules/execa/lib/error.js:60:11)
-39 error     at handlePromise (/home/work/Documents/etenlab/ui-kit/node_modules/execa/index.js:118:26)

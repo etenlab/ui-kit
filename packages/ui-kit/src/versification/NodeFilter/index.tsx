@@ -27,7 +27,7 @@ export function NodeFilter({
     <Select
       displayEmpty
       disabled={disabled}
-      value={value}
+      value={value !== undefined ? value : ''}
       onChange={(event) => onChange?.(event.target.value)}
       sx={{
         width: '100%',
@@ -48,7 +48,7 @@ export function NodeFilter({
           display: 'flex',
           alignItems: 'center',
           '&.Mui-disabled': {
-            '-webkit-text-fill-color': 'unset',
+            WebkitTextFillColor: 'unset',
           },
         },
         '& fieldset': {
