@@ -1,7 +1,7 @@
 export * from './home';
 export * from './icons';
 export * from './view';
-export * from './entry-details';
+export * as EntryDetailUI from './entry-details';
 export * from './entries';
 export * from './about';
 export * from './data-table';

@@ -1,6 +1,6 @@
 import { Box, Chip, Stack, Typography, styled } from '@mui/material';
 import React, { useState } from 'react';
-import SearchBox from '../SearchBox';
+import SearchBox, { SearchBoxProps } from '../SearchBox';
 import { CustomTab, CustomTabs } from '../Tab';
 import SelectControl, { SelectControlProps } from '../SelectControl';
 import PageTitleTypo from '../styleds/PageTitleTypo';
@@ -13,7 +13,7 @@ export type TagConfigProps = {
 };
 export type EntriesTopControlsProps = {
   titleText?: string;
-  searchPlaceholderText?: string;
+  searchBoxProps?: SearchBoxProps;
   filterTabText?: string;
   tagConfig?: TagConfigProps;
   selectControls?: SelectControlProps[];
@@ -21,7 +21,9 @@ export type EntriesTopControlsProps = {
 export const MOCK_ENTRIES_TOP_CONTROLS_PROPS: Partial<EntriesTopControlsProps> =
   {
     titleText: 'Entries',
-    searchPlaceholderText: 'Bible in Basic English',
+    searchBoxProps: {
+      placeholder: 'Bible in Basic English',
+    },
     filterTabText: 'Advanced search with filters',
     tagConfig: {
       label: 'Tags',
@@ -46,7 +48,7 @@ export function EntriesTopControls(props: EntriesTopControlsProps) {
           {props.titleText}
         </PageTitleTypo>
         <StyledDeviceSpecific showOnSmallDevice={false}>
-          <SearchBox placeholder={props.searchPlaceholderText} />
+          <SearchBox {...props.searchBoxProps} />
         </StyledDeviceSpecific>
         <CustomTabs
           value={curTab}
@@ -112,7 +114,7 @@ export function EntriesTopControls(props: EntriesTopControlsProps) {
         </Stack>
       </StyledTabContent>
       <StyledDeviceSpecific showOnSmallDevice={true}>
-        <SearchBox placeholder={props.searchPlaceholderText} />
+        <SearchBox {...props.searchBoxProps} />
       </StyledDeviceSpecific>
     </Stack>
   );

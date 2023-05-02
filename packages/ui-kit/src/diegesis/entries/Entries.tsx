@@ -20,6 +20,7 @@ export type EntriesPageProps = {
   topControlProps?: EntriesTopControlsProps;
   entriesDataTable?: EntriesDataTableProps;
   footerProps?: PageFooterProps;
+  noPageLayout?: boolean;
 };
 //#endregion
 
@@ -34,6 +35,18 @@ export const MOCK_ENTRIES_PAGE_PROPS: EntriesPageProps = {
 //#endregion
 
 export function EntriesPage(props: EntriesPageProps) {
+  if (props.noPageLayout) {
+    return (
+      <>
+        <StyledControlsContainer>
+          <EntriesTopControls {...props.topControlProps} />
+        </StyledControlsContainer>
+        <StyledTableContainer>
+          <EntriesDataTable {...props.entriesDataTable} />
+        </StyledTableContainer>
+      </>
+    );
+  }
   return (
     <PageLayout
       key={'entries-list-page'}

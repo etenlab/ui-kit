@@ -44,7 +44,14 @@ export default function TopControls(props: EntryDetailTopControlProps) {
         <PageTitleTypo variant="h1" marginRight={'0.5rem'} flex={2}>
           {props.title}
         </PageTitleTypo>
-        <Stack flex={1}>
+        <Stack
+          flex={1}
+          sx={(theme) => ({
+            [theme.breakpoints.down('sm')]: {
+              width: '100%',
+            },
+          })}
+        >
           <ActionButtons {...props.actionBtnsProps} />
         </Stack>
       </Stack>
