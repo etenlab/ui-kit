@@ -1,9 +1,10 @@
-import { Container, styled } from '@mui/material';
+import { Box, Container, styled } from '@mui/material';
 import React from 'react';
 import { MOCK_PAGE_FOOTER_PROPS, PageFooterProps } from '../PageFooter';
 import { MOCK_PAGE_HEADER_PROPS, PageHeaderProps } from '../PageHeader';
 import { MOCK_SIDE_NAV_PROPS, SideNavProps } from '../SideNav';
-import TopControls, {
+import {
+  TopControls,
   EntryDetailTopControlProps,
   MOCK_ENTRY_DETAIL_TOP_CONTROL_PROPS,
 } from './TopControls';
@@ -64,7 +65,7 @@ export const MOCK_ENTRY_DETAIL_PAGE_PROPS: EntryDetailPageProps = {
 
 export function EntryDetailPage(props: EntryDetailPageProps) {
   const pageContent = (
-    <>
+    <Box component={'div'} width={'100%'} height={'100%'}>
       <br />
       <Container component={'div'}>
         <TopControls {...props.topControlProps} />
@@ -81,7 +82,7 @@ export function EntryDetailPage(props: EntryDetailPageProps) {
         <BottomActionBtns {...props.topControlProps?.actionBtnsProps} />
         <BottomBackBtn {...props.backBtnProps} />
       </StyledDetailSection>
-    </>
+    </Box>
   );
   if (props.noPageLayout) {
     return pageContent;

@@ -1,29 +1,30 @@
 import { Stack } from '@mui/material';
-import React from 'react';
-import { BackButton, BackBtnProps } from '../BackButton';
-import ActionButtons, {
-  ActionButtonProps,
-  MOCK_ACTION_BTNS_PROPS,
-} from './ActionButtons';
-import PageTitleTypo from '../styleds/PageTitleTypo';
+import React, { FC } from 'react';
+// import { BackButton, BackBtnProps } from '../BackButton';
+// import {
+//   ActionButtons,
+//   ActionButtonProps,
+//   MOCK_ACTION_BTNS_PROPS,
+// } from './ActionButtons';
+// import { PageTitleTypo } from '../styleds/PageTitleTypo';
 
 export type EntryDetailTopControlProps = {
   title?: string;
-  actionBtnsProps?: ActionButtonProps;
-  backBtnProps?: BackBtnProps;
+  // actionBtnsProps?: ActionButtonProps;
+  // backBtnProps?: BackBtnProps;
 };
 export const MOCK_ENTRY_DETAIL_TOP_CONTROL_PROPS = {
   title: 'Bible in Basic English',
-  actionBtnsProps: MOCK_ACTION_BTNS_PROPS,
+  // actionBtnsProps: MOCK_ACTION_BTNS_PROPS,
 };
-export default function TopControls(props: EntryDetailTopControlProps) {
+export const TopControls: FC<EntryDetailTopControlProps> = (_props) => {
   return (
     <Stack
       flexDirection={'column'}
       alignItems={'flex-start'}
       justifyContent={'center'}
     >
-      <BackButton {...props.backBtnProps} />
+      {/* <BackButton {...props.backBtnProps} />
       <Stack
         flexDirection={'row'}
         marginTop={'0.8rem'}
@@ -54,7 +55,7 @@ export default function TopControls(props: EntryDetailTopControlProps) {
         >
           <ActionButtons {...props.actionBtnsProps} />
         </Stack>
-      </Stack>
+      </Stack> */}
     </Stack>
   );
-}
+};

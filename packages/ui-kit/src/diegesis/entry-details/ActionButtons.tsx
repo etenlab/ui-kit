@@ -1,5 +1,5 @@
 import { Button, Stack } from '@mui/material';
-import React from 'react';
+import React, { FC } from 'react';
 import { AiOutlineDownload, AiOutlineFileText } from 'react-icons/ai';
 
 export type ActionButtonProps = {
@@ -12,7 +12,7 @@ export const MOCK_ACTION_BTNS_PROPS: ActionButtonProps = {
   viewBtnText: 'View',
   downloadBtnText: 'Download',
 };
-export default function ActionButtons(props: ActionButtonProps) {
+export const ActionButtons: FC<ActionButtonProps> = (props) => {
   return (
     <Stack
       flexDirection={'row'}
@@ -63,4 +63,5 @@ export default function ActionButtons(props: ActionButtonProps) {
       </Button>
     </Stack>
   );
-}
+};
+export default ActionButtons;
