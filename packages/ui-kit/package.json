@@ -1,6 +1,6 @@
 {
   "name": "@eten-lab/ui-kit",
-  "version": "0.5.11",
+  "version": "0.5.12",
   "license": "UNLICENSED",
   "private": false,
   "main": "dist/index.js",
