@@ -24,12 +24,12 @@ export default {
   decorators: [
     (Story) => (
       <div
-      // style={{
-      //   margin: '3em',
-      //   border: '1px solid #000',
-      //   width: '500px',
-      //   padding: '3em',
-      // }}
+        style={{
+          margin: '3em',
+          border: '1px solid #000',
+          width: '800px',
+          padding: '3em',
+        }}
       >
         <ThemeProvider>
           <Story />
@@ -54,13 +54,16 @@ const onChangeHandler = (
   );
 
 const setLoadingStateHandler = (isLoading: boolean) => {
-  alert(isLoading);
+  console.log('isLoading: ', isLoading.valueOf());
 };
 
-export const NormalLangSelector = Template.bind({});
-NormalLangSelector.args = {};
+export const PrimaryLangSelector = Template.bind({});
+PrimaryLangSelector.args = {
+  onChange: onChangeHandler,
+  setLoadingState: setLoadingStateHandler,
+};
 
-NormalLangSelector.parameters = {
+PrimaryLangSelector.parameters = {
   docs: {
     source: {
       code: jsxToString(

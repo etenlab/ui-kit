@@ -25,11 +25,11 @@ type Lang = {
   descriptions: Array<string>;
 };
 type Dialect = {
-  tag: string;
+  tag: string | null;
   descriptions: Array<string>;
 };
 type Region = {
-  tag: string;
+  tag: string | null;
   descriptions: Array<string>;
 };
 
@@ -65,8 +65,12 @@ export function LangSelector({ onChange, setLoadingState }: LangSelectorProps) {
     }
     const allTags = tags.search(/.*/);
     const langs: Array<Lang> = [];
-    const dialects: Array<Dialect> = [];
-    const regions: Array<Region> = [];
+    const dialects: Array<Dialect> = [
+      { tag: null, descriptions: ['- not defined-'] },
+    ];
+    const regions: Array<Region> = [
+      { tag: null, descriptions: ['- not defined-'] },
+    ];
 
     for (const currTag of allTags) {
       if (
@@ -109,12 +113,12 @@ export function LangSelector({ onChange, setLoadingState }: LangSelectorProps) {
   useEffect(() => {
     if (!selectedLang) return;
     let langTag = selectedLang.tag;
-    selectedRegion && (langTag += '-' + selectedRegion.tag);
-    selectedDialect && (langTag += '-' + selectedDialect.tag);
+    selectedRegion?.tag && (langTag += '-' + selectedRegion.tag);
+    selectedDialect?.tag && (langTag += '-' + selectedDialect.tag);
     onChange(tags(langTag).format(), {
       lang: selectedLang,
-      dialect: selectedDialect,
-      region: selectedRegion,
+      dialect: selectedDialect?.tag ? selectedDialect : undefined,
+      region: selectedRegion?.tag ? selectedRegion : undefined,
     });
   }, [onChange, selectedDialect, selectedLang, selectedRegion]);
 
@@ -124,7 +128,6 @@ export function LangSelector({ onChange, setLoadingState }: LangSelectorProps) {
   ) => {
     if (!value) return;
     setSelectedLang(value);
-    console.log(value);
   };
 
   const handleSetDialect = (
@@ -133,7 +136,6 @@ export function LangSelector({ onChange, setLoadingState }: LangSelectorProps) {
   ) => {
     if (!value) return;
     setSelectedDialect(value);
-    console.log(value);
   };
   const handleSetRegion = (
     _event: React.SyntheticEvent<Element, Event>,
@@ -141,7 +143,6 @@ export function LangSelector({ onChange, setLoadingState }: LangSelectorProps) {
   ) => {
     if (!value) return;
     setSelectedRegion(value);
-    console.log(value);
   };
 
   return (
@@ -157,6 +158,7 @@ export function LangSelector({ onChange, setLoadingState }: LangSelectorProps) {
 
       <Stack direction="row" width={'100%'} gap={`${PADDING_SMALL}px`}>
         <Autocomplete
+          disabled={!selectedLang}
           label="Dialect"
           options={langsRegistry.dialects}
           getOptionLabel={(option) =>
@@ -166,6 +168,7 @@ export function LangSelector({ onChange, setLoadingState }: LangSelectorProps) {
           fullWidth
         />
         <Autocomplete
+          disabled={!selectedLang}
           label="Nation/Region/Geo"
           options={langsRegistry.regions}
           getOptionLabel={(option) =>
