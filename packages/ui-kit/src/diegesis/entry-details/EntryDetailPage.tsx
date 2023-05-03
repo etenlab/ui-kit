@@ -4,8 +4,8 @@ import { MOCK_PAGE_FOOTER_PROPS, PageFooterProps } from '../PageFooter';
 import { MOCK_PAGE_HEADER_PROPS, PageHeaderProps } from '../PageHeader';
 import { MOCK_SIDE_NAV_PROPS, SideNavProps } from '../SideNav';
 import TopControls, {
-  EntryDetailTopControlProps,
-  MOCK_ENTRY_DETAIL_TOP_CONTROL_PROPS,
+  EntryDetailTopControlConfig,
+  defaultTopControlConfig,
 } from './TopControls';
 import { HeadCell } from '../data-table/DataTable';
 import { SelectControlProps } from '../SelectControl';
@@ -21,7 +21,7 @@ import BottomActionBtns from './BottomActionBtns';
 export type EntryDetailPageProps = {
   headerProps?: PageHeaderProps;
   sideNavProps?: SideNavProps;
-  topControlProps?: EntryDetailTopControlProps;
+  topControlProps?: EntryDetailTopControlConfig;
   footerProps?: PageFooterProps;
   tblCells?: HeadCell[];
   tblData?: CellData[];
@@ -52,7 +52,7 @@ export const MOCK_ENTRY_DETAIL_PAGE_PROPS: EntryDetailPageProps = {
   headerProps: MOCK_PAGE_HEADER_PROPS,
   footerProps: MOCK_PAGE_FOOTER_PROPS,
   sideNavProps: MOCK_SIDE_NAV_PROPS as any,
-  topControlProps: MOCK_ENTRY_DETAIL_TOP_CONTROL_PROPS,
+  topControlProps: defaultTopControlConfig,
   tblCells: headCells,
   tblData: sampleData,
   bookResource: {
