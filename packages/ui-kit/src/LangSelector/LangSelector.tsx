@@ -146,7 +146,7 @@ export function LangSelector({ onChange, setLoadingState }: LangSelectorProps) {
   };
 
   return (
-    <Stack width={'100%'} padding={`${PADDING}px`} gap={`${PADDING_SMALL}px`}>
+    <Stack width={'100%'} padding={`${PADDING}px 0`} gap={`${PADDING_SMALL}px`}>
       <Autocomplete
         label="Language"
         options={langsRegistry.langs}
