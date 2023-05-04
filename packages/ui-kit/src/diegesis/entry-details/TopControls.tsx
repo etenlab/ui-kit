@@ -1,41 +1,29 @@
 import { Stack } from '@mui/material';
 import React from 'react';
-import { FlexibleBackButton } from '../BackButton';
-import { FlexibleActionButtons } from './ActionButtons';
+import { BackButton, BackBtnProps } from '../BackButton';
+import ActionButtons, {
+  ActionButtonProps,
+  MOCK_ACTION_BTNS_PROPS,
+} from './ActionButtons';
 import PageTitleTypo from '../styleds/PageTitleTypo';
-import {
-  BasicFlexibleProps,
-  BasicUIConfig,
-} from '../flexable-design/UIConfigProvider';
 
-export type EntryDetailTopControlConfig = BasicUIConfig & {
-  contents: {
-    title?: string;
-  };
-  styles: {};
+export type EntryDetailTopControlProps = {
+  title?: string;
+  actionBtnsProps?: ActionButtonProps;
+  backBtnProps?: BackBtnProps;
 };
-export type EntryDetailTopControlProps =
-  BasicFlexibleProps<EntryDetailTopControlConfig> & {};
-export const defaultTopControlConfig: EntryDetailTopControlConfig = {
-  componentName: TopControls.name,
-  contents: {
-    title: 'Bible in Basic English',
-  },
-  styles: {},
+export const MOCK_ENTRY_DETAIL_TOP_CONTROL_PROPS = {
+  title: 'Bible in Basic English',
+  actionBtnsProps: MOCK_ACTION_BTNS_PROPS,
 };
-export function TopControls({
-  uiConfig = defaultTopControlConfig,
-}: EntryDetailTopControlProps) {
+export default function TopControls(props: EntryDetailTopControlProps) {
   return (
     <Stack
       flexDirection={'column'}
       alignItems={'flex-start'}
       justifyContent={'center'}
     >
-      <FlexibleBackButton
-        id="top-controls-back-button"
-        parentPath={uiConfig.configPath!}
-      />
+      <BackButton {...props.backBtnProps} />
       <Stack
         flexDirection={'row'}
         marginTop={'0.8rem'}
@@ -54,7 +42,7 @@ export function TopControls({
         })}
       >
         <PageTitleTypo variant="h1" marginRight={'0.5rem'} flex={2}>
-          {uiConfig.contents.title}
+          {props.title}
         </PageTitleTypo>
         <Stack
           flex={1}
@@ -64,10 +52,7 @@ export function TopControls({
             },
           })}
         >
-          <FlexibleActionButtons
-            id="entry-detail-top-control-action-btns"
-            parentPath={uiConfig.configPath!}
-          />
+          <ActionButtons {...props.actionBtnsProps} />
         </Stack>
       </Stack>
     </Stack>

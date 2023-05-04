@@ -1,54 +1,18 @@
 import { Button, Stack } from '@mui/material';
 import React from 'react';
 import { AiOutlineDownload, AiOutlineFileText } from 'react-icons/ai';
-import {
-  BasicFlexibleProps,
-  BasicUIConfig,
-} from '../flexable-design/UIConfigProvider';
-import { withFlexible } from '../flexable-design/withFlexible';
 
-type ActionButtonConfig = BasicUIConfig & {
-  contents: {
-    viewBtnText?: string;
-    viewBtnHref?: string;
-    onViewBtnClick?: (e: any) => void;
-    downloadBtnText?: string;
-    downloadBtnHref?: string;
-    onDownloadBtnClick?: (e: any) => void;
-  };
-  styles: {
-    fontWeight: string;
-    fontSize: string;
-    textTransform: string;
-    borderRadius: string;
-    padding: string;
-    width: string;
-    color: string;
-  };
+export type ActionButtonProps = {
+  viewBtnText?: string;
+  onViewBtnClick?: (e: any) => void;
+  downloadBtnText?: string;
+  onDownloadBtnClick?: (e: any) => void;
 };
-export type ActionButtonProps = BasicFlexibleProps<ActionButtonConfig> & {};
-export const defaultActionBtnsConfig: ActionButtonConfig = {
-  componentName: ActionButtons.name,
-  contents: {
-    viewBtnText: 'View',
-    viewBtnHref: '/',
-    downloadBtnText: 'Download',
-    downloadBtnHref: '/',
-  },
-  styles: {
-    fontWeight: '700',
-    fontSize: '1.3rem',
-    textTransform: 'none',
-    borderRadius: '2rem',
-    padding: '0.8rem',
-    width: '47%',
-    color: '#1B1B1B',
-    bgColor: '#60D0B2',
-  },
+export const MOCK_ACTION_BTNS_PROPS: ActionButtonProps = {
+  viewBtnText: 'View',
+  downloadBtnText: 'Download',
 };
-export function ActionButtons({
-  uiConfig = defaultActionBtnsConfig,
-}: ActionButtonProps) {
+export default function ActionButtons(props: ActionButtonProps) {
   return (
     <Stack
       flexDirection={'row'}
@@ -64,45 +28,39 @@ export function ActionButtons({
     >
       <Button
         sx={{
+          fontWeight: 700,
+          fontSize: '1.3rem',
+          textTransform: 'none',
+          borderRadius: '2rem',
+          padding: '0.8rem',
+          width: '47%',
           marginRight: '1rem',
-          fontWeight: uiConfig.styles.fontWeight,
-          fontSize: uiConfig.styles.fontSize,
-          textTransform: uiConfig.styles.textTransform,
-          borderRadius: uiConfig.styles.borderRadius,
-          padding: uiConfig.styles.padding,
-          width: uiConfig.styles.width,
         }}
         startIcon={<AiOutlineFileText />}
         variant={'contained'}
         color={'green'}
         size={'large'}
-        href={uiConfig.contents.viewBtnHref}
-        onClick={uiConfig.contents.onViewBtnClick}
+        onClick={props.onViewBtnClick}
       >
-        {uiConfig.contents.viewBtnText}
+        {props.viewBtnText}
       </Button>
       <Button
         sx={{
-          fontWeight: uiConfig.styles.fontWeight,
-          fontSize: uiConfig.styles.fontSize,
-          textTransform: uiConfig.styles.textTransform,
-          borderRadius: uiConfig.styles.borderRadius,
-          padding: uiConfig.styles.padding,
-          width: uiConfig.styles.width,
+          fontWeight: 700,
+          fontSize: '1.3rem',
+          textTransform: 'none',
+          borderRadius: '2rem',
+          padding: '0.8rem',
+          width: '47%',
         }}
-        href={uiConfig.contents.downloadBtnHref}
         startIcon={<AiOutlineDownload />}
         variant={'contained'}
         color={'green'}
         size={'large'}
-        onClick={uiConfig.contents.onDownloadBtnClick}
+        onClick={props.onDownloadBtnClick}
       >
-        {uiConfig.contents.downloadBtnText}
+        {props.downloadBtnText}
       </Button>
     </Stack>
   );
 }
-export const FlexibleActionButtons = withFlexible<
-  ActionButtonConfig,
-  ActionButtonProps
->(ActionButtons, defaultActionBtnsConfig);
