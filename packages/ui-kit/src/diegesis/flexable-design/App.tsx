@@ -5,7 +5,7 @@ import { UIConfigContextProvider } from './UIConfigProvider';
 
 import { FlexibleHome } from './Home';
 import { UIConfigControlPanel } from './UIConfigControlPanel';
-import { FlexibleActionButtons } from '../entry-details';
+// import { FlexibleActionButtons } from '../entry-details';
 // import { FlexibleFooter } from './Footer';
 // import { FlexibleAppLogo } from './AppLogo';
 
@@ -20,16 +20,15 @@ export function App() {
     ) {
       return;
     }
-
     setOpen((open) => !open);
   };
 
   return (
     <UIConfigContextProvider>
-      {/* <FlexibleHome id="home" parentPath="/" /> */}
+      <FlexibleHome id="home" parentPath="/" />
       {/* <FlexibleFooter id="flexiblefooter" parentPath="/" />
-      <FlexibleAppLogo id="flexibleapplogo" parentPath="/" /> */}
-      <FlexibleActionButtons id="flexibleActionBtns" parentPath="/" />
+      <FlexibleAppLogo id="flexibleapplogo" parentPath="/" />
+      <FlexibleActionButtons id="flexibleActionBtns" parentPath="/" /> */}
       <Button onClick={toggleDrawer} variant="contained">
         Open Setting Panel
       </Button>

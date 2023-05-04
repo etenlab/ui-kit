@@ -1,12 +1,9 @@
 import { Stack } from '@mui/material';
 import React from 'react';
-import { FlexibleBackButton } from '../BackButton';
 import { FlexibleActionButtons } from './ActionButtons';
-import PageTitleTypo from '../styleds/PageTitleTypo';
-import {
-  BasicFlexibleProps,
-  BasicUIConfig,
-} from '../flexable-design/UIConfigProvider';
+import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
+import PageTitleTypo from '@components/diegesis/styleds/PageTitleTypo';
+import { FlexibleBackButton } from '@components/diegesis/BackButton';
 
 export type EntryDetailTopControlConfig = BasicUIConfig & {
   contents: {
