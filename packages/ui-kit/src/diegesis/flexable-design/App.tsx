@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Drawer } from '@mui/material';
-
 import { UIConfigContextProvider } from './UIConfigProvider';
-
 import { FlexibleHome } from './Home';
 import { UIConfigControlPanel } from './UIConfigControlPanel';
-// import { FlexibleActionButtons } from '../entry-details';
-// import { FlexibleFooter } from './Footer';
-// import { FlexibleAppLogo } from './AppLogo';
 
 export function App() {
   const [open, setOpen] = useState(false);
@@ -26,9 +21,6 @@ export function App() {
   return (
     <UIConfigContextProvider>
       <FlexibleHome id="home" parentPath="/" />
-      {/* <FlexibleFooter id="flexiblefooter" parentPath="/" />
-      <FlexibleAppLogo id="flexibleapplogo" parentPath="/" />
-      <FlexibleActionButtons id="flexibleActionBtns" parentPath="/" /> */}
       <Button onClick={toggleDrawer} variant="contained">
         Open Setting Panel
       </Button>

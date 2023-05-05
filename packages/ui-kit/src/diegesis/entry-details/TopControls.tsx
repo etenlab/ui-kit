@@ -16,7 +16,7 @@ export const MOCK_ENTRY_DETAIL_TOP_CONTROL_PROPS = {
   title: 'Bible in Basic English',
   actionBtnsProps: MOCK_ACTION_BTNS_PROPS,
 };
-export default function TopControls(props: EntryDetailTopControlProps) {
+export function TopControls(props: EntryDetailTopControlProps) {
   return (
     <Stack
       flexDirection={'column'}

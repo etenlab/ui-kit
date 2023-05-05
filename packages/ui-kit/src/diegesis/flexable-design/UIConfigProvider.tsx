@@ -108,7 +108,7 @@ export const UIConfigContext = createContext<IUIConfigContext>({
     _FlexibleComponent: FC<T>,
   ): void {},
   queryUIConfig<BasicUIConfig>(_path: string): BasicUIConfig {
-    return initialRootState as BasicUIConfig;
+    return initialRootState as any;
   },
   getConfigurableComponentList(_path: string): string[] {
     return [];
