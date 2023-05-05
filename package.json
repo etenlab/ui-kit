@@ -1,7 +1,6 @@
 {
   "name": "@eil-eten-lab/ui-kit",
   "version": "0.1.0",
-  "private": false,
   "workspaces": [
     "packages/*"
   ],
@@ -90,5 +89,6 @@
       "npm run format",
       "npx eslint --fix"
     ]
-  }
+  },
+  "packageManager": "yarn@3.5.1"
 }
