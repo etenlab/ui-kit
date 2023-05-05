@@ -19,7 +19,6 @@ export function App() {
     ) {
       return;
     }
-
     setOpen((open) => !open);
   };
 
