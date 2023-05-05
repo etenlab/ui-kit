@@ -1,16 +1,14 @@
 import { Stack, styled } from '@mui/material';
 import React from 'react';
-import { FC } from 'react';
-import BackButton, { BackBtnProps } from '../BackButton';
+import { FlexibleBackButton, BackBtnProps } from '../BackButton';
 
-export const BottomBackBtn: FC<BackBtnProps> = (props) => {
+export function BottomBackBtn(props: BackBtnProps) {
   return (
     <StyledBackButtonContainer flexDirection={'row'}>
-      <BackButton {...props} />
+      <FlexibleBackButton {...props} id="bottom-back-button" />
     </StyledBackButtonContainer>
   );
-};
-export default BottomBackBtn;
+}
 
 const StyledBackButtonContainer = styled(Stack)(({ theme }) => ({
   flexDirection: 'row',

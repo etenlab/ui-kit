@@ -1,8 +1,10 @@
 import { Stack, Typography, styled } from '@mui/material';
 import React from 'react';
-import SelectControl, { SelectControlProps } from '../SelectControl';
 import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
 import { withFlexible } from '../withFlexible';
+import SelectControl, {
+  SelectControlProps,
+} from '@components/diegesis/SelectControl';
 
 export type BookResourceConfig = BasicUIConfig & {
   contents: {

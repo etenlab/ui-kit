@@ -3,7 +3,8 @@ import React from 'react';
 import { FlexibleActionButtons } from './ActionButtons';
 import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
 import PageTitleTypo from '@components/diegesis/styleds/PageTitleTypo';
-import { FlexibleBackButton } from '@components/diegesis/BackButton';
+import { FlexibleBackButton } from '../BackButton';
+import { withFlexible } from '../withFlexible';
 
 export type EntryDetailTopControlConfig = BasicUIConfig & {
   contents: {
@@ -62,7 +63,7 @@ export function TopControls({
           })}
         >
           <FlexibleActionButtons
-            id="entry-detail-top-control-action-btns"
+            id="entry-detail-top-control-action-buttons"
             parentPath={uiConfig.configPath!}
           />
         </Stack>
@@ -70,3 +71,7 @@ export function TopControls({
     </Stack>
   );
 }
+export const FlexibleTopControls = withFlexible<
+  EntryDetailTopControlConfig,
+  EntryDetailTopControlProps
+>(TopControls, defaultTopControlConfig);
