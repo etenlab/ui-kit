@@ -1,7 +1,7 @@
 import { styled } from '@mui/material';
 
 export const StoryPaper = styled('div')(({ theme }) => ({
-  margin: '3em',
+  margin: '20px',
   background: theme.palette.text.disable,
-  width: '700px',
+  width: 'calc(100% - 20px)',
 }));
