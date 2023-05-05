@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Stack } from '@mui/material';
+import { Stack, rgbToHex } from '@mui/material';
 
 import tags from 'language-tags';
 import { Autocomplete } from '../input';
@@ -8,8 +8,9 @@ import { Autocomplete } from '../input';
 const PADDING = 20;
 const PADDING_SMALL = 12;
 const DESCRIPTIONS_JOINER = '/';
+const NOT_DEFINED_PLACEHOLDER = '- not defined -';
 
-type LangSelectorProps = {
+export type LangSelectorProps = {
   onChange(
     langTag: string | null,
     selected: {
@@ -20,18 +21,13 @@ type LangSelectorProps = {
   ): void;
   setLoadingState?(isLoading: boolean): any;
 };
-type Lang = {
-  tag: string;
-  descriptions: Array<string>;
-};
-type Dialect = {
+export type TagInfo = {
   tag: string | null;
   descriptions: Array<string>;
 };
-type Region = {
-  tag: string | null;
-  descriptions: Array<string>;
-};
+export type Lang = Omit<TagInfo, 'tag'> & { tag: string };
+export type Region = TagInfo;
+export type Dialect = TagInfo;
 
 type LangsRegistry = {
   langs: Array<Lang>;
@@ -66,10 +62,10 @@ export function LangSelector({ onChange, setLoadingState }: LangSelectorProps) {
     const allTags = tags.search(/.*/);
     const langs: Array<Lang> = [];
     const dialects: Array<Dialect> = [
-      { tag: null, descriptions: ['- not defined-'] },
+      { tag: null, descriptions: [NOT_DEFINED_PLACEHOLDER] },
     ];
     const regions: Array<Region> = [
-      { tag: null, descriptions: ['- not defined-'] },
+      { tag: null, descriptions: [NOT_DEFINED_PLACEHOLDER] },
     ];
 
     for (const currTag of allTags) {
@@ -99,6 +95,9 @@ export function LangSelector({ onChange, setLoadingState }: LangSelectorProps) {
         });
       }
     }
+    sortTagInfos(langs);
+    sortTagInfos(dialects);
+    sortTagInfos(regions);
 
     setLangsRegistry({
       langs,
@@ -180,4 +179,22 @@ export function LangSelector({ onChange, setLoadingState }: LangSelectorProps) {
       </Stack>
     </Stack>
   );
+}
+
+function sortTagInfos(tagInfos: Array<TagInfo>): void {
+  tagInfos.sort((t1, t2) => {
+    if (t1.descriptions[0] === NOT_DEFINED_PLACEHOLDER) {
+      return -1;
+    }
+    if (t2.descriptions[0] === NOT_DEFINED_PLACEHOLDER) {
+      return 1;
+    }
+    if (t1.descriptions[0] > t2.descriptions[0]) {
+      return 1;
+    }
+    if (t1.descriptions[0] < t2.descriptions[0]) {
+      return -1;
+    }
+    return 0;
+  });
 }
