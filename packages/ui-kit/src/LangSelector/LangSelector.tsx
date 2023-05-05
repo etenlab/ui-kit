@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Stack, rgbToHex } from '@mui/material';
+import { Stack } from '@mui/material';
 
 import tags from 'language-tags';
 import { Autocomplete } from '../input';
