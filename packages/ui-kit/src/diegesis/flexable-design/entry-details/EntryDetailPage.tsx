@@ -1,28 +1,30 @@
 import { Container, styled } from '@mui/material';
 import React from 'react';
-import { MOCK_PAGE_FOOTER_PROPS, PageFooterProps } from '../PageFooter';
-import { MOCK_PAGE_HEADER_PROPS, PageHeaderProps } from '../PageHeader';
-import { MOCK_SIDE_NAV_PROPS, SideNavProps } from '../SideNav';
-import TopControls, {
-  EntryDetailTopControlConfig,
-  defaultTopControlConfig,
-} from './TopControls';
-import { HeadCell } from '../data-table/DataTable';
-import { SelectControlProps } from '../SelectControl';
-import { BackBtnProps } from '../BackButton';
-import PageLayout from '../PageLayout';
+import { FlexibleTopControls, EntryDetailTopControlProps } from './TopControls';
+import { HeadCell } from '../../data-table/DataTable';
+import { FlexiblePageLayout } from '../PageLayout';
 import InfoGrid, { CellData } from './InfoGrid';
-import { SectionDivider } from './SectionDivider';
-import BookResourceBox from './BookResourceBox';
-import BottomBackBtn from './BottomBackBtn';
-import BottomActionBtns from './BottomActionBtns';
+import { FlexibleSectionDivider } from './SectionDivider';
+import { FlexibleBookResourceBox } from './BookResourceBox';
+import { FlexibleBottomActionButtons } from './BottomActionBtns';
+import { BackBtnProps, FlexibleBackButton } from '../BackButton';
+import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
+import { SideNavProps } from '@components/diegesis/SideNav';
+import { SelectControlProps } from '@components/diegesis/SelectControl';
 
 //#region types
-export type EntryDetailPageProps = {
-  headerProps?: PageHeaderProps;
+export type EntryDetailPageConfig = BasicUIConfig & {
+  contents: {};
+  styles: {};
+};
+export const defaultEntryDetailPage: EntryDetailPageConfig = {
+  componentName: EntryDetailPage.name,
+  contents: {},
+  styles: {},
+};
+export type EntryDetailPageProps = BasicFlexibleProps<EntryDetailPageConfig> & {
   sideNavProps?: SideNavProps;
-  topControlProps?: EntryDetailTopControlConfig;
-  footerProps?: PageFooterProps;
+  topControlProps?: EntryDetailTopControlProps;
   tblCells?: HeadCell[];
   tblData?: CellData[];
   bookResource?: { label: string; selectControl: SelectControlProps };
@@ -31,55 +33,49 @@ export type EntryDetailPageProps = {
 };
 //#endregion
 
-//#region mockup data
-const headCells: HeadCell[] = [
-  { id: 'key', disablePadding: true, label: '', numeric: false },
-  { id: 'value', disablePadding: false, label: '', numeric: false },
-  { id: 'emptyColumn1', disablePadding: false, label: '', numeric: false },
-];
-const sampleData: CellData[] = [
-  { key: 'Details', value: '' },
-  { key: 'Abbreviation', value: 'engBBE' },
-  { key: 'Copyright', value: 'engBBE' },
-  { key: 'Language', value: 'engBBE' },
-  { key: 'Data source', value: 'engBBE' },
-  { key: 'Owner', value: 'engBBE' },
-  { key: 'Entry ID', value: 'engBBE' },
-  { key: 'Revision', value: 'engBBE' },
-  { key: 'Content', value: '39 OT, 27 NT' },
-];
-export const MOCK_ENTRY_DETAIL_PAGE_PROPS: EntryDetailPageProps = {
-  headerProps: MOCK_PAGE_HEADER_PROPS,
-  footerProps: MOCK_PAGE_FOOTER_PROPS,
-  sideNavProps: MOCK_SIDE_NAV_PROPS as any,
-  topControlProps: defaultTopControlConfig,
-  tblCells: headCells,
-  tblData: sampleData,
-  bookResource: {
-    label: 'Book Resources',
-    selectControl: { label: 'Select a book', options: [], onChange(_value) {} },
-  },
-};
-//#endregion
-
 export function EntryDetailPage(props: EntryDetailPageProps) {
+  const { uiConfig = defaultEntryDetailPage } = props;
   const pageContent = (
     <>
       <br />
       <Container component={'div'}>
-        <TopControls {...props.topControlProps} />
+        <FlexibleTopControls
+          {...props.topControlProps?.actionButtonProps}
+          id="top-controls"
+          parentPath={uiConfig.configPath!}
+        />
       </Container>
       <StyledDetailSection>
-        <SectionDivider />
+        <FlexibleSectionDivider
+          id="section-divider1"
+          parentPath={uiConfig.configPath!}
+        />
         <InfoGrid tblCells={props.tblCells} tblData={props.tblData} />
         {props.bookResource?.selectControl ? (
-          <BookResourceBox {...props.bookResource} />
+          <FlexibleBookResourceBox
+            {...props.bookResource}
+            id="book-resource"
+            parentPath={uiConfig.configPath!}
+          />
         ) : (
           <></>
         )}
-        <SectionDivider marginTop={3} marginBottom={3} />
-        <BottomActionBtns {...props.topControlProps?.actionBtnsProps} />
-        <BottomBackBtn {...props.backBtnProps} />
+        <FlexibleSectionDivider
+          id="section-divider2"
+          parentPath={uiConfig.configPath!}
+          marginTop={3}
+          marginBottom={3}
+        />
+        <FlexibleBottomActionButtons
+          {...props.topControlProps}
+          id="bottom-action-buttons"
+          parentPath={uiConfig.configPath!}
+        />
+        <FlexibleBackButton
+          {...props.backBtnProps}
+          id="back-button"
+          parentPath={uiConfig.configPath!}
+        />
       </StyledDetailSection>
     </>
   );
@@ -87,14 +83,13 @@ export function EntryDetailPage(props: EntryDetailPageProps) {
     return pageContent;
   } else
     return (
-      <PageLayout
-        key={'entry-detail-page'}
-        headerProps={props.headerProps}
+      <FlexiblePageLayout
+        id={'entry-detail-page'}
+        parentPath={uiConfig.configPath!}
         sideNavProps={props.sideNavProps}
-        footerProps={props.footerProps}
       >
         {pageContent}
-      </PageLayout>
+      </FlexiblePageLayout>
     );
 }
 export default EntryDetailPage;

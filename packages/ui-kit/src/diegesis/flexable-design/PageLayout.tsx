@@ -17,7 +17,7 @@ const defaultPageLayoutConfig: PageLayoutConfig = {
 };
 export type PageLayoutProps = BasicFlexibleProps<PageLayoutConfig> & {
   children?: JSX.Element;
-  sideNavProps: SideNavProps;
+  sideNavProps?: SideNavProps;
 };
 export function PageLayout({
   uiConfig = defaultPageLayoutConfig,

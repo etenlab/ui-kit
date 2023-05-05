@@ -1,6 +1,6 @@
 import { Stack } from '@mui/material';
 import React from 'react';
-import { FlexibleActionButtons } from './ActionButtons';
+import { ActionButtonProps, FlexibleActionButtons } from './ActionButtons';
 import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
 import PageTitleTypo from '@components/diegesis/styleds/PageTitleTypo';
 import { FlexibleBackButton } from '../BackButton';
@@ -13,7 +13,9 @@ export type EntryDetailTopControlConfig = BasicUIConfig & {
   styles: {};
 };
 export type EntryDetailTopControlProps =
-  BasicFlexibleProps<EntryDetailTopControlConfig> & {};
+  BasicFlexibleProps<EntryDetailTopControlConfig> & {
+    actionButtonProps?: ActionButtonProps;
+  };
 export const defaultTopControlConfig: EntryDetailTopControlConfig = {
   componentName: TopControls.name,
   contents: {
@@ -23,6 +25,7 @@ export const defaultTopControlConfig: EntryDetailTopControlConfig = {
 };
 export function TopControls({
   uiConfig = defaultTopControlConfig,
+  actionButtonProps,
 }: EntryDetailTopControlProps) {
   return (
     <Stack
@@ -63,6 +66,7 @@ export function TopControls({
           })}
         >
           <FlexibleActionButtons
+            {...actionButtonProps}
             id="entry-detail-top-control-action-buttons"
             parentPath={uiConfig.configPath!}
           />

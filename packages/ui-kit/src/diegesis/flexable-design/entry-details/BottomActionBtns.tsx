@@ -15,7 +15,7 @@ export const defaultBottomActionButtonConfig: BottomActionButtonsConfig = {
 };
 export type BottomActionButtonsProps =
   BasicFlexibleProps<BottomActionButtonsConfig> & {
-    actionBtnProps: ActionButtonProps;
+    actionBtnProps?: ActionButtonProps;
   };
 export function BottomActionButtons({
   uiConfig = defaultBottomActionButtonConfig,

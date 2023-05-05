@@ -1,6 +1,7 @@
+import { HeadCell } from '@components/diegesis/data-table';
+import DataTable from '@components/diegesis/data-table/DataTable';
 import { Stack, styled } from '@mui/material';
 import React, { FC } from 'react';
-import DataTable, { HeadCell } from '../data-table/DataTable';
 
 //#region types
 export type CellData = {
