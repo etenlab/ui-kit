@@ -8,10 +8,8 @@ type ActionButtonConfig = BasicUIConfig & {
   contents: {
     viewBtnText?: string;
     viewBtnHref?: string;
-    onViewBtnClick?: (e: any) => void;
     downloadBtnText?: string;
     downloadBtnHref?: string;
-    onDownloadBtnClick?: (e: any) => void;
   };
   styles: {
     fontWeight: string;
@@ -23,8 +21,11 @@ type ActionButtonConfig = BasicUIConfig & {
     color: string;
   };
 };
-export type ActionButtonProps = BasicFlexibleProps<ActionButtonConfig> & {};
-export const defaultActionBtnsConfig: ActionButtonConfig = {
+export type ActionButtonProps = BasicFlexibleProps<ActionButtonConfig> & {
+  onViewBtnClick?: (e: any) => void;
+  onDownloadBtnClick?: (e: any) => void;
+};
+export const defaultActionButtonsConfig: ActionButtonConfig = {
   componentName: ActionButtons.name,
   contents: {
     viewBtnText: 'View',
@@ -44,7 +45,9 @@ export const defaultActionBtnsConfig: ActionButtonConfig = {
   },
 };
 export function ActionButtons({
-  uiConfig = defaultActionBtnsConfig,
+  uiConfig = defaultActionButtonsConfig,
+  onViewBtnClick,
+  onDownloadBtnClick,
 }: ActionButtonProps) {
   return (
     <Stack
@@ -74,7 +77,7 @@ export function ActionButtons({
         color={'green'}
         size={'large'}
         href={uiConfig.contents.viewBtnHref}
-        onClick={uiConfig.contents.onViewBtnClick}
+        onClick={onViewBtnClick}
       >
         {uiConfig.contents.viewBtnText}
       </Button>
@@ -92,7 +95,7 @@ export function ActionButtons({
         variant={'contained'}
         color={'green'}
         size={'large'}
-        onClick={uiConfig.contents.onDownloadBtnClick}
+        onClick={onDownloadBtnClick}
       >
         {uiConfig.contents.downloadBtnText}
       </Button>
@@ -102,4 +105,4 @@ export function ActionButtons({
 export const FlexibleActionButtons = withFlexible<
   ActionButtonConfig,
   ActionButtonProps
->(ActionButtons, defaultActionBtnsConfig);
+>(ActionButtons, defaultActionButtonsConfig);

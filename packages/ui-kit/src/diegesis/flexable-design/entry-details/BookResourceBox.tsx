@@ -1,30 +1,49 @@
 import { Stack, Typography, styled } from '@mui/material';
 import React from 'react';
-import { FC } from 'react';
 import SelectControl, { SelectControlProps } from '../SelectControl';
+import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
+import { withFlexible } from '../withFlexible';
 
-export type BookResourceBoxProps = {
-  label?: string;
+export type BookResourceConfig = BasicUIConfig & {
+  contents: {
+    label: string;
+  };
+  styles: {};
+};
+const defaultBookResourceConfig: BookResourceConfig = {
+  componentName: BookResourceBox.name,
+  contents: {
+    label: '',
+  },
+  styles: {},
+};
+export type BookResourceBoxProps = BasicFlexibleProps<BookResourceConfig> & {
   selectControl: SelectControlProps;
 };
-export const BookResourceBox: FC<BookResourceBoxProps> = (props) => {
+export function BookResourceBox({
+  uiConfig = defaultBookResourceConfig,
+  selectControl,
+}: BookResourceBoxProps) {
   return (
     <StyledBookResourceBox
       direction={'column'}
       alignItems={'flex-start'}
       justifyContent={'center'}
     >
-      <Typography variant="h3">{props.label}</Typography>
+      <Typography variant="h3">{uiConfig.contents.label}</Typography>
       <SelectControl
-        label={props.selectControl.label}
-        value={props.selectControl.value}
-        options={props.selectControl.options || []}
-        onChange={props.selectControl.onChange!}
+        label={selectControl.label}
+        value={selectControl.value}
+        options={selectControl.options || []}
+        onChange={selectControl.onChange!}
       />
     </StyledBookResourceBox>
   );
-};
-export default BookResourceBox;
+}
+export const FlexibleBookResourceBox = withFlexible<
+  BookResourceConfig,
+  BookResourceBoxProps
+>(BookResourceBox, defaultBookResourceConfig);
 
 const StyledBookResourceBox = styled(Stack)(({ theme }) => ({
   flexDirection: 'column',
