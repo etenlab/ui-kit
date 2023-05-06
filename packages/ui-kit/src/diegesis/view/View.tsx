@@ -6,7 +6,7 @@ import { MOCK_SIDE_NAV_PROPS, SideNavProps } from '../SideNav';
 import AboutContentSection from '../about/AboutContentSection';
 import { SelectControl, SelectControlProps } from '../SelectControl';
 import { BackBtnProps, BackButton } from '../BackButton';
-import PageTitleTypo from '../styleds/PageTitleTypo';
+import { PageTitleTypo } from '../styleds/PageTitleTypo';
 import PageLayout from '../PageLayout';
 
 export type ViewPageProps = {

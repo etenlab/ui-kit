@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { SearchBox, SearchBoxProps } from '../../SearchBox';
 import { CustomTab, CustomTabs } from '../../Tab';
 import { SelectControl, SelectControlProps } from '../../SelectControl';
-import PageTitleTypo from '../../styleds/PageTitleTypo';
+import { PageTitleTypo } from '../../styleds/PageTitleTypo';
 import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
 import { withFlexible } from '../withFlexible';
 
@@ -140,6 +140,11 @@ export function EntriesTopControls(props: EntriesTopControlsProps) {
   );
 }
 
+export const FlexibleEntriesTopControls = withFlexible<
+  EntriesTopControlsConfig,
+  EntriesTopControlsProps
+>(EntriesTopControls, defaultEntriesTopControlsConfig);
+
 //#region styled components
 const StyledDeviceSpecific = styled<any>(Box)(
   ({ theme, showOnSmallDevice }) => ({
@@ -169,8 +174,3 @@ const StyledChip = styled(Chip)(({ theme }) => ({
   fontWeight: 600,
 }));
 //#endregion
-
-export const FlexibleEntriesTopControls = withFlexible<
-  EntriesTopControlsConfig,
-  EntriesTopControlsProps
->(EntriesTopControls, defaultEntriesTopControlsConfig);

@@ -7,8 +7,8 @@ import {
 } from './EntriesTopControls';
 import { FlexiblePageLayout } from '../PageLayout';
 import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
+import { EntriesDataTable, EntriesDataTableProps } from './EntriesDataTable';
 import { withFlexible } from '../withFlexible';
-import { EntriesDataTable, EntriesDataTableProps } from '../../entries';
 
 //#region types
 export type EntriesPageConfig = BasicUIConfig & {

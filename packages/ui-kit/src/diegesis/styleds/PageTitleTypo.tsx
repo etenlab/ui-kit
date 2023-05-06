@@ -10,5 +10,3 @@ export const PageTitleTypo = styled(Typography)(({ theme }) => ({
     fontSize: '2rem',
   },
 }));
-
-export default PageTitleTypo;

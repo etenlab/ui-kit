@@ -5,7 +5,7 @@ import ActionButtons, {
   ActionButtonProps,
   MOCK_ACTION_BTNS_PROPS,
 } from './ActionButtons';
-import PageTitleTypo from '../styleds/PageTitleTypo';
+import { PageTitleTypo } from '../styleds/PageTitleTypo';
 
 export type EntryDetailTopControlProps = {
   title?: string;
