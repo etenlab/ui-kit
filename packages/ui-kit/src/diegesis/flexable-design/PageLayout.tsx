@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import React, { useState } from 'react';
 import { FlexibleHeader } from './Header';
-import SideNav, { SideNavProps } from '../SideNav';
+import { SideNav, SideNavProps } from '../SideNav';
 import { BasicFlexibleProps, BasicUIConfig } from './UIConfigProvider';
 import { FlexibleFooter } from './Footer';
 import { withFlexible } from './withFlexible';

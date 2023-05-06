@@ -94,5 +94,3 @@ const StyledSearchButton = styled(Button)(({ theme }) => ({
   fontSize: '20px',
 }));
 //#endregion
-
-export default SearchBox;

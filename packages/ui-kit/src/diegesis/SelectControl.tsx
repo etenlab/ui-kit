@@ -65,5 +65,3 @@ const StyledSelect = styled(Select)(({ theme }) => ({
     borderColor: theme.palette.background['turquoise-light'],
   },
 }));
-
-export default SelectControl;

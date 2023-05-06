@@ -2,7 +2,7 @@ import { Stack, Typography, styled } from '@mui/material';
 import React from 'react';
 import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
 import { withFlexible } from '../withFlexible';
-import SelectControl, { SelectControlProps } from '../../SelectControl';
+import { SelectControl, SelectControlProps } from '../../SelectControl';
 
 export type BookResourceConfig = BasicUIConfig & {
   contents: {

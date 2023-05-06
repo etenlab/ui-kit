@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { styled } from '@mui/material';
 
-import SideNav, { MOCK_SIDE_NAV_PROPS } from '../SideNav';
+import { SideNav, MOCK_SIDE_NAV_PROPS } from '../SideNav';
 
 import { FlexibleLandingSection } from './LandingSection';
 import { FlexibleHeader } from './Header';

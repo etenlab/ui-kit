@@ -30,21 +30,22 @@ export type EntriesPageProps = BasicFlexibleProps<EntriesPageConfig> & {
 
 export function EntriesPage(props: EntriesPageProps) {
   const { uiConfig = defaultEntriesPageConfig } = props;
+  const pageContent = (
+    <>
+      <StyledControlsContainer>
+        <FlexibleEntriesTopControls
+          id="entries-top-controls"
+          parentPath={uiConfig?.configPath!}
+          {...props.topControlProps}
+        />
+      </StyledControlsContainer>
+      <StyledTableContainer>
+        <EntriesDataTable {...props.entriesDataTable} />
+      </StyledTableContainer>
+    </>
+  );
   if (props.noPageLayout) {
-    return (
-      <>
-        <StyledControlsContainer>
-          <FlexibleEntriesTopControls
-            id="entries-top-controls"
-            parentPath={uiConfig?.configPath!}
-            {...props.topControlProps}
-          />
-        </StyledControlsContainer>
-        <StyledTableContainer>
-          <EntriesDataTable {...props.entriesDataTable} />
-        </StyledTableContainer>
-      </>
-    );
+    return pageContent;
   }
   return (
     <FlexiblePageLayout
@@ -52,21 +53,14 @@ export function EntriesPage(props: EntriesPageProps) {
       parentPath={uiConfig?.configPath!}
       sideNavProps={props.sideNavProps}
     >
-      <>
-        <StyledControlsContainer>
-          <FlexibleEntriesTopControls
-            id="entries-top-controls"
-            parentPath={uiConfig?.configPath!}
-            {...props.topControlProps}
-          />
-        </StyledControlsContainer>
-        <StyledTableContainer>
-          <EntriesDataTable {...props.entriesDataTable} />
-        </StyledTableContainer>
-      </>
+      {pageContent}
     </FlexiblePageLayout>
   );
 }
+export const FlexibleEntriesPage = withFlexible<
+  EntriesPageConfig,
+  EntriesPageProps
+>(EntriesPage, defaultEntriesPageConfig);
 
 //#region styled components
 const StyledControlsContainer = styled(Container)(({ theme }) => ({
@@ -100,8 +94,3 @@ const StyledTableContainer = styled(Container)(({ theme }) => ({
   },
 }));
 //#endregion
-
-export const FlexibleEntriesPage = withFlexible<
-  EntriesPageConfig,
-  EntriesPageProps
->(EntriesPage, defaultEntriesPageConfig);

@@ -1,12 +1,11 @@
 import { Box, Chip, Stack, Typography, styled } from '@mui/material';
 import React, { useState } from 'react';
-import SearchBox, { SearchBoxProps } from '../../SearchBox';
+import { SearchBox, SearchBoxProps } from '../../SearchBox';
 import { CustomTab, CustomTabs } from '../../Tab';
-import SelectControl, { SelectControlProps } from '../../SelectControl';
+import { SelectControl, SelectControlProps } from '../../SelectControl';
 import PageTitleTypo from '../../styleds/PageTitleTypo';
 import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
 import { withFlexible } from '../withFlexible';
-import { EntryDetailPage } from '../entry-details';
 
 export type TagConfigProps = {
   label?: string;
@@ -151,7 +150,6 @@ const StyledDeviceSpecific = styled<any>(Box)(
     },
   }),
 );
-
 const StyledTabContent = styled<any>(Stack)(({ theme, show }) => ({
   display: show ? 'flex' : 'none',
   transition: 'all 0.2s ease-in',
@@ -162,7 +160,6 @@ const StyledTabContent = styled<any>(Stack)(({ theme, show }) => ({
   padding: '20px 25px',
   width: '100%',
 }));
-
 const StyledChip = styled(Chip)(({ theme }) => ({
   backgroundColor: theme.palette.background['white'],
   borderRadius: '5px',
@@ -176,4 +173,4 @@ const StyledChip = styled(Chip)(({ theme }) => ({
 export const FlexibleEntriesTopControls = withFlexible<
   EntriesTopControlsConfig,
   EntriesTopControlsProps
->(EntryDetailPage, defaultEntriesTopControlsConfig);
+>(EntriesTopControls, defaultEntriesTopControlsConfig);

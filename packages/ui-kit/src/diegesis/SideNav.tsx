@@ -170,5 +170,3 @@ const MdNavButton = styled(Button)(() => ({
   size: 'medium',
 }));
 //#endregion
-
-export default SideNav;

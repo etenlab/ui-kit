@@ -1,2 +1,2 @@
-export * from './Entries';
+export * from './EntriesPage';
 export * from './EntriesTopControls';

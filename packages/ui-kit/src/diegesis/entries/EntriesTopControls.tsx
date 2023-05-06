@@ -1,8 +1,8 @@
 import { Box, Chip, Stack, Typography, styled } from '@mui/material';
 import React, { useState } from 'react';
-import SearchBox, { SearchBoxProps } from '../SearchBox';
+import { SearchBox, SearchBoxProps } from '../SearchBox';
 import { CustomTab, CustomTabs } from '../Tab';
-import SelectControl, { SelectControlProps } from '../SelectControl';
+import { SelectControl, SelectControlProps } from '../SelectControl';
 import PageTitleTypo from '../styleds/PageTitleTypo';
 
 export type TagConfigProps = {

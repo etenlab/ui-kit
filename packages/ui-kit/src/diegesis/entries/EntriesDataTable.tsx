@@ -161,4 +161,3 @@ export function EntriesDataTable(props: EntriesDataTableProps) {
     />
   );
 }
-export default EntriesDataTable;
