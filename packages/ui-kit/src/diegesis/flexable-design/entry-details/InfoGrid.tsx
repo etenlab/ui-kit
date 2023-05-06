@@ -1,5 +1,5 @@
-import { HeadCell } from '@components/diegesis/data-table';
-import DataTable from '@components/diegesis/data-table/DataTable';
+import { HeadCell } from '../../data-table';
+import DataTable from '../../data-table/DataTable';
 import { Stack, styled } from '@mui/material';
 import React, { FC } from 'react';
 

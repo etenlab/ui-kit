@@ -9,8 +9,9 @@ import { FlexibleBookResourceBox } from './BookResourceBox';
 import { FlexibleBottomActionButtons } from './BottomActionBtns';
 import { BackBtnProps, FlexibleBackButton } from '../BackButton';
 import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
-import { SideNavProps } from '@components/diegesis/SideNav';
-import { SelectControlProps } from '@components/diegesis/SelectControl';
+import { SideNavProps } from '../../SideNav';
+import { SelectControlProps } from '../../SelectControl';
+import { withFlexible } from '../withFlexible';
 
 //#region types
 export type EntryDetailPageConfig = BasicUIConfig & {
@@ -40,7 +41,7 @@ export function EntryDetailPage(props: EntryDetailPageProps) {
       <br />
       <Container component={'div'}>
         <FlexibleTopControls
-          {...props.topControlProps?.actionButtonProps}
+          {...props.topControlProps}
           id="top-controls"
           parentPath={uiConfig.configPath!}
         />
@@ -92,7 +93,10 @@ export function EntryDetailPage(props: EntryDetailPageProps) {
       </FlexiblePageLayout>
     );
 }
-export default EntryDetailPage;
+export const FlexibleEntryDetail = withFlexible<
+  EntryDetailPageConfig,
+  EntryDetailPageProps
+>(EntryDetailPage, defaultEntryDetailPage);
 
 const StyledDetailSection = styled(Container)(({ theme }) => ({
   marginTop: '3rem',

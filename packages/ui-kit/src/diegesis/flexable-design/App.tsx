@@ -3,6 +3,7 @@ import { Button, Drawer } from '@mui/material';
 import { UIConfigContextProvider } from './UIConfigProvider';
 import { FlexibleHome } from './Home';
 import { UIConfigControlPanel } from './UIConfigControlPanel';
+import { FlexibleEntryDetail } from './entry-details';
 
 export function App() {
   const [open, setOpen] = useState(false);
@@ -20,10 +21,11 @@ export function App() {
 
   return (
     <UIConfigContextProvider>
-      <FlexibleHome id="home" parentPath="/" />
       <Button onClick={toggleDrawer} variant="contained">
         Open Setting Panel
       </Button>
+      <FlexibleHome id="home" parentPath="/" />
+      <FlexibleEntryDetail id="entry-detail" parentPath="/entry-detail" />
       <Drawer
         anchor="left"
         open={open}
