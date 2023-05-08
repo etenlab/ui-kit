@@ -7,6 +7,7 @@ export * from './ThemeProvider';
 export * from './toolbar';
 export * from './typography';
 export * from './EmojiPicker';
+export * from './LangSelector';
 export * as CrowdBibleUI from './crowd-bible';
 export * as DiscussionBoxUI from './discussion-box';
 export * as VersificationUI from './versification';
