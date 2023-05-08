@@ -41,11 +41,7 @@ export function AceEditor({
   ) : null;
 
   return (
-    <Paper
-      variant="outlined"
-      elevation={3}
-      sx={{ background: '#e5e5e5', padding: '5px' }}
-    >
+    <Paper variant="outlined" sx={{ background: '#e5e5e5', padding: '5px' }}>
       <Typography
         variant="h6"
         sx={(theme) => ({ color: theme.palette.primary.main })}

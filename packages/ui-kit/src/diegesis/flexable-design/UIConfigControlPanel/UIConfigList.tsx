@@ -50,7 +50,6 @@ export function UIConfigList({
   return (
     <Paper
       variant="outlined"
-      elevation={3}
       sx={{ background: '#e5e5e5', padding: '0px 5px' }}
     >
       <List

@@ -1,0 +1,1 @@
+export { UIConfigControlPanel } from './UIConfigControlPanel';

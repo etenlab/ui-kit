@@ -400,7 +400,13 @@ export function UIConfigContextProvider({
         names.push(...getConfigurableComponentList(config.configPath!));
       });
 
-      return names;
+      return names.sort().filter((value, index) => {
+        if (index + 1 < names.length && value === names[index + 1]) {
+          return false;
+        } else {
+          return true;
+        }
+      });
     },
     [queryUIConfig],
   );

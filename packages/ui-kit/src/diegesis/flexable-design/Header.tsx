@@ -4,7 +4,10 @@ import { Box, Stack, Typography, styled } from '@mui/material';
 import { Container } from '@mui/system';
 import { FlexibleMenuIcon } from './MenuIcon';
 
-import { BasicUIConfig, BasicFlexibleProps } from './UIConfigProvider';
+import {
+  BasicUIConfig,
+  BasicFlexibleProps,
+} from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
 
 import { FlexibleAppLogo } from './AppLogo';
