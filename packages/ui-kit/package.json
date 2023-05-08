@@ -1,6 +1,6 @@
 {
   "name": "@eten-lab/ui-kit",
-  "version": "0.5.13",
+  "version": "0.5.17",
   "license": "UNLICENSED",
   "main": "dist/index.js",
   "umd:main": "dist/ui-kit.umd.production.js",
