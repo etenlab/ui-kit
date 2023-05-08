@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Drawer } from '@mui/material';
 
-import { UIConfigContextProvider } from './UIConfigProvider';
+import { UIConfigContextProvider } from './UIConfigProvider/UIConfigProvider';
 
 import { FlexibleHome } from './Home';
 import { UIConfigControlPanel } from './UIConfigControlPanel';

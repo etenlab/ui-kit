@@ -7,7 +7,10 @@ import { FlexibleLandingSection } from './LandingSection';
 import { FlexibleHeader } from './Header';
 import { FlexibleFooter } from './Footer';
 
-import { BasicUIConfig, BasicFlexibleProps } from './UIConfigProvider';
+import {
+  BasicUIConfig,
+  BasicFlexibleProps,
+} from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
 
 interface HomeConfig extends BasicUIConfig {

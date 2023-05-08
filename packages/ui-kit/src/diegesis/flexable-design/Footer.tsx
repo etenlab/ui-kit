@@ -3,14 +3,19 @@ import React from 'react';
 import { Stack, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 
-import { BasicUIConfig, BasicFlexibleProps } from './UIConfigProvider';
+import {
+  BasicUIConfig,
+  BasicFlexibleProps,
+  FlexibleMarkDown,
+} from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
 
 import { FlexibleAppLogo } from './AppLogo';
+import { MarkDown } from './MarkDown';
 
 interface FooterConfig extends BasicUIConfig {
   contents: {
-    footerText?: string;
+    // footerText?: string;
     brandName?: string;
     year?: string;
   };
@@ -19,13 +24,14 @@ interface FooterConfig extends BasicUIConfig {
     containerPadding: string;
     fontFamily: string;
   };
+  markdowns: {
+    footerDescription: FlexibleMarkDown;
+  };
 }
 
 export const defaultFootConfig: FooterConfig = {
   componentName: 'Footer',
   contents: {
-    footerText: `Diegesis.Bible is a project by MVH Solutions that uses the
-    Proskomma Scripture Runtime Engine.`,
     brandName: `MVH Solutions`,
     year: `${new Date().getFullYear()}`,
   },
@@ -34,12 +40,29 @@ export const defaultFootConfig: FooterConfig = {
     containerPadding: '3rem 0px',
     fontFamily: 'Noto Serif Display',
   },
+  markdowns: {
+    footerDescription: {
+      content:
+        'Diegesis.Bible is a project by MVH Solutions that uses the Proskomma Scripture Runtime Engine.',
+      css: `
+        p {
+          color: #fff;
+          font-family: Noto Serif Display;
+          font-size: '1.1rem';
+          line-height: '1.5rem';
+          font-weight: 400;
+          padding: 0;
+        }
+      `,
+      className: '',
+      id: 'footerDescription',
+    },
+  },
 };
-
+//
 export interface FooterProps extends BasicFlexibleProps<FooterConfig> {}
 
 export function Footer({ uiConfig = defaultFootConfig }: FooterProps) {
-  console.log('uiConfig ===> ', uiConfig);
   return (
     <div
       style={{
@@ -61,12 +84,13 @@ export function Footer({ uiConfig = defaultFootConfig }: FooterProps) {
             sx={{
               marginTop: '1.2rem',
               flexDirection: 'row',
-              alignItems: 'center',
+              alignItems: 'flex-end',
               width: '100%',
               justifyContent: 'space-between',
             }}
           >
-            <Typography
+            <MarkDown {...uiConfig.markdowns.footerDescription} />
+            {/* <Typography
               variant="body1"
               sx={(theme) => ({
                 color: theme.palette.text.white,
@@ -80,7 +104,7 @@ export function Footer({ uiConfig = defaultFootConfig }: FooterProps) {
               })}
             >
               {uiConfig.contents.footerText}
-            </Typography>
+            </Typography> */}
             <Typography
               variant="body1"
               sx={(theme) => ({
