@@ -4,7 +4,7 @@ import { UIConfigContextProvider } from './UIConfigProvider';
 import { FlexibleHome } from './Home';
 import { UIConfigControlPanel } from './UIConfigControlPanel';
 import { FlexibleEntryDetail } from './entry-details';
-import { FlexibleEntriesPage } from './entries';
+import { FlexibleEntriesListPage } from './entries-list';
 
 export function App() {
   const [open, setOpen] = useState(false);
@@ -26,7 +26,7 @@ export function App() {
         Open Setting Panel
       </Button>
       <FlexibleHome id="HomePage" parentPath="/" />
-      <FlexibleEntriesPage id="ListPage" parentPath="/list" />
+      <FlexibleEntriesListPage id="ListPage" parentPath="/list" />
       <FlexibleEntryDetail id="EntryDetailPage" parentPath="/entry-detail" />
       <Drawer
         anchor="left"

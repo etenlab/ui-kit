@@ -16,7 +16,7 @@ export type EntriesPageConfig = BasicUIConfig & {
   styles: {};
 };
 export const defaultEntriesPageConfig: EntriesPageConfig = {
-  componentName: EntriesPage.name,
+  componentName: EntriesListPage.name,
   contents: {},
   styles: {},
 };
@@ -28,39 +28,44 @@ export type EntriesPageProps = BasicFlexibleProps<EntriesPageConfig> & {
 };
 //#endregion
 
-export function EntriesPage(props: EntriesPageProps) {
-  const { uiConfig = defaultEntriesPageConfig } = props;
+export function EntriesListPage({
+  uiConfig = defaultEntriesPageConfig,
+  topControlProps,
+  entriesDataTable,
+  noPageLayout,
+  sideNavProps,
+}: EntriesPageProps) {
   const pageContent = (
     <>
       <StyledControlsContainer>
         <FlexibleEntriesTopControls
-          id="entries-top-controls"
+          {...topControlProps}
+          id="entries-list-top-controls"
           parentPath={uiConfig?.configPath!}
-          {...props.topControlProps}
         />
       </StyledControlsContainer>
       <StyledTableContainer>
-        <EntriesDataTable {...props.entriesDataTable} />
+        <EntriesDataTable {...entriesDataTable} />
       </StyledTableContainer>
     </>
   );
-  if (props.noPageLayout) {
+  if (noPageLayout) {
     return pageContent;
   }
   return (
     <FlexiblePageLayout
       id={'entries-list-page'}
       parentPath={uiConfig?.configPath!}
-      sideNavProps={props.sideNavProps}
+      sideNavProps={sideNavProps}
     >
       {pageContent}
     </FlexiblePageLayout>
   );
 }
-export const FlexibleEntriesPage = withFlexible<
+export const FlexibleEntriesListPage = withFlexible<
   EntriesPageConfig,
   EntriesPageProps
->(EntriesPage, defaultEntriesPageConfig);
+>(EntriesListPage, defaultEntriesPageConfig);
 
 //#region styled components
 const StyledControlsContainer = styled(Container)(({ theme }) => ({
