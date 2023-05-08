@@ -10,16 +10,16 @@ const PADDING_SMALL = 12;
 const DESCRIPTIONS_JOINER = '/';
 const NOT_DEFINED_PLACEHOLDER = '- not defined -';
 
+export type LanguageInfo = {
+  lang: Lang;
+  dialect: Dialect | undefined;
+  region: Region | undefined;
+};
+
 export type LangSelectorProps = {
-  onChange(
-    langTag: string | null,
-    selected: {
-      lang: Lang;
-      dialect: Dialect | undefined;
-      region: Region | undefined;
-    },
-  ): void;
+  onChange(langTag: string | null, selected: LanguageInfo): void;
   setLoadingState?(isLoading: boolean): any;
+  selected?: LanguageInfo;
 };
 export type TagInfo = {
   tag: string | null;
@@ -44,16 +44,28 @@ enum TagSpecialDescriptions {
   PRIVATE_USE = 'Private use',
 }
 
-export function LangSelector({ onChange, setLoadingState }: LangSelectorProps) {
+export function LangSelector({
+  onChange,
+  setLoadingState,
+  selected,
+}: LangSelectorProps) {
   const [langsRegistry, setLangsRegistry] = useState<LangsRegistry>({
     langs: [],
     dialects: [],
     regions: [],
   });
 
-  const [selectedLang, setSelectedLang] = useState<Lang>();
-  const [selectedDialect, setSelectedDialect] = useState<Dialect>();
-  const [selectedRegion, setSelectedRegion] = useState<Region>();
+  const [selectedLang, setSelectedLang] = useState<Lang | null>(
+    selected?.lang || null,
+  );
+  const [selectedDialect, setSelectedDialect] = useState<Dialect | null>(
+    selected?.dialect || null,
+  );
+  const [selectedRegion, setSelectedRegion] = useState<Region | null>(
+    selected?.region || null,
+  );
+  let i = 0;
+  let j = 0;
 
   useEffect(() => {
     if (setLoadingState) {
@@ -67,7 +79,6 @@ export function LangSelector({ onChange, setLoadingState }: LangSelectorProps) {
     const regions: Array<Region> = [
       { tag: null, descriptions: [NOT_DEFINED_PLACEHOLDER] },
     ];
-
     for (const currTag of allTags) {
       if (
         currTag.deprecated() ||
@@ -148,6 +159,7 @@ export function LangSelector({ onChange, setLoadingState }: LangSelectorProps) {
     <Stack width={'100%'} padding={`${PADDING}px 0`} gap={`${PADDING_SMALL}px`}>
       <Autocomplete
         label="Language"
+        value={selectedLang}
         options={langsRegistry.langs}
         getOptionLabel={(option) =>
           option.descriptions.join(DESCRIPTIONS_JOINER)
@@ -159,6 +171,7 @@ export function LangSelector({ onChange, setLoadingState }: LangSelectorProps) {
         <Autocomplete
           disabled={!selectedLang}
           label="Dialect"
+          value={selectedDialect}
           options={langsRegistry.dialects}
           getOptionLabel={(option) =>
             option.descriptions.join(DESCRIPTIONS_JOINER)
@@ -169,6 +182,7 @@ export function LangSelector({ onChange, setLoadingState }: LangSelectorProps) {
         <Autocomplete
           disabled={!selectedLang}
           label="Nation/Region/Geo"
+          value={selectedRegion}
           options={langsRegistry.regions}
           getOptionLabel={(option) =>
             option.descriptions.join(DESCRIPTIONS_JOINER)
