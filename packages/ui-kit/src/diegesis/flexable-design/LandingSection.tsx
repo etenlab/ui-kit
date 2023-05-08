@@ -2,7 +2,10 @@ import React from 'react';
 import { Container, Typography, styled, Stack } from '@mui/material';
 import { FlexibleSectionActionButton } from './SectionActionButton';
 
-import { BasicUIConfig, BasicFlexibleProps } from './UIConfigProvider';
+import {
+  BasicUIConfig,
+  BasicFlexibleProps,
+} from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
 
 interface LandingSectionConfig extends BasicUIConfig {

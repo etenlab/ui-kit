@@ -1,7 +1,10 @@
 import React from 'react';
 import { Button } from '@mui/material';
 
-import { BasicUIConfig, BasicFlexibleProps } from './UIConfigProvider';
+import {
+  BasicUIConfig,
+  BasicFlexibleProps,
+} from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
 
 interface SectionActionButtonConfig extends BasicUIConfig {

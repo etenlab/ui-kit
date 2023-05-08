@@ -7,7 +7,14 @@ import React, {
   FC,
 } from 'react';
 
-import { PathItem, parsePath, buildPath } from './utility';
+import { PathItem, parsePath, buildPath, addPath } from '../utility';
+
+export interface FlexibleMarkDown {
+  id?: string;
+  className?: string;
+  content?: string;
+  css?: string;
+}
 
 export interface BasicUIConfig {
   id?: string;
@@ -20,6 +27,9 @@ export interface BasicUIConfig {
   };
   styles?: {
     [key: string]: string;
+  };
+  markdowns?: {
+    [key: string]: FlexibleMarkDown;
   };
   uiConfigs?: {
     [key: string]: BasicUIConfig;
@@ -63,6 +73,10 @@ export function leftJoinUIConfig(
       ...rightUIConfig.styles,
       ...leftUIConfig.styles,
     },
+    markdowns: {
+      ...rightUIConfig.markdowns,
+      ...leftUIConfig.markdowns,
+    },
     uiConfigs: leftUIConfig.uiConfigs,
     flexibles: leftUIConfig.flexibles,
   };
@@ -95,6 +109,10 @@ export interface IUIConfigContext {
     Component: React.FC<BasicFlexibleProps<BasicUIConfig>>;
   } | null;
   setComponent(_com: FC<BasicFlexibleProps<BasicUIConfig>>): void;
+  getUIConfigForComponent<T extends BasicUIConfig>(
+    path: string,
+    comName: string,
+  ): T | null;
 }
 
 export const UIConfigContext = createContext<IUIConfigContext>({
@@ -119,6 +137,12 @@ export const UIConfigContext = createContext<IUIConfigContext>({
     return null;
   },
   setComponent(_com: FC<BasicFlexibleProps<BasicUIConfig>>): void {},
+  getUIConfigForComponent<T extends BasicUIConfig>(
+    _path: string,
+    _comName: string,
+  ): T | null {
+    return null;
+  },
 });
 
 interface UIConfigContextProviderProps {
@@ -131,21 +155,8 @@ export function UIConfigContextProvider({
   const [state, setState] = useState<RootUIConfig>(initialRootState);
   const [nameVsComponent, setNameVsComponent] = useState<NameVsComponent>({});
 
-  React.useEffect(() => {
-    console.log('state ===>', JSON.stringify(state, null, 2));
-  }, [state]);
-
   const getComponentByName = useCallback(
     (name: string) => {
-      console.log('getComponentByName ==>', nameVsComponent);
-      console.log(nameVsComponent[name]);
-      console.log(
-        nameVsComponent[name]
-          ? {
-              Component: nameVsComponent[name],
-            }
-          : null,
-      );
       return nameVsComponent[name]
         ? {
             Component: nameVsComponent[name],
@@ -171,11 +182,6 @@ export function UIConfigContextProvider({
   const isExistsUIConfig = useCallback(
     (pathString: string): boolean => {
       const pathItems: PathItem[] = parsePath(pathString);
-
-      console.log('isExistsUIConfig');
-      console.log(pathString);
-      console.log(pathItems);
-      console.log(state);
 
       let currentState: BasicUIConfig = state;
 
@@ -204,8 +210,6 @@ export function UIConfigContextProvider({
         try {
           const pathItems: PathItem[] = parsePath(pathString);
 
-          console.log('mutateUIConfig ===>', pathItems, pathItems.slice(0, -1));
-
           if (!isExistsUIConfig(buildPath(pathItems.slice(0, -1)))) {
             throw new Error(`not exists such path=${pathString} at mutation`);
           }
@@ -230,6 +234,7 @@ export function UIConfigContextProvider({
                   configPath: newConfig.configPath,
                   contents: newConfig.contents,
                   styles: newConfig.styles,
+                  markdowns: newConfig.markdowns,
                   uiConfigs: {},
                   flexibles: {},
                 } as T;
@@ -242,6 +247,7 @@ export function UIConfigContextProvider({
                   configPath: subState[item.type]![item.key].configPath,
                   contents: newConfig.contents,
                   styles: newConfig.styles,
+                  markdowns: newConfig.markdowns,
                   uiConfigs: subState[item.type]![item.key].uiConfigs,
                   flexibles: subState[item.type]![item.key].flexibles,
                 } as T;
@@ -322,6 +328,41 @@ export function UIConfigContextProvider({
     [state, isExistsUIConfig],
   );
 
+  const getUIConfigForComponent = useCallback(
+    <T extends BasicUIConfig>(
+      pathString: string,
+      comName: string,
+    ): T | null => {
+      try {
+        const pathItems: PathItem[] = parsePath(pathString);
+
+        while (pathItems.length >= 0) {
+          if (
+            isExistsUIConfig(
+              addPath(
+                { key: comName, type: 'uiConfigs' },
+                buildPath(pathItems),
+              ),
+            )
+          ) {
+            break;
+          }
+
+          pathItems.pop();
+        }
+
+        return queryUIConfig(
+          addPath({ key: comName, type: 'uiConfigs' }, buildPath(pathItems)),
+        );
+      } catch (err) {
+        console.log(err);
+
+        return null;
+      }
+    },
+    [isExistsUIConfig, queryUIConfig],
+  );
+
   const initializeUIConfig = useCallback(
     <B extends BasicUIConfig, T extends BasicFlexibleProps<B>>(
       pathString: string,
@@ -359,7 +400,13 @@ export function UIConfigContextProvider({
         names.push(...getConfigurableComponentList(config.configPath!));
       });
 
-      return names;
+      return names.sort().filter((value, index) => {
+        if (index + 1 < names.length && value === names[index + 1]) {
+          return false;
+        } else {
+          return true;
+        }
+      });
     },
     [queryUIConfig],
   );
@@ -372,6 +419,7 @@ export function UIConfigContextProvider({
     getConfigurableComponentList,
     setComponent,
     getComponentByName,
+    getUIConfigForComponent,
   };
 
   return (

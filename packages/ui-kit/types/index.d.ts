@@ -115,3 +115,5 @@ declare module 'node-type' {
     id: string;
   }
 }
+
+declare module 'css-validator';

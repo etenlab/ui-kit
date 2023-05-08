@@ -1,7 +1,10 @@
 import React, { useEffect, FC } from 'react';
-import { BasicFlexibleProps, BasicUIConfig } from './UIConfigProvider';
+import {
+  BasicFlexibleProps,
+  BasicUIConfig,
+} from './UIConfigProvider/UIConfigProvider';
 import { addPath } from './utility';
-import { useUIConfigContext } from './UIConfigProvider';
+import { useUIConfigContext } from './UIConfigProvider/UIConfigProvider';
 
 export function withFlexible<
   B extends BasicUIConfig,

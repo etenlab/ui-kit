@@ -1,6 +1,9 @@
 import React from 'react';
 
-import { BasicUIConfig, BasicFlexibleProps } from './UIConfigProvider';
+import {
+  BasicUIConfig,
+  BasicFlexibleProps,
+} from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
 
 import { AiOutlineFire } from 'react-icons/ai';
