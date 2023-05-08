@@ -64,9 +64,6 @@ export function LangSelector({
   const [selectedRegion, setSelectedRegion] = useState<Region | null>(
     selected?.region || null,
   );
-  let i = 0;
-  let j = 0;
-
   useEffect(() => {
     if (setLoadingState) {
       setLoadingState(true);
