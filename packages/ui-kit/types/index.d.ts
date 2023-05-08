@@ -116,4 +116,4 @@ declare module 'node-type' {
   }
 }
 
-declare module 'css-validator';
+declare module 'css-to-object';
