@@ -2005,9 +2005,11 @@ __metadata:
     "@changesets/cli": ^2.26.1
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
+    "@eten-lab/ui-kit": "workspace:^"
     "@fontsource/inter": ^4.5.15
     "@foobar404/wave": ^2.0.4
     "@mui/material": ^5.10.5
+    "@phensley/language-tag": ^1.6.6
     "@storybook/addon-actions": ^6.5.15
     "@storybook/addon-essentials": ^6.5.15
     "@storybook/addon-interactions": ^6.5.15
@@ -2038,7 +2040,7 @@ __metadata:
     husky: ^8.0.0
     jsx-to-string: ^1.4.0
     language-tags: ^1.0.8
-    lerna: ^6.1.0
+    lerna: ^6.5.1
     lint-staged: ^13.2.0
     prettier: ^2.8.4
     react: ^18.2.0
@@ -2246,7 +2248,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eten-lab/ui-kit@workspace:packages/ui-kit":
+"@eten-lab/ui-kit@workspace:^, @eten-lab/ui-kit@workspace:packages/ui-kit":
   version: 0.0.0-use.local
   resolution: "@eten-lab/ui-kit@workspace:packages/ui-kit"
   dependencies:
@@ -2256,12 +2258,17 @@ __metadata:
     "@fontsource/noto-serif-display": ^4.5.15
     "@foobar404/wave": ^2.0.4
     "@mui/material": ^5.10.5
+    "@mui/system": ^5.12.3
+    "@mui/utils": ^5.12.3
+    "@phensley/language-tag": ^1.6.6
     "@testing-library/react": 13.3.0
+    "@types/language-tags": ^1.0.1
     "@types/react": ^18.0.21
     "@types/react-dom": ^18.0.6
     "@types/react-router": ^5.1.11
     "@types/react-router-dom": ^5.1.7
     emoji-picker-react: ^4.4.3
+    language-tags: ^1.0.8
     nanoid: ^4.0.2
     react: ^18.2.0
     react-debounce-input: ^3.3.0
@@ -3585,6 +3592,15 @@ __metadata:
     node-gyp: latest
     node-gyp-build: ^4.3.0
   checksum: 890bdc69a52942791b276caa2cd65ef816576d6b5ada91aa28cf302b35d567c801dafe167f2525dcb313f5b420986ea11bd56228dd7ddde1116944d8f924a0a1
+  languageName: node
+  linkType: hard
+
+"@phensley/language-tag@npm:^1.6.6":
+  version: 1.6.6
+  resolution: "@phensley/language-tag@npm:1.6.6"
+  dependencies:
+    tslib: ^2.4.1
+  checksum: dac4e909a80fb103880fe8c0e4de175686feb78f4b6cca8dc8b04cf1dba74b8d75d152efc8c81ed133d52ae6c41c0619efebd3cda2061eccc1c5837734c712dd
   languageName: node
   linkType: hard
 
@@ -15716,7 +15732,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lerna@npm:^6.1.0":
+"lerna@npm:^6.5.1":
   version: 6.6.2
   resolution: "lerna@npm:6.6.2"
   dependencies:

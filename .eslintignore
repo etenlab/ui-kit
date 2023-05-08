@@ -4,3 +4,4 @@ node_modules/
 packages/ui-kit/dist/
 packages/ui-kit/node_modules/
 packages/ui-kit/CHANGELOG.md
+.yarn/
