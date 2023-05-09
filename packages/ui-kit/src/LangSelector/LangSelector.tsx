@@ -12,8 +12,8 @@ const NOT_DEFINED_PLACEHOLDER = '- not defined -';
 
 export type LanguageInfo = {
   lang: Lang;
-  dialect: Dialect | undefined;
-  region: Region | undefined;
+  dialect?: Dialect | undefined;
+  region?: Region | undefined;
 };
 
 export type LangSelectorProps = {
@@ -21,11 +21,11 @@ export type LangSelectorProps = {
   setLoadingState?(isLoading: boolean): any;
   selected?: LanguageInfo;
 };
-export type TagInfo = {
+export interface TagInfo {
   tag: string | null;
-  descriptions: Array<string>;
-};
-export type Lang = Omit<TagInfo, 'tag'> & { tag: string };
+  descriptions?: Array<string>;
+}
+export type Lang = Omit<TagInfo, 'tag'> & { tag: string }; // make tag mandatory for Lang tag
 export type Region = TagInfo;
 export type Dialect = TagInfo;
 
@@ -159,7 +159,9 @@ export function LangSelector({
         value={selectedLang}
         options={langsRegistry.langs}
         getOptionLabel={(option) =>
-          option.descriptions.join(DESCRIPTIONS_JOINER)
+          option.descriptions
+            ? option.descriptions.join(DESCRIPTIONS_JOINER)
+            : ''
         }
         onChange={handleSetLanguage}
       />
@@ -171,7 +173,9 @@ export function LangSelector({
           value={selectedDialect}
           options={langsRegistry.dialects}
           getOptionLabel={(option) =>
-            option.descriptions.join(DESCRIPTIONS_JOINER)
+            option.descriptions
+              ? option.descriptions.join(DESCRIPTIONS_JOINER)
+              : ''
           }
           onChange={handleSetDialect}
           fullWidth
@@ -182,7 +186,9 @@ export function LangSelector({
           value={selectedRegion}
           options={langsRegistry.regions}
           getOptionLabel={(option) =>
-            option.descriptions.join(DESCRIPTIONS_JOINER)
+            option.descriptions
+              ? option.descriptions.join(DESCRIPTIONS_JOINER)
+              : ''
           }
           onChange={handleSetRegion}
           fullWidth
@@ -194,16 +200,24 @@ export function LangSelector({
 
 function sortTagInfos(tagInfos: Array<TagInfo>): void {
   tagInfos.sort((t1, t2) => {
-    if (t1.descriptions[0] === NOT_DEFINED_PLACEHOLDER) {
+    if (t1.descriptions && t1.descriptions[0] === NOT_DEFINED_PLACEHOLDER) {
       return -1;
     }
-    if (t2.descriptions[0] === NOT_DEFINED_PLACEHOLDER) {
+    if (t2.descriptions && t2.descriptions[0] === NOT_DEFINED_PLACEHOLDER) {
       return 1;
     }
-    if (t1.descriptions[0] > t2.descriptions[0]) {
+    if (
+      t1.descriptions &&
+      t2.descriptions &&
+      t1.descriptions[0] > t2.descriptions[0]
+    ) {
       return 1;
     }
-    if (t1.descriptions[0] < t2.descriptions[0]) {
+    if (
+      t1.descriptions &&
+      t2.descriptions &&
+      t1.descriptions[0] < t2.descriptions[0]
+    ) {
       return -1;
     }
     return 0;
