@@ -58,11 +58,14 @@ export function withFlexible<
       ? queryUIConfig(flexiblePath)
       : null;
 
+    console.log('config', defaultUIConfig.componentName, config);
     if (!config) {
+      console.error('config is null');
       return null;
     }
 
     if (config.hiddenComponent === true) {
+      console.error('config is hiddenComponent');
       return null;
     }
 

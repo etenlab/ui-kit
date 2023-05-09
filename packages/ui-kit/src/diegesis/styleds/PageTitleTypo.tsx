@@ -1,6 +1,6 @@
 import { Typography, styled } from '@mui/material';
 
-const PageTitleTypo = styled(Typography)(({ theme }) => ({
+export const PageTitleTypo = styled(Typography)(({ theme }) => ({
   fontSize: '2.5rem',
   lineHeight: '2.8rem',
   fontWeight: 400,
@@ -10,5 +10,3 @@ const PageTitleTypo = styled(Typography)(({ theme }) => ({
     fontSize: '2rem',
   },
 }));
-
-export default PageTitleTypo;

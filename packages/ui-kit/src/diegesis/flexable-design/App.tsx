@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { Button, Drawer } from '@mui/material';
-
-import { UIConfigContextProvider } from './UIConfigProvider/UIConfigProvider';
-
+import { UIConfigContextProvider } from './UIConfigProvider';
 import { FlexibleHome } from './Home';
 import { UIConfigControlPanel } from './UIConfigControlPanel';
-// import { FlexibleFooter } from './Footer';
-// import { FlexibleAppLogo } from './AppLogo';
+import { FlexibleEntryDetail } from './entry-details';
+import { FlexibleEntriesListPage } from './entries-list';
 
 export function App() {
   const [open, setOpen] = useState(false);
@@ -19,18 +17,17 @@ export function App() {
     ) {
       return;
     }
-
     setOpen((open) => !open);
   };
 
   return (
     <UIConfigContextProvider>
-      <FlexibleHome id="home" parentPath="/" />
-      {/* <FlexibleFooter id="flexiblefooter" parentPath="/" />
-      <FlexibleAppLogo id="flexibleapplogo" parentPath="/" /> */}
       <Button onClick={toggleDrawer} variant="contained">
         Open Setting Panel
       </Button>
+      <FlexibleHome id="HomePage" parentPath="/" />
+      <FlexibleEntriesListPage id="ListPage" parentPath="/list" />
+      <FlexibleEntryDetail id="EntryDetailPage" parentPath="/entry-detail" />
       <Drawer
         anchor="left"
         open={open}

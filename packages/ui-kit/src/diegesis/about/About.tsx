@@ -6,7 +6,7 @@ import { MOCK_PAGE_HEADER_PROPS, PageHeaderProps } from '../PageHeader';
 import { MOCK_SIDE_NAV_PROPS, SideNavProps } from '../SideNav';
 import AboutContentSection from './AboutContentSection';
 import AboutPictureSection from './AboutPictureSection';
-import PageTitleTypo from '../styleds/PageTitleTypo';
+import { PageTitleTypo } from '../styleds/PageTitleTypo';
 import PageLayout from '../PageLayout';
 
 export type AboutPageProps = {

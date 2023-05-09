@@ -56,7 +56,6 @@ const StyledSelect = styled(Select)(({ theme }) => ({
   },
   '& .MuiSelect-select': {
     fontWeight: 500,
-    // fontSize: '20px',
     fontFamily: 'helvetica',
   },
   '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
@@ -66,5 +65,3 @@ const StyledSelect = styled(Select)(({ theme }) => ({
     borderColor: theme.palette.background['turquoise-light'],
   },
 }));
-
-export default SelectControl;

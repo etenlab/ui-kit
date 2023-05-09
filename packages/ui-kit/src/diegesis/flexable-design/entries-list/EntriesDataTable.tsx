@@ -1,5 +1,5 @@
 import React from 'react';
-import DataTable, { HeadCell } from '../data-table/DataTable';
+import DataTable, { HeadCell } from '../../data-table/DataTable';
 import { Button, Typography } from '@mui/material';
 import { BsChevronRight } from 'react-icons/bs';
 

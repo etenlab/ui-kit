@@ -1,7 +1,7 @@
 import { Stack, Typography, styled } from '@mui/material';
 import React from 'react';
 import { FC } from 'react';
-import SelectControl, { SelectControlProps } from '../SelectControl';
+import { SelectControl, SelectControlProps } from '../SelectControl';
 
 export type BookResourceBoxProps = {
   label?: string;

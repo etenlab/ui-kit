@@ -1,9 +1,11 @@
 import { Box, Chip, Stack, Typography, styled } from '@mui/material';
 import React, { useState } from 'react';
-import { SearchBox, SearchBoxProps } from '../SearchBox';
-import { CustomTab, CustomTabs } from '../Tab';
-import { SelectControl, SelectControlProps } from '../SelectControl';
-import { PageTitleTypo } from '../styleds/PageTitleTypo';
+import { SearchBox, SearchBoxProps } from '../../SearchBox';
+import { CustomTab, CustomTabs } from '../../Tab';
+import { SelectControl, SelectControlProps } from '../../SelectControl';
+import { PageTitleTypo } from '../../styleds/PageTitleTypo';
+import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
+import { withFlexible } from '../withFlexible';
 
 export type TagConfigProps = {
   label?: string;
@@ -11,20 +13,35 @@ export type TagConfigProps = {
   selectedTags?: string[];
   onTagSelect?: (idx: number) => void;
 };
-export type EntriesTopControlsProps = {
-  titleText?: string;
-  searchBoxProps?: SearchBoxProps;
-  filterTabText?: string;
-  tagConfig?: TagConfigProps;
-  selectControls?: SelectControlProps[];
+export type EntriesTopControlsConfig = BasicUIConfig & {
+  contents: {
+    titleText?: string;
+    filterTabLabel?: string;
+    tagFilterLabel?: string;
+    searchPlaceholder?: string;
+  };
+  styles: {};
 };
+export const defaultEntriesTopControlsConfig: EntriesTopControlsConfig = {
+  componentName: EntriesTopControls.name,
+  contents: {
+    titleText: 'Entries',
+    filterTabLabel: 'Advanced search with filters',
+    tagFilterLabel: 'Tag:',
+  },
+  styles: {},
+};
+export type EntriesTopControlsProps =
+  BasicFlexibleProps<EntriesTopControlsConfig> & {
+    searchBoxProps?: SearchBoxProps;
+    tagConfig?: TagConfigProps;
+    selectControls?: SelectControlProps[];
+  };
 export const MOCK_ENTRIES_TOP_CONTROLS_PROPS: Partial<EntriesTopControlsProps> =
   {
-    titleText: 'Entries',
     searchBoxProps: {
       placeholder: 'Bible in Basic English',
     },
-    filterTabText: 'Advanced search with filters',
     tagConfig: {
       label: 'Tags',
       tags: ['Heading', 'Footnotes', 'Intro', 'Heading', 'Strong'],
@@ -40,13 +57,13 @@ export const MOCK_ENTRIES_TOP_CONTROLS_PROPS: Partial<EntriesTopControlsProps> =
   };
 
 export function EntriesTopControls(props: EntriesTopControlsProps) {
+  const { uiConfig = defaultEntriesTopControlsConfig } = props;
   const [curTab, setCurTab] = useState(0);
   return (
     <Stack direction={'column'} alignItems={'flex-start'}>
       <Stack direction={'row'} alignItems={'center'} width={'100%'}>
-        <PageTitleTypo variant={'h1'} marginRight={'0.5rem'}>
-          {props.titleText}
-        </PageTitleTypo>
+        <PageTitleTypo variant={'h1'} marginRight={'0.5rem'}></PageTitleTypo>
+        {uiConfig.contents?.titleText}
         <StyledDeviceSpecific showOnSmallDevice={false}>
           <SearchBox {...props.searchBoxProps} />
         </StyledDeviceSpecific>
@@ -56,7 +73,10 @@ export function EntriesTopControls(props: EntriesTopControlsProps) {
             setCurTab(curTab === 1 ? 0 : 1);
           }}
         >
-          <CustomTab value={1} label={props.filterTabText || ''} />
+          <CustomTab
+            value={1}
+            label={uiConfig.contents?.filterTabLabel || ''}
+          />
         </CustomTabs>
       </Stack>
       <StyledTabContent show={curTab === 1 ? true : false}>
@@ -94,7 +114,7 @@ export function EntriesTopControls(props: EntriesTopControlsProps) {
             marginRight={'0.8rem'}
             marginTop={'0.5rem'}
           >
-            {props.tagConfig?.label}:
+            {uiConfig.contents?.tagFilterLabel}
           </Typography>
           {props.tagConfig?.tags?.map((tag, idx) => (
             <StyledChip
@@ -120,6 +140,11 @@ export function EntriesTopControls(props: EntriesTopControlsProps) {
   );
 }
 
+export const FlexibleEntriesTopControls = withFlexible<
+  EntriesTopControlsConfig,
+  EntriesTopControlsProps
+>(EntriesTopControls, defaultEntriesTopControlsConfig);
+
 //#region styled components
 const StyledDeviceSpecific = styled<any>(Box)(
   ({ theme, showOnSmallDevice }) => ({
@@ -130,7 +155,6 @@ const StyledDeviceSpecific = styled<any>(Box)(
     },
   }),
 );
-
 const StyledTabContent = styled<any>(Stack)(({ theme, show }) => ({
   display: show ? 'flex' : 'none',
   transition: 'all 0.2s ease-in',
@@ -141,7 +165,6 @@ const StyledTabContent = styled<any>(Stack)(({ theme, show }) => ({
   padding: '20px 25px',
   width: '100%',
 }));
-
 const StyledChip = styled(Chip)(({ theme }) => ({
   backgroundColor: theme.palette.background['white'],
   borderRadius: '5px',
@@ -151,5 +174,3 @@ const StyledChip = styled(Chip)(({ theme }) => ({
   fontWeight: 600,
 }));
 //#endregion
-
-export default EntriesTopControls;

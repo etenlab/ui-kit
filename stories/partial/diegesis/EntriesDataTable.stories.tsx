@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeProvider } from '../../../packages/ui-kit/src';
-import EntriesDataTable from '../../../packages/ui-kit/src/diegesis/entries/EntriesDataTable';
+import { EntriesDataTable } from '../../../packages/ui-kit/src/diegesis/entries/EntriesDataTable';
 import { buildDocs } from '../../common';
 
 export default {
