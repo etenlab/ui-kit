@@ -164,6 +164,9 @@ export function LangSelector({
             : ''
         }
         onChange={handleSetLanguage}
+        isOptionEqualToValue={(option, value) => {
+          return option.tag === value.tag;
+        }}
       />
 
       <Stack direction="row" width={'100%'} gap={`${PADDING_SMALL}px`}>
@@ -178,6 +181,9 @@ export function LangSelector({
               : ''
           }
           onChange={handleSetDialect}
+          isOptionEqualToValue={(option, value) => {
+            return option.tag === value.tag;
+          }}
           fullWidth
         />
         <Autocomplete
@@ -191,6 +197,9 @@ export function LangSelector({
               : ''
           }
           onChange={handleSetRegion}
+          isOptionEqualToValue={(option, value) => {
+            return option.tag === value.tag;
+          }}
           fullWidth
         />
       </Stack>
