@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import PageHeader, { PageHeaderProps } from './PageHeader';
 import React, { useState } from 'react';
-import SideNav, { SideNavProps } from './SideNav';
+import { SideNav, SideNavProps } from './SideNav';
 import PageFooter, { PageFooterProps } from './PageFooter';
 
 export type PageLayoutProps = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeProvider } from '../../../packages/ui-kit/src';
-import SearchBox from '../../../packages/ui-kit/src/diegesis/SearchBox';
+import { SearchBox } from '../../../packages/ui-kit/src/diegesis/SearchBox';
 import { buildDocs } from '../../common';
 
 export default {

@@ -3,7 +3,8 @@ import React from 'react';
 import { MOCK_PAGE_FOOTER_PROPS, PageFooterProps } from '../PageFooter';
 import { MOCK_PAGE_HEADER_PROPS, PageHeaderProps } from '../PageHeader';
 import { MOCK_SIDE_NAV_PROPS, SideNavProps } from '../SideNav';
-import TopControls, {
+import {
+  TopControls,
   EntryDetailTopControlProps,
   MOCK_ENTRY_DETAIL_TOP_CONTROL_PROPS,
 } from './TopControls';

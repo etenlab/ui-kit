@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeProvider } from '../../../packages/ui-kit/src';
-import TopControls from '../../../packages/ui-kit/src/diegesis/entry-details/TopControls';
+import { TopControls } from '../../../packages/ui-kit/src/diegesis/entry-details/TopControls';
 import { buildDocs } from '../../common';
 
 export default {

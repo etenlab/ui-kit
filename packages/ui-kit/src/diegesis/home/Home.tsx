@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PageFooter, { PageFooterProps } from '../PageFooter';
 import PageHeader, { PageHeaderProps } from '../PageHeader';
-import SideNav, { SideNavProps } from '../SideNav';
+import { SideNav, SideNavProps } from '../SideNav';
 import AboutDiegesisSection, {
   AboutDiegesisSectionProps,
 } from './AboutDiegesisSection';

@@ -14,3 +14,4 @@ export * from './SearchBox';
 export * from './SelectControl';
 export * from './SideNav';
 export * from './Tab';
+export * as FlexibleDesign from './flexable-design';

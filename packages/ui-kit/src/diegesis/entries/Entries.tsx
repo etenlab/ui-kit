@@ -7,7 +7,8 @@ import EntriesTopControls, {
   EntriesTopControlsProps,
   MOCK_ENTRIES_TOP_CONTROLS_PROPS,
 } from './EntriesTopControls';
-import EntriesDataTable, {
+import {
+  EntriesDataTable,
   EntriesDataTableProps,
   MOCK_ENTRIES_DATA_TABLE_PROPS,
 } from './EntriesDataTable';
