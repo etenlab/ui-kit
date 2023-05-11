@@ -7,8 +7,8 @@ import { Autocomplete } from '../input';
 
 const PADDING = 20;
 const PADDING_SMALL = 12;
-const DESCRIPTIONS_JOINER = '/';
-const NOT_DEFINED_PLACEHOLDER = '- not defined -';
+export const DESCRIPTIONS_JOINER = '/';
+export const NOT_DEFINED_PLACEHOLDER = '- not defined -';
 
 export type LanguageInfo = {
   lang: Lang;
@@ -116,6 +116,12 @@ export function LangSelector({
       setLoadingState(false);
     }
   }, [setLoadingState]);
+
+  useEffect(() => {
+    setSelectedLang(selected?.lang || null);
+    setSelectedDialect(selected?.dialect || null);
+    setSelectedRegion(selected?.region || null);
+  }, [selected]);
 
   useEffect(() => {
     if (!selectedLang) return;
