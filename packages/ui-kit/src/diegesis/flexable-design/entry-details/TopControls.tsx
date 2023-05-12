@@ -3,7 +3,7 @@ import React from 'react';
 import { ActionButtonProps, FlexibleActionButtons } from './ActionButtons';
 import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
 import { PageTitleTypo } from '../../styleds/PageTitleTypo';
-import { FlexibleBackButton } from '../BackButton';
+import { BackBtnProps, FlexibleBackButton } from '../BackButton';
 import { withFlexible } from '../withFlexible';
 
 export type EntryDetailTopControlConfig = BasicUIConfig & {
@@ -16,6 +16,7 @@ export type EntryDetailTopControlProps =
   BasicFlexibleProps<EntryDetailTopControlConfig> & {
     title?: string;
     actionButtonProps?: ActionButtonProps;
+    backBtnProps?: BackBtnProps;
   };
 export const defaultTopControlConfig: EntryDetailTopControlConfig = {
   componentName: TopControls.name,
@@ -26,8 +27,9 @@ export const defaultTopControlConfig: EntryDetailTopControlConfig = {
 };
 export function TopControls({
   uiConfig = defaultTopControlConfig,
-  actionButtonProps,
   title,
+  actionButtonProps,
+  backBtnProps,
 }: EntryDetailTopControlProps) {
   return (
     <Stack
@@ -36,6 +38,7 @@ export function TopControls({
       justifyContent={'center'}
     >
       <FlexibleBackButton
+        {...backBtnProps}
         id="top-controls-back-button"
         parentPath={uiConfig.configPath!}
       />

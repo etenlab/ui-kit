@@ -6,10 +6,8 @@ import { withFlexible } from '../withFlexible';
 
 type ActionButtonConfig = BasicUIConfig & {
   contents: {
-    viewBtnText?: string;
-    viewBtnHref?: string;
     downloadBtnText?: string;
-    downloadBtnHref?: string;
+    viewBtnText?: string;
   };
   styles: {
     fontWeight: string;
@@ -24,14 +22,14 @@ type ActionButtonConfig = BasicUIConfig & {
 export type ActionButtonProps = BasicFlexibleProps<ActionButtonConfig> & {
   onViewBtnClick?: (e: any) => void;
   onDownloadBtnClick?: (e: any) => void;
+  downloadBtnHref?: string;
+  viewBtnHref?: string;
 };
 export const defaultActionButtonsConfig: ActionButtonConfig = {
   componentName: ActionButtons.name,
   contents: {
     viewBtnText: 'View',
-    viewBtnHref: '/',
     downloadBtnText: 'Download',
-    downloadBtnHref: '/',
   },
   styles: {
     fontWeight: '700',
@@ -48,6 +46,8 @@ export function ActionButtons({
   uiConfig = defaultActionButtonsConfig,
   onViewBtnClick,
   onDownloadBtnClick,
+  viewBtnHref,
+  downloadBtnHref,
 }: ActionButtonProps) {
   return (
     <Stack
@@ -76,7 +76,7 @@ export function ActionButtons({
         variant={'contained'}
         color={'green'}
         size={'large'}
-        href={uiConfig.contents.viewBtnHref}
+        href={viewBtnHref}
         onClick={onViewBtnClick}
       >
         {uiConfig.contents.viewBtnText}
@@ -90,7 +90,7 @@ export function ActionButtons({
           padding: uiConfig.styles.padding,
           width: uiConfig.styles.width,
         }}
-        href={uiConfig.contents.downloadBtnHref}
+        href={downloadBtnHref}
         startIcon={<AiOutlineDownload />}
         variant={'contained'}
         color={'green'}
