@@ -7,6 +7,7 @@ import {
   BasicFlexibleProps,
 } from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
+import { getOrgFunName } from './utility';
 
 interface LandingSectionConfig extends BasicUIConfig {
   contents: {
@@ -21,7 +22,7 @@ interface LandingSectionConfig extends BasicUIConfig {
 }
 
 export const defaultLandingSectionConfig: LandingSectionConfig = {
-  componentName: 'LandingSection',
+  componentName: getOrgFunName(LandingSection.name),
   contents: {
     headingText: `Diegesis is a place to find Bibles and related resources, in a variety
     of formats, released under open licences*.`,

@@ -3,6 +3,7 @@ import React from 'react';
 import { BsChevronLeft } from 'react-icons/bs';
 import { BasicFlexibleProps, BasicUIConfig } from './UIConfigProvider';
 import { withFlexible } from './withFlexible';
+import { getOrgFunName } from './utility';
 
 export type BackBtnConfig = BasicUIConfig & {
   contents: {
@@ -22,7 +23,7 @@ export type BackBtnConfig = BasicUIConfig & {
   };
 };
 export const defaultBackBtnConfig: BackBtnConfig = {
-  componentName: BackButton.name,
+  componentName: getOrgFunName(BackButton.name),
   contents: {
     btnText: 'Back',
   },

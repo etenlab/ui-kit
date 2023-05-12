@@ -3,6 +3,7 @@ import React from 'react';
 import { AiOutlineDownload, AiOutlineFileText } from 'react-icons/ai';
 import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
 import { withFlexible } from '../withFlexible';
+import { getOrgFunName } from '../utility';
 
 type ActionButtonConfig = BasicUIConfig & {
   contents: {
@@ -26,7 +27,7 @@ export type ActionButtonProps = BasicFlexibleProps<ActionButtonConfig> & {
   viewBtnHref?: string;
 };
 export const defaultActionButtonsConfig: ActionButtonConfig = {
-  componentName: ActionButtons.name,
+  componentName: getOrgFunName(ActionButtons.name),
   contents: {
     viewBtnText: 'View',
     downloadBtnText: 'Download',

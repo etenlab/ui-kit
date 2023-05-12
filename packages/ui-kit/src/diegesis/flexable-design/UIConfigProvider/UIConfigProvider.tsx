@@ -7,7 +7,13 @@ import React, {
   FC,
 } from 'react';
 
-import { PathItem, parsePath, buildPath, addPath } from '../utility';
+import {
+  PathItem,
+  parsePath,
+  buildPath,
+  addPath,
+  getOrgFunName,
+} from '../utility';
 
 export interface FlexibleMarkDown {
   id?: string;
@@ -90,7 +96,7 @@ interface RootUIConfig extends BasicUIConfig {}
 
 const initialRootState = {
   id: 'root',
-  componentName: 'UIConfigProvider',
+  componentName: getOrgFunName(UIConfigContextProvider.name),
   configPath: '/',
   uiConfigs: {},
 };
@@ -157,6 +163,7 @@ export function UIConfigContextProvider({
 
   const getComponentByName = useCallback(
     (name: string) => {
+      console.log('getComponentByName', name, nameVsComponent);
       return nameVsComponent[name]
         ? {
             Component: nameVsComponent[name],
@@ -172,7 +179,7 @@ export function UIConfigContextProvider({
         (obj) =>
           ({
             ...obj,
-            [Component.displayName as string]: Component,
+            [getOrgFunName(Component.name)]: Component,
           } as NameVsComponent),
       );
     },
@@ -347,7 +354,6 @@ export function UIConfigContextProvider({
           ) {
             break;
           }
-
           pathItems.pop();
         }
 
@@ -370,7 +376,6 @@ export function UIConfigContextProvider({
       FlexibleComponent: FC<T>,
     ) => {
       const pathItems: PathItem[] = parsePath(pathString);
-
       if (!isExistsUIConfig(pathString)) {
         if (isExistsUIConfig(buildPath(pathItems.slice(0, -1)))) {
           mutateUIConfig(pathString, defaultConfig);

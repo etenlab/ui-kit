@@ -5,6 +5,7 @@ import {
   BasicFlexibleProps,
 } from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
+import { getOrgFunName } from './utility';
 
 interface MenuIconConfig extends BasicUIConfig {
   contents: {};
@@ -16,7 +17,7 @@ interface MenuIconConfig extends BasicUIConfig {
 }
 
 export const defaultMenuIconConfig: MenuIconConfig = {
-  componentName: 'MenuIcon',
+  componentName: getOrgFunName(MenuIcon.name),
   contents: {
     title: 'Open source Bibles resources',
   },

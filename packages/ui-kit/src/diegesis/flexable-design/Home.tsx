@@ -12,6 +12,7 @@ import {
   BasicFlexibleProps,
 } from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
+import { getOrgFunName } from './utility';
 
 interface HomeConfig extends BasicUIConfig {
   contents: {};
@@ -19,7 +20,7 @@ interface HomeConfig extends BasicUIConfig {
 }
 
 export const defaultHomeConfig: HomeConfig = {
-  componentName: 'Home',
+  componentName: getOrgFunName(Home.name),
   contents: {},
   styles: {},
 };

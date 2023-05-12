@@ -15,7 +15,12 @@ import { UIConfigPathBreadcrumbs } from './UIConfigPathBreadcrumbs';
 import { UIConfigSelector } from './UIConfigSelector';
 import { ComponentShower } from './ComponentShower';
 
-export function UIConfigControlPanel() {
+export type UIConfigControlPanelProps = {
+  onConfigSave?: (config: BasicUIConfig) => {};
+};
+export function UIConfigControlPanel({
+  onConfigSave,
+}: UIConfigControlPanelProps) {
   const { queryUIConfig, mutateUIConfig, getComponentByName } =
     useUIConfigContext();
 
@@ -59,7 +64,9 @@ export function UIConfigControlPanel() {
     if (!config) {
       return;
     }
+    console.log('handleSaveConfig', config);
     mutateUIConfig(selectedPath, config);
+    if (onConfigSave) onConfigSave(config);
   };
 
   const handleCancelConfig = () => {

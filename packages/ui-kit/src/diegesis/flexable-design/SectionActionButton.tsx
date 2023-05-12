@@ -6,6 +6,7 @@ import {
   BasicFlexibleProps,
 } from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
+import { getOrgFunName } from './utility';
 
 interface SectionActionButtonConfig extends BasicUIConfig {
   contents: {
@@ -29,7 +30,7 @@ interface SectionActionButtonConfig extends BasicUIConfig {
 }
 
 export const defaultSectionActionButtonConfig: SectionActionButtonConfig = {
-  componentName: 'SectionActionButton',
+  componentName: getOrgFunName(SectionActionButton.name),
   contents: {
     actionBtnText: 'Browse content',
     defaultActionBtnHref: '/',

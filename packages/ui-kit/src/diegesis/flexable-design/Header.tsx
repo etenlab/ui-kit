@@ -11,6 +11,7 @@ import {
 import { withFlexible } from './withFlexible';
 
 import { FlexibleAppLogo } from './AppLogo';
+import { getOrgFunName } from './utility';
 
 interface HeaderConfig extends BasicUIConfig {
   contents: {
@@ -26,7 +27,7 @@ interface HeaderConfig extends BasicUIConfig {
 }
 
 export const defaultHeaderConfig: HeaderConfig = {
-  componentName: 'Header',
+  componentName: getOrgFunName(Header.name),
   contents: {
     title: 'Open source Bibles resources',
   },

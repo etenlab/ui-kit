@@ -6,6 +6,7 @@ import { SelectControl, SelectControlProps } from '../../SelectControl';
 import { PageTitleTypo } from '../../styleds/PageTitleTypo';
 import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
 import { withFlexible } from '../withFlexible';
+import { getOrgFunName } from '../utility';
 
 export type TagConfigProps = {
   label?: string;
@@ -23,7 +24,7 @@ export type EntriesTopControlsConfig = BasicUIConfig & {
   styles: {};
 };
 export const defaultEntriesTopControlsConfig: EntriesTopControlsConfig = {
-  componentName: EntriesTopControls.name,
+  componentName: getOrgFunName(EntriesTopControls.name),
   contents: {
     titleText: 'Entries',
     filterTabLabel: 'Advanced search with filters',
