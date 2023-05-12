@@ -62,8 +62,9 @@ export function EntriesTopControls(props: EntriesTopControlsProps) {
   return (
     <Stack direction={'column'} alignItems={'flex-start'}>
       <Stack direction={'row'} alignItems={'center'} width={'100%'}>
-        <PageTitleTypo variant={'h1'} marginRight={'0.5rem'}></PageTitleTypo>
-        {uiConfig.contents?.titleText}
+        <PageTitleTypo variant={'h1'} marginRight={'1rem'}>
+          {uiConfig.contents?.titleText}
+        </PageTitleTypo>
         <StyledDeviceSpecific showOnSmallDevice={false}>
           <SearchBox {...props.searchBoxProps} />
         </StyledDeviceSpecific>

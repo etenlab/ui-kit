@@ -36,7 +36,8 @@
     "react-quill": "^2.0.0",
     "rehype-katex": "^6.0.3",
     "remark-math": "^5.1.1",
-    "tslib": "^2.4.1"
+    "tslib": "^2.4.1",
+    "react-ace": "^10.1.0"
   },
   "devDependencies": {
     "@testing-library/react": "13.3.0",
