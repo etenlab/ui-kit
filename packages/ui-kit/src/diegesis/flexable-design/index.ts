@@ -1,5 +1,6 @@
 export { App } from './App';
 export * from './UIConfigProvider';
+export * from './UIConfigControlPanel';
 export * from './PageLayout';
 export * from './Home';
 export * from './Header';

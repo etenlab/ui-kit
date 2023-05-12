@@ -71,6 +71,7 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
     },
     '& input': {
       fontSize: '20px',
+      paddingLeft: '0px',
     },
     '&:hover fieldset': {
       borderColor: theme.palette.background['turquoise-light'],
