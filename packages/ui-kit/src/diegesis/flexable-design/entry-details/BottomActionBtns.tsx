@@ -15,11 +15,11 @@ export const defaultBottomActionButtonConfig: BottomActionButtonsConfig = {
 };
 export type BottomActionButtonsProps =
   BasicFlexibleProps<BottomActionButtonsConfig> & {
-    actionBtnProps?: ActionButtonProps;
+    actionButtonProps?: ActionButtonProps;
   };
 export function BottomActionButtons({
   uiConfig = defaultBottomActionButtonConfig,
-  actionBtnProps,
+  actionButtonProps,
 }: BottomActionButtonsProps) {
   return (
     <Stack
@@ -52,7 +52,7 @@ export function BottomActionButtons({
         })}
       >
         <FlexibleActionButtons
-          {...actionBtnProps}
+          {...actionButtonProps}
           id="bottom-action-buttons"
           parentPath={uiConfig.configPath!}
         />
