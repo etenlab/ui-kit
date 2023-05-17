@@ -5,6 +5,7 @@ import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
 import { PageTitleTypo } from '../../styleds/PageTitleTypo';
 import { BackBtnProps, FlexibleBackButton } from '../BackButton';
 import { withFlexible } from '../withFlexible';
+import { getOrgFunName } from '../utility';
 
 export type EntryDetailTopControlConfig = BasicUIConfig & {
   contents: {
@@ -19,7 +20,7 @@ export type EntryDetailTopControlProps =
     backBtnProps?: BackBtnProps;
   };
 export const defaultTopControlConfig: EntryDetailTopControlConfig = {
-  componentName: TopControls.name,
+  componentName: getOrgFunName(TopControls.name),
   contents: {
     title: 'Bible in Basic English',
   },

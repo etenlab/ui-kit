@@ -7,6 +7,7 @@ import {
 import { withFlexible } from './withFlexible';
 
 import { AiOutlineFire } from 'react-icons/ai';
+import { getOrgFunName } from './utility';
 
 interface AppLogoConfig extends BasicUIConfig {
   contents: {
@@ -24,7 +25,7 @@ interface AppLogoConfig extends BasicUIConfig {
 }
 
 export const defaultAppLogoConfig: AppLogoConfig = {
-  componentName: 'AppLogo',
+  componentName: getOrgFunName(AppLogo.name),
   contents: {
     iconType: 'tree',
     title: 'Diegesis',

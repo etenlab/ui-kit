@@ -5,13 +5,14 @@ import { SideNav, SideNavProps } from '../SideNav';
 import { BasicFlexibleProps, BasicUIConfig } from './UIConfigProvider';
 import { FlexibleFooter } from './Footer';
 import { withFlexible } from './withFlexible';
+import { getOrgFunName } from './utility';
 
 export type PageLayoutConfig = BasicUIConfig & {
   contents: {};
   styles: {};
 };
 const defaultPageLayoutConfig: PageLayoutConfig = {
-  componentName: PageLayout.name,
+  componentName: getOrgFunName(PageLayout.name),
   contents: {},
   styles: {},
 };

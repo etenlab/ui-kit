@@ -25,9 +25,9 @@ export function App() {
       <Button onClick={toggleDrawer} variant="contained">
         Open Setting Panel
       </Button>
-      <FlexibleHome id="HomePage" parentPath="/" />
-      <FlexibleEntriesListPage id="ListPage" parentPath="/list" />
-      <FlexibleEntryDetail id="EntryDetailPage" parentPath="/entry-detail" />
+      <FlexibleHome id="home-page" parentPath="/" />
+      <FlexibleEntriesListPage id="list-page" parentPath="/list" />
+      <FlexibleEntryDetail id="entry-detail-page" parentPath="/entry-detail" />
       <Drawer
         anchor="left"
         open={open}

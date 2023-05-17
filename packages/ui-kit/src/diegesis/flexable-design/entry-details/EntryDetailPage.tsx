@@ -12,6 +12,7 @@ import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
 import { SideNavProps } from '../../SideNav';
 import { SelectControlProps } from '../../SelectControl';
 import { withFlexible } from '../withFlexible';
+import { getOrgFunName } from '../utility';
 
 //#region types
 export type EntryDetailPageConfig = BasicUIConfig & {
@@ -19,7 +20,7 @@ export type EntryDetailPageConfig = BasicUIConfig & {
   styles: {};
 };
 export const defaultEntryDetailPage: EntryDetailPageConfig = {
-  componentName: EntryDetailPage.name,
+  componentName: getOrgFunName(EntryDetailPage.name),
   contents: {},
   styles: {},
 };

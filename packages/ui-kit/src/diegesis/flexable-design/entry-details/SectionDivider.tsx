@@ -2,6 +2,7 @@ import { Stack, StackProps } from '@mui/material';
 import React from 'react';
 import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
 import { withFlexible } from '../withFlexible';
+import { getOrgFunName } from '../utility';
 
 export type SectionDividerConfig = BasicUIConfig & {
   contents: {};
@@ -13,7 +14,7 @@ export type SectionDividerConfig = BasicUIConfig & {
   };
 };
 export const defaultSectionDividerConfig: SectionDividerConfig = {
-  componentName: SectionDivider.name,
+  componentName: getOrgFunName(SectionDivider.name),
   contents: {},
   styles: {
     height: '3',

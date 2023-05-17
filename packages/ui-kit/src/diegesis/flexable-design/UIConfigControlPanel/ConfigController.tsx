@@ -326,7 +326,6 @@ export function ConfigController({
               </Grid>
               <Grid item xs={8}>
                 <Paper
-                  variant="outlined"
                   elevation={3}
                   sx={{ background: '#e5e5e5', padding: '10px 5px' }}
                 >
@@ -348,7 +347,6 @@ export function ConfigController({
               </Grid>
               <Grid item xs={8}>
                 <Paper
-                  variant="outlined"
                   elevation={3}
                   sx={{ background: '#e5e5e5', padding: '10px 5px' }}
                 >
@@ -370,7 +368,6 @@ export function ConfigController({
               </Grid>
               <Grid item xs={8}>
                 <Paper
-                  variant="outlined"
                   elevation={3}
                   sx={{ background: '#e5e5e5', padding: '10px 5px' }}
                 >
@@ -391,7 +388,6 @@ export function ConfigController({
               </Grid>
               <Grid item xs={8}>
                 <Paper
-                  variant="outlined"
                   elevation={3}
                   sx={{ background: '#e5e5e5', padding: '10px 5px' }}
                 >

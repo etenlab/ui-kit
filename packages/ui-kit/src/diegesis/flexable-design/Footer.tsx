@@ -12,6 +12,7 @@ import { withFlexible } from './withFlexible';
 
 import { FlexibleAppLogo } from './AppLogo';
 import { MarkDown } from './MarkDown';
+import { getOrgFunName } from './utility';
 
 interface FooterConfig extends BasicUIConfig {
   contents: {
@@ -30,7 +31,7 @@ interface FooterConfig extends BasicUIConfig {
 }
 
 export const defaultFootConfig: FooterConfig = {
-  componentName: 'Footer',
+  componentName: getOrgFunName(Footer.name),
   contents: {
     brandName: `MVH Solutions`,
     year: `${new Date().getFullYear()}`,

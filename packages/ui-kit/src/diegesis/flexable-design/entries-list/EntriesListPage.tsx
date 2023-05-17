@@ -9,6 +9,7 @@ import { FlexiblePageLayout } from '../PageLayout';
 import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
 import { EntriesDataTable, EntriesDataTableProps } from './EntriesDataTable';
 import { withFlexible } from '../withFlexible';
+import { getOrgFunName } from '../utility';
 
 //#region types
 export type EntriesPageConfig = BasicUIConfig & {
@@ -16,7 +17,7 @@ export type EntriesPageConfig = BasicUIConfig & {
   styles: {};
 };
 export const defaultEntriesPageConfig: EntriesPageConfig = {
-  componentName: EntriesListPage.name,
+  componentName: getOrgFunName(EntriesListPage.name),
   contents: {},
   styles: {},
 };

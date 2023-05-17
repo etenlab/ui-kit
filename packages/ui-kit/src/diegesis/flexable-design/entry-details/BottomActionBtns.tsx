@@ -3,13 +3,14 @@ import React from 'react';
 import { ActionButtonProps, FlexibleActionButtons } from './ActionButtons';
 import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
 import { withFlexible } from '../withFlexible';
+import { getOrgFunName } from '../utility';
 
 export type BottomActionButtonsConfig = BasicUIConfig & {
   contents: {};
   styles: {};
 };
 export const defaultBottomActionButtonConfig: BottomActionButtonsConfig = {
-  componentName: BottomActionButtons.name,
+  componentName: getOrgFunName(BottomActionButtons.name),
   contents: {},
   styles: {},
 };

@@ -3,6 +3,7 @@ import React from 'react';
 import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
 import { withFlexible } from '../withFlexible';
 import { SelectControl, SelectControlProps } from '../../SelectControl';
+import { getOrgFunName } from '../utility';
 
 export type BookResourceConfig = BasicUIConfig & {
   contents: {
@@ -11,7 +12,7 @@ export type BookResourceConfig = BasicUIConfig & {
   styles: {};
 };
 const defaultBookResourceConfig: BookResourceConfig = {
-  componentName: BookResourceBox.name,
+  componentName: getOrgFunName(BookResourceBox.name),
   contents: {
     label: '',
   },
