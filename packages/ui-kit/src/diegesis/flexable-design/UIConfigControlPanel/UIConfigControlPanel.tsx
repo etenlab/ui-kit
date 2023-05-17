@@ -64,7 +64,6 @@ export function UIConfigControlPanel({
     if (!config) {
       return;
     }
-    console.log('handleSaveConfig', config);
     mutateUIConfig(selectedPath, config);
     if (onConfigSave) onConfigSave(config);
   };

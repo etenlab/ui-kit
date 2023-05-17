@@ -177,7 +177,6 @@ export function UIConfigContextProvider({
 
   const getComponentByName = useCallback(
     (name: string) => {
-      console.log('getComponentByName', name, nameVsComponent);
       return nameVsComponent[name]
         ? {
             Component: nameVsComponent[name],
