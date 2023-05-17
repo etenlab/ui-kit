@@ -114,6 +114,7 @@ export interface IUIConfigContext {
     comName: string,
   ): T | null;
   setRootUIConfig(_state: RootUIConfig): void;
+  getRootUIConfig(): RootUIConfig;
 }
 
 export const UIConfigContext = createContext<IUIConfigContext>({
@@ -145,6 +146,9 @@ export const UIConfigContext = createContext<IUIConfigContext>({
     return null;
   },
   setRootUIConfig(_state: RootUIConfig) {},
+  getRootUIConfig() {
+    return initialRootState;
+  },
 });
 
 interface UIConfigContextProviderProps {
@@ -160,6 +164,10 @@ export function UIConfigContextProvider({
   const setRootUIConfig = useCallback((_state: RootUIConfig) => {
     setState(_state);
   }, []);
+
+  const getRootUIConfig = useCallback(() => {
+    return state;
+  }, [state]);
 
   const getComponentByName = useCallback(
     (name: string) => {
@@ -419,6 +427,7 @@ export function UIConfigContextProvider({
 
   const value = {
     setRootUIConfig,
+    getRootUIConfig,
     isExistsUIConfig,
     mutateUIConfig,
     initializeUIConfig,
