@@ -15,6 +15,9 @@ import {
   getOrgFunName,
 } from '../utility';
 
+export type FlexibleComponent<P> = FC<P> & {
+  componentName?: string;
+};
 export interface FlexibleMarkDown {
   id?: string;
   className?: string;
@@ -187,12 +190,12 @@ export function UIConfigContextProvider({
   );
 
   const setComponent = useCallback(
-    (Component: FC<BasicFlexibleProps<BasicUIConfig>>) => {
+    (Component: FlexibleComponent<BasicFlexibleProps<BasicUIConfig>>) => {
       setNameVsComponent(
         (obj) =>
           ({
             ...obj,
-            [getOrgFunName(Component.name)]: Component,
+            [getOrgFunName(Component.componentName!)]: Component,
           } as NameVsComponent),
       );
     },

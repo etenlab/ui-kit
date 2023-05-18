@@ -7,12 +7,12 @@ import {
   BasicUIConfig,
   BasicFlexibleProps,
   FlexibleMarkDown,
+  FlexibleComponent,
 } from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
 
 import { FlexibleAppLogo } from './AppLogo';
 import { MarkDown } from './MarkDown';
-import { getOrgFunName } from './utility';
 
 interface FooterConfig extends BasicUIConfig {
   contents: {
@@ -31,7 +31,7 @@ interface FooterConfig extends BasicUIConfig {
 }
 
 export const defaultFootConfig: FooterConfig = {
-  componentName: getOrgFunName(Footer.name),
+  componentName: 'Footer',
   contents: {
     brandName: `MVH Solutions`,
     year: `${new Date().getFullYear()}`,
@@ -63,7 +63,9 @@ export const defaultFootConfig: FooterConfig = {
 //
 export interface FooterProps extends BasicFlexibleProps<FooterConfig> {}
 
-export function Footer({ uiConfig = defaultFootConfig }: FooterProps) {
+export const Footer: FlexibleComponent<FooterProps> = ({
+  uiConfig = defaultFootConfig,
+}) => {
   return (
     <div
       style={{
@@ -126,7 +128,8 @@ export function Footer({ uiConfig = defaultFootConfig }: FooterProps) {
       </Container>
     </div>
   );
-}
+};
+Footer.componentName = 'Footer';
 
 export const FlexibleFooter = withFlexible<FooterConfig, FooterProps>(
   Footer,

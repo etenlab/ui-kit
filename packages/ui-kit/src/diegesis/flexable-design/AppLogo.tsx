@@ -3,11 +3,11 @@ import React from 'react';
 import {
   BasicUIConfig,
   BasicFlexibleProps,
+  FlexibleComponent,
 } from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
 
 import { AiOutlineFire } from 'react-icons/ai';
-import { getOrgFunName } from './utility';
 
 interface AppLogoConfig extends BasicUIConfig {
   contents: {
@@ -25,7 +25,7 @@ interface AppLogoConfig extends BasicUIConfig {
 }
 
 export const defaultAppLogoConfig: AppLogoConfig = {
-  componentName: getOrgFunName(AppLogo.name),
+  componentName: 'AppLogo',
   contents: {
     iconType: 'tree',
     title: 'Diegesis',
@@ -48,13 +48,13 @@ export interface AppLogoProps extends BasicFlexibleProps<AppLogoConfig> {
   href?: string;
 }
 
-export function AppLogo({
+export const AppLogo: FlexibleComponent<AppLogoProps> = ({
   width,
   height,
   variant = 'primary',
   uiConfig = defaultAppLogoConfig,
   ...props
-}: AppLogoProps) {
+}) => {
   const realWidth = width ? width : uiConfig.styles.defaultWidth;
   const realHeight = height ? height : uiConfig.styles.defaultHeight;
 
@@ -124,7 +124,8 @@ export function AppLogo({
       );
     }
   }
-}
+};
+AppLogo.componentName = 'AppLogo';
 
 export const FlexibleAppLogo = withFlexible<AppLogoConfig, AppLogoProps>(
   AppLogo,
