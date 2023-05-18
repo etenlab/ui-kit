@@ -29,7 +29,3 @@ export function parsePath(pathString: string): PathItem[] {
 export function buildPath(pathItems: PathItem[]): string {
   return pathItems.map((item) => JSON.stringify(item)).join('/');
 }
-
-export function getOrgFunName(name: string) {
-  return (name || '').split('$')[0];
-}

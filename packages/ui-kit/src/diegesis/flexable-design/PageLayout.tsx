@@ -2,17 +2,20 @@ import { Box } from '@mui/material';
 import React, { useState } from 'react';
 import { FlexibleHeader } from './Header';
 import { SideNav, SideNavProps } from '../SideNav';
-import { BasicFlexibleProps, BasicUIConfig } from './UIConfigProvider';
+import {
+  BasicFlexibleProps,
+  BasicUIConfig,
+  FlexibleComponent,
+} from './UIConfigProvider';
 import { FlexibleFooter } from './Footer';
 import { withFlexible } from './withFlexible';
-import { getOrgFunName } from './utility';
 
 export type PageLayoutConfig = BasicUIConfig & {
   contents: {};
   styles: {};
 };
 const defaultPageLayoutConfig: PageLayoutConfig = {
-  componentName: getOrgFunName(PageLayout.name),
+  componentName: 'PageLayout',
   contents: {},
   styles: {},
 };
@@ -20,11 +23,11 @@ export type PageLayoutProps = BasicFlexibleProps<PageLayoutConfig> & {
   children?: JSX.Element;
   sideNavProps?: SideNavProps;
 };
-export function PageLayout({
+export const PageLayout: FlexibleComponent<PageLayoutProps> = ({
   uiConfig = defaultPageLayoutConfig,
   children,
   sideNavProps,
-}: PageLayoutProps) {
+}) => {
   const [isSideNavOpen, setSideNavOpenStatus] = useState(false);
   return (
     <Box component={'div'} minHeight={'100%'} sx={{ position: 'relative' }}>
@@ -47,7 +50,8 @@ export function PageLayout({
       />
     </Box>
   );
-}
+};
+PageLayout.componentName = defaultPageLayoutConfig.componentName;
 
 export const FlexiblePageLayout = withFlexible<
   PageLayoutConfig,

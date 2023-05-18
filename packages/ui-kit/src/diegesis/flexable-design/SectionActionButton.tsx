@@ -4,9 +4,9 @@ import { Button } from '@mui/material';
 import {
   BasicUIConfig,
   BasicFlexibleProps,
+  FlexibleComponent,
 } from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
-import { getOrgFunName } from './utility';
 
 interface SectionActionButtonConfig extends BasicUIConfig {
   contents: {
@@ -30,7 +30,7 @@ interface SectionActionButtonConfig extends BasicUIConfig {
 }
 
 export const defaultSectionActionButtonConfig: SectionActionButtonConfig = {
-  componentName: getOrgFunName(SectionActionButton.name),
+  componentName: 'SectionActionButton',
   contents: {
     actionBtnText: 'Browse content',
     defaultActionBtnHref: '/',
@@ -54,9 +54,9 @@ export const defaultSectionActionButtonConfig: SectionActionButtonConfig = {
 export interface SectionActionButtonProps
   extends BasicFlexibleProps<SectionActionButtonConfig> {}
 
-export function SectionActionButton({
-  uiConfig = defaultSectionActionButtonConfig,
-}: SectionActionButtonProps) {
+export const SectionActionButton: FlexibleComponent<
+  SectionActionButtonProps
+> = ({ uiConfig = defaultSectionActionButtonConfig }) => {
   return (
     <Button
       size="large"
@@ -81,7 +81,9 @@ export function SectionActionButton({
       {uiConfig.contents.actionBtnText}
     </Button>
   );
-}
+};
+SectionActionButton.componentName =
+  defaultSectionActionButtonConfig.componentName;
 
 export const FlexibleSectionActionButton = withFlexible<
   SectionActionButtonConfig,

@@ -94,7 +94,7 @@ export const Header: FlexibleComponent<HeaderProps> = ({
     </HeaderWrapper>
   );
 };
-Header.componentName = 'Header';
+Header.componentName = defaultHeaderConfig.componentName;
 
 const HeaderWrapper = styled(Box)({
   display: 'flex',

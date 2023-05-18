@@ -7,13 +7,7 @@ import React, {
   FC,
 } from 'react';
 
-import {
-  PathItem,
-  parsePath,
-  buildPath,
-  addPath,
-  getOrgFunName,
-} from '../utility';
+import { PathItem, parsePath, buildPath, addPath } from '../utility';
 
 export type FlexibleComponent<P> = FC<P> & {
   componentName?: string;
@@ -99,7 +93,7 @@ interface RootUIConfig extends BasicUIConfig {}
 
 const initialRootState = {
   id: 'root',
-  componentName: getOrgFunName(UIConfigContextProvider.name),
+  componentName: 'UIConfigContextProvider',
   configPath: '/',
   uiConfigs: {},
 };
@@ -164,9 +158,9 @@ interface UIConfigContextProviderProps {
   children?: React.ReactNode;
 }
 
-export function UIConfigContextProvider({
-  children,
-}: UIConfigContextProviderProps) {
+export const UIConfigContextProvider: FC<UIConfigContextProviderProps> & {
+  componentName?: string;
+} = ({ children }) => {
   const [state, setState] = useState<RootUIConfig>(initialRootState);
   const [nameVsComponent, setNameVsComponent] = useState<NameVsComponent>({});
 
@@ -195,7 +189,7 @@ export function UIConfigContextProvider({
         (obj) =>
           ({
             ...obj,
-            [getOrgFunName(Component.componentName!)]: Component,
+            [Component.componentName!]: Component,
           } as NameVsComponent),
       );
     },
@@ -450,7 +444,8 @@ export function UIConfigContextProvider({
       {children}
     </UIConfigContext.Provider>
   );
-}
+};
+UIConfigContextProvider.componentName = initialRootState.componentName;
 
 export function useUIConfigContext() {
   const context = useContext(UIConfigContext);

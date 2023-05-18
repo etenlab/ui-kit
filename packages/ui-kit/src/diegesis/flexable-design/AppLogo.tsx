@@ -70,7 +70,7 @@ export const AppLogo: FlexibleComponent<AppLogoProps> = ({
   switch (uiConfig.contents.iconType) {
     case 'bee': {
       return (
-        <a href={props.href || '/'}>
+        <a href={props.href || '/'} style={{ display: 'flex' }}>
           <AiOutlineFire style={{ fontSize: realHeight, color: iconColor }} />
           <span
             style={{
@@ -85,7 +85,7 @@ export const AppLogo: FlexibleComponent<AppLogoProps> = ({
     }
     default: {
       return (
-        <a href={props.href || '/'}>
+        <a href={props.href || '/'} style={{ display: 'flex' }}>
           <svg
             className={props?.className}
             width={realWidth}
