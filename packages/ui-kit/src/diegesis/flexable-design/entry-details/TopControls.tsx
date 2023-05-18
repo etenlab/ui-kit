@@ -1,11 +1,14 @@
 import { Stack } from '@mui/material';
 import React from 'react';
 import { ActionButtonProps, FlexibleActionButtons } from './ActionButtons';
-import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
+import {
+  BasicFlexibleProps,
+  BasicUIConfig,
+  FlexibleComponent,
+} from '../UIConfigProvider';
 import { PageTitleTypo } from '../../styleds/PageTitleTypo';
 import { BackBtnProps, FlexibleBackButton } from '../BackButton';
 import { withFlexible } from '../withFlexible';
-import { getOrgFunName } from '../utility';
 
 export type EntryDetailTopControlConfig = BasicUIConfig & {
   contents: {
@@ -20,18 +23,18 @@ export type EntryDetailTopControlProps =
     backBtnProps?: BackBtnProps;
   };
 export const defaultTopControlConfig: EntryDetailTopControlConfig = {
-  componentName: getOrgFunName(TopControls.name),
+  componentName: 'TopControls',
   contents: {
     title: 'Bible in Basic English',
   },
   styles: {},
 };
-export function TopControls({
+export const TopControls: FlexibleComponent<EntryDetailTopControlProps> = ({
   uiConfig = defaultTopControlConfig,
   title,
   actionButtonProps,
   backBtnProps,
-}: EntryDetailTopControlProps) {
+}) => {
   return (
     <Stack
       flexDirection={'column'}
@@ -80,7 +83,9 @@ export function TopControls({
       </Stack>
     </Stack>
   );
-}
+};
+TopControls.componentName = defaultTopControlConfig.componentName;
+
 export const FlexibleTopControls = withFlexible<
   EntryDetailTopControlConfig,
   EntryDetailTopControlProps

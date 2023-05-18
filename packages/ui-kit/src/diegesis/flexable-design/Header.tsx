@@ -7,11 +7,11 @@ import { FlexibleMenuIcon } from './MenuIcon';
 import {
   BasicUIConfig,
   BasicFlexibleProps,
+  FlexibleComponent,
 } from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
 
 import { FlexibleAppLogo } from './AppLogo';
-import { getOrgFunName } from './utility';
 
 interface HeaderConfig extends BasicUIConfig {
   contents: {
@@ -27,7 +27,7 @@ interface HeaderConfig extends BasicUIConfig {
 }
 
 export const defaultHeaderConfig: HeaderConfig = {
-  componentName: getOrgFunName(Header.name),
+  componentName: 'Header',
   contents: {
     title: 'Open source Bibles resources',
   },
@@ -44,10 +44,10 @@ export interface HeaderProps extends BasicFlexibleProps<HeaderConfig> {
   openSideNav?: () => void;
 }
 
-export function Header({
+export const Header: FlexibleComponent<HeaderProps> = ({
   uiConfig = defaultHeaderConfig,
   openSideNav,
-}: HeaderProps) {
+}) => {
   return (
     <HeaderWrapper>
       <Container>
@@ -93,7 +93,8 @@ export function Header({
       )}
     </HeaderWrapper>
   );
-}
+};
+Header.componentName = defaultHeaderConfig.componentName;
 
 const HeaderWrapper = styled(Box)({
   display: 'flex',

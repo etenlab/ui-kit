@@ -4,9 +4,12 @@ import { SearchBox, SearchBoxProps } from '../../SearchBox';
 import { CustomTab, CustomTabs } from '../../Tab';
 import { SelectControl, SelectControlProps } from '../../SelectControl';
 import { PageTitleTypo } from '../../styleds/PageTitleTypo';
-import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
+import {
+  BasicFlexibleProps,
+  BasicUIConfig,
+  FlexibleComponent,
+} from '../UIConfigProvider';
 import { withFlexible } from '../withFlexible';
-import { getOrgFunName } from '../utility';
 
 export type TagConfigProps = {
   label?: string;
@@ -24,7 +27,7 @@ export type EntriesTopControlsConfig = BasicUIConfig & {
   styles: {};
 };
 export const defaultEntriesTopControlsConfig: EntriesTopControlsConfig = {
-  componentName: getOrgFunName(EntriesTopControls.name),
+  componentName: 'EntriesTopControls',
   contents: {
     titleText: 'Entries',
     filterTabLabel: 'Advanced search with filters',
@@ -57,7 +60,9 @@ export const MOCK_ENTRIES_TOP_CONTROLS_PROPS: Partial<EntriesTopControlsProps> =
     ],
   };
 
-export function EntriesTopControls(props: EntriesTopControlsProps) {
+export const EntriesTopControls: FlexibleComponent<EntriesTopControlsProps> = (
+  props,
+) => {
   const { uiConfig = defaultEntriesTopControlsConfig } = props;
   const [curTab, setCurTab] = useState(0);
   return (
@@ -140,7 +145,9 @@ export function EntriesTopControls(props: EntriesTopControlsProps) {
       </StyledDeviceSpecific>
     </Stack>
   );
-}
+};
+EntriesTopControls.componentName =
+  defaultEntriesTopControlsConfig.componentName;
 
 export const FlexibleEntriesTopControls = withFlexible<
   EntriesTopControlsConfig,

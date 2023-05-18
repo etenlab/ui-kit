@@ -5,9 +5,9 @@ import { FlexibleSectionActionButton } from './SectionActionButton';
 import {
   BasicUIConfig,
   BasicFlexibleProps,
+  FlexibleComponent,
 } from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
-import { getOrgFunName } from './utility';
 
 interface LandingSectionConfig extends BasicUIConfig {
   contents: {
@@ -22,7 +22,7 @@ interface LandingSectionConfig extends BasicUIConfig {
 }
 
 export const defaultLandingSectionConfig: LandingSectionConfig = {
-  componentName: getOrgFunName(LandingSection.name),
+  componentName: 'LandingSection',
   contents: {
     headingText: `Diegesis is a place to find Bibles and related resources, in a variety
     of formats, released under open licences*.`,
@@ -40,9 +40,9 @@ export interface LandingSectionProps
   actionBtnHref?: string;
 }
 
-export function LandingSection({
+export const LandingSection: FlexibleComponent<LandingSectionProps> = ({
   uiConfig = defaultLandingSectionConfig,
-}: LandingSectionProps) {
+}) => {
   return (
     <StyledContainer className="landing-section">
       <Stack
@@ -94,7 +94,8 @@ export function LandingSection({
       </Stack>
     </StyledContainer>
   );
-}
+};
+LandingSection.componentName = 'LandingSection';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   paddingTop: theme.typography.pxToRem(112),

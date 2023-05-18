@@ -7,14 +7,11 @@ import React, {
   FC,
 } from 'react';
 
-import {
-  PathItem,
-  parsePath,
-  buildPath,
-  addPath,
-  getOrgFunName,
-} from '../utility';
+import { PathItem, parsePath, buildPath, addPath } from '../utility';
 
+export type FlexibleComponent<P> = FC<P> & {
+  componentName?: string;
+};
 export interface FlexibleMarkDown {
   id?: string;
   className?: string;
@@ -96,7 +93,7 @@ interface RootUIConfig extends BasicUIConfig {}
 
 const initialRootState = {
   id: 'root',
-  componentName: getOrgFunName(UIConfigContextProvider.name),
+  componentName: 'UIConfigContextProvider',
   configPath: '/',
   uiConfigs: {},
 };
@@ -161,9 +158,9 @@ interface UIConfigContextProviderProps {
   children?: React.ReactNode;
 }
 
-export function UIConfigContextProvider({
-  children,
-}: UIConfigContextProviderProps) {
+export const UIConfigContextProvider: FC<UIConfigContextProviderProps> & {
+  componentName?: string;
+} = ({ children }) => {
   const [state, setState] = useState<RootUIConfig>(initialRootState);
   const [nameVsComponent, setNameVsComponent] = useState<NameVsComponent>({});
 
@@ -187,12 +184,12 @@ export function UIConfigContextProvider({
   );
 
   const setComponent = useCallback(
-    (Component: FC<BasicFlexibleProps<BasicUIConfig>>) => {
+    (Component: FlexibleComponent<BasicFlexibleProps<BasicUIConfig>>) => {
       setNameVsComponent(
         (obj) =>
           ({
             ...obj,
-            [getOrgFunName(Component.name)]: Component,
+            [Component.componentName!]: Component,
           } as NameVsComponent),
       );
     },
@@ -447,7 +444,8 @@ export function UIConfigContextProvider({
       {children}
     </UIConfigContext.Provider>
   );
-}
+};
+UIConfigContextProvider.componentName = initialRootState.componentName;
 
 export function useUIConfigContext() {
   const context = useContext(UIConfigContext);

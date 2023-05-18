@@ -10,9 +10,9 @@ import { FlexibleFooter } from './Footer';
 import {
   BasicUIConfig,
   BasicFlexibleProps,
+  FlexibleComponent,
 } from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
-import { getOrgFunName } from './utility';
 
 interface HomeConfig extends BasicUIConfig {
   contents: {};
@@ -20,14 +20,16 @@ interface HomeConfig extends BasicUIConfig {
 }
 
 export const defaultHomeConfig: HomeConfig = {
-  componentName: getOrgFunName(Home.name),
+  componentName: 'Home',
   contents: {},
   styles: {},
 };
 
 export interface HomeProps extends BasicFlexibleProps<HomeConfig> {}
 
-export function Home({ uiConfig = defaultHomeConfig }: HomeProps) {
+export const Home: FlexibleComponent<HomeProps> = ({
+  uiConfig = defaultHomeConfig,
+}) => {
   const [isSideNavOpen, setSideNavOpenStatus] = useState(false);
   return (
     <StyledWrapper>
@@ -50,7 +52,8 @@ export function Home({ uiConfig = defaultHomeConfig }: HomeProps) {
       <FlexibleFooter id="home-footer" parentPath={uiConfig.configPath!} />
     </StyledWrapper>
   );
-}
+};
+Home.componentName = 'Home';
 
 const StyledWrapper = styled('div')(() => ({
   position: 'relative',

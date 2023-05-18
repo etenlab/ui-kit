@@ -3,9 +3,9 @@ import React from 'react';
 import {
   BasicUIConfig,
   BasicFlexibleProps,
+  FlexibleComponent,
 } from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
-import { getOrgFunName } from './utility';
 
 interface MenuIconConfig extends BasicUIConfig {
   contents: {};
@@ -17,7 +17,7 @@ interface MenuIconConfig extends BasicUIConfig {
 }
 
 export const defaultMenuIconConfig: MenuIconConfig = {
-  componentName: getOrgFunName(MenuIcon.name),
+  componentName: 'MenuIcon',
   contents: {
     title: 'Open source Bibles resources',
   },
@@ -35,13 +35,13 @@ export interface MenuIconProps extends BasicFlexibleProps<MenuIconConfig> {
   onClick?: React.MouseEventHandler;
 }
 
-export function MenuIcon({
+export const MenuIcon: FlexibleComponent<MenuIconProps> = ({
   width,
   height,
   className,
   onClick,
   uiConfig = defaultMenuIconConfig,
-}: MenuIconProps) {
+}) => {
   const realWidth = width ? width : uiConfig.styles.defaultWidth;
   const realHeight = height ? height : uiConfig.styles.defaultHeight;
 
@@ -85,7 +85,8 @@ export function MenuIcon({
       </g>
     </svg>
   );
-}
+};
+MenuIcon.componentName = defaultMenuIconConfig.componentName;
 
 export const FlexibleMenuIcon = withFlexible<MenuIconConfig, MenuIconProps>(
   MenuIcon,

@@ -1,9 +1,12 @@
 import { Stack, Typography, styled } from '@mui/material';
 import React from 'react';
-import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
+import {
+  BasicFlexibleProps,
+  BasicUIConfig,
+  FlexibleComponent,
+} from '../UIConfigProvider';
 import { withFlexible } from '../withFlexible';
 import { SelectControl, SelectControlProps } from '../../SelectControl';
-import { getOrgFunName } from '../utility';
 
 export type BookResourceConfig = BasicUIConfig & {
   contents: {
@@ -12,7 +15,7 @@ export type BookResourceConfig = BasicUIConfig & {
   styles: {};
 };
 const defaultBookResourceConfig: BookResourceConfig = {
-  componentName: getOrgFunName(BookResourceBox.name),
+  componentName: 'BookResourceBox',
   contents: {
     label: '',
   },
@@ -21,10 +24,10 @@ const defaultBookResourceConfig: BookResourceConfig = {
 export type BookResourceBoxProps = BasicFlexibleProps<BookResourceConfig> & {
   selectControl: SelectControlProps;
 };
-export function BookResourceBox({
+export const BookResourceBox: FlexibleComponent<BookResourceBoxProps> = ({
   uiConfig = defaultBookResourceConfig,
   selectControl,
-}: BookResourceBoxProps) {
+}) => {
   return (
     <StyledBookResourceBox
       direction={'column'}
@@ -40,7 +43,9 @@ export function BookResourceBox({
       />
     </StyledBookResourceBox>
   );
-}
+};
+BookResourceBox.componentName = defaultBookResourceConfig.componentName;
+
 export const FlexibleBookResourceBox = withFlexible<
   BookResourceConfig,
   BookResourceBoxProps
