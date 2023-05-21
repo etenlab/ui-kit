@@ -6,9 +6,11 @@ import { MdAccountCircle } from 'react-icons/md';
 export type NavOption = {
   title: string;
   href?: string;
-  variant: 'big' | 'bordered' | 'small';
+  variant: 'big' | 'bordered' | 'small' | 'custom';
   icon?: JSX.Element;
   onClick?: () => void;
+  activated?: boolean;
+  element?: JSX.Element;
 };
 export type SideNavProps = {
   open: boolean;
@@ -80,6 +82,9 @@ export function SideNav(props: SideNavProps) {
                   variant={'text'}
                   color={'dark'}
                   size={'large'}
+                  sx={{
+                    fontWeight: option.activated ? '800' : '400',
+                  }}
                   onClick={() => {
                     if (option.onClick) option.onClick();
                   }}
@@ -97,6 +102,12 @@ export function SideNav(props: SideNavProps) {
                     variant={'text'}
                     size={'medium'}
                     color={'dark'}
+                    sx={{
+                      fontWeight: option.activated ? '800' : '400',
+                    }}
+                    onClick={() => {
+                      if (option.onClick) option.onClick();
+                    }}
                   >
                     <Stack direction={'row'} alignItems={'center'}>
                       {option.icon}
@@ -114,10 +125,18 @@ export function SideNav(props: SideNavProps) {
                   variant={'text'}
                   color={'dark'}
                   size={'medium'}
+                  sx={{
+                    fontWeight: option.activated ? '800' : '400',
+                  }}
+                  onClick={() => {
+                    if (option.onClick) option.onClick();
+                  }}
                 >
                   {option.title}
                 </MdNavButton>
               );
+            case 'custom':
+              return option.element;
             default:
           }
           return <></>;
