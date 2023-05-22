@@ -176,27 +176,19 @@ export const HeadBox5 = Template.bind({});
 HeadBox5.storyName = 'Document List';
 HeadBox5.args = {
   title: 'Documents',
-  languageSelector: {
-    languageList: languages,
-    source: languages[0],
-    target: languages[1],
-    onChangeSource: (lang: LanguageDto | null) =>
-      alert(JSON.stringify(lang, null, 2)),
-    onChangeTarget: (lang: LanguageDto | null) =>
-      alert(JSON.stringify(lang, null, 2)),
+  filter: {
+    onClick: () => {
+      alert('Clicked');
+    },
   },
 };
 HeadBox5.parameters = buildDocs(
   <HeadBox
     title="Documents"
-    languageSelector={{
-      languageList: languages,
-      source: languages[0],
-      target: languages[1],
-      onChangeSource: (lang: LanguageDto | null) =>
-        alert(JSON.stringify(lang, null, 2)),
-      onChangeTarget: (lang: LanguageDto | null) =>
-        alert(JSON.stringify(lang, null, 2)),
+    filter={{
+      onClick: () => {
+        alert('Clicked');
+      },
     }}
   />,
 );

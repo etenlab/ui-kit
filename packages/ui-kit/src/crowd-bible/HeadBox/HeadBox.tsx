@@ -1,6 +1,6 @@
 import React, { useState, ChangeEventHandler, ReactNode } from 'react';
 
-import { CiSearch, BiLeftArrowAlt } from '../../icons';
+import { CiSearch, BiLeftArrowAlt, FiFilter } from '../../icons';
 import { SearchInput, Autocomplete } from '../../input';
 import { useColorModeContext } from '../../ThemeProvider';
 
@@ -16,6 +16,9 @@ type HeadBoxProps = {
     value: string;
     onChange: (str: string) => void;
     placeHolder: string;
+  };
+  filter?: {
+    onClick(): void;
   };
   title: ReactNode;
   appTitle?: ReactNode;
@@ -37,6 +40,7 @@ export function HeadBox({
   title,
   appTitle,
   search,
+  filter,
   languageSelector,
   extraNode,
 }: HeadBoxProps) {
@@ -97,6 +101,14 @@ export function HeadBox({
     </IconButton>
   ) : null;
 
+  const filterCom = filter ? (
+    <IconButton onClick={filter.onClick} sx={{ padding: '2px' }}>
+      <FiFilter
+        style={{ fontSize: '24px', strokeWidth: 1, color: getColor('gray') }}
+      />
+    </IconButton>
+  ) : null;
+
   const searchInputCom =
     openSearchBtn && search ? (
       <SearchInput
@@ -140,7 +152,10 @@ export function HeadBox({
           {backCom}
           {titleCom}
         </Stack>
-        {searchCom}
+        <Stack direction="row" justifyContent="flex-end" alignItems="center">
+          {searchCom}
+          {filterCom}
+        </Stack>
       </Stack>
       {searchInputCom}
       {languageCom}
