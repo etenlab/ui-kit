@@ -8,7 +8,11 @@ import { FlexibleSectionDivider } from './SectionDivider';
 import { FlexibleBookResourceBox } from './BookResourceBox';
 import { FlexibleBottomActionButtons } from './BottomActionBtns';
 import { BackBtnProps, FlexibleBackButton } from '../BackButton';
-import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
+import {
+  BasicFlexibleProps,
+  BasicUIConfig,
+  FlexibleComponent,
+} from '../UIConfigProvider';
 import { SideNavProps } from '../../SideNav';
 import { SelectControlProps } from '../../SelectControl';
 import { withFlexible } from '../withFlexible';
@@ -19,7 +23,7 @@ export type EntryDetailPageConfig = BasicUIConfig & {
   styles: {};
 };
 export const defaultEntryDetailPage: EntryDetailPageConfig = {
-  componentName: EntryDetailPage.name,
+  componentName: 'EntryDetailPage',
   contents: {},
   styles: {},
 };
@@ -34,7 +38,9 @@ export type EntryDetailPageProps = BasicFlexibleProps<EntryDetailPageConfig> & {
 };
 //#endregion
 
-export function EntryDetailPage(props: EntryDetailPageProps) {
+export const EntryDetailPage: FlexibleComponent<EntryDetailPageProps> = (
+  props,
+) => {
   const { uiConfig = defaultEntryDetailPage } = props;
   const pageContent = (
     <>
@@ -92,7 +98,9 @@ export function EntryDetailPage(props: EntryDetailPageProps) {
         {pageContent}
       </FlexiblePageLayout>
     );
-}
+};
+EntryDetailPage.componentName = defaultEntryDetailPage.componentName;
+
 export const FlexibleEntryDetail = withFlexible<
   EntryDetailPageConfig,
   EntryDetailPageProps

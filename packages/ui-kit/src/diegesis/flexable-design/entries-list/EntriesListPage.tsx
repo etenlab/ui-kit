@@ -6,7 +6,11 @@ import {
   EntriesTopControlsProps,
 } from './EntriesTopControls';
 import { FlexiblePageLayout } from '../PageLayout';
-import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
+import {
+  BasicFlexibleProps,
+  BasicUIConfig,
+  FlexibleComponent,
+} from '../UIConfigProvider';
 import { EntriesDataTable, EntriesDataTableProps } from './EntriesDataTable';
 import { withFlexible } from '../withFlexible';
 
@@ -16,7 +20,7 @@ export type EntriesPageConfig = BasicUIConfig & {
   styles: {};
 };
 export const defaultEntriesPageConfig: EntriesPageConfig = {
-  componentName: EntriesListPage.name,
+  componentName: 'EntriesListPage',
   contents: {},
   styles: {},
 };
@@ -28,13 +32,13 @@ export type EntriesPageProps = BasicFlexibleProps<EntriesPageConfig> & {
 };
 //#endregion
 
-export function EntriesListPage({
+export const EntriesListPage: FlexibleComponent<EntriesPageProps> = ({
   uiConfig = defaultEntriesPageConfig,
   topControlProps,
   entriesDataTable,
   noPageLayout,
   sideNavProps,
-}: EntriesPageProps) {
+}) => {
   const pageContent = (
     <>
       <StyledControlsContainer>
@@ -61,7 +65,9 @@ export function EntriesListPage({
       {pageContent}
     </FlexiblePageLayout>
   );
-}
+};
+EntriesListPage.componentName = defaultEntriesPageConfig.componentName;
+
 export const FlexibleEntriesListPage = withFlexible<
   EntriesPageConfig,
   EntriesPageProps

@@ -7,6 +7,7 @@ import {
   BasicUIConfig,
   BasicFlexibleProps,
   FlexibleMarkDown,
+  FlexibleComponent,
 } from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
 
@@ -62,7 +63,9 @@ export const defaultFootConfig: FooterConfig = {
 //
 export interface FooterProps extends BasicFlexibleProps<FooterConfig> {}
 
-export function Footer({ uiConfig = defaultFootConfig }: FooterProps) {
+export const Footer: FlexibleComponent<FooterProps> = ({
+  uiConfig = defaultFootConfig,
+}) => {
   return (
     <div
       style={{
@@ -125,7 +128,8 @@ export function Footer({ uiConfig = defaultFootConfig }: FooterProps) {
       </Container>
     </div>
   );
-}
+};
+Footer.componentName = 'Footer';
 
 export const FlexibleFooter = withFlexible<FooterConfig, FooterProps>(
   Footer,

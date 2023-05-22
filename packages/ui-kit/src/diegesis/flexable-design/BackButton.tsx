@@ -1,7 +1,11 @@
 import { Button } from '@mui/material';
 import React from 'react';
 import { BsChevronLeft } from 'react-icons/bs';
-import { BasicFlexibleProps, BasicUIConfig } from './UIConfigProvider';
+import {
+  BasicFlexibleProps,
+  BasicUIConfig,
+  FlexibleComponent,
+} from './UIConfigProvider';
 import { withFlexible } from './withFlexible';
 
 export type BackBtnConfig = BasicUIConfig & {
@@ -22,7 +26,7 @@ export type BackBtnConfig = BasicUIConfig & {
   };
 };
 export const defaultBackBtnConfig: BackBtnConfig = {
-  componentName: BackButton.name,
+  componentName: 'BackButton',
   contents: {
     btnText: 'Back',
   },
@@ -43,11 +47,11 @@ export type BackBtnProps = BasicFlexibleProps<BackBtnConfig> & {
   href?: string;
   onClick?: (e: any) => void;
 };
-export function BackButton({
+export const BackButton: FlexibleComponent<BackBtnProps> = ({
   uiConfig = defaultBackBtnConfig,
   href,
   onClick,
-}: BackBtnProps) {
+}) => {
   return (
     <Button
       color={'dark'}
@@ -71,7 +75,8 @@ export function BackButton({
       {uiConfig.contents.btnText}
     </Button>
   );
-}
+};
+BackButton.componentName = defaultBackBtnConfig.componentName;
 
 export const FlexibleBackButton = withFlexible<BackBtnConfig, BackBtnProps>(
   BackButton,

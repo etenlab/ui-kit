@@ -3,6 +3,7 @@ import React from 'react';
 import {
   BasicUIConfig,
   BasicFlexibleProps,
+  FlexibleComponent,
 } from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
 
@@ -47,13 +48,13 @@ export interface AppLogoProps extends BasicFlexibleProps<AppLogoConfig> {
   href?: string;
 }
 
-export function AppLogo({
+export const AppLogo: FlexibleComponent<AppLogoProps> = ({
   width,
   height,
   variant = 'primary',
   uiConfig = defaultAppLogoConfig,
   ...props
-}: AppLogoProps) {
+}) => {
   const realWidth = width ? width : uiConfig.styles.defaultWidth;
   const realHeight = height ? height : uiConfig.styles.defaultHeight;
 
@@ -69,7 +70,7 @@ export function AppLogo({
   switch (uiConfig.contents.iconType) {
     case 'bee': {
       return (
-        <a href={props.href || '/'}>
+        <a href={props.href || '/'} style={{ display: 'flex' }}>
           <AiOutlineFire style={{ fontSize: realHeight, color: iconColor }} />
           <span
             style={{
@@ -84,7 +85,7 @@ export function AppLogo({
     }
     default: {
       return (
-        <a href={props.href || '/'}>
+        <a href={props.href || '/'} style={{ display: 'flex' }}>
           <svg
             className={props?.className}
             width={realWidth}
@@ -123,7 +124,8 @@ export function AppLogo({
       );
     }
   }
-}
+};
+AppLogo.componentName = 'AppLogo';
 
 export const FlexibleAppLogo = withFlexible<AppLogoConfig, AppLogoProps>(
   AppLogo,

@@ -1,7 +1,11 @@
 import { Stack } from '@mui/material';
 import React from 'react';
 import { ActionButtonProps, FlexibleActionButtons } from './ActionButtons';
-import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
+import {
+  BasicFlexibleProps,
+  BasicUIConfig,
+  FlexibleComponent,
+} from '../UIConfigProvider';
 import { withFlexible } from '../withFlexible';
 
 export type BottomActionButtonsConfig = BasicUIConfig & {
@@ -9,7 +13,7 @@ export type BottomActionButtonsConfig = BasicUIConfig & {
   styles: {};
 };
 export const defaultBottomActionButtonConfig: BottomActionButtonsConfig = {
-  componentName: BottomActionButtons.name,
+  componentName: 'BottomActionButtons',
   contents: {},
   styles: {},
 };
@@ -17,10 +21,9 @@ export type BottomActionButtonsProps =
   BasicFlexibleProps<BottomActionButtonsConfig> & {
     actionButtonProps?: ActionButtonProps;
   };
-export function BottomActionButtons({
-  uiConfig = defaultBottomActionButtonConfig,
-  actionButtonProps,
-}: BottomActionButtonsProps) {
+export const BottomActionButtons: FlexibleComponent<
+  BottomActionButtonsProps
+> = ({ uiConfig = defaultBottomActionButtonConfig, actionButtonProps }) => {
   return (
     <Stack
       flexDirection={'row'}
@@ -59,7 +62,10 @@ export function BottomActionButtons({
       </Stack>
     </Stack>
   );
-}
+};
+BottomActionButtons.componentName =
+  defaultBottomActionButtonConfig.componentName;
+
 export const FlexibleBottomActionButtons = withFlexible<
   BottomActionButtonsConfig,
   BottomActionButtonsProps

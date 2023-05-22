@@ -7,6 +7,7 @@ import { FlexibleMenuIcon } from './MenuIcon';
 import {
   BasicUIConfig,
   BasicFlexibleProps,
+  FlexibleComponent,
 } from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
 
@@ -43,10 +44,10 @@ export interface HeaderProps extends BasicFlexibleProps<HeaderConfig> {
   openSideNav?: () => void;
 }
 
-export function Header({
+export const Header: FlexibleComponent<HeaderProps> = ({
   uiConfig = defaultHeaderConfig,
   openSideNav,
-}: HeaderProps) {
+}) => {
   return (
     <HeaderWrapper>
       <Container>
@@ -92,7 +93,8 @@ export function Header({
       )}
     </HeaderWrapper>
   );
-}
+};
+Header.componentName = defaultHeaderConfig.componentName;
 
 const HeaderWrapper = styled(Box)({
   display: 'flex',

@@ -1,7 +1,11 @@
 import { Button, Stack } from '@mui/material';
 import React from 'react';
 import { AiOutlineDownload, AiOutlineFileText } from 'react-icons/ai';
-import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
+import {
+  BasicFlexibleProps,
+  BasicUIConfig,
+  FlexibleComponent,
+} from '../UIConfigProvider';
 import { withFlexible } from '../withFlexible';
 
 type ActionButtonConfig = BasicUIConfig & {
@@ -26,7 +30,7 @@ export type ActionButtonProps = BasicFlexibleProps<ActionButtonConfig> & {
   viewBtnHref?: string;
 };
 export const defaultActionButtonsConfig: ActionButtonConfig = {
-  componentName: ActionButtons.name,
+  componentName: 'ActionButtons',
   contents: {
     viewBtnText: 'View',
     downloadBtnText: 'Download',
@@ -42,13 +46,13 @@ export const defaultActionButtonsConfig: ActionButtonConfig = {
     bgColor: '#60D0B2',
   },
 };
-export function ActionButtons({
+export const ActionButtons: FlexibleComponent<ActionButtonProps> = ({
   uiConfig = defaultActionButtonsConfig,
   onViewBtnClick,
   onDownloadBtnClick,
   viewBtnHref,
   downloadBtnHref,
-}: ActionButtonProps) {
+}) => {
   return (
     <Stack
       flexDirection={'row'}
@@ -101,7 +105,9 @@ export function ActionButtons({
       </Button>
     </Stack>
   );
-}
+};
+ActionButtons.componentName = defaultActionButtonsConfig.componentName;
+
 export const FlexibleActionButtons = withFlexible<
   ActionButtonConfig,
   ActionButtonProps

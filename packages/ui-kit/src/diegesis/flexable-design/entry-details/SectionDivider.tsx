@@ -1,6 +1,10 @@
 import { Stack, StackProps } from '@mui/material';
 import React from 'react';
-import { BasicFlexibleProps, BasicUIConfig } from '../UIConfigProvider';
+import {
+  BasicFlexibleProps,
+  BasicUIConfig,
+  FlexibleComponent,
+} from '../UIConfigProvider';
 import { withFlexible } from '../withFlexible';
 
 export type SectionDividerConfig = BasicUIConfig & {
@@ -13,7 +17,7 @@ export type SectionDividerConfig = BasicUIConfig & {
   };
 };
 export const defaultSectionDividerConfig: SectionDividerConfig = {
-  componentName: SectionDivider.name,
+  componentName: 'SectionDivider',
   contents: {},
   styles: {
     height: '3',
@@ -24,7 +28,9 @@ export const defaultSectionDividerConfig: SectionDividerConfig = {
 };
 export type SectionDividerProps = BasicFlexibleProps<SectionDividerConfig> &
   Partial<StackProps>;
-export function SectionDivider(props: SectionDividerProps) {
+export const SectionDivider: FlexibleComponent<SectionDividerProps> = (
+  props,
+) => {
   const { uiConfig = defaultSectionDividerConfig } = props;
   return (
     <Stack
@@ -38,7 +44,9 @@ export function SectionDivider(props: SectionDividerProps) {
       {...props}
     ></Stack>
   );
-}
+};
+SectionDivider.componentName = defaultSectionDividerConfig.componentName;
+
 export const FlexibleSectionDivider = withFlexible<
   SectionDividerConfig,
   SectionDividerProps

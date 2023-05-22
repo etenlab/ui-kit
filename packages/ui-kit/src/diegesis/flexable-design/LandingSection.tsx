@@ -5,6 +5,7 @@ import { FlexibleSectionActionButton } from './SectionActionButton';
 import {
   BasicUIConfig,
   BasicFlexibleProps,
+  FlexibleComponent,
 } from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
 
@@ -39,9 +40,9 @@ export interface LandingSectionProps
   actionBtnHref?: string;
 }
 
-export function LandingSection({
+export const LandingSection: FlexibleComponent<LandingSectionProps> = ({
   uiConfig = defaultLandingSectionConfig,
-}: LandingSectionProps) {
+}) => {
   return (
     <StyledContainer className="landing-section">
       <Stack
@@ -93,7 +94,8 @@ export function LandingSection({
       </Stack>
     </StyledContainer>
   );
-}
+};
+LandingSection.componentName = 'LandingSection';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   paddingTop: theme.typography.pxToRem(112),
