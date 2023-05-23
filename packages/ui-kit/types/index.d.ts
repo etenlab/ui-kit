@@ -117,3 +117,8 @@ declare module 'node-type' {
 }
 
 declare module 'css-to-object';
+
+declare module "*.svg" {
+  const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
+  export default content;
+}
