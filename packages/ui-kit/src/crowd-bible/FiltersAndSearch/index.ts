@@ -1,1 +1,0 @@
-export { FiltersAndSearch } from './FiltersAndSearch';
