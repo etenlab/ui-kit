@@ -52,7 +52,6 @@ import {
   TbLayoutColumns,
   TbLayoutRows,
   TbArrowBack,
-  DiViewer,
 } from '../../../packages/ui-kit/src/icons';
 
 function Div({ children }: { children: React.ReactNode }) {
@@ -184,9 +183,6 @@ const Template: ComponentStory<typeof Div> = () => {
         <TitleWithIcon title="TbLayoutColumns" icon={<TbLayoutColumns />} />
         <TitleWithIcon title="TbLayoutRows" icon={<TbLayoutRows />} />
         <TitleWithIcon title="TbArrowBack" icon={<TbArrowBack />} />
-      </Div>
-      <Div>
-        <TitleWithIcon title="DiViewer" icon={<DiViewer />} />
       </Div>
     </>
   );

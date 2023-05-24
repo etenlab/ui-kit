@@ -3,5 +3,7 @@
   "include": ["src", "types", "../../types"],
   "compilerOptions": {
     "rootDir": "./src",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
   }
 }

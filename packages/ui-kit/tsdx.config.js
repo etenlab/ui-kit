@@ -1,6 +1,18 @@
+const svgr = require('@svgr/rollup');
+
 module.exports = {
-  // This function will run for each entry/format/env combination
+  // ...
   rollup(config, options) {
-    return config; // always return a config.
+    // Add the SVGR plugin to the Rollup configuration
+    config.plugins.push(
+      svgr({
+        include: ['**/*.svg'],
+        // You can customize the options for the SVGR plugin here
+        // For example, you can set `dimensions` to 'svg' to include width and height attributes in the SVG output
+        // dimensions: 'svg',
+      }),
+    );
+
+    return config;
   },
 };
