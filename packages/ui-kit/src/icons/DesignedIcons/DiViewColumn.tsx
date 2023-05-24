@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as ViewColumnBlue } from './svg-sources/view-column-blue.svg';
-import { ReactComponent as ViewColumnDark } from './svg-sources/view-column-dark.svg';
-import { ReactComponent as ViewColumnGray } from './svg-sources/view-column-gray.svg';
-import { ReactComponent as ViewColumnRed } from './svg-sources/view-column-red.svg';
-import { ReactComponent as ViewColumnWhite } from './svg-sources/view-column-white.svg';
+import ViewColumnBlue from './svg-sources/view-column-blue.svg';
+import ViewColumnDark from './svg-sources/view-column-dark.svg';
+import ViewColumnGray from './svg-sources/view-column-gray.svg';
+import ViewColumnRed from './svg-sources/view-column-red.svg';
+import ViewColumnWhite from './svg-sources/view-column-white.svg';
 import { DiColors } from './colors';
 
 export function DiViewColumn(

@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as TranslatorBlue } from './svg-sources/translator-blue.svg';
-import { ReactComponent as TranslatorDark } from './svg-sources/translator-dark.svg';
-import { ReactComponent as TranslatorGray } from './svg-sources/translator-gray.svg';
-import { ReactComponent as TranslatorRed } from './svg-sources/translator-red.svg';
-import { ReactComponent as TranslatorWhite } from './svg-sources/translator-white.svg';
+import TranslatorBlue from './svg-sources/translator-blue.svg';
+import TranslatorDark from './svg-sources/translator-dark.svg';
+import TranslatorGray from './svg-sources/translator-gray.svg';
+import TranslatorRed from './svg-sources/translator-red.svg';
+import TranslatorWhite from './svg-sources/translator-white.svg';
 import { DiColors } from './colors';
 
 export function DiTranslator(

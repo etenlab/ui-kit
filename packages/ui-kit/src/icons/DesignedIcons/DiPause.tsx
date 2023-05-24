@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as PauseBlue } from './svg-sources/pause-blue.svg';
-import { ReactComponent as PauseDark } from './svg-sources/pause-dark.svg';
-import { ReactComponent as PauseGray } from './svg-sources/pause-gray.svg';
-import { ReactComponent as PauseRed } from './svg-sources/pause-red.svg';
-import { ReactComponent as PauseWhite } from './svg-sources/pause-white.svg';
+import PauseBlue from './svg-sources/pause-blue.svg';
+import PauseDark from './svg-sources/pause-dark.svg';
+import PauseGray from './svg-sources/pause-gray.svg';
+import PauseRed from './svg-sources/pause-red.svg';
+import PauseWhite from './svg-sources/pause-white.svg';
 import { DiColors } from './colors';
 
 export function DiPause(

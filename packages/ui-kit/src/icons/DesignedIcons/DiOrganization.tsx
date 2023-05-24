@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as OrganizationBlue } from './svg-sources/organization-blue.svg';
-import { ReactComponent as OrganizationDark } from './svg-sources/organization-dark.svg';
-import { ReactComponent as OrganizationGray } from './svg-sources/organization-gray.svg';
-import { ReactComponent as OrganizationRed } from './svg-sources/organization-red.svg';
-import { ReactComponent as OrganizationWhite } from './svg-sources/organization-white.svg';
+import OrganizationBlue from './svg-sources/organization-blue.svg';
+import OrganizationDark from './svg-sources/organization-dark.svg';
+import OrganizationGray from './svg-sources/organization-gray.svg';
+import OrganizationRed from './svg-sources/organization-red.svg';
+import OrganizationWhite from './svg-sources/organization-white.svg';
 import { DiColors } from './colors';
 
 export function DiOrganization(

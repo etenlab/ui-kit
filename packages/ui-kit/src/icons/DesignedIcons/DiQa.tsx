@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as QaBlue } from './svg-sources/qa-blue.svg';
-import { ReactComponent as QaDark } from './svg-sources/qa-dark.svg';
-import { ReactComponent as QaGray } from './svg-sources/qa-gray.svg';
-import { ReactComponent as QaRed } from './svg-sources/qa-red.svg';
-import { ReactComponent as QaWhite } from './svg-sources/qa-white.svg';
+import QaBlue from './svg-sources/qa-blue.svg';
+import QaDark from './svg-sources/qa-dark.svg';
+import QaGray from './svg-sources/qa-gray.svg';
+import QaRed from './svg-sources/qa-red.svg';
+import QaWhite from './svg-sources/qa-white.svg';
 import { DiColors } from './colors';
 
 export function DiQa(

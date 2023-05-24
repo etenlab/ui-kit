@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as SoundBlue } from './svg-sources/sound-blue.svg';
-import { ReactComponent as SoundDark } from './svg-sources/sound-dark.svg';
-import { ReactComponent as SoundGray } from './svg-sources/sound-gray.svg';
-import { ReactComponent as SoundRed } from './svg-sources/sound-red.svg';
-import { ReactComponent as SoundWhite } from './svg-sources/sound-white.svg';
+import SoundBlue from './svg-sources/sound-blue.svg';
+import SoundDark from './svg-sources/sound-dark.svg';
+import SoundGray from './svg-sources/sound-gray.svg';
+import SoundRed from './svg-sources/sound-red.svg';
+import SoundWhite from './svg-sources/sound-white.svg';
 import { DiColors } from './colors';
 
 export function DiSound(

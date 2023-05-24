@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as UploadFileBlue } from './svg-sources/upload-file-blue.svg';
-import { ReactComponent as UploadFileDark } from './svg-sources/upload-file-dark.svg';
-import { ReactComponent as UploadFileGray } from './svg-sources/upload-file-gray.svg';
-import { ReactComponent as UploadFileRed } from './svg-sources/upload-file-red.svg';
-import { ReactComponent as UploadFileWhite } from './svg-sources/upload-file-white.svg';
+import UploadFileBlue from './svg-sources/upload-file-blue.svg';
+import UploadFileDark from './svg-sources/upload-file-dark.svg';
+import UploadFileGray from './svg-sources/upload-file-gray.svg';
+import UploadFileRed from './svg-sources/upload-file-red.svg';
+import UploadFileWhite from './svg-sources/upload-file-white.svg';
 import { DiColors } from './colors';
 
 export function DiUploadFile(

@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as DataBlue } from './svg-sources/data-blue.svg';
-import { ReactComponent as DataDark } from './svg-sources/data-dark.svg';
-import { ReactComponent as DataGray } from './svg-sources/data-gray.svg';
-import { ReactComponent as DataRed } from './svg-sources/data-red.svg';
-import { ReactComponent as DataWhite } from './svg-sources/data-white.svg';
+import DataBlue from './svg-sources/data-blue.svg';
+import DataDark from './svg-sources/data-dark.svg';
+import DataGray from './svg-sources/data-gray.svg';
+import DataRed from './svg-sources/data-red.svg';
+import DataWhite from './svg-sources/data-white.svg';
 import { DiColors } from './colors';
 
 export function DiData(

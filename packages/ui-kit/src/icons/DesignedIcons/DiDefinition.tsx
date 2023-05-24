@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as DefinitionBlue } from './svg-sources/definition-blue.svg';
-import { ReactComponent as DefinitionDark } from './svg-sources/definition-dark.svg';
-import { ReactComponent as DefinitionGray } from './svg-sources/definition-gray.svg';
-import { ReactComponent as DefinitionRed } from './svg-sources/definition-red.svg';
-import { ReactComponent as DefinitionWhite } from './svg-sources/definition-white.svg';
+import DefinitionBlue from './svg-sources/definition-blue.svg';
+import DefinitionDark from './svg-sources/definition-dark.svg';
+import DefinitionGray from './svg-sources/definition-gray.svg';
+import DefinitionRed from './svg-sources/definition-red.svg';
+import DefinitionWhite from './svg-sources/definition-white.svg';
 import { DiColors } from './colors';
 
 export function DiDefinition(

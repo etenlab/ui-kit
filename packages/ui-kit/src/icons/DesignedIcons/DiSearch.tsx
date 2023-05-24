@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as SearchBlue } from './svg-sources/search-blue.svg';
-import { ReactComponent as SearchDark } from './svg-sources/search-dark.svg';
-import { ReactComponent as SearchGray } from './svg-sources/search-gray.svg';
-import { ReactComponent as SearchRed } from './svg-sources/search-red.svg';
-import { ReactComponent as SearchWhite } from './svg-sources/search-white.svg';
+import SearchBlue from './svg-sources/search-blue.svg';
+import SearchDark from './svg-sources/search-dark.svg';
+import SearchGray from './svg-sources/search-gray.svg';
+import SearchRed from './svg-sources/search-red.svg';
+import SearchWhite from './svg-sources/search-white.svg';
 import { DiColors } from './colors';
 
 export function DiSearch(

@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as DataViewerBlue } from './svg-sources/data-viewer-blue.svg';
-import { ReactComponent as DataViewerDark } from './svg-sources/data-viewer-dark.svg';
-import { ReactComponent as DataViewerGray } from './svg-sources/data-viewer-gray.svg';
-import { ReactComponent as DataViewerRed } from './svg-sources/data-viewer-red.svg';
-import { ReactComponent as DataViewerWhite } from './svg-sources/data-viewer-white.svg';
+import DataViewerBlue from './svg-sources/data-viewer-blue.svg';
+import DataViewerDark from './svg-sources/data-viewer-dark.svg';
+import DataViewerGray from './svg-sources/data-viewer-gray.svg';
+import DataViewerRed from './svg-sources/data-viewer-red.svg';
+import DataViewerWhite from './svg-sources/data-viewer-white.svg';
 import { DiColors } from './colors';
 
 export function DiDataViewer(

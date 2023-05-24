@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as ViewLineBreakBlue } from './svg-sources/view-line-break-blue.svg';
-import { ReactComponent as ViewLineBreakDark } from './svg-sources/view-line-break-dark.svg';
-import { ReactComponent as ViewLineBreakGray } from './svg-sources/view-line-break-gray.svg';
-import { ReactComponent as ViewLineBreakRed } from './svg-sources/view-line-break-red.svg';
-import { ReactComponent as ViewLineBreakWhite } from './svg-sources/view-line-break-white.svg';
+import ViewLineBreakBlue from './svg-sources/view-line-break-blue.svg';
+import ViewLineBreakDark from './svg-sources/view-line-break-dark.svg';
+import ViewLineBreakGray from './svg-sources/view-line-break-gray.svg';
+import ViewLineBreakRed from './svg-sources/view-line-break-red.svg';
+import ViewLineBreakWhite from './svg-sources/view-line-break-white.svg';
 import { DiColors } from './colors';
 
 export function DiViewLineBreak(

@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as SiteBlue } from './svg-sources/site-blue.svg';
-import { ReactComponent as SiteDark } from './svg-sources/site-dark.svg';
-import { ReactComponent as SiteGray } from './svg-sources/site-gray.svg';
-import { ReactComponent as SiteRed } from './svg-sources/site-red.svg';
-import { ReactComponent as SiteWhite } from './svg-sources/site-white.svg';
+import SiteBlue from './svg-sources/site-blue.svg';
+import SiteDark from './svg-sources/site-dark.svg';
+import SiteGray from './svg-sources/site-gray.svg';
+import SiteRed from './svg-sources/site-red.svg';
+import SiteWhite from './svg-sources/site-white.svg';
 import { DiColors } from './colors';
 
 export function DiSite(

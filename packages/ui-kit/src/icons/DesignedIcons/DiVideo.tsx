@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as VideoBlue } from './svg-sources/video-blue.svg';
-import { ReactComponent as VideoDark } from './svg-sources/video-dark.svg';
-import { ReactComponent as VideoGray } from './svg-sources/video-gray.svg';
-import { ReactComponent as VideoRed } from './svg-sources/video-red.svg';
-import { ReactComponent as VideoWhite } from './svg-sources/video-white.svg';
+import VideoBlue from './svg-sources/video-blue.svg';
+import VideoDark from './svg-sources/video-dark.svg';
+import VideoGray from './svg-sources/video-gray.svg';
+import VideoRed from './svg-sources/video-red.svg';
+import VideoWhite from './svg-sources/video-white.svg';
 import { DiColors } from './colors';
 
 export function DiVideo(

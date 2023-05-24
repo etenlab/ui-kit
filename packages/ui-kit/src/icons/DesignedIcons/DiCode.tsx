@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as CodeBlue } from './svg-sources/code-blue.svg';
-import { ReactComponent as CodeDark } from './svg-sources/code-dark.svg';
-import { ReactComponent as CodeGray } from './svg-sources/code-gray.svg';
-import { ReactComponent as CodeRed } from './svg-sources/code-red.svg';
-import { ReactComponent as CodeWhite } from './svg-sources/code-white.svg';
+import CodeBlue from './svg-sources/code-blue.svg';
+import CodeDark from './svg-sources/code-dark.svg';
+import CodeGray from './svg-sources/code-gray.svg';
+import CodeRed from './svg-sources/code-red.svg';
+import CodeWhite from './svg-sources/code-white.svg';
 import { DiColors } from './colors';
 
 export function DiCode(

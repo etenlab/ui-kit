@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as MapBlue } from './svg-sources/map-blue.svg';
-import { ReactComponent as MapDark } from './svg-sources/map-dark.svg';
-import { ReactComponent as MapGray } from './svg-sources/map-gray.svg';
-import { ReactComponent as MapRed } from './svg-sources/map-red.svg';
-import { ReactComponent as MapWhite } from './svg-sources/map-white.svg';
+import MapBlue from './svg-sources/map-blue.svg';
+import MapDark from './svg-sources/map-dark.svg';
+import MapGray from './svg-sources/map-gray.svg';
+import MapRed from './svg-sources/map-red.svg';
+import MapWhite from './svg-sources/map-white.svg';
 import { DiColors } from './colors';
 
 export function DiMap(

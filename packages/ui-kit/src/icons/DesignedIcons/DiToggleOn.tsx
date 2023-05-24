@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as ToggleOnBlue } from './svg-sources/toggle-on-blue.svg';
-import { ReactComponent as ToggleOnDark } from './svg-sources/toggle-on-dark.svg';
-import { ReactComponent as ToggleOnGray } from './svg-sources/toggle-on-gray.svg';
-import { ReactComponent as ToggleOnRed } from './svg-sources/toggle-on-red.svg';
-import { ReactComponent as ToggleOnWhite } from './svg-sources/toggle-on-white.svg';
+import ToggleOnBlue from './svg-sources/toggle-on-blue.svg';
+import ToggleOnDark from './svg-sources/toggle-on-dark.svg';
+import ToggleOnGray from './svg-sources/toggle-on-gray.svg';
+import ToggleOnRed from './svg-sources/toggle-on-red.svg';
+import ToggleOnWhite from './svg-sources/toggle-on-white.svg';
 import { DiColors } from './colors';
 
 export function DiToggleOn(

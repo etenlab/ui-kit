@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as SettingsBlue } from './svg-sources/settings-blue.svg';
-import { ReactComponent as SettingsDark } from './svg-sources/settings-dark.svg';
-import { ReactComponent as SettingsGray } from './svg-sources/settings-gray.svg';
-import { ReactComponent as SettingsRed } from './svg-sources/settings-red.svg';
-import { ReactComponent as SettingsWhite } from './svg-sources/settings-white.svg';
+import SettingsBlue from './svg-sources/settings-blue.svg';
+import SettingsDark from './svg-sources/settings-dark.svg';
+import SettingsGray from './svg-sources/settings-gray.svg';
+import SettingsRed from './svg-sources/settings-red.svg';
+import SettingsWhite from './svg-sources/settings-white.svg';
 import { DiColors } from './colors';
 
 export function DiSettings(

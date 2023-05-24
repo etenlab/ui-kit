@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as ReadBlue } from './svg-sources/read-blue.svg';
-import { ReactComponent as ReadDark } from './svg-sources/read-dark.svg';
-import { ReactComponent as ReadGray } from './svg-sources/read-gray.svg';
-import { ReactComponent as ReadRed } from './svg-sources/read-red.svg';
-import { ReactComponent as ReadWhite } from './svg-sources/read-white.svg';
+import ReadBlue from './svg-sources/read-blue.svg';
+import ReadDark from './svg-sources/read-dark.svg';
+import ReadGray from './svg-sources/read-gray.svg';
+import ReadRed from './svg-sources/read-red.svg';
+import ReadWhite from './svg-sources/read-white.svg';
 import { DiColors } from './colors';
 
 export function DiRead(

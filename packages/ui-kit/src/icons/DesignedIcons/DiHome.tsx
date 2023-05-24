@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as HomeBlue } from './svg-sources/home-blue.svg';
-import { ReactComponent as HomeDark } from './svg-sources/home-dark.svg';
-import { ReactComponent as HomeGray } from './svg-sources/home-gray.svg';
-import { ReactComponent as HomeRed } from './svg-sources/home-red.svg';
-import { ReactComponent as HomeWhite } from './svg-sources/home-white.svg';
+import HomeBlue from './svg-sources/home-blue.svg';
+import HomeDark from './svg-sources/home-dark.svg';
+import HomeGray from './svg-sources/home-gray.svg';
+import HomeRed from './svg-sources/home-red.svg';
+import HomeWhite from './svg-sources/home-white.svg';
 import { DiColors } from './colors';
 
 export function DiHome(

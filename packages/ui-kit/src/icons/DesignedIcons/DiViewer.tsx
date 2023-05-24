@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as ViewerBlue } from './svg-sources/viewer-blue.svg';
-import { ReactComponent as ViewerDark } from './svg-sources/viewer-dark.svg';
-import { ReactComponent as ViewerGray } from './svg-sources/viewer-gray.svg';
-import { ReactComponent as ViewerRed } from './svg-sources/viewer-red.svg';
-import { ReactComponent as ViewerWhite } from './svg-sources/viewer-white.svg';
+import ViewerBlue from './svg-sources/viewer-blue.svg';
+import ViewerDark from './svg-sources/viewer-dark.svg';
+import ViewerGray from './svg-sources/viewer-gray.svg';
+import ViewerRed from './svg-sources/viewer-red.svg';
+import ViewerWhite from './svg-sources/viewer-white.svg';
 import { DiColors } from './colors';
 
 export function DiViewer(

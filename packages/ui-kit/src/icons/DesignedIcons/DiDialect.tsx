@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as DialectBlue } from './svg-sources/dialect-blue.svg';
-import { ReactComponent as DialectDark } from './svg-sources/dialect-dark.svg';
-import { ReactComponent as DialectGray } from './svg-sources/dialect-gray.svg';
-import { ReactComponent as DialectRed } from './svg-sources/dialect-red.svg';
-import { ReactComponent as DialectWhite } from './svg-sources/dialect-white.svg';
+import DialectBlue from './svg-sources/dialect-blue.svg';
+import DialectDark from './svg-sources/dialect-dark.svg';
+import DialectGray from './svg-sources/dialect-gray.svg';
+import DialectRed from './svg-sources/dialect-red.svg';
+import DialectWhite from './svg-sources/dialect-white.svg';
 import { DiColors } from './colors';
 
 export function DiDialect(

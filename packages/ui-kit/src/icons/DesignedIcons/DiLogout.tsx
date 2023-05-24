@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as LogoutBlue } from './svg-sources/logout-blue.svg';
-import { ReactComponent as LogoutDark } from './svg-sources/logout-dark.svg';
-import { ReactComponent as LogoutGray } from './svg-sources/logout-gray.svg';
-import { ReactComponent as LogoutRed } from './svg-sources/logout-red.svg';
-import { ReactComponent as LogoutWhite } from './svg-sources/logout-white.svg';
+import LogoutBlue from './svg-sources/logout-blue.svg';
+import LogoutDark from './svg-sources/logout-dark.svg';
+import LogoutGray from './svg-sources/logout-gray.svg';
+import LogoutRed from './svg-sources/logout-red.svg';
+import LogoutWhite from './svg-sources/logout-white.svg';
 import { DiColors } from './colors';
 
 export function DiLogout(

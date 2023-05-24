@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as CommentBlue } from './svg-sources/comment-blue.svg';
-import { ReactComponent as CommentDark } from './svg-sources/comment-dark.svg';
-import { ReactComponent as CommentGray } from './svg-sources/comment-gray.svg';
-import { ReactComponent as CommentRed } from './svg-sources/comment-red.svg';
-import { ReactComponent as CommentWhite } from './svg-sources/comment-white.svg';
+import CommentBlue from './svg-sources/comment-blue.svg';
+import CommentDark from './svg-sources/comment-dark.svg';
+import CommentGray from './svg-sources/comment-gray.svg';
+import CommentRed from './svg-sources/comment-red.svg';
+import CommentWhite from './svg-sources/comment-white.svg';
 import { DiColors } from './colors';
 
 export function DiComment(

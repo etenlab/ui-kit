@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as NationBlue } from './svg-sources/nation-blue.svg';
-import { ReactComponent as NationDark } from './svg-sources/nation-dark.svg';
-import { ReactComponent as NationGray } from './svg-sources/nation-gray.svg';
-import { ReactComponent as NationRed } from './svg-sources/nation-red.svg';
-import { ReactComponent as NationWhite } from './svg-sources/nation-white.svg';
+import NationBlue from './svg-sources/nation-blue.svg';
+import NationDark from './svg-sources/nation-dark.svg';
+import NationGray from './svg-sources/nation-gray.svg';
+import NationRed from './svg-sources/nation-red.svg';
+import NationWhite from './svg-sources/nation-white.svg';
 import { DiColors } from './colors';
 
 export function DiNation(

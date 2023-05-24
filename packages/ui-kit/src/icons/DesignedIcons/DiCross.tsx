@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as CrossBlue } from './svg-sources/cross-blue.svg';
-import { ReactComponent as CrossDark } from './svg-sources/cross-dark.svg';
-import { ReactComponent as CrossGray } from './svg-sources/cross-gray.svg';
-import { ReactComponent as CrossRed } from './svg-sources/cross-red.svg';
-import { ReactComponent as CrossWhite } from './svg-sources/cross-white.svg';
+import CrossBlue from './svg-sources/cross-blue.svg';
+import CrossDark from './svg-sources/cross-dark.svg';
+import CrossGray from './svg-sources/cross-gray.svg';
+import CrossRed from './svg-sources/cross-red.svg';
+import CrossWhite from './svg-sources/cross-white.svg';
 import { DiColors } from './colors';
 
 export function DiCross(

@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as TextBlue } from './svg-sources/text-blue.svg';
-import { ReactComponent as TextDark } from './svg-sources/text-dark.svg';
-import { ReactComponent as TextGray } from './svg-sources/text-gray.svg';
-import { ReactComponent as TextRed } from './svg-sources/text-red.svg';
-import { ReactComponent as TextWhite } from './svg-sources/text-white.svg';
+import TextBlue from './svg-sources/text-blue.svg';
+import TextDark from './svg-sources/text-dark.svg';
+import TextGray from './svg-sources/text-gray.svg';
+import TextRed from './svg-sources/text-red.svg';
+import TextWhite from './svg-sources/text-white.svg';
 import { DiColors } from './colors';
 
 export function DiText(

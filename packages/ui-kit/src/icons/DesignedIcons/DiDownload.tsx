@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as DownloadBlue } from './svg-sources/download-blue.svg';
-import { ReactComponent as DownloadDark } from './svg-sources/download-dark.svg';
-import { ReactComponent as DownloadGray } from './svg-sources/download-gray.svg';
-import { ReactComponent as DownloadRed } from './svg-sources/download-red.svg';
-import { ReactComponent as DownloadWhite } from './svg-sources/download-white.svg';
+import DownloadBlue from './svg-sources/download-blue.svg';
+import DownloadDark from './svg-sources/download-dark.svg';
+import DownloadGray from './svg-sources/download-gray.svg';
+import DownloadRed from './svg-sources/download-red.svg';
+import DownloadWhite from './svg-sources/download-white.svg';
 import { DiColors } from './colors';
 
 export function DiDownload(

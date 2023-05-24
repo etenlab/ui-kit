@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as NotificationsBlue } from './svg-sources/notifications-blue.svg';
-import { ReactComponent as NotificationsDark } from './svg-sources/notifications-dark.svg';
-import { ReactComponent as NotificationsGray } from './svg-sources/notifications-gray.svg';
-import { ReactComponent as NotificationsRed } from './svg-sources/notifications-red.svg';
-import { ReactComponent as NotificationsWhite } from './svg-sources/notifications-white.svg';
+import NotificationsBlue from './svg-sources/notifications-blue.svg';
+import NotificationsDark from './svg-sources/notifications-dark.svg';
+import NotificationsGray from './svg-sources/notifications-gray.svg';
+import NotificationsRed from './svg-sources/notifications-red.svg';
+import NotificationsWhite from './svg-sources/notifications-white.svg';
 import { DiColors } from './colors';
 
 export function DiNotifications(

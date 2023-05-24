@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as LinkBlue } from './svg-sources/link-blue.svg';
-import { ReactComponent as LinkDark } from './svg-sources/link-dark.svg';
-import { ReactComponent as LinkGray } from './svg-sources/link-gray.svg';
-import { ReactComponent as LinkRed } from './svg-sources/link-red.svg';
-import { ReactComponent as LinkWhite } from './svg-sources/link-white.svg';
+import LinkBlue from './svg-sources/link-blue.svg';
+import LinkDark from './svg-sources/link-dark.svg';
+import LinkGray from './svg-sources/link-gray.svg';
+import LinkRed from './svg-sources/link-red.svg';
+import LinkWhite from './svg-sources/link-white.svg';
 import { DiColors } from './colors';
 
 export function DiLink(

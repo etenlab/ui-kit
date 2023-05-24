@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as RoleBlue } from './svg-sources/role-blue.svg';
-import { ReactComponent as RoleDark } from './svg-sources/role-dark.svg';
-import { ReactComponent as RoleGray } from './svg-sources/role-gray.svg';
-import { ReactComponent as RoleRed } from './svg-sources/role-red.svg';
-import { ReactComponent as RoleWhite } from './svg-sources/role-white.svg';
+import RoleBlue from './svg-sources/role-blue.svg';
+import RoleDark from './svg-sources/role-dark.svg';
+import RoleGray from './svg-sources/role-gray.svg';
+import RoleRed from './svg-sources/role-red.svg';
+import RoleWhite from './svg-sources/role-white.svg';
 import { DiColors } from './colors';
 
 export function DiRole(

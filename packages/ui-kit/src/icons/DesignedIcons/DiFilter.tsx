@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as FilterBlue } from './svg-sources/filter-blue.svg';
-import { ReactComponent as FilterDark } from './svg-sources/filter-dark.svg';
-import { ReactComponent as FilterGray } from './svg-sources/filter-gray.svg';
-import { ReactComponent as FilterRed } from './svg-sources/filter-red.svg';
-import { ReactComponent as FilterWhite } from './svg-sources/filter-white.svg';
+import FilterBlue from './svg-sources/filter-blue.svg';
+import FilterDark from './svg-sources/filter-dark.svg';
+import FilterGray from './svg-sources/filter-gray.svg';
+import FilterRed from './svg-sources/filter-red.svg';
+import FilterWhite from './svg-sources/filter-white.svg';
 import { DiColors } from './colors';
 
 export function DiFilter(

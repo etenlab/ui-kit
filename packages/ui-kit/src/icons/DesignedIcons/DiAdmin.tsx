@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as AdminBlue } from './svg-sources/admin-blue.svg';
-import { ReactComponent as AdminDark } from './svg-sources/admin-dark.svg';
-import { ReactComponent as AdminGray } from './svg-sources/admin-gray.svg';
-import { ReactComponent as AdminRed } from './svg-sources/admin-red.svg';
-import { ReactComponent as AdminWhite } from './svg-sources/admin-white.svg';
+import AdminBlue from './svg-sources/admin-blue.svg';
+import AdminDark from './svg-sources/admin-dark.svg';
+import AdminGray from './svg-sources/admin-gray.svg';
+import AdminRed from './svg-sources/admin-red.svg';
+import AdminWhite from './svg-sources/admin-white.svg';
 import { DiColors } from './colors';
 
 export function DiAdmin(

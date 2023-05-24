@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as EmailBlue } from './svg-sources/email-blue.svg';
-import { ReactComponent as EmailDark } from './svg-sources/email-dark.svg';
-import { ReactComponent as EmailGray } from './svg-sources/email-gray.svg';
-import { ReactComponent as EmailRed } from './svg-sources/email-red.svg';
-import { ReactComponent as EmailWhite } from './svg-sources/email-white.svg';
+import EmailBlue from './svg-sources/email-blue.svg';
+import EmailDark from './svg-sources/email-dark.svg';
+import EmailGray from './svg-sources/email-gray.svg';
+import EmailRed from './svg-sources/email-red.svg';
+import EmailWhite from './svg-sources/email-white.svg';
 import { DiColors } from './colors';
 
 export function DiEmail(

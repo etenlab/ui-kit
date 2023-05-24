@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as PhraseBlue } from './svg-sources/phrase-blue.svg';
-import { ReactComponent as PhraseDark } from './svg-sources/phrase-dark.svg';
-import { ReactComponent as PhraseGray } from './svg-sources/phrase-gray.svg';
-import { ReactComponent as PhraseRed } from './svg-sources/phrase-red.svg';
-import { ReactComponent as PhraseWhite } from './svg-sources/phrase-white.svg';
+import PhraseBlue from './svg-sources/phrase-blue.svg';
+import PhraseDark from './svg-sources/phrase-dark.svg';
+import PhraseGray from './svg-sources/phrase-gray.svg';
+import PhraseRed from './svg-sources/phrase-red.svg';
+import PhraseWhite from './svg-sources/phrase-white.svg';
 import { DiColors } from './colors';
 
 export function DiPhrase(

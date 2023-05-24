@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as CameraBlue } from './svg-sources/camera-blue.svg';
-import { ReactComponent as CameraDark } from './svg-sources/camera-dark.svg';
-import { ReactComponent as CameraGray } from './svg-sources/camera-gray.svg';
-import { ReactComponent as CameraRed } from './svg-sources/camera-red.svg';
-import { ReactComponent as CameraWhite } from './svg-sources/camera-white.svg';
+import CameraBlue from './svg-sources/camera-blue.svg';
+import CameraDark from './svg-sources/camera-dark.svg';
+import CameraGray from './svg-sources/camera-gray.svg';
+import CameraRed from './svg-sources/camera-red.svg';
+import CameraWhite from './svg-sources/camera-white.svg';
 import { DiColors } from './colors';
 
 export function DiCamera(

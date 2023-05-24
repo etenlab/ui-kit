@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as ChooseBlue } from './svg-sources/choose-blue.svg';
-import { ReactComponent as ChooseDark } from './svg-sources/choose-dark.svg';
-import { ReactComponent as ChooseGray } from './svg-sources/choose-gray.svg';
-import { ReactComponent as ChooseRed } from './svg-sources/choose-red.svg';
-import { ReactComponent as ChooseWhite } from './svg-sources/choose-white.svg';
+import ChooseBlue from './svg-sources/choose-blue.svg';
+import ChooseDark from './svg-sources/choose-dark.svg';
+import ChooseGray from './svg-sources/choose-gray.svg';
+import ChooseRed from './svg-sources/choose-red.svg';
+import ChooseWhite from './svg-sources/choose-white.svg';
 import { DiColors } from './colors';
 
 export function DiChoose(

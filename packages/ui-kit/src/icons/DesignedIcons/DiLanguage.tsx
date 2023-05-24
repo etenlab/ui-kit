@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as LanguageBlue } from './svg-sources/language-blue.svg';
-import { ReactComponent as LanguageDark } from './svg-sources/language-dark.svg';
-import { ReactComponent as LanguageGray } from './svg-sources/language-gray.svg';
-import { ReactComponent as LanguageRed } from './svg-sources/language-red.svg';
-import { ReactComponent as LanguageWhite } from './svg-sources/language-white.svg';
+import LanguageBlue from './svg-sources/language-blue.svg';
+import LanguageDark from './svg-sources/language-dark.svg';
+import LanguageGray from './svg-sources/language-gray.svg';
+import LanguageRed from './svg-sources/language-red.svg';
+import LanguageWhite from './svg-sources/language-white.svg';
 import { DiColors } from './colors';
 
 export function DiLanguage(

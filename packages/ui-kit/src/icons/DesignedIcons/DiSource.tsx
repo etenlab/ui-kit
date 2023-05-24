@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as SourceBlue } from './svg-sources/source-blue.svg';
-import { ReactComponent as SourceDark } from './svg-sources/source-dark.svg';
-import { ReactComponent as SourceGray } from './svg-sources/source-gray.svg';
-import { ReactComponent as SourceRed } from './svg-sources/source-red.svg';
-import { ReactComponent as SourceWhite } from './svg-sources/source-white.svg';
+import SourceBlue from './svg-sources/source-blue.svg';
+import SourceDark from './svg-sources/source-dark.svg';
+import SourceGray from './svg-sources/source-gray.svg';
+import SourceRed from './svg-sources/source-red.svg';
+import SourceWhite from './svg-sources/source-white.svg';
 import { DiColors } from './colors';
 
 export function DiSource(

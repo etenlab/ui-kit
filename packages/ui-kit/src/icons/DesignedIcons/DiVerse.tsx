@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as VerseBlue } from './svg-sources/verse-blue.svg';
-import { ReactComponent as VerseDark } from './svg-sources/verse-dark.svg';
-import { ReactComponent as VerseGray } from './svg-sources/verse-gray.svg';
-import { ReactComponent as VerseRed } from './svg-sources/verse-red.svg';
-import { ReactComponent as VerseWhite } from './svg-sources/verse-white.svg';
+import VerseBlue from './svg-sources/verse-blue.svg';
+import VerseDark from './svg-sources/verse-dark.svg';
+import VerseGray from './svg-sources/verse-gray.svg';
+import VerseRed from './svg-sources/verse-red.svg';
+import VerseWhite from './svg-sources/verse-white.svg';
 import { DiColors } from './colors';
 
 export function DiVerse(

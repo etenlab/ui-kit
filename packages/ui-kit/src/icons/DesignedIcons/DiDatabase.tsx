@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as DatabaseBlue } from './svg-sources/database-blue.svg';
-import { ReactComponent as DatabaseDark } from './svg-sources/database-dark.svg';
-import { ReactComponent as DatabaseGray } from './svg-sources/database-gray.svg';
-import { ReactComponent as DatabaseRed } from './svg-sources/database-red.svg';
-import { ReactComponent as DatabaseWhite } from './svg-sources/database-white.svg';
+import DatabaseBlue from './svg-sources/database-blue.svg';
+import DatabaseDark from './svg-sources/database-dark.svg';
+import DatabaseGray from './svg-sources/database-gray.svg';
+import DatabaseRed from './svg-sources/database-red.svg';
+import DatabaseWhite from './svg-sources/database-white.svg';
 import { DiColors } from './colors';
 
 export function DiDatabase(

@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as EditBlue } from './svg-sources/edit-blue.svg';
-import { ReactComponent as EditDark } from './svg-sources/edit-dark.svg';
-import { ReactComponent as EditGray } from './svg-sources/edit-gray.svg';
-import { ReactComponent as EditRed } from './svg-sources/edit-red.svg';
-import { ReactComponent as EditWhite } from './svg-sources/edit-white.svg';
+import EditBlue from './svg-sources/edit-blue.svg';
+import EditDark from './svg-sources/edit-dark.svg';
+import EditGray from './svg-sources/edit-gray.svg';
+import EditRed from './svg-sources/edit-red.svg';
+import EditWhite from './svg-sources/edit-white.svg';
 import { DiColors } from './colors';
 
 export function DiEdit(

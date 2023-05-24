@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as PasswordNvBlue } from './svg-sources/password_nv-blue.svg';
-import { ReactComponent as PasswordNvDark } from './svg-sources/password_nv-dark.svg';
-import { ReactComponent as PasswordNvGray } from './svg-sources/password_nv-gray.svg';
-import { ReactComponent as PasswordNvRed } from './svg-sources/password_nv-red.svg';
-import { ReactComponent as PasswordNvWhite } from './svg-sources/password_nv-white.svg';
+import PasswordNvBlue from './svg-sources/password_nv-blue.svg';
+import PasswordNvDark from './svg-sources/password_nv-dark.svg';
+import PasswordNvGray from './svg-sources/password_nv-gray.svg';
+import PasswordNvRed from './svg-sources/password_nv-red.svg';
+import PasswordNvWhite from './svg-sources/password_nv-white.svg';
 import { DiColors } from './colors';
 
 export function DiPasswordNv(

@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as MoreBlue } from './svg-sources/more-blue.svg';
-import { ReactComponent as MoreDark } from './svg-sources/more-dark.svg';
-import { ReactComponent as MoreGray } from './svg-sources/more-gray.svg';
-import { ReactComponent as MoreRed } from './svg-sources/more-red.svg';
-import { ReactComponent as MoreWhite } from './svg-sources/more-white.svg';
+import MoreBlue from './svg-sources/more-blue.svg';
+import MoreDark from './svg-sources/more-dark.svg';
+import MoreGray from './svg-sources/more-gray.svg';
+import MoreRed from './svg-sources/more-red.svg';
+import MoreWhite from './svg-sources/more-white.svg';
 import { DiColors } from './colors';
 
 export function DiMore(

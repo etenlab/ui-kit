@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as TimerBlue } from './svg-sources/timer-blue.svg';
-import { ReactComponent as TimerDark } from './svg-sources/timer-dark.svg';
-import { ReactComponent as TimerGray } from './svg-sources/timer-gray.svg';
-import { ReactComponent as TimerRed } from './svg-sources/timer-red.svg';
-import { ReactComponent as TimerWhite } from './svg-sources/timer-white.svg';
+import TimerBlue from './svg-sources/timer-blue.svg';
+import TimerDark from './svg-sources/timer-dark.svg';
+import TimerGray from './svg-sources/timer-gray.svg';
+import TimerRed from './svg-sources/timer-red.svg';
+import TimerWhite from './svg-sources/timer-white.svg';
 import { DiColors } from './colors';
 
 export function DiTimer(

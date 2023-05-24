@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as MicroBlue } from './svg-sources/micro-blue.svg';
-import { ReactComponent as MicroDark } from './svg-sources/micro-dark.svg';
-import { ReactComponent as MicroGray } from './svg-sources/micro-gray.svg';
-import { ReactComponent as MicroRed } from './svg-sources/micro-red.svg';
-import { ReactComponent as MicroWhite } from './svg-sources/micro-white.svg';
+import MicroBlue from './svg-sources/micro-blue.svg';
+import MicroDark from './svg-sources/micro-dark.svg';
+import MicroGray from './svg-sources/micro-gray.svg';
+import MicroRed from './svg-sources/micro-red.svg';
+import MicroWhite from './svg-sources/micro-white.svg';
 import { DiColors } from './colors';
 
 export function DiMicro(

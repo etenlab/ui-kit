@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as CheckBlue } from './svg-sources/check-blue.svg';
-import { ReactComponent as CheckDark } from './svg-sources/check-dark.svg';
-import { ReactComponent as CheckGray } from './svg-sources/check-gray.svg';
-import { ReactComponent as CheckRed } from './svg-sources/check-red.svg';
-import { ReactComponent as CheckWhite } from './svg-sources/check-white.svg';
+import CheckBlue from './svg-sources/check-blue.svg';
+import CheckDark from './svg-sources/check-dark.svg';
+import CheckGray from './svg-sources/check-gray.svg';
+import CheckRed from './svg-sources/check-red.svg';
+import CheckWhite from './svg-sources/check-white.svg';
 import { DiColors } from './colors';
 
 export function DiCheck(

@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as UserBlue } from './svg-sources/user-blue.svg';
-import { ReactComponent as UserDark } from './svg-sources/user-dark.svg';
-import { ReactComponent as UserGray } from './svg-sources/user-gray.svg';
-import { ReactComponent as UserRed } from './svg-sources/user-red.svg';
-import { ReactComponent as UserWhite } from './svg-sources/user-white.svg';
+import UserBlue from './svg-sources/user-blue.svg';
+import UserDark from './svg-sources/user-dark.svg';
+import UserGray from './svg-sources/user-gray.svg';
+import UserRed from './svg-sources/user-red.svg';
+import UserWhite from './svg-sources/user-white.svg';
 import { DiColors } from './colors';
 
 export function DiUser(

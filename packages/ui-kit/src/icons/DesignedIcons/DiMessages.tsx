@@ -1,10 +1,10 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
-import { ReactComponent as MessagesBlue } from './svg-sources/messages-blue.svg';
-import { ReactComponent as MessagesDark } from './svg-sources/messages-dark.svg';
-import { ReactComponent as MessagesGray } from './svg-sources/messages-gray.svg';
-import { ReactComponent as MessagesRed } from './svg-sources/messages-red.svg';
-import { ReactComponent as MessagesWhite } from './svg-sources/messages-white.svg';
+import MessagesBlue from './svg-sources/messages-blue.svg';
+import MessagesDark from './svg-sources/messages-dark.svg';
+import MessagesGray from './svg-sources/messages-gray.svg';
+import MessagesRed from './svg-sources/messages-red.svg';
+import MessagesWhite from './svg-sources/messages-white.svg';
 import { DiColors } from './colors';
 
 export function DiMessages(
