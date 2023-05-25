@@ -13,7 +13,7 @@ export function MarkDown({ id, content, className, css }: FlexibleMarkDown) {
         ${css}
       `;
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       return styled('div')({});
     }
   }, [css]);
