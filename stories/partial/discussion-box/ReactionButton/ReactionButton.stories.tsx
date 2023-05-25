@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Stack } from '@mui/material';
-import { ThemeProvider } from '../../../../packages/ui-kit/src';
+import { ThemeProvider, logger } from '../../../../packages/ui-kit/src';
 import {
   ReactionButton,
   ReactionPlusButton,
@@ -84,7 +84,7 @@ export const Primary = Template.bind({});
 Primary.args = {
   reactions,
   emoji: '1f609',
-  onClick: (emoji: string) => console.log(emoji),
+  onClick: (emoji: string) => logger.info(emoji),
 };
 Primary.parameters = {
   docs: {
@@ -93,7 +93,7 @@ Primary.parameters = {
         <ReactionButton
           reactions={reactions}
           emoji="1f609"
-          onClick={(emoji: string) => console.log(emoji)}
+          onClick={(emoji: string) => logger.info(emoji)}
         />,
       ),
       language: 'jsx',

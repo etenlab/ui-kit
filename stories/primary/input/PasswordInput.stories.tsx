@@ -4,6 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ThemeProvider } from '../../../packages/ui-kit/src/ThemeProvider';
 import { PasswordInput } from '../../../packages/ui-kit/src/input';
 import jsxToString from 'jsx-to-string';
+import { logger } from '@eten-lab/ui-kit/src';
 
 export default {
   title: 'Primary/Input/PasswordInput',
@@ -36,7 +37,7 @@ Hide.parameters = {
         <PasswordInput
           label="Password"
           show={false}
-          onClickShowIcon={() => console.log('Clicked')}
+          onClickShowIcon={() => logger.info('Clicked')}
         />,
       ),
       language: 'jsx',
@@ -59,7 +60,7 @@ Show.parameters = {
         <PasswordInput
           label="Password"
           show={true}
-          onClickShowIcon={() => console.log('Clicked')}
+          onClickShowIcon={() => logger.info('Clicked')}
         />,
       ),
       language: 'jsx',

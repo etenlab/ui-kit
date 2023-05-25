@@ -5,6 +5,7 @@ import {
 } from './UIConfigProvider/UIConfigProvider';
 import { addPath } from './utility';
 import { useUIConfigContext } from './UIConfigProvider/UIConfigProvider';
+import { logger } from '../../logger';
 
 export function withFlexible<
   B extends BasicUIConfig,
@@ -58,7 +59,7 @@ export function withFlexible<
       ? queryUIConfig(flexiblePath)
       : null;
 
-    console.log('config', defaultUIConfig.componentName, config);
+    logger.info('config', defaultUIConfig.componentName, config);
     if (!config) {
       console.error('config is null');
       return null;

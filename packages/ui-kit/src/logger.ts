@@ -25,12 +25,12 @@ class LoggerService {
   private doShowTrace: boolean;
   private logger: ICustormLogger;
   constructor(customLogger?: ICustormLogger) {
-    this.thresholdLevel = process.env.REACT_APP_LOGLEVEL
-      ? Number(process.env.REACT_APP_LOGLEVEL)
+    this.thresholdLevel = process.env.STORYBOOK_LOGLEVEL
+      ? Number(process.env.STORYBOOK_LOGLEVEL)
       : DefaultLogLevelThreshold;
 
     this.doShowTrace =
-      String(process.env.REACT_APP_LOGTRACEALL).toUpperCase() === 'TRUE';
+      String(process.env.STORYBOOK_LOGTRACEALL).toUpperCase() === 'TRUE';
 
     this.logger = customLogger ? customLogger : Roarr;
 

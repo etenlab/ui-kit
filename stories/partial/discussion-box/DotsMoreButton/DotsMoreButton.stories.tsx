@@ -1,7 +1,7 @@
 import React, { useState, MouseEvent } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ThemeProvider } from '../../../../packages/ui-kit/src';
+import { ThemeProvider, logger } from '../../../../packages/ui-kit/src';
 import { DotsMoreButton } from '../../../../packages/ui-kit/src/discussion-box';
 import jsxToString from 'jsx-to-string';
 
@@ -32,7 +32,7 @@ const Template: ComponentStory<typeof DotsMoreButton> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-  onClick: (event: MouseEvent<HTMLButtonElement>) => console.log(event),
+  onClick: (event: MouseEvent<HTMLButtonElement>) => logger.info(event),
 };
 Primary.parameters = {
   docs: {

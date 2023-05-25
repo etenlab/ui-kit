@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import jsxToString from 'jsx-to-string';
 
-import { ThemeProvider } from '@eten-lab/ui-kit/src';
+import { ThemeProvider, logger } from '@eten-lab/ui-kit/src';
 import { LangSelector } from '@eten-lab/ui-kit/src/LangSelector';
 
 type Lang = {
@@ -54,7 +54,7 @@ const onChangeHandler = (
   );
 
 const setLoadingStateHandler = (isLoading: boolean) => {
-  console.log('isLoading: ', isLoading.valueOf());
+  logger.info('isLoading: ', isLoading.valueOf());
 };
 
 export const PrimaryLangSelector = Template.bind({});
