@@ -73,3 +73,6 @@ export { DiViewColumn } from './DiViewColumn';
 export { DiViewer } from './DiViewer';
 export { DiViewLineBreak } from './DiViewLineBreak';
 export { DiViewRow } from './DiViewRow';
+
+export { DiFlag1 } from './DiFlag1';
+export { DiFlag2 } from './DiFlag2';
