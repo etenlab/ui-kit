@@ -337,7 +337,7 @@ export const UIConfigContextProvider: FC<UIConfigContextProviderProps> & {
 
         return requestedState as T;
       } catch (err) {
-        // console.log(err);
+        console.log(err);
 
         return null;
       }
@@ -371,7 +371,7 @@ export const UIConfigContextProvider: FC<UIConfigContextProviderProps> & {
           addPath({ key: comName, type: 'uiConfigs' }, buildPath(pathItems)),
         );
       } catch (err) {
-        // console.log(err);
+        console.log(err);
 
         return null;
       }

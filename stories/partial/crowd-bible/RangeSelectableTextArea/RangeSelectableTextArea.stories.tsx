@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ThemeProvider } from '../../../../packages/ui-kit/src';
+import { ThemeProvider, logger } from '../../../../packages/ui-kit/src';
 import { RangeSelectableTextArea } from '../../../../packages/ui-kit/src/crowd-bible';
 import jsxToString from 'jsx-to-string';
 
@@ -72,7 +72,7 @@ SelectableText.parameters = {
             start: number | null;
             end: number | null;
           }) => {
-            console.log('Change Range');
+            logger.info('Change Range');
           }}
         />,
       ),
