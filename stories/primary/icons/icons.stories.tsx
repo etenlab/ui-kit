@@ -127,6 +127,8 @@ import {
   DiViewColumn,
   DiViewLineBreak,
   DiViewRow,
+  DiFlag1,
+  DiFlag2,
 } from '../../../packages/ui-kit/src/icons';
 
 function Div({ children }: { children: React.ReactNode }) {
@@ -280,6 +282,8 @@ const Template: ComponentStory<typeof Div> = () => {
         <TitleWithIcon title="DiViewer" icon={<DiViewer />} />
         <TitleWithIcon title="DiViewLineBreak" icon={<DiViewLineBreak />} />
         <TitleWithIcon title="DiViewRow" icon={<DiViewRow />} />
+        <TitleWithIcon title="DiFlag1" icon={<DiFlag1 />} />
+        <TitleWithIcon title="DiFlag2" icon={<DiFlag2 />} />
       </Div>
       <hr />
       <Div>
