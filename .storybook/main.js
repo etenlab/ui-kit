@@ -40,9 +40,10 @@ module.exports = {
     );
     fileLoaderRule.exclude = /\.svg$/;
 
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ['svg-react-loader'],
+    config.module.rules.unshift({
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: [{ loader: '@svgr/webpack' }],
     });
 
     return config;

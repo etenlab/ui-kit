@@ -127,8 +127,9 @@ import {
   DiViewColumn,
   DiViewLineBreak,
   DiViewRow,
+  DiFlag1,
+  DiFlag2,
 } from '../../../packages/ui-kit/src/icons';
-import { DiFlag1, DiFlag2 } from '../../../packages/ui-kit/dist';
 
 function Div({ children }: { children: React.ReactNode }) {
   return (
