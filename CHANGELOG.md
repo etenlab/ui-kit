@@ -5,12 +5,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.5.43](https://github.com/etenlab/ui-kit/compare/v0.5.42...v0.5.43) (2023-05-26)
 
-**Note:** Version bump only for package @eten-lab/ui-kit
-
-# @eten-lab/ui-kit
-
-## 0.3.31
-
-### Patch Changes
-
-- c0ee750: Add relase workflow
+**Note:** Version bump only for package @eil-eten-lab/ui-kit
