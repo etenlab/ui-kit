@@ -17,6 +17,7 @@ import { Autocomplete, TextArea, Input, Checkbox, Radio } from '../../input';
 import { useColorModeContext } from '../../ThemeProvider/';
 import { Button } from '../../button';
 import { BiTrashAlt } from '../../icons';
+import { logger } from '../../logger';
 
 type QuestionType =
   | 'Normal'
@@ -64,7 +65,7 @@ export function QuestionCreatorBox({
   };
 
   const handleClickAddMore = () => {
-    console.log('Click Add More Button');
+    logger.info('Click Add More Button');
   };
 
   const handleClickAddAnswer = () => {

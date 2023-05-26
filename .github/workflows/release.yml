@@ -1,6 +1,7 @@
 name: Upload Website to S3 and Release to the npm
 on:
-  push:
+  pull_request:
+    types: [closed]
     branches:
       - dev
 
@@ -10,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
         with:
@@ -53,14 +54,17 @@ jobs:
   release:
     runs-on: ubuntu-latest
 
+    if: github.repository == 'etenlab/ui-kit'
+    
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v3
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
+          version: 16.x
 
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1

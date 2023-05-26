@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ThemeProvider } from '../../../../packages/ui-kit/src';
+import { ThemeProvider, logger } from '../../../../packages/ui-kit/src';
 import { AudioRecorder } from '../../../../packages/ui-kit/src/discussion-box';
 import jsxToString from 'jsx-to-string';
 
@@ -32,7 +32,7 @@ const Template: ComponentStory<typeof AudioRecorder> = (args) => (
 export const Primary = Template.bind({});
 Primary.args = {
   onCancel: () => alert('Clicked Cancel'),
-  onSave: (blobs: Blob[]) => console.log(blobs),
+  onSave: (blobs: Blob[]) => logger.info(blobs),
 };
 Primary.parameters = {
   docs: {

@@ -5,6 +5,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ThemeProvider } from '../../../packages/ui-kit/src/ThemeProvider';
 import { Toolbar } from '../../../packages/ui-kit/src/toolbar';
 import jsxToString from 'jsx-to-string';
+import { logger } from '@eten-lab/ui-kit/src';
 
 export default {
   title: 'Partial/Toolbar',
@@ -56,11 +57,11 @@ Primary.parameters = {
         <Toolbar
           title="crowd.Bible"
           themeMode="light"
-          onClickTitleBtn={() => console.log()}
-          onClickDiscussionBtn={() => console.log()}
-          onClickThemeModeBtn={() => console.log()}
-          onClickNotificationBtn={() => console.log()}
-          onClickMenuBtn={() => console.log()}
+          onClickTitleBtn={() => logger.info()}
+          onClickDiscussionBtn={() => logger.info()}
+          onClickThemeModeBtn={() => logger.info()}
+          onClickNotificationBtn={() => logger.info()}
+          onClickMenuBtn={() => logger.info()}
         />,
       ),
       language: 'jsx',
@@ -83,11 +84,11 @@ DiscussionWithBadge.parameters = {
           title="crowd.Bible"
           isNewDiscussion
           themeMode="light"
-          onClickTitleBtn={() => console.log()}
-          onClickDiscussionBtn={() => console.log()}
-          onClickThemeModeBtn={() => console.log()}
-          onClickNotificationBtn={() => console.log()}
-          onClickMenuBtn={() => console.log()}
+          onClickTitleBtn={() => logger.info()}
+          onClickDiscussionBtn={() => logger.info()}
+          onClickThemeModeBtn={() => logger.info()}
+          onClickNotificationBtn={() => logger.info()}
+          onClickMenuBtn={() => logger.info()}
         />,
       ),
       language: 'jsx',
@@ -110,11 +111,11 @@ NotificationWithBadge.parameters = {
           title="crowd.Bible"
           isNewNotification
           themeMode="light"
-          onClickTitleBtn={() => console.log()}
-          onClickDiscussionBtn={() => console.log()}
-          onClickThemeModeBtn={() => console.log()}
-          onClickNotificationBtn={() => console.log()}
-          onClickMenuBtn={() => console.log()}
+          onClickTitleBtn={() => logger.info()}
+          onClickDiscussionBtn={() => logger.info()}
+          onClickThemeModeBtn={() => logger.info()}
+          onClickNotificationBtn={() => logger.info()}
+          onClickMenuBtn={() => logger.info()}
         />,
       ),
       language: 'html',
@@ -140,11 +141,11 @@ NotificationWithBadge.parameters = {
         <Toolbar
           title="Showcase"
           themeMode="light"
-          onClickTitleBtn={() => console.log()}
-          onClickDiscussionBtn={() => console.log()}
-          onClickThemeModeBtn={() => console.log()}
-          onClickNotificationBtn={() => console.log()}
-          onClickMenuBtn={() => console.log()}
+          onClickTitleBtn={() => logger.info()}
+          onClickDiscussionBtn={() => logger.info()}
+          onClickThemeModeBtn={() => logger.info()}
+          onClickNotificationBtn={() => logger.info()}
+          onClickMenuBtn={() => logger.info()}
           buttons={{
             discussion: false,
             notification: true,
@@ -175,11 +176,11 @@ WithoutIcons.parameters = {
         <Toolbar
           title="Showcase"
           themeMode="light"
-          onClickTitleBtn={() => console.log()}
-          onClickDiscussionBtn={() => console.log()}
-          onClickThemeModeBtn={() => console.log()}
-          onClickNotificationBtn={() => console.log()}
-          onClickMenuBtn={() => console.log()}
+          onClickTitleBtn={() => logger.info()}
+          onClickDiscussionBtn={() => logger.info()}
+          onClickThemeModeBtn={() => logger.info()}
+          onClickNotificationBtn={() => logger.info()}
+          onClickMenuBtn={() => logger.info()}
           buttons={{
             discussion: false,
             notification: false,

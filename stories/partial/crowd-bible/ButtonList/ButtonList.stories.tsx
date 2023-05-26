@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ThemeProvider } from '../../../../packages/ui-kit/src';
+import { logger, ThemeProvider } from '../../../../packages/ui-kit/src';
 import { buildDocs } from '../../../common';
 import { StoryPaper } from '../../../StoryPaper';
 
@@ -68,7 +68,7 @@ ButtonList1.args = {
   search: {
     value: '',
     onChange: (str: string) => {
-      console.log(str);
+      logger.info(str);
     },
     placeHolder: 'Search documents by name',
   },
@@ -88,7 +88,7 @@ ButtonList1.parameters = buildDocs(
     search={{
       value: '',
       onChange: (str: string) => {
-        console.log(str);
+        logger.info(str);
       },
       placeHolder: 'Search documents by name',
     }}

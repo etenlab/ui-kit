@@ -287,7 +287,7 @@ export const UIConfigContextProvider: FC<UIConfigContextProviderProps> & {
 
           return subStates[0];
         } catch (err) {
-          console.log(err);
+          // console.log(err);
           return _state;
         }
       });

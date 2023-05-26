@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Box } from '@mui/material';
 
-import { ThemeProvider } from '../../../../packages/ui-kit/src';
+import { ThemeProvider, logger } from '../../../../packages/ui-kit/src';
 import {
   QuestionCreatorBox,
   Question,
@@ -39,7 +39,7 @@ const Template: ComponentStory<typeof QuestionCreatorBox> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-  onSave: (question: Question) => console.log(question),
+  onSave: (question: Question) => logger.info(question),
   onCancel: () => {},
 };
 Primary.parameters = {
@@ -47,7 +47,7 @@ Primary.parameters = {
     source: {
       code: jsxToString(
         <QuestionCreatorBox
-          onSave={(question: Question) => console.log(question)}
+          onSave={(question: Question) => logger.info(question)}
           onCancel={() => {}}
         />,
       ),
