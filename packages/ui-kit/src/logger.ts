@@ -102,5 +102,3 @@ class LoggerService {
 
 const logger = new LoggerService()
 export { logger }
-
-//test commit
