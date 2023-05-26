@@ -8,7 +8,7 @@
     },
     "publish": {
       "npmClient": "npm",
-      "allowBranch": ["dev", "test-dev", "prod"],
+      "allowBranch": ["dev", "prod"],
       "registry": "https://registry.npmjs.org/"
     }
   },
