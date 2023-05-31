@@ -188,50 +188,6 @@ export function CardsMenu({
             onClick={() => onClick(item.value)}
             withUnderline={withUnderline}
           />
-        //   <ListItemButton
-        //   selected={selectedIndex === 0}
-        //   onClick={(event) => handleListItemClick(event, 0)}
-        // >
-        //   <Paper
-        //     sx={{
-        //       p: 4,
-        //       margin: 'auto',
-        //       border: '1px solid #C2CBD7',
-        //       flexGrow: 1,
-        //       backgroundColor: '#F3F6F9',
-        //     }}
-        //   >
-        //     <Grid container spacing={2}>
-        //       <Grid item>
-        //         <DiFileText
-        //           color="blue"
-        //           sx={{
-        //             width: 30,
-        //             height: 30,
-        //             color: '#1F77DF',
-        //           }}
-        //         />
-        //       </Grid>
-        //       <Grid item xs={12} sm container>
-        //         <Grid item xs container direction="column" spacing={2}>
-        //           <Grid item xs>
-        //             <Typography
-        //               fontSize="18px"
-        //               gutterBottom
-        //               variant="subtitle1"
-        //               component="div"
-        //             >
-        //               Documents
-        //             </Typography>
-        //             <Typography variant="body2" gutterBottom>
-        //               Upload a document to use in other crowd sourcing tools
-        //             </Typography>
-        //           </Grid>
-        //         </Grid>
-        //       </Grid>
-        //     </Grid>
-        //   </Paper>
-        // </ListItemButton>
         );
       })}
       </List>
