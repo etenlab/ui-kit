@@ -1,0 +1,124 @@
+Arguments: 
+  /home/dev/.nvm/versions/node/v16.20.0/bin/node /home/dev/.nvm/versions/node/v16.20.0/bin/yarn
+
+PATH: 
+  /home/dev/.local/bin:/home/dev/.nvm/versions/node/v16.20.0/bin:/home/dev/.vscode-server/bin/b3e4e68a0bc097f0ae7907b217c1119af9e03435/bin/remote-cli:/home/dev/.ebcli-virtual-env/executables:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.20.0
+
+Platform: 
+  linux arm64
+
+Trace: 
+  Error: Failed to replace env in config: ${NPM_TOKEN}
+      at /home/dev/.nvm/versions/node/v16.20.0/lib/node_modules/yarn/lib/cli.js:94933:13
+      at String.replace (<anonymous>)
+      at envReplace (/home/dev/.nvm/versions/node/v16.20.0/lib/node_modules/yarn/lib/cli.js:94928:16)
+      at Function.normalizeConfig (/home/dev/.nvm/versions/node/v16.20.0/lib/node_modules/yarn/lib/cli.js:31938:69)
+      at NpmRegistry.<anonymous> (/home/dev/.nvm/versions/node/v16.20.0/lib/node_modules/yarn/lib/cli.js:31968:34)
+      at Generator.next (<anonymous>)
+      at step (/home/dev/.nvm/versions/node/v16.20.0/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /home/dev/.nvm/versions/node/v16.20.0/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "@eil-eten-lab/ui-kit",
+    "version": "0.1.0",
+    "private": false,
+    "workspaces": [
+      "packages/*"
+    ],
+    "scripts": {
+      "lerna": "lerna",
+      "dev": "lerna run start --stream --parallel",
+      "test": "lerna run test --",
+      "build": "lerna run build",
+      "prepublish": "lerna run prepublish",
+      "format": "prettier --write 'stories/**/*' 'packages/*/src/**/*' 'README.md'",
+      "lint": "eslint \"{stories,packages}/**/*.{ts,tsx,md,mdx,js,jsx}\" --fix",
+      "precommit": "lint-staged",
+      "release": "lerna publish patch --yes",
+      "git-reset": "git reset --hard HEAD",
+      "git-clean": "git clean -d -x -e node_modules -e packages -f",
+      "storybook": "start-storybook -p 6006",
+      "build-storybook": "build-storybook"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.20.12",
+      "@changesets/changelog-github": "^0.4.8",
+      "@changesets/cli": "^2.26.1",
+      "@storybook/addon-actions": "^6.5.15",
+      "@storybook/addon-essentials": "^6.5.15",
+      "@storybook/addon-interactions": "^6.5.15",
+      "@storybook/addon-links": "^6.5.15",
+      "@storybook/builder-webpack4": "^6.5.15",
+      "@storybook/manager-webpack4": "^6.5.15",
+      "@storybook/react": "^6.5.15",
+      "@storybook/testing-library": "^0.0.13",
+      "@svgr/webpack": "^5.5.0",
+      "@testing-library/react": "13.3.0",
+      "@types/jest": "^26.0.14",
+      "@types/language-tags": "^1.0.1",
+      "@types/react": "^18.0.21",
+      "@types/react-dom": "^18.0.6",
+      "@types/react-router": "^5.1.11",
+      "@types/react-router-dom": "^5.1.7",
+      "@typescript-eslint/eslint-plugin": "^5.55.0",
+      "babel-loader": "^8.3.0",
+      "eslint": "^8.36.0",
+      "eslint-config-react-app": "^7.0.1",
+      "eslint-config-standard-with-typescript": "^34.0.1",
+      "eslint-plugin-import": "^2.27.5",
+      "eslint-plugin-n": "^15.6.1",
+      "eslint-plugin-promise": "^6.1.1",
+      "eslint-plugin-react": "^7.32.2",
+      "husky": "^8.0.0",
+      "lerna": "^6.1.0",
+      "lint-staged": "^13.2.0",
+      "prettier": "^2.8.4",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "react-router": "^5.2.0",
+      "react-router-dom": "^5.2.0",
+      "release": "^6.3.1",
+      "storybook-addon-package-json": "^2.0.0",
+      "tsdx": "^0.14.1",
+      "typescript": "^4.9.5"
+    },
+    "dependencies": {
+      "@emotion/react": "^11.10.4",
+      "@emotion/styled": "^11.10.4",
+      "@fontsource/inter": "^4.5.15",
+      "@foobar404/wave": "^2.0.4",
+      "@mui/material": "^5.10.5",
+      "@types/dom-mediacapture-record": "^1.0.14",
+      "@types/react-router": "^5.1.11",
+      "@types/react-router-dom": "^5.1.7",
+      "emoji-picker-react": "^4.4.3",
+      "jsx-to-string": "^1.4.0",
+      "language-tags": "^1.0.8",
+      "react-debounce-input": "^3.3.0",
+      "react-icons": "^4.7.1",
+      "react-image-crop": "^10.0.9",
+      "react-quill": "^2.0.0",
+      "react-router": "^5.2.0",
+      "react-router-dom": "^5.2.0",
+      "tslib": "^2.4.1"
+    },
+    "lint-staged": {
+      "**/*.{ts,tsx,md,mdx,js,jsx}": [
+        "npm run format",
+        "npx eslint --fix"
+      ]
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
