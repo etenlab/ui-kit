@@ -68,9 +68,13 @@ jobs:
         with:
           cache: yarn
           version: 16.x
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Install Dependencies
         run: yarn
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Set Git config
         run: |
