@@ -53,7 +53,6 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
-    
     steps:
       - uses: actions/checkout@v3
         with:
@@ -62,17 +61,19 @@ jobs:
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
         with:
+          cache: yarn
           version: 16.x
 
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1
+      - name: Install Dependencies
+        run: yarn install
+
       - name: Set Git config
         run: |
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git config --global user.name "${{ github.actor }}"
-      
+
       - name: release
-        run: npm run release
+        run: yarn release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
