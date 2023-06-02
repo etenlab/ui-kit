@@ -11,7 +11,7 @@ const DownloadText = styled('span')(({ theme }) => ({
 }));
 
 const handleDownload = (file_name: string, file_url: string) => {
-  let hiddenElement = document.createElement('a');
+  const hiddenElement = document.createElement('a');
   hiddenElement.href = encodeURI(file_url);
   hiddenElement.download = file_name;
   hiddenElement.click();

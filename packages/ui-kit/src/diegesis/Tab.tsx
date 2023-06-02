@@ -45,10 +45,10 @@ export const CustomTab = styled((props: StyledTabProps) => (
   textDecorationColor: theme.palette.text['turquoise-light'],
   padding: '1rem',
   paddingBottom: '2rem',
-  color: theme.palette.text['dark'],
+  color: theme.palette.text.dark,
   '&.Mui-selected': {
     backgroundColor: theme.palette.background['light-gray'],
-    color: theme.palette.text['dark'],
+    color: theme.palette.text.dark,
   },
   textOverflow: 'ellipsis',
   [theme.breakpoints.down('sm')]: {

@@ -2,7 +2,7 @@ import { styled, Stack } from '@mui/material';
 
 export const QuillContainer = styled(Stack)(({ theme }) => ({
   '& .quill': {
-    color: theme.palette.text['gray'],
+    color: theme.palette.text.gray,
   },
   '& .ql-toolbar.ql-snow': {
     borderTop: `1px solid ${theme.palette.text['middle-gray']}`,
@@ -16,10 +16,10 @@ export const QuillContainer = styled(Stack)(({ theme }) => ({
         border: 'none',
       },
       '& .ql-stroke': {
-        stroke: theme.palette.text['gray'],
+        stroke: theme.palette.text.gray,
       },
       '& .ql-fill': {
-        fill: theme.palette.text['gray'],
+        fill: theme.palette.text.gray,
       },
     },
   },
