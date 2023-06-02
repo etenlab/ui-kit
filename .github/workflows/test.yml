@@ -23,6 +23,8 @@ jobs:
         with:
           cache: yarn
           node-version: 16
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Install deps, build, and test
         run: |
@@ -32,5 +34,5 @@ jobs:
           yarn install --frozen-lockfile
           yarn test --coverage
         env:
-          CI: true
           NODE_OPTIONS: --max-old-space-size=4096
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
