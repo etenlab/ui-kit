@@ -17,6 +17,8 @@ jobs:
         with:
           cache: yarn
           node-version: 16
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -40,6 +42,8 @@ jobs:
 
       - name: Install Dependencies
         run: yarn
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Build
         run: yarn build-storybook
