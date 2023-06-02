@@ -1,6 +1,6 @@
 {
   "name": "@eten-lab/ui-kit",
-  "version": "0.5.57",
+  "version": "0.5.58",
   "license": "UNLICENSED",
   "private": false,
   "main": "dist/index.js",
@@ -14,8 +14,8 @@
     "react": ">=16.8.0"
   },
   "scripts": {
-    "start": "tsdx watch --tsconfig tsconfig.build.json --verbose --noClean",
-    "build": "tsdx build --tsconfig tsconfig.build.json",
+    "start": "tsdx watch --transpileOnly --tsconfig tsconfig.build.json --verbose --noClean",
+    "build": "tsdx build --transpileOnly --tsconfig tsconfig.build.json",
     "lint": "tsdx lint",
     "prepublish": "npm run build"
   },
