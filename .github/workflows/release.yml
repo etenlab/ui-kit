@@ -47,6 +47,9 @@ jobs:
 
       - name: Build
         run: yarn build-storybook
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - uses: TimekillerTK/s3-sync-action@master
         with:
