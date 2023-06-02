@@ -5,6 +5,7 @@ export * from './ToggleButtons';
 export * from './SimpleQuill';
 export * from './VerticalRadioList';
 export * from './ButtonList';
+export * from './CardsMenu';
 export * from './TitleWithIcon';
 export * from './RangeSelectableTextArea';
 export * from './DotsText';
