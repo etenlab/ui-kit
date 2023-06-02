@@ -55,4 +55,4 @@ export {
   TbArrowBack,
 } from 'react-icons/tb';
 export { IoChatboxOutline, IoCloseCircle } from 'react-icons/io5';
-export * from './DesignedIcons'
+export * from './DesignedIcons';

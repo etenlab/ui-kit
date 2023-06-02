@@ -1,4 +1,4 @@
-export { logger } from './logger'
+export { logger } from './logger';
 export * from './alert';
 export * from './input';
 export * from './button';
