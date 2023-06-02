@@ -1,9 +1,9 @@
 
-import { CiSearch } from '@components/icons';
+import { CiSearch } from '../../icons';
 import { List, ListItemButton, Paper, Grid, Typography, ListSubheader, Stack, IconButton, Divider } from '@mui/material';
 import React, { useState, ChangeEventHandler, ReactNode } from 'react';
 import { useColorModeContext } from '../../ThemeProvider';
-import { SearchInput } from '@components/input';
+import { SearchInput } from '../../input';
 
 export type CardsMenuItemType = {
   value: string;
@@ -35,21 +35,11 @@ type CardsMenutemProps = {
 };
 
 function CardsMenutem({ item, withUnderline, onClick }: CardsMenutemProps) {
-  // const { getColor } = useColorModeContext();
-
   const { label, description, startIcon, disabled } = item;
-
-  // const startIconCom = startIcon ? (
-  //   <ListItemIcon sx={{ minWdith: '45px' }}>{startIcon}</ListItemIcon>
-  // ) : null;
-
-  // const endIconCom = endIcon ? endIcon : null;
 
   const underlineCom = withUnderline ? (
     <Divider sx={{ margin: '0 20px' }} />
   ) : null;
-
-  // const itemColor = color ? color : getColor('dark');
 
   return (
     <>
@@ -69,14 +59,6 @@ function CardsMenutem({ item, withUnderline, onClick }: CardsMenutemProps) {
             <Grid container spacing={2}>
               <Grid item>
                 {startIcon}
-                {/* <DiFileText
-                  color="blue"
-                  sx={{
-                    width: 30,
-                    height: 30,
-                    color: '#1F77DF',
-                  }}
-                /> */}
               </Grid>
               <Grid item xs={12} sm container>
                 <Grid item xs container direction="column" spacing={2}>
@@ -113,7 +95,6 @@ export function CardsMenu({
   onClick,
 }: CardsMenuProps) {
   const { getColor } = useColorModeContext();
-  // const [selectedIndex, setSelectedIndex] = useState(1);
 
   const [isShownSearchInput, setIsShownSearchInput] = useState<boolean>(false);
 
