@@ -76,10 +76,10 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # - name: Set Git config
-      #   run: |
-      #     git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-      #     git config --global user.name "${{ github.actor }}"
+      - name: Set Git config
+        run: |
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
 
       - name: release
         run: yarn release
