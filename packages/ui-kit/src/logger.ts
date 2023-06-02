@@ -39,7 +39,8 @@ class LoggerService {
       const logLevel = Number(messageJson.context.logLevel);
       if (!isNaN(logLevel) && logLevel >= this.thresholdLevel) {
         console.log(
-          `[${getLogLevelName(logLevel)}]: ${messageJson.message
+          `[${getLogLevelName(logLevel)}]: ${
+            messageJson.message
           } [context]: ${JSON.stringify(messageJson.context)}`,
         );
       }
@@ -100,7 +101,7 @@ class LoggerService {
   }
 }
 
-const logger = new LoggerService()
-export { logger }
+const logger = new LoggerService();
+export { logger };
 
 // workflow check
