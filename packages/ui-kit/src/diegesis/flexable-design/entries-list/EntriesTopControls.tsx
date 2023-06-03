@@ -175,7 +175,7 @@ const StyledTabContent = styled<any>(Stack)(({ theme, show }) => ({
   width: '100%',
 }));
 const StyledChip = styled(Chip)(({ theme }) => ({
-  backgroundColor: theme.palette.background['white'],
+  backgroundColor: theme.palette.background.white,
   borderRadius: '5px',
   marginRight: '8px',
   marginTop: '8px',

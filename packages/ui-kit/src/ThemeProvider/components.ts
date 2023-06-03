@@ -7,7 +7,7 @@ export const components: ThemeOptions = {
         root: ({ ownerState, theme }) => {
           const color = ownerState.color as keyof typeof theme.palette;
           const mainColor = (theme.palette[color] as PaletteColor).main;
-          const redColor = (theme.palette['red'] as PaletteColor).main;
+          const redColor = (theme.palette.red as PaletteColor).main;
 
           return {
             '& .MuiFormHelperText-root': {

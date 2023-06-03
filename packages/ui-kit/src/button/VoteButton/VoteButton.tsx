@@ -21,8 +21,8 @@ export function VoteButton({
 }: VoteButtonProps) {
   const { getColor } = useColorModeContext();
 
-  let color: 'red' | 'green' = isLike ? 'green' : 'red';
-  let startIcon = isLike ? <BiLike /> : <BiDislike />;
+  const color: 'red' | 'green' = isLike ? 'green' : 'red';
+  const startIcon = isLike ? <BiLike /> : <BiDislike />;
 
   const bgColor = isLike ? getColor('light-green') : getColor('light-red');
 
