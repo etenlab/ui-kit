@@ -9,7 +9,7 @@ import {
 
 export const EmojiWrapper = styled(IconButton)(({ theme }) => ({
   display: 'inline-flex',
-  border: `1px solid ${theme.palette.text['gray']}`,
+  border: `1px solid ${theme.palette.text.gray}`,
   borderRadius: '4px',
   height: '25px',
   lineHeight: '25px',
@@ -20,7 +20,7 @@ export const EmojiWrapper = styled(IconButton)(({ theme }) => ({
   fontFamily: 'Inter',
   fontStyle: 'normal',
   fontWeight: '600',
-  color: theme.palette.text['gray'],
+  color: theme.palette.text.gray,
   cursor: 'pointer',
 }));
 

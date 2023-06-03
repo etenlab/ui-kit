@@ -73,7 +73,7 @@ export function ConfigController({
     const newConfig = {
       ...uiConfig,
       contents: {
-        ...uiConfig!.contents,
+        ...uiConfig.contents,
         [contentValue.name]: contentValue.value,
       },
     };
@@ -90,7 +90,7 @@ export function ConfigController({
     const newConfig = {
       ...uiConfig,
       styles: {
-        ...uiConfig!.styles,
+        ...uiConfig.styles,
         [styleValue.name]: styleValue.value,
       },
     };
@@ -107,7 +107,7 @@ export function ConfigController({
     const newConfig = {
       ...uiConfig,
       markdowns: {
-        ...uiConfig!.markdowns,
+        ...uiConfig.markdowns,
         [markdownValue.id!]: markdownValue,
       },
     };
@@ -170,7 +170,7 @@ export function ConfigController({
       styleItems: uiConfig.styles
         ? Object.keys(uiConfig.styles).map((key) => ({
             name: key,
-            value: uiConfig.styles![key] as string,
+            value: uiConfig.styles![key],
           }))
         : [],
       markdownItems: uiConfig.markdowns

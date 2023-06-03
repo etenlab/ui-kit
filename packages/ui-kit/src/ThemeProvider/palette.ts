@@ -40,15 +40,15 @@ export const colors = {
     dark: '#616F82', // not defined
   },
   disable: {
-    light: designColors['disable'],
+    light: designColors.disable,
     dark: '#424242',
   },
   dark: {
     light: '#1B1B1B',
-    dark: designColors['dark'],
+    dark: designColors.dark,
   },
   gray: {
-    light: designColors['gray'],
+    light: designColors.gray,
     dark: '#eee',
   },
   'middle-gray': {
@@ -56,11 +56,11 @@ export const colors = {
     dark: '#bdbdbd',
   },
   white: {
-    light: designColors['white'],
+    light: designColors.white,
     dark: '#212121',
   },
   red: {
-    light: designColors['red'],
+    light: designColors.red,
     dark: '#d32f2f',
   },
   'light-red': {
@@ -68,7 +68,7 @@ export const colors = {
     dark: '#880e4f',
   },
   green: {
-    light: designColors['green'],
+    light: designColors.green,
     dark: '#a5d6a7',
   },
   'light-green': {
@@ -76,7 +76,7 @@ export const colors = {
     dark: '#558b2f',
   },
   yellow: {
-    light: designColors['yellow'],
+    light: designColors.yellow,
     dark: '#e65100',
   },
   'middle-yellow': {
@@ -122,21 +122,21 @@ export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
     palette: {
       'blue-primary': {
         main: colors['blue-primary'][mode],
-        contrastText: colors['white'][mode],
+        contrastText: colors.white[mode],
       },
       'light-blue': {
         main: colors['light-blue'][mode],
-        contrastText: colors['gray'][mode],
+        contrastText: colors.gray[mode],
       },
       disable: {
-        main: colors['disable'][mode],
+        main: colors.disable[mode],
       },
       dark: {
-        main: colors['dark'][mode],
+        main: colors.dark[mode],
         contrastText: '#fafafa',
       },
       gray: {
-        main: colors['gray'][mode],
+        main: colors.gray[mode],
         contrastText: '',
       },
       'middle-gray': {
@@ -144,25 +144,25 @@ export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
         contrastText: '#eee',
       },
       white: {
-        main: colors['white'][mode],
+        main: colors.white[mode],
         contrastText: '@212121',
       },
       red: {
-        main: colors['red'][mode],
-        contrastText: colors['white'][mode],
+        main: colors.red[mode],
+        contrastText: colors.white[mode],
       },
       'light-red': {
         main: colors['light-red'][mode],
       },
       green: {
-        main: colors['green'][mode],
-        contrastText: colors['white'][mode],
+        main: colors.green[mode],
+        contrastText: colors.white[mode],
       },
       'light-green': {
         main: colors['light-green'][mode],
       },
       yellow: {
-        main: colors['yellow'][mode],
+        main: colors.yellow[mode],
       },
       'middle-yellow': {
         main: colors['middle-yellow'][mode],
@@ -188,16 +188,16 @@ export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
       text: {
         'blue-primary': colors['blue-primary'][mode],
         'light-blue': colors['light-blue'][mode],
-        disable: colors['disable'][mode],
-        dark: colors['dark'][mode],
-        gray: colors['gray'][mode],
+        disable: colors.disable[mode],
+        dark: colors.dark[mode],
+        gray: colors.gray[mode],
         'middle-gray': colors['middle-gray'][mode],
-        white: colors['white'][mode],
-        red: colors['red'][mode],
+        white: colors.white[mode],
+        red: colors.red[mode],
         'light-red': colors['light-red'][mode],
-        green: colors['green'][mode],
+        green: colors.green[mode],
         'light-green': colors['light-green'][mode],
-        yellow: colors['yellow'][mode],
+        yellow: colors.yellow[mode],
         'middle-yellow': colors['middle-yellow'][mode],
         'light-yellow': colors['light-yellow'][mode],
         'darker-gray': colors['darker-gray'][mode],
@@ -213,7 +213,7 @@ export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
         'light-gray': colors['light-gray'][mode],
         'turquoise-light': colors['turquoise-light'][mode],
         'turquoise-dark': colors['turquoise-dark'][mode],
-        white: colors['white'][mode],
+        white: colors.white[mode],
       },
     },
   };

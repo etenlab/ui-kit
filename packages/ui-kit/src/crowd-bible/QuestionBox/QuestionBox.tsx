@@ -79,8 +79,8 @@ export function QuestionBox({
   };
 
   const handleChangeCheck = (item: string) => {
-    let updatedChecked = [...checked];
-    let checkedIndex = checked.findIndex((data) => data.item === item);
+    const updatedChecked = [...checked];
+    const checkedIndex = checked.findIndex((data) => data.item === item);
 
     if (checkedIndex === -1) return;
 
@@ -186,7 +186,7 @@ export function QuestionBox({
             label="Send"
             onClick={() => {
               if (!choosed) return;
-              onSave({ chooseOne: choosed! });
+              onSave({ chooseOne: choosed });
             }}
           />
         </Stack>

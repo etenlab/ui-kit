@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.merged == 'true' }}
 
     steps:
       - name: Checkout
@@ -68,21 +69,14 @@ jobs:
         with:
           cache: yarn
           version: 16.x
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Install Dependencies
-        run: yarn
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: yarn install
 
-      - name: Set Git config
-        run: |
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git config --global user.name "${{ github.actor }}"
-
-      - name: release
-        run: yarn release
+      - name: Create Release Pull Request or Publish to npm
+        uses: changesets/action@master
+        with:
+          publish: yarn release
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
