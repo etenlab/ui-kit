@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.64
+
+### Patch Changes
+
+- [#91](https://github.com/etenlab/ui-kit/pull/91) [`1481d63`](https://github.com/etenlab/ui-kit/commit/1481d6310d80851e246e610d3453f97b71e1375e) Thanks [@lucky-gru](https://github.com/lucky-gru)! - Update workflow
+
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
