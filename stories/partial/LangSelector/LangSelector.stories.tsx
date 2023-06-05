@@ -59,6 +59,7 @@ const setLoadingStateHandler = (isLoading: boolean) => {
 
 export const PrimaryLangSelector = Template.bind({});
 PrimaryLangSelector.args = {
+  label: 'Language Selector',
   onChange: onChangeHandler,
   setLoadingState: setLoadingStateHandler,
 };
@@ -68,6 +69,33 @@ PrimaryLangSelector.parameters = {
     source: {
       code: jsxToString(
         <LangSelector
+          label="Language Selector"
+          onChange={onChangeHandler}
+          setLoadingState={setLoadingStateHandler}
+        />,
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
+
+export const FullRenderedLangSelector = Template.bind({});
+FullRenderedLangSelector.args = {
+  label: 'Language Selector',
+  fullRendered: true,
+  onChange: onChangeHandler,
+  setLoadingState: setLoadingStateHandler,
+};
+
+FullRenderedLangSelector.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <LangSelector
+          label="Language Selector"
+          fullRendered={true}
           onChange={onChangeHandler}
           setLoadingState={setLoadingStateHandler}
         />,
