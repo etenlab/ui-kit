@@ -16,7 +16,7 @@ import {
 import { Autocomplete, TextArea, Input, Checkbox, Radio } from '../../input';
 import { useColorModeContext } from '../../ThemeProvider/';
 import { Button } from '../../button';
-import { BiTrashAlt } from '../../icons';
+import { DiRemove } from '../../icons';
 import { logger } from '../../logger';
 
 type QuestionType =
@@ -161,7 +161,7 @@ export function QuestionCreatorBox({
                     color="red"
                     onClick={() => removeAnswer(answer)}
                   >
-                    <BiTrashAlt />
+                    <DiRemove />
                   </IconButton>
                 }
               >

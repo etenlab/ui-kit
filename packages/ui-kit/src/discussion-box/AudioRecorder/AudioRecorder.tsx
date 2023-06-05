@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect, useCallback } from 'react';
 
 import { Stack, IconButton } from '@mui/material';
 
-import { FiMic, CiPause1, FiX, FiCheck } from '../../icons';
+import { DiMicro, DiPlay, DiCross, DiCheck } from '../../icons';
 import { useColorModeContext } from '../../ThemeProvider';
 
 import { RecorderTimer } from '../RecorderTimer';
@@ -169,11 +169,11 @@ export function AudioRecorder({ onCancel, onSave }: AudioRecorderProps) {
   const controlButton =
     recorderStatus === 'new' ? (
       <IconButton onClick={handleClickStart} disabled={disabledControl}>
-        <FiMic style={{ ...controlButtonStyle }} />
+        <DiMicro style={{ ...controlButtonStyle }} />
       </IconButton>
     ) : (
       <IconButton onClick={handleClickPause} disabled={disabledControl}>
-        <CiPause1
+        <DiPlay
           style={{
             ...controlButtonStyle,
             backgroundColor: getColor('blue-primary'),
@@ -205,7 +205,7 @@ export function AudioRecorder({ onCancel, onSave }: AudioRecorderProps) {
           sx={{ fontSize: '36px', color: getColor('gray') }}
           disabled={disabledCancel}
         >
-          <FiX />
+          <DiCross />
         </IconButton>
 
         {controlButton}
@@ -215,7 +215,7 @@ export function AudioRecorder({ onCancel, onSave }: AudioRecorderProps) {
           sx={{ fontSize: '36px', color: getColor('green') }}
           disabled={disabledSave}
         >
-          <FiCheck />
+          <DiCheck />
         </IconButton>
       </Stack>
     </Stack>

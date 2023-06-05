@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ButtonProps } from '@mui/material';
-import { BiRightArrowAlt } from '../../icons';
+import { DiArrowRight } from '../../icons';
 
 import { StyledButton } from './styled';
 
@@ -13,7 +13,8 @@ export function Button(
 ) {
   const args = {
     ...props,
-    endIcon: props.endIcon === true ? <BiRightArrowAlt /> : props.endIcon,
+    endIcon:
+      props.endIcon === true ? <DiArrowRight color="white" /> : props.endIcon,
   };
 
   return <StyledButton {...args} />;

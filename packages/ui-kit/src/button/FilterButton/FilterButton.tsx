@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from '@mui/material';
 import { ButtonProps } from '@mui/material';
 
-import { FiFilter } from '../../icons';
+import { DiFilter } from '../../icons';
 
 type FilterButtonProps = Omit<ButtonProps, 'variant' | 'onClick'> & {
   variant: 'primary' | 'secondary';
@@ -26,7 +26,7 @@ export function FilterButton({
       sx={{ padding: '6px', minWidth: 0 }}
       {...props}
     >
-      <FiFilter style={{ fontSize: '24px' }} />
+      <DiFilter style={{ fontSize: '24px' }} />
     </Button>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState, ChangeEventHandler, ReactNode } from 'react';
 
-import { CiSearch } from '../../icons';
+import { DiSearch } from '../../icons';
 import { SearchInput } from '../../input';
 import { useColorModeContext } from '../../ThemeProvider';
 
@@ -116,7 +116,7 @@ export function ButtonList({
 
   const searchBtnCom = search ? (
     <IconButton onClick={handleToggleSearchInput}>
-      <CiSearch />
+      <DiSearch />
     </IconButton>
   ) : null;
 

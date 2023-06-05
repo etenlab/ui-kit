@@ -5,7 +5,7 @@ import {
   ThemeProvider,
   BiPencil,
   BiShare,
-  BiTrashAlt,
+  DiRemove,
   logger,
 } from '../../../../packages/ui-kit/src';
 import { Popover } from '@mui/material';
@@ -50,7 +50,7 @@ const actions = [
   {
     name: 'Delete Post',
     action: () => alert('Clicked'),
-    icon: <BiTrashAlt style={{ fontSize: 16, color: 'red' }} />,
+    icon: <DiRemove style={{ fontSize: 16, color: 'red' }} />,
   },
 ];
 

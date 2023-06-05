@@ -5,7 +5,7 @@ import {
   ThemeProvider,
   BiShare,
   BiPencil,
-  BiTrashAlt,
+  DiRemove,
 } from '../../../../packages/ui-kit/src';
 import { ActionList } from '../../../../packages/ui-kit/src/discussion-box';
 import jsxToString from 'jsx-to-string';
@@ -49,7 +49,7 @@ const actions = [
   {
     name: 'Delete Post',
     action: () => alert('Clicked'),
-    icon: <BiTrashAlt style={{ fontSize: 16, color: 'red' }} />,
+    icon: <DiRemove style={{ fontSize: 16, color: 'red' }} />,
   },
 ];
 

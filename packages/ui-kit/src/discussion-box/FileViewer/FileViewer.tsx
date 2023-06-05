@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Stack, IconButton, Box, Typography } from '@mui/material';
 
-import { BiDownload, BiFile } from '../../icons';
+import { DiDownload, DiFileText } from '../../icons';
 import { useColorModeContext } from '../../ThemeProvider';
 
 import { IFile } from '../types';
@@ -48,7 +48,7 @@ export function FileViewer({ file, mode }: FileViewerProps) {
           handleDownload(file.file_name, file.file_url);
         }}
       >
-        <BiDownload style={{ fontSize: '30px', color: getColor('dark') }} />
+        <DiDownload style={{ fontSize: '30px', color: getColor('dark') }} />
       </IconButton>
     ) : null;
 
@@ -65,7 +65,7 @@ export function FileViewer({ file, mode }: FileViewerProps) {
         width: '290px',
       }}
     >
-      <BiFile style={{ fontSize: '70px', margin: '-10px' }} />
+      <DiFileText style={{ fontSize: '70px', margin: '-10px' }} />
       <Stack justifyContent="space-between">
         <Typography variant="body1" color="text.dark">
           {file.file_name}

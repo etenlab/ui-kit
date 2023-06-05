@@ -10,7 +10,7 @@ import {
 
 import { autocompleteClasses } from '@mui/material/Autocomplete';
 
-import { BiChevronDown, BiChevronUp } from '../../icons';
+import { DiDropDown, BiChevronUp } from '../../icons';
 
 import { Input } from '../Input';
 
@@ -55,7 +55,7 @@ export function Autocomplete<
     setOpen((open) => !open);
   };
 
-  const adornment = open ? <BiChevronUp /> : <BiChevronDown />;
+  const adornment = open ? <BiChevronUp /> : <DiDropDown />;
 
   return (
     <MuiAutocomplete

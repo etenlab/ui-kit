@@ -3,7 +3,7 @@ import React from 'react';
 import { Select, MenuItem } from '@mui/material';
 
 import { useColorModeContext } from '../../ThemeProvider';
-import { BiChevronDown } from '../../icons';
+import { DiDropDown } from '../../icons';
 
 export function NodeFilter({
   nodeType,
@@ -68,7 +68,7 @@ export function NodeFilter({
           {option ? ` ${option.text}` : ''}
         </div>
       )}
-      IconComponent={BiChevronDown}
+      IconComponent={DiDropDown}
     >
       {[{ value: '', text: '' }, ...options].map(({ value, text }, index) => (
         <MenuItem

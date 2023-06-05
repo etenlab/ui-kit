@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react';
 import { Box, Typography, IconButton } from '@mui/material';
 
 import { useColorModeContext } from '../../ThemeProvider';
-import { BiLeftArrowAlt } from '../../icons';
+import { DiArrowLeft } from '../../icons';
 
 export function HeadingBox({
   onBack,
@@ -40,7 +40,7 @@ export function HeadingBox({
             }}
             onClick={onBack}
           >
-            <BiLeftArrowAlt />
+            <DiArrowLeft />
           </IconButton>
         )}
         <span>Versification{breadcrumb ? ` / ${breadcrumb}` : ''}</span>

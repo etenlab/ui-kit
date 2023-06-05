@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { IconButton, Button, Stack, Typography, Badge } from '@mui/material';
-import { BiMessageRounded, FiBell, FiMenu, CiDark, CiLight } from '../icons';
+import { DiMessages, DiNotifications, DiMenu, CiDark, CiLight } from '../icons';
 import { useColorModeContext } from '../ThemeProvider';
 
 type ToolbarProps = {
@@ -67,7 +67,7 @@ export function Toolbar({
         {buttons.discussion ? (
           <IconButton onClick={onClickDiscussionBtn} sx={{ padding: '5px' }}>
             <Badge color="red" variant="dot" invisible={!isNewDiscussion}>
-              <BiMessageRounded
+              <DiMessages
                 style={{
                   color: getColor('gray'),
                   fontSize: 24,
@@ -80,7 +80,9 @@ export function Toolbar({
         {buttons.notification ? (
           <IconButton onClick={onClickNotificationBtn} sx={{ padding: '5px' }}>
             <Badge color="red" variant="dot" invisible={!isNewNotification}>
-              <FiBell style={{ color: getColor('gray'), fontSize: 24 }} />
+              <DiNotifications
+                style={{ color: getColor('gray'), fontSize: 24 }}
+              />
             </Badge>
           </IconButton>
         ) : null}
@@ -107,7 +109,7 @@ export function Toolbar({
 
         {buttons.menu ? (
           <IconButton onClick={onClickMenuBtn} sx={{ padding: '2px' }}>
-            <FiMenu style={{ color: getColor('gray'), fontSize: '30px' }} />
+            <DiMenu style={{ color: getColor('gray'), fontSize: '30px' }} />
           </IconButton>
         ) : null}
       </Stack>

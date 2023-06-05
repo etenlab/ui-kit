@@ -3,7 +3,7 @@ import React from 'react';
 import { SxProps, Theme } from '@mui/material/styles';
 import { Box } from '@mui/material';
 
-import { BiLike, BiDislike, BiMessageRounded } from '../../icons';
+import { BiLike, BiDislike, DiMessages } from '../../icons';
 import { IdentifierLabelProps, IdentifierLabel } from '../IdentifierLabel';
 import { IconBadge } from '../IconBadge';
 
@@ -71,7 +71,7 @@ export function NodeData({
       >
         <IconBadge Icon={BiLike} value={numUpVotes} success />
         <IconBadge Icon={BiDislike} value={numDownVotes} danger />
-        <IconBadge Icon={BiMessageRounded} value={numPosts} />
+        <IconBadge Icon={DiMessages} value={numPosts} />
       </Box>
     </Box>
   );

@@ -8,7 +8,7 @@ import {
   Typography,
   FormControlLabel,
 } from '@mui/material';
-import { FiX } from '../../icons';
+import { DiCross } from '../../icons';
 import { AgreeConfirmButton } from '../../button';
 import { Checkbox } from '../../input';
 import { LabelWithIcon } from '../LabelWithIcon';
@@ -243,7 +243,7 @@ export function QuestionBox({
       <Box sx={{ padding: '20px' }}>
         <LabelWithIcon
           label="Help the translator:"
-          icon={<FiX />}
+          icon={<DiCross />}
           onClick={onCancel}
         />
         <Typography variant="subtitle2" color="text.dark">

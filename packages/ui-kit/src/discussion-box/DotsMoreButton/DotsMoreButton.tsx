@@ -1,7 +1,7 @@
 import React, { MouseEvent } from 'react';
 
 import { IconButton } from '@mui/material';
-import { BiDotsHorizontalRounded } from '../../icons';
+import { DiMore } from '../../icons';
 
 type DotsMoreButtonProps = {
   onClick(event: MouseEvent<HTMLButtonElement>): void;
@@ -10,7 +10,7 @@ type DotsMoreButtonProps = {
 export function DotsMoreButton({ onClick }: DotsMoreButtonProps) {
   return (
     <IconButton onClick={onClick}>
-      <BiDotsHorizontalRounded />
+      <DiMore />
     </IconButton>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Checkbox as MuiCheckbox, CheckboxProps } from '@mui/material';
 
-import { FiCheck } from '../../icons';
+import { DiCheck } from '../../icons';
 
 function Rect() {
   return (
@@ -34,7 +34,7 @@ function RectAndCheck() {
         borderRadius: '4px',
       }}
     >
-      <FiCheck style={{ fontSize: 12 }} />
+      <DiCheck style={{ fontSize: 12 }} />
     </div>
   );
 }

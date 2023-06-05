@@ -3,7 +3,7 @@ import React from 'react';
 import { IconButton, Stack, Typography } from '@mui/material';
 
 import { Button } from '../../button';
-import { FiX } from '../../icons';
+import { DiCross } from '../../icons';
 
 type KindSelectionBoxProps = {
   title: string;
@@ -34,7 +34,7 @@ export function KindSelectionBox({
             {title}
           </Typography>
           <IconButton onClick={onCancel}>
-            <FiX />
+            <DiCross />
           </IconButton>
         </Stack>
         <Typography variant="body3" color="text.gray">
