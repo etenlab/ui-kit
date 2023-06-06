@@ -37,83 +37,87 @@ export const colors = {
   },
   'light-blue': {
     light: designColors['light-blue'],
-    dark: '#616F82', // not defined
+    dark: designColors['light-blue'], // not defined
   },
   disable: {
     light: designColors.disable,
-    dark: '#424242',
+    dark: designColors.disable,
   },
   dark: {
-    light: '#1B1B1B',
-    dark: designColors.dark,
+    light: designColors.dark,
+    dark: designColors.white,
   },
   gray: {
     light: designColors.gray,
-    dark: '#eee',
+    dark: designColors['middle-gray'],
   },
   'middle-gray': {
     light: designColors['middle-gray'],
-    dark: '#bdbdbd',
+    dark: designColors['middle-gray'],
   },
   white: {
     light: designColors.white,
-    dark: '#212121',
+    dark: designColors.white,
   },
   red: {
     light: designColors.red,
-    dark: '#d32f2f',
+    dark: designColors.red,
   },
   'light-red': {
     light: designColors['light-red'],
-    dark: '#880e4f',
+    dark: designColors['light-red'],
   },
   green: {
     light: designColors.green,
-    dark: '#a5d6a7',
+    dark: designColors.green,
   },
   'light-green': {
     light: designColors['light-green'],
-    dark: '#558b2f',
+    dark: designColors['light-green'],
   },
   yellow: {
     light: designColors.yellow,
-    dark: '#e65100',
+    dark: designColors.yellow,
   },
   'middle-yellow': {
     light: designColors['middle-yellow'],
-    dark: '#ff8f00',
+    dark: designColors['middle-yellow'],
   },
   'light-yellow': {
     light: designColors['light-yellow'],
-    dark: '#ffa000',
+    dark: designColors['light-yellow'],
   },
   'light-gray': {
     light: designColors['light-gray'],
-    dark: '#F0F0E7',
+    dark: designColors['light-gray'],
   },
   'turquoise-light': {
     light: designColors['turquoise-light'],
-    dark: '#60D0B2',
+    dark: designColors['turquoise-light'],
   },
   'turquoise-dark': {
     light: designColors['turquoise-dark'],
-    dark: '#4EAA91',
+    dark: designColors['turquoise-dark'],
   },
   'darker-gray': {
     light: designColors['darker-gray'],
-    dark: '#31373A',
+    dark: designColors['darker-gray'],
   },
   'lighter-gray': {
     light: designColors['lighter-gray'],
-    dark: '#707070',
+    dark: designColors['lighter-gray'],
   },
   'light-gray2': {
     light: designColors['light-gray2'],
-    dark: '#e3e3d9',
+    dark: designColors['light-gray2'],
   },
   'divider-color': {
     light: designColors['divider-color'],
-    dark: '#616F82',
+    dark: designColors['divider-color'],
+  },
+  'bg-main': {
+    light: designColors['white'],
+    dark: designColors['dark/bg'],
   },
 };
 
@@ -126,26 +130,26 @@ export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
       },
       'light-blue': {
         main: colors['light-blue'][mode],
-        contrastText: colors.gray[mode],
+        contrastText: colors.white[mode],
       },
       disable: {
         main: colors.disable[mode],
       },
       dark: {
         main: colors.dark[mode],
-        contrastText: '#fafafa',
+        contrastText: colors.white[mode],
       },
       gray: {
         main: colors.gray[mode],
-        contrastText: '',
+        contrastText: colors.white[mode],
       },
       'middle-gray': {
         main: colors['middle-gray'][mode],
-        contrastText: '#eee',
+        contrastText: colors.white[mode],
       },
       white: {
         main: colors.white[mode],
-        contrastText: '@212121',
+        contrastText: colors.dark[mode],
       },
       red: {
         main: colors.red[mode],
