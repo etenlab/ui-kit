@@ -27,7 +27,7 @@ export function ScrollDownButton({ onClick }: ScrollDownButtonProps) {
         width: '30px',
         height: '30px',
         border: `1px solid ${getColor('gray')}`,
-        background: getColor('white'),
+        background: getColor('bg-main'),
       }}
     >
       <BiChevronsDown />

@@ -90,7 +90,7 @@ export function CardsMenu({ label, items, onClick }: CardsMenuProps) {
       subheader={
         <ListSubheader
           component="div"
-          sx={{ padding: '6px 20px', backgroundColor: getColor('white') }}
+          sx={{ padding: '6px 20px', backgroundColor: getColor('bg-main') }}
         >
           <Stack
             direction="row"

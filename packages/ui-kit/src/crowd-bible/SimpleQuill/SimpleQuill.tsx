@@ -73,7 +73,7 @@ export function SimpleQuill({
         padding: '7px 18px',
         gap: '10px',
         width: '100%',
-        background: getColor('white'),
+        background: getColor('bg-main'),
       }}
     >
       <TextField
