@@ -24,7 +24,19 @@ export type EntriesTopControlsConfig = BasicUIConfig & {
     tagFilterLabel?: string;
     searchPlaceholder?: string;
   };
-  styles: {};
+  styles: {
+    titleColor: string;
+    titleFontFamily: string;
+    filterTabTextDecorationColor: string;
+    filterTabActiveBackgroundColor: string;
+    filterTabActiveTextColor: string;
+    filterTabTextColor: string;
+    tagFilterLabelColor: string;
+    tagColor: string;
+    tagBackgroundColor: string;
+    tagActiveColor: string;
+    tagActiveBackgroundColor: string;
+  };
 };
 export const defaultEntriesTopControlsConfig: EntriesTopControlsConfig = {
   componentName: 'EntriesTopControls',
@@ -33,7 +45,19 @@ export const defaultEntriesTopControlsConfig: EntriesTopControlsConfig = {
     filterTabLabel: 'Advanced search with filters',
     tagFilterLabel: 'Tag:',
   },
-  styles: {},
+  styles: {
+    titleColor: '#31373A',
+    titleFontFamily: 'Noto Serif Display',
+    filterTabTextDecorationColor: '#60D0B2',
+    filterTabActiveBackgroundColor: '#F0F0E7',
+    filterTabActiveTextColor: '#1B1B1B',
+    filterTabTextColor: '#1B1B1B',
+    tagFilterLabelColor: '#5C6673',
+    tagColor: '#1B1B1B',
+    tagBackgroundColor: '#FFFFFF',
+    tagActiveColor: '#1B1B1B',
+    tagActiveBackgroundColor: '#60D0B2',
+  },
 };
 export type EntriesTopControlsProps =
   BasicFlexibleProps<EntriesTopControlsConfig> & {
@@ -68,7 +92,14 @@ export const EntriesTopControls: FlexibleComponent<EntriesTopControlsProps> = (
   return (
     <Stack direction={'column'} alignItems={'flex-start'}>
       <Stack direction={'row'} alignItems={'center'} width={'100%'}>
-        <PageTitleTypo variant={'h1'} marginRight={'1rem'}>
+        <PageTitleTypo
+          variant={'h1'}
+          marginRight={'1rem'}
+          sx={{
+            color: uiConfig.styles.titleColor,
+            fontFamily: uiConfig.styles.titleFontFamily,
+          }}
+        >
           {uiConfig.contents?.titleText}
         </PageTitleTypo>
         <StyledDeviceSpecific showOnSmallDevice={false}>
@@ -82,11 +113,22 @@ export const EntriesTopControls: FlexibleComponent<EntriesTopControlsProps> = (
         >
           <CustomTab
             value={1}
-            label={uiConfig.contents?.filterTabLabel || ''}
+            label={uiConfig.contents.filterTabLabel!}
+            sx={{
+              textDecorationColor: uiConfig.styles.filterTabTextDecorationColor,
+              color: uiConfig.styles.filterTabTextColor,
+              '&.Mui-selected': {
+                backgroundColor: uiConfig.styles.filterTabActiveBackgroundColor,
+                color: uiConfig.styles.filterTabActiveTextColor,
+              },
+            }}
           />
         </CustomTabs>
       </Stack>
-      <StyledTabContent show={curTab === 1 ? true : false}>
+      <StyledTabContent
+        show={curTab === 1 ? true : false}
+        sx={{ background: uiConfig.styles.filterTabActiveBackgroundColor }}
+      >
         <Stack
           flexDirection="row"
           alignItems={'center'}
@@ -117,7 +159,7 @@ export const EntriesTopControls: FlexibleComponent<EntriesTopControlsProps> = (
         >
           <Typography
             variant={'caption'}
-            color={'text.gray'}
+            color={uiConfig.styles.tagFilterLabelColor}
             marginRight={'0.8rem'}
             marginTop={'0.5rem'}
           >
@@ -127,10 +169,13 @@ export const EntriesTopControls: FlexibleComponent<EntriesTopControlsProps> = (
             <StyledChip
               key={idx}
               label={tag}
-              sx={(theme) => ({
+              sx={() => ({
+                color: props.tagConfig?.selectedTags?.includes(tag)
+                  ? uiConfig.styles.tagActiveColor
+                  : uiConfig.styles.tagColor,
                 backgroundColor: props.tagConfig?.selectedTags?.includes(tag)
-                  ? theme.palette.background['turquoise-light']
-                  : theme.palette.background.white,
+                  ? uiConfig.styles.tagActiveBackgroundColor
+                  : uiConfig.styles.tagBackgroundColor,
               })}
               onClick={() => {
                 if (props.tagConfig?.onTagSelect)
