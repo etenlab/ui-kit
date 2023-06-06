@@ -23,6 +23,7 @@ interface HeaderConfig extends BasicUIConfig {
     fontFamily: string;
     lineHeight: string;
     fontStyle: string;
+    color: string;
   };
 }
 
@@ -37,6 +38,7 @@ export const defaultHeaderConfig: HeaderConfig = {
     fontFamily: 'Noto Serif Display',
     lineHeight: '1.5rem',
     fontStyle: 'italic',
+    color: '#31373A',
   },
 };
 
@@ -61,7 +63,6 @@ export const Header: FlexibleComponent<HeaderProps> = ({
               parentPath={uiConfig.configPath!}
               id="header-app-logo"
             />
-
             <Typography
               variant="body1"
               sx={{
@@ -71,6 +72,7 @@ export const Header: FlexibleComponent<HeaderProps> = ({
                 fontSize: uiConfig.styles.lineHeight,
                 fontWeight: 'normal',
                 fontStyle: uiConfig.styles.fontStyle,
+                color: uiConfig.styles.color,
               }}
             >
               {uiConfig.contents.title}

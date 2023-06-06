@@ -3,14 +3,13 @@ import React from 'react';
 interface IProps {
   width?: number;
   height?: number;
-  className?: string;
+  color?: string;
   onClick?: React.MouseEventHandler;
 }
 export function CloseIcon(props: IProps) {
-  const { width = 35, height = 35, className, onClick } = props;
+  const { width = 35, height = 35, onClick, color = '#79c7b2' } = props;
   return (
     <svg
-      className={className}
       onClick={onClick}
       xmlns="http://www.w3.org/2000/svg"
       width={width}
@@ -23,7 +22,7 @@ export function CloseIcon(props: IProps) {
           strokeLinejoin="round"
           strokeLinecap="round"
           strokeWidth="2"
-          stroke="#79c7b2"
+          stroke={color}
           fill="transparent"
           data-name="Line 51"
         />
@@ -32,7 +31,7 @@ export function CloseIcon(props: IProps) {
           strokeLinejoin="round"
           strokeLinecap="round"
           strokeWidth="2"
-          stroke="#79c7b2"
+          stroke={color}
           fill="transparent"
           data-name="Line 50"
         />
