@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.70
+
+### Patch Changes
+
+- [#107](https://github.com/etenlab/ui-kit/pull/107) [`68ec430`](https://github.com/etenlab/ui-kit/commit/68ec4307789fd0c7d19c22c3269958a35ae157d9) Thanks [@takeshi-su57](https://github.com/takeshi-su57)! - Update CardMenu
+
 ## 0.5.69
 
 ### Patch Changes
