@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.68
+
+### Patch Changes
+
+- [#101](https://github.com/etenlab/ui-kit/pull/101) [`65c0f27`](https://github.com/etenlab/ui-kit/commit/65c0f27e9d06d20b5228512f3b6f3b3626df6f88) Thanks [@takeshi-su57](https://github.com/takeshi-su57)! - Update palette color
+
 ## 0.5.67
 
 ### Patch Changes
