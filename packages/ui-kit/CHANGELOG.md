@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.67
+
+### Patch Changes
+
+- [#99](https://github.com/etenlab/ui-kit/pull/99) [`bd71777`](https://github.com/etenlab/ui-kit/commit/bd717778a40e598485e3af1f8de47fda7204a94b) Thanks [@takeshi-su57](https://github.com/takeshi-su57)! - Refactor LanguageSelector
+
 ## 0.5.66
 
 ### Patch Changes
