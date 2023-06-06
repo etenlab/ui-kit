@@ -44,9 +44,9 @@ function CardsMenutem({ item, onClick }: CardsMenutemProps) {
           paddingLeft: '24px',
           gap: '10px',
           width: '100%',
-          borderColor: getColor('bg-second'),
+          borderColor: getColor('middle-gray'),
           borderRadius: '10px',
-          backgroundColor: getColor('disable'),
+          backgroundColor: getColor('bg-second'),
           textTransform: 'none',
           textAlign: 'start',
         }}
