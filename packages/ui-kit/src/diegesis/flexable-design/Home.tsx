@@ -1,11 +1,5 @@
-import React, { useState } from 'react';
-import { styled } from '@mui/material';
-
-import { SideNav, MOCK_SIDE_NAV_PROPS } from '../SideNav';
-
+import React from 'react';
 import { FlexibleLandingSection } from './LandingSection';
-import { FlexibleHeader } from './Header';
-import { FlexibleFooter } from './Footer';
 
 import {
   BasicUIConfig,
@@ -13,6 +7,7 @@ import {
   FlexibleComponent,
 } from './UIConfigProvider/UIConfigProvider';
 import { withFlexible } from './withFlexible';
+import { FlexiblePageLayout } from './PageLayout';
 
 interface HomeConfig extends BasicUIConfig {
   contents: {};
@@ -30,35 +25,16 @@ export interface HomeProps extends BasicFlexibleProps<HomeConfig> {}
 export const Home: FlexibleComponent<HomeProps> = ({
   uiConfig = defaultHomeConfig,
 }) => {
-  const [isSideNavOpen, setSideNavOpenStatus] = useState(false);
   return (
-    <StyledWrapper>
-      <FlexibleHeader
-        openSideNav={() => setSideNavOpenStatus(true)}
-        id="home-header"
-        parentPath={uiConfig.configPath!}
-      />
-      <SideNav
-        open={isSideNavOpen}
-        close={() => {
-          setSideNavOpenStatus(false);
-        }}
-        {...MOCK_SIDE_NAV_PROPS}
-      />
+    <FlexiblePageLayout id={'home-page'} parentPath={uiConfig?.configPath!}>
       <FlexibleLandingSection
         id="home-landing-section"
         parentPath={uiConfig.configPath!}
       />
-      <FlexibleFooter id="home-footer" parentPath={uiConfig.configPath!} />
-    </StyledWrapper>
+    </FlexiblePageLayout>
   );
 };
 Home.componentName = 'Home';
-
-const StyledWrapper = styled('div')(() => ({
-  position: 'relative',
-  minHeight: '100%',
-}));
 
 export const FlexibleHome = withFlexible<HomeConfig, HomeProps>(
   Home,
