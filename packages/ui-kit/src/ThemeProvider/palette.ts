@@ -37,7 +37,7 @@ export const colors = {
   },
   'light-blue': {
     light: designColors['light-blue'],
-    dark: designColors['light-blue'], // not defined
+    dark: designColors['dark/bg2'],
   },
   disable: {
     light: designColors.disable,
@@ -119,11 +119,27 @@ export const colors = {
     light: designColors['white'],
     dark: designColors['dark/bg'],
   },
+  'bg-second': {
+    light: designColors['disable'],
+    dark: designColors['dark/bg2'],
+  },
+  'bg-light-blue': {
+    light: designColors['light-blue'],
+    dark: designColors['dark/bg'],
+  },
+  'border-light-blue': {
+    light: designColors['light-blue'],
+    dark: designColors['dark/stroke'],
+  },
 };
 
 export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
   return {
     palette: {
+      primary: {
+        main: colors['blue-primary'][mode],
+        contrastText: colors.white[mode],
+      },
       'blue-primary': {
         main: colors['blue-primary'][mode],
         contrastText: colors.white[mode],
@@ -217,6 +233,9 @@ export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
         'light-gray': colors['light-gray'][mode],
         'turquoise-light': colors['turquoise-light'][mode],
         'turquoise-dark': colors['turquoise-dark'][mode],
+        'bg-main': colors['bg-main'][mode],
+        'bg-second': colors['bg-second'][mode],
+        'bg-light-blue': colors['bg-light-blue'][mode],
         white: colors.white[mode],
       },
     },

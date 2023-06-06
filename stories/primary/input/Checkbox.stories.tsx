@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryPaper } from '../../StoryPaper';
 
 import { ThemeProvider } from '../../../packages/ui-kit/src/ThemeProvider';
 import { Checkbox } from '../../../packages/ui-kit/src/input';
@@ -9,11 +10,11 @@ export default {
   component: Checkbox,
   decorators: [
     (Story) => (
-      <div style={{ margin: '3em', background: '#eee', width: '500px' }}>
-        <ThemeProvider>
+      <ThemeProvider>
+        <StoryPaper>
           <Story />
-        </ThemeProvider>
-      </div>
+        </StoryPaper>
+      </ThemeProvider>
     ),
   ],
 } as ComponentMeta<typeof Checkbox>;
