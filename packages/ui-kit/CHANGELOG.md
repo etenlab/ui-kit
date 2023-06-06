@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.69
+
+### Patch Changes
+
+- [#105](https://github.com/etenlab/ui-kit/pull/105) [`65892dc`](https://github.com/etenlab/ui-kit/commit/65892dc291a94923622880d80b8ad6c7a95965fb) Thanks [@takeshi-su57](https://github.com/takeshi-su57)! - change typedefinition
+
 ## 0.5.68
 
 ### Patch Changes
