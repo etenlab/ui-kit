@@ -8,6 +8,7 @@ export const components: ThemeOptions = {
           const color = ownerState.color as keyof typeof theme.palette;
           const mainColor = (theme.palette[color] as PaletteColor).main;
           const redColor = (theme.palette.red as PaletteColor).main;
+          const backgroundColor = (theme.palette.background['bg-second']);
 
           return {
             '& .MuiFormHelperText-root': {
@@ -15,6 +16,7 @@ export const components: ThemeOptions = {
             },
             '& .MuiInputBase-root': {
               borderRadius: '10px !important',
+              backgroundColor,
             },
             '& label': {
               lineHeight: '1.1375em',

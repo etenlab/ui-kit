@@ -289,6 +289,9 @@ declare module '@mui/material/styles' {
     'turquoise-dark': string;
     'turquoise-light': string;
     white: string;
+    'bg-main': string;
+    'bg-second': string;
+    'bg-light-blue': string;
   }
 }
 
