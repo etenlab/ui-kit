@@ -9,13 +9,21 @@ import { withFlexible } from './withFlexible';
 
 interface SelectControlConfig extends BasicUIConfig {
   contents: {};
-  styles: {};
+  styles: {
+    borderColor: string;
+    background: string;
+    fontFamily: string;
+  };
 }
 
 const defaultSelectControlConfig: SelectControlConfig = {
   componentName: 'SelectControl',
   contents: {},
-  styles: {},
+  styles: {
+    borderColor: '',
+    background: '',
+    fontFamily: '',
+  },
 };
 
 export type SelectControlProps = BasicFlexibleProps<SelectControlConfig> & {
@@ -52,6 +60,9 @@ export const SelectControl: FlexibleComponent<SelectControlProps> = (props) => {
         if (onChange) onChange(e.target.value as string);
       }}
       MenuProps={MenuProps}
+      borderColor={uiConfig.styles.borderColor}
+      backgroundColor={uiConfig.styles.background}
+      fontFamily={uiConfig.styles.fontFamily}
     >
       <MenuItem value={label} disabled>
         {label}
@@ -71,26 +82,30 @@ export const FlexibleSelectControl = withFlexible<
   SelectControlProps
 >(SelectControl, defaultSelectControlConfig);
 
-const StyledSelect = styled(Select)(({ theme }) => ({
+const StyledSelect = styled(Select)<{
+  borderColor: string;
+  fontFamily: string;
+  backgroundColor: string;
+}>(({ theme, borderColor, fontFamily, backgroundColor }) => ({
   width: '100%',
   height: '100%',
   '& .MuiOutlinedInput-input': {
-    backgroundColor: theme.palette.text.white,
+    backgroundColor: backgroundColor ?? theme.palette.text.white,
   },
   '& .MuiSelect-select.Mui-focusVisible': {
-    borderColor: theme.palette.background['turquoise-light'],
+    borderColor: borderColor ?? theme.palette.background['turquoise-light'],
   },
   '& .MuiOutlinedInput-notchedOutline': {
     borderRadius: '0px',
   },
   '& .MuiSelect-select': {
     fontWeight: 500,
-    fontFamily: 'helvetica',
+    fontFamily: fontFamily ?? 'helvetica',
   },
   '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-    borderColor: theme.palette.background['turquoise-light'],
+    borderColor: borderColor ?? theme.palette.background['turquoise-light'],
   },
   '&.Mui-focusVisible .MuiOutlinedInput-notchedOutline': {
-    borderColor: theme.palette.background['turquoise-light'],
+    borderColor: borderColor ?? theme.palette.background['turquoise-light'],
   },
 }));

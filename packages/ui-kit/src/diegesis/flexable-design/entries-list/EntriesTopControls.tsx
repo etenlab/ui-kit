@@ -200,7 +200,7 @@ export const FlexibleEntriesTopControls = withFlexible<
 >(EntriesTopControls, defaultEntriesTopControlsConfig);
 
 //#region styled components
-const StyledDeviceSpecific = styled<any>(Box)(
+const StyledDeviceSpecific = styled(Box)<{ showOnSmallDevice: boolean }>(
   ({ theme, showOnSmallDevice }) => ({
     display: showOnSmallDevice ? 'none' : 'inherit',
     [theme.breakpoints.down('sm')]: {
@@ -209,16 +209,18 @@ const StyledDeviceSpecific = styled<any>(Box)(
     },
   }),
 );
-const StyledTabContent = styled<any>(Stack)(({ theme, show }) => ({
-  display: show ? 'flex' : 'none',
-  transition: 'all 0.2s ease-in',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  justifyContent: 'center',
-  backgroundColor: theme.palette.background['light-gray'],
-  padding: '20px 25px',
-  width: '100%',
-}));
+const StyledTabContent = styled(Stack)<{ show: boolean }>(
+  ({ theme, show }) => ({
+    display: show ? 'flex' : 'none',
+    transition: 'all 0.2s ease-in',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    backgroundColor: theme.palette.background['light-gray'],
+    padding: '20px 25px',
+    width: '100%',
+  }),
+);
 const StyledChip = styled(Chip)(({ theme }) => ({
   backgroundColor: theme.palette.background['white'],
   borderRadius: '5px',

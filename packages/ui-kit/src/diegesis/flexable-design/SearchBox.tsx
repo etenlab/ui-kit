@@ -110,24 +110,26 @@ const SearchBoxWrapper = styled(Stack)(({ theme }) => ({
     width: '100%',
   },
 }));
-const StyledTextField = styled<any>(TextField)(({ theme, borderColor }) => ({
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: borderColor ?? theme.palette.background['turquoise-light'],
-      borderRadius: '0px',
+const StyledTextField = styled(TextField)<{ borderColor: string }>(
+  ({ theme, borderColor }) => ({
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: borderColor ?? theme.palette.background['turquoise-light'],
+        borderRadius: '0px',
+      },
+      '& input': {
+        fontSize: '20px',
+        paddingLeft: '0px',
+      },
+      '&:hover fieldset': {
+        borderColor: borderColor ?? theme.palette.background['turquoise-light'],
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: borderColor ?? theme.palette.background['turquoise-light'],
+      },
     },
-    '& input': {
-      fontSize: '20px',
-      paddingLeft: '0px',
-    },
-    '&:hover fieldset': {
-      borderColor: borderColor ?? theme.palette.background['turquoise-light'],
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: borderColor ?? theme.palette.background['turquoise-light'],
-    },
-  },
-}));
+  }),
+);
 const StyledSearchButton = styled(Button)(({ theme }) => ({
   ':hover': {
     boxShadow: 'none',

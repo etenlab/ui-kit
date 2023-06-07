@@ -190,7 +190,10 @@ export const FlexibleSideNav = withFlexible<SideNavConfig, SideNavProps>(
 );
 
 //#region styled components
-const SideNavWrapper = styled<any>(Stack)(({ theme, open, background }) => ({
+const SideNavWrapper = styled(Stack)<{
+  open: boolean;
+  background: string;
+}>(({ theme, open, background }) => ({
   flexDirection: 'column',
   alignItems: 'start',
   background: background ?? theme.palette.background['light-gray2'],
