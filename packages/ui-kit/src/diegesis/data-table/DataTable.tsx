@@ -65,9 +65,10 @@ interface TableHeaderProps {
   order: Order;
   orderBy: string;
   headCells: HeadCell[];
+  primaryColor?: string;
 }
 function TableHeaderWrapper(props: TableHeaderProps) {
-  const { order, orderBy, onRequestSort, headCells } = props;
+  const { order, orderBy, onRequestSort, headCells, primaryColor } = props;
   const createSortHandler =
     (property: string) => (event: React.MouseEvent<unknown>) => {
       onRequestSort(event, property);
@@ -76,7 +77,9 @@ function TableHeaderWrapper(props: TableHeaderProps) {
   return (
     <TableHead
       sx={(theme) => ({
-        borderBottom: `3px solid ${theme.palette.background['turquoise-light']}`,
+        borderBottom: `3px solid ${
+          primaryColor ?? theme.palette.background['turquoise-light']
+        }`,
       })}
     >
       <TableRow>
@@ -92,6 +95,7 @@ function TableHeaderWrapper(props: TableHeaderProps) {
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
               onClick={createSortHandler(headCell.id)}
+              primaryColor={primaryColor}
             >
               {headCell.label}
               {orderBy === headCell.id ? (
@@ -112,12 +116,14 @@ interface TableRowProps {
   headCells: HeadCell[];
   row: Record<string, any>;
   expandableRowOnMobile?: boolean;
+  primaryColor?: string;
 }
 function TableRowWrapper({
   rowKey,
   headCells,
   row,
   expandableRowOnMobile,
+  primaryColor,
 }: TableRowProps) {
   const [showDetails, setShowDetails] = React.useState(false);
   return (
@@ -126,7 +132,9 @@ function TableRowWrapper({
         sx={(theme) => ({
           '.MuiTableCell-root': showDetails
             ? {
-                borderTop: `4px solid ${theme.palette.background['turquoise-light']}`,
+                borderTop: `4px solid ${
+                  primaryColor ?? theme.palette.background['turquoise-light']
+                }`,
                 borderBottom: `1px solid ${theme.palette.background['light-gray2']}`,
               }
             : {},
@@ -166,7 +174,9 @@ function TableRowWrapper({
           sx={(theme) => ({
             '.MuiTableCell-root': showDetails
               ? {
-                  borderBottom: `4px solid ${theme.palette.background['turquoise-light']}`,
+                  borderBottom: `4px solid ${
+                    primaryColor ?? theme.palette.background['turquoise-light']
+                  }`,
                 }
               : { borderBottom: 'none' },
             '.MuiTypography-caption': showDetails
@@ -226,6 +236,7 @@ interface IDataTableProps {
   className?: string;
   defaultSortCellId?: string;
   expandableRowOnMobile?: boolean;
+  primaryColor?: string;
 }
 export default function DataTable(props: IDataTableProps) {
   const {
@@ -233,6 +244,7 @@ export default function DataTable(props: IDataTableProps) {
     rows = [],
     defaultSortCellId,
     expandableRowOnMobile,
+    primaryColor,
   } = props;
   const [order, setOrder] = React.useState<Order>('asc');
   const [orderBy, setOrderBy] = React.useState<string>(defaultSortCellId || '');
@@ -269,6 +281,7 @@ export default function DataTable(props: IDataTableProps) {
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
               headCells={headCells}
+              primaryColor={primaryColor}
             />
             <TableBody>
               {stableSort(rows, getComparator(order, orderBy)).map(
@@ -279,6 +292,7 @@ export default function DataTable(props: IDataTableProps) {
                     rowKey={rowIdx}
                     headCells={headCells}
                     row={row}
+                    primaryColor={primaryColor}
                   />
                 ),
               )}
@@ -293,6 +307,7 @@ export default function DataTable(props: IDataTableProps) {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
+          primaryColor={props.primaryColor}
         />
       </Paper>
     </Box>
@@ -300,31 +315,36 @@ export default function DataTable(props: IDataTableProps) {
 }
 
 //#region styled components
-const StyledTableSortLabel = styled(TableSortLabel)(({ theme }) => ({
-  fontSize: '0.9rem',
-  color: theme.palette.text['middle-gray'],
-  fontWeight: 400,
-  lineHeight: '0.9rem',
-  fontFamily: 'helvetica',
-  '&.Mui-active': {
+const StyledTableSortLabel = styled(TableSortLabel)<{ primaryColor?: string }>(
+  ({ theme, primaryColor }) => ({
+    fontSize: '0.9rem',
     color: theme.palette.text['middle-gray'],
-    '.MuiTableSortLabel-icon': {
-      color: theme.palette.text['turquoise-light'],
+    fontWeight: 400,
+    lineHeight: '0.9rem',
+    fontFamily: 'helvetica',
+    '&.Mui-active': {
+      color: theme.palette.text['middle-gray'],
+      '.MuiTableSortLabel-icon': {
+        color: primaryColor ?? theme.palette.text['turquoise-light'],
+      },
     },
-  },
-  ':focus': {
-    color: theme.palette.text['middle-gray'],
-  },
-  '.MuiTableSortLabel-icon': {
-    color: theme.palette.text['turquoise-light'],
-  },
-}));
-const StyledTablePagination = styled<any>(TablePagination)(({ theme }) => ({
+    ':focus': {
+      color: theme.palette.text['middle-gray'],
+    },
+    '.MuiTableSortLabel-icon': {
+      color: primaryColor ?? theme.palette.text['turquoise-light'],
+    },
+  }),
+);
+const StyledTablePagination = styled(TablePagination)<{
+  component: string;
+  primaryColor?: string;
+}>(({ theme, primaryColor }) => ({
   marginTop: '0.5rem',
   '.MuiTablePagination-actions': {
     '.MuiIconButton-root': {
       padding: '0px',
-      color: theme.palette.text['turquoise-light'],
+      color: primaryColor ?? theme.palette.text['turquoise-light'],
     },
     '.MuiIconButton-root.Mui-disabled': {
       color: theme.palette.text['light-gray2'],

@@ -2,11 +2,33 @@ import React from 'react';
 import DataTable, { HeadCell } from '../../data-table/DataTable';
 import { Button, Typography } from '@mui/material';
 import { BsChevronRight } from 'react-icons/bs';
+import {
+  BasicFlexibleProps,
+  BasicUIConfig,
+  FlexibleComponent,
+} from '../UIConfigProvider';
+import { withFlexible } from '../withFlexible';
 
-export type EntriesDataTableProps = {
-  cellsConfig?: HeadCell[];
-  entries?: EntriesData[];
+interface EntriesDataTableConfig extends BasicUIConfig {
+  contents: {};
+  styles: {
+    primaryColor: '';
+  };
+}
+
+const defaultEntriesDataTableConfig: EntriesDataTableConfig = {
+  componentName: 'EntriesDataTable',
+  contents: {},
+  styles: {
+    primaryColor: '',
+  },
 };
+
+export type EntriesDataTableProps =
+  BasicFlexibleProps<EntriesDataTableConfig> & {
+    cellsConfig?: HeadCell[];
+    entries?: EntriesData[];
+  };
 
 export type EntriesData = {
   sort: string;
@@ -152,12 +174,22 @@ export const MOCK_ENTRIES_DATA_TABLE_PROPS: Partial<EntriesDataTableProps> = {
   entries: MOCK_ENTRIES_TBL_DATA,
 };
 
-export function EntriesDataTable(props: EntriesDataTableProps) {
+export const EntriesDataTable: FlexibleComponent<EntriesDataTableProps> = (
+  props,
+) => {
+  const { uiConfig = defaultEntriesDataTableConfig } = props;
   return (
     <DataTable
       expandableRowOnMobile={true}
       headCells={props.cellsConfig || []}
       rows={props.entries || []}
+      primaryColor={uiConfig.styles.primaryColor}
     />
   );
-}
+};
+EntriesDataTable.componentName = defaultEntriesDataTableConfig.componentName;
+
+export const FlexibleEntriesDataTable = withFlexible<
+  EntriesDataTableConfig,
+  EntriesDataTableProps
+>(EntriesDataTable, defaultEntriesDataTableConfig);

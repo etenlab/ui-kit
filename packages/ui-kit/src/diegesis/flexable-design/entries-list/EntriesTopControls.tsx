@@ -134,7 +134,7 @@ export const EntriesTopControls: FlexibleComponent<EntriesTopControlsProps> = (
         </PageTitleTypo>
         <StyledDeviceSpecific showOnSmallDevice={false}>
           <FlexibleSearchBox
-            id="entries-top-controls-search-box"
+            id="search-box"
             parentPath={uiConfig.configPath!}
             {...props.searchBoxProps}
           />
@@ -177,7 +177,7 @@ export const EntriesTopControls: FlexibleComponent<EntriesTopControlsProps> = (
         >
           {props.selectControls?.map((control, idx) => (
             <FlexibleSelectControl
-              id={`entries-top-controls-select-${idx}`}
+              id={`select-control-${idx}`}
               parentPath={uiConfig.configPath!}
               key={idx}
               label={control.label}
@@ -223,7 +223,7 @@ export const EntriesTopControls: FlexibleComponent<EntriesTopControlsProps> = (
       </StyledTabContent>
       <StyledDeviceSpecific showOnSmallDevice={true}>
         <FlexibleSearchBox
-          id="entries-top-controls-search-box"
+          id="mobile-search-box"
           parentPath={uiConfig.configPath!}
           {...props.searchBoxProps}
         />
