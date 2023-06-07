@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.71
+
+### Patch Changes
+
+- [#110](https://github.com/etenlab/ui-kit/pull/110) [`409758a`](https://github.com/etenlab/ui-kit/commit/409758a45b6330f3d481c7499430ff65c05bdafa) Thanks [@takeshi-su57](https://github.com/takeshi-su57)! - Minior change
+
 ## 0.5.70
 
 ### Patch Changes
