@@ -1,8 +1,6 @@
 import { Box, Chip, Stack, Typography, styled } from '@mui/material';
 import React, { useState } from 'react';
-import { SearchBox, SearchBoxProps } from '../../SearchBox';
 import { CustomTab, CustomTabs } from '../../Tab';
-import { SelectControl, SelectControlProps } from '../../SelectControl';
 import { PageTitleTypo } from '../../styleds/PageTitleTypo';
 import {
   BasicFlexibleProps,
@@ -10,6 +8,8 @@ import {
   FlexibleComponent,
 } from '../UIConfigProvider';
 import { withFlexible } from '../withFlexible';
+import { FlexibleSearchBox, SearchBoxProps } from '../SearchBox';
+import { FlexibleSelectControl, SelectControlProps } from '../SelectControl';
 
 export type TagConfigProps = {
   label?: string;
@@ -68,6 +68,8 @@ export type EntriesTopControlsProps =
 export const MOCK_ENTRIES_TOP_CONTROLS_PROPS: Partial<EntriesTopControlsProps> =
   {
     searchBoxProps: {
+      id: 'entries-top-controls-search-box',
+      parentPath: '/',
       placeholder: 'Bible in Basic English',
     },
     tagConfig: {
@@ -77,10 +79,38 @@ export const MOCK_ENTRIES_TOP_CONTROLS_PROPS: Partial<EntriesTopControlsProps> =
       onTagSelect(_idx: number) {},
     },
     selectControls: [
-      { label: 'Organisations', onChange(_value) {}, options: [], value: '' },
-      { label: 'Owner', onChange(_value) {}, options: [], value: '' },
-      { label: 'Type', onChange(_value) {}, options: [], value: '' },
-      { label: 'Language', onChange(_value) {}, options: [], value: '' },
+      {
+        label: 'Organisations',
+        onChange(_value) {},
+        options: [],
+        value: '',
+        id: 'entries-top-controls-select-0',
+        parentPath: '/',
+      },
+      {
+        label: 'Owner',
+        onChange(_value) {},
+        options: [],
+        value: '',
+        id: 'entries-top-controls-select-1',
+        parentPath: '/',
+      },
+      {
+        label: 'Type',
+        onChange(_value) {},
+        options: [],
+        value: '',
+        id: 'entries-top-controls-select-2',
+        parentPath: '/',
+      },
+      {
+        label: 'Language',
+        onChange(_value) {},
+        options: [],
+        value: '',
+        id: 'entries-top-controls-select-3',
+        parentPath: '/',
+      },
     ],
   };
 
@@ -103,7 +133,11 @@ export const EntriesTopControls: FlexibleComponent<EntriesTopControlsProps> = (
           {uiConfig.contents?.titleText}
         </PageTitleTypo>
         <StyledDeviceSpecific showOnSmallDevice={false}>
-          <SearchBox {...props.searchBoxProps} />
+          <FlexibleSearchBox
+            id="entries-top-controls-search-box"
+            parentPath={uiConfig.configPath!}
+            {...props.searchBoxProps}
+          />
         </StyledDeviceSpecific>
         <CustomTabs
           value={curTab}
@@ -142,7 +176,9 @@ export const EntriesTopControls: FlexibleComponent<EntriesTopControlsProps> = (
           })}
         >
           {props.selectControls?.map((control, idx) => (
-            <SelectControl
+            <FlexibleSelectControl
+              id={`entries-top-controls-select-${idx}`}
+              parentPath={uiConfig.configPath!}
               key={idx}
               label={control.label}
               value={control.value}
@@ -186,7 +222,11 @@ export const EntriesTopControls: FlexibleComponent<EntriesTopControlsProps> = (
         </Stack>
       </StyledTabContent>
       <StyledDeviceSpecific showOnSmallDevice={true}>
-        <SearchBox {...props.searchBoxProps} />
+        <FlexibleSearchBox
+          id="entries-top-controls-search-box"
+          parentPath={uiConfig.configPath!}
+          {...props.searchBoxProps}
+        />
       </StyledDeviceSpecific>
     </Stack>
   );
