@@ -119,6 +119,10 @@ export const colors = {
     light: designColors['white'],
     dark: designColors['dark/bg'],
   },
+  'bg-input': {
+    light: 'inherit',
+    dark: designColors['dark/bg2'],
+  },
   'bg-second': {
     light: designColors['disable'],
     dark: designColors['dark/bg2'],
@@ -234,6 +238,7 @@ export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
         'turquoise-light': colors['turquoise-light'][mode],
         'turquoise-dark': colors['turquoise-dark'][mode],
         'bg-main': colors['bg-main'][mode],
+        'bg-input': colors['bg-input'][mode],
         'bg-second': colors['bg-second'][mode],
         'bg-light-blue': colors['bg-light-blue'][mode],
         white: colors.white[mode],

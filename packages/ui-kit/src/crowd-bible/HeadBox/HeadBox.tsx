@@ -148,7 +148,7 @@ export function HeadBox({
       sx={{
         padding: '20px',
         gap: '12px',
-        border: `1px solid ${getColor('border-light-blue')}`,
+        borderBottom: `1px solid ${getColor('border-light-blue')}`,
         background: getColor('bg-light-blue'),
       }}
     >
