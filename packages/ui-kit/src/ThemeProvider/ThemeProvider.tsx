@@ -77,7 +77,7 @@ export function ThemeProvider({
         setMode(colorMode);
       },
       getColor: (lightModeColor: string, darkModeColor?: string) => {
-        if (mode === 'light') {
+        if (mode === 'light' && darkModeColor) {
           if (designColors[lightModeColor as keyof typeof designColors]) {
             return designColors[lightModeColor as keyof typeof designColors];
           } else {
@@ -299,6 +299,7 @@ declare module '@mui/material/styles' {
     'turquoise-light': string;
     white: string;
     'bg-main': string;
+    'bg-input': string;
     'bg-second': string;
     'bg-light-blue': string;
   }

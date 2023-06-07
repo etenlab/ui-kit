@@ -8,7 +8,7 @@ export const components: ThemeOptions = {
           const color = ownerState.color as keyof typeof theme.palette;
           const mainColor = (theme.palette[color] as PaletteColor).main;
           const redColor = (theme.palette.red as PaletteColor).main;
-          const backgroundColor = (theme.palette.background['bg-second']);
+          const backgroundColor = theme.palette.background['bg-input'];
 
           return {
             '& .MuiFormHelperText-root': {
