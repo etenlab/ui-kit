@@ -12,7 +12,7 @@ import { withFlexible } from '../withFlexible';
 interface EntriesDataTableConfig extends BasicUIConfig {
   contents: {};
   styles: {
-    primaryColor: '';
+    primaryColor: string;
   };
 }
 
@@ -20,7 +20,7 @@ const defaultEntriesDataTableConfig: EntriesDataTableConfig = {
   componentName: 'EntriesDataTable',
   contents: {},
   styles: {
-    primaryColor: '',
+    primaryColor: '#60D0B2',
   },
 };
 
