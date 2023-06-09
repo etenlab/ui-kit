@@ -1,7 +1,7 @@
-export type ActionType<T> = {
-  type: string;
-  payload: T;
-};
+// export type ActionType<T> = {
+//   type: string;
+//   payload: T;
+// };
 
 export interface IUser {
   user_id: number;
@@ -51,11 +51,9 @@ export interface IPost {
       username: string;
     };
     plain_text: string;
-    files: [
-      {
-        id: number;
-      },
-    ];
+    files: {
+      id: number;
+    }[];
   };
   created_at: Date;
 }

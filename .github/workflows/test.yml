@@ -1,0 +1,38 @@
+name: Unit Test
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: ['16.x']
+
+    name: Test on node ${{ matrix.node }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          cache: yarn
+          node-version: 16
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Install deps, build, and test
+        run: |
+          node --version
+          npm --version
+          yarn --version
+          yarn install --frozen-lockfile
+          yarn test --coverage
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

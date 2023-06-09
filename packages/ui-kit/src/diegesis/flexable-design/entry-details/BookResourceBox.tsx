@@ -39,7 +39,7 @@ export const BookResourceBox: FlexibleComponent<BookResourceBoxProps> = ({
         label={selectControl.label}
         value={selectControl.value}
         options={selectControl.options || []}
-        onChange={selectControl.onChange!}
+        onChange={selectControl.onChange}
       />
     </StyledBookResourceBox>
   );

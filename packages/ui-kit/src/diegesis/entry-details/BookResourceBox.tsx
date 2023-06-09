@@ -19,7 +19,7 @@ export const BookResourceBox: FC<BookResourceBoxProps> = (props) => {
         label={props.selectControl.label}
         value={props.selectControl.value}
         options={props.selectControl.options || []}
-        onChange={props.selectControl.onChange!}
+        onChange={props.selectControl.onChange}
       />
     </StyledBookResourceBox>
   );

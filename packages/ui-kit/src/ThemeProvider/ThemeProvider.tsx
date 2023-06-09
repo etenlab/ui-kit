@@ -18,7 +18,8 @@ import '@fontsource/noto-serif-display';
 
 import { deepmerge } from '@mui/utils';
 import { getThemeOptions } from './themeOptions';
-import { colors } from './palette';
+import { designColors, colors } from './palette';
+import { logger } from '../logger';
 
 export const mode =
   window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -27,10 +28,10 @@ export const mode =
 
 const ColorModeContext = createContext({
   setColorMode: (colorMode: 'light' | 'dark') => {
-    console.log(colorMode);
+    logger.info(colorMode);
   },
-  getColor: (color: string) => {
-    return color;
+  getColor: (lightModeColor: string, _darkModeColor?: string) => {
+    return lightModeColor;
   },
 });
 
@@ -75,8 +76,30 @@ export function ThemeProvider({
       setColorMode: (colorMode: 'light' | 'dark') => {
         setMode(colorMode);
       },
-      getColor: (colorName: string) => {
-        return colors[colorName as keyof typeof colors][mode];
+      getColor: (lightModeColor: string, darkModeColor?: string) => {
+        if (mode === 'light' && darkModeColor) {
+          if (designColors[lightModeColor as keyof typeof designColors]) {
+            return designColors[lightModeColor as keyof typeof designColors];
+          } else {
+            return lightModeColor;
+          }
+        }
+
+        if (mode === 'dark' && darkModeColor) {
+          if (designColors[darkModeColor as keyof typeof designColors]) {
+            return designColors[darkModeColor as keyof typeof designColors];
+          } else {
+            return darkModeColor;
+          }
+        }
+
+        if (colors[lightModeColor as keyof typeof colors]) {
+          return colors[lightModeColor as keyof typeof colors][mode];
+        } else if (designColors[lightModeColor as keyof typeof designColors]) {
+          return designColors[lightModeColor as keyof typeof designColors];
+        } else {
+          return lightModeColor;
+        }
       },
     }),
     [mode],
@@ -275,6 +298,10 @@ declare module '@mui/material/styles' {
     'turquoise-dark': string;
     'turquoise-light': string;
     white: string;
+    'bg-main': string;
+    'bg-input': string;
+    'bg-second': string;
+    'bg-light-blue': string;
   }
 }
 

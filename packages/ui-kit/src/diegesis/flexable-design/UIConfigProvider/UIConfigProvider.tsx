@@ -321,23 +321,23 @@ export const UIConfigContextProvider: FC<UIConfigContextProviderProps> & {
         const componentName = requestedState.componentName;
 
         for (let i = pathStates.length - 1; i >= 0; i--) {
-          if (!pathStates[i]['uiConfigs']) {
+          if (!pathStates[i].uiConfigs) {
             continue;
           }
 
-          if (!pathStates[i]['uiConfigs']![componentName]) {
+          if (!pathStates[i].uiConfigs![componentName]) {
             continue;
           }
 
           requestedState = leftJoinUIConfig(
             requestedState,
-            pathStates[i]['uiConfigs']![componentName],
+            pathStates[i].uiConfigs![componentName],
           );
         }
 
         return requestedState as T;
       } catch (err) {
-        // console.log(err);
+        console.log(err);
 
         return null;
       }
@@ -371,7 +371,7 @@ export const UIConfigContextProvider: FC<UIConfigContextProviderProps> & {
           addPath({ key: comName, type: 'uiConfigs' }, buildPath(pathItems)),
         );
       } catch (err) {
-        // console.log(err);
+        console.log(err);
 
         return null;
       }

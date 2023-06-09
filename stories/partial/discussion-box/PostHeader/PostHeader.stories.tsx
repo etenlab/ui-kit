@@ -6,6 +6,7 @@ import {
   BiPencil,
   BiShare,
   BiTrashAlt,
+  logger,
 } from '../../../../packages/ui-kit/src';
 import { Popover } from '@mui/material';
 import {
@@ -93,7 +94,7 @@ Primary.args = {
   username: 'Hiroshi Tanaka',
   avatar: '/images.jpg',
   date: new Date(),
-  openActionList: () => console.log('Clicked'),
+  openActionList: () => logger.info('Clicked'),
 };
 Primary.parameters = {
   docs: {
