@@ -3,7 +3,7 @@ import React from 'react';
 import { FlexibleTopControls, EntryDetailTopControlProps } from './TopControls';
 import { HeadCell } from '../../data-table/DataTable';
 import { FlexiblePageLayout } from '../PageLayout';
-import InfoGrid, { CellData } from './InfoGrid';
+import { CellData, FlexibleInfoGrid } from './InfoGrid';
 import { FlexibleSectionDivider } from './SectionDivider';
 import { FlexibleBookResourceBox } from './BookResourceBox';
 import { FlexibleBottomActionButtons } from './BottomActionBtns';
@@ -57,7 +57,12 @@ export const EntryDetailPage: FlexibleComponent<EntryDetailPageProps> = (
           id="section-divider1"
           parentPath={uiConfig.configPath!}
         />
-        <InfoGrid tblCells={props.tblCells} tblData={props.tblData} />
+        <FlexibleInfoGrid
+          id="info-grid"
+          parentPath={uiConfig.configPath!}
+          tblCells={props.tblCells}
+          tblData={props.tblData}
+        />
         {props.bookResource?.selectControl ? (
           <FlexibleBookResourceBox
             {...props.bookResource}
@@ -80,7 +85,7 @@ export const EntryDetailPage: FlexibleComponent<EntryDetailPageProps> = (
         />
         <FlexibleBackButton
           {...props.backBtnProps}
-          id="back-button"
+          id="bottom-back-button"
           parentPath={uiConfig.configPath!}
         />
       </StyledDetailSection>

@@ -1,8 +1,6 @@
 import { Box, Chip, Stack, Typography, styled } from '@mui/material';
 import React, { useState } from 'react';
-import { SearchBox, SearchBoxProps } from '../../SearchBox';
 import { CustomTab, CustomTabs } from '../../Tab';
-import { SelectControl, SelectControlProps } from '../../SelectControl';
 import { PageTitleTypo } from '../../styleds/PageTitleTypo';
 import {
   BasicFlexibleProps,
@@ -10,6 +8,8 @@ import {
   FlexibleComponent,
 } from '../UIConfigProvider';
 import { withFlexible } from '../withFlexible';
+import { FlexibleSearchBox, SearchBoxProps } from '../SearchBox';
+import { FlexibleSelectControl, SelectControlProps } from '../SelectControl';
 
 export type TagConfigProps = {
   label?: string;
@@ -24,7 +24,19 @@ export type EntriesTopControlsConfig = BasicUIConfig & {
     tagFilterLabel?: string;
     searchPlaceholder?: string;
   };
-  styles: {};
+  styles: {
+    titleColor: string;
+    titleFontFamily: string;
+    filterTabTextDecorationColor: string;
+    filterTabActiveBackgroundColor: string;
+    filterTabActiveTextColor: string;
+    filterTabTextColor: string;
+    tagFilterLabelColor: string;
+    tagColor: string;
+    tagBackgroundColor: string;
+    tagActiveColor: string;
+    tagActiveBackgroundColor: string;
+  };
 };
 export const defaultEntriesTopControlsConfig: EntriesTopControlsConfig = {
   componentName: 'EntriesTopControls',
@@ -33,7 +45,19 @@ export const defaultEntriesTopControlsConfig: EntriesTopControlsConfig = {
     filterTabLabel: 'Advanced search with filters',
     tagFilterLabel: 'Tag:',
   },
-  styles: {},
+  styles: {
+    titleColor: '#31373A',
+    titleFontFamily: 'Noto Serif Display',
+    filterTabTextDecorationColor: '#60D0B2',
+    filterTabActiveBackgroundColor: '#F0F0E7',
+    filterTabActiveTextColor: '#1B1B1B',
+    filterTabTextColor: '#1B1B1B',
+    tagFilterLabelColor: '#5C6673',
+    tagColor: '#1B1B1B',
+    tagBackgroundColor: '#FFFFFF',
+    tagActiveColor: '#1B1B1B',
+    tagActiveBackgroundColor: '#60D0B2',
+  },
 };
 export type EntriesTopControlsProps =
   BasicFlexibleProps<EntriesTopControlsConfig> & {
@@ -44,6 +68,8 @@ export type EntriesTopControlsProps =
 export const MOCK_ENTRIES_TOP_CONTROLS_PROPS: Partial<EntriesTopControlsProps> =
   {
     searchBoxProps: {
+      id: 'entries-top-controls-search-box',
+      parentPath: '/',
       placeholder: 'Bible in Basic English',
     },
     tagConfig: {
@@ -53,10 +79,38 @@ export const MOCK_ENTRIES_TOP_CONTROLS_PROPS: Partial<EntriesTopControlsProps> =
       onTagSelect(_idx: number) {},
     },
     selectControls: [
-      { label: 'Organisations', onChange(_value) {}, options: [], value: '' },
-      { label: 'Owner', onChange(_value) {}, options: [], value: '' },
-      { label: 'Type', onChange(_value) {}, options: [], value: '' },
-      { label: 'Language', onChange(_value) {}, options: [], value: '' },
+      {
+        label: 'Organisations',
+        onChange(_value) {},
+        options: [],
+        value: '',
+        id: 'entries-top-controls-select-0',
+        parentPath: '/',
+      },
+      {
+        label: 'Owner',
+        onChange(_value) {},
+        options: [],
+        value: '',
+        id: 'entries-top-controls-select-1',
+        parentPath: '/',
+      },
+      {
+        label: 'Type',
+        onChange(_value) {},
+        options: [],
+        value: '',
+        id: 'entries-top-controls-select-2',
+        parentPath: '/',
+      },
+      {
+        label: 'Language',
+        onChange(_value) {},
+        options: [],
+        value: '',
+        id: 'entries-top-controls-select-3',
+        parentPath: '/',
+      },
     ],
   };
 
@@ -68,11 +122,22 @@ export const EntriesTopControls: FlexibleComponent<EntriesTopControlsProps> = (
   return (
     <Stack direction={'column'} alignItems={'flex-start'}>
       <Stack direction={'row'} alignItems={'center'} width={'100%'}>
-        <PageTitleTypo variant={'h1'} marginRight={'1rem'}>
+        <PageTitleTypo
+          variant={'h1'}
+          marginRight={'1rem'}
+          sx={{
+            color: uiConfig.styles.titleColor,
+            fontFamily: uiConfig.styles.titleFontFamily,
+          }}
+        >
           {uiConfig.contents?.titleText}
         </PageTitleTypo>
         <StyledDeviceSpecific showOnSmallDevice={false}>
-          <SearchBox {...props.searchBoxProps} />
+          <FlexibleSearchBox
+            id="search-box"
+            parentPath={uiConfig.configPath!}
+            {...props.searchBoxProps}
+          />
         </StyledDeviceSpecific>
         <CustomTabs
           value={curTab}
@@ -82,11 +147,22 @@ export const EntriesTopControls: FlexibleComponent<EntriesTopControlsProps> = (
         >
           <CustomTab
             value={1}
-            label={uiConfig.contents?.filterTabLabel || ''}
+            label={uiConfig.contents.filterTabLabel!}
+            sx={{
+              textDecorationColor: uiConfig.styles.filterTabTextDecorationColor,
+              color: uiConfig.styles.filterTabTextColor,
+              '&.Mui-selected': {
+                backgroundColor: uiConfig.styles.filterTabActiveBackgroundColor,
+                color: uiConfig.styles.filterTabActiveTextColor,
+              },
+            }}
           />
         </CustomTabs>
       </Stack>
-      <StyledTabContent show={curTab === 1 ? true : false}>
+      <StyledTabContent
+        show={curTab === 1 ? true : false}
+        sx={{ background: uiConfig.styles.filterTabActiveBackgroundColor }}
+      >
         <Stack
           flexDirection="row"
           alignItems={'center'}
@@ -100,7 +176,9 @@ export const EntriesTopControls: FlexibleComponent<EntriesTopControlsProps> = (
           })}
         >
           {props.selectControls?.map((control, idx) => (
-            <SelectControl
+            <FlexibleSelectControl
+              id={`select-control-${idx}`}
+              parentPath={uiConfig.configPath!}
               key={idx}
               label={control.label}
               value={control.value}
@@ -117,7 +195,7 @@ export const EntriesTopControls: FlexibleComponent<EntriesTopControlsProps> = (
         >
           <Typography
             variant={'caption'}
-            color={'text.gray'}
+            color={uiConfig.styles.tagFilterLabelColor}
             marginRight={'0.8rem'}
             marginTop={'0.5rem'}
           >
@@ -127,10 +205,13 @@ export const EntriesTopControls: FlexibleComponent<EntriesTopControlsProps> = (
             <StyledChip
               key={idx}
               label={tag}
-              sx={(theme) => ({
+              sx={() => ({
+                color: props.tagConfig?.selectedTags?.includes(tag)
+                  ? uiConfig.styles.tagActiveColor
+                  : uiConfig.styles.tagColor,
                 backgroundColor: props.tagConfig?.selectedTags?.includes(tag)
-                  ? theme.palette.background['turquoise-light']
-                  : theme.palette.background.white,
+                  ? uiConfig.styles.tagActiveBackgroundColor
+                  : uiConfig.styles.tagBackgroundColor,
               })}
               onClick={() => {
                 if (props.tagConfig?.onTagSelect)
@@ -141,7 +222,11 @@ export const EntriesTopControls: FlexibleComponent<EntriesTopControlsProps> = (
         </Stack>
       </StyledTabContent>
       <StyledDeviceSpecific showOnSmallDevice={true}>
-        <SearchBox {...props.searchBoxProps} />
+        <FlexibleSearchBox
+          id="mobile-search-box"
+          parentPath={uiConfig.configPath!}
+          {...props.searchBoxProps}
+        />
       </StyledDeviceSpecific>
     </Stack>
   );
@@ -155,7 +240,7 @@ export const FlexibleEntriesTopControls = withFlexible<
 >(EntriesTopControls, defaultEntriesTopControlsConfig);
 
 //#region styled components
-const StyledDeviceSpecific = styled<any>(Box)(
+const StyledDeviceSpecific = styled(Box)<{ showOnSmallDevice: boolean }>(
   ({ theme, showOnSmallDevice }) => ({
     display: showOnSmallDevice ? 'none' : 'inherit',
     [theme.breakpoints.down('sm')]: {
@@ -164,16 +249,18 @@ const StyledDeviceSpecific = styled<any>(Box)(
     },
   }),
 );
-const StyledTabContent = styled<any>(Stack)(({ theme, show }) => ({
-  display: show ? 'flex' : 'none',
-  transition: 'all 0.2s ease-in',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  justifyContent: 'center',
-  backgroundColor: theme.palette.background['light-gray'],
-  padding: '20px 25px',
-  width: '100%',
-}));
+const StyledTabContent = styled(Stack)<{ show: boolean }>(
+  ({ theme, show }) => ({
+    display: show ? 'flex' : 'none',
+    transition: 'all 0.2s ease-in',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    backgroundColor: theme.palette.background['light-gray'],
+    padding: '20px 25px',
+    width: '100%',
+  }),
+);
 const StyledChip = styled(Chip)(({ theme }) => ({
   backgroundColor: theme.palette.background.white,
   borderRadius: '5px',

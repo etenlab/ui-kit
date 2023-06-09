@@ -43,7 +43,7 @@ export const TopControls: FlexibleComponent<EntryDetailTopControlProps> = ({
     >
       <FlexibleBackButton
         {...backBtnProps}
-        id="top-controls-back-button"
+        id="back-button"
         parentPath={uiConfig.configPath!}
       />
       <Stack
@@ -76,7 +76,7 @@ export const TopControls: FlexibleComponent<EntryDetailTopControlProps> = ({
         >
           <FlexibleActionButtons
             {...actionButtonProps}
-            id="entry-detail-top-control-action-buttons"
+            id="action-buttons"
             parentPath={uiConfig.configPath!}
           />
         </Stack>

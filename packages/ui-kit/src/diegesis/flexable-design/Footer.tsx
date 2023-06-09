@@ -16,14 +16,15 @@ import { MarkDown } from './MarkDown';
 
 interface FooterConfig extends BasicUIConfig {
   contents: {
-    // footerText?: string;
-    brandName?: string;
-    year?: string;
+    leftFooterContent?: string;
+    rightFooterContent?: string;
   };
   styles: {
     backgroundColor: string;
     containerPadding: string;
     fontFamily: string;
+    textColor: string;
+    footerHeight: string;
   };
   markdowns: {
     footerDescription: FlexibleMarkDown;
@@ -33,13 +34,18 @@ interface FooterConfig extends BasicUIConfig {
 export const defaultFootConfig: FooterConfig = {
   componentName: 'Footer',
   contents: {
-    brandName: `MVH Solutions`,
-    year: `${new Date().getFullYear()}`,
+    leftFooterContent: '',
+    rightFooterContent: '',
+    // leftFooterContent:
+    //   'Diegesis.Bible is a project by MVH Solutions that uses the Proskomma Scripture Runtime Engine.',
+    // rightFooterContent: `© MVH Solutions ${new Date().getFullYear()}`,
   },
   styles: {
     backgroundColor: '#31373A',
     containerPadding: '3rem 0px',
     fontFamily: 'Noto Serif Display',
+    textColor: '#FFFFFF',
+    footerHeight: '17rem',
   },
   markdowns: {
     footerDescription: {
@@ -70,7 +76,7 @@ export const Footer: FlexibleComponent<FooterProps> = ({
     <div
       style={{
         padding: uiConfig.styles.containerPadding,
-        height: '17rem',
+        height: uiConfig.styles.footerHeight,
         backgroundColor: uiConfig.styles.backgroundColor,
       }}
     >
@@ -92,26 +98,10 @@ export const Footer: FlexibleComponent<FooterProps> = ({
               justifyContent: 'space-between',
             }}
           >
-            <MarkDown {...uiConfig.markdowns.footerDescription} />
-            {/* <Typography
-              variant="body1"
-              sx={(theme) => ({
-                color: theme.palette.text.white,
-                fontFamily: uiConfig.styles.fontFamily,
-                fontSize: '1.1rem',
-                lineHeight: '1.5rem',
-                fontWeight: 400,
-                [theme.breakpoints.down('sm')]: {
-                  marginTop: '25px',
-                },
-              })}
-            >
-              {uiConfig.contents.footerText}
-            </Typography> */}
             <Typography
               variant="body1"
               sx={(theme) => ({
-                color: theme.palette.text.white,
+                color: uiConfig.styles.textColor,
                 fontFamily: uiConfig.styles.fontFamily,
                 fontSize: '1.1rem',
                 lineHeight: '1.5rem',
@@ -121,9 +111,25 @@ export const Footer: FlexibleComponent<FooterProps> = ({
                 },
               })}
             >
-              © {uiConfig.contents.brandName} {uiConfig.contents.year}
+              {uiConfig.contents.leftFooterContent}
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={(theme) => ({
+                color: uiConfig.styles.textColor,
+                fontFamily: uiConfig.styles.fontFamily,
+                fontSize: '1.1rem',
+                lineHeight: '1.5rem',
+                fontWeight: 400,
+                [theme.breakpoints.down('sm')]: {
+                  marginTop: '25px',
+                },
+              })}
+            >
+              {uiConfig.contents.rightFooterContent}
             </Typography>
           </Stack>
+          <MarkDown {...uiConfig.markdowns.footerDescription} />
         </Stack>
       </Container>
     </div>
