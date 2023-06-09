@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import React, { useState } from 'react';
 import { FlexibleHeader } from './Header';
-import { SideNav, SideNavProps } from '../SideNav';
+import { SideNavProps } from '../SideNav';
 import {
   BasicFlexibleProps,
   BasicUIConfig,
@@ -9,6 +9,7 @@ import {
 } from './UIConfigProvider';
 import { FlexibleFooter } from './Footer';
 import { withFlexible } from './withFlexible';
+import { FlexibleSideNav } from './SideNav';
 
 export type PageLayoutConfig = BasicUIConfig & {
   contents: {};
@@ -36,12 +37,14 @@ export const PageLayout: FlexibleComponent<PageLayoutProps> = ({
         openSideNav={() => setSideNavOpenStatus(true)}
         parentPath={uiConfig.configPath!}
       />
-      <SideNav
+      <FlexibleSideNav
+        id="page-layout-side-nav"
         {...sideNavProps}
         open={isSideNavOpen}
         close={() => {
           setSideNavOpenStatus(false);
         }}
+        parentPath={uiConfig.configPath!}
       />
       {children}
       <FlexibleFooter

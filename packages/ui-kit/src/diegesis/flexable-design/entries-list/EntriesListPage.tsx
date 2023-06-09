@@ -11,7 +11,10 @@ import {
   BasicUIConfig,
   FlexibleComponent,
 } from '../UIConfigProvider';
-import { EntriesDataTable, EntriesDataTableProps } from './EntriesDataTable';
+import {
+  EntriesDataTableProps,
+  FlexibleEntriesDataTable,
+} from './EntriesDataTable';
 import { withFlexible } from '../withFlexible';
 
 //#region types
@@ -44,12 +47,16 @@ export const EntriesListPage: FlexibleComponent<EntriesPageProps> = ({
       <StyledControlsContainer>
         <FlexibleEntriesTopControls
           {...topControlProps}
-          id="entries-list-top-controls"
+          id="top-controls"
           parentPath={uiConfig?.configPath!}
         />
       </StyledControlsContainer>
       <StyledTableContainer>
-        <EntriesDataTable {...entriesDataTable} />
+        <FlexibleEntriesDataTable
+          id="data-table"
+          parentPath={uiConfig.configPath!}
+          {...entriesDataTable}
+        />
       </StyledTableContainer>
     </>
   );
