@@ -4,7 +4,10 @@ import { UIConfigContextProvider } from './UIConfigProvider';
 import { FlexibleHome } from './Home';
 import { UIConfigControlPanel } from './UIConfigControlPanel';
 import { FlexibleEntryDetail } from './entry-details';
-import { FlexibleEntriesListPage } from './entries-list';
+import {
+  FlexibleEntriesListPage,
+  MOCK_ENTRIES_TOP_CONTROLS_PROPS,
+} from './entries-list';
 
 export function App() {
   const [open, setOpen] = useState(false);
@@ -26,7 +29,11 @@ export function App() {
         Open Setting Panel
       </Button>
       <FlexibleHome id="home-page" parentPath="/" />
-      <FlexibleEntriesListPage id="list-page" parentPath="/list" />
+      <FlexibleEntriesListPage
+        id="list-page"
+        parentPath="/list"
+        topControlProps={MOCK_ENTRIES_TOP_CONTROLS_PROPS as any}
+      />
       <FlexibleEntryDetail id="entry-detail-page" parentPath="/entry-detail" />
       <Drawer
         anchor="left"

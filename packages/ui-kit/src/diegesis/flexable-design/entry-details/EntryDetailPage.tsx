@@ -85,8 +85,8 @@ export const EntryDetailPage: FlexibleComponent<EntryDetailPageProps> = (
         />
         <FlexibleBackButton
           {...props.backBtnProps}
-          id="bottom-back-button"
           parentPath={uiConfig.configPath!}
+          id="bottom-back-button"
         />
       </StyledDetailSection>
     </>
