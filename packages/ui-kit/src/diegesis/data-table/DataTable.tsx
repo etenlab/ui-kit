@@ -53,7 +53,7 @@ function stableSort<T>(arr: T[], comparator: (a: T, b: T) => number) {
     }
     return (a[1] as number) - (b[1] as number);
   });
-  return stabilizedThis.map((el) => el[0]);
+  return stabilizedThis.map((el) => el[0] as T);
 }
 //#endregion
 
