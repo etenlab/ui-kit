@@ -43,7 +43,6 @@ export const defaultAppLogoConfig: AppLogoConfig = {
 };
 
 export interface AppLogoProps extends BasicFlexibleProps<AppLogoConfig> {
-  className?: string;
   width?: string;
   height?: string;
   variant?: 'primary' | 'light';
@@ -99,7 +98,6 @@ export const AppLogo: FlexibleComponent<AppLogoProps> = ({
       return (
         <a href={props.href || '/'} style={{ display: 'flex' }}>
           <svg
-            className={props?.className}
             width={realWidth}
             height={realHeight}
             xmlns="http://www.w3.org/2000/svg"

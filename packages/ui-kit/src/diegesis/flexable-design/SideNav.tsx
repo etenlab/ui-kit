@@ -27,6 +27,7 @@ interface SideNavConfig extends BasicUIConfig {
     closeBtnTextColor: string;
     navItemColor: string;
     activeNavItemColor: string;
+    closeIconColor: string;
   };
 }
 export const defaultSideNavConfig: SideNavConfig = {
@@ -39,6 +40,7 @@ export const defaultSideNavConfig: SideNavConfig = {
     closeBtnTextColor: '#31373A',
     navItemColor: '#1B1B1B',
     activeNavItemColor: '#60D0B2',
+    closeIconColor: '#60D0B2',
   },
 };
 export interface SideNavProps extends BasicFlexibleProps<SideNavConfig> {
@@ -90,7 +92,7 @@ export const SideNav: FlexibleComponent<SideNavProps> = (props) => {
         >
           {uiConfig.contents.closeBtnText}
         </Typography>
-        <CloseIcon />
+        <CloseIcon color={uiConfig.styles.closeIconColor} />
       </Stack>
       <Stack
         direction={'column'}
