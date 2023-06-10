@@ -80,6 +80,9 @@ export const ActionButtons: FlexibleComponent<ActionButtonProps> = ({
           width: uiConfig.styles.width,
           color: uiConfig.styles.textColor,
           backgroundColor: uiConfig.styles.backgroundColor,
+          '&:hover, &.Mui-focusVisible': {
+            backgroundColor: uiConfig.styles.hoverBackgroundColor,
+          },
         }}
         startIcon={<AiOutlineFileText />}
         variant={'contained'}
@@ -99,6 +102,9 @@ export const ActionButtons: FlexibleComponent<ActionButtonProps> = ({
           width: uiConfig.styles.width,
           color: uiConfig.styles.textColor,
           backgroundColor: uiConfig.styles.backgroundColor,
+          '&:hover, &.Mui-focusVisible': {
+            backgroundColor: uiConfig.styles.hoverBackgroundColor,
+          },
         }}
         href={downloadBtnHref}
         startIcon={<AiOutlineDownload />}

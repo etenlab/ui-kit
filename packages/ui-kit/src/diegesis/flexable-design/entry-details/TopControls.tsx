@@ -75,9 +75,9 @@ export const TopControls: FlexibleComponent<EntryDetailTopControlProps> = ({
           })}
         >
           <FlexibleActionButtons
+            {...actionButtonProps}
             id="action-buttons"
             parentPath={uiConfig.configPath!}
-            {...actionButtonProps}
           />
         </Stack>
       </Stack>
