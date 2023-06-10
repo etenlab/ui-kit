@@ -16,6 +16,14 @@ interface SelectControlConfig extends BasicUIConfig {
   };
 }
 
+export type SelectControlProps = BasicFlexibleProps<SelectControlConfig> & {
+  label?: string;
+  value?: string;
+  options: { id: string; title: string }[];
+  onChange: (value: string) => void;
+};
+
+//#region data
 const defaultSelectControlConfig: SelectControlConfig = {
   componentName: 'SelectControl',
   contents: {},
@@ -25,14 +33,20 @@ const defaultSelectControlConfig: SelectControlConfig = {
     fontFamily: '',
   },
 };
-
-export type SelectControlProps = BasicFlexibleProps<SelectControlConfig> & {
-  label?: string;
-  value?: string;
-  options: { id: string; title: string }[];
-  onChange: (value: string) => void;
+export const mockSelectControlProps: SelectControlProps = {
+  id: 'select-control',
+  parentPath: '/',
+  label: 'Select Control',
+  value: 'Option 1',
+  options: [
+    { id: '1', title: 'Option 1' },
+    { id: '2', title: 'Option 2' },
+    { id: '3', title: 'Option 3' },
+  ],
+  onChange(value) {
+    throw new Error('onChange method not implemented');
+  },
 };
-
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -43,6 +57,7 @@ const MenuProps = {
     },
   },
 };
+//#endregion
 
 export const SelectControl: FlexibleComponent<SelectControlProps> = (props) => {
   const {

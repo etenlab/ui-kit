@@ -1,6 +1,10 @@
 import { Stack } from '@mui/material';
 import React from 'react';
-import { ActionButtonProps, FlexibleActionButtons } from './ActionButtons';
+import {
+  ActionButtonProps,
+  FlexibleActionButtons,
+  mockActionButtonsProps,
+} from './ActionButtons';
 import {
   BasicFlexibleProps,
   BasicUIConfig,
@@ -22,6 +26,8 @@ export type EntryDetailTopControlProps =
     actionButtonProps?: ActionButtonProps;
     backBtnProps?: BackBtnProps;
   };
+
+//#region data
 export const defaultTopControlConfig: EntryDetailTopControlConfig = {
   componentName: 'TopControls',
   contents: {
@@ -29,6 +35,15 @@ export const defaultTopControlConfig: EntryDetailTopControlConfig = {
   },
   styles: {},
 };
+export const mockTopControlsProps: EntryDetailTopControlProps = {
+  id: 'top-controls',
+  parentPath: '/',
+  title: 'Bible in Basic English',
+  actionButtonProps: mockActionButtonsProps,
+  uiConfig: defaultTopControlConfig
+};
+//#endregion
+
 export const TopControls: FlexibleComponent<EntryDetailTopControlProps> = ({
   uiConfig = defaultTopControlConfig,
   title,

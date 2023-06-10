@@ -3,7 +3,7 @@ import { Button, Drawer } from '@mui/material';
 import { UIConfigContextProvider } from './UIConfigProvider';
 import { FlexibleHome } from './Home';
 import { UIConfigControlPanel } from './UIConfigControlPanel';
-import { FlexibleEntryDetail } from './entry-details';
+import { FlexibleEntryDetail, mockEntryDetailPageProps } from './entry-details';
 import {
   FlexibleEntriesListPage,
   MOCK_ENTRIES_TOP_CONTROLS_PROPS,
@@ -34,7 +34,11 @@ export function App() {
         parentPath="/list"
         topControlProps={MOCK_ENTRIES_TOP_CONTROLS_PROPS as any}
       />
-      <FlexibleEntryDetail id="entry-detail-page" parentPath="/entry-detail" />
+      <FlexibleEntryDetail
+        {...mockEntryDetailPageProps}
+        id="entry-detail-page"
+        parentPath="/entry-detail"
+      />
       <Drawer
         anchor="left"
         open={open}

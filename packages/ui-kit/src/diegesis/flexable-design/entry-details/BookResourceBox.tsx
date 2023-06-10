@@ -7,6 +7,7 @@ import {
 } from '../UIConfigProvider';
 import { withFlexible } from '../withFlexible';
 import { SelectControl, SelectControlProps } from '../../SelectControl';
+import { mockSelectControlProps } from '../SelectControl';
 
 export type BookResourceConfig = BasicUIConfig & {
   contents: {
@@ -14,16 +15,26 @@ export type BookResourceConfig = BasicUIConfig & {
   };
   styles: {};
 };
-const defaultBookResourceConfig: BookResourceConfig = {
-  componentName: 'BookResourceBox',
-  contents: {
-    label: '',
-  },
-  styles: {},
-};
 export type BookResourceBoxProps = BasicFlexibleProps<BookResourceConfig> & {
   selectControl: SelectControlProps;
 };
+
+//#region data
+const defaultBookResourceConfig: BookResourceConfig = {
+  componentName: 'BookResourceBox',
+  contents: {
+    label: 'Book Resources',
+  },
+  styles: {},
+};
+export const mockBookResourceBox: BookResourceBoxProps = {
+  id: 'book-resource-box',
+  parentPath: '/',
+  selectControl: mockSelectControlProps,
+  uiConfig: defaultBookResourceConfig,
+};
+//#endregion
+
 export const BookResourceBox: FlexibleComponent<BookResourceBoxProps> = ({
   uiConfig = defaultBookResourceConfig,
   selectControl,
@@ -34,7 +45,7 @@ export const BookResourceBox: FlexibleComponent<BookResourceBoxProps> = ({
       alignItems={'flex-start'}
       justifyContent={'center'}
     >
-      <Typography variant="h3">{uiConfig.contents.label}</Typography>
+      <Typography variant="h3">{uiConfig.contents?.label}</Typography>
       <SelectControl
         label={selectControl.label}
         value={selectControl.value}

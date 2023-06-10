@@ -31,6 +31,8 @@ export type ActionButtonProps = BasicFlexibleProps<ActionButtonConfig> & {
   downloadBtnHref?: string;
   viewBtnHref?: string;
 };
+
+//#region data
 export const defaultActionButtonsConfig: ActionButtonConfig = {
   componentName: 'ActionButtons',
   contents: {
@@ -49,6 +51,13 @@ export const defaultActionButtonsConfig: ActionButtonConfig = {
     hoverBackgroundColor: '#4EAA91',
   },
 };
+export const mockActionButtonsProps: ActionButtonProps = {
+  id: 'action-buttons',
+  parentPath: '/',
+  uiConfig: defaultActionButtonsConfig,
+};
+//#endregion
+
 export const ActionButtons: FlexibleComponent<ActionButtonProps> = ({
   uiConfig = defaultActionButtonsConfig,
   onViewBtnClick,

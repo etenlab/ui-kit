@@ -65,9 +65,16 @@ const defaultOptions: NavOption[] = [
   { title: 'Terms & conditions', variant: 'small', href: '/' },
   { title: 'Privacy policy', variant: 'small', href: '/' },
 ];
-export const MOCK_SIDE_NAV_PROPS: Partial<SideNavProps> = {
+export const mockSideNavProps: SideNavProps = {
+  id: 'side-nav',
+  parentPath: '/',
   options: defaultOptions,
   closeBtnText: 'Close',
+  open: false,
+  close: function (): void {
+    throw new Error('Function not implemented.');
+  },
+  uiConfig: defaultSideNavConfig,
 };
 //#endregion
 
