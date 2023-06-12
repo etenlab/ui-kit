@@ -71,9 +71,7 @@ export const mockSideNavProps: SideNavProps = {
   options: defaultOptions,
   closeBtnText: 'Close',
   open: false,
-  close: function (): void {
-    throw new Error('Function not implemented.');
-  },
+  close: function (): void {},
   uiConfig: defaultSideNavConfig,
 };
 //#endregion

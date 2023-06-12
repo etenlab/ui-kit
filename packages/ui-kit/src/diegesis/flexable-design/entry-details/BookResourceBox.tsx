@@ -6,14 +6,19 @@ import {
   FlexibleComponent,
 } from '../UIConfigProvider';
 import { withFlexible } from '../withFlexible';
-import { SelectControl, SelectControlProps } from '../../SelectControl';
-import { mockSelectControlProps } from '../SelectControl';
+import {
+  FlexibleSelectControl,
+  SelectControlProps,
+  mockSelectControlProps,
+} from '../SelectControl';
 
 export type BookResourceConfig = BasicUIConfig & {
   contents: {
     label: string;
   };
-  styles: {};
+  styles: {
+    backgroundColor: string;
+  };
 };
 export type BookResourceBoxProps = BasicFlexibleProps<BookResourceConfig> & {
   selectControl: SelectControlProps;
@@ -25,7 +30,9 @@ const defaultBookResourceConfig: BookResourceConfig = {
   contents: {
     label: 'Book Resources',
   },
-  styles: {},
+  styles: {
+    backgroundColor: '#F0F0E7',
+  },
 };
 export const mockBookResourceBox: BookResourceBoxProps = {
   id: 'book-resource-box',
@@ -35,22 +42,28 @@ export const mockBookResourceBox: BookResourceBoxProps = {
 };
 //#endregion
 
-export const BookResourceBox: FlexibleComponent<BookResourceBoxProps> = ({
-  uiConfig = defaultBookResourceConfig,
-  selectControl,
-}) => {
+export const BookResourceBox: FlexibleComponent<BookResourceBoxProps> = (
+  props,
+) => {
+  const {
+    uiConfig = defaultBookResourceConfig,
+    selectControl = mockSelectControlProps,
+  } = props;
   return (
     <StyledBookResourceBox
       direction={'column'}
       alignItems={'flex-start'}
       justifyContent={'center'}
+      backgroundColor={uiConfig.styles.backgroundColor}
     >
       <Typography variant="h3">{uiConfig.contents?.label}</Typography>
-      <SelectControl
+      <FlexibleSelectControl
         label={selectControl.label}
         value={selectControl.value}
         options={selectControl.options || []}
         onChange={selectControl.onChange}
+        id={'book-resource-select'}
+        parentPath={uiConfig.configPath!}
       />
     </StyledBookResourceBox>
   );
@@ -62,28 +75,30 @@ export const FlexibleBookResourceBox = withFlexible<
   BookResourceBoxProps
 >(BookResourceBox, defaultBookResourceConfig);
 
-const StyledBookResourceBox = styled(Stack)(({ theme }) => ({
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  justifyContent: 'center',
-  backgroundColor: theme.palette.background['light-gray'],
-  padding: '20px',
-  paddingTop: '25px',
-  '.MuiTypography-h3': {
-    fontWeight: 700,
-    fontFamily: 'Helvetica',
-    marginBottom: '5px',
-  },
-  '.MuiOutlinedInput-root': {
-    width: '272px',
-    '.MuiSelect-outlined': {
-      paddingTop: '10px',
-      paddingBottom: '10px',
+const StyledBookResourceBox = styled(Stack)<{ backgroundColor: string }>(
+  ({ theme, backgroundColor }) => ({
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    backgroundColor: backgroundColor ?? theme.palette.background['light-gray'],
+    padding: '20px',
+    paddingTop: '25px',
+    '.MuiTypography-h3': {
+      fontWeight: 700,
+      fontFamily: 'Helvetica',
+      marginBottom: '5px',
     },
-  },
-  [theme.breakpoints.down('sm')]: {
     '.MuiOutlinedInput-root': {
-      width: '100%',
+      width: '272px',
+      '.MuiSelect-outlined': {
+        paddingTop: '10px',
+        paddingBottom: '10px',
+      },
     },
-  },
-}));
+    [theme.breakpoints.down('sm')]: {
+      '.MuiOutlinedInput-root': {
+        width: '100%',
+      },
+    },
+  }),
+);

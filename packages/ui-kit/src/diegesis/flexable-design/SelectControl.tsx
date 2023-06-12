@@ -43,8 +43,8 @@ export const mockSelectControlProps: SelectControlProps = {
     { id: '2', title: 'Option 2' },
     { id: '3', title: 'Option 3' },
   ],
-  onChange(value) {
-    throw new Error('onChange method not implemented');
+  onChange(_value) {
+    //
   },
 };
 const ITEM_HEIGHT = 48;

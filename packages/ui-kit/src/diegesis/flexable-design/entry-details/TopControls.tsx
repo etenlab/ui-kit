@@ -40,7 +40,7 @@ export const mockTopControlsProps: EntryDetailTopControlProps = {
   parentPath: '/',
   title: 'Bible in Basic English',
   actionButtonProps: mockActionButtonsProps,
-  uiConfig: defaultTopControlConfig
+  uiConfig: defaultTopControlConfig,
 };
 //#endregion
 
@@ -79,7 +79,7 @@ export const TopControls: FlexibleComponent<EntryDetailTopControlProps> = ({
         })}
       >
         <PageTitleTypo variant="h1" marginRight={'0.5rem'} flex={2}>
-          {title || uiConfig.contents.title}
+          {title ?? uiConfig.contents.title}
         </PageTitleTypo>
         <Stack
           flex={1}
