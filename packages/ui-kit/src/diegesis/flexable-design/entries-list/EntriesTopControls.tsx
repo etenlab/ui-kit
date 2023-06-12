@@ -239,7 +239,6 @@ export const FlexibleEntriesTopControls = withFlexible<
   EntriesTopControlsProps
 >(EntriesTopControls, defaultEntriesTopControlsConfig);
 
-//#region styled components
 const StyledDeviceSpecific = styled(Box)<{ showOnSmallDevice: boolean }>(
   ({ theme, showOnSmallDevice }) => ({
     display: showOnSmallDevice ? 'none' : 'inherit',
@@ -269,4 +268,3 @@ const StyledChip = styled(Chip)(({ theme }) => ({
   fontSize: '14px',
   fontWeight: 600,
 }));
-//#endregion

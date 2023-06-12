@@ -53,7 +53,6 @@ export interface HeadCell {
   }
   
   
-  //#region sorting
   function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
     if (b[orderBy] < a[orderBy]) {
       return -1;
@@ -85,7 +84,6 @@ export interface HeadCell {
     });
     return stabilizedThis.map((el) => el[0]);
   }
-  //#endregion
   
   
   interface TableHeaderProps {

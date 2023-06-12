@@ -25,6 +25,12 @@ export type BackBtnConfig = BasicUIConfig & {
     iconColor: string;
   };
 };
+
+export type BackBtnProps = BasicFlexibleProps<BackBtnConfig> & {
+  href?: string;
+  onClick?: (e: any) => void;
+};
+
 export const defaultBackBtnConfig: BackBtnConfig = {
   componentName: 'BackButton',
   contents: {
@@ -43,10 +49,12 @@ export const defaultBackBtnConfig: BackBtnConfig = {
     iconColor: '#60D0B2',
   },
 };
-export type BackBtnProps = BasicFlexibleProps<BackBtnConfig> & {
-  href?: string;
-  onClick?: (e: any) => void;
+export const mockBackButtonProps: BackBtnProps = {
+  id: 'back-button',
+  parentPath: '/',
+  uiConfig: defaultBackBtnConfig,
 };
+
 export const BackButton: FlexibleComponent<BackBtnProps> = ({
   uiConfig = defaultBackBtnConfig,
   href,

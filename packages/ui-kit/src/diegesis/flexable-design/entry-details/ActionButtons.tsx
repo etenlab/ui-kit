@@ -20,7 +20,9 @@ type ActionButtonConfig = BasicUIConfig & {
     borderRadius: string;
     padding: string;
     width: string;
-    color: string;
+    textColor: string;
+    backgroundColor: string;
+    hoverBackgroundColor: string;
   };
 };
 export type ActionButtonProps = BasicFlexibleProps<ActionButtonConfig> & {
@@ -29,6 +31,7 @@ export type ActionButtonProps = BasicFlexibleProps<ActionButtonConfig> & {
   downloadBtnHref?: string;
   viewBtnHref?: string;
 };
+
 export const defaultActionButtonsConfig: ActionButtonConfig = {
   componentName: 'ActionButtons',
   contents: {
@@ -42,10 +45,17 @@ export const defaultActionButtonsConfig: ActionButtonConfig = {
     borderRadius: '2rem',
     padding: '0.8rem',
     width: '47%',
-    color: '#1B1B1B',
-    bgColor: '#60D0B2',
+    textColor: '#1B1B1B',
+    backgroundColor: '#60D0B2',
+    hoverBackgroundColor: '#4EAA91',
   },
 };
+export const mockActionButtonsProps: ActionButtonProps = {
+  id: 'action-buttons',
+  parentPath: '/',
+  uiConfig: defaultActionButtonsConfig,
+};
+
 export const ActionButtons: FlexibleComponent<ActionButtonProps> = ({
   uiConfig = defaultActionButtonsConfig,
   onViewBtnClick,
@@ -75,10 +85,14 @@ export const ActionButtons: FlexibleComponent<ActionButtonProps> = ({
           borderRadius: uiConfig.styles.borderRadius,
           padding: uiConfig.styles.padding,
           width: uiConfig.styles.width,
+          color: uiConfig.styles.textColor,
+          backgroundColor: uiConfig.styles.backgroundColor,
+          '&:hover, &.Mui-focusVisible': {
+            backgroundColor: uiConfig.styles.hoverBackgroundColor,
+          },
         }}
         startIcon={<AiOutlineFileText />}
         variant={'contained'}
-        color={'green'}
         size={'large'}
         href={viewBtnHref}
         onClick={onViewBtnClick}
@@ -93,11 +107,15 @@ export const ActionButtons: FlexibleComponent<ActionButtonProps> = ({
           borderRadius: uiConfig.styles.borderRadius,
           padding: uiConfig.styles.padding,
           width: uiConfig.styles.width,
+          color: uiConfig.styles.textColor,
+          backgroundColor: uiConfig.styles.backgroundColor,
+          '&:hover, &.Mui-focusVisible': {
+            backgroundColor: uiConfig.styles.hoverBackgroundColor,
+          },
         }}
         href={downloadBtnHref}
         startIcon={<AiOutlineDownload />}
         variant={'contained'}
-        color={'green'}
         size={'large'}
         onClick={onDownloadBtnClick}
       >

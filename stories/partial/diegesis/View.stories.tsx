@@ -31,13 +31,11 @@ viewPageCode.parameters = buildDocs(`
 interface IProps {
 }
 
-//#region data
 const dataAboutContentSection1 = {
     title: "Aliquam aliquet mollis",
     description: "Metus vitae feugiat. Vestibulum sit amet ligula sit amet odio scelerisque interdum. Phasellus nisi metus, viverra nec faucibus id, ultrices non mauris. Donec maximus consectetur congue. Vestibulum scelerisque cursus sem at commodo. Donec nunc odio, molestie a erat ac, dapibus imperdiet urna.",
     points: []
 }
-//#endregion
 
 function ViewPage(props: IProps) {
     const [isSideNavOpen, setSideNavOpenStatus] = useState(false)

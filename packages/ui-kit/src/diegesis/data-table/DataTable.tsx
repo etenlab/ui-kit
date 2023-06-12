@@ -20,7 +20,10 @@ export interface HeadCell {
   disablePadding: boolean;
   label: string;
   numeric: boolean;
-  render?: (value: string | number | boolean) => React.ReactNode;
+  render?: (
+    value: string | number | boolean,
+    styles?: Record<string, string | undefined>,
+  ) => React.ReactNode;
 }
 
 // #region sorting
@@ -159,7 +162,7 @@ function TableRowWrapper({
               align={headCell.numeric ? 'right' : 'left'}
             >
               {headCell.render
-                ? headCell.render(row[headCell.id])
+                ? headCell.render(row[headCell.id], { primaryColor })
                 : row[headCell.id]}
             </TableCell>
           );
@@ -311,7 +314,6 @@ export default function DataTable(props: IDataTableProps) {
   );
 }
 
-//#region styled components
 const StyledTableSortLabel = styled(TableSortLabel)<{ primaryColor?: string }>(
   ({ theme, primaryColor }) => ({
     fontSize: '0.9rem',
@@ -390,4 +392,3 @@ const StyledTablePagination = styled(TablePagination)<{
     },
   },
 }));
-//#endregion

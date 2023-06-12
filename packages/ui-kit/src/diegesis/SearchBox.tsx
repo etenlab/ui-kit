@@ -53,7 +53,6 @@ export function SearchBox(props: SearchBoxProps) {
   );
 }
 
-//#region styled components
 const SearchBoxWrapper = styled(Stack)(({ theme }) => ({
   flexDirection: 'row',
   minWidth: '240px',
@@ -94,4 +93,3 @@ const StyledSearchButton = styled(Button)(({ theme }) => ({
   textTransform: 'none',
   fontSize: '20px',
 }));
-//#endregion

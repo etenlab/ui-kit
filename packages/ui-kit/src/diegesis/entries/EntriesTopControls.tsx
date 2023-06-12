@@ -120,7 +120,6 @@ export function EntriesTopControls(props: EntriesTopControlsProps) {
   );
 }
 
-//#region styled components
 const StyledDeviceSpecific = styled<any>(Box)(
   ({ theme, showOnSmallDevice }) => ({
     display: showOnSmallDevice ? 'none' : 'inherit',
@@ -152,6 +151,5 @@ const StyledChip = styled(Chip)(({ theme }) => ({
   fontSize: '14px',
   fontWeight: 600,
 }));
-//#endregion
 
 export default EntriesTopControls;
