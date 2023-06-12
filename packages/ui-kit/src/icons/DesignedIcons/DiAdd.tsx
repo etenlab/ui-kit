@@ -1,38 +1,29 @@
 import React from 'react';
-import { SvgIcon, SvgIconProps } from '@mui/material';
-import AddBlue from './svg-sources/add-blue.svg';
-import AddDark from './svg-sources/add-dark.svg';
-import AddGray from './svg-sources/add-gray.svg';
-import AddRed from './svg-sources/add-red.svg';
-import AddWhite from './svg-sources/add-white.svg';
-import { DiColors } from './colors';
 
-export function DiAdd(
-  props: Omit<SvgIconProps, 'color'> & { color?: DiColors },
-) {
-  const { color, ...rest } = props;
-  let Add = AddDark;
-  if (color) {
-    switch (color) {
-      case 'blue':
-        Add = AddBlue;
-        break;
-      case 'gray':
-        Add = AddGray;
-        break;
-      case 'red':
-        Add = AddRed;
-        break;
-      case 'white':
-        Add = AddWhite;
-        break;
-      default:
-        break;
-    }
-  }
+import { SvgIcon, type SvgIconProps } from '@mui/material';
+
+export function DiAdd(props: SvgIconProps) {
   return (
-    <SvgIcon {...rest}>
-      <Add />
+    <SvgIcon {...props}>
+      <g clipPath="url(#clip0_3104_25096)">
+        <path
+          d="M12 5V19"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M5 12H19"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_3104_25096">
+          <rect width="24" height="24" />
+        </clipPath>
+      </defs>
     </SvgIcon>
   );
 }

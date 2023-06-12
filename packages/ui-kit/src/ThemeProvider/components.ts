@@ -163,5 +163,25 @@ export const components: ThemeOptions = {
         },
       },
     },
+    MuiSvgIcon: {
+      styleOverrides: {
+        root: ({ ownerState, theme }) => {
+          console.log(ownerState, theme);
+
+          return {
+            stroke: (
+              theme.palette[
+                ownerState.color as keyof typeof theme.palette
+              ] as PaletteColor
+            ).main,
+            fill: (
+              theme.palette[
+                ownerState.color as keyof typeof theme.palette
+              ] as PaletteColor
+            ).main,
+          };
+        },
+      },
+    },
   },
 };

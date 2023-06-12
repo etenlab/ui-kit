@@ -167,7 +167,7 @@ const Template: ComponentStory<typeof Div> = () => {
   return (
     <>
       <Div>
-        <TitleWithIcon title="DiAdd" icon={<DiAdd />} />
+        <TitleWithIcon title="DiAdd" icon={<DiAdd color="blue-primary" />} />
         <TitleWithIcon title="DiAdmin" icon={<DiAdmin />} />
         <TitleWithIcon title="DiApplication" icon={<DiApplication />} />
         <TitleWithIcon title="DiArrowLeft" icon={<DiArrowLeft />} />
