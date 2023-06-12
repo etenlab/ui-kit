@@ -9,7 +9,6 @@ import {
   FlexibleComponent,
 } from '../UIConfigProvider';
 
-//#region types
 type Styles = {
   primaryColor: string;
   textColor: string;
@@ -42,7 +41,6 @@ export type CellData = {
   key: string;
   value: string;
 };
-//#endregion
 
 export const InfoGrid: FlexibleComponent<InfoGridProps> = (props) => {
   const { uiConfig = defaultInfoGridConfig } = props;

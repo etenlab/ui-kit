@@ -100,7 +100,6 @@ export const FlexibleSearchBox = withFlexible<SearchBoxConfig, SearchBoxProps>(
   defaultSearchBoxConfig,
 );
 
-//#region styled components
 const SearchBoxWrapper = styled(Stack)(({ theme }) => ({
   flexDirection: 'row',
   minWidth: '240px',
@@ -143,4 +142,3 @@ const StyledSearchButton = styled(Button)(({ theme }) => ({
   textTransform: 'none',
   fontSize: '20px',
 }));
-//#endregion

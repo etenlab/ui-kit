@@ -17,7 +17,6 @@ import {
 } from './EntriesDataTable';
 import { withFlexible } from '../withFlexible';
 
-//#region types
 export type EntriesPageConfig = BasicUIConfig & {
   contents: {};
   styles: {};
@@ -33,7 +32,6 @@ export type EntriesPageProps = BasicFlexibleProps<EntriesPageConfig> & {
   entriesDataTable?: EntriesDataTableProps;
   noPageLayout?: boolean;
 };
-//#endregion
 
 export const EntriesListPage: FlexibleComponent<EntriesPageProps> = ({
   uiConfig = defaultEntriesPageConfig,
@@ -80,7 +78,6 @@ export const FlexibleEntriesListPage = withFlexible<
   EntriesPageProps
 >(EntriesListPage, defaultEntriesPageConfig);
 
-//#region styled components
 const StyledControlsContainer = styled(Container)(({ theme }) => ({
   paddingTop: '60px',
   paddingBottom: '30px',
@@ -111,4 +108,3 @@ const StyledTableContainer = styled(Container)(({ theme }) => ({
     },
   },
 }));
-//#endregion

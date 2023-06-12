@@ -50,7 +50,6 @@ export function PageFooter(props: PageFooterProps) {
     );
 }
 
-//#region styled components
 const FooterWrapper = styled('div')(({ theme }) => ({
   padding: '3rem 0px',
   minHeight: '17rem',
@@ -85,6 +84,5 @@ const StyledTypoBody1 = styled(Typography)(({ theme }) => ({
     marginTop: '25px',
   },
 }));
-//#endregion
 
 export default PageFooter;

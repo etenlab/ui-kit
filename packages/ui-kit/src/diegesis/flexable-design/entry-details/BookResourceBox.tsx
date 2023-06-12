@@ -24,7 +24,6 @@ export type BookResourceBoxProps = BasicFlexibleProps<BookResourceConfig> & {
   selectControl: SelectControlProps;
 };
 
-//#region data
 const defaultBookResourceConfig: BookResourceConfig = {
   componentName: 'BookResourceBox',
   contents: {
@@ -40,7 +39,6 @@ export const mockBookResourceBox: BookResourceBoxProps = {
   selectControl: mockSelectControlProps,
   uiConfig: defaultBookResourceConfig,
 };
-//#endregion
 
 export const BookResourceBox: FlexibleComponent<BookResourceBoxProps> = (
   props,

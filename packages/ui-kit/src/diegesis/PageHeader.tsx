@@ -51,7 +51,6 @@ export function PageHeader(props: PageHeaderProps) {
   );
 }
 
-//#region styled components
 const HeaderWrapper = styled(Box)(() => ({
   display: 'flex',
   position: 'relative',
@@ -92,6 +91,5 @@ const StyledMenuIcon = styled(MenuIcon)(({ theme }) => ({
     height: '1.5rem',
   },
 }));
-//#endregion
 
 export default PageHeader;

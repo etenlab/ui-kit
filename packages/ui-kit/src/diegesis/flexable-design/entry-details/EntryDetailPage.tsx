@@ -28,9 +28,7 @@ import {
 import { SideNavProps } from '../../SideNav';
 import { withFlexible } from '../withFlexible';
 import { mockSideNavProps } from '../SideNav';
-import { SelectControlProps, mockSelectControlProps } from '../SelectControl';
 
-//#region types
 export type EntryDetailPageConfig = BasicUIConfig & {
   contents: {};
   styles: {};
@@ -44,9 +42,7 @@ export type EntryDetailPageProps = BasicFlexibleProps<EntryDetailPageConfig> & {
   backBtnProps?: BackBtnProps;
   noPageLayout?: boolean;
 };
-//#endregion
 
-//#region data
 export const defaultEntryDetailPage: EntryDetailPageConfig = {
   componentName: 'EntryDetailPage',
   contents: {},
@@ -80,7 +76,6 @@ export const mockEntryDetailPageProps: EntryDetailPageProps = {
   noPageLayout: false,
   uiConfig: defaultEntryDetailPage,
 };
-//#endregion
 
 export const EntryDetailPage: FlexibleComponent<EntryDetailPageProps> = (
   props,

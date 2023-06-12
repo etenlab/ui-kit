@@ -314,7 +314,6 @@ export default function DataTable(props: IDataTableProps) {
   );
 }
 
-//#region styled components
 const StyledTableSortLabel = styled(TableSortLabel)<{ primaryColor?: string }>(
   ({ theme, primaryColor }) => ({
     fontSize: '0.9rem',
@@ -393,4 +392,3 @@ const StyledTablePagination = styled(TablePagination)<{
     },
   },
 }));
-//#endregion

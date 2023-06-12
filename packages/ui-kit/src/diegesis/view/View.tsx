@@ -20,7 +20,6 @@ export type ViewPageProps = {
   footerProps?: PageFooterProps;
 };
 
-//#region mockup data
 const dataAboutContentSection1 = {
   title: 'Aliquam aliquet mollis',
   description:
@@ -41,7 +40,6 @@ export const MOCK_VIEW_PAGE_PROPS: ViewPageProps = {
     onChange(_value) {},
   },
 };
-//#endregion
 
 export function ViewPage(props: ViewPageProps) {
   const {
@@ -157,7 +155,6 @@ export function ViewPage(props: ViewPageProps) {
 }
 export default ViewPage;
 
-//#region styled components
 const StyledHeaderContainer = styled(Container)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     paddingTop: '20px',
@@ -203,4 +200,3 @@ const StyledContentContainer = styled(Container)(({ theme }) => ({
     padding: 0,
   },
 }));
-//#endregion

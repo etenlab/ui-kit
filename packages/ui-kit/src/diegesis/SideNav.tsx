@@ -19,7 +19,6 @@ export type SideNavProps = {
   options?: NavOption[];
 };
 
-//#region data
 const defaultOptions: NavOption[] = [
   { title: 'Home', variant: 'big', href: '/' },
   { title: 'Entries', variant: 'big', href: '/' },
@@ -38,7 +37,6 @@ export const MOCK_SIDE_NAV_PROPS: Partial<SideNavProps> = {
   options: defaultOptions,
   closeBtnText: 'Close',
 };
-//#endregion
 
 export function SideNav(props: SideNavProps) {
   const { open, close } = props;
@@ -146,7 +144,6 @@ export function SideNav(props: SideNavProps) {
   );
 }
 
-//#region styled components
 const SideNavWrapper = styled<any>(Stack)(({ theme, open }) => ({
   flexDirection: 'column',
   alignItems: 'start',
@@ -188,4 +185,3 @@ const MdNavButton = styled(Button)(() => ({
   display: 'block',
   size: 'medium',
 }));
-//#endregion

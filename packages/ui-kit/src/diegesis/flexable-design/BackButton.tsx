@@ -31,7 +31,6 @@ export type BackBtnProps = BasicFlexibleProps<BackBtnConfig> & {
   onClick?: (e: any) => void;
 };
 
-//#region data
 export const defaultBackBtnConfig: BackBtnConfig = {
   componentName: 'BackButton',
   contents: {
@@ -53,9 +52,8 @@ export const defaultBackBtnConfig: BackBtnConfig = {
 export const mockBackButtonProps: BackBtnProps = {
   id: 'back-button',
   parentPath: '/',
-  uiConfig: defaultBackBtnConfig
+  uiConfig: defaultBackBtnConfig,
 };
-//#endregion
 
 export const BackButton: FlexibleComponent<BackBtnProps> = ({
   uiConfig = defaultBackBtnConfig,

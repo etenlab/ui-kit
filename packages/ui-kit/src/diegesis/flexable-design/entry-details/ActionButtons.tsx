@@ -32,7 +32,6 @@ export type ActionButtonProps = BasicFlexibleProps<ActionButtonConfig> & {
   viewBtnHref?: string;
 };
 
-//#region data
 export const defaultActionButtonsConfig: ActionButtonConfig = {
   componentName: 'ActionButtons',
   contents: {
@@ -56,7 +55,6 @@ export const mockActionButtonsProps: ActionButtonProps = {
   parentPath: '/',
   uiConfig: defaultActionButtonsConfig,
 };
-//#endregion
 
 export const ActionButtons: FlexibleComponent<ActionButtonProps> = ({
   uiConfig = defaultActionButtonsConfig,

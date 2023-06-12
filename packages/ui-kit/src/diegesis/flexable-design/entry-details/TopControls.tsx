@@ -27,7 +27,6 @@ export type EntryDetailTopControlProps =
     backBtnProps?: BackBtnProps;
   };
 
-//#region data
 export const defaultTopControlConfig: EntryDetailTopControlConfig = {
   componentName: 'TopControls',
   contents: {
@@ -42,7 +41,6 @@ export const mockTopControlsProps: EntryDetailTopControlProps = {
   actionButtonProps: mockActionButtonsProps,
   uiConfig: defaultTopControlConfig,
 };
-//#endregion
 
 export const TopControls: FlexibleComponent<EntryDetailTopControlProps> = ({
   uiConfig = defaultTopControlConfig,

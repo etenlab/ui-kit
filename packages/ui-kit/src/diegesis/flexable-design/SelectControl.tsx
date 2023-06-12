@@ -23,7 +23,6 @@ export type SelectControlProps = BasicFlexibleProps<SelectControlConfig> & {
   onChange: (value: string) => void;
 };
 
-//#region data
 const defaultSelectControlConfig: SelectControlConfig = {
   componentName: 'SelectControl',
   contents: {},
@@ -43,9 +42,7 @@ export const mockSelectControlProps: SelectControlProps = {
     { id: '2', title: 'Option 2' },
     { id: '3', title: 'Option 3' },
   ],
-  onChange(_value) {
-    //
-  },
+  onChange(_value) {},
 };
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -57,7 +54,6 @@ const MenuProps = {
     },
   },
 };
-//#endregion
 
 export const SelectControl: FlexibleComponent<SelectControlProps> = (props) => {
   const {

@@ -2,7 +2,6 @@ import { Stack, styled } from '@mui/material';
 import React, { FC } from 'react';
 import DataTable, { HeadCell } from '../data-table/DataTable';
 
-//#region types
 export type CellData = {
   key: string;
   value: string;
@@ -11,7 +10,6 @@ export type InfoGridProps = {
   tblCells?: HeadCell[];
   tblData?: CellData[];
 };
-//#endregion
 
 export const InfoGrid: FC<InfoGridProps> = (props) => {
   return (
