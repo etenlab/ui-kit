@@ -32,7 +32,7 @@ export function NodeFilter({
       sx={{
         width: '100%',
         color: getColor('gray'),
-        backgroundColor: getColor('white'),
+        backgroundColor: getColor('bg-main'),
         borderRadius: '10px',
         border: `1px solid ${getColor('middle-gray')}`,
         fontSize: 14,

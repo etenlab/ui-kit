@@ -145,7 +145,12 @@ export function HeadBox({
 
   return (
     <Stack
-      sx={{ padding: '20px', gap: '12px', background: getColor('light-blue') }}
+      sx={{
+        padding: '20px',
+        gap: '12px',
+        borderBottom: `1px solid ${getColor('border-light-blue')}`,
+        background: getColor('bg-light-blue'),
+      }}
     >
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Stack direction="row" justifyContent="flex-start" alignItems="center">

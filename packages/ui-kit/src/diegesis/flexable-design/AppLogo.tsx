@@ -13,6 +13,7 @@ interface AppLogoConfig extends BasicUIConfig {
   contents: {
     iconType: string;
     title: string;
+    svgMarkup: string;
   };
   styles: {
     iconColor: string;
@@ -29,6 +30,7 @@ export const defaultAppLogoConfig: AppLogoConfig = {
   contents: {
     iconType: 'tree',
     title: 'Diegesis',
+    svgMarkup: '',
   },
   styles: {
     iconColor: '#60D0B2',
@@ -41,7 +43,6 @@ export const defaultAppLogoConfig: AppLogoConfig = {
 };
 
 export interface AppLogoProps extends BasicFlexibleProps<AppLogoConfig> {
-  className?: string;
   width?: string;
   height?: string;
   variant?: 'primary' | 'light';
@@ -67,6 +68,16 @@ export const AppLogo: FlexibleComponent<AppLogoProps> = ({
       ? uiConfig.styles.titleColor
       : uiConfig.styles.lightModeColor;
 
+  if (uiConfig.contents.svgMarkup) {
+    return (
+      <a
+        href={props.href || '/'}
+        style={{ display: 'flex' }}
+        dangerouslySetInnerHTML={{ __html: uiConfig.contents.svgMarkup }}
+      ></a>
+    );
+  }
+
   switch (uiConfig.contents.iconType) {
     case 'bee': {
       return (
@@ -87,7 +98,6 @@ export const AppLogo: FlexibleComponent<AppLogoProps> = ({
       return (
         <a href={props.href || '/'} style={{ display: 'flex' }}>
           <svg
-            className={props?.className}
             width={realWidth}
             height={realHeight}
             xmlns="http://www.w3.org/2000/svg"

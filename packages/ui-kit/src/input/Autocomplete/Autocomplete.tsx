@@ -14,16 +14,17 @@ import { DiDropDown, BiChevronUp } from '../../icons';
 
 import { Input } from '../Input';
 
-const StyledPopper = styled(Popper)({
+const StyledPopper = styled(Popper)(({ theme }) => ({
   [`& .${autocompleteClasses.listbox}`]: {
     boxSizing: 'border-box',
     width: '100%',
+    background: theme.palette.background['bg-second'],
     '& ul': {
       padding: 0,
       margin: 0,
     },
   },
-});
+}));
 
 export function Autocomplete<
   T,

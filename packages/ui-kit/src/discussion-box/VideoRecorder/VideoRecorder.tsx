@@ -160,7 +160,7 @@ export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
   const controlButtonStyle = {
     fontSize: '80px',
     padding: '20px',
-    backgroundColor: getColor('white'),
+    backgroundColor: getColor('bg-main'),
     color: getColor('dark'),
     borderRadius: '50%',
   };
