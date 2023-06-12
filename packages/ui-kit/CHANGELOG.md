@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.73
+
+### Patch Changes
+
+- [#114](https://github.com/etenlab/ui-kit/pull/114) [`5ccb1cf`](https://github.com/etenlab/ui-kit/commit/5ccb1cf34977c12cc47e3d16685c228661024078) Thanks [@hardikpoudeldev](https://github.com/hardikpoudeldev)! - Update diegesis
+
 ## 0.5.72
 
 ### Patch Changes
