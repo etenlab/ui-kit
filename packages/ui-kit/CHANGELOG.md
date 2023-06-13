@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.74
+
+### Patch Changes
+
+- [#116](https://github.com/etenlab/ui-kit/pull/116) [`6372da6`](https://github.com/etenlab/ui-kit/commit/6372da60dda6bf534044b0c1b882ca1bda0b1cde) Thanks [@lucky-gru](https://github.com/lucky-gru)! - Refactor Toolbar
+
 ## 0.5.73
 
 ### Patch Changes
