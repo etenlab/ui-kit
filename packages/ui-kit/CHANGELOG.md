@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.75
+
+### Patch Changes
+
+- [#118](https://github.com/etenlab/ui-kit/pull/118) [`390cb69`](https://github.com/etenlab/ui-kit/commit/390cb69d59f740a9c53188e68d4f76e435282b2c) Thanks [@lucky-gru](https://github.com/lucky-gru)! - Chore Alert
+
 ## 0.5.74
 
 ### Patch Changes
