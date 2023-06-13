@@ -165,22 +165,20 @@ export const components: ThemeOptions = {
     },
     MuiSvgIcon: {
       styleOverrides: {
-        root: ({ ownerState, theme }) => {
-          console.log(ownerState, theme);
-
-          return {
-            stroke: (
+        root: ({ ownerState, theme }) => ({
+          stroke:
+            (
               theme.palette[
                 ownerState.color as keyof typeof theme.palette
               ] as PaletteColor
-            ).main,
-            fill: (
+            )?.main || '#1B1B1B',
+          fill:
+            (
               theme.palette[
                 ownerState.color as keyof typeof theme.palette
               ] as PaletteColor
-            ).main,
-          };
-        },
+            )?.main || '#1B1B1B',
+        }),
       },
     },
   },

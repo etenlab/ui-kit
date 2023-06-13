@@ -302,9 +302,9 @@ declare module '@mui/material/styles' {
     'divider-color': string;
   }
 
-  interface Palette extends CustomPalette { }
-  interface PaletteOptions extends CustomPalette { }
-  interface TypeText extends CustomTypeText { }
+  interface Palette extends CustomPalette {}
+  interface PaletteOptions extends CustomPalette {}
+  interface TypeText extends CustomTypeText {}
 
   interface TypographyVariants {
     body3: React.CSSProperties;

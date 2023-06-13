@@ -1,6 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import { ThemeProvider } from '../../../packages/ui-kit/src';
+
 import {
   CiDark,
   CiLight,
@@ -157,7 +159,9 @@ export default {
           width: '500px',
         }}
       >
-        <Story />
+        <ThemeProvider>
+          <Story />
+        </ThemeProvider>
       </div>
     ),
   ],
@@ -167,8 +171,8 @@ const Template: ComponentStory<typeof Div> = () => {
   return (
     <>
       <Div>
-        <TitleWithIcon title="DiAdd" icon={<DiAdd color="blue-primary" />} />
-        <TitleWithIcon title="DiAdmin" icon={<DiAdmin />} />
+        <TitleWithIcon title="DiAdd" icon={<DiAdd color="green" />} />
+        <TitleWithIcon title="DiAdmin" icon={<DiAdmin color="blue" />} />
         <TitleWithIcon title="DiApplication" icon={<DiApplication />} />
         <TitleWithIcon title="DiArrowLeft" icon={<DiArrowLeft />} />
         <TitleWithIcon title="DiArrowRight" icon={<DiArrowRight />} />
