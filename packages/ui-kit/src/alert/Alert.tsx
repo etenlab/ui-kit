@@ -4,13 +4,7 @@ import { Alert as MuiAlert, AlertProps } from '@mui/material';
 
 import { BiCheckCircle } from '../icons';
 
-type CustomAlertProps = AlertProps & {
-  content?: string;
-  rel?: string;
-  rev?: string;
-};
-
-export const Alert = React.forwardRef<HTMLDivElement, CustomAlertProps>(
+export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
   (props, ref) => (
     <MuiAlert
       ref={ref}
