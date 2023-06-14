@@ -94,7 +94,7 @@ export function Toolbar({
         ) : null}
         {buttons.notification ? (
           <IconButton
-            onClick={onClickLanguageBtn}
+            onClick={onClickNotificationBtn}
             sx={{ padding: '5px' }}
             id="language-toggle-button"
           >
@@ -105,7 +105,7 @@ export function Toolbar({
         ) : null}
         {buttons.language ? (
           <IconButton
-            onClick={onClickNotificationBtn}
+            onClick={onClickLanguageBtn}
             sx={{
               padding: '5px',
               '& g': {
