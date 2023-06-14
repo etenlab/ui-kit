@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.77
+
+### Patch Changes
+
+- [#122](https://github.com/etenlab/ui-kit/pull/122) [`74fc7a1`](https://github.com/etenlab/ui-kit/commit/74fc7a133c2e994096722dddd123e14c52b1a263) Thanks [@lucky-gru](https://github.com/lucky-gru)! - chore toolbar
+
 ## 0.5.76
 
 ### Patch Changes
