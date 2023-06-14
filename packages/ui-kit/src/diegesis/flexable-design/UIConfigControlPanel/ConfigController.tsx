@@ -210,7 +210,7 @@ export function ConfigController({
     </Stack>
   ) : (
     <Typography sx={(theme) => ({ color: theme.palette.error.main })}>
-      Not Selected Any Content
+      No Content Selected
     </Typography>
   );
 

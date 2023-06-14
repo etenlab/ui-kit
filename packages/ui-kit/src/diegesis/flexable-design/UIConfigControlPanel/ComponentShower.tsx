@@ -22,7 +22,7 @@ export function ComponentShower({
         component
       ) : (
         <Typography sx={(theme) => ({ color: theme.palette.error.main })}>
-          Not Exists Any Component To Render
+          No Component to Render
         </Typography>
       )}
     </>
