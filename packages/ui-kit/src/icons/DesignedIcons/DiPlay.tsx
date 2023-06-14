@@ -1,38 +1,24 @@
 import React from 'react';
-import { SvgIcon, SvgIconProps } from '@mui/material';
-import PlayBlue from './svg-sources/play-blue.svg';
-import PlayDark from './svg-sources/play-dark.svg';
-import PlayGray from './svg-sources/play-gray.svg';
-import PlayRed from './svg-sources/play-red.svg';
-import PlayWhite from './svg-sources/play-white.svg';
-import { DiColors } from './colors';
 
-export function DiPlay(
-  props: Omit<SvgIconProps, 'color'> & { color?: DiColors },
-) {
-  const { color, ...rest } = props;
-  let Play = PlayDark;
-  if (color) {
-    switch (color) {
-      case 'blue':
-        Play = PlayBlue;
-        break;
-      case 'gray':
-        Play = PlayGray;
-        break;
-      case 'red':
-        Play = PlayRed;
-        break;
-      case 'white':
-        Play = PlayWhite;
-        break;
-      default:
-        break;
-    }
-  }
+import { SvgIcon, type SvgIconProps } from '@mui/material';
+
+export function DiPlay(props: SvgIconProps) {
   return (
-    <SvgIcon {...rest}>
-      <Play />
+    <SvgIcon {...props}>
+      <g clip-path="url(#clip0_1643_15094)">
+        <path
+          d="M5.96094 4.83167C5.96094 4.0405 6.83618 3.56266 7.5017 3.99049L18.6524 11.1588C19.2648 11.5525 19.2648 12.4475 18.6524 12.8412L7.5017 20.0095C6.83618 20.4373 5.96094 19.9595 5.96094 19.1683V4.83167Z"
+          stroke-width="2"
+          fill="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_1643_15094">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
     </SvgIcon>
   );
 }

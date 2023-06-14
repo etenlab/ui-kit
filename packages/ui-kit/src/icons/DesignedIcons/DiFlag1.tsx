@@ -4,7 +4,14 @@ import Flag from './svg-sources/flag-1.svg';
 
 export function DiFlag1(props: Omit<SvgIconProps, 'color'>) {
   return (
-    <SvgIcon {...props}>
+    <SvgIcon
+      {...props}
+      sx={{
+        '&.MuiSvgIcon-root': {
+          stroke: 'none',
+        },
+      }}
+    >
       <Flag />
     </SvgIcon>
   );

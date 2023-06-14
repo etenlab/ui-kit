@@ -172,8 +172,11 @@ const Template: ComponentStory<typeof Div> = () => {
     <>
       <Div>
         <TitleWithIcon title="DiAdd" icon={<DiAdd color="green" />} />
-        <TitleWithIcon title="DiAdmin" icon={<DiAdmin color="blue" />} />
-        <TitleWithIcon title="DiApplication" icon={<DiApplication />} />
+        <TitleWithIcon title="DiAdmin" icon={<DiAdmin color="green" />} />
+        <TitleWithIcon
+          title="DiApplication"
+          icon={<DiApplication color="red" />}
+        />
         <TitleWithIcon title="DiArrowLeft" icon={<DiArrowLeft />} />
         <TitleWithIcon title="DiArrowRight" icon={<DiArrowRight />} />
         <TitleWithIcon title="DiAskQuestion" icon={<DiAskQuestion />} />

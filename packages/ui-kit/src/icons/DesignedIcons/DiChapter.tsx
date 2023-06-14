@@ -1,38 +1,36 @@
 import React from 'react';
-import { SvgIcon, SvgIconProps } from '@mui/material';
-import ChapterBlue from './svg-sources/chapter-blue.svg';
-import ChapterDark from './svg-sources/chapter-dark.svg';
-import ChapterGray from './svg-sources/chapter-gray.svg';
-import ChapterRed from './svg-sources/chapter-red.svg';
-import ChapterWhite from './svg-sources/chapter-white.svg';
-import { DiColors } from './colors';
 
-export function DiChapter(
-  props: Omit<SvgIconProps, 'color'> & { color?: DiColors },
-) {
-  const { color, ...rest } = props;
-  let Chapter = ChapterDark;
-  if (color) {
-    switch (color) {
-      case 'blue':
-        Chapter = ChapterBlue;
-        break;
-      case 'gray':
-        Chapter = ChapterGray;
-        break;
-      case 'red':
-        Chapter = ChapterRed;
-        break;
-      case 'white':
-        Chapter = ChapterWhite;
-        break;
-      default:
-        break;
-    }
-  }
+import { SvgIcon, type SvgIconProps } from '@mui/material';
+
+export function DiChapter(props: SvgIconProps) {
+
   return (
-    <SvgIcon {...rest}>
-      <Chapter />
+    <SvgIcon {...props}>
+      <g clip-path="url(#clip0_3188_30647)">
+        <path
+          d="M9 4V22M6 4H17C17.5304 4 18.0391 4.21071 18.4142 4.58579C18.7893 4.96086 19 5.46957 19 6V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H6C5.73478 20 5.48043 19.8946 5.29289 19.7071C5.10536 19.5196 5 19.2652 5 19V5C5 4.73478 5.10536 4.48043 5.29289 4.29289C5.48043 4.10536 5.73478 4 6 4Z"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M13 8H15"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M13 12H15"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_3188_30647">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
     </SvgIcon>
   );
 }

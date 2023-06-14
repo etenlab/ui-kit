@@ -1,38 +1,23 @@
 import React from 'react';
-import { SvgIcon, SvgIconProps } from '@mui/material';
-import DropDownBlue from './svg-sources/drop-down-blue.svg';
-import DropDownDark from './svg-sources/drop-down-dark.svg';
-import DropDownGray from './svg-sources/drop-down-gray.svg';
-import DropDownRed from './svg-sources/drop-down-red.svg';
-import DropDownWhite from './svg-sources/drop-down-white.svg';
-import { DiColors } from './colors';
 
-export function DiDropDown(
-  props: Omit<SvgIconProps, 'color'> & { color?: DiColors },
-) {
-  const { color, ...rest } = props;
-  let DropDown = DropDownDark;
-  if (color) {
-    switch (color) {
-      case 'blue':
-        DropDown = DropDownBlue;
-        break;
-      case 'gray':
-        DropDown = DropDownGray;
-        break;
-      case 'red':
-        DropDown = DropDownRed;
-        break;
-      case 'white':
-        DropDown = DropDownWhite;
-        break;
-      default:
-        break;
-    }
-  }
+import { SvgIcon, type SvgIconProps } from '@mui/material';
+
+export function DiDropDown(props: SvgIconProps) {
   return (
-    <SvgIcon {...rest}>
-      <DropDown />
+    <SvgIcon {...props}>
+      <g clip-path="url(#clip0_3058_19065)">
+        <path
+          d="M6 9L12 15L18 9"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_3058_19065">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
     </SvgIcon>
   );
 }

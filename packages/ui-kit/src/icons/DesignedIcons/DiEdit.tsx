@@ -1,38 +1,29 @@
 import React from 'react';
-import { SvgIcon, SvgIconProps } from '@mui/material';
-import EditBlue from './svg-sources/edit-blue.svg';
-import EditDark from './svg-sources/edit-dark.svg';
-import EditGray from './svg-sources/edit-gray.svg';
-import EditRed from './svg-sources/edit-red.svg';
-import EditWhite from './svg-sources/edit-white.svg';
-import { DiColors } from './colors';
 
-export function DiEdit(
-  props: Omit<SvgIconProps, 'color'> & { color?: DiColors },
-) {
-  const { color, ...rest } = props;
-  let Edit = EditDark;
-  if (color) {
-    switch (color) {
-      case 'blue':
-        Edit = EditBlue;
-        break;
-      case 'gray':
-        Edit = EditGray;
-        break;
-      case 'red':
-        Edit = EditRed;
-        break;
-      case 'white':
-        Edit = EditWhite;
-        break;
-      default:
-        break;
-    }
-  }
+import { SvgIcon, type SvgIconProps } from '@mui/material';
+
+export function DiEdit(props: SvgIconProps) {
   return (
-    <SvgIcon {...rest}>
-      <Edit />
+    <SvgIcon {...props}>
+      <g clip-path="url(#clip0_3065_20877)">
+        <path
+          d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M18.5 2.50023C18.8978 2.1024 19.4374 1.87891 20 1.87891C20.5626 1.87891 21.1022 2.1024 21.5 2.50023C21.8978 2.89805 22.1213 3.43762 22.1213 4.00023C22.1213 4.56284 21.8978 5.1024 21.5 5.50023L12 15.0002L8 16.0002L9 12.0002L18.5 2.50023Z"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_3065_20877">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
     </SvgIcon>
   );
 }

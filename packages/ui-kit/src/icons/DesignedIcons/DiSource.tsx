@@ -1,38 +1,46 @@
 import React from 'react';
-import { SvgIcon, SvgIconProps } from '@mui/material';
-import SourceBlue from './svg-sources/source-blue.svg';
-import SourceDark from './svg-sources/source-dark.svg';
-import SourceGray from './svg-sources/source-gray.svg';
-import SourceRed from './svg-sources/source-red.svg';
-import SourceWhite from './svg-sources/source-white.svg';
-import { DiColors } from './colors';
 
-export function DiSource(
-  props: Omit<SvgIconProps, 'color'> & { color?: DiColors },
-) {
-  const { color, ...rest } = props;
-  let Source = SourceDark;
-  if (color) {
-    switch (color) {
-      case 'blue':
-        Source = SourceBlue;
-        break;
-      case 'gray':
-        Source = SourceGray;
-        break;
-      case 'red':
-        Source = SourceRed;
-        break;
-      case 'white':
-        Source = SourceWhite;
-        break;
-      default:
-        break;
-    }
-  }
+import { SvgIcon, type SvgIconProps } from '@mui/material';
+
+export function DiSource(props: SvgIconProps) {
   return (
-    <SvgIcon {...rest}>
-      <Source />
+    <SvgIcon {...props}>
+      <g clip-path="url(#clip0_3188_24420)">
+        <g clip-path="url(#clip1_3188_24420)">
+          <path
+            d="M14 12H4"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M14 12L10 16"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M14 12L10 8"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M20 4V20"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </g>
+      </g>
+      <defs>
+        <clipPath id="clip0_3188_24420">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+        <clipPath id="clip1_3188_24420">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
     </SvgIcon>
   );
 }

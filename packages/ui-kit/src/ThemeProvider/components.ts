@@ -172,12 +172,7 @@ export const components: ThemeOptions = {
                 ownerState.color as keyof typeof theme.palette
               ] as PaletteColor
             )?.main || '#1B1B1B',
-          fill:
-            (
-              theme.palette[
-                ownerState.color as keyof typeof theme.palette
-              ] as PaletteColor
-            )?.main || '#1B1B1B',
+          fill: 'none'
         }),
       },
     },

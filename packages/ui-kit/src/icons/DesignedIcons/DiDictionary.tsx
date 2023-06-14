@@ -1,38 +1,47 @@
 import React from 'react';
-import { SvgIcon, SvgIconProps } from '@mui/material';
-import DictionaryBlue from './svg-sources/dictionary-blue.svg';
-import DictionaryDark from './svg-sources/dictionary-dark.svg';
-import DictionaryGray from './svg-sources/dictionary-gray.svg';
-import DictionaryRed from './svg-sources/dictionary-red.svg';
-import DictionaryWhite from './svg-sources/dictionary-white.svg';
-import { DiColors } from './colors';
 
-export function DiDictionary(
-  props: Omit<SvgIconProps, 'color'> & { color?: DiColors },
-) {
-  const { color, ...rest } = props;
-  let Dictionary = DictionaryDark;
-  if (color) {
-    switch (color) {
-      case 'blue':
-        Dictionary = DictionaryBlue;
-        break;
-      case 'gray':
-        Dictionary = DictionaryGray;
-        break;
-      case 'red':
-        Dictionary = DictionaryRed;
-        break;
-      case 'white':
-        Dictionary = DictionaryWhite;
-        break;
-      default:
-        break;
-    }
-  }
+import { SvgIcon, type SvgIconProps } from '@mui/material';
+
+export function DiDictionary(props: SvgIconProps) {
   return (
-    <SvgIcon {...rest}>
-      <Dictionary />
+    <SvgIcon {...props}>
+      <g clip-path="url(#clip0_3082_39173)">
+        <path
+          d="M3 18.9997C4.36817 18.2098 5.92017 17.7939 7.5 17.7939C9.07983 17.7939 10.6318 18.2098 12 18.9997C13.3682 18.2098 14.9202 17.7939 16.5 17.7939C18.0798 17.7939 19.6318 18.2098 21 18.9997"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M3 5.99972C4.36817 5.2098 5.92017 4.79395 7.5 4.79395C9.07983 4.79395 10.6318 5.2098 12 5.99972C13.3682 5.2098 14.9202 4.79395 16.5 4.79395C18.0798 4.79395 19.6318 5.2098 21 5.99972"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M3 6V19"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M12 6V19"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M21 6V19"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_3082_39173">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
     </SvgIcon>
   );
 }

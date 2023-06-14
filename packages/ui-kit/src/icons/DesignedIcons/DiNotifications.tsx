@@ -1,38 +1,29 @@
 import React from 'react';
-import { SvgIcon, SvgIconProps } from '@mui/material';
-import NotificationsBlue from './svg-sources/notifications-blue.svg';
-import NotificationsDark from './svg-sources/notifications-dark.svg';
-import NotificationsGray from './svg-sources/notifications-gray.svg';
-import NotificationsRed from './svg-sources/notifications-red.svg';
-import NotificationsWhite from './svg-sources/notifications-white.svg';
-import { DiColors } from './colors';
 
-export function DiNotifications(
-  props: Omit<SvgIconProps, 'color'> & { color?: DiColors },
-) {
-  const { color, ...rest } = props;
-  let Notifications = NotificationsDark;
-  if (color) {
-    switch (color) {
-      case 'blue':
-        Notifications = NotificationsBlue;
-        break;
-      case 'gray':
-        Notifications = NotificationsGray;
-        break;
-      case 'red':
-        Notifications = NotificationsRed;
-        break;
-      case 'white':
-        Notifications = NotificationsWhite;
-        break;
-      default:
-        break;
-    }
-  }
+import { SvgIcon, type SvgIconProps } from '@mui/material';
+
+export function DiNotifications(props: SvgIconProps) {
   return (
-    <SvgIcon {...rest}>
-      <Notifications />
+    <SvgIcon {...props}>
+      <g clip-path="url(#clip0_3058_18836)">
+        <path
+          d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M13.7295 21C13.5537 21.3031 13.3014 21.5547 12.9978 21.7295C12.6941 21.9044 12.3499 21.9965 11.9995 21.9965C11.6492 21.9965 11.3049 21.9044 11.0013 21.7295C10.6977 21.5547 10.4453 21.3031 10.2695 21"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_3058_18836">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
     </SvgIcon>
   );
 }
