@@ -38,8 +38,8 @@ export const PageLayout: FlexibleComponent<PageLayoutProps> = ({
         parentPath={uiConfig.configPath!}
       />
       <FlexibleSideNav
-        id="page-layout-side-nav"
         {...sideNavProps}
+        id="page-layout-side-nav"
         open={isSideNavOpen}
         close={() => {
           setSideNavOpenStatus(false);

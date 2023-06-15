@@ -30,7 +30,6 @@ interface IProps {
     placeholder?: string
 }
 
-//#region styled components
 const CustomTextField = styled(TextField)({
     '& .MuiOutlinedInput-root': {
         '& fieldset': {
@@ -51,7 +50,6 @@ const CustomTextField = styled(TextField)({
         },
     },
 });
-//#endregion
 
 export function SearchBox(props: IProps){
     const { placeholder, className } = props;

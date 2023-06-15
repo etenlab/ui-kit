@@ -24,7 +24,6 @@ export function StatWithDescription(props: StatWithDescProps) {
   );
 }
 
-//#region styled component
 const StyledWrapper = styled(Stack)(({ theme }) => ({
   textAlign: 'center',
   borderTop: `1px solid`,
@@ -66,6 +65,5 @@ const StatDescriptionTypo = styled(Typography)(({ theme }) => ({
     flex: 1,
   },
 }));
-//#endregion
 
 export default StatWithDescription;

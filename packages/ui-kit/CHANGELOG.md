@@ -1,5 +1,35 @@
 # Change Log
 
+## 0.5.77
+
+### Patch Changes
+
+- [#122](https://github.com/etenlab/ui-kit/pull/122) [`74fc7a1`](https://github.com/etenlab/ui-kit/commit/74fc7a133c2e994096722dddd123e14c52b1a263) Thanks [@lucky-gru](https://github.com/lucky-gru)! - chore toolbar
+
+## 0.5.76
+
+### Patch Changes
+
+- [#120](https://github.com/etenlab/ui-kit/pull/120) [`bdc4532`](https://github.com/etenlab/ui-kit/commit/bdc453224d5ce575fa2ff9647b6626a980a922f7) Thanks [@lucky-gru](https://github.com/lucky-gru)! - Chore Alert
+
+## 0.5.75
+
+### Patch Changes
+
+- [#118](https://github.com/etenlab/ui-kit/pull/118) [`390cb69`](https://github.com/etenlab/ui-kit/commit/390cb69d59f740a9c53188e68d4f76e435282b2c) Thanks [@lucky-gru](https://github.com/lucky-gru)! - Chore Alert
+
+## 0.5.74
+
+### Patch Changes
+
+- [#116](https://github.com/etenlab/ui-kit/pull/116) [`6372da6`](https://github.com/etenlab/ui-kit/commit/6372da60dda6bf534044b0c1b882ca1bda0b1cde) Thanks [@lucky-gru](https://github.com/lucky-gru)! - Refactor Toolbar
+
+## 0.5.73
+
+### Patch Changes
+
+- [#114](https://github.com/etenlab/ui-kit/pull/114) [`5ccb1cf`](https://github.com/etenlab/ui-kit/commit/5ccb1cf34977c12cc47e3d16685c228661024078) Thanks [@hardikpoudeldev](https://github.com/hardikpoudeldev)! - Update diegesis
+
 ## 0.5.72
 
 ### Patch Changes

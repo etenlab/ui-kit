@@ -14,7 +14,6 @@ import {
 } from './EntriesDataTable';
 import PageLayout from '../PageLayout';
 
-//#region types
 export type EntriesPageProps = {
   headerProps?: PageHeaderProps;
   sideNavProps?: SideNavProps;
@@ -23,9 +22,7 @@ export type EntriesPageProps = {
   footerProps?: PageFooterProps;
   noPageLayout?: boolean;
 };
-//#endregion
 
-//#region mockup data
 export const MOCK_ENTRIES_PAGE_PROPS: EntriesPageProps = {
   headerProps: MOCK_PAGE_HEADER_PROPS,
   footerProps: MOCK_PAGE_FOOTER_PROPS,
@@ -33,7 +30,6 @@ export const MOCK_ENTRIES_PAGE_PROPS: EntriesPageProps = {
   topControlProps: MOCK_ENTRIES_TOP_CONTROLS_PROPS,
   entriesDataTable: MOCK_ENTRIES_DATA_TABLE_PROPS,
 };
-//#endregion
 
 export function EntriesPage(props: EntriesPageProps) {
   if (props.noPageLayout) {
@@ -67,7 +63,6 @@ export function EntriesPage(props: EntriesPageProps) {
   );
 }
 
-//#region styled components
 const StyledControlsContainer = styled(Container)(({ theme }) => ({
   paddingTop: '60px',
   paddingBottom: '30px',
@@ -98,6 +93,5 @@ const StyledTableContainer = styled(Container)(({ theme }) => ({
     },
   },
 }));
-//#endregion
 
 export default EntriesPage;

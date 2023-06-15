@@ -50,7 +50,6 @@ export interface SideNavProps extends BasicFlexibleProps<SideNavConfig> {
   options?: NavOption[];
 }
 
-//#region data
 const defaultOptions: NavOption[] = [
   { title: 'Home', variant: 'big', href: '/' },
   { title: 'Entries', variant: 'big', href: '/' },
@@ -65,11 +64,15 @@ const defaultOptions: NavOption[] = [
   { title: 'Terms & conditions', variant: 'small', href: '/' },
   { title: 'Privacy policy', variant: 'small', href: '/' },
 ];
-export const MOCK_SIDE_NAV_PROPS: Partial<SideNavProps> = {
+export const mockSideNavProps: SideNavProps = {
+  id: 'side-nav',
+  parentPath: '/',
   options: defaultOptions,
   closeBtnText: 'Close',
+  open: false,
+  close: function (): void {},
+  uiConfig: defaultSideNavConfig,
 };
-//#endregion
 
 export const SideNav: FlexibleComponent<SideNavProps> = (props) => {
   const { open, close, uiConfig = defaultSideNavConfig } = props;
@@ -191,7 +194,6 @@ export const FlexibleSideNav = withFlexible<SideNavConfig, SideNavProps>(
   defaultSideNavConfig,
 );
 
-//#region styled components
 const SideNavWrapper = styled(Stack)<{
   open: boolean;
   background: string;
@@ -236,4 +238,3 @@ const MdNavButton = styled(Button)(() => ({
   display: 'block',
   size: 'medium',
 }));
-//#endregion
