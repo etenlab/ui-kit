@@ -2,7 +2,7 @@ import React from 'react';
 
 import { IconButton, Stack, Divider } from '@mui/material';
 
-import { TbLetterT, FiMic, TbVideoPlus } from '../../icons';
+import { DiText, DiMicro, DiCamera } from '../../icons';
 import { useColorModeContext } from '../../ThemeProvider';
 
 interface InputButtonGroupProps {
@@ -24,15 +24,15 @@ export function InputButtonGroup({ onClick }: InputButtonGroupProps) {
       }}
     >
       <IconButton onClick={() => onClick('quill')}>
-        <TbLetterT style={{ fontSize: '24px' }} />
+        <DiText style={{ fontSize: '24px' }} />
       </IconButton>
       <Divider orientation="vertical" flexItem />
       <IconButton onClick={() => onClick('audio')}>
-        <FiMic style={{ fontSize: '24px' }} />
+        <DiMicro style={{ fontSize: '24px' }} />
       </IconButton>
       <Divider orientation="vertical" flexItem />
       <IconButton onClick={() => onClick('video')}>
-        <TbVideoPlus style={{ fontSize: '24px' }} />
+        <DiCamera style={{ fontSize: '24px' }} />
       </IconButton>
     </Stack>
   );

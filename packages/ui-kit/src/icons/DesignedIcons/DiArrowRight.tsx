@@ -1,38 +1,38 @@
 import React from 'react';
-import { SvgIcon, SvgIconProps } from '@mui/material';
-import ArrowRightBlue from './svg-sources/arrow-right-blue.svg';
-import ArrowRightDark from './svg-sources/arrow-right-dark.svg';
-import ArrowRightGray from './svg-sources/arrow-right-gray.svg';
-import ArrowRightRed from './svg-sources/arrow-right-red.svg';
-import ArrowRightWhite from './svg-sources/arrow-right-white.svg';
-import { DiColors } from './colors';
 
-export function DiArrowRight(
-  props: Omit<SvgIconProps, 'color'> & { color?: DiColors },
-) {
-  const { color, ...rest } = props;
-  let ArrowRight = ArrowRightDark;
-  if (color) {
-    switch (color) {
-      case 'blue':
-        ArrowRight = ArrowRightBlue;
-        break;
-      case 'gray':
-        ArrowRight = ArrowRightGray;
-        break;
-      case 'red':
-        ArrowRight = ArrowRightRed;
-        break;
-      case 'white':
-        ArrowRight = ArrowRightWhite;
-        break;
-      default:
-        break;
-    }
-  }
+import { SvgIcon, type SvgIconProps } from '@mui/material';
+
+export function DiArrowRight(props: SvgIconProps) {
   return (
-    <SvgIcon {...rest}>
-      <ArrowRight />
+    <SvgIcon {...props}>
+      <g clipPath="url(#clip0_1643_15053)">
+        <path
+          d="M5 12H19"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M13 18L19 12"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M13 6L19 12"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_1643_15053">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
     </SvgIcon>
   );
 }

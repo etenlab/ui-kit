@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import {
   ThemeProvider,
-  FiPaperclip,
+  DiAttach,
   AddAttachmentButton,
 } from '../../../packages/ui-kit/src';
 import jsxToString from 'jsx-to-string';
@@ -38,14 +38,14 @@ Primary.args = {
   onChange: () => {
     alert('Changed');
   },
-  children: <FiPaperclip />,
+  children: <DiAttach />,
 };
 Primary.parameters = {
   docs: {
     source: {
       code: jsxToString(
         <AddAttachmentButton onChange={() => alert('Changed')}>
-          <FiPaperclip />
+          <DiAttach />
         </AddAttachmentButton>,
       ),
       language: 'jsx',
@@ -60,7 +60,7 @@ Disabled.args = {
   onChange: () => {
     alert('Changed');
   },
-  children: <FiPaperclip style={{ fontSize: '24px', padding: '3px' }} />,
+  children: <DiAttach style={{ fontSize: '24px', padding: '3px' }} />,
   disabled: true,
 };
 Disabled.parameters = {
@@ -68,7 +68,7 @@ Disabled.parameters = {
     source: {
       code: jsxToString(
         <AddAttachmentButton onChange={() => alert('Changed')} disabled>
-          <FiPaperclip />
+          <DiAttach />
         </AddAttachmentButton>,
       ),
       language: 'jsx',

@@ -2,9 +2,9 @@ import React from 'react';
 
 import { IconButton, Button, Stack, Typography, Badge } from '@mui/material';
 import {
-  BiMessageRounded,
-  FiBell,
-  FiMenu,
+  DiMessages,
+  DiNotifications,
+  DiMenu,
   CiDark,
   CiLight,
   DiTranslate,
@@ -82,7 +82,7 @@ export function Toolbar({
             id="discussion-list-toggle-button"
           >
             <Badge color="red" variant="dot" invisible={!isNewDiscussion}>
-              <BiMessageRounded
+              <DiMessages
                 style={{
                   color: getColor('gray'),
                   fontSize: 24,
@@ -99,7 +99,9 @@ export function Toolbar({
             id="language-toggle-button"
           >
             <Badge color="red" variant="dot" invisible={!isNewNotification}>
-              <FiBell style={{ color: getColor('gray'), fontSize: 24 }} />
+              <DiNotifications
+                style={{ color: getColor('gray'), fontSize: 24 }}
+              />
             </Badge>
           </IconButton>
         ) : null}
@@ -148,7 +150,7 @@ export function Toolbar({
             sx={{ padding: '2px' }}
             id="app-menu-toggle-button"
           >
-            <FiMenu style={{ color: getColor('gray'), fontSize: '30px' }} />
+            <DiMenu style={{ color: getColor('gray'), fontSize: '30px' }} />
           </IconButton>
         ) : null}
       </Stack>

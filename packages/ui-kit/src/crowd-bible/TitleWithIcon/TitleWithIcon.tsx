@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Stack, IconButton, Typography, PaletteColor } from '@mui/material';
 
-import { FiX, BiLeftArrowAlt } from '../../icons';
+import { DiCross, DiArrowLeft } from '../../icons';
 
 type TitleWithIconProps = {
   label: string;
@@ -29,7 +29,7 @@ export function TitleWithIcon({
               color: (theme) => (theme.palette.dark as PaletteColor).main,
             }}
           >
-            <BiLeftArrowAlt />
+            <DiArrowLeft />
           </IconButton>
         ) : null}
 
@@ -41,7 +41,7 @@ export function TitleWithIcon({
           onClick={onClose}
           sx={{ color: (theme) => (theme.palette.gray as PaletteColor).main }}
         >
-          <FiX />
+          <DiCross />
         </IconButton>
       ) : null}
     </Stack>

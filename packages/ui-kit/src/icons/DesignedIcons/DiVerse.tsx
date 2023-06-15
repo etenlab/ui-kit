@@ -1,38 +1,65 @@
 import React from 'react';
-import { SvgIcon, SvgIconProps } from '@mui/material';
-import VerseBlue from './svg-sources/verse-blue.svg';
-import VerseDark from './svg-sources/verse-dark.svg';
-import VerseGray from './svg-sources/verse-gray.svg';
-import VerseRed from './svg-sources/verse-red.svg';
-import VerseWhite from './svg-sources/verse-white.svg';
-import { DiColors } from './colors';
 
-export function DiVerse(
-  props: Omit<SvgIconProps, 'color'> & { color?: DiColors },
-) {
-  const { color, ...rest } = props;
-  let Verse = VerseDark;
-  if (color) {
-    switch (color) {
-      case 'blue':
-        Verse = VerseBlue;
-        break;
-      case 'gray':
-        Verse = VerseGray;
-        break;
-      case 'red':
-        Verse = VerseRed;
-        break;
-      case 'white':
-        Verse = VerseWhite;
-        break;
-      default:
-        break;
-    }
-  }
+import { SvgIcon, type SvgIconProps } from '@mui/material';
+
+export function DiVerse(props: SvgIconProps) {
   return (
-    <SvgIcon {...rest}>
-      <Verse />
+    <SvgIcon {...props}>
+      <g clipPath="url(#clip0_3188_30714)">
+        <path
+          d="M3.5 5.5L5 7L7.5 4.5"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M3.5 11.5L5 13L7.5 10.5"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M3.5 17.5L5 19L7.5 16.5"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M11 6H20"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M11 12H20"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M11 18H20"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_3188_30714">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
     </SvgIcon>
   );
 }

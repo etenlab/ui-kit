@@ -1,38 +1,41 @@
 import React from 'react';
-import { SvgIcon, SvgIconProps } from '@mui/material';
-import CodeBlue from './svg-sources/code-blue.svg';
-import CodeDark from './svg-sources/code-dark.svg';
-import CodeGray from './svg-sources/code-gray.svg';
-import CodeRed from './svg-sources/code-red.svg';
-import CodeWhite from './svg-sources/code-white.svg';
-import { DiColors } from './colors';
 
-export function DiCode(
-  props: Omit<SvgIconProps, 'color'> & { color?: DiColors },
-) {
-  const { color, ...rest } = props;
-  let Code = CodeDark;
-  if (color) {
-    switch (color) {
-      case 'blue':
-        Code = CodeBlue;
-        break;
-      case 'gray':
-        Code = CodeGray;
-        break;
-      case 'red':
-        Code = CodeRed;
-        break;
-      case 'white':
-        Code = CodeWhite;
-        break;
-      default:
-        break;
-    }
-  }
+import { SvgIcon, type SvgIconProps } from '@mui/material';
+
+export function DiCode(props: SvgIconProps) {
   return (
-    <SvgIcon {...rest}>
-      <Code />
+    <SvgIcon {...props}>
+      <g clipPath="url(#clip0_3058_35705)">
+        <path
+          d="M7 8L3 12L7 16"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M17 8L21 12L17 16"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M14 4L10 20"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_3058_35705">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
     </SvgIcon>
   );
 }

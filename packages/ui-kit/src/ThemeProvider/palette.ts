@@ -150,7 +150,7 @@ export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
       },
       'light-blue': {
         main: colors['light-blue'][mode],
-        contrastText: colors.white[mode],
+        contrastText: colors.gray[mode],
       },
       disable: {
         main: colors.disable[mode],

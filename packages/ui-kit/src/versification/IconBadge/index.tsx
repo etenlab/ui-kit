@@ -1,9 +1,14 @@
 import React from 'react';
 import { IconType } from 'react-icons';
-
+import { SvgIconProps } from '@mui/material';
+import { DiColors } from '../../icons/DesignedIcons/colors';
 import { Box } from '@mui/material';
 
 import { useColorModeContext } from '../../ThemeProvider';
+
+type DiIconType = (
+  props: Omit<SvgIconProps, 'color'> & { color?: DiColors },
+) => JSX.Element;
 
 export function IconBadge({
   value = 0,
@@ -12,7 +17,7 @@ export function IconBadge({
   danger = false,
 }: {
   value?: number;
-  Icon: IconType;
+  Icon: IconType | DiIconType;
   success?: boolean;
   danger?: boolean;
 }) {

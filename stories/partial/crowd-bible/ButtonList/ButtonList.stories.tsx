@@ -8,7 +8,7 @@ import { StoryPaper } from '../../../StoryPaper';
 import { ButtonList } from '../../../../packages/ui-kit/src/crowd-bible';
 import {
   PlusButton,
-  BiFile,
+  DiFileText,
   FilterButton,
 } from '../../../../packages/ui-kit/src';
 
@@ -50,7 +50,7 @@ const items = [
 const docItems = items.map((item) => ({
   ...item,
   startIcon: (
-    <BiFile
+    <DiFileText
       style={{
         borderRadius: '7px',
         padding: '7px',

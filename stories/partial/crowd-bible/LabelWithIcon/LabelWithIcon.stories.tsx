@@ -3,8 +3,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import {
   ThemeProvider,
-  BiCommentAdd,
-  FiX,
+  DiComment,
+  DiCross,
 } from '../../../../packages/ui-kit/src';
 import { LabelWithIcon } from '../../../../packages/ui-kit/src/crowd-bible';
 import jsxToString from 'jsx-to-string';
@@ -30,7 +30,7 @@ const Template: ComponentStory<typeof LabelWithIcon> = (args) => (
 export const LabelWithCommentIcon = Template.bind({});
 LabelWithCommentIcon.args = {
   label: 'translation',
-  icon: <BiCommentAdd />,
+  icon: <DiComment />,
   color: 'blue-primary',
 };
 LabelWithCommentIcon.parameters = {
@@ -39,7 +39,7 @@ LabelWithCommentIcon.parameters = {
       code: jsxToString(
         <LabelWithIcon
           label="translation"
-          icon={<BiCommentAdd />}
+          icon={<DiComment />}
           color="blue-primary"
           onClick={() => {}}
         />,
@@ -54,7 +54,7 @@ LabelWithCommentIcon.parameters = {
 export const LabelWithCloseIcon = Template.bind({});
 LabelWithCloseIcon.args = {
   label: 'translation',
-  icon: <FiX />,
+  icon: <DiCross />,
   color: 'gray',
 };
 LabelWithCloseIcon.parameters = {
@@ -63,7 +63,7 @@ LabelWithCloseIcon.parameters = {
       code: jsxToString(
         <LabelWithIcon
           label="translation"
-          icon={<FiX />}
+          icon={<DiCross />}
           color="gray"
           onClick={() => {}}
         />,

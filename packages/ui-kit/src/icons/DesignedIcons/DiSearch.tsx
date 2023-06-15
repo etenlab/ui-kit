@@ -1,38 +1,33 @@
 import React from 'react';
-import { SvgIcon, SvgIconProps } from '@mui/material';
-import SearchBlue from './svg-sources/search-blue.svg';
-import SearchDark from './svg-sources/search-dark.svg';
-import SearchGray from './svg-sources/search-gray.svg';
-import SearchRed from './svg-sources/search-red.svg';
-import SearchWhite from './svg-sources/search-white.svg';
-import { DiColors } from './colors';
 
-export function DiSearch(
-  props: Omit<SvgIconProps, 'color'> & { color?: DiColors },
-) {
-  const { color, ...rest } = props;
-  let Search = SearchDark;
-  if (color) {
-    switch (color) {
-      case 'blue':
-        Search = SearchBlue;
-        break;
-      case 'gray':
-        Search = SearchGray;
-        break;
-      case 'red':
-        Search = SearchRed;
-        break;
-      case 'white':
-        Search = SearchWhite;
-        break;
-      default:
-        break;
-    }
-  }
+import { SvgIcon, type SvgIconProps } from '@mui/material';
+
+export function DiSearch(props: SvgIconProps) {
   return (
-    <SvgIcon {...rest}>
-      <Search />
+    <SvgIcon {...props}>
+      <g clipPath="url(#clip0_3058_19068)">
+        <path
+          d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M20.9984 21.0004L16.6484 16.6504"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_3058_19068">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
     </SvgIcon>
   );
 }

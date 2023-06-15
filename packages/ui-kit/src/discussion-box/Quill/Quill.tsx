@@ -25,10 +25,10 @@ import {
   Typography,
 } from '@mui/material';
 import {
-  FiPaperclip,
-  CiFaceSmile,
-  BiRightArrowAlt,
-  FiX,
+  DiAttach,
+  DiSmile,
+  DiArrowRight,
+  DiCross,
   CiCircleRemove,
 } from '../../icons';
 import { useColorModeContext } from '../../ThemeProvider';
@@ -320,7 +320,7 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
           size="small"
           sx={{ position: 'absolute', right: '12px', top: '1px' }}
         >
-          <FiX style={{ ...iconStyle, color: getColor('red') }} />
+          <DiCross style={{ ...iconStyle, color: getColor('red') }} />
         </IconButton>
       </Box>
 
@@ -336,10 +336,9 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
       >
         <Stack direction="row" justifyContent="flex-start">
           <AddAttachmentButton onChange={handleFileChange} disabled={disabled}>
-            <FiPaperclip
+            <DiAttach
               style={{
                 ...iconStyle,
-                strokeWidth: '1.5px',
                 color: getColor('gray'),
               }}
             />
@@ -350,7 +349,7 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
             ref={anchorEl}
             onClick={handleOpenEmojiPicker}
           >
-            <CiFaceSmile
+            <DiSmile
               style={{
                 ...iconStyle,
                 strokeWidth: '0.4px',
@@ -361,7 +360,7 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
         </Stack>
 
         <IconButton size="small" onClick={handleSend}>
-          <BiRightArrowAlt
+          <DiArrowRight
             style={{
               ...iconStyle,
               borderRadius: '50%',

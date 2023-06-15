@@ -1,6 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import { ThemeProvider } from '../../../packages/ui-kit/src';
+
 import {
   CiRead,
   CiDark,
@@ -173,6 +175,7 @@ function TitleWithIcon({
           padding: '5px',
           border: '1px solid #aaa',
           borderRadius: '5px',
+          color: 'red',
         }}
       >
         {icon}
@@ -197,7 +200,9 @@ export default {
           width: '500px',
         }}
       >
-        <Story />
+        <ThemeProvider>
+          <Story />
+        </ThemeProvider>
       </div>
     ),
   ],
