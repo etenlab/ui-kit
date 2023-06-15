@@ -5,19 +5,23 @@ import { SvgIcon, type SvgIconProps } from '@mui/material';
 export function DiTimer(props: SvgIconProps) {
   return (
     <SvgIcon {...props}>
-      <g clip-path="url(#clip0_1643_15064)">
-        <g clip-path="url(#clip1_1643_15064)">
+      <g clipPath="url(#clip0_1643_15064)">
+        <g clipPath="url(#clip1_1643_15064)">
           <path
             d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            stroke="currentColor"
+            fill="none"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M12 7V12L15 15"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            stroke="currentColor"
+            fill="none"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </g>
       </g>

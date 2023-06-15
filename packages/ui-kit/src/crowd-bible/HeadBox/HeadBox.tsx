@@ -74,7 +74,7 @@ export function HeadBox({
 
   const backCom = back ? (
     <IconButton onClick={back.action} sx={{ padding: '2px' }}>
-      <DiArrowLeft style={{ fontSize: '24px', color: getColor('dark') }} />
+      <DiArrowLeft style={{ color: getColor('dark') }} />
     </IconButton>
   ) : null;
 
@@ -95,17 +95,13 @@ export function HeadBox({
 
   const searchCom = search ? (
     <IconButton onClick={handleClickSearchButton} sx={{ padding: '2px' }}>
-      <DiSearch
-        style={{ fontSize: '24px', strokeWidth: 1, color: getColor('gray') }}
-      />
+      <DiSearch style={{ color: getColor('gray') }} />
     </IconButton>
   ) : null;
 
   const filterCom = filter ? (
     <IconButton onClick={filter.onClick} sx={{ padding: '2px' }}>
-      <DiFilter
-        style={{ fontSize: '24px', strokeWidth: 1, color: getColor('gray') }}
-      />
+      <DiFilter style={{ color: getColor('gray') }} />
     </IconButton>
   ) : null;
 

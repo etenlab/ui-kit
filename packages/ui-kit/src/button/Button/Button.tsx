@@ -13,8 +13,7 @@ export function Button(
 ) {
   const args = {
     ...props,
-    endIcon:
-      props.endIcon === true ? <DiArrowRight color="white" /> : props.endIcon,
+    endIcon: props.endIcon === true ? <DiArrowRight /> : props.endIcon,
   };
 
   return <StyledButton {...args} />;

@@ -5,43 +5,55 @@ import { SvgIcon, type SvgIconProps } from '@mui/material';
 export function DiList(props: SvgIconProps) {
   return (
     <SvgIcon {...props}>
-      <g clip-path="url(#clip0_3065_22275)">
-        <g clip-path="url(#clip1_3065_22275)">
+      <g clipPath="url(#clip0_3065_22275)">
+        <g clipPath="url(#clip1_3065_22275)">
           <path
             d="M9 6H20"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            stroke="currentColor"
+            fill="none"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M9 12H20"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            stroke="currentColor"
+            fill="none"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M9 18H20"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            stroke="currentColor"
+          fill="none"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M5 6V6.01"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            stroke="currentColor"
+          fill="none"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M5 12V12.01"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            stroke="currentColor"
+          fill="none"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M5 18V18.01"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            stroke="currentColor"
+          fill="none"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </g>
       </g>

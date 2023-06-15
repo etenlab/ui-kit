@@ -18,7 +18,7 @@
     "release": "yarn run build && changeset publish",
     "git-reset": "git reset --hard HEAD",
     "git-clean": "git clean -d -x -e node_modules -e packages -f",
-    "storybook": "start-storybook -p 5432",
+    "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "devDependencies": {

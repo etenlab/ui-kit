@@ -22,7 +22,7 @@ export function PlusButton({ variant, onClick, ...props }: PlusButtonProps) {
       sx={{ padding: '6px', minWidth: 0 }}
       {...props}
     >
-      <DiAdd style={{ fontSize: '24px' }} />
+      <DiAdd />
     </Button>
   );
 }

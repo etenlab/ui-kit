@@ -26,7 +26,7 @@ export function FilterButton({
       sx={{ padding: '6px', minWidth: 0 }}
       {...props}
     >
-      <DiFilter style={{ fontSize: '24px' }} />
+      <DiFilter />
     </Button>
   );
 }

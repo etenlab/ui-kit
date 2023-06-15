@@ -3,21 +3,24 @@ import React from 'react';
 import { SvgIcon, type SvgIconProps } from '@mui/material';
 
 export function DiArrowLeft(props: SvgIconProps) {
-
   return (
     <SvgIcon {...props}>
-      <g clip-path="url(#clip0_3104_25070)">
+      <g clipPath="url(#clip0_3104_25070)">
         <path
           d="M19 12H5"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M12 19L5 12L12 5"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>

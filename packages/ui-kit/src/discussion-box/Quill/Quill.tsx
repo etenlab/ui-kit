@@ -339,7 +339,6 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
             <DiAttach
               style={{
                 ...iconStyle,
-                strokeWidth: '1.5px',
                 color: getColor('gray'),
               }}
             />
