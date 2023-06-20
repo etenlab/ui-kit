@@ -39,6 +39,8 @@ type ItemContentListEditProps = {
   changeContentValue: (id: string | null, newContentValue: string) => void;
   changeContentVotes: (id: string | null, UpOrDown: TUpOrDownVote) => void;
   addContent: (newContentValue: string) => void;
+  isEditable?: boolean;
+  isAddable?: boolean;
 };
 
 export function ItemContentListEdit({
@@ -48,6 +50,8 @@ export function ItemContentListEdit({
   changeContentValue,
   changeContentVotes,
   addContent,
+  isEditable = false,
+  isAddable = false,
 }: ItemContentListEditProps) {
   const [isDialogOpened, setIsDialogOpened] = useState(false);
   const [itemIdxEditting, setItemIdxEditting] = useState(
@@ -74,68 +78,72 @@ export function ItemContentListEdit({
           <DiSound />
         </IconButton>
       </Box>
-      {item.contents.map(({ content, upVotes, downVotes }, idx) => (
-        <ListItem
-          sx={{
-            display: 'list-item',
-            padding: 0,
-            fontSize: '12px',
-            lineHeight: '17px',
+      <ul>
+        {item.contents.map(({ content, upVotes, downVotes }, idx) => (
+          <ListItem
+            sx={{
+              display: 'list-item',
+              padding: 0,
+              fontSize: '12px',
+              lineHeight: '17px',
+            }}
+            key={idx}
+          >
+            {itemIdxEditting === idx ? (
+              <DebounceInput
+                element={Input}
+                debounceTimeout={500}
+                value={content}
+                onChange={(v) =>
+                  changeContentValue(item.contents[idx].id, v.target.value)
+                }
+                onBlur={() => setItemIdxEditting(null as unknown as number)}
+              />
+            ) : (
+              <Typography
+                variant="body1"
+                onClick={() => isEditable && setItemIdxEditting(idx)}
+                display={'inline-flex'}
+              >
+                {content}
+              </Typography>
+            )}
+            <div>
+              <VoteButtonGroup
+                likeCount={upVotes}
+                dislikeCount={downVotes}
+                like={false}
+                dislike={false}
+                setDislike={() =>
+                  changeContentVotes(item.contents[idx].candidateId, 'downVote')
+                }
+                setLike={() =>
+                  changeContentVotes(item.contents[idx].candidateId, 'upVote')
+                }
+              />
+            </div>
+          </ListItem>
+        ))}
+        {isAddable && (
+          <Button
+            fullWidth
+            variant="contained"
+            startIcon={<DiAdd />}
+            onClick={() => setIsDialogOpened(true)}
+          >
+            {buttonText}
+          </Button>
+        )}
+        <SimpleFormDialog
+          title={'Enter new Definition'}
+          isOpened={isDialogOpened}
+          handleCancel={() => setIsDialogOpened(false)}
+          handleOk={(value) => {
+            addContent(value);
+            setIsDialogOpened(false);
           }}
-          key={idx}
-        >
-          {itemIdxEditting === idx ? (
-            <DebounceInput
-              element={Input}
-              debounceTimeout={500}
-              value={content}
-              onChange={(v) =>
-                changeContentValue(item.contents[idx].id, v.target.value)
-              }
-              onBlur={() => setItemIdxEditting(null as unknown as number)}
-            />
-          ) : (
-            <Typography
-              variant="body1"
-              onClick={() => setItemIdxEditting(idx)}
-              display={'inline-flex'}
-            >
-              {content}
-            </Typography>
-          )}
-          <div>
-            <VoteButtonGroup
-              likeCount={upVotes}
-              dislikeCount={downVotes}
-              like={false}
-              dislike={false}
-              setDislike={() =>
-                changeContentVotes(item.contents[idx].candidateId, 'downVote')
-              }
-              setLike={() =>
-                changeContentVotes(item.contents[idx].candidateId, 'upVote')
-              }
-            />
-          </div>
-        </ListItem>
-      ))}
-      <Button
-        fullWidth
-        variant="contained"
-        startIcon={<DiAdd />}
-        onClick={() => setIsDialogOpened(true)}
-      >
-        {buttonText}
-      </Button>
-      <SimpleFormDialog
-        title={'Enter new Definition'}
-        isOpened={isDialogOpened}
-        handleCancel={() => setIsDialogOpened(false)}
-        handleOk={(value) => {
-          addContent(value);
-          setIsDialogOpened(false);
-        }}
-      />
+        />
+      </ul>
     </>
   );
 }

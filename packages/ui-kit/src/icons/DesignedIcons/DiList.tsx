@@ -26,7 +26,7 @@ export function DiList(props: SvgIconProps) {
           <path
             d="M9 18H20"
             stroke="currentColor"
-          fill="none"
+            fill="none"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -34,7 +34,7 @@ export function DiList(props: SvgIconProps) {
           <path
             d="M5 6V6.01"
             stroke="currentColor"
-          fill="none"
+            fill="none"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -42,7 +42,7 @@ export function DiList(props: SvgIconProps) {
           <path
             d="M5 12V12.01"
             stroke="currentColor"
-          fill="none"
+            fill="none"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -50,7 +50,7 @@ export function DiList(props: SvgIconProps) {
           <path
             d="M5 18V18.01"
             stroke="currentColor"
-          fill="none"
+            fill="none"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
