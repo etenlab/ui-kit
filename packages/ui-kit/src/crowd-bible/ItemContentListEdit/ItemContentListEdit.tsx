@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useState } from 'react';
 import {
   IconButton,
@@ -41,6 +41,7 @@ type ItemContentListEditProps = {
   addContent: (newContentValue: string) => void;
   isEditable?: boolean;
   isAddable?: boolean;
+  customTitle?: ReactElement;
 };
 
 export function ItemContentListEdit({
@@ -52,6 +53,7 @@ export function ItemContentListEdit({
   addContent,
   isEditable = false,
   isAddable = false,
+  customTitle,
 }: ItemContentListEditProps) {
   const [isDialogOpened, setIsDialogOpened] = useState(false);
   const [itemIdxEditting, setItemIdxEditting] = useState(
@@ -61,24 +63,30 @@ export function ItemContentListEdit({
   return (
     <>
       <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
-        <TitleWithIcon
-          onClose={() => {}}
-          onBack={onBack}
-          withBackIcon={true}
-          withCloseIcon={false}
-          label={item.title.content}
-        ></TitleWithIcon>
-        <IconButton
-          onClick={() => alert('sound!')}
-          sx={{
-            color: (theme) => (theme.palette.dark as PaletteColor).main,
-            marginLeft: '20px',
-          }}
-        >
-          <DiSound />
-        </IconButton>
+        {customTitle ? (
+          <> {customTitle}</>
+        ) : (
+          <>
+            <TitleWithIcon
+              onClose={() => {}}
+              onBack={onBack}
+              withBackIcon={true}
+              withCloseIcon={false}
+              label={item.title.content}
+            ></TitleWithIcon>
+            <IconButton
+              onClick={() => alert('sound!')}
+              sx={{
+                color: (theme) => (theme.palette.dark as PaletteColor).main,
+                marginLeft: '20px',
+              }}
+            >
+              <DiSound />
+            </IconButton>
+          </>
+        )}
       </Box>
-      <ul>
+      <ul style={{ margin: 0 }}>
         {item.contents.map(({ content, upVotes, downVotes }, idx) => (
           <ListItem
             sx={{

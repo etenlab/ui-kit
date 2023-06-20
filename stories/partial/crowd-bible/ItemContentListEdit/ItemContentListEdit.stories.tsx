@@ -1,4 +1,4 @@
-import { ThemeProvider } from '../../../../packages/ui-kit/src';
+import { Button, ThemeProvider } from '../../../../packages/ui-kit/src';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 import jsxToString from 'jsx-to-string';
@@ -163,7 +163,6 @@ Addable.args = {
   isAddable: true,
   isEditable: true,
 };
-
 Addable.parameters = {
   docs: {
     source: {
@@ -183,6 +182,49 @@ Addable.parameters = {
           }
           isAddable={Editable.args.isAddable}
           isEditable={Editable.args.isEditable}
+        />,
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
+
+export const CustomTitle = Template.bind({});
+CustomTitle.args = {
+  item: selectedPhrase,
+  onBack: () => alert('onBack run'),
+  buttonText: 'New Definition',
+  changeContentValue: (definitionId, newContentValue) =>
+    alert(`changeContentValue: ${definitionId} ${newContentValue}`),
+  changeContentVotes: (candidateId, upOrDown) =>
+    alert(`changeContentVotes: ${candidateId} ${upOrDown}`),
+  addContent: (newContentValue) => alert(`addContent ${newContentValue}`),
+  isAddable: false,
+  isEditable: false,
+  customTitle: <Button>Some react element</Button>,
+};
+CustomTitle.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <ItemContentListEdit
+          item={selectedPhrase}
+          onBack={() => alert('onBack run')}
+          buttonText="New Definition"
+          changeContentValue={(definitionId, newContentValue) =>
+            alert(`changeContentValue: ${definitionId} ${newContentValue}`)
+          }
+          changeContentVotes={(candidateId, upOrDown) =>
+            alert(`changeContentVotes: ${candidateId} ${upOrDown}`)
+          }
+          addContent={(newContentValue) =>
+            alert(`addContent ${newContentValue}`)
+          }
+          isAddable={Editable.args.isAddable}
+          isEditable={Editable.args.isEditable}
+          customTitle={Editable.args.customTitle}
         />,
       ),
       language: 'jsx',
