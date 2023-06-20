@@ -26,7 +26,7 @@ export function DiMap(props: SvgIconProps) {
           <path
             d="M15 7V20"
             stroke="currentColor"
-          fill="none"
+            fill="none"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
