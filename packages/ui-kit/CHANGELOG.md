@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.79
+
+### Patch Changes
+
+- [#127](https://github.com/etenlab/ui-kit/pull/127) [`1b215ab`](https://github.com/etenlab/ui-kit/commit/1b215abf1ebc4251d9951a4680ef723154196ae9) Thanks [@ForeverYoung1208](https://github.com/ForeverYoung1208)! - update buttonslist
+
 ## 0.5.78
 
 ### Patch Changes
