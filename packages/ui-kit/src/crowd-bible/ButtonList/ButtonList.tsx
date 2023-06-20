@@ -48,6 +48,18 @@ function ListItemCom({ item, withUnderline, onClick }: ButtonListItemComProps) {
 
   const itemColor = color ? color : getColor('dark');
 
+  const labelType = typeof label;
+  const labelCom =
+    labelType === 'object' ||
+    labelType === 'function' ||
+    labelType === 'symbol' ? (
+      label
+    ) : (
+      <Typography variant="body1" sx={{ color: `${itemColor} !important` }}>
+        {label}
+      </Typography>
+    );
+
   return (
     <>
       <ListItemButton
@@ -63,12 +75,7 @@ function ListItemCom({ item, withUnderline, onClick }: ButtonListItemComProps) {
               justifyContent="space-between"
               alignItems="center"
             >
-              <Typography
-                variant="body1"
-                sx={{ color: `${itemColor} !important` }}
-              >
-                {label}
-              </Typography>
+              {labelCom}
               {endIconCom}
             </Stack>
           }
@@ -100,8 +107,6 @@ export function ButtonList({
   items,
   onClick,
 }: ButtonListProps) {
-  const { getColor } = useColorModeContext();
-
   const [isShownSearchInput, setIsShownSearchInput] = useState<boolean>(false);
 
   const handleToggleSearchInput = () => {
@@ -151,7 +156,7 @@ export function ButtonList({
       subheader={
         <ListSubheader
           component="div"
-          sx={{ padding: '6px 20px', backgroundColor: getColor('bg-main') }}
+          sx={{ padding: '6px 20px', background: 'rgba(0, 0, 0, 0)' }}
         >
           <Stack
             direction="row"
