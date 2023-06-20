@@ -107,3 +107,87 @@ Primary.parameters = {
     },
   },
 };
+
+export const Editable = Template.bind({});
+Editable.args = {
+  item: selectedPhrase,
+  onBack: () => alert('onBack run'),
+  buttonText: 'New Definition',
+  changeContentValue: (definitionId, newContentValue) =>
+    alert(`changeContentValue: ${definitionId} ${newContentValue}`),
+  changeContentVotes: (candidateId, upOrDown) =>
+    alert(`changeContentVotes: ${candidateId} ${upOrDown}`),
+  addContent: (newContentValue) => alert(`addContent ${newContentValue}`),
+  isAddable: false,
+  isEditable: true,
+};
+
+Editable.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <ItemContentListEdit
+          item={selectedPhrase}
+          onBack={() => alert('onBack run')}
+          buttonText="New Definition"
+          changeContentValue={(definitionId, newContentValue) =>
+            alert(`changeContentValue: ${definitionId} ${newContentValue}`)
+          }
+          changeContentVotes={(candidateId, upOrDown) =>
+            alert(`changeContentVotes: ${candidateId} ${upOrDown}`)
+          }
+          addContent={(newContentValue) =>
+            alert(`addContent ${newContentValue}`)
+          }
+          isAddable={Editable.args.isAddable}
+          isEditable={Editable.args.isEditable}
+        />,
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
+
+export const Addable = Template.bind({});
+Addable.args = {
+  item: selectedPhrase,
+  onBack: () => alert('onBack run'),
+  buttonText: 'New Definition',
+  changeContentValue: (definitionId, newContentValue) =>
+    alert(`changeContentValue: ${definitionId} ${newContentValue}`),
+  changeContentVotes: (candidateId, upOrDown) =>
+    alert(`changeContentVotes: ${candidateId} ${upOrDown}`),
+  addContent: (newContentValue) => alert(`addContent ${newContentValue}`),
+  isAddable: true,
+  isEditable: true,
+};
+
+Addable.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <ItemContentListEdit
+          item={selectedPhrase}
+          onBack={() => alert('onBack run')}
+          buttonText="New Definition"
+          changeContentValue={(definitionId, newContentValue) =>
+            alert(`changeContentValue: ${definitionId} ${newContentValue}`)
+          }
+          changeContentVotes={(candidateId, upOrDown) =>
+            alert(`changeContentVotes: ${candidateId} ${upOrDown}`)
+          }
+          addContent={(newContentValue) =>
+            alert(`addContent ${newContentValue}`)
+          }
+          isAddable={Editable.args.isAddable}
+          isEditable={Editable.args.isEditable}
+        />,
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
