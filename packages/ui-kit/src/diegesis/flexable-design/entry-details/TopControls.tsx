@@ -1,6 +1,10 @@
 import { Stack } from '@mui/material';
 import React from 'react';
-import { ActionButtonProps, FlexibleActionButtons } from './ActionButtons';
+import {
+  ActionButtonProps,
+  FlexibleActionButtons,
+  mockActionButtonsProps,
+} from './ActionButtons';
 import {
   BasicFlexibleProps,
   BasicUIConfig,
@@ -22,6 +26,7 @@ export type EntryDetailTopControlProps =
     actionButtonProps?: ActionButtonProps;
     backBtnProps?: BackBtnProps;
   };
+
 export const defaultTopControlConfig: EntryDetailTopControlConfig = {
   componentName: 'TopControls',
   contents: {
@@ -29,6 +34,14 @@ export const defaultTopControlConfig: EntryDetailTopControlConfig = {
   },
   styles: {},
 };
+export const mockTopControlsProps: EntryDetailTopControlProps = {
+  id: 'top-controls',
+  parentPath: '/',
+  title: 'Bible in Basic English',
+  actionButtonProps: mockActionButtonsProps,
+  uiConfig: defaultTopControlConfig,
+};
+
 export const TopControls: FlexibleComponent<EntryDetailTopControlProps> = ({
   uiConfig = defaultTopControlConfig,
   title,
@@ -43,7 +56,7 @@ export const TopControls: FlexibleComponent<EntryDetailTopControlProps> = ({
     >
       <FlexibleBackButton
         {...backBtnProps}
-        id="top-controls-back-button"
+        id="back-button"
         parentPath={uiConfig.configPath!}
       />
       <Stack
@@ -64,7 +77,7 @@ export const TopControls: FlexibleComponent<EntryDetailTopControlProps> = ({
         })}
       >
         <PageTitleTypo variant="h1" marginRight={'0.5rem'} flex={2}>
-          {title || uiConfig.contents.title}
+          {title ?? uiConfig.contents.title}
         </PageTitleTypo>
         <Stack
           flex={1}
@@ -76,7 +89,7 @@ export const TopControls: FlexibleComponent<EntryDetailTopControlProps> = ({
         >
           <FlexibleActionButtons
             {...actionButtonProps}
-            id="entry-detail-top-control-action-buttons"
+            id="action-buttons"
             parentPath={uiConfig.configPath!}
           />
         </Stack>

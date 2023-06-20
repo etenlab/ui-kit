@@ -18,7 +18,7 @@ import '@fontsource/noto-serif-display';
 
 import { deepmerge } from '@mui/utils';
 import { getThemeOptions } from './themeOptions';
-import { colors } from './palette';
+import { designColors, colors } from './palette';
 import { logger } from '../logger';
 
 export const mode =
@@ -30,8 +30,8 @@ const ColorModeContext = createContext({
   setColorMode: (colorMode: 'light' | 'dark') => {
     logger.info(colorMode);
   },
-  getColor: (color: string) => {
-    return color;
+  getColor: (lightModeColor: string, _darkModeColor?: string) => {
+    return lightModeColor;
   },
 });
 
@@ -76,8 +76,30 @@ export function ThemeProvider({
       setColorMode: (colorMode: 'light' | 'dark') => {
         setMode(colorMode);
       },
-      getColor: (colorName: string) => {
-        return colors[colorName as keyof typeof colors][mode];
+      getColor: (lightModeColor: string, darkModeColor?: string) => {
+        if (mode === 'light' && darkModeColor) {
+          if (designColors[lightModeColor as keyof typeof designColors]) {
+            return designColors[lightModeColor as keyof typeof designColors];
+          } else {
+            return lightModeColor;
+          }
+        }
+
+        if (mode === 'dark' && darkModeColor) {
+          if (designColors[darkModeColor as keyof typeof designColors]) {
+            return designColors[darkModeColor as keyof typeof designColors];
+          } else {
+            return darkModeColor;
+          }
+        }
+
+        if (colors[lightModeColor as keyof typeof colors]) {
+          return colors[lightModeColor as keyof typeof colors][mode];
+        } else if (designColors[lightModeColor as keyof typeof designColors]) {
+          return designColors[lightModeColor as keyof typeof designColors];
+        } else {
+          return lightModeColor;
+        }
       },
     }),
     [mode],
@@ -209,6 +231,30 @@ declare module '@mui/material/Link' {
   }
 }
 
+declare module '@mui/material/SvgIcon' {
+  interface SvgIconPropsColorOverrides {
+    'blue-primary': true;
+    'light-blue': true;
+    disable: true;
+    dark: true;
+    gray: true;
+    'middle-gray': true;
+    white: true;
+    red: true;
+    'light-red': true;
+    green: true;
+    'light-green': true;
+    yellow: true;
+    'middle-yellow': true;
+    'light-yellow': true;
+    'turquoise-light': true;
+    'turquoise-dark': true;
+    'darker-gray': true;
+    'lighter-gray': true;
+    'divider-color': true;
+  }
+}
+
 declare module '@mui/material/styles' {
   interface CustomPalette {
     'blue-primary': PaletteColorOptions;
@@ -276,6 +322,10 @@ declare module '@mui/material/styles' {
     'turquoise-dark': string;
     'turquoise-light': string;
     white: string;
+    'bg-main': string;
+    'bg-input': string;
+    'bg-second': string;
+    'bg-light-blue': string;
   }
 }
 

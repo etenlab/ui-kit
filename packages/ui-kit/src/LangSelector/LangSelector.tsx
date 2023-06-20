@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Stack } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 
 import tags from 'language-tags';
 import { Autocomplete } from '../input';
@@ -17,9 +17,11 @@ export type LanguageInfo = {
 };
 
 export type LangSelectorProps = {
+  label?: string;
+  selected?: LanguageInfo;
+  fullRendered?: boolean;
   onChange(langTag: string | null, selected: LanguageInfo): void;
   setLoadingState?(isLoading: boolean): any;
-  selected?: LanguageInfo;
 };
 export interface TagInfo {
   tag: string | null;
@@ -45,9 +47,11 @@ enum TagSpecialDescriptions {
 }
 
 export function LangSelector({
+  label,
+  selected,
+  fullRendered = false,
   onChange,
   setLoadingState,
-  selected,
 }: LangSelectorProps) {
   const [langsRegistry, setLangsRegistry] = useState<LangsRegistry>({
     langs: [],
@@ -64,6 +68,7 @@ export function LangSelector({
   const [selectedRegion, setSelectedRegion] = useState<Region | null>(
     selected?.region || null,
   );
+
   useEffect(() => {
     if (setLoadingState) {
       setLoadingState(true);
@@ -158,8 +163,51 @@ export function LangSelector({
     setSelectedRegion(value);
   };
 
+  const labelCom = label ? (
+    <Typography variant="overline" sx={{ opacity: 0.5 }}>
+      {label}
+    </Typography>
+  ) : null;
+  const extraCom = fullRendered ? (
+    <Stack direction="row" width={'100%'} gap={`${PADDING_SMALL}px`}>
+      <Autocomplete
+        disabled={!selectedLang}
+        label="Dialect"
+        value={selectedDialect}
+        options={langsRegistry.dialects}
+        getOptionLabel={(option) =>
+          option.descriptions
+            ? option.descriptions.join(DESCRIPTIONS_JOINER)
+            : ''
+        }
+        onChange={handleSetDialect}
+        isOptionEqualToValue={(option, value) => {
+          return option.tag === value.tag;
+        }}
+        fullWidth
+      />
+      <Autocomplete
+        disabled={!selectedLang}
+        label="Nation/Region/Geo"
+        value={selectedRegion}
+        options={langsRegistry.regions}
+        getOptionLabel={(option) =>
+          option.descriptions
+            ? option.descriptions.join(DESCRIPTIONS_JOINER)
+            : ''
+        }
+        onChange={handleSetRegion}
+        isOptionEqualToValue={(option, value) => {
+          return option.tag === value.tag;
+        }}
+        fullWidth
+      />
+    </Stack>
+  ) : null;
+
   return (
     <Stack width={'100%'} padding={`${PADDING}px 0`} gap={`${PADDING_SMALL}px`}>
+      {labelCom}
       <Autocomplete
         label="Language"
         value={selectedLang}
@@ -174,41 +222,7 @@ export function LangSelector({
           return option.tag === value.tag;
         }}
       />
-
-      <Stack direction="row" width={'100%'} gap={`${PADDING_SMALL}px`}>
-        <Autocomplete
-          disabled={!selectedLang}
-          label="Dialect"
-          value={selectedDialect}
-          options={langsRegistry.dialects}
-          getOptionLabel={(option) =>
-            option.descriptions
-              ? option.descriptions.join(DESCRIPTIONS_JOINER)
-              : ''
-          }
-          onChange={handleSetDialect}
-          isOptionEqualToValue={(option, value) => {
-            return option.tag === value.tag;
-          }}
-          fullWidth
-        />
-        <Autocomplete
-          disabled={!selectedLang}
-          label="Nation/Region/Geo"
-          value={selectedRegion}
-          options={langsRegistry.regions}
-          getOptionLabel={(option) =>
-            option.descriptions
-              ? option.descriptions.join(DESCRIPTIONS_JOINER)
-              : ''
-          }
-          onChange={handleSetRegion}
-          isOptionEqualToValue={(option, value) => {
-            return option.tag === value.tag;
-          }}
-          fullWidth
-        />
-      </Stack>
+      {extraCom}
     </Stack>
   );
 }

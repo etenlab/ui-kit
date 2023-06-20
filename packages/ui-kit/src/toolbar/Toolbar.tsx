@@ -1,7 +1,14 @@
 import React from 'react';
 
 import { IconButton, Button, Stack, Typography, Badge } from '@mui/material';
-import { BiMessageRounded, FiBell, FiMenu, CiDark, CiLight } from '../icons';
+import {
+  DiMessages,
+  DiNotifications,
+  DiMenu,
+  CiDark,
+  CiLight,
+  DiTranslate,
+} from '../icons';
 import { useColorModeContext } from '../ThemeProvider';
 
 type ToolbarProps = {
@@ -11,12 +18,14 @@ type ToolbarProps = {
   buttons?: {
     discussion: boolean;
     notification: boolean;
+    language: boolean;
     menu: boolean;
   };
   themeMode: 'dark' | 'light';
   onClickTitleBtn?: () => void;
   onClickDiscussionBtn(): void;
   onClickNotificationBtn(): void;
+  onClickLanguageBtn(): void;
   onClickThemeModeBtn(): void;
   onClickMenuBtn(): void;
 };
@@ -28,13 +37,15 @@ export function Toolbar({
   buttons = {
     discussion: true,
     notification: true,
+    language: true,
     menu: true,
   },
   themeMode = 'light',
   onClickTitleBtn,
-  onClickThemeModeBtn,
   onClickDiscussionBtn,
   onClickNotificationBtn,
+  onClickLanguageBtn,
+  onClickThemeModeBtn,
   onClickMenuBtn,
 }: ToolbarProps) {
   const { getColor } = useColorModeContext();
@@ -65,9 +76,13 @@ export function Toolbar({
         gap="6px"
       >
         {buttons.discussion ? (
-          <IconButton onClick={onClickDiscussionBtn} sx={{ padding: '5px' }}>
+          <IconButton
+            onClick={onClickDiscussionBtn}
+            sx={{ padding: '5px' }}
+            id="discussion-list-toggle-button"
+          >
             <Badge color="red" variant="dot" invisible={!isNewDiscussion}>
-              <BiMessageRounded
+              <DiMessages
                 style={{
                   color: getColor('gray'),
                   fontSize: 24,
@@ -78,14 +93,38 @@ export function Toolbar({
           </IconButton>
         ) : null}
         {buttons.notification ? (
-          <IconButton onClick={onClickNotificationBtn} sx={{ padding: '5px' }}>
+          <IconButton
+            onClick={onClickNotificationBtn}
+            sx={{ padding: '5px' }}
+            id="language-toggle-button"
+          >
             <Badge color="red" variant="dot" invisible={!isNewNotification}>
-              <FiBell style={{ color: getColor('gray'), fontSize: 24 }} />
+              <DiNotifications
+                style={{ color: getColor('gray'), fontSize: 24 }}
+              />
             </Badge>
           </IconButton>
         ) : null}
+        {buttons.language ? (
+          <IconButton
+            onClick={onClickLanguageBtn}
+            sx={{
+              padding: '5px',
+              '& g': {
+                stroke: getColor('gray'),
+              },
+            }}
+            id="notification-toggle-button"
+          >
+            <DiTranslate />
+          </IconButton>
+        ) : null}
 
-        <IconButton onClick={onClickThemeModeBtn} sx={{ padding: '3px' }}>
+        <IconButton
+          onClick={onClickThemeModeBtn}
+          sx={{ padding: '3px' }}
+          id="light-dark-toggle-button"
+        >
           {themeMode === 'light' ? (
             <CiLight
               style={{
@@ -106,8 +145,12 @@ export function Toolbar({
         </IconButton>
 
         {buttons.menu ? (
-          <IconButton onClick={onClickMenuBtn} sx={{ padding: '2px' }}>
-            <FiMenu style={{ color: getColor('gray'), fontSize: '30px' }} />
+          <IconButton
+            onClick={onClickMenuBtn}
+            sx={{ padding: '2px' }}
+            id="app-menu-toggle-button"
+          >
+            <DiMenu style={{ color: getColor('gray'), fontSize: '30px' }} />
           </IconButton>
         ) : null}
       </Stack>

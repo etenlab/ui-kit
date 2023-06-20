@@ -1,38 +1,65 @@
 import React from 'react';
-import { SvgIcon, SvgIconProps } from '@mui/material';
-import ChooseBlue from './svg-sources/choose-blue.svg';
-import ChooseDark from './svg-sources/choose-dark.svg';
-import ChooseGray from './svg-sources/choose-gray.svg';
-import ChooseRed from './svg-sources/choose-red.svg';
-import ChooseWhite from './svg-sources/choose-white.svg';
-import { DiColors } from './colors';
 
-export function DiChoose(
-  props: Omit<SvgIconProps, 'color'> & { color?: DiColors },
-) {
-  const { color, ...rest } = props;
-  let Choose = ChooseDark;
-  if (color) {
-    switch (color) {
-      case 'blue':
-        Choose = ChooseBlue;
-        break;
-      case 'gray':
-        Choose = ChooseGray;
-        break;
-      case 'red':
-        Choose = ChooseRed;
-        break;
-      case 'white':
-        Choose = ChooseWhite;
-        break;
-      default:
-        break;
-    }
-  }
+import { SvgIcon, type SvgIconProps } from '@mui/material';
+
+export function DiChoose(props: SvgIconProps) {
   return (
-    <SvgIcon {...rest}>
-      <Choose />
+    <SvgIcon {...props}>
+      <g clipPath="url(#clip0_3083_45274)">
+        <path
+          d="M3 12H6"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M12 3V6"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M7.80156 7.79961L5.60156 5.59961"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M16.1992 7.79961L18.3992 5.59961"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M7.80156 16.2002L5.60156 18.4002"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M12 12L21 15L17 17L15 21L12 12Z"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_3083_45274">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
     </SvgIcon>
   );
 }

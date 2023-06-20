@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 
 import { CircleButton } from '../../button';
-import { BsFillPlayFill } from '../../icons';
+import { DiPlay } from '../../icons';
 import { useColorModeContext } from '../../ThemeProvider';
 
 type VideoPlayerProps = {
@@ -52,7 +52,7 @@ export function VideoPlayer({
             onClick={switchFullScreen}
             color="gray"
             icon={
-              <BsFillPlayFill
+              <DiPlay
                 style={{
                   color: getColor('white'),
                   fontSize: 30,

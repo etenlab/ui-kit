@@ -9,7 +9,7 @@ import React, {
 
 import { Box, Popover, Divider, TextField, IconButton } from '@mui/material';
 
-import { CiFaceSmile } from '../../icons';
+import { DiSmile } from '../../icons';
 import { EmojiPicker, EmojiClickData } from '../../EmojiPicker';
 import { useColorModeContext } from '../../ThemeProvider';
 
@@ -73,7 +73,7 @@ export function SimpleQuill({
         padding: '7px 18px',
         gap: '10px',
         width: '100%',
-        background: getColor('white'),
+        background: getColor('bg-main'),
       }}
     >
       <TextField
@@ -93,7 +93,7 @@ export function SimpleQuill({
                 sx={{ margin: '0 10px' }}
               />
               <IconButton ref={anchorRef} onClick={handleOpenEmoji}>
-                <CiFaceSmile />
+                <DiSmile />
               </IconButton>
             </Fragment>
           ),

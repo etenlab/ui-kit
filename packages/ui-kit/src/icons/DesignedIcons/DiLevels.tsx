@@ -1,38 +1,13 @@
 import React from 'react';
-import { SvgIcon, SvgIconProps } from '@mui/material';
-import LevelsBlue from './svg-sources/levels-blue.svg';
-import LevelsDark from './svg-sources/levels-dark.svg';
-import LevelsGray from './svg-sources/levels-gray.svg';
-import LevelsRed from './svg-sources/levels-red.svg';
-import LevelsWhite from './svg-sources/levels-white.svg';
-import { DiColors } from './colors';
 
-export function DiLevels(
-  props: Omit<SvgIconProps, 'color'> & { color?: DiColors },
-) {
-  const { color, ...rest } = props;
-  let Levels = LevelsDark;
-  if (color) {
-    switch (color) {
-      case 'blue':
-        Levels = LevelsBlue;
-        break;
-      case 'gray':
-        Levels = LevelsGray;
-        break;
-      case 'red':
-        Levels = LevelsRed;
-        break;
-      case 'white':
-        Levels = LevelsWhite;
-        break;
-      default:
-        break;
-    }
-  }
+import { SvgIcon, type SvgIconProps } from '@mui/material';
+
+export function DiLevels(props: SvgIconProps) {
   return (
-    <SvgIcon {...rest}>
-      <Levels />
+    <SvgIcon {...props}>
+      <rect x="4" y="3" width="3" height="18" rx="1.5" fill="currentColor" />
+      <rect x="10" y="14" width="3" height="7" rx="1.5" fill="currentColor" />
+      <rect x="16" y="9" width="3" height="12" rx="1.5" fill="currentColor" />
     </SvgIcon>
   );
 }

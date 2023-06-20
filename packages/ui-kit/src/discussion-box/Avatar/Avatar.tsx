@@ -76,7 +76,7 @@ export function Avatar({ username, url, mini = false }: AvatarProps) {
     if (!url) {
       return;
     }
-    let img = new Image();
+    const img = new Image();
     img.onload = function () {
       setExistImage(true);
     };

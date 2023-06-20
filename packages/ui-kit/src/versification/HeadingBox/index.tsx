@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react';
 import { Box, Typography, IconButton } from '@mui/material';
 
 import { useColorModeContext } from '../../ThemeProvider';
-import { BiLeftArrowAlt } from '../../icons';
+import { DiArrowLeft } from '../../icons';
 
 export function HeadingBox({
   onBack,
@@ -22,7 +22,8 @@ export function HeadingBox({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        backgroundColor: getColor('light-blue'),
+        backgroundColor: getColor('bg-light-blue'),
+        border: `1px solid ${getColor('border-light-blue')}`,
         minHeight: 68,
         p: 2.5,
         color: getColor('dark'),
@@ -40,7 +41,7 @@ export function HeadingBox({
             }}
             onClick={onBack}
           >
-            <BiLeftArrowAlt />
+            <DiArrowLeft />
           </IconButton>
         )}
         <span>Versification{breadcrumb ? ` / ${breadcrumb}` : ''}</span>

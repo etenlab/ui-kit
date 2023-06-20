@@ -9,7 +9,7 @@ import { AudioPlayer } from '../AudioPlayer';
 
 import { IFile } from '../types';
 import { getMimeType } from '../utils';
-import { BiTrashAlt } from '../../icons';
+import { DiRemove } from '../../icons';
 import { useColorModeContext } from '../../ThemeProvider';
 
 type WrapperProps = {
@@ -50,7 +50,7 @@ export function Wrapper({ onRemove, mode, children }: WrapperProps) {
           ...sxObj,
         }}
       >
-        <BiTrashAlt style={{ fontSize: '15px' }} />
+        <DiRemove style={{ fontSize: '15px' }} />
       </IconButton>
     </Box>
   );

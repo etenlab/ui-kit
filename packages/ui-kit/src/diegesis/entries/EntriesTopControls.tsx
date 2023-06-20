@@ -120,7 +120,6 @@ export function EntriesTopControls(props: EntriesTopControlsProps) {
   );
 }
 
-//#region styled components
 const StyledDeviceSpecific = styled<any>(Box)(
   ({ theme, showOnSmallDevice }) => ({
     display: showOnSmallDevice ? 'none' : 'inherit',
@@ -145,13 +144,12 @@ const StyledTabContent = styled(Stack)<{ show: boolean }>(
 );
 
 const StyledChip = styled(Chip)(({ theme }) => ({
-  backgroundColor: theme.palette.background['white'],
+  backgroundColor: theme.palette.background.white,
   borderRadius: '5px',
   marginRight: '8px',
   marginTop: '8px',
   fontSize: '14px',
   fontWeight: 600,
 }));
-//#endregion
 
 export default EntriesTopControls;

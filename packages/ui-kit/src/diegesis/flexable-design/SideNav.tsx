@@ -1,7 +1,13 @@
 import { Button, Divider, Stack, Typography, styled } from '@mui/material';
 import React from 'react';
-import { CloseIcon } from './icons';
+import { CloseIcon } from '../icons';
 import { MdAccountCircle } from 'react-icons/md';
+import { withFlexible } from './withFlexible';
+import {
+  BasicFlexibleProps,
+  BasicUIConfig,
+  FlexibleComponent,
+} from './UIConfigProvider';
 
 export type NavOption = {
   title: string;
@@ -12,12 +18,37 @@ export type NavOption = {
   activated?: boolean;
   element?: JSX.Element;
 };
-export type SideNavProps = {
+interface SideNavConfig extends BasicUIConfig {
+  contents: {
+    closeBtnText: string;
+  };
+  styles: {
+    background: string;
+    closeBtnTextColor: string;
+    navItemColor: string;
+    activeNavItemColor: string;
+    closeIconColor: string;
+  };
+}
+export const defaultSideNavConfig: SideNavConfig = {
+  componentName: 'SideNav',
+  contents: {
+    closeBtnText: 'Close',
+  },
+  styles: {
+    background: '#e3e3d9',
+    closeBtnTextColor: '#31373A',
+    navItemColor: '#1B1B1B',
+    activeNavItemColor: '#60D0B2',
+    closeIconColor: '#60D0B2',
+  },
+};
+export interface SideNavProps extends BasicFlexibleProps<SideNavConfig> {
   open: boolean;
   closeBtnText?: string;
   close: () => void;
   options?: NavOption[];
-};
+}
 
 const defaultOptions: NavOption[] = [
   { title: 'Home', variant: 'big', href: '/' },
@@ -33,15 +64,20 @@ const defaultOptions: NavOption[] = [
   { title: 'Terms & conditions', variant: 'small', href: '/' },
   { title: 'Privacy policy', variant: 'small', href: '/' },
 ];
-export const MOCK_SIDE_NAV_PROPS: Partial<SideNavProps> = {
+export const mockSideNavProps: SideNavProps = {
+  id: 'side-nav',
+  parentPath: '/',
   options: defaultOptions,
   closeBtnText: 'Close',
+  open: false,
+  close: function (): void {},
+  uiConfig: defaultSideNavConfig,
 };
 
-export function SideNav(props: SideNavProps) {
-  const { open, close } = props;
+export const SideNav: FlexibleComponent<SideNavProps> = (props) => {
+  const { open, close, uiConfig = defaultSideNavConfig } = props;
   return (
-    <SideNavWrapper open={open}>
+    <SideNavWrapper open={open} background={uiConfig.styles.background}>
       <Stack
         direction={'row'}
         width={'100%'}
@@ -53,13 +89,13 @@ export function SideNav(props: SideNavProps) {
       >
         <Typography
           variant={'caption'}
-          color={'text.darker-gray'}
+          color={uiConfig.styles.closeBtnTextColor ?? 'text.darker-gray'}
           fontSize={'1.25rem'}
           lineHeight={'1.25rem'}
         >
-          {props.closeBtnText}
+          {uiConfig.contents.closeBtnText}
         </Typography>
-        <CloseIcon />
+        <CloseIcon color={uiConfig.styles.closeIconColor} />
       </Stack>
       <Stack
         direction={'column'}
@@ -82,6 +118,9 @@ export function SideNav(props: SideNavProps) {
                   size={'large'}
                   sx={{
                     fontWeight: option.activated ? '800' : '400',
+                    color: option.activated
+                      ? uiConfig.styles.activeNavItemColor
+                      : uiConfig.styles.navItemColor,
                   }}
                   onClick={() => {
                     if (option.onClick) option.onClick();
@@ -102,6 +141,9 @@ export function SideNav(props: SideNavProps) {
                     color={'dark'}
                     sx={{
                       fontWeight: option.activated ? '800' : '400',
+                      color: option.activated
+                        ? uiConfig.styles.activeNavItemColor
+                        : uiConfig.styles.navItemColor,
                     }}
                     onClick={() => {
                       if (option.onClick) option.onClick();
@@ -125,6 +167,9 @@ export function SideNav(props: SideNavProps) {
                   size={'medium'}
                   sx={{
                     fontWeight: option.activated ? '800' : '400',
+                    color: option.activated
+                      ? uiConfig.styles.activeNavItemColor
+                      : uiConfig.styles.navItemColor,
                   }}
                   onClick={() => {
                     if (option.onClick) option.onClick();
@@ -142,12 +187,20 @@ export function SideNav(props: SideNavProps) {
       </Stack>
     </SideNavWrapper>
   );
-}
+};
 
-const SideNavWrapper = styled<any>(Stack)(({ theme, open }) => ({
+export const FlexibleSideNav = withFlexible<SideNavConfig, SideNavProps>(
+  SideNav,
+  defaultSideNavConfig,
+);
+
+const SideNavWrapper = styled(Stack)<{
+  open: boolean;
+  background: string;
+}>(({ theme, open, background }) => ({
   flexDirection: 'column',
   alignItems: 'start',
-  background: theme.palette.background['light-gray2'],
+  background: background ?? theme.palette.background['light-gray2'],
   height: '100vh',
   position: 'absolute',
   top: 0,

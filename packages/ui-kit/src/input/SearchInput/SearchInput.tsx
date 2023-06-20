@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { InputAdornment, TextFieldProps } from '@mui/material';
-import { CiSearch } from '../../icons';
+import { DiSearch } from '../../icons';
 import { Input } from '../Input';
 
 export function SearchInput({
@@ -12,7 +12,7 @@ export function SearchInput({
   const InputProps = {
     startAdornment: (
       <InputAdornment position="start" sx={{ marginRight: '-4px' }}>
-        <CiSearch style={{ fontSize: '24px', strokeWidth: '0.5' }} />
+        <DiSearch style={{ fontSize: '24px', strokeWidth: '0.5' }} />
       </InputAdornment>
     ),
   };

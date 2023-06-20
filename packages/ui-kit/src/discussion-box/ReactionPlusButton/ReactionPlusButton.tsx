@@ -1,6 +1,6 @@
 import React, { MouseEvent } from 'react';
 
-import { CiFaceSmile } from '../../icons';
+import { DiSmile } from '../../icons';
 import { ReactionPlusButtonWrapper } from './styled';
 
 type ReactionPlusButtonProps = {
@@ -16,7 +16,7 @@ type ReactionPlusButtonProps = {
 export function ReactionPlusButton({ onClick }: ReactionPlusButtonProps) {
   return (
     <ReactionPlusButtonWrapper onClick={onClick}>
-      <CiFaceSmile />
+      <DiSmile />
     </ReactionPlusButtonWrapper>
   );
 }

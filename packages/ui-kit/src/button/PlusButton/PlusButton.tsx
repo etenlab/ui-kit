@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from '@mui/material';
 import { ButtonProps } from '@mui/material';
 
-import { FiPlus } from '../../icons';
+import { DiAdd } from '../../icons';
 
 type PlusButtonProps = Omit<ButtonProps, 'variant' | 'onClick'> & {
   variant: 'primary' | 'secondary';
@@ -22,7 +22,7 @@ export function PlusButton({ variant, onClick, ...props }: PlusButtonProps) {
       sx={{ padding: '6px', minWidth: 0 }}
       {...props}
     >
-      <FiPlus style={{ fontSize: '24px' }} />
+      <DiAdd />
     </Button>
   );
 }

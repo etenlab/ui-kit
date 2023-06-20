@@ -8,7 +8,7 @@ import {
   Typography,
   FormControlLabel,
 } from '@mui/material';
-import { FiX } from '../../icons';
+import { DiCross } from '../../icons';
 import { AgreeConfirmButton } from '../../button';
 import { Checkbox } from '../../input';
 import { LabelWithIcon } from '../LabelWithIcon';
@@ -79,8 +79,8 @@ export function QuestionBox({
   };
 
   const handleChangeCheck = (item: string) => {
-    let updatedChecked = [...checked];
-    let checkedIndex = checked.findIndex((data) => data.item === item);
+    const updatedChecked = [...checked];
+    const checkedIndex = checked.findIndex((data) => data.item === item);
 
     if (checkedIndex === -1) return;
 
@@ -186,7 +186,7 @@ export function QuestionBox({
             label="Send"
             onClick={() => {
               if (!choosed) return;
-              onSave({ chooseOne: choosed! });
+              onSave({ chooseOne: choosed });
             }}
           />
         </Stack>
@@ -243,7 +243,7 @@ export function QuestionBox({
       <Box sx={{ padding: '20px' }}>
         <LabelWithIcon
           label="Help the translator:"
-          icon={<FiX />}
+          icon={<DiCross />}
           onClick={onCancel}
         />
         <Typography variant="subtitle2" color="text.dark">

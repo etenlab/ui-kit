@@ -4,7 +4,7 @@ import { Stack, IconButton } from '@mui/material';
 import { Avatar } from '../Avatar';
 import { Username } from '../Username';
 import { DateViewer } from '../DateViewer';
-import { BsFillRecordFill, BiDotsHorizontalRounded } from '../../icons';
+import { BsFillRecordFill, DiMore } from '../../icons';
 
 type PostHeaderProps = {
   username: string;
@@ -28,7 +28,7 @@ export function PostHeader({
         <DateViewer date={date} />
       </Stack>
       <IconButton onClick={openActionList}>
-        <BiDotsHorizontalRounded />
+        <DiMore />
       </IconButton>
     </Stack>
   );

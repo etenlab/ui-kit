@@ -8,8 +8,7 @@ import {
   ListItem,
 } from '@mui/material';
 import { DebounceInput } from 'react-debounce-input';
-import { BiVolumeFull } from 'react-icons/bi';
-import { FiPlus } from 'react-icons/fi';
+import { DiSound, DiAdd } from '../../icons';
 
 import { SimpleFormDialog } from '../SimpleFormDialog';
 import { Input } from '../../input';
@@ -76,7 +75,7 @@ export function ItemContentListEdit({
             marginLeft: '20px',
           }}
         >
-          <BiVolumeFull />
+          <DiSound />
         </IconButton>
       </Box>
       <ul>
@@ -129,7 +128,7 @@ export function ItemContentListEdit({
           <Button
             fullWidth
             variant="contained"
-            startIcon={<FiPlus />}
+            startIcon={<DiAdd />}
             onClick={() => setIsDialogOpened(true)}
           >
             {buttonText}

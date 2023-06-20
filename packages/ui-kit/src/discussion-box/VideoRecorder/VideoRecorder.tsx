@@ -2,14 +2,7 @@ import React, { useRef, useState, useEffect, useCallback } from 'react';
 
 import { IconButton, Stack } from '@mui/material';
 
-import {
-  TbCameraRotate,
-  BsFillPlayFill,
-  BsClock,
-  CiPause1,
-  FiX,
-  FiCheck,
-} from '../../icons';
+import { DiRotate, DiPlay, DiTimer, DiCross, DiCheck } from '../../icons';
 import { useColorModeContext } from '../../ThemeProvider';
 
 import { RecorderStatus } from '../types';
@@ -167,7 +160,7 @@ export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
   const controlButtonStyle = {
     fontSize: '80px',
     padding: '20px',
-    backgroundColor: getColor('white'),
+    backgroundColor: getColor('bg-main'),
     color: getColor('dark'),
     borderRadius: '50%',
   };
@@ -181,11 +174,11 @@ export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
   const controlButton =
     recorderStatus === 'new' ? (
       <IconButton onClick={handleClickStart} disabled={disabledControl}>
-        <BsFillPlayFill style={{ ...controlButtonStyle }} />
+        <DiPlay style={{ ...controlButtonStyle }} />
       </IconButton>
     ) : (
       <IconButton onClick={handleClickPause} disabled={disabledControl}>
-        <CiPause1
+        <DiPlay
           style={{
             ...controlButtonStyle,
           }}
@@ -225,10 +218,10 @@ export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
         }}
       >
         <IconButton>
-          <BsClock style={{ color: getColor('white') }} />
+          <DiTimer style={{ color: getColor('white') }} />
         </IconButton>
         <IconButton onClick={switchFacingMode}>
-          <TbCameraRotate style={{ color: getColor('white') }} />
+          <DiRotate style={{ color: getColor('white') }} />
         </IconButton>
       </Stack>
       <Stack
@@ -250,7 +243,7 @@ export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
           sx={{ fontSize: '36px', color: getColor('white') }}
           disabled={disabledCancel}
         >
-          <FiX />
+          <DiCross />
         </IconButton>
 
         {controlButton}
@@ -260,7 +253,7 @@ export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
           sx={{ fontSize: '36px', color: getColor('green') }}
           disabled={disabledSave}
         >
-          <FiCheck />
+          <DiCheck />
         </IconButton>
       </Stack>
     </div>

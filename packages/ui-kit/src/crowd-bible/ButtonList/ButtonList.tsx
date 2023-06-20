@@ -1,6 +1,6 @@
 import React, { useState, ChangeEventHandler, ReactNode } from 'react';
 
-import { CiSearch } from '../../icons';
+import { DiSearch } from '../../icons';
 import { SearchInput } from '../../input';
 import { useColorModeContext } from '../../ThemeProvider';
 
@@ -116,7 +116,7 @@ export function ButtonList({
 
   const searchBtnCom = search ? (
     <IconButton onClick={handleToggleSearchInput}>
-      <CiSearch />
+      <DiSearch />
     </IconButton>
   ) : null;
 
@@ -151,7 +151,7 @@ export function ButtonList({
       subheader={
         <ListSubheader
           component="div"
-          sx={{ padding: '6px 20px', backgroundColor: getColor('white') }}
+          sx={{ padding: '6px 20px', backgroundColor: getColor('bg-main') }}
         >
           <Stack
             direction="row"

@@ -18,7 +18,6 @@ import BookResourceBox from './BookResourceBox';
 import BottomBackBtn from './BottomBackBtn';
 import BottomActionBtns from './BottomActionBtns';
 
-//#region types
 export type EntryDetailPageProps = {
   headerProps?: PageHeaderProps;
   sideNavProps?: SideNavProps;
@@ -30,9 +29,7 @@ export type EntryDetailPageProps = {
   backBtnProps?: BackBtnProps;
   noPageLayout?: boolean;
 };
-//#endregion
 
-//#region mockup data
 const headCells: HeadCell[] = [
   { id: 'key', disablePadding: true, label: '', numeric: false },
   { id: 'value', disablePadding: false, label: '', numeric: false },
@@ -61,7 +58,6 @@ export const MOCK_ENTRY_DETAIL_PAGE_PROPS: EntryDetailPageProps = {
     selectControl: { label: 'Select a book', options: [], onChange(_value) {} },
   },
 };
-//#endregion
 
 export function EntryDetailPage(props: EntryDetailPageProps) {
   const pageContent = (

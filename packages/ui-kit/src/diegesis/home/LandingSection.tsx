@@ -10,7 +10,6 @@ export type LandingSectionProps = {
   captionText?: string;
 };
 
-//#region sample data
 export const MOCK_LANDING_PROPS: Partial<LandingSectionProps> = {
   headingText: `Diegesis is a place to find Bibles and related resources, in a variety
   of formats, released under open licences*.`,
@@ -18,7 +17,6 @@ export const MOCK_LANDING_PROPS: Partial<LandingSectionProps> = {
   actionBtnText: 'Browse content',
   actionBtnHref: '/',
 };
-//#endregion
 
 export function LandingSection(props: LandingSectionProps) {
   return (

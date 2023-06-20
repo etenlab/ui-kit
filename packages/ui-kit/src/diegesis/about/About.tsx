@@ -15,7 +15,6 @@ export type AboutPageProps = {
   footerProps?: PageFooterProps;
 };
 
-//#region data
 const dataAboutContentSection1 = {
   title: 'Aliquam aliquet mollis',
   description:
@@ -31,7 +30,6 @@ export const MOCK_ABOUT_PAGE_PROPS: AboutPageProps = {
   footerProps: MOCK_PAGE_FOOTER_PROPS,
   sideNavProps: MOCK_SIDE_NAV_PROPS as any,
 };
-//#endregion
 
 export function AboutPage(props: AboutPageProps) {
   return (

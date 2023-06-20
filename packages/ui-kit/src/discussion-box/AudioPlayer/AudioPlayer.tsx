@@ -4,7 +4,7 @@ import { Stack, Typography, Slider } from '@mui/material';
 import { Wave } from '@foobar404/wave';
 
 import { CircleButton } from '../../button';
-import { BsFillPlayFill, CiPause1 } from '../../icons';
+import { DiPlay, DiPause } from '../../icons';
 import { useColorModeContext } from '../../ThemeProvider';
 
 type AudioPlayerProps = {
@@ -72,11 +72,11 @@ export function AudioPlayer({ src, file_type }: AudioPlayerProps) {
   };
 
   const playControlIcon = !isPlaying ? (
-    <BsFillPlayFill
+    <DiPlay
       style={{ color: getColor('white'), fontSize: 30, paddingLeft: 3 }}
     />
   ) : (
-    <CiPause1
+    <DiPause
       style={{ color: getColor('white'), fontSize: 17, strokeWidth: '1.2px' }}
     />
   );

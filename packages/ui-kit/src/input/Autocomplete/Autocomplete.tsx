@@ -10,20 +10,21 @@ import {
 
 import { autocompleteClasses } from '@mui/material/Autocomplete';
 
-import { BiChevronDown, BiChevronUp } from '../../icons';
+import { DiDropDown, BiChevronUp } from '../../icons';
 
 import { Input } from '../Input';
 
-const StyledPopper = styled(Popper)({
+const StyledPopper = styled(Popper)(({ theme }) => ({
   [`& .${autocompleteClasses.listbox}`]: {
     boxSizing: 'border-box',
     width: '100%',
+    background: theme.palette.background['bg-second'],
     '& ul': {
       padding: 0,
       margin: 0,
     },
   },
-});
+}));
 
 export function Autocomplete<
   T,
@@ -55,7 +56,7 @@ export function Autocomplete<
     setOpen((open) => !open);
   };
 
-  const adornment = open ? <BiChevronUp /> : <BiChevronDown />;
+  const adornment = open ? <BiChevronUp /> : <DiDropDown />;
 
   return (
     <MuiAutocomplete

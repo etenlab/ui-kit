@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.merged == 'true' }}
 
     steps:
       - name: Checkout
@@ -15,7 +16,10 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
+          cache: yarn
           node-version: 16
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -37,11 +41,13 @@ jobs:
       - name: Load .env file
         uses: xom9ikk/dotenv@v2
 
-      - name: npm ci --force
-        run: npm ci --force
+      - name: Install Dependencies
+        run: yarn
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Build
-        run: npm run build-storybook
+        run: yarn build-storybook
 
       - uses: TimekillerTK/s3-sync-action@master
         with:
@@ -53,7 +59,6 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
-    
     steps:
       - uses: actions/checkout@v3
         with:
@@ -62,17 +67,16 @@ jobs:
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
         with:
+          cache: yarn
           version: 16.x
 
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1
-      - name: Set Git config
-        run: |
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git config --global user.name "${{ github.actor }}"
-      
-      - name: release
-        run: npm run release
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Create Release Pull Request or Publish to npm
+        uses: changesets/action@v1
+        with:
+          publish: yarn release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

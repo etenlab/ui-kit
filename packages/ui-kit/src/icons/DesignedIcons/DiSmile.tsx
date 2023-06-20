@@ -1,38 +1,54 @@
 import React from 'react';
-import { SvgIcon, SvgIconProps } from '@mui/material';
-import SmileBlue from './svg-sources/smile-blue.svg';
-import SmileDark from './svg-sources/smile-dark.svg';
-import SmileGray from './svg-sources/smile-gray.svg';
-import SmileRed from './svg-sources/smile-red.svg';
-import SmileWhite from './svg-sources/smile-white.svg';
-import { DiColors } from './colors';
 
-export function DiSmile(
-  props: Omit<SvgIconProps, 'color'> & { color?: DiColors },
-) {
-  const { color, ...rest } = props;
-  let Smile = SmileDark;
-  if (color) {
-    switch (color) {
-      case 'blue':
-        Smile = SmileBlue;
-        break;
-      case 'gray':
-        Smile = SmileGray;
-        break;
-      case 'red':
-        Smile = SmileRed;
-        break;
-      case 'white':
-        Smile = SmileWhite;
-        break;
-      default:
-        break;
-    }
-  }
+import { SvgIcon, type SvgIconProps } from '@mui/material';
+
+export function DiSmile(props: SvgIconProps) {
   return (
-    <SvgIcon {...rest}>
-      <Smile />
+    <SvgIcon {...props}>
+      <g clipPath="url(#clip0_3276_24110)">
+        <path
+          d="M12.0013 20.3337C16.6037 20.3337 20.3346 16.6027 20.3346 12.0003C20.3346 7.39795 16.6037 3.66699 12.0013 3.66699C7.39893 3.66699 3.66797 7.39795 3.66797 12.0003C3.66797 16.6027 7.39893 20.3337 12.0013 20.3337Z"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M8.66797 13.667C8.66797 13.667 9.91797 15.3337 12.0013 15.3337C14.0846 15.3337 15.3346 13.667 15.3346 13.667"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M9.5 9.5H9.51019"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M14.5 9.5H14.5102"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_3276_24110">
+          <rect
+            width="20"
+            height="20"
+            fill="white"
+            transform="translate(2 2)"
+          />
+        </clipPath>
+      </defs>
     </SvgIcon>
   );
 }

@@ -4,8 +4,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import {
   ThemeProvider,
   CircleButton,
-  BsFillPlayFill,
-  CiPause1,
+  DiPlay,
+  DiPause,
   Typography,
 } from '../../../packages/ui-kit/src';
 
@@ -29,15 +29,13 @@ const Template: ComponentStory<typeof CircleButton> = (args) => (
 
 export const PlayButton = Template.bind({});
 PlayButton.args = {
-  icon: (
-    <BsFillPlayFill style={{ color: '#fff', fontSize: 40, paddingLeft: 3 }} />
-  ),
+  icon: <DiPlay style={{ color: '#fff', fontSize: 40, paddingLeft: 3 }} />,
   onClick: () => alert('Clicked Circle Button!'),
 };
 
 export const PauseButton = Template.bind({});
 PauseButton.args = {
-  icon: <CiPause1 style={{ color: '#fff', strokeWidth: '1.2px' }} />,
+  icon: <DiPause style={{ color: '#fff', strokeWidth: '1.2px' }} />,
   onClick: () => alert('Clicked Circle Button!'),
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { TextFieldProps, IconButton } from '@mui/material';
-import { CiUnread, CiRead } from '../../icons';
+import { DiPasswordNv, DiPasswordV } from '../../icons';
 import { useColorModeContext } from '../../ThemeProvider';
 import { Input } from '../Input';
 
@@ -29,7 +29,7 @@ export function PasswordInput({
   const InputProps = {
     endAdornment: (
       <IconButton onClick={onClickShowIcon} sx={{ color }}>
-        {show ? <CiRead /> : <CiUnread />}
+        {show ? <DiPasswordV /> : <DiPasswordNv />}
       </IconButton>
     ),
   };

@@ -3,7 +3,7 @@ import React from 'react';
 import { Select, MenuItem } from '@mui/material';
 
 import { useColorModeContext } from '../../ThemeProvider';
-import { BiChevronDown } from '../../icons';
+import { DiDropDown } from '../../icons';
 
 export function NodeFilter({
   nodeType,
@@ -32,7 +32,7 @@ export function NodeFilter({
       sx={{
         width: '100%',
         color: getColor('gray'),
-        backgroundColor: getColor('white'),
+        backgroundColor: getColor('bg-main'),
         borderRadius: '10px',
         border: `1px solid ${getColor('middle-gray')}`,
         fontSize: 14,
@@ -68,7 +68,7 @@ export function NodeFilter({
           {option ? ` ${option.text}` : ''}
         </div>
       )}
-      IconComponent={BiChevronDown}
+      IconComponent={DiDropDown}
     >
       {[{ value: '', text: '' }, ...options].map(({ value, text }, index) => (
         <MenuItem
