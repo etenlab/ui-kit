@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.80
+
+### Patch Changes
+
+- [#129](https://github.com/etenlab/ui-kit/pull/129) [`3c35471`](https://github.com/etenlab/ui-kit/commit/3c35471364a40461e29f2fef721b03d12787c72e) Thanks [@ForeverYoung1208](https://github.com/ForeverYoung1208)! - feat/title-ItemContentListEdit-optional
+
 ## 0.5.79
 
 ### Patch Changes
