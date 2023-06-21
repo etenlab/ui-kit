@@ -96,6 +96,7 @@ type ButtonListProps = {
     onChange(str: string): void;
     placeHolder: string;
   };
+  subheaderBGColor?: string;
   items: ButtonListItemType[];
 };
 
@@ -105,8 +106,11 @@ export function ButtonList({
   toolBtnGroup,
   withUnderline = false,
   items,
+  subheaderBGColor,
   onClick,
 }: ButtonListProps) {
+  const { getColor } = useColorModeContext();
+
   const [isShownSearchInput, setIsShownSearchInput] = useState<boolean>(false);
 
   const handleToggleSearchInput = () => {
@@ -156,7 +160,12 @@ export function ButtonList({
       subheader={
         <ListSubheader
           component="div"
-          sx={{ padding: '6px 20px', background: 'rgba(0, 0, 0, 0)' }}
+          sx={{
+            padding: '6px 20px',
+            background: !subheaderBGColor
+              ? getColor('bg-main')
+              : subheaderBGColor,
+          }}
         >
           <Stack
             direction="row"
