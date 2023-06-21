@@ -5,7 +5,7 @@ import { SvgIcon, type SvgIconProps } from '@mui/material';
 export function DiFileText(props: SvgIconProps) {
   return (
     <SvgIcon {...props}>
-      <g clip-path="url(#clip0_3084_47268)">
+      <g clipPath="url(#clip0_3084_47268)">
         <path
           d="M14 3V7C14 7.26522 14.1054 7.51957 14.2929 7.70711C14.4804 7.89464 14.7348 8 15 8H19"
           stroke="currentColor"
