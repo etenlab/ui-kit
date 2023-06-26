@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Stack, Typography } from '@mui/material';
+import { FilterOptionsState, Stack, Typography } from '@mui/material';
 
 import tags from 'language-tags';
 import { Autocomplete } from '../input';
@@ -163,6 +163,29 @@ export function LangSelector({
     setSelectedRegion(value);
   };
 
+  function customFilterOptions<T extends Lang | Dialect | Region>(
+    options: T[],
+    state: FilterOptionsState<T>,
+  ): T[] {
+    const filteredOptions = options
+      .filter((a) => {
+        if (!a.descriptions) a.descriptions = [];
+        return a.descriptions
+          .join()
+          .toUpperCase()
+          .includes(state.inputValue.toUpperCase());
+      })
+      .sort((a, b) => {
+        const optionA = a.descriptions!.join(DESCRIPTIONS_JOINER);
+        const optionB = b.descriptions!.join(DESCRIPTIONS_JOINER);
+        if (state.inputValue && state.inputValue.length > 0) {
+          return optionA.length - optionB.length;
+        }
+        return optionA.localeCompare(optionB);
+      });
+    return filteredOptions;
+  }
+
   const labelCom = label ? (
     <Typography variant="overline" sx={{ opacity: 0.5 }}>
       {label}
@@ -175,6 +198,7 @@ export function LangSelector({
         label="Dialect"
         value={selectedDialect}
         options={langsRegistry.dialects}
+        filterOptions={customFilterOptions<Dialect>}
         getOptionLabel={(option) =>
           option.descriptions
             ? option.descriptions.join(DESCRIPTIONS_JOINER)
@@ -191,6 +215,7 @@ export function LangSelector({
         label="Nation/Region/Geo"
         value={selectedRegion}
         options={langsRegistry.regions}
+        filterOptions={customFilterOptions<Region>}
         getOptionLabel={(option) =>
           option.descriptions
             ? option.descriptions.join(DESCRIPTIONS_JOINER)
@@ -212,6 +237,7 @@ export function LangSelector({
         label="Language"
         value={selectedLang}
         options={langsRegistry.langs}
+        filterOptions={customFilterOptions<Lang>}
         getOptionLabel={(option) =>
           option.descriptions
             ? option.descriptions.join(DESCRIPTIONS_JOINER)
