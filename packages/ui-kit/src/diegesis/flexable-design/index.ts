@@ -6,5 +6,6 @@ export * from './Home';
 export * from './Header';
 export * from './Footer';
 export * from './MenuIcon';
+export * from './Editor';
 export * as FlexibleEntryDetailUI from './entry-details';
 export * as FlexibleEntriesListUI from './entries-list';
