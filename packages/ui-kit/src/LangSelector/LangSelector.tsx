@@ -167,6 +167,7 @@ export function LangSelector({
     options: T[],
     state: FilterOptionsState<T>,
   ): T[] {
+    if (!options || !Array.isArray(options)) return [];
     const filteredOptions = options
       .filter((a) => {
         if (!a.descriptions) a.descriptions = [];
