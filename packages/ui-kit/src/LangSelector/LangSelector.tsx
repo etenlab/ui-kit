@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { FilterOptionsState, Stack, Typography } from '@mui/material';
 
@@ -9,6 +9,10 @@ const PADDING = 20;
 const PADDING_SMALL = 12;
 export const DESCRIPTIONS_JOINER = '/';
 export const NOT_DEFINED_PLACEHOLDER = '- not defined -';
+export const LOADING_TAG_PLACEHOLDER = {
+  tag: 'loading',
+  descriptions: ['Loading data...'],
+} as Dialect & Region & Lang;
 
 export type LanguageInfo = {
   lang: Lang;
@@ -37,6 +41,12 @@ type LangsRegistry = {
   regions: Array<Region>;
 };
 
+const emptyLangsRegistry: LangsRegistry = {
+  langs: [LOADING_TAG_PLACEHOLDER],
+  dialects: [LOADING_TAG_PLACEHOLDER],
+  regions: [LOADING_TAG_PLACEHOLDER],
+};
+
 enum TagTypes {
   LANGUAGE = 'language',
   REGION = 'region',
@@ -53,73 +63,72 @@ export function LangSelector({
   onChange,
   setLoadingState,
 }: LangSelectorProps) {
-  const [langsRegistry, setLangsRegistry] = useState<LangsRegistry>({
-    langs: [],
-    dialects: [],
-    regions: [],
-  });
+  const [langsRegistry, setLangsRegistry] =
+    useState<LangsRegistry>(emptyLangsRegistry);
 
-  const [selectedLang, setSelectedLang] = useState<Lang | null>(
-    selected?.lang || null,
-  );
-  const [selectedDialect, setSelectedDialect] = useState<Dialect | null>(
-    selected?.dialect || null,
-  );
-  const [selectedRegion, setSelectedRegion] = useState<Region | null>(
-    selected?.region || null,
-  );
+  const [selectedLang, setSelectedLang] = useState<Lang | null>(null);
+  const [selectedDialect, setSelectedDialect] = useState<Dialect | null>(null);
+  const [selectedRegion, setSelectedRegion] = useState<Region | null>(null);
 
   useEffect(() => {
     if (setLoadingState) {
       setLoadingState(true);
     }
-    const allTags = tags.search(/.*/);
-    const langs: Array<Lang> = [];
-    const dialects: Array<Dialect> = [
-      { tag: null, descriptions: [NOT_DEFINED_PLACEHOLDER] },
-    ];
-    const regions: Array<Region> = [
-      { tag: null, descriptions: [NOT_DEFINED_PLACEHOLDER] },
-    ];
-    for (const currTag of allTags) {
-      if (
-        currTag.deprecated() ||
-        currTag.descriptions().includes(TagSpecialDescriptions.PRIVATE_USE)
-      ) {
-        continue;
-      }
+    // make it async to test and prepare for possible language library change to async
+    const getLangsRegistry = async (): Promise<LangsRegistry> => {
+      return new Promise((resolve) => {
+        const allTags = tags.search(/.*/);
+        const langs: Array<Lang> = [];
+        const dialects: Array<Dialect> = [
+          { tag: null, descriptions: [NOT_DEFINED_PLACEHOLDER] },
+        ];
+        const regions: Array<Region> = [
+          { tag: null, descriptions: [NOT_DEFINED_PLACEHOLDER] },
+        ];
+        for (const currTag of allTags) {
+          if (
+            currTag.deprecated() ||
+            currTag.descriptions().includes(TagSpecialDescriptions.PRIVATE_USE)
+          ) {
+            continue;
+          }
 
-      if (currTag.type() === TagTypes.LANGUAGE) {
-        langs.push({
-          tag: currTag.format(),
-          descriptions: currTag.descriptions(),
+          if (currTag.type() === TagTypes.LANGUAGE) {
+            langs.push({
+              tag: currTag.format(),
+              descriptions: currTag.descriptions(),
+            });
+          }
+          if (currTag.type() === TagTypes.REGION) {
+            regions.push({
+              tag: currTag.format(),
+              descriptions: currTag.descriptions(),
+            });
+          }
+          if (currTag.type() === TagTypes.DIALECT) {
+            dialects.push({
+              tag: currTag.format(),
+              descriptions: currTag.descriptions(),
+            });
+          }
+        }
+        langs.sort(sortTagInfosFn);
+        dialects.sort(sortTagInfosFn);
+        regions.sort(sortTagInfosFn);
+        resolve({
+          langs,
+          dialects,
+          regions,
         });
-      }
-      if (currTag.type() === TagTypes.REGION) {
-        regions.push({
-          tag: currTag.format(),
-          descriptions: currTag.descriptions(),
-        });
-      }
-      if (currTag.type() === TagTypes.DIALECT) {
-        dialects.push({
-          tag: currTag.format(),
-          descriptions: currTag.descriptions(),
-        });
-      }
-    }
-    langs.sort(sortTagInfosFn);
-    dialects.sort(sortTagInfosFn);
-    regions.sort(sortTagInfosFn);
+      });
+    };
 
-    setLangsRegistry({
-      langs,
-      dialects,
-      regions,
+    getLangsRegistry().then((lr) => {
+      setLangsRegistry(lr);
+      if (setLoadingState) {
+        setLoadingState(false);
+      }
     });
-    if (setLoadingState) {
-      setLoadingState(false);
-    }
   }, [setLoadingState]);
 
   useEffect(() => {
@@ -140,52 +149,57 @@ export function LangSelector({
     });
   }, [onChange, selectedDialect, selectedLang, selectedRegion]);
 
-  const handleSetLanguage = (
-    _event: React.SyntheticEvent<Element, Event>,
-    value: Lang | null,
-  ) => {
-    if (!value) return;
-    setSelectedLang(value);
-  };
+  const handleSetLanguage = useCallback(
+    (_event: React.SyntheticEvent<Element, Event>, value: Lang | null) => {
+      if (!value) return;
+      setSelectedLang(value);
+    },
+    [],
+  );
 
-  const handleSetDialect = (
-    _event: React.SyntheticEvent<Element, Event>,
-    value: Dialect | null,
-  ) => {
-    if (!value) return;
-    setSelectedDialect(value);
-  };
-  const handleSetRegion = (
-    _event: React.SyntheticEvent<Element, Event>,
-    value: Region | null,
-  ) => {
-    if (!value) return;
-    setSelectedRegion(value);
-  };
+  const handleSetDialect = useCallback(
+    (_event: React.SyntheticEvent<Element, Event>, value: Dialect | null) => {
+      if (!value) return;
+      setSelectedDialect(value);
+    },
+    [],
+  );
 
-  function customFilterOptions<T extends Lang | Dialect | Region>(
-    options: T[],
-    state: FilterOptionsState<T>,
-  ): T[] {
-    if (!options || !Array.isArray(options)) return [];
-    const filteredOptions = options
-      .filter((a) => {
-        if (!a.descriptions) a.descriptions = [];
-        return a.descriptions
-          .join()
-          .toUpperCase()
-          .includes(state.inputValue.toUpperCase());
-      })
-      .sort((a, b) => {
-        const optionA = a.descriptions!.join(DESCRIPTIONS_JOINER);
-        const optionB = b.descriptions!.join(DESCRIPTIONS_JOINER);
-        if (state.inputValue && state.inputValue.length > 0) {
-          return optionA.length - optionB.length;
-        }
-        return sortTagInfosFn(a, b);
-      });
-    return filteredOptions;
-  }
+  const handleSetRegion = useCallback(
+    (_event: React.SyntheticEvent<Element, Event>, value: Region | null) => {
+      if (!value) return;
+      setSelectedRegion(value);
+    },
+    [],
+  );
+
+  const customFilterOptions = useCallback(
+    <T extends Lang | Dialect | Region>(
+      options: T[],
+      state: FilterOptionsState<T>,
+    ): T[] => {
+      if (!options || !Array.isArray(options)) return [];
+      const filteredOptions = options
+        .filter((a) => {
+          if (!a.descriptions) a.descriptions = [];
+          return a.descriptions
+            .join()
+            .toUpperCase()
+            .includes(state.inputValue.toUpperCase());
+        })
+        .sort((a, b) => {
+          const optionA = a.descriptions!.join(DESCRIPTIONS_JOINER);
+          const optionB = b.descriptions!.join(DESCRIPTIONS_JOINER);
+          if (state.inputValue && state.inputValue.length > 0) {
+            return optionA.length - optionB.length;
+          }
+          return sortTagInfosFn(a, b);
+        });
+      return filteredOptions;
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [langsRegistry.dialects, langsRegistry.langs, langsRegistry.regions],
+  );
 
   const labelCom = label ? (
     <Typography variant="overline" sx={{ opacity: 0.5 }}>
@@ -194,12 +208,12 @@ export function LangSelector({
   ) : null;
   const extraCom = fullRendered ? (
     <Stack direction="row" width={'100%'} gap={`${PADDING_SMALL}px`}>
-      <Autocomplete
+      <Autocomplete<Dialect>
         disabled={!selectedLang}
         label="Dialect"
         value={selectedDialect}
         options={langsRegistry.dialects}
-        filterOptions={customFilterOptions<Dialect>}
+        filterOptions={customFilterOptions}
         getOptionLabel={(option) =>
           option.descriptions
             ? option.descriptions.join(DESCRIPTIONS_JOINER)
@@ -211,12 +225,12 @@ export function LangSelector({
         }}
         fullWidth
       />
-      <Autocomplete
+      <Autocomplete<Region>
         disabled={!selectedLang}
         label="Nation/Region/Geo"
         value={selectedRegion}
         options={langsRegistry.regions}
-        filterOptions={customFilterOptions<Region>}
+        filterOptions={customFilterOptions}
         getOptionLabel={(option) =>
           option.descriptions
             ? option.descriptions.join(DESCRIPTIONS_JOINER)
@@ -234,11 +248,11 @@ export function LangSelector({
   return (
     <Stack width={'100%'} padding={`${PADDING}px 0`} gap={`${PADDING_SMALL}px`}>
       {labelCom}
-      <Autocomplete
+      <Autocomplete<Lang>
         label="Language"
         value={selectedLang}
         options={langsRegistry.langs}
-        filterOptions={customFilterOptions<Lang>}
+        filterOptions={customFilterOptions}
         getOptionLabel={(option) =>
           option.descriptions
             ? option.descriptions.join(DESCRIPTIONS_JOINER)
