@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.83
+
+### Patch Changes
+
+- [#137](https://github.com/etenlab/ui-kit/pull/137) [`0520a17`](https://github.com/etenlab/ui-kit/commit/0520a178c4ba91c7e3c9bff03c70679cb29410e4) Thanks [@ForeverYoung1208](https://github.com/ForeverYoung1208)! - fix/lang-selector-filterOptions
+
 ## 0.5.82
 
 ### Patch Changes
