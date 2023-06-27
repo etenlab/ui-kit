@@ -9,8 +9,10 @@ const PADDING = 20;
 const PADDING_SMALL = 12;
 export const DESCRIPTIONS_JOINER = '/';
 export const NOT_DEFINED_PLACEHOLDER = '- not defined -';
-export const LOADING_PLACEHOLDER = 'Loading data...';
-export const LOADING_TAG_PLACEHOLDER = 'loading';
+export const LOADING_TAG_PLACEHOLDER = {
+  tag: 'loading',
+  descriptions: ['Loading data...'],
+} as Dialect & Region & Lang;
 
 export type LanguageInfo = {
   lang: Lang;
@@ -40,15 +42,9 @@ type LangsRegistry = {
 };
 
 const emptyLangsRegistry: LangsRegistry = {
-  langs: [
-    { tag: LOADING_TAG_PLACEHOLDER, descriptions: [LOADING_PLACEHOLDER] },
-  ],
-  dialects: [
-    { tag: LOADING_TAG_PLACEHOLDER, descriptions: [LOADING_PLACEHOLDER] },
-  ],
-  regions: [
-    { tag: LOADING_TAG_PLACEHOLDER, descriptions: [LOADING_PLACEHOLDER] },
-  ],
+  langs: [LOADING_TAG_PLACEHOLDER],
+  dialects: [LOADING_TAG_PLACEHOLDER],
+  regions: [LOADING_TAG_PLACEHOLDER],
 };
 
 enum TagTypes {
@@ -201,7 +197,8 @@ export function LangSelector({
         });
       return filteredOptions;
     },
-    [],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [langsRegistry.dialects, langsRegistry.langs, langsRegistry.regions],
   );
 
   const labelCom = label ? (
@@ -211,12 +208,12 @@ export function LangSelector({
   ) : null;
   const extraCom = fullRendered ? (
     <Stack direction="row" width={'100%'} gap={`${PADDING_SMALL}px`}>
-      <Autocomplete
+      <Autocomplete<Dialect>
         disabled={!selectedLang}
         label="Dialect"
         value={selectedDialect}
         options={langsRegistry.dialects}
-        filterOptions={customFilterOptions<Dialect>}
+        filterOptions={customFilterOptions}
         getOptionLabel={(option) =>
           option.descriptions
             ? option.descriptions.join(DESCRIPTIONS_JOINER)
@@ -228,12 +225,12 @@ export function LangSelector({
         }}
         fullWidth
       />
-      <Autocomplete
+      <Autocomplete<Region>
         disabled={!selectedLang}
         label="Nation/Region/Geo"
         value={selectedRegion}
         options={langsRegistry.regions}
-        filterOptions={customFilterOptions<Region>}
+        filterOptions={customFilterOptions}
         getOptionLabel={(option) =>
           option.descriptions
             ? option.descriptions.join(DESCRIPTIONS_JOINER)
@@ -251,11 +248,11 @@ export function LangSelector({
   return (
     <Stack width={'100%'} padding={`${PADDING}px 0`} gap={`${PADDING_SMALL}px`}>
       {labelCom}
-      <Autocomplete
+      <Autocomplete<Lang>
         label="Language"
         value={selectedLang}
         options={langsRegistry.langs}
-        filterOptions={customFilterOptions<Lang>}
+        filterOptions={customFilterOptions}
         getOptionLabel={(option) =>
           option.descriptions
             ? option.descriptions.join(DESCRIPTIONS_JOINER)
