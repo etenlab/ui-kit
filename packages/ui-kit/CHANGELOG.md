@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.84
+
+### Patch Changes
+
+- [#139](https://github.com/etenlab/ui-kit/pull/139) [`ec1ad4f`](https://github.com/etenlab/ui-kit/commit/ec1ad4f7fc7d3c2ce9aaae637c7644fe1784425e) Thanks [@hardikpoudeldev](https://github.com/hardikpoudeldev)! - 0.5.83
+
 ## 0.5.83
 
 ### Patch Changes
