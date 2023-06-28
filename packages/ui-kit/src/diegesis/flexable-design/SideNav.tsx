@@ -12,11 +12,12 @@ import {
 export type NavOption = {
   title: string;
   href?: string;
-  variant: 'big' | 'bordered' | 'small' | 'custom';
+  variant: 'big' | 'bordered' | 'small' | 'custom' | 'category';
   icon?: JSX.Element;
   onClick?: () => void;
   activated?: boolean;
   element?: JSX.Element;
+  options?: NavOption[];
 };
 interface SideNavConfig extends BasicUIConfig {
   contents: {
@@ -28,6 +29,8 @@ interface SideNavConfig extends BasicUIConfig {
     navItemColor: string;
     activeNavItemColor: string;
     closeIconColor: string;
+    dividerColor: string;
+    dividerHeight: string;
   };
 }
 export const defaultSideNavConfig: SideNavConfig = {
@@ -41,6 +44,8 @@ export const defaultSideNavConfig: SideNavConfig = {
     navItemColor: '#1B1B1B',
     activeNavItemColor: '#60D0B2',
     closeIconColor: '#60D0B2',
+    dividerColor: '#60D0B2',
+    dividerHeight: '2px',
   },
 };
 export interface SideNavProps extends BasicFlexibleProps<SideNavConfig> {
@@ -63,6 +68,16 @@ const defaultOptions: NavOption[] = [
   },
   { title: 'Terms & conditions', variant: 'small', href: '/' },
   { title: 'Privacy policy', variant: 'small', href: '/' },
+  {
+    title: 'Admin',
+    variant: 'category',
+    href: '',
+    options: [
+      { title: '- UI', href: '/ui-config', variant: 'small' },
+      { title: '- Static Pages', href: '/static-pages', variant: 'small' },
+      { title: '- Logout', href: '/', variant: 'small' },
+    ],
+  },
 ];
 export const mockSideNavProps: SideNavProps = {
   id: 'side-nav',
@@ -75,7 +90,7 @@ export const mockSideNavProps: SideNavProps = {
 };
 
 export const SideNav: FlexibleComponent<SideNavProps> = (props) => {
-  const { open, close, uiConfig = defaultSideNavConfig } = props;
+  const { open, close, uiConfig = defaultSideNavConfig, options } = props;
   return (
     <SideNavWrapper open={open} background={uiConfig.styles.background}>
       <Stack
@@ -106,7 +121,7 @@ export const SideNav: FlexibleComponent<SideNavProps> = (props) => {
         alignItems={'flex-start'}
         justifyContent={'flex-start'}
       >
-        {props.options?.map((option, oIdx) => {
+        {options?.map((option, oIdx) => {
           switch (option.variant) {
             case 'big':
               return (
@@ -132,7 +147,12 @@ export const SideNav: FlexibleComponent<SideNavProps> = (props) => {
             case 'bordered':
               return (
                 <React.Fragment key={oIdx}>
-                  <Divider className="full-width"></Divider>
+                  <Divider
+                    sx={{
+                      width: '100%',
+                      border: `${uiConfig.styles.dividerHeight} solid ${uiConfig.styles.dividerColor}`,
+                    }}
+                  />
                   <MdNavButton
                     key={oIdx}
                     href={option.href}
@@ -154,7 +174,12 @@ export const SideNav: FlexibleComponent<SideNavProps> = (props) => {
                       {option.title}
                     </Stack>
                   </MdNavButton>
-                  <Divider className="full-width"></Divider>
+                  <Divider
+                    sx={{
+                      width: '100%',
+                      border: `${uiConfig.styles.dividerHeight} solid ${uiConfig.styles.dividerColor}`,
+                    }}
+                  />
                 </React.Fragment>
               );
             case 'small':
@@ -180,6 +205,58 @@ export const SideNav: FlexibleComponent<SideNavProps> = (props) => {
               );
             case 'custom':
               return option.element;
+            case 'category':
+              return (
+                <React.Fragment key={oIdx}>
+                  <Divider
+                    sx={{
+                      width: '100%',
+                      border: `${uiConfig.styles.dividerHeight} solid ${uiConfig.styles.dividerColor}`,
+                    }}
+                  />
+                  {option.element ?? (
+                    <MdNavButton
+                      variant={'text'}
+                      size={'small'}
+                      sx={{ textAlign: 'left' }}
+                      disabled
+                    >
+                      {option.title}
+                    </MdNavButton>
+                  )}
+                  {option.options?.map((nestedOption) => {
+                    return (
+                      <MdNavButton
+                        key={oIdx}
+                        href={nestedOption.href}
+                        variant={'text'}
+                        color={'dark'}
+                        size={'small'}
+                        sx={{
+                          fontWeight: nestedOption.activated ? '800' : '400',
+                          color: nestedOption.activated
+                            ? uiConfig.styles.activeNavItemColor
+                            : uiConfig.styles.navItemColor,
+                          py: 1,
+                          fontSize: '1rem',
+                        }}
+                        onClick={() => {
+                          if (nestedOption.onClick) nestedOption.onClick();
+                        }}
+                      >
+                        {nestedOption.title}
+                      </MdNavButton>
+                    );
+                  })}
+                  <br />
+                  <Divider
+                    sx={{
+                      width: '100%',
+                      border: `${uiConfig.styles.dividerHeight} solid ${uiConfig.styles.dividerColor}`,
+                    }}
+                  />
+                </React.Fragment>
+              );
             default:
           }
           return <></>;
