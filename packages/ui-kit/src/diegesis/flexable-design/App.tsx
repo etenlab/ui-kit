@@ -8,6 +8,7 @@ import {
   FlexibleEntriesListPage,
   MOCK_ENTRIES_TOP_CONTROLS_PROPS,
 } from './entries-list';
+import { FlexiblePage } from './Page';
 
 export function App() {
   const [open, setOpen] = useState(false);
@@ -39,6 +40,7 @@ export function App() {
         id="entry-detail-page"
         parentPath="/entry-detail"
       />
+      <FlexiblePage id="flexible-page" parentPath="/flexible-page" />
       <Drawer
         anchor="left"
         open={open}

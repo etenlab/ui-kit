@@ -58,7 +58,6 @@ export function withFlexible<
       ? queryUIConfig(flexiblePath)
       : null;
 
-    // console.log('config', defaultUIConfig.componentName, config);
     if (!config) {
       // console.error('config is null');
       return null;
