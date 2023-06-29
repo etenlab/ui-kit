@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.85
+
+### Patch Changes
+
+- [#141](https://github.com/etenlab/ui-kit/pull/141) [`cb953dd`](https://github.com/etenlab/ui-kit/commit/cb953dd5630e1905d055d45ff02899cbc7b3145b) Thanks [@ForeverYoung1208](https://github.com/ForeverYoung1208)! - fix hanging error
+
 ## 0.5.84
 
 ### Patch Changes
