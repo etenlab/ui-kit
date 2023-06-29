@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.86
+
+### Patch Changes
+
+- [#144](https://github.com/etenlab/ui-kit/pull/144) [`3f5f39a`](https://github.com/etenlab/ui-kit/commit/3f5f39a719523af995398a8caf44d7934861177b) Thanks [@lucky-gru](https://github.com/lucky-gru)! - diegesis flexable design
+
 ## 0.5.85
 
 ### Patch Changes
