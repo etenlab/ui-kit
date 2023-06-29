@@ -129,7 +129,8 @@ export function LangSelector({
         setLoadingState(false);
       }
     });
-  }, [setLoadingState]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     setSelectedLang(selected?.lang || null);
