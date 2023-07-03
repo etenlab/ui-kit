@@ -26,6 +26,7 @@ export type LangSelectorProps = {
   fullRendered?: boolean;
   onChange(langTag: string | null, selected: LanguageInfo): void;
   setLoadingState?(isLoading: boolean): any;
+  withInscriptions?: boolean;
 };
 export interface TagInfo {
   tag: string | null;
@@ -62,6 +63,7 @@ export function LangSelector({
   fullRendered = false,
   onChange,
   setLoadingState,
+  withInscriptions: withInscriptios = true,
 }: LangSelectorProps) {
   const [langsRegistry, setLangsRegistry] =
     useState<LangsRegistry>(emptyLangsRegistry);
@@ -211,7 +213,7 @@ export function LangSelector({
     <Stack direction="row" width={'100%'} gap={`${PADDING_SMALL}px`}>
       <Autocomplete<Dialect>
         disabled={!selectedLang}
-        label="Dialect"
+        label={withInscriptios ? 'Dialect' : undefined}
         value={selectedDialect}
         options={langsRegistry.dialects}
         filterOptions={customFilterOptions}
@@ -228,7 +230,7 @@ export function LangSelector({
       />
       <Autocomplete<Region>
         disabled={!selectedLang}
-        label="Nation/Region/Geo"
+        label={withInscriptios ? 'Nation/Region/Geo' : undefined}
         value={selectedRegion}
         options={langsRegistry.regions}
         filterOptions={customFilterOptions}
@@ -250,7 +252,7 @@ export function LangSelector({
     <Stack width={'100%'} padding={`${PADDING}px 0`} gap={`${PADDING_SMALL}px`}>
       {labelCom}
       <Autocomplete<Lang>
-        label="Language"
+        label={withInscriptios ? 'Language' : undefined}
         value={selectedLang}
         options={langsRegistry.langs}
         filterOptions={customFilterOptions}
