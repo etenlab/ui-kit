@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.87
+
+### Patch Changes
+
+- [#146](https://github.com/etenlab/ui-kit/pull/146) [`85ab8e7`](https://github.com/etenlab/ui-kit/commit/85ab8e720e79832fda0fdef50d35015739f206b7) Thanks [@ForeverYoung1208](https://github.com/ForeverYoung1208)! - make loading progress optional
+
 ## 0.5.86
 
 ### Patch Changes
