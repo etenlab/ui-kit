@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.88
+
+### Patch Changes
+
+- [#149](https://github.com/etenlab/ui-kit/pull/149) [`9c0598d`](https://github.com/etenlab/ui-kit/commit/9c0598de055d2ef08e3d2f1f33689598d8b67f4e) Thanks [@ForeverYoung1208](https://github.com/ForeverYoung1208)! - ux tweacs according to designs
+
 ## 0.5.87
 
 ### Patch Changes
