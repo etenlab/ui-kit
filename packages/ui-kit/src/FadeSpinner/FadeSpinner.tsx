@@ -8,7 +8,7 @@ export const FadeSpinner = ({
   progress,
 }: {
   color: string;
-  progress: string;
+  progress?: string;
 }) => {
   return (
     <Stack direction="column" alignItems="center" sx={{ gap: '20px' }}>
@@ -17,7 +17,9 @@ export const FadeSpinner = ({
         aria-label="Loading Spinner"
         data-testid="loader"
       ></FadeLoader>
-      <Typography variant="body1">{progress}% Loading...</Typography>
+      <Typography variant="body1">
+        {progress ? `${progress} % ` : ''} Loading...
+      </Typography>
     </Stack>
   );
 };

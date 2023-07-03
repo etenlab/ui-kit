@@ -46,3 +46,19 @@ PrimaryFadeSpinner.parameters = {
     },
   },
 };
+
+export const FadeSpinnerNoProgress = Template.bind({});
+FadeSpinnerNoProgress.args = {
+  color: 'black',
+};
+
+FadeSpinnerNoProgress.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(<FadeSpinner color="black" />),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
