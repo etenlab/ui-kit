@@ -316,6 +316,7 @@ declare module '@mui/material/styles' {
   }
 
   interface TypeBackground {
+    'middle-blue': string;
     'darker-gray': string;
     'light-gray': string;
     'light-gray2': string;

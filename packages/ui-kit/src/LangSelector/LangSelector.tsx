@@ -5,8 +5,6 @@ import { FilterOptionsState, Stack, Typography } from '@mui/material';
 import tags from 'language-tags';
 import { Autocomplete } from '../input';
 
-const PADDING = 20;
-const PADDING_SMALL = 12;
 export const DESCRIPTIONS_JOINER = '/';
 export const NOT_DEFINED_PLACEHOLDER = '- not defined -';
 export const LOADING_TAG_PLACEHOLDER = {
@@ -27,6 +25,7 @@ export type LangSelectorProps = {
   onChange(langTag: string | null, selected: LanguageInfo): void;
   setLoadingState?(isLoading: boolean): any;
   withInscriptions?: boolean;
+  gap?: string;
 };
 export interface TagInfo {
   tag: string | null;
@@ -64,6 +63,7 @@ export function LangSelector({
   onChange,
   setLoadingState,
   withInscriptions: withInscriptios = true,
+  gap = '12px',
 }: LangSelectorProps) {
   const [langsRegistry, setLangsRegistry] =
     useState<LangsRegistry>(emptyLangsRegistry);
@@ -210,7 +210,7 @@ export function LangSelector({
     </Typography>
   ) : null;
   const extraCom = fullRendered ? (
-    <Stack direction="row" width={'100%'} gap={`${PADDING_SMALL}px`}>
+    <Stack direction="row" width={'100%'} gap={gap}>
       <Autocomplete<Dialect>
         disabled={!selectedLang}
         label={withInscriptios ? 'Dialect' : undefined}
@@ -249,7 +249,7 @@ export function LangSelector({
   ) : null;
 
   return (
-    <Stack width={'100%'} padding={`${PADDING}px 0`} gap={`${PADDING_SMALL}px`}>
+    <Stack width={'100%'} padding={'0'} gap={gap}>
       {labelCom}
       <Autocomplete<Lang>
         label={withInscriptios ? 'Language' : undefined}
