@@ -28,7 +28,10 @@ export default {
 } as ComponentMeta<typeof CardsMenu>;
 
 const Template: ComponentStory<typeof CardsMenu> = (args) => (
-  <CardsMenu {...args} />
+  <>
+    <CardsMenu {...args} />
+    <CardsMenu {...args} />
+  </>
 );
 
 const items = [
@@ -36,21 +39,21 @@ const items = [
     value: '/documents',
     title: 'Documents',
     description: 'Upload a document to use in other crowd sourcing tools',
-    startIcon: <DiFileText color="blue" />,
+    startIcon: <DiFileText />,
   },
   {
     value: '/qa-route',
     title: 'Question & Answer',
     description:
       'Annotate a text with questions so other users can provide answers',
-    startIcon: <DiAskQuestion color="blue" />,
+    startIcon: <DiAskQuestion />,
   },
   {
     value: '/translation',
     title: 'Translation',
     description:
       'Translate a document by submitting and voting on translations',
-    startIcon: <DiTranslate color="blue" />,
+    startIcon: <DiTranslate />,
     disabled: true,
   },
   {
