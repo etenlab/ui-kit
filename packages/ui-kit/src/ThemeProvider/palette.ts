@@ -2,6 +2,7 @@ import { ThemeOptions } from '@mui/material';
 
 export const designColors = {
   'blue-primary': '#1F77DF',
+  'middle-blue': '#CBE0F8',
   'light-blue': '#E3EAF3',
   disable: '#F3F6F9',
   dark: '#1B1B1B',
@@ -34,6 +35,10 @@ export const colors = {
   'blue-primary': {
     light: designColors['blue-primary'],
     dark: designColors['blue-primary'],
+  },
+  'middle-blue': {
+    light: designColors['middle-blue'],
+    dark: designColors['middle-blue'],
   },
   'light-blue': {
     light: designColors['light-blue'],
@@ -232,6 +237,7 @@ export function getColorPalette(mode: 'light' | 'dark'): ThemeOptions {
         'divider-color': colors['divider-color'][mode],
       },
       background: {
+        'middle-blue': colors['middle-blue'][mode],
         'darker-gray': colors['darker-gray'][mode],
         'light-gray2': colors['light-gray2'][mode],
         'light-gray': colors['light-gray'][mode],

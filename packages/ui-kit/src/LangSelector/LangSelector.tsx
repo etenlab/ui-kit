@@ -5,8 +5,6 @@ import { FilterOptionsState, Stack, Typography } from '@mui/material';
 import tags from 'language-tags';
 import { Autocomplete } from '../input';
 
-const PADDING = 20;
-const PADDING_SMALL = 12;
 export const DESCRIPTIONS_JOINER = '/';
 export const NOT_DEFINED_PLACEHOLDER = '- not defined -';
 export const LOADING_TAG_PLACEHOLDER = {
@@ -26,6 +24,8 @@ export type LangSelectorProps = {
   fullRendered?: boolean;
   onChange(langTag: string | null, selected: LanguageInfo): void;
   setLoadingState?(isLoading: boolean): any;
+  withInscriptions?: boolean;
+  gap?: string;
 };
 export interface TagInfo {
   tag: string | null;
@@ -62,6 +62,8 @@ export function LangSelector({
   fullRendered = false,
   onChange,
   setLoadingState,
+  withInscriptions: withInscriptios = true,
+  gap = '12px',
 }: LangSelectorProps) {
   const [langsRegistry, setLangsRegistry] =
     useState<LangsRegistry>(emptyLangsRegistry);
@@ -208,10 +210,10 @@ export function LangSelector({
     </Typography>
   ) : null;
   const extraCom = fullRendered ? (
-    <Stack direction="row" width={'100%'} gap={`${PADDING_SMALL}px`}>
+    <Stack direction="row" width={'100%'} gap={gap}>
       <Autocomplete<Dialect>
         disabled={!selectedLang}
-        label="Dialect"
+        label={withInscriptios ? 'Dialect' : undefined}
         value={selectedDialect}
         options={langsRegistry.dialects}
         filterOptions={customFilterOptions}
@@ -228,7 +230,7 @@ export function LangSelector({
       />
       <Autocomplete<Region>
         disabled={!selectedLang}
-        label="Nation/Region/Geo"
+        label={withInscriptios ? 'Nation/Region/Geo' : undefined}
         value={selectedRegion}
         options={langsRegistry.regions}
         filterOptions={customFilterOptions}
@@ -247,10 +249,10 @@ export function LangSelector({
   ) : null;
 
   return (
-    <Stack width={'100%'} padding={`${PADDING}px 0`} gap={`${PADDING_SMALL}px`}>
+    <Stack width={'100%'} padding={'0'} gap={gap}>
       {labelCom}
       <Autocomplete<Lang>
-        label="Language"
+        label={withInscriptios ? 'Language' : undefined}
         value={selectedLang}
         options={langsRegistry.langs}
         filterOptions={customFilterOptions}

@@ -78,9 +78,15 @@ type CardsMenuProps = {
   label: string;
   onClick(value: string): void;
   items: CardsMenuItemType[];
+  marginTop?: string;
 };
 
-export function CardsMenu({ label, items, onClick }: CardsMenuProps) {
+export function CardsMenu({
+  label,
+  items,
+  onClick,
+  marginTop = '0',
+}: CardsMenuProps) {
   const { getColor } = useColorModeContext();
 
   return (
@@ -90,7 +96,11 @@ export function CardsMenu({ label, items, onClick }: CardsMenuProps) {
       subheader={
         <ListSubheader
           component="div"
-          sx={{ padding: '6px 20px', backgroundColor: getColor('bg-main') }}
+          sx={{
+            padding: '6px 20px',
+            margin: `${marginTop} 0 0 0 `,
+            backgroundColor: getColor('bg-main'),
+          }}
         >
           <Stack
             direction="row"
