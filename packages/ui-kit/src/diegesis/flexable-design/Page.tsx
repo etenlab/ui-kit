@@ -6,6 +6,7 @@ import {
 } from './UIConfigProvider';
 import { withFlexible } from './withFlexible';
 import { FlexiblePageLayout } from './PageLayout';
+import { SideNavProps } from '../SideNav';
 
 export type PageConfig = BasicUIConfig & {
   contents: {};
@@ -18,15 +19,18 @@ const defaultPageConfig: PageConfig = {
 };
 export type PageProps = BasicFlexibleProps<PageConfig> & {
   children?: JSX.Element;
+  sideNavProps?: SideNavProps;
 };
 export const Page: FlexibleComponent<PageProps> = ({
   uiConfig = defaultPageConfig,
   children,
+  sideNavProps,
 }) => {
   return (
     <FlexiblePageLayout
       id={'page-flexible-page-layout'}
       parentPath={uiConfig.configPath!}
+      sideNavProps={sideNavProps}
     >
       {children}
     </FlexiblePageLayout>
