@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.90
+
+### Patch Changes
+
+- [#153](https://github.com/etenlab/ui-kit/pull/153) [`06e15f2`](https://github.com/etenlab/ui-kit/commit/06e15f264b961517b1a8e2cea85cb458f190fe69) Thanks [@lucky-gru](https://github.com/lucky-gru)! - fix clip-path to clipPath
+
 ## 0.5.89
 
 ### Patch Changes
