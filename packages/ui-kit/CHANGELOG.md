@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.89
+
+### Patch Changes
+
+- [#151](https://github.com/etenlab/ui-kit/pull/151) [`fa78b0b`](https://github.com/etenlab/ui-kit/commit/fa78b0b1910005c28d1fc10542a83658b93ee0a6) Thanks [@lucky-gru](https://github.com/lucky-gru)! - add more design icons
+
 ## 0.5.88
 
 ### Patch Changes
