@@ -5,7 +5,7 @@ import { SvgIcon, type SvgIconProps } from '@mui/material';
 export function DiFilledLight(props: SvgIconProps) {
   return (
     <SvgIcon {...props}>
-      <g clip-path="url(#clip0_4047_24557)">
+      <g clipPath="url(#clip0_4047_24557)">
         <path
           d="M12 19C12.2449 19 12.4813 19.09 12.6644 19.2527C12.8474 19.4155 12.9643 19.6397 12.993 19.883L13 20V21C12.9997 21.2549 12.9021 21.5 12.7272 21.6854C12.5522 21.8707 12.313 21.9822 12.0586 21.9972C11.8042 22.0121 11.5536 21.9293 11.3582 21.7657C11.1627 21.6021 11.0371 21.3701 11.007 21.117L11 21V20C11 19.7348 11.1054 19.4804 11.2929 19.2929C11.4804 19.1054 11.7348 19 12 19Z"
           fill="currentColor"
