@@ -5,14 +5,14 @@ import { SvgIcon, type SvgIconProps } from '@mui/material';
 export function DiDropUp(props: SvgIconProps) {
   return (
     <SvgIcon {...props}>
-      <g clip-path="url(#clip0_4047_24194)">
+      <g clipPath="url(#clip0_4047_24194)">
         <path
           d="M6 15L12 9L18 15"
           stroke="currentColor"
           fill="none"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>
