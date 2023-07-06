@@ -131,6 +131,17 @@ import {
   DiViewRow,
   DiFlag1,
   DiFlag2,
+  DiCircle,
+  DiDark,
+  DiDislike,
+  DiDoubleDown,
+  DiDropUp,
+  DiFilledDark,
+  DiFilledLight,
+  DiLight,
+  DiLike,
+  DiPicture,
+  DiReply,
 } from '../../../packages/ui-kit/src/icons';
 
 function Div({ children }: { children: React.ReactNode }) {
@@ -289,6 +300,17 @@ const Template: ComponentStory<typeof Div> = () => {
         <TitleWithIcon title="DiViewRow" icon={<DiViewRow />} />
         <TitleWithIcon title="DiFlag1" icon={<DiFlag1 />} />
         <TitleWithIcon title="DiFlag2" icon={<DiFlag2 />} />
+        <TitleWithIcon title="DiCircle" icon={<DiCircle />} />
+        <TitleWithIcon title="DiDark" icon={<DiDark />} />
+        <TitleWithIcon title="DiDislike" icon={<DiDislike />} />
+        <TitleWithIcon title="DiDoubleDown" icon={<DiDoubleDown />} />
+        <TitleWithIcon title="DiDropUp" icon={<DiDropUp />} />
+        <TitleWithIcon title="DiFilledDark" icon={<DiFilledDark />} />
+        <TitleWithIcon title="DiFilledLight" icon={<DiFilledLight />} />
+        <TitleWithIcon title="DiLight" icon={<DiLight />} />
+        <TitleWithIcon title="DiLike" icon={<DiLike />} />
+        <TitleWithIcon title="DiReply" icon={<DiReply />} />
+        <TitleWithIcon title="DiPicture" icon={<DiPicture />} />
       </Div>
       <hr />
       <Div>
