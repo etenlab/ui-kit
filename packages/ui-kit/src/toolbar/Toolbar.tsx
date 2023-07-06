@@ -5,8 +5,8 @@ import {
   DiMessages,
   DiNotifications,
   DiMenu,
-  CiDark,
-  CiLight,
+  DiDark,
+  DiLight,
   DiTranslate,
 } from '../icons';
 import { useColorModeContext } from '../ThemeProvider';
@@ -85,8 +85,6 @@ export function Toolbar({
               <DiMessages
                 style={{
                   color: getColor('gray'),
-                  fontSize: 24,
-                  transform: 'rotateY(180deg)',
                 }}
               />
             </Badge>
@@ -99,9 +97,7 @@ export function Toolbar({
             id="language-toggle-button"
           >
             <Badge color="red" variant="dot" invisible={!isNewNotification}>
-              <DiNotifications
-                style={{ color: getColor('gray'), fontSize: 24 }}
-              />
+              <DiNotifications style={{ color: getColor('gray') }} />
             </Badge>
           </IconButton>
         ) : null}
@@ -110,13 +106,10 @@ export function Toolbar({
             onClick={onClickLanguageBtn}
             sx={{
               padding: '5px',
-              '& g': {
-                stroke: getColor('gray'),
-              },
             }}
             id="notification-toggle-button"
           >
-            <DiTranslate />
+            <DiTranslate sx={{ color: getColor('gray') }} />
           </IconButton>
         ) : null}
 
@@ -126,19 +119,15 @@ export function Toolbar({
           id="light-dark-toggle-button"
         >
           {themeMode === 'light' ? (
-            <CiLight
+            <DiLight
               style={{
                 color: getColor('gray'),
-                fontSize: 27,
-                strokeWidth: '0.6px',
               }}
             />
           ) : (
-            <CiDark
+            <DiDark
               style={{
                 color: getColor('gray'),
-                fontSize: 27,
-                strokeWidth: '0.6px',
               }}
             />
           )}
