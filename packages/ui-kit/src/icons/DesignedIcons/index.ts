@@ -76,3 +76,15 @@ export { DiViewRow } from './DiViewRow';
 
 export { DiFlag1 } from './DiFlag1';
 export { DiFlag2 } from './DiFlag2';
+
+export { DiCircle } from './DiCircle';
+export { DiDark } from './DiDark';
+export { DiDislike } from './DiDislike';
+export { DiDoubleDown } from './DiDoubleDown';
+export { DiDropUp } from './DiDropUp';
+export { DiFilledDark } from './DiFilledDark';
+export { DiFilledLight } from './DiFilledLight';
+export { DiLight } from './DiLight';
+export { DiLike } from './DiLike';
+export { DiPicture } from './DiPicture';
+export { DiReply } from './DiReply';
