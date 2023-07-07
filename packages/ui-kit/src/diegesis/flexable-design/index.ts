@@ -10,3 +10,7 @@ export * from './Editor';
 export * as FlexibleEntryDetailUI from './entry-details';
 export * as FlexibleEntriesListUI from './entries-list';
 export * from './Page';
+export * from './SearchBox';
+export * from './SelectControl';
+export * from './BackButton';
+export * from './AppLogo';
