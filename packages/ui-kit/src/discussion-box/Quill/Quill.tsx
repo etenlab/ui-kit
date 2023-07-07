@@ -38,7 +38,7 @@ import { Attachment } from '../Attachment';
 import { QuillContainer } from './styled';
 
 import { modules, formats, Skeletons, SkeletonSize } from './utils';
-import { getMimeType } from '../utils';
+import { getMimeType } from '../utils/helpers';
 import { IFile } from '../types';
 
 const iconStyle = {
