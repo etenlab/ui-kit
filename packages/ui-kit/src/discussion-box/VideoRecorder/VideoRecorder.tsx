@@ -1,261 +1,112 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { IconButton, Stack } from '@mui/material';
+import { Box } from '@mui/material';
 
-import { DiRotate, DiPlay, DiTimer, DiCross, DiCheck } from '../../icons';
-import { useColorModeContext } from '../../ThemeProvider';
+import { VideoRecorderUI } from './VideoRecorderUI';
 
-import { RecorderStatus } from '../types';
+import { useDiscussionContext } from '../hooks/useDiscussionContext';
 
-type VideoRecorderProps = {
-  onSave(blobs: Blob[]): void;
-  onCancel(): void;
-};
+const maxFileSize =
+  process.env.REACT_APP_MAX_FILE_SIZE !== undefined
+    ? +process.env.REACT_APP_MAX_FILE_SIZE
+    : 1024 * 1024 * 50;
 
-export function VideoRecorder({ onSave, onCancel }: VideoRecorderProps) {
-  const { getColor } = useColorModeContext();
-  const [recorderStatus, setRecorderStatus] = useState<RecorderStatus>('new');
-  const [savedLastChunk, setSavedLastChunk] = useState<boolean>(true);
-  const [facingMode, setFacingMode] = useState<'user' | 'environment'>(
-    'environment',
-  );
-
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  const streamRef = useRef<MediaStream | null>(null);
-  const recordedChunksRef = useRef<Blob[]>([]);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const getVideoStream = useCallback(async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({
-      audio: true,
-      video: {
-        facingMode,
-      },
-    });
-
-    if (videoRef.current !== null) {
-      videoRef.current.srcObject = stream;
-    }
-
-    streamRef.current = stream;
-  }, [facingMode]);
-
-  const refreshRecorder = useCallback(() => {
-    if (
-      mediaRecorderRef.current &&
-      mediaRecorderRef.current.state !== 'inactive'
-    ) {
-      mediaRecorderRef.current.stop();
-    }
-    mediaRecorderRef.current = null;
-    recordedChunksRef.current = [];
-    setRecorderStatus('new');
-    getVideoStream();
-  }, [getVideoStream]);
+export function VideoRecorder() {
+  const {
+    states: {
+      uploading,
+      quill: { attachments, replyingPost },
+      discussion,
+      global: { userId },
+    },
+    actions: {
+      uploadFile,
+      createPost,
+      alertFeedback,
+      initializeQuill,
+      changeEditorKind,
+    },
+  } = useDiscussionContext();
+  const [status, setStatus] = useState<
+    'init' | 'save' | 'uploading' | 'uploaded'
+  >('init');
 
   useEffect(() => {
-    refreshRecorder();
-
-    return () => {
-      if (streamRef.current !== null) {
-        streamRef.current.getTracks().forEach((track) => track.stop());
-      }
-    };
-  }, [refreshRecorder]);
+    if (!uploading && status === 'save') {
+      return;
+    }
+    if (uploading && status === 'save') {
+      setStatus('uploading');
+    }
+    if (uploading && status === 'uploading') {
+      return;
+    }
+    if (!uploading && status === 'uploading') {
+      setStatus('uploaded');
+    }
+  }, [uploading, status]);
 
   useEffect(() => {
-    if (recorderStatus !== 'ended') {
-      return;
-    }
-    if (!savedLastChunk) {
-      return;
-    }
-
-    if (recordedChunksRef.current.length > 0) {
-      onSave(recordedChunksRef.current);
-    } else {
-      alert('There is no data to save');
-    }
-    refreshRecorder();
-  }, [recorderStatus, savedLastChunk, refreshRecorder, onSave]);
-
-  const handleClickStart = async () => {
-    if (streamRef.current === null) {
-      alert('Cannot found media stream!');
-      return;
-    }
-
-    const options = { mimeType: 'video/webm' };
-    const mediaRecorder = new MediaRecorder(streamRef.current, options);
-
-    mediaRecorder.addEventListener('dataavailable', function (e) {
-      if (e.data.size > 0) recordedChunksRef.current.push(e.data);
-      setSavedLastChunk(true);
-    });
-
-    mediaRecorder.addEventListener('stop', function () {
-      streamRef.current!.getTracks().forEach((track) => track.stop());
-    });
-
-    mediaRecorderRef.current = mediaRecorder;
-    mediaRecorderRef.current.start(1000);
-    setRecorderStatus('recording');
-  };
-
-  const pauseRecording = () => {
-    const mediaRecorder = mediaRecorderRef.current;
-
-    if (mediaRecorder === null || mediaRecorder.state !== 'recording') {
-      alert('cannot pause because mediaRecorder not exist or not recording!');
-      return;
-    }
-
-    mediaRecorder.pause();
-    setRecorderStatus('paused');
-  };
-
-  const resumeRecording = () => {
-    const mediaRecorder = mediaRecorderRef.current;
-
-    if (mediaRecorder === null || mediaRecorder.state !== 'paused') {
-      alert('cannot resume because mediaRecorder not exist!');
-      return;
-    }
-
-    mediaRecorder.resume();
-    setRecorderStatus('recording');
-  };
-
-  const handleClickPause = () => {
-    if (recorderStatus === 'recording') {
-      pauseRecording();
-    } else if (recorderStatus === 'paused') {
-      resumeRecording();
-    }
-  };
-
-  const handleClickCancel = () => {
-    if (recorderStatus === 'paused') {
-      // eslint-disable-next-line no-restricted-globals
-      if (confirm('Recorded data will be lost!')) {
-        refreshRecorder();
+    if (status === 'uploaded') {
+      if (attachments.length > 0) {
+        createPost({
+          variables: {
+            post: {
+              discussion_id: discussion!.id,
+              plain_text: '',
+              postgres_language: 'simple',
+              quill_text: '',
+              user_id: userId,
+              reply_id: replyingPost ? replyingPost.id : null,
+            },
+            files: attachments.map((file) => file.id),
+          },
+        });
       }
-    } else {
-      onCancel();
+      initializeQuill();
+      setStatus('init');
     }
-  };
+  }, [
+    status,
+    attachments,
+    createPost,
+    initializeQuill,
+    replyingPost,
+    discussion,
+    userId,
+  ]);
 
-  const handleClickSave = () => {
-    if (mediaRecorderRef.current?.state !== 'inactive') {
-      mediaRecorderRef.current?.stop();
+  const handleSave = (blobs: Blob[]) => {
+    const file = new File(blobs, `record_${userId}.webm`);
+
+    if (file.size > maxFileSize) {
+      alertFeedback(
+        'warning',
+        `Exceed max file size ( > ${process.env.REACT_APP_MAX_FILE_SIZE})!`,
+      );
+      return;
     }
-    setRecorderStatus('ended');
-    setSavedLastChunk(false);
+
+    uploadFile({
+      variables: { file, file_size: file.size, file_type: 'video/webm' },
+    });
+
+    setStatus('save');
   };
 
-  const switchFacingMode = () => {
-    setFacingMode((mode) => (mode === 'user' ? 'environment' : 'user'));
+  const handleCancel = () => {
+    changeEditorKind(null);
   };
-
-  const controlButtonStyle = {
-    fontSize: '80px',
-    padding: '20px',
-    backgroundColor: getColor('bg-main'),
-    color: getColor('dark'),
-    borderRadius: '50%',
-  };
-
-  const disabledCancel =
-    recorderStatus === 'recording' || recorderStatus === 'ended' ? true : false;
-  const disabledSave =
-    recorderStatus === 'new' || recorderStatus === 'ended' ? true : false;
-  const disabledControl = recorderStatus === 'ended' ? true : false;
-
-  const controlButton =
-    recorderStatus === 'new' ? (
-      <IconButton onClick={handleClickStart} disabled={disabledControl}>
-        <DiPlay style={{ ...controlButtonStyle }} />
-      </IconButton>
-    ) : (
-      <IconButton onClick={handleClickPause} disabled={disabledControl}>
-        <DiPlay
-          style={{
-            ...controlButtonStyle,
-          }}
-        />
-      </IconButton>
-    );
 
   return (
-    <div
-      style={{
-        position: 'relative',
-        width: '100%',
-        height: '100%',
-        background: getColor('dark'),
-        overflow: 'hidden',
+    <Box
+      sx={{
+        position: 'fixed',
+        width: '100vw',
+        height: '100vh',
       }}
     >
-      <video
-        height="100%"
-        ref={videoRef}
-        autoPlay
-        muted
-        style={{ transform: 'translateX(-50%)', margin: '0 50%' }}
-      />
-      <Stack
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        gap="24px"
-        style={{
-          position: 'absolute',
-          top: 24,
-          right: 24,
-          padding: '10px',
-          borderRadius: '5px',
-          background: '#0000004f',
-        }}
-      >
-        <IconButton>
-          <DiTimer style={{ color: getColor('white') }} />
-        </IconButton>
-        <IconButton onClick={switchFacingMode}>
-          <DiRotate style={{ color: getColor('white') }} />
-        </IconButton>
-      </Stack>
-      <Stack
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        sx={{
-          position: 'absolute',
-          bottom: 50,
-          width: '100%',
-          padding: '10px',
-          borderRadius: '5px',
-          background: '#0000004f',
-        }}
-        gap="30px"
-      >
-        <IconButton
-          onClick={handleClickCancel}
-          sx={{ fontSize: '36px', color: getColor('white') }}
-          disabled={disabledCancel}
-        >
-          <DiCross />
-        </IconButton>
-
-        {controlButton}
-
-        <IconButton
-          onClick={handleClickSave}
-          sx={{ fontSize: '36px', color: getColor('green') }}
-          disabled={disabledSave}
-        >
-          <DiCheck />
-        </IconButton>
-      </Stack>
-    </div>
+      <VideoRecorderUI onSave={handleSave} onCancel={handleCancel} />
+    </Box>
   );
 }
