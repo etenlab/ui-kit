@@ -27,6 +27,11 @@ export function SearchBox(props: SearchBoxProps) {
         color={'gray'}
         InputProps={{
           'aria-label': 'weight',
+          onKeyDown: (e) => {
+            if (e.key === 'Enter') {
+              if (onSearchBtnClick) onSearchBtnClick(refInputValue.current);
+            }
+          },
           onChange: (e) => {
             refInputValue.current = e.target.value.trim();
             if (onSearchTextChange) {

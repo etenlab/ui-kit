@@ -231,10 +231,11 @@ function TableRowWrapper({
 }
 
 export type Pagination = {
+  page?: number;
   totalRows?: number;
   rowsPerPage?: number;
   rowsPerPageOptions?: number[];
-  onPageChange?: (page: number, rowsPerPage: number) => void;
+  onPageChange?: (page: number, rowsPerPage?: number) => void;
 };
 export interface IDataTableProps {
   headCells: HeadCell[];
@@ -256,8 +257,6 @@ export default function DataTable(props: IDataTableProps) {
   } = props;
   const [order, setOrder] = React.useState<Order>('asc');
   const [orderBy, setOrderBy] = React.useState<string>(defaultSortCellId ?? '');
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleRequestSort = (
     _event: React.MouseEvent<unknown>,
@@ -269,16 +268,15 @@ export default function DataTable(props: IDataTableProps) {
   };
 
   const handleChangePage = (_event: unknown, newPage: number) => {
-    setPage(newPage);
-    if (pagination?.onPageChange) pagination.onPageChange(newPage, rowsPerPage);
+    // setPage(newPage);
+    if (pagination?.onPageChange) pagination.onPageChange(newPage);
   };
 
   const handleChangeRowsPerPage = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-    if (pagination?.onPageChange) pagination.onPageChange(0, rowsPerPage);
+    if (pagination?.onPageChange)
+      pagination.onPageChange(0, parseInt(event.target.value, 10));
   };
 
   return (
@@ -313,8 +311,8 @@ export default function DataTable(props: IDataTableProps) {
           rowsPerPageOptions={pagination.rowsPerPageOptions ?? [5, 10, 25]}
           component="div"
           count={pagination?.totalRows ?? rows.length}
-          rowsPerPage={pagination.rowsPerPage ?? rowsPerPage}
-          page={page}
+          rowsPerPage={pagination.rowsPerPage ?? 10}
+          page={pagination.page ?? 0}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
           primaryColor={props.primaryColor}

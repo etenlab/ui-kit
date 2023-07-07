@@ -1,5 +1,5 @@
 import React from 'react';
-import DataTable, { HeadCell } from '../../data-table/DataTable';
+import DataTable, { HeadCell, Pagination } from '../../data-table/DataTable';
 import { Button, Typography } from '@mui/material';
 import { BsChevronRight } from 'react-icons/bs';
 import {
@@ -28,6 +28,7 @@ export type EntriesDataTableProps =
   BasicFlexibleProps<EntriesDataTableConfig> & {
     cellsConfig?: HeadCell[];
     entries?: EntriesData[];
+    pagination?: Pagination;
   };
 
 export type EntriesData = {
@@ -184,6 +185,7 @@ export const EntriesDataTable: FlexibleComponent<EntriesDataTableProps> = (
       headCells={props.cellsConfig || []}
       rows={props.entries || []}
       primaryColor={uiConfig.styles.primaryColor}
+      pagination={props.pagination}
     />
   );
 };

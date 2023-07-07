@@ -61,6 +61,11 @@ export const SearchBox: FlexibleComponent<SearchBoxProps> = (props) => {
         borderColor={uiConfig.styles.borderColor}
         InputProps={{
           'aria-label': 'weight',
+          onKeyDown: (e) => {
+            if (e.key === 'Enter') {
+              if (onSearchBtnClick) onSearchBtnClick(refInputValue.current);
+            }
+          },
           onChange: (e: { target: { value: string } }) => {
             refInputValue.current = e.target.value.trim();
             if (onSearchTextChange) {
