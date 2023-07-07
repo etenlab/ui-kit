@@ -8,7 +8,7 @@ import { VideoPlayer } from '../VideoPlayer';
 import { AudioPlayer } from '../AudioPlayer';
 
 import { IFile } from '../types';
-import { getMimeType } from '../utils';
+import { getMimeType } from '../utils/helpers';
 import { DiRemove } from '../../icons';
 import { useColorModeContext } from '../../ThemeProvider';
 
