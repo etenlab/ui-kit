@@ -4,7 +4,7 @@ import { Stack, Typography } from '@mui/material';
 
 import { Avatar } from '../Avatar';
 import { Username } from '../Username';
-import { BiImages } from '../../icons';
+import { DiPicture } from '../../icons';
 import { useColorModeContext } from '../../ThemeProvider';
 
 import { IRelationshipPostFile } from '../utils/types';
@@ -26,7 +26,7 @@ export function StandardDecorator({
 }: StandardDecoratorProps) {
   const { getColor } = useColorModeContext();
   const attachmentIcon =
-    files.length > 0 ? <BiImages style={{ color: getColor('gray') }} /> : null;
+    files.length > 0 ? <DiPicture style={{ color: getColor('gray') }} /> : null;
 
   return (
     <Stack

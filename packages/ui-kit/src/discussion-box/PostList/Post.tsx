@@ -119,17 +119,17 @@ export function Post({ post }: PostProps) {
     {
       name: 'Edit Post',
       action: handleEditPost,
-      icon: <DiEdit />,
+      icon: <DiEdit color="gray" />,
     },
     {
       name: 'Reply',
       action: handleReplyPost,
-      icon: <DiReply />,
+      icon: <DiReply color="gray" />,
     },
     {
       name: 'Delete Post',
       action: handleDeletePost,
-      icon: <DiRemove />,
+      icon: <DiRemove color="gray" />,
     },
   ];
 
@@ -155,7 +155,7 @@ export function Post({ post }: PostProps) {
 
       <PostHeader
         username={user.username}
-        avatar=""
+        avatar={user.avatar_url || ''}
         date={created_at_date}
         openActionList={handlePopoverOpen}
       />

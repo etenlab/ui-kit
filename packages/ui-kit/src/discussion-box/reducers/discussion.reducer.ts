@@ -33,7 +33,7 @@ export function reducer(
       return recalcDiscusionWithUpdatedPost(prevState, updatedPost);
     }
     case actions.POST_DELETED: {
-      const postId = action.payload as number;
+      const postId = action.payload as string;
       return recalcDiscussionWithDeletedPostId(prevState, postId);
     }
     case actions.REACTION_CREATED: {
@@ -41,7 +41,7 @@ export function reducer(
       return recalcDiscussionWithNewReation(prevState, newReaction);
     }
     case actions.REACTION_DELETED: {
-      const reactionId = action.payload as number;
+      const reactionId = action.payload as string;
       return recalcDiscusionWithDeletedReactionId(prevState, reactionId);
     }
     default: {

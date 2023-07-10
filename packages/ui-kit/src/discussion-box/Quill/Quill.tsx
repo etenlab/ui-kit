@@ -329,7 +329,7 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
         justifyContent="space-between"
         sx={{
           borderBottom: `1px solid ${getColor('middle-gray')}`,
-          backgroundColor: getColor('disable'),
+          backgroundColor: getColor('bg-second'),
           paddingLeft: '12px',
           paddingRight: '12px',
         }}
