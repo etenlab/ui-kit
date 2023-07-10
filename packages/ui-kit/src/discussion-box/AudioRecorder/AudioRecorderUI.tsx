@@ -8,7 +8,7 @@ import { useColorModeContext } from '../../ThemeProvider';
 import { RecorderTimer } from '../RecorderTimer';
 
 import { AudioElement, Wave } from '@foobar404/wave';
-import { RecorderStatus } from '../types';
+import { RecorderStatus } from '../utils/types';
 
 type AudioRecorderProps = {
   onCancel(): void;

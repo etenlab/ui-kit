@@ -4,7 +4,9 @@ export function recalcDiscusionWithNewPost(
   discussion: IDiscussion,
   newPost: IPost,
 ): IDiscussion {
-  if (discussion.posts.find((post: IPost) => post.id === newPost.id)) {
+  if (
+    discussion.posts.find((post: IPost) => post.post_id === newPost.post_id)
+  ) {
     // Already exists, then return without adding
     return discussion;
   } else {
@@ -22,12 +24,12 @@ export function recalcDiscusionWithUpdatedPost(
 ): IDiscussion {
   const posts = discussion.posts.map((post) => {
     // found updated post and return updated result
-    if (post.id === updatedPost.id) {
+    if (post.post_id === updatedPost.post_id) {
       return updatedPost;
     }
 
     // found related post and return with changing
-    if (post.reply_id === updatedPost.id) {
+    if (post.reply_id === updatedPost.post_id) {
       return {
         ...post,
         reply: {
@@ -36,7 +38,9 @@ export function recalcDiscusionWithUpdatedPost(
             username: updatedPost.user.username,
           },
           plain_text: updatedPost.plain_text,
-          files: updatedPost.files.map((file) => file.id),
+          files: updatedPost.files.map(
+            (file) => file.relationship_post_file_id,
+          ),
         },
       };
     }
@@ -52,11 +56,11 @@ export function recalcDiscusionWithUpdatedPost(
 
 export function recalcDiscussionWithDeletedPostId(
   discussion: IDiscussion,
-  postId: number,
+  postId: string,
 ): IDiscussion {
   const posts = discussion.posts
     // Remove deleted post from list
-    .filter((post) => post.id !== postId)
+    .filter((post) => post.post_id !== postId)
     // Resolve related posts
     .map((post) => {
       if (post.reply_id === postId) {
@@ -80,16 +84,18 @@ export function recalcDiscussionWithNewReation(
   newReaction: IReaction,
 ): IDiscussion {
   const post_id = newReaction.post_id;
-  const reaction_id = newReaction.id;
+  const reaction_id = newReaction.reaction_id;
 
   return {
     ...discussion,
     posts: discussion.posts.map((post) => {
-      if (post.id !== post_id) {
+      if (post.post_id !== post_id) {
         return post;
       }
 
-      if (post.reactions.find((reaction) => reaction.id === reaction_id)) {
+      if (
+        post.reactions.find((reaction) => reaction.reaction_id === reaction_id)
+      ) {
         return post;
       }
 
@@ -103,14 +109,14 @@ export function recalcDiscussionWithNewReation(
 
 export function recalcDiscusionWithDeletedReactionId(
   discussion: IDiscussion,
-  reactionId: number,
+  reactionId: string,
 ): IDiscussion {
   return {
     ...discussion,
     posts: discussion.posts.map((post) => ({
       ...post,
       reactions: post.reactions.filter(
-        (reaction) => reaction.id !== reactionId,
+        (reaction) => reaction.reaction_id !== reactionId,
       ),
     })),
   };

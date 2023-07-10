@@ -15,6 +15,7 @@ import {
   FeedbackType,
   IPost,
   IFile,
+  IUser,
   EmojiModeType,
   EditorKinds,
   ChangeDiscussionParams,
@@ -56,7 +57,7 @@ export interface ContextType {
     cancelAttachment(file: IFile): void;
     changeQuill(quill: string | undefined, plain: string): void;
     uploadFile: any;
-    setNewUser(userId: number): void;
+    setNewUser(user: IUser): void;
     alertFeedback(feedbackType: FeedbackType, message: string): void;
     closeFeedback(): void;
     openEmojiPicker(
@@ -90,12 +91,12 @@ export function DiscussionProvider({ children }: DiscussionProviderProps) {
   });
 
   const { createPost, updatePost, deletePost, deleteAttachment } = usePost({
-    discussionId: state.discussion ? state.discussion.id : null,
+    discussionId: state.discussion ? state.discussion.discussion_id : null,
     dispatch,
   });
 
   const { createReaction, deleteReaction } = useReaction({
-    discussionId: state.discussion ? state.discussion.id : null,
+    discussionId: state.discussion ? state.discussion.discussion_id : null,
     dispatch,
   });
 

@@ -5,7 +5,7 @@ import { Stack, IconButton, Box, Typography } from '@mui/material';
 import { DiDownload, DiFileText } from '../../icons';
 import { useColorModeContext } from '../../ThemeProvider';
 
-import { IFile } from '../types';
+import { IFile } from '../utils/types';
 
 const handleDownload = (file_name: string, file_url: string) => {
   const hiddenElement = document.createElement('a');
