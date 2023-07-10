@@ -45,7 +45,7 @@ export function FileViewer({ file, mode }: FileViewerProps) {
     mode === 'view' ? (
       <IconButton
         onClick={() => {
-          handleDownload(file.file_name, file.file_url);
+          handleDownload(file.fileName, file.fileUrl);
         }}
       >
         <DiDownload style={{ fontSize: '30px', color: getColor('dark') }} />
@@ -68,9 +68,9 @@ export function FileViewer({ file, mode }: FileViewerProps) {
       <DiFileText style={{ fontSize: '70px', margin: '-10px' }} />
       <Stack justifyContent="space-between">
         <Typography variant="body1" color="text.dark">
-          {file.file_name}
+          {file.fileName}
         </Typography>
-        <FileSize fileSize={file.file_size} />
+        <FileSize fileSize={file.fileSize} />
       </Stack>
       {downloadButton}
     </Box>

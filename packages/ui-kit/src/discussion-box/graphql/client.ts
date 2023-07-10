@@ -1,14 +1,9 @@
-import {
-  split,
-  HttpLink,
-  ApolloClient,
-  InMemoryCache,
-  from,
-} from '@apollo/client';
+import { split, ApolloClient, InMemoryCache, from } from '@apollo/client';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
 import { onError } from '@apollo/client/link/error';
 import { createClient } from 'graphql-ws';
+import { createUploadLink } from 'apollo-upload-client';
 
 import { typeDefs } from './discussionQuery';
 
@@ -22,7 +17,7 @@ export function getClient(
   const cached = _cache.get(httpUri + wsUri);
 
   if (!cached) {
-    const httpLink = new HttpLink({
+    const httpLink = createUploadLink({
       uri: httpUri,
     });
 

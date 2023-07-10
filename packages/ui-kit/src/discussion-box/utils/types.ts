@@ -26,10 +26,11 @@ export interface IReaction {
 
 export interface IFile {
   id: number;
-  file_name: string;
-  file_type: string;
-  file_size: number;
-  file_url: string;
+  fileName: string;
+  fileType: string;
+  fileSize: number;
+  fileUrl: string;
+  fileHash: string;
 }
 
 export interface IRelationshipPostFile {

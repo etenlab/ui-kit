@@ -134,7 +134,7 @@ export const DISCUSSION_SUMMARY_FIELDS = gql`
 export const GET_DISCUSSIONS = gql`
   ${DISCUSSION_FIELDS}
   query GetDiscussions($row_id: String!, $table_name: String!) {
-    discussions(row: $row_id, table_name: $table_name) {
+    discussions(row_id: $row_id, table_name: $table_name) {
       ...DiscussionFields
     }
   }
