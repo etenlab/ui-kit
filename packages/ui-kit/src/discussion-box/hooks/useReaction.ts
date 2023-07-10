@@ -1,10 +1,7 @@
 import { useEffect, Dispatch } from 'react';
 import { useSubscription, useMutation } from '@apollo/client';
 
-import { discussionClient } from '../graphql/discussionGraphql';
-import { aggregationClient } from '../graphql/aggregationGraphql';
 import { CREATE_REACTION, DELETE_REACTION } from '../graphql/discussionQuery';
-import { discussionSubscriptionClient } from '../graphql/discussionSubscriptionGraphql';
 import {
   REACTION_CREATED_SUBSCRIPTION,
   REACTION_DELETED_SUBSCRIPTION,
@@ -22,13 +19,8 @@ import {
 } from '../reducers/discussion.actions';
 import { alertFeedback } from '../reducers/global.actions';
 
-const client =
-  process.env.REACT_APP_GRAPHQL_MODDE === 'aggregation'
-    ? aggregationClient
-    : discussionClient;
-
 type UseReactProps = {
-  discussionId: number | null;
+  discussionId: string | null;
   dispatch: Dispatch<ActionType<unknown>>;
 };
 
@@ -39,7 +31,6 @@ export function useReaction({ discussionId, dispatch }: UseReactProps) {
         discussionId: discussionId !== null ? discussionId : -1,
       },
       skip: discussionId === null,
-      client: discussionSubscriptionClient,
     });
 
   const { data: reactionDeletedData, error: reactionDeletedError } =
@@ -48,18 +39,13 @@ export function useReaction({ discussionId, dispatch }: UseReactProps) {
         discussionId: discussionId !== null ? discussionId : -1,
       },
       skip: discussionId === null,
-      client: discussionSubscriptionClient,
     });
 
-  const [createReaction, { error: createReactionError }] = useMutation(
-    CREATE_REACTION,
-    { client },
-  );
+  const [createReaction, { error: createReactionError }] =
+    useMutation(CREATE_REACTION);
 
-  const [deleteReaction, { error: deleteReactionError }] = useMutation(
-    DELETE_REACTION,
-    { client },
-  );
+  const [deleteReaction, { error: deleteReactionError }] =
+    useMutation(DELETE_REACTION);
 
   // Sync 'discussion' with 'reactionCreated' subscription
   useEffect(() => {

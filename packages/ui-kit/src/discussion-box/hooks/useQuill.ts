@@ -2,7 +2,6 @@ import { Dispatch, useCallback, useEffect } from 'react';
 
 import { useMutation } from '@apollo/client';
 
-import { fileClient as client } from '../graphql/fileGraphql';
 import { UPLOAD_FILE } from '../graphql/fileQuery';
 
 import { UploadedFile, IFile, ActionType, IPost } from '../utils/types';
@@ -25,12 +24,8 @@ type UseQuillProps = {
 
 // This hook take care every chagnes of discussion's state via connecting graphql servers
 export function useQuill({ dispatch }: UseQuillProps) {
-  const [uploadFile, { data, loading, error }] = useMutation<UploadedFile>(
-    UPLOAD_FILE,
-    {
-      client,
-    },
-  );
+  const [uploadFile, { data, loading, error }] =
+    useMutation<UploadedFile>(UPLOAD_FILE);
 
   // Upload is successful then trigger onAddAttachment
   useEffect(() => {

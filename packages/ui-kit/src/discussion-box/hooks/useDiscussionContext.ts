@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { DiscussionContext } from '../src/context';
+import { DiscussionContext } from '../context';
 
 export function useDiscussionContext() {
   const context = useContext(DiscussionContext);

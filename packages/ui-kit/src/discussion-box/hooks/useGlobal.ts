@@ -5,6 +5,7 @@ import {
   FeedbackType,
   EmojiModeType,
   IPost,
+  IUser,
   EditorKinds,
 } from '../utils/types';
 
@@ -24,8 +25,8 @@ type UseGlobalProps = {
 // This hook take care every chagnes of discussion's state via connecting graphql servers
 export function useGlobal({ dispatch }: UseGlobalProps) {
   const setNewUser = useCallback(
-    (userId: number) => {
-      dispatch(setNewUserAction(userId));
+    (user: IUser) => {
+      dispatch(setNewUserAction(user));
     },
     [dispatch],
   );

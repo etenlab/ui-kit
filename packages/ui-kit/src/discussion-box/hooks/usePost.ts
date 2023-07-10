@@ -1,15 +1,12 @@
 import { useEffect, Dispatch } from 'react';
 import { useSubscription, useMutation } from '@apollo/client';
 
-import { discussionClient } from '../graphql/discussionGraphql';
-import { aggregationClient } from '../graphql/aggregationGraphql';
 import {
   CREATE_POST,
   UPDATE_POST,
   DELETE_POST,
   DELETE_ATTACHMENT,
 } from '../graphql/discussionQuery';
-import { discussionSubscriptionClient } from '../graphql/discussionSubscriptionGraphql';
 import {
   POST_CREATED_SUBSCRIPTION,
   POST_DELETED_SUBSCRIPTION,
@@ -31,13 +28,8 @@ import {
 import { recoverQuillStates } from '../reducers/quill.actions';
 import { alertFeedback } from '../reducers/global.actions';
 
-const client =
-  process.env.REACT_APP_GRAPHQL_MODDE === 'aggregation'
-    ? aggregationClient
-    : discussionClient;
-
 type UsePostProps = {
-  discussionId: number | null;
+  discussionId: string | null;
   dispatch: Dispatch<ActionType<unknown>>;
 };
 
@@ -48,7 +40,6 @@ export function usePost({ discussionId, dispatch }: UsePostProps) {
         discussionId: discussionId !== null ? discussionId : -1,
       },
       skip: discussionId === null,
-      client: discussionSubscriptionClient,
     });
 
   const { data: postUpdatedData, error: postUpdatedError } =
@@ -57,7 +48,6 @@ export function usePost({ discussionId, dispatch }: UsePostProps) {
         discussionId: discussionId !== null ? discussionId : -1,
       },
       skip: discussionId === null,
-      client: discussionSubscriptionClient,
     });
 
   const { data: postDeletedData, error: postDeletedError } =
@@ -66,27 +56,16 @@ export function usePost({ discussionId, dispatch }: UsePostProps) {
         discussionId: discussionId !== null ? discussionId : -1,
       },
       skip: discussionId === null,
-      client: discussionSubscriptionClient,
     });
 
-  const [createPost, { error: createPostError }] = useMutation(CREATE_POST, {
-    client,
-  });
+  const [createPost, { error: createPostError }] = useMutation(CREATE_POST);
 
-  const [updatePost, { error: updatePostError }] = useMutation(UPDATE_POST, {
-    client,
-  });
+  const [updatePost, { error: updatePostError }] = useMutation(UPDATE_POST);
 
-  const [deletePost, { error: deletePostError }] = useMutation(DELETE_POST, {
-    client,
-  });
+  const [deletePost, { error: deletePostError }] = useMutation(DELETE_POST);
 
-  const [deleteAttachment, { error: deleteAttachmentError }] = useMutation(
-    DELETE_ATTACHMENT,
-    {
-      client,
-    },
-  );
+  const [deleteAttachment, { error: deleteAttachmentError }] =
+    useMutation(DELETE_ATTACHMENT);
 
   // Sync 'discussion' with 'postCreated' subscription
   useEffect(() => {

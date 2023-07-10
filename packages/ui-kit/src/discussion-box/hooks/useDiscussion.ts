@@ -2,8 +2,6 @@ import { useEffect, useCallback, Dispatch, useRef } from 'react';
 
 import { useMutation, useLazyQuery } from '@apollo/client';
 
-import { discussionClient } from '../graphql/discussionGraphql';
-import { aggregationClient } from '../graphql/aggregationGraphql';
 import { GET_DISCUSSIONS, CREATE_DISCUSSION } from '../graphql/discussionQuery';
 
 import {
@@ -14,11 +12,6 @@ import {
 
 import { loadDiscussion } from '../reducers/discussion.actions';
 import { alertFeedback } from '../reducers/global.actions';
-
-const client =
-  process.env.REACT_APP_GRAPHQL_MODDE === 'aggregation'
-    ? aggregationClient
-    : discussionClient;
 
 type UseDiscussionProps = {
   discussion: IDiscussion | null;
@@ -35,7 +28,7 @@ export function useDiscussion({ discussion, dispatch }: UseDiscussionProps) {
       error: createDiscussionError,
       loading: newDiscussionLoading,
     },
-  ] = useMutation(CREATE_DISCUSSION, { client });
+  ] = useMutation(CREATE_DISCUSSION);
 
   const [
     getDiscussions,
@@ -47,21 +40,18 @@ export function useDiscussion({ discussion, dispatch }: UseDiscussionProps) {
     },
   ] = useLazyQuery(GET_DISCUSSIONS, {
     fetchPolicy: 'no-cache',
-    client,
   });
 
   const changeDiscussion = useCallback(
-    ({ table_name, row, orgId, appId }: ChangeDiscussionParams) => {
-      if (table_name.length === 0 || row < 0) {
-        alertFeedback('error', 'Error at table_name or row');
+    ({ table_name, row_id }: ChangeDiscussionParams) => {
+      if (table_name.length === 0 || row_id.length === 0) {
+        alertFeedback('error', 'Error at table_name or row_id');
         return;
       }
 
       if (
         table_name === discussion?.table_name ||
-        row === discussion?.row ||
-        orgId === discussion?.appList.id ||
-        orgId === discussion?.organization.id
+        row_id === discussion?.row_id
       ) {
         return;
       }
@@ -69,17 +59,13 @@ export function useDiscussion({ discussion, dispatch }: UseDiscussionProps) {
       // Save params
       discussionRef.current = {
         table_name,
-        row,
-        orgId,
-        appId,
+        row_id,
       };
 
       getDiscussions({
         variables: {
           table_name,
-          row,
-          org_id: orgId,
-          app_id: appId,
+          row_id,
         },
       });
     },
@@ -113,9 +99,7 @@ export function useDiscussion({ discussion, dispatch }: UseDiscussionProps) {
       createDiscussion({
         variables: {
           discussion: {
-            app_id: discussionRef.current.appId,
-            org_id: discussionRef.current.orgId,
-            row: discussionRef.current.row,
+            row_id: discussionRef.current.row_id,
             table_name: discussionRef.current.table_name,
           },
         },
@@ -136,7 +120,7 @@ export function useDiscussion({ discussion, dispatch }: UseDiscussionProps) {
       dispatch(
         alertFeedback(
           'error',
-          `Failed in creating new discussion with #table_name: ${discussionRef.current?.table_name}, #row: ${discussionRef.current?.row}!`,
+          `Failed in creating new discussion with #table_name: ${discussionRef.current?.table_name}, #row: ${discussionRef.current?.row_id}!`,
         ),
       );
       return;
@@ -150,9 +134,7 @@ export function useDiscussion({ discussion, dispatch }: UseDiscussionProps) {
 
     if (
       newDiscussion.table_name !== discussionRef.current?.table_name ||
-      newDiscussion.row !== discussionRef.current?.row ||
-      newDiscussion.appList.id !== discussionRef.current?.appId ||
-      newDiscussion.organization.id !== discussionRef.current?.orgId
+      newDiscussion.row_id !== discussionRef.current?.row_id
     ) {
       dispatch(alertFeedback('warning', `Received not required discussion!`));
       return;
