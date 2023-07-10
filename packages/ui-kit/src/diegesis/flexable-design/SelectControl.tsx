@@ -66,7 +66,7 @@ export const SelectControl: FlexibleComponent<SelectControlProps> = (props) => {
 
   return (
     <StyledSelect
-      value={value || label}
+      value={value ?? label}
       onChange={(e) => {
         if (onChange) onChange(e.target.value as string);
       }}
