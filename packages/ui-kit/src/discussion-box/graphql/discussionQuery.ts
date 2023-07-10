@@ -2,471 +2,260 @@ import { gql } from '@apollo/client';
 
 export const typeDefs = gql`
   extend input DiscussionInput {
-    app_id: Int!
-    org_id: Int!
-    row: Int!
+    row_id: String!
     table_name: String!
   }
 
   extend input NewPostInput {
-    discussion_id: Int!
+    discussion_id: String!
     plain_text: String!
-    postgres_language: String = "simple"
+    postgres_language: String! = "simple"
     quill_text: String!
+    reply_id: String
     user_id: String!
-    reply_id: Int!
   }
 
-  input NewReactionInput {
+  extend input NewReactionInput {
     content: String!
-    post_id: Int!
+    post_id: String!
     user_id: String!
+  }
+
+  extend input NewUserInput {
+    avatar_url: String
+    email: String!
+    first_name: String!
+    kid: String!
+    last_name: String!
+    username: String!
+  }
+`;
+
+export const USER_FIELDS = gql`
+  fragment UserFields on User {
+    active
+    avatar_url
+    created_at
+    email
+    first_name
+    is_email_verified
+    kid
+    last_name
+    user_id
+    username
+  }
+`;
+
+export const REACTION_FIELDS = gql`
+  ${USER_FIELDS}
+  fragment ReactionFields on Reaction {
+    post_id
+    reaction_id
+    user_id
+    content
+    user {
+      ...UserFields
+    }
+  }
+`;
+
+export const FILE_FIELDS = gql`
+  fragment FileFields on File {
+    fileHash
+    fileName
+    fileSize
+    fileType
+    fileUrl
+    id
+  }
+`;
+
+export const RELATIONSHIP_POST_FILE_FILEDS = gql`
+  ${FILE_FIELDS}
+  fragment RelationshipPostFileFields on RelationshipPostFile {
+    post_id
+    relationship_post_file_id
+    file {
+      ...FileFields
+    }
+  }
+`;
+
+export const POST_FIELDS = gql`
+  ${RELATIONSHIP_POST_FILE_FILEDS}
+  ${REACTION_FIELDS}
+  ${USER_FIELDS}
+  fragment PostFields on Post {
+    created_at
+    discussion_id
+    is_edited
+    plain_text
+    post_id
+    postgres_language
+    quill_text
+    reply_id
+    user_id
+    files {
+      ...RelationshipPostFileFields
+    }
+    reactions {
+      ...ReactionFields
+    }
+    user {
+      ...UserFields
+    }
+  }
+`;
+
+export const DISCUSSION_FIELDS = gql`
+  ${POST_FIELDS}
+  fragment DiscussionFields on Discussion {
+    discussion_id
+    row_id
+    table_name
+    posts {
+      reply {
+        ...PostFields
+      }
+      ...PostFields
+    }
+  }
+`;
+
+export const DISCUSSION_SUMMARY_FIELDS = gql`
+  fragment DiscussionSummaryFields on DiscussionSummary {
+    discussion_id
+    row_id
+    table_name
+    total_posts
   }
 `;
 
 export const GET_DISCUSSIONS = gql`
-  query GetDiscussions(
-    $app_id: Int!
-    $org_id: Int!
-    $row: Int!
-    $table_name: String!
-  ) {
-    discussions(
-      app_id: $app_id
-      org_id: $org_id
-      row: $row
-      table_name: $table_name
-    ) {
-      id
-      appList {
-        id
-        app_name
-      }
-      organization {
-        id
-        name
-      }
-      table_name
-      row
-      posts {
-        id
-        user_id
-        user {
-          user_id
-          active
-          email
-          username
-          is_email_verified
-          created_at
-        }
-        discussion_id
-        plain_text
-        quill_text
-        postgres_language
-        is_edited
-        reply_id
-        reply {
-          is_edited
-          user {
-            username
-          }
-          plain_text
-          files {
-            id
-          }
-        }
-        created_at
-        reactions {
-          id
-          user_id
-          user {
-            user_id
-            active
-            email
-            username
-            is_email_verified
-            created_at
-          }
-          post_id
-          content
-        }
-        files {
-          id
-          file {
-            id
-            file_name
-            file_type
-            file_size
-            file_url
-          }
-        }
-      }
+  ${DISCUSSION_FIELDS}
+  query GetDiscussions($row_id: String!, $table_name: String!) {
+    discussions(row: $row_id, table_name: $table_name) {
+      ...DiscussionFields
     }
   }
 `;
 
 export const CREATE_DISCUSSION = gql`
+  ${DISCUSSION_FIELDS}
   mutation CreateDiscussion($discussion: DiscussionInput!) {
     createDiscussion(newDiscussionData: $discussion) {
-      id
-      appList {
-        id
-        app_name
-      }
-      organization {
-        id
-        name
-      }
-      table_name
-      row
-      posts {
-        id
-        user_id
-        user {
-          user_id
-          active
-          email
-          username
-          is_email_verified
-          created_at
-        }
-        discussion_id
-        plain_text
-        quill_text
-        postgres_language
-        is_edited
-        reply_id
-        reply {
-          is_edited
-          user {
-            username
-          }
-          plain_text
-          files {
-            id
-          }
-        }
-        created_at
-        reactions {
-          id
-          user_id
-          user {
-            user_id
-            active
-            email
-            username
-            is_email_verified
-            created_at
-          }
-          post_id
-          content
-        }
-        files {
-          id
-          file {
-            id
-            file_name
-            file_type
-            file_size
-            file_url
-          }
-        }
-      }
+      ...DiscussionFields
     }
   }
 `;
 
 export const DELETE_DISCUSSION = gql`
-  mutation DeleteDiscussion($id: Int!) {
+  mutation DeleteDiscussion($id: String!) {
     deleteDiscussion(id: $id)
   }
 `;
 
 export const GET_POSTS_BY_DISCUSSION_ID = gql`
-  query GetPosts($discussionId: Int!) {
+  ${POST_FIELDS}
+  query GetPosts($discussionId: String!) {
     postsByDiscussionId(discussionId: $discussionId) {
-      id
-      discussion_id
-      user_id
-      user {
-        user_id
-        active
-        email
-        username
-        is_email_verified
-        created_at
-      }
-      reactions {
-        id
-        user_id
-        user {
-          user_id
-          active
-          email
-          username
-          is_email_verified
-          created_at
-        }
-        post_id
-        content
-      }
-      files {
-        id
-        file {
-          id
-          file_name
-          file_type
-          file_size
-          file_url
-        }
-      }
-      is_edited
-      reply_id
-      reply {
-        is_edited
-        user {
-          username
-        }
-        plain_text
-        files {
-          id
-        }
-      }
-      quill_text
-      plain_text
-      postgres_language
-      created_at
+      ...PostFields
     }
   }
 `;
 
 export const CREATE_POST = gql`
+  ${POST_FIELDS}
   mutation CreatePost($post: NewPostInput!, $files: [Int]!) {
     createPost(newPostData: $post, files: $files) {
-      id
-      discussion_id
-      user_id
-      user {
-        user_id
-        active
-        email
-        username
-        is_email_verified
-        created_at
-      }
-      quill_text
-      plain_text
-      postgres_language
-      is_edited
-      reply_id
-      reply {
-        is_edited
-        user {
-          username
-        }
-        plain_text
-        files {
-          id
-        }
-      }
-      reactions {
-        id
-        user_id
-        user {
-          user_id
-          active
-          email
-          username
-          is_email_verified
-          created_at
-        }
-        post_id
-        content
-      }
-      files {
-        id
-        file {
-          id
-          file_name
-          file_type
-          file_size
-          file_url
-        }
-      }
-      created_at
+      ...PostFields
     }
   }
 `;
 
 export const UPDATE_POST = gql`
-  mutation UpdatePost($post: NewPostInput!, $id: Int!) {
+  ${POST_FIELDS}
+  mutation UpdatePost($post: NewPostInput!, $id: String!) {
     updatePost(data: $post, id: $id) {
-      id
-      discussion_id
-      user_id
-      user {
-        user_id
-        active
-        email
-        username
-        is_email_verified
-        created_at
-      }
-      quill_text
-      plain_text
-      postgres_language
-      is_edited
-      reply_id
-      reply {
-        is_edited
-        user {
-          username
-        }
-        plain_text
-        files {
-          id
-        }
-      }
-      reactions {
-        id
-        user_id
-        user {
-          user_id
-          active
-          email
-          username
-          is_email_verified
-          created_at
-        }
-        post_id
-        content
-      }
-      files {
-        id
-        file {
-          id
-          file_name
-          file_type
-          file_size
-          file_url
-        }
-      }
-      created_at
+      ...PostFields
     }
   }
 `;
 
 export const DELETE_ATTACHMENT = gql`
-  mutation DeleteAttachment($attachmentId: Int!, $post_id: Int!) {
+  mutation DeleteAttachment($attachmentId: String!, $post_id: String!) {
     deleteAttachment(attachmentId: $attachmentId, post_id: $post_id)
   }
 `;
 
 export const DELETE_POST = gql`
-  mutation DeletePost($id: Int!, $userId: Int!) {
+  mutation DeletePost($id: String!, $userId: String!) {
     deletePost(id: $id, userId: $userId)
   }
 `;
 
 export const DELETE_POSTS_BY_DISCUSSION_ID = gql`
-  mutation DeletePostsByDiscussionId($discussionId: Int!) {
+  mutation DeletePostsByDiscussionId($discussionId: String!) {
     deletePostsByDiscussionId(discussionId: $discussionId)
   }
 `;
 
 export const GET_REACTION_BY_POST_ID = gql`
-  query GetReactionsByPostId($postId: Int!) {
+  ${REACTION_FIELDS}
+  query GetReactionsByPostId($postId: String!) {
     reactionsByPostId(postId: $postId) {
-      id
-      post_id
-      user_id
-      user {
-        user_id
-        active
-        email
-        username
-        is_email_verified
-        created_at
-      }
-      content
+      ...ReactionFields
     }
   }
 `;
 
 export const CREATE_REACTION = gql`
+  ${REACTION_FIELDS}
   mutation CreateReaction($reaction: NewReactionInput!) {
     createReaction(newReactionData: $reaction) {
-      id
-      post_id
-      user_id
-      user {
-        user_id
-        active
-        email
-        username
-        is_email_verified
-        created_at
-      }
-      content
+      ...ReactionFields
     }
   }
 `;
 
 export const DELETE_REACTION = gql`
-  mutation DeleteReaction($id: Int!, $userId: Int!) {
+  mutation DeleteReaction($id: String!, $userId: String!) {
     deleteReaction(id: $id, userId: $userId)
   }
 `;
 
 export const CREATE_USER = gql`
-  mutation CreateUser($email: String!, $username: String!) {
-    createUser(email: $email, username: $username) {
-      user_id
-    }
-  }
-`;
-
-export const GET_APP_ID = gql`
-  query GetApp($app_name: String!) {
-    getApp(app_name: $app_name) {
-      id
-      app_name
-    }
-  }
-`;
-
-export const GET_ORG_ID = gql`
-  query GetOrg($name: String!) {
-    getOrg(name: $name) {
-      id
-      name
+  ${USER_FIELDS}
+  mutation CreateUser($newUserData: NewUserInput!) {
+    createUser(newUserData: $newUserData) {
+      ...UserFields
     }
   }
 `;
 
 export const GET_USER_ID_FROM_EMAIL = gql`
+  ${USER_FIELDS}
   query GetUserIdFromEmail($email: String!) {
     getUserIdFromEmail(email: $email) {
-      user_id
+      ...UserFields
     }
   }
 `;
 
 export const GET_USER_ID_FROM_NAME = gql`
+  ${USER_FIELDS}
   query GetUserIdFromName($name: String!) {
     getUserIdFromName(name: $name) {
-      user_id
+      ...UserFields
     }
   }
 `;
 
 export const GET_DISCUSSIONS_SUMMARY_BY_USER_ID = gql`
-  query GetDiscussionsSummaryByUserId($userId: Int!) {
+  ${DISCUSSION_SUMMARY_FIELDS}
+  query GetDiscussionsSummaryByUserId($userId: String!) {
     getDiscussionsSummaryByUserId(userId: $userId) {
-      id
-      table_name
-      row
-      total_posts
+      ...DiscussionSummaryFields
     }
   }
 `;
