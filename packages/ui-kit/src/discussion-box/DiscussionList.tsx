@@ -13,18 +13,19 @@ import {
   Alert,
 } from '@mui/material';
 
+import { useColorModeContext } from '../ThemeProvider';
+
 import { useLazyQuery } from '@apollo/client';
 
-import { discussionClient } from '../graphql/discussionGraphql';
-import { GET_DISCUSSIONS_SUMMARY_BY_USER_ID } from '../graphql/discussionQuery';
+import { GET_DISCUSSIONS_SUMMARY_BY_USER_ID } from './graphql/discussionQuery';
 
 export function DiscussionList({ userId }: { userId: number }) {
   const history = useHistory();
+  const { getColor } = useColorModeContext();
 
   const [getDiscussionsSummaryByUserId, { called, loading, error, data }] =
     useLazyQuery(GET_DISCUSSIONS_SUMMARY_BY_USER_ID, {
       fetchPolicy: 'no-cache',
-      client: discussionClient,
     });
 
   useEffect(() => {
@@ -55,7 +56,10 @@ export function DiscussionList({ userId }: { userId: number }) {
 
   if (called && loading) {
     return (
-      <Backdrop sx={{ color: '#fff', zIndex: 1000 }} open={loading}>
+      <Backdrop
+        sx={{ color: getColor('bg-main'), zIndex: 1000 }}
+        open={loading}
+      >
         <Stack justifyContent="center">
           <div style={{ margin: 'auto' }}>
             <CircularProgress color="inherit" />

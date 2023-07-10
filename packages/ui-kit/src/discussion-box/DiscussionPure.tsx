@@ -1,24 +1,28 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 
 import {
-  MuiMaterial,
-  DiscussionBoxUI,
-  colors,
-  EmojiPicker,
-  EmojiClickData,
-} from '@eten-lab/ui-kit';
+  Stack,
+  Snackbar,
+  Alert,
+  Popover,
+  CircularProgress,
+  Backdrop,
+  Box,
+} from '@mui/material';
 
-import { PostList } from '../PostList';
-import { ReactQuill } from '../ReactQuill';
+import { EmojiPicker, EmojiClickData } from '../EmojiPicker';
+
+import { InputButtonGroup } from './InputButtonGroup';
+
+import { PostList } from './PostList';
+import { ReactQuill } from './ReactQuill';
 import { AudioRecorder } from './AudioRecorder';
 import { VideoRecorder } from './VideoRecorder';
 
-import { IPost, EditorKinds } from '../utils/types';
-import { useDiscussionContext } from '../hooks/useDiscussionContext';
+import { IPost, EditorKinds, IUser } from './utils/types';
 
-const { Stack, Snackbar, Alert, Popover, CircularProgress, Backdrop, Box } =
-  MuiMaterial;
-const { InputButtonGroup } = DiscussionBoxUI;
+import { useColorModeContext } from '../ThemeProvider';
+import { useDiscussionContext } from './hooks/useDiscussionContext';
 
 const InputComponents = {
   quill: <ReactQuill />,
@@ -28,25 +32,21 @@ const InputComponents = {
 
 type InputComponentsKey = keyof typeof InputComponents;
 
-export type DiscussionPureProps = {
-  userId: number;
+export interface DiscussionPureProps {
+  user: IUser;
   tableName: string;
-  rowId: number;
-  appId: number;
-  orgId: number;
+  rowId: string;
   height: string;
-};
+}
 
 /**
  * This component will mount once users route to '/tab1/discussion/:table_name/:row'.
  * The responsibility is to control Discussion Page and interact with server such as fetching, saving, deleting discussion data.
  */
 export function DiscussionPure({
-  userId,
+  user,
   tableName,
   rowId,
-  appId,
-  orgId,
   height,
 }: DiscussionPureProps) {
   const {
@@ -61,20 +61,21 @@ export function DiscussionPure({
       deleteReaction,
     },
   } = useDiscussionContext();
+  const { getColor } = useColorModeContext();
 
   const { snack, emoji, editorKind } = global;
 
   useEffect(() => {
-    if (global.userId !== userId) {
-      setNewUser(userId);
+    if (global.user?.user_id !== user.user_id) {
+      setNewUser(user);
     }
-  }, [userId, setNewUser, global.userId]);
+  }, [user, setNewUser, global.user]);
 
   useEffect(() => {
-    changeDiscussion({ table_name: tableName, row: rowId, appId, orgId });
-  }, [tableName, rowId, appId, orgId, changeDiscussion]);
+    changeDiscussion({ table_name: tableName, row_id: rowId });
+  }, [tableName, rowId, changeDiscussion]);
 
-  const discussionRef = useRef<HTMLElement>(null);
+  const discussionRef = useRef<HTMLDivElement>(null);
 
   const handleEmojiClickByReact = useCallback(
     (post: IPost | null, emojiData: EmojiClickData) => {
@@ -82,14 +83,14 @@ export function DiscussionPure({
         const reaction = post.reactions.find(
           (reaction) =>
             reaction.content === emojiData.unified &&
-            reaction.user_id === userId,
+            reaction.user_id === user.user_id,
         );
 
         if (reaction) {
           deleteReaction({
             variables: {
-              id: reaction.id,
-              userId,
+              id: reaction.reaction_id,
+              userId: user.user_id,
             },
           });
         } else {
@@ -97,15 +98,15 @@ export function DiscussionPure({
             variables: {
               reaction: {
                 content: emojiData.unified,
-                post_id: post.id,
-                user_id: userId,
+                post_id: post.post_id,
+                user_id: user.user_id,
               },
             },
           });
         }
       }
     },
-    [deleteReaction, createReaction, userId],
+    [deleteReaction, createReaction, user],
   );
 
   const handleEmojiClickByQuill = useCallback(
@@ -147,7 +148,7 @@ export function DiscussionPure({
       sx={{
         padding: '20px',
         borderRadius: '20px 20px 0 0',
-        borderTop: `1px solid ${colors['middle-gray']}`,
+        borderTop: `1px solid ${getColor('middle-gray')}`,
       }}
     >
       <InputButtonGroup onClick={handleChangeInput} />
@@ -162,6 +163,7 @@ export function DiscussionPure({
         justifyContent="space-between"
         style={{
           height,
+          background: getColor('bg-main'),
         }}
         ref={discussionRef}
       >
@@ -206,7 +208,10 @@ export function DiscussionPure({
         </Alert>
       </Snackbar>
 
-      <Backdrop sx={{ color: '#fff', zIndex: 1000 }} open={loading}>
+      <Backdrop
+        sx={{ color: getColor('bg-main'), zIndex: 1000 }}
+        open={loading}
+      >
         <Stack justifyContent="center">
           <div style={{ margin: 'auto' }}>
             <CircularProgress color="inherit" />
