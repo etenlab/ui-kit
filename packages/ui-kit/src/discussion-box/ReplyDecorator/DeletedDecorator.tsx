@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Stack, Avatar, Typography } from '@mui/material';
 
-import { BiShare } from '../../icons';
+import { DiReply } from '../../icons';
 import { useColorModeContext } from '../../ThemeProvider';
 
 export function DeletedDecorator() {
@@ -27,7 +27,7 @@ export function DeletedDecorator() {
           width: 25,
         }}
       >
-        <BiShare style={{ fontSize: '17px' }} />
+        <DiReply style={{ fontSize: '17px' }} />
       </Avatar>
       <Typography
         variant="body3"

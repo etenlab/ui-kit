@@ -18,4 +18,15 @@ export * from './RecorderTimer';
 export * from './AudioRecorder';
 export * from './VideoRecorder';
 export * from './Quill';
-export * from './types';
+
+export { DiscussionPure } from './DiscussionPure';
+export { Discussion } from './Discussion';
+export { DiscussionList } from './DiscussionList';
+
+export * from './utils/types';
+export * from './ReactQuill';
+export * from './ReactionList';
+export * from './PostList';
+export * from './AttachmentList';
+
+export * from './UserForm';

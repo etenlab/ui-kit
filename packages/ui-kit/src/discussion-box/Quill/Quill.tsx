@@ -38,8 +38,8 @@ import { Attachment } from '../Attachment';
 import { QuillContainer } from './styled';
 
 import { modules, formats, Skeletons, SkeletonSize } from './utils';
-import { getMimeType } from '../utils';
-import { IFile } from '../types';
+import { getMimeType } from '../utils/helpers';
+import { IFile } from '../utils/types';
 
 const iconStyle = {
   fontSize: '24px',
@@ -329,7 +329,7 @@ export const Quill = forwardRef<RefType | null, QuillProps>(function QuillPure(
         justifyContent="space-between"
         sx={{
           borderBottom: `1px solid ${getColor('middle-gray')}`,
-          backgroundColor: getColor('disable'),
+          backgroundColor: getColor('bg-second'),
           paddingLeft: '12px',
           paddingRight: '12px',
         }}

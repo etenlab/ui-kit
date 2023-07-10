@@ -7,8 +7,8 @@ import { ImageViewer } from '../ImageViewer';
 import { VideoPlayer } from '../VideoPlayer';
 import { AudioPlayer } from '../AudioPlayer';
 
-import { IFile } from '../types';
-import { getMimeType } from '../utils';
+import { IFile } from '../utils/types';
+import { getMimeType } from '../utils/helpers';
 import { DiRemove } from '../../icons';
 import { useColorModeContext } from '../../ThemeProvider';
 
@@ -63,7 +63,7 @@ type AttachmentProps = {
 };
 
 export function Attachment({ file, mode = 'view', onRemove }: AttachmentProps) {
-  const mime = getMimeType(file.file_type);
+  const mime = getMimeType(file.fileType);
 
   let content: ReactElement;
 
@@ -71,8 +71,8 @@ export function Attachment({ file, mode = 'view', onRemove }: AttachmentProps) {
     case 'video': {
       content = (
         <VideoPlayer
-          src={file.file_url}
-          file_type={file.file_type || ''}
+          src={file.fileUrl}
+          file_type={file.fileType || ''}
           mode={mode}
         />
       );
@@ -81,8 +81,8 @@ export function Attachment({ file, mode = 'view', onRemove }: AttachmentProps) {
     case 'audio': {
       content = (
         <AudioPlayer
-          src={file.file_url}
-          file_type={file.file_type || ''}
+          src={file.fileUrl}
+          file_type={file.fileType || ''}
           mode={mode}
         />
       );
@@ -90,11 +90,7 @@ export function Attachment({ file, mode = 'view', onRemove }: AttachmentProps) {
     }
     case 'image': {
       content = (
-        <ImageViewer
-          src={file.file_url}
-          file_name={file.file_name}
-          mode={mode}
-        />
+        <ImageViewer src={file.fileUrl} file_name={file.fileName} mode={mode} />
       );
       break;
     }
