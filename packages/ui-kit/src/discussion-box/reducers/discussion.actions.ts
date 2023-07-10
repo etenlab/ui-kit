@@ -30,7 +30,7 @@ export function loadUpdatedPost(post: IPost) {
   };
 }
 
-export function loadDeletedPostId(postId: number) {
+export function loadDeletedPostId(postId: string) {
   return {
     type: actions.POST_DELETED,
     payload: postId,
@@ -44,7 +44,7 @@ export function loadNewReaction(reaction: IReaction) {
   };
 }
 
-export function loadDeletedReactionId(reactionId: number) {
+export function loadDeletedReactionId(reactionId: string) {
   return {
     type: actions.REACTION_DELETED,
     payload: reactionId,

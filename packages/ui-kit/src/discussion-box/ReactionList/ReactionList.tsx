@@ -24,21 +24,22 @@ interface ReactionListProps {
 export function ReactionList({ reactions, post }: ReactionListProps) {
   const {
     states: {
-      global: { userId },
+      global: { user },
     },
     actions: { openEmojiPicker, deleteReaction, createReaction },
   } = useDiscussionContext();
 
   const handleClickReaction = (content: string) => {
     const reaction = reactions.find(
-      (reaction) => reaction.content === content && reaction.user_id === userId,
+      (reaction) =>
+        reaction.content === content && reaction.user_id === user?.user_id,
     );
 
     if (reaction) {
       deleteReaction({
         variables: {
-          id: reaction.id,
-          userId,
+          id: reaction.reaction_id,
+          userId: user?.user_id,
         },
       });
     } else {
@@ -46,8 +47,8 @@ export function ReactionList({ reactions, post }: ReactionListProps) {
         variables: {
           reaction: {
             content,
-            post_id: post.id,
-            user_id: userId,
+            post_id: post.post_id,
+            user_id: user?.user_id,
           },
         },
       });

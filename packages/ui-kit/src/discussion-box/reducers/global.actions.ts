@@ -3,6 +3,7 @@ import {
   EmojiModeType,
   FeedbackType,
   IPost,
+  IUser,
 } from '../utils/types';
 
 export const actions = {
@@ -14,10 +15,10 @@ export const actions = {
   CHANGE_EDITOR_KIND: 'CHANGE_EDITOR_KIND',
 };
 
-export function setNewUser(userId: number) {
+export function setNewUser(user: IUser) {
   return {
     type: actions.SET_NEW_USER,
-    payload: userId,
+    payload: user,
   };
 }
 

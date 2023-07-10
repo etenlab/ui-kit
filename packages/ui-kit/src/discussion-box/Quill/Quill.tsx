@@ -39,7 +39,7 @@ import { QuillContainer } from './styled';
 
 import { modules, formats, Skeletons, SkeletonSize } from './utils';
 import { getMimeType } from '../utils/helpers';
-import { IFile } from '../types';
+import { IFile } from '../utils/types';
 
 const iconStyle = {
   fontSize: '24px',

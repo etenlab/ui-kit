@@ -16,7 +16,7 @@ export function ReactQuill() {
       quillRef,
       quill: { quill, plain, attachments, editingPost, replyingPost },
       discussion,
-      global: { userId },
+      global: { user },
       uploading,
     },
     actions: {
@@ -40,7 +40,7 @@ export function ReactQuill() {
         return;
       }
 
-      if (userId !== editingPost.user_id) {
+      if (user?.user_id !== editingPost.user_id) {
         alertFeedback('warning', 'You are not owner of this post!');
         initializeQuill();
         return;
@@ -49,13 +49,13 @@ export function ReactQuill() {
       updatePost({
         variables: {
           post: {
-            discussion_id: discussion!.id,
+            discussion_id: discussion!.discussion_id,
             plain_text: plain,
             postgres_language: 'simple',
             quill_text: quill || '',
-            user_id: userId,
+            user_id: user.user_id,
           },
-          id: editingPost.id,
+          id: editingPost.post_id,
         },
       });
     } else {
@@ -68,12 +68,12 @@ export function ReactQuill() {
       createPost({
         variables: {
           post: {
-            discussion_id: discussion!.id,
+            discussion_id: discussion!.discussion_id,
             plain_text: plain,
             postgres_language: 'simple',
             quill_text: quill || '',
-            user_id: userId,
-            reply_id: replyingPost ? replyingPost.id : null,
+            user_id: user?.user_id,
+            reply_id: replyingPost ? replyingPost.post_id : null,
           },
           files: attachments.map((file) => file.id),
         },

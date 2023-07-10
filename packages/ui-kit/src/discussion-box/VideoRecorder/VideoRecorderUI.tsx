@@ -5,7 +5,7 @@ import { IconButton, Stack } from '@mui/material';
 import { DiRotate, DiPlay, DiTimer, DiCross, DiCheck } from '../../icons';
 import { useColorModeContext } from '../../ThemeProvider';
 
-import { RecorderStatus } from '../types';
+import { RecorderStatus } from '../utils/types';
 
 type VideoRecorderProps = {
   onSave(blobs: Blob[]): void;

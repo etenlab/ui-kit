@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Emoji, EmojiStyle } from 'emoji-picker-react';
 import { EmojiWrapper, Tooltip, EmojiCount, EmojiContainer } from './styled';
-import { IReaction } from '../types';
+import { IReaction } from '../utils/types';
 import { TooltipContent } from '../TooltipContent';
 
 interface ReactionButtonProps {

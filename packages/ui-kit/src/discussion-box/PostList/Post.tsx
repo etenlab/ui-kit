@@ -1,10 +1,10 @@
 import React, { useState, useRef, useLayoutEffect } from 'react';
 
-import { useColorModeContext } from '../../ThemeProvider';
+import { Stack, Popover, Typography } from '@mui/material';
 
 import { DiReply, DiEdit, DiRemove } from '../../icons';
 
-import { Stack, Popover, Typography } from '@mui/material';
+import { useColorModeContext } from '../../ThemeProvider';
 
 import { PostHeader } from '../PostHeader';
 import { ReplyDecorator } from '../ReplyDecorator';
@@ -26,7 +26,7 @@ interface PostProps {
 export function Post({ post }: PostProps) {
   const { getColor } = useColorModeContext();
   const {
-    id,
+    post_id,
     user,
     quill_text,
     created_at,
@@ -39,7 +39,7 @@ export function Post({ post }: PostProps) {
 
   const {
     states: {
-      global: { userId },
+      global: { user: globalUser },
       quillRef,
     },
     actions: {
@@ -71,7 +71,7 @@ export function Post({ post }: PostProps) {
   }, [quill_text, is_edited]);
 
   const handleEditPost = () => {
-    if (user.user_id !== userId) {
+    if (user.user_id !== globalUser?.user_id) {
       alertFeedback('warning', 'You are not owner of this post!');
       return;
     }
@@ -90,7 +90,7 @@ export function Post({ post }: PostProps) {
   };
 
   const handleDeletePost = () => {
-    if (user.user_id !== userId) {
+    if (user.user_id !== globalUser?.user_id) {
       alertFeedback('warning', 'You are not owner of this post!');
       return;
     }
@@ -102,8 +102,8 @@ export function Post({ post }: PostProps) {
 
     deletePost({
       variables: {
-        id,
-        userId,
+        id: post_id,
+        userId: globalUser.user_id,
       },
     });
 

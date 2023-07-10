@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import { RecorderStatus } from '../types';
-
 import { Typography } from '@mui/material';
+
+import { RecorderStatus } from '../utils/types';
 
 const HOUR_TO_SECONDS = 60 * 60;
 const MIN_TO_SECONDS = 60;

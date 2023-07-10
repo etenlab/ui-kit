@@ -5,11 +5,12 @@ import {
   FeedbackType,
   EmojiModeType,
   IPost,
+  IUser,
   EditorKinds,
 } from '../utils/types';
 
 export type StateType = {
-  userId: number | null;
+  user: IUser | null;
   snack: {
     open: boolean;
     message: string;
@@ -23,7 +24,7 @@ export type StateType = {
   editorKind: EditorKinds | null;
 };
 export const initialState: StateType = {
-  userId: null,
+  user: null,
   snack: {
     open: false,
     message: '',
@@ -46,10 +47,10 @@ export function reducer(
 
   switch (type) {
     case actions.SET_NEW_USER: {
-      const userId = action.payload as number;
+      const user = action.payload as IUser;
       return {
         ...prevState,
-        userId,
+        user,
       };
     }
     case actions.OPERATION_FEEDBACK: {

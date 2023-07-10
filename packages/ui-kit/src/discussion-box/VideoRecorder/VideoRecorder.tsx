@@ -17,7 +17,7 @@ export function VideoRecorder() {
       uploading,
       quill: { attachments, replyingPost },
       discussion,
-      global: { userId },
+      global: { user },
     },
     actions: {
       uploadFile,
@@ -52,12 +52,12 @@ export function VideoRecorder() {
         createPost({
           variables: {
             post: {
-              discussion_id: discussion!.id,
+              discussion_id: discussion!.discussion_id,
               plain_text: '',
               postgres_language: 'simple',
               quill_text: '',
-              user_id: userId,
-              reply_id: replyingPost ? replyingPost.id : null,
+              user_id: user?.user_id,
+              reply_id: replyingPost ? replyingPost.post_id : null,
             },
             files: attachments.map((file) => file.id),
           },
@@ -73,11 +73,11 @@ export function VideoRecorder() {
     initializeQuill,
     replyingPost,
     discussion,
-    userId,
+    user,
   ]);
 
   const handleSave = (blobs: Blob[]) => {
-    const file = new File(blobs, `record_${userId}.webm`);
+    const file = new File(blobs, `record_${user?.user_id}.webm`);
 
     if (file.size > maxFileSize) {
       alertFeedback(

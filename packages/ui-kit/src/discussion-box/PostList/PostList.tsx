@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 
+import { Stack } from '@mui/material';
+
 import { Post } from './Post';
 import { ScrollDownButton } from '../../button';
-
-import { Stack } from '@mui/material';
 
 import { useDiscussionContext } from '../hooks/useDiscussionContext';
 
@@ -42,7 +42,9 @@ export function PostList() {
       }}
     >
       {discussion
-        ? discussion.posts.map((post) => <Post post={post} key={post.id} />)
+        ? discussion.posts.map((post) => (
+            <Post post={post} key={post.post_id} />
+          ))
         : null}
       {isShownDownButton ? <ScrollDownButton onClick={moveScrollDown} /> : null}
     </Stack>

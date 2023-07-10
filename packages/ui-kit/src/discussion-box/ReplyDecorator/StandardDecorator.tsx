@@ -7,15 +7,13 @@ import { Username } from '../Username';
 import { BiImages } from '../../icons';
 import { useColorModeContext } from '../../ThemeProvider';
 
-type IFile = {
-  id: number;
-};
+import { IRelationshipPostFile } from '../utils/types';
 
 export type StandardDecoratorProps = {
   url: string;
   username: string;
   plainText: string;
-  files: IFile[];
+  files: IRelationshipPostFile[];
   edited: boolean;
 };
 
