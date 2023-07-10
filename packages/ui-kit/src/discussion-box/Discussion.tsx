@@ -1,17 +1,21 @@
 import React from 'react';
 
-import { ThemeProvider } from '@eten-lab/ui-kit';
-
+import { DiscussionApolloProvider } from './DiscussionApolloProvider';
 import { DiscussionProvider } from './context';
 
 import { DiscussionPure, DiscussionPureProps } from './DiscussionPure';
 
-export function Discussion(props: DiscussionPureProps) {
+export interface DiscussionProps extends DiscussionPureProps {
+  httpUri: string;
+  wsUri: string;
+}
+
+export function Discussion(props: DiscussionProps) {
   return (
-    <ThemeProvider>
+    <DiscussionApolloProvider httpUri={props.httpUri} wsUri={props.wsUri}>
       <DiscussionProvider>
         <DiscussionPure {...props} />
       </DiscussionProvider>
-    </ThemeProvider>
+    </DiscussionApolloProvider>
   );
 }
