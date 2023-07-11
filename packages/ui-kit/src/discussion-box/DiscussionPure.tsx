@@ -171,22 +171,24 @@ export function DiscussionPure({
         {InputPanel}
       </Stack>
 
-      <Popover
-        open={discussionRef.current !== null}
-        anchorEl={
-          emoji.anchorEl === null ? discussionRef.current : emoji.anchorEl
-        }
-        onClose={closeEmojiPicker}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-        sx={{
-          display: openedEmojiPicker ? 'inherit' : 'none',
-        }}
-      >
-        <EmojiPicker onEmojiClick={handleEmojiClick} />
-      </Popover>
+      {discussionRef.current ? (
+        <Popover
+          open={discussionRef.current !== null}
+          anchorEl={
+            emoji.anchorEl === null ? discussionRef.current : emoji.anchorEl
+          }
+          onClose={closeEmojiPicker}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          sx={{
+            display: openedEmojiPicker ? 'inherit' : 'none',
+          }}
+        >
+          <EmojiPicker onEmojiClick={handleEmojiClick} />
+        </Popover>
+      ) : null}
 
       <Snackbar
         open={snack.open}
