@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.93
+
+### Patch Changes
+
+- [#159](https://github.com/etenlab/ui-kit/pull/159) [`520b62a`](https://github.com/etenlab/ui-kit/commit/520b62a25803e70227119e32ee483ba108bdf6ed) Thanks [@takeshi-su57](https://github.com/takeshi-su57)! - fix anchor error at discussion-box
+
 ## 0.5.92
 
 ### Patch Changes
