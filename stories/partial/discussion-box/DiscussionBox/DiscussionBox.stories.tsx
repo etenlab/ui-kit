@@ -71,8 +71,8 @@ function DiscussionGroup() {
       }}
     >
       <UserForm
-        httpUri="https://api.crowd.bible/graphql"
-        wsUri="ws://api.crowd.bible/graphql"
+        httpUri="http://localhost:8201/graphql"
+        wsUri="ws://localhost:8201/graphql"
         onNewUser={handleAddNewUser}
         onCancel={handleCancel}
       />
