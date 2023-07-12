@@ -1,5 +1,23 @@
 # Change Log
 
+## 0.5.93
+
+### Patch Changes
+
+- [#159](https://github.com/etenlab/ui-kit/pull/159) [`520b62a`](https://github.com/etenlab/ui-kit/commit/520b62a25803e70227119e32ee483ba108bdf6ed) Thanks [@takeshi-su57](https://github.com/takeshi-su57)! - fix anchor error at discussion-box
+
+## 0.5.92
+
+### Patch Changes
+
+- [#157](https://github.com/etenlab/ui-kit/pull/157) [`6ff1374`](https://github.com/etenlab/ui-kit/commit/6ff1374a8a80899ce0bf494e7ec1360f9d47aaad) Thanks [@takeshi-su57](https://github.com/takeshi-su57)! - Discussion Box
+
+## 0.5.91
+
+### Patch Changes
+
+- [#155](https://github.com/etenlab/ui-kit/pull/155) [`23b8458`](https://github.com/etenlab/ui-kit/commit/23b8458f4ca885d82a5fedadb30a3e1e86ad1c9e) Thanks [@hardikpoudeldev](https://github.com/hardikpoudeldev)! - diegesis-flexable-design
+
 ## 0.5.90
 
 ### Patch Changes

@@ -2,6 +2,8 @@ import React, { ReactNode } from 'react';
 
 import { List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 
+import { useColorModeContext } from '../../ThemeProvider';
+
 interface Action {
   /**
    * Action name ex: Edit, Delete
@@ -28,8 +30,13 @@ type ActionListProps = {
  * Primary UI for Actions of Post (Edit, Delete, Reply)
  */
 export function ActionList({ actions }: ActionListProps) {
+  const { getColor } = useColorModeContext();
+
   return (
-    <List dense sx={{ width: '100%', maxWidth: 160, bgColor: '#eee' }}>
+    <List
+      dense
+      sx={{ width: '100%', maxWidth: 160, bgColor: getColor('bg-main') }}
+    >
       {actions.map(({ name, action, icon }) => {
         return (
           <ListItem

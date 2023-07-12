@@ -1,75 +1,70 @@
-// export type ActionType<T> = {
-//   type: string;
-//   payload: T;
-// };
+export type ActionType<T> = {
+  type: string;
+  payload: T;
+};
 
 export interface IUser {
-  user_id: number;
-  active: boolean;
-  email: string;
+  user_id: string;
+  kid: string;
   username: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  active: boolean;
+  avatar_url?: string;
   is_email_verified: boolean;
   created_at: Date;
 }
 
 export interface IReaction {
-  id: number;
-  post_id: number;
-  user_id: number;
-  user: IUser;
+  reaction_id: string;
+  user_id: string;
   content: string;
+  post_id: string;
+  user: IUser;
 }
 
 export interface IFile {
   id: number;
-  file_name: string;
-  file_type: string | null;
-  file_size: number;
-  file_url: string;
+  fileName: string;
+  fileType: string;
+  fileSize: number;
+  fileUrl: string;
+  fileHash: string;
 }
 
 export interface IRelationshipPostFile {
-  id: number;
+  relationship_post_file_id: string;
+  post_id: string;
   file: IFile;
 }
 
 export interface IPost {
-  id: number;
-  user_id: number;
+  post_id: string;
+  user_id: string;
   user: IUser;
-  discussion_id: number;
+  discussion_id: string;
   quill_text: string;
   plain_text: string;
   postgres_language: string;
   files: IRelationshipPostFile[];
   reactions: IReaction[];
   is_edited: boolean;
-  reply_id?: number;
-  reply?: {
-    is_edited: boolean;
-    user: {
-      username: string;
-    };
-    plain_text: string;
-    files: {
-      id: number;
-    }[];
-  };
+  reply_id?: string;
+  reply?: IPost;
   created_at: Date;
 }
 
 export interface IDiscussion {
-  id: number;
-  app?: number;
-  org?: number;
+  discussion_id: string;
   table_name: string;
-  row: number;
+  row_id: string;
   posts: IPost[];
 }
 
 export type DiscussionRouteQuizParams = {
   table_name?: string;
-  row?: string;
+  row_id?: string;
 };
 
 export interface SnackbarState {
@@ -97,7 +92,7 @@ export interface PostUpdatedData {
 }
 
 export interface PostDeletedData {
-  postDeleted: number;
+  postDeleted: string;
 }
 
 export interface ReactionCreatedData {
@@ -105,7 +100,7 @@ export interface ReactionCreatedData {
 }
 
 export interface ReactionDeletedData {
-  reactionDeleted: number;
+  reactionDeleted: string;
 }
 
 export interface UploadedFile {
@@ -125,3 +120,8 @@ export type EmojiModeType = 'quill' | 'react';
 export type EditorKinds = 'quill' | 'audio' | 'video';
 
 export type RecorderStatus = 'new' | 'paused' | 'recording' | 'ended';
+
+export type ChangeDiscussionParams = {
+  table_name: string;
+  row_id: string;
+};

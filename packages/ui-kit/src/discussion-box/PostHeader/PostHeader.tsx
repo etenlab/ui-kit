@@ -4,7 +4,7 @@ import { Stack, IconButton } from '@mui/material';
 import { Avatar } from '../Avatar';
 import { Username } from '../Username';
 import { DateViewer } from '../DateViewer';
-import { BsFillRecordFill, DiMore } from '../../icons';
+import { DiCircle, DiMore } from '../../icons';
 
 type PostHeaderProps = {
   username: string;
@@ -24,7 +24,7 @@ export function PostHeader({
       <Stack direction="row" gap="10px" alignItems="center">
         <Avatar username={username} url={avatar} mini={false} />
         <Username username={username} />
-        <BsFillRecordFill style={{ fontSize: '4px' }} />
+        <DiCircle style={{ fontSize: '4px' }} />
         <DateViewer date={date} />
       </Stack>
       <IconButton onClick={openActionList}>

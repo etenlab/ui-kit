@@ -4,18 +4,16 @@ import { Stack, Typography } from '@mui/material';
 
 import { Avatar } from '../Avatar';
 import { Username } from '../Username';
-import { BiImages } from '../../icons';
+import { DiPicture } from '../../icons';
 import { useColorModeContext } from '../../ThemeProvider';
 
-type IFile = {
-  id: number;
-};
+import { IRelationshipPostFile } from '../utils/types';
 
 export type StandardDecoratorProps = {
   url: string;
   username: string;
   plainText: string;
-  files: IFile[];
+  files: IRelationshipPostFile[];
   edited: boolean;
 };
 
@@ -28,7 +26,7 @@ export function StandardDecorator({
 }: StandardDecoratorProps) {
   const { getColor } = useColorModeContext();
   const attachmentIcon =
-    files.length > 0 ? <BiImages style={{ color: getColor('gray') }} /> : null;
+    files.length > 0 ? <DiPicture style={{ color: getColor('gray') }} /> : null;
 
   return (
     <Stack

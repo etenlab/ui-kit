@@ -6,7 +6,7 @@ import { Typography } from '@mui/material';
  * Primary UI for username ex: '@username'
  */
 export function Username({ username }: { username: string }) {
-  const transformUsername = `@${username}`;
+  const transformUsername = `@ ${username}`;
 
   return (
     <Typography

@@ -3,7 +3,7 @@ import React from 'react';
 import { Box } from '@mui/material';
 import { Emoji, EmojiStyle } from 'emoji-picker-react';
 
-import { IReaction } from '../types';
+import { IReaction } from '../utils/types';
 import { EmojiWrapper, TooltipUserName } from './styled';
 
 type TooltipContentProps = {
@@ -34,7 +34,7 @@ export const TooltipContent = ({ reactions, emoji }: TooltipContentProps) => {
         <Emoji unified={emoji} emojiStyle={EmojiStyle.APPLE} size={50} />
       </EmojiWrapper>
       {reactions.map((reaction) => (
-        <TooltipUserName key={reaction.id}>
+        <TooltipUserName key={reaction.reaction_id}>
           {reaction.user.username}
         </TooltipUserName>
       ))}
