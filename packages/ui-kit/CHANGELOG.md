@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.95
+
+### Patch Changes
+
+- [#163](https://github.com/etenlab/ui-kit/pull/163) [`86c248b`](https://github.com/etenlab/ui-kit/commit/86c248b80f8ca55f527c4fba04bcfcbd4a88c0a5) Thanks [@hardikpoudeldev](https://github.com/hardikpoudeldev)! - update package.json remove react-router-dom
+
 ## 0.5.94
 
 ### Patch Changes
