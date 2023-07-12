@@ -21,7 +21,6 @@ export * from './Quill';
 
 export { DiscussionPure } from './DiscussionPure';
 export { Discussion } from './Discussion';
-export { DiscussionList } from './DiscussionList';
 
 export * from './utils/types';
 export * from './ReactQuill';
