@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import {
   Backdrop,
@@ -20,7 +20,7 @@ import { useLazyQuery } from '@apollo/client';
 import { GET_DISCUSSIONS_SUMMARY_BY_USER_ID } from './graphql/discussionQuery';
 
 export function DiscussionList({ userId }: { userId: number }) {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { getColor } = useColorModeContext();
 
   const [getDiscussionsSummaryByUserId, { called, loading, error, data }] =
@@ -92,9 +92,7 @@ export function DiscussionList({ userId }: { userId: number }) {
             <ListItem
               disablePadding
               onClick={() => {
-                history.push({
-                  pathname: `/translation-app/discussion/${table_name}/${row}`,
-                });
+                navigate(`/translation-app/discussion/${table_name}/${row}`);
               }}
             >
               <ListItemText
