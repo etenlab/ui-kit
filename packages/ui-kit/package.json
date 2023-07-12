@@ -27,7 +27,7 @@
     "@fontsource/noto-serif-display": "^4.5.15",
     "@foobar404/wave": "^2.0.4",
     "@mui/material": "^5.10.5",
-    "@types/apollo-upload-client": "^17.0.2",
+    "@svgr/rollup": "^8.0.1",
     "ace-builds": "^1.20.0",
     "apollo-upload-client": "^17.0.0",
     "emoji-picker-react": "^4.4.9",
@@ -44,18 +44,6 @@
     "remark-math": "^5.1.1",
     "roarr": "^7.15.0",
     "tslib": "^2.4.1"
-  },
-  "devDependencies": {
-    "@svgr/rollup": "^8.0.1",
-    "@testing-library/react": "13.3.0",
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
-    "@types/react-router": "^5.1.11",
-    "@types/react-router-dom": "^5.1.7",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0"
   },
   "eslintConfig": {
     "extends": [
