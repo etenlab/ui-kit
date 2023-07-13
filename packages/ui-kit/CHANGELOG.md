@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.97
+
+### Patch Changes
+
+- [#167](https://github.com/etenlab/ui-kit/pull/167) [`24fd742`](https://github.com/etenlab/ui-kit/commit/24fd7427016c6e0fa0890d8a5fb38f9a9c200ccb) Thanks [@ForeverYoung1208](https://github.com/ForeverYoung1208)! - add discussion button to list
+
 ## 0.5.96
 
 ### Patch Changes
