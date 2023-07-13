@@ -33,8 +33,8 @@ function DiscussionShower({ user }: { user: IUser }) {
         user={user}
         tableName="example-table"
         rowId="example-row"
-        httpUri="http://localhost:8201/graphql"
-        wsUri="ws://localhost:8201/graphql"
+        httpUri="https://api.dev.crowd.bible/graphql"
+        wsUri="wss://api.dev.crowd.bible/graphql"
         height="736px"
       />
     </Box>
@@ -71,8 +71,8 @@ function DiscussionGroup() {
       }}
     >
       <UserForm
-        httpUri="https://api.crowd.bible/graphql"
-        wsUri="wss://api.crowd.bible/graphql"
+        httpUri="https://api.dev.crowd.bible/graphql"
+        wsUri="wss://api.dev.crowd.bible/graphql"
         onNewUser={handleAddNewUser}
         onCancel={handleCancel}
       />

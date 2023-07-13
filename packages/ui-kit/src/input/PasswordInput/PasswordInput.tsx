@@ -29,7 +29,7 @@ export function PasswordInput({
   const InputProps = {
     endAdornment: (
       <IconButton onClick={onClickShowIcon} sx={{ color }}>
-        {show ? <DiPasswordV /> : <DiPasswordNv />}
+        {show ? <DiPasswordV color="gray" /> : <DiPasswordNv color="gray" />}
       </IconButton>
     ),
   };
