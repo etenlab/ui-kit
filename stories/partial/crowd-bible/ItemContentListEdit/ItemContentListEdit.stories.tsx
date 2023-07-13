@@ -233,3 +233,52 @@ CustomTitle.parameters = {
     },
   },
 };
+
+export const Discussable = Template.bind({});
+Discussable.args = {
+  item: selectedPhrase,
+  onBack: () => alert('onBack run'),
+  buttonText: 'New Definition',
+  changeContentValue: (definitionId, newContentValue) =>
+    alert(`changeContentValue: ${definitionId} ${newContentValue}`),
+  changeContentVotes: (candidateId, upOrDown) =>
+    alert(`changeContentVotes: ${candidateId} ${upOrDown}`),
+  addContent: (newContentValue) => alert(`addContent ${newContentValue}`),
+  onContentDiscussionClick: (id: string | null) => {
+    alert(`Start discussoin for ${id}`);
+  },
+
+  isAddable: false,
+  isEditable: false,
+  isWithDiscussion: true,
+};
+
+Discussable.parameters = {
+  docs: {
+    source: {
+      code: jsxToString(
+        <ItemContentListEdit
+          item={selectedPhrase}
+          onBack={() => alert('onBack run')}
+          buttonText="New Definition"
+          changeContentValue={(definitionId, newContentValue) =>
+            alert(`changeContentValue: ${definitionId} ${newContentValue}`)
+          }
+          changeContentVotes={(candidateId, upOrDown) =>
+            alert(`changeContentVotes: ${candidateId} ${upOrDown}`)
+          }
+          addContent={(newContentValue) =>
+            alert(`addContent ${newContentValue}`)
+          }
+          isAddable={Discussable.args.isAddable}
+          isEditable={Discussable.args.isEditable}
+          isWithDiscussion={Discussable.args.isWithDiscussion}
+          onContentDiscussionClick={Discussable.args.onContentDiscussionClick}
+        />,
+      ),
+      language: 'jsx',
+      format: true,
+      type: 'auto',
+    },
+  },
+};
