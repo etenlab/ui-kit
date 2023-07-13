@@ -15,6 +15,7 @@ import { Input } from '../../input';
 import { Button } from '../../button';
 import { TitleWithIcon } from '../TitleWithIcon';
 import { VoteButtonGroup } from '../VoteButtonGroup';
+import { StyledDiMessages } from './StyledDiMessages';
 
 type VotableContent = {
   content: string;
@@ -38,9 +39,11 @@ type ItemContentListEditProps = {
   buttonText: string;
   changeContentValue: (id: string | null, newContentValue: string) => void;
   changeContentVotes: (id: string | null, UpOrDown: TUpOrDownVote) => void;
+  onContentDiscussionClick?: (id: string | null) => void;
   addContent: (newContentValue: string) => void;
   isEditable?: boolean;
   isAddable?: boolean;
+  isWithDiscussion?: boolean;
   customTitle?: ReactElement;
 };
 
@@ -50,16 +53,17 @@ export function ItemContentListEdit({
   buttonText,
   changeContentValue,
   changeContentVotes,
+  onContentDiscussionClick,
   addContent,
   isEditable = false,
   isAddable = false,
+  isWithDiscussion = false,
   customTitle,
 }: ItemContentListEditProps) {
   const [isDialogOpened, setIsDialogOpened] = useState(false);
   const [itemIdxEditting, setItemIdxEditting] = useState(
     null as unknown as number,
   );
-
   return (
     <>
       <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
@@ -87,7 +91,7 @@ export function ItemContentListEdit({
         )}
       </Box>
       <ul style={{ margin: 0 }}>
-        {item.contents.map(({ content, upVotes, downVotes }, idx) => (
+        {item.contents.map(({ content, upVotes, downVotes, id }, idx) => (
           <ListItem
             sx={{
               display: 'list-item',
@@ -97,25 +101,35 @@ export function ItemContentListEdit({
             }}
             key={idx}
           >
-            {itemIdxEditting === idx ? (
-              <DebounceInput
-                element={Input}
-                debounceTimeout={500}
-                value={content}
-                onChange={(v) =>
-                  changeContentValue(item.contents[idx].id, v.target.value)
-                }
-                onBlur={() => setItemIdxEditting(null as unknown as number)}
-              />
-            ) : (
-              <Typography
-                variant="body1"
-                onClick={() => isEditable && setItemIdxEditting(idx)}
-                display={'inline-flex'}
-              >
-                {content}
-              </Typography>
-            )}
+            <Box display={'flex'} justifyContent={'space-between'}>
+              {itemIdxEditting === idx ? (
+                <DebounceInput
+                  element={Input}
+                  debounceTimeout={500}
+                  value={content}
+                  onChange={(v) =>
+                    changeContentValue(item.contents[idx].id, v.target.value)
+                  }
+                  onBlur={() => setItemIdxEditting(null as unknown as number)}
+                />
+              ) : (
+                <Typography
+                  variant="body1"
+                  onClick={() => isEditable && setItemIdxEditting(idx)}
+                  display={'inline-flex'}
+                >
+                  {content}
+                </Typography>
+              )}
+              {isWithDiscussion && onContentDiscussionClick ? (
+                <StyledDiMessages
+                  onClick={() => onContentDiscussionClick(id)}
+                  display="inline-flex"
+                />
+              ) : (
+                <></>
+              )}
+            </Box>
             <div>
               <VoteButtonGroup
                 likeCount={upVotes}
