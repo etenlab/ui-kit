@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.5.96
+
+### Patch Changes
+
+- [#165](https://github.com/etenlab/ui-kit/pull/165) [`25e5a99`](https://github.com/etenlab/ui-kit/commit/25e5a99e17d82fe3e31e6eda44b5b1e2bf4d6eaa) Thanks [@lucky-gru](https://github.com/lucky-gru)! - restyling
+
 ## 0.5.95
 
 ### Patch Changes
